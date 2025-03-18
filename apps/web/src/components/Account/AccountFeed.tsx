@@ -85,6 +85,7 @@ const AccountFeed: FC<AccountFeedProps> = ({
       [AccountFeedType.Replies]: "hasn't replied yet!",
       [AccountFeedType.Collects]: "hasn't collected anything yet!"
     };
+
     return messages[type] || "";
   };
 
@@ -96,7 +97,14 @@ const AccountFeed: FC<AccountFeedProps> = ({
 
   const request: PostsRequest = {
     pageSize: PageSize.Fifty,
-    filter: { metadata, postTypes, authors: [address] }
+    filter: {
+      metadata,
+      postTypes,
+      authors: [address],
+      ...(type === AccountFeedType.Collects && {
+        collectedBy: { account: address }
+      })
+    }
   };
 
   const { data, error, fetchMore, loading } = usePostsQuery({
