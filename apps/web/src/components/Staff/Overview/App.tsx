@@ -15,12 +15,12 @@ const App: FC = () => {
   return (
     <Card>
       <CardHeader title="App" />
-      {isLoading ? (
-        <Loader className="my-10" message="Loading App..." />
-      ) : error ? (
-        <ErrorMessage error={error} title="Failed to load App" />
-      ) : (
-        <div className="m-5">
+      <div className="m-5">
+        {isLoading ? (
+          <Loader className="my-10" message="Loading App..." />
+        ) : error ? (
+          <ErrorMessage error={error} title="Failed to load App" />
+        ) : (
           <div className="space-y-5">
             <div className="linkify font-bold">
               <Link
@@ -36,8 +36,8 @@ const App: FC = () => {
               suffix="GHO"
             />
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </Card>
   );
 };

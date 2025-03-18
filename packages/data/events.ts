@@ -12,6 +12,7 @@ export const Events = {
     UpdateSettings: "update_account_settings",
     FundAccount: "fund_account",
     WithdrawFunds: "withdraw_funds",
+    DepositFunds: "deposit_funds",
     WrapTokens: "wrap_tokens",
     UnwrapTokens: "unwrap_tokens"
   },

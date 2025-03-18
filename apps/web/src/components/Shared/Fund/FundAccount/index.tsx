@@ -37,7 +37,7 @@ const FundAccount: FC = () => {
           Wrapped GHO enables various Hey-specific actions.
         </div>
       </div>
-      <Fund recipient={currentAccount?.address} />
+      <Fund />
     </div>
   );
 };
