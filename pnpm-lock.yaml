@@ -269,12 +269,6 @@ importers:
       '@uidotdev/usehooks':
         specifier: ^2.4.1
         version: 2.4.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-<<<<<<< HEAD
-=======
-      '@unleash/proxy-client-react':
-        specifier: ^5.0.0
-        version: 5.0.0(unleash-proxy-client@3.7.3)
->>>>>>> 0208026e9 (Update dependencies across all packages 📦)
       axios:
         specifier: ^1.8.3
         version: 1.8.3(debug@4.4.0)
@@ -3908,15 +3902,6 @@ packages:
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
 
-<<<<<<< HEAD
-=======
-  '@unleash/proxy-client-react@5.0.0':
-    resolution: {integrity: sha512-f00yLXSdA2ifB1RvqD1T4Il3Yk0CjVibKYS4cdOeLb6LhyH4kIeyJwtQO1slUrKRUy8VBt8Hmm2Rh1JEGlkfSQ==}
-    engines: {node: '>=16.0.0'}
-    peerDependencies:
-      unleash-proxy-client: ^3.7.3
-
->>>>>>> 0208026e9 (Update dependencies across all packages 📦)
   '@wagmi/connectors@5.7.11':
     resolution: {integrity: sha512-vJWOXMeYWmczvlsEZHq52yOoC2qu5kU8Saj6Bo+BtyfYcX1tJODZTKed3TMIoKhUx0W3vna1UIwG7GskmxGKKA==}
     peerDependencies:
@@ -13912,13 +13897,6 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-<<<<<<< HEAD
-=======
-  '@unleash/proxy-client-react@5.0.0(unleash-proxy-client@3.7.3)':
-    dependencies:
-      unleash-proxy-client: 3.7.3
-
->>>>>>> 0208026e9 (Update dependencies across all packages 📦)
   '@wagmi/connectors@5.7.11(@types/react@19.0.11)(@wagmi/core@2.16.7(@tanstack/query-core@5.69.0)(@types/react@19.0.11)(immer@10.1.1)(react@19.0.0)(typescript@5.8.2)(use-sync-external-store@1.4.0(react@19.0.0))(viem@2.23.12(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2)))(bufferutil@4.0.9)(react@19.0.0)(typescript@5.8.2)(utf-8-validate@5.0.10)(viem@2.23.12(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))(zod@3.24.2)':
     dependencies:
       '@coinbase/wallet-sdk': 4.3.0
