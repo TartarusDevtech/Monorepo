@@ -31,8 +31,6 @@ export const Events = {
     Create: "create_group",
     Join: "join_group",
     Leave: "leave_group",
-    Ban: "ban_group",
-    Unban: "unban_group",
     UpdateSettings: "update_group_settings"
   }
 };

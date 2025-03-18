@@ -11,7 +11,6 @@ import { EmptyState, ErrorMessage } from "@hey/ui";
 import type { FC } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
-import Ban from "./Ban";
 
 interface MembersProps {
   group: GroupFragment;
@@ -83,7 +82,6 @@ const Members: FC<MembersProps> = ({ group }) => {
             account={member.account}
             showBio
             showUserPreview={false}
-            menu={<Ban group={group} account={member.account} />}
           />
         </div>
       )}

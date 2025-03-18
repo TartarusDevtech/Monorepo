@@ -5,7 +5,7 @@ import type { AccountFragment } from "@hey/indexer";
 import { Image } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import Link from "next/link";
-import type { FC, ReactNode } from "react";
+import type { FC } from "react";
 import { memo } from "react";
 import FollowUnfollowButton from "./Account/FollowUnfollowButton";
 import Verified from "./Account/Icons/Verified";
@@ -21,7 +21,6 @@ interface SingleAccountProps {
   account: AccountFragment;
   showBio?: boolean;
   showUserPreview?: boolean;
-  menu?: ReactNode;
 }
 
 const SingleAccount: FC<SingleAccountProps> = ({
@@ -31,8 +30,7 @@ const SingleAccount: FC<SingleAccountProps> = ({
   linkToAccount = true,
   account,
   showBio = false,
-  showUserPreview = true,
-  menu
+  showUserPreview = true
 }) => {
   const UserAvatar: FC = () => (
     <Image
@@ -100,15 +98,12 @@ const SingleAccount: FC<SingleAccountProps> = ({
       ) : (
         <AccountInfo />
       )}
-      <div className="flex items-center gap-3">
-        <FollowUnfollowButton
-          hideFollowButton={hideFollowButton}
-          hideUnfollowButton={hideUnfollowButton}
-          account={account}
-          small
-        />
-        {menu}
-      </div>
+      <FollowUnfollowButton
+        hideFollowButton={hideFollowButton}
+        hideUnfollowButton={hideUnfollowButton}
+        account={account}
+        small
+      />
     </div>
   );
 };
