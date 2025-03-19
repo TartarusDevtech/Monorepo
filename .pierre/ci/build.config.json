@@ -1,3 +1,4 @@
 {
-  "size": "medium"
+  "size": "medium",
+  "image": "node@20"
 }
