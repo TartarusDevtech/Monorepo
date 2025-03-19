@@ -5,7 +5,6 @@ import type { OG } from "@hey/types/misc";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import type { FC } from "react";
-import { useEffect } from "react";
 import Embed from "./Embed";
 import EmptyOembed from "./EmptyOembed";
 import Player from "./Player";
@@ -13,11 +12,10 @@ import Player from "./Player";
 const GET_OEMBED_QUERY_KEY = "getOembed";
 
 interface OembedProps {
-  onLoad?: (og: OG) => void;
   url: string;
 }
 
-const Oembed: FC<OembedProps> = ({ onLoad, url }) => {
+const Oembed: FC<OembedProps> = ({ url }) => {
   const { data, error, isLoading } = useQuery({
     enabled: Boolean(url),
     queryFn: async () => {
@@ -29,12 +27,6 @@ const Oembed: FC<OembedProps> = ({ onLoad, url }) => {
     queryKey: [GET_OEMBED_QUERY_KEY, url],
     refetchOnMount: false
   });
-
-  useEffect(() => {
-    if (onLoad) {
-      onLoad(data as OG);
-    }
-  }, [data]);
 
   if (isLoading || error || !data) {
     if (error) {

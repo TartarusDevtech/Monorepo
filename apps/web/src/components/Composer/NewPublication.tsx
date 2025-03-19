@@ -24,7 +24,6 @@ import usePostMetadata from "src/hooks/usePostMetadata";
 import { useNewPostModalStore } from "src/store/non-persisted/modal/useNewPostModalStore";
 import { useCollectActionStore } from "src/store/non-persisted/post/useCollectActionStore";
 import { usePostAttachmentStore } from "src/store/non-persisted/post/usePostAttachmentStore";
-import { usePostAttributesStore } from "src/store/non-persisted/post/usePostAttributesStore";
 import {
   DEFAULT_AUDIO_POST,
   usePostAudioStore
@@ -85,9 +84,6 @@ const NewPublication: FC<NewPublicationProps> = ({ className, post, feed }) => {
     (state) => state
   );
 
-  // Attributes store
-  const { reset: resetAttributes } = usePostAttributesStore();
-
   // States
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState<boolean>(false);
@@ -113,7 +109,6 @@ const NewPublication: FC<NewPublicationProps> = ({ className, post, feed }) => {
     setVideoThumbnail(DEFAULT_VIDEO_THUMBNAIL);
     setAudioPost(DEFAULT_AUDIO_POST);
     setLicense(null);
-    resetAttributes();
     resetCollectSettings();
     setShowNewPostModal(false);
   };

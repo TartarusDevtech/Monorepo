@@ -14,8 +14,6 @@ const getPostData = (
   }[];
   content?: string;
 } | null => {
-  const { content } = metadata;
-
   switch (metadata.__typename) {
     case "ArticleMetadata":
     case "ThreeDMetadata":
@@ -28,11 +26,11 @@ const getPostData = (
     case "CheckingInMetadata":
       return {
         attachments: getAttachmentsData(metadata.attachments),
-        content
+        content: metadata.content
       };
     case "TextOnlyMetadata":
     case "StoryMetadata":
-      return { content };
+      return { content: metadata.content };
     case "ImageMetadata":
       return {
         asset: {
@@ -40,7 +38,7 @@ const getPostData = (
           uri: sanitizeDStorageUrl(metadata.image.item)
         },
         attachments: getAttachmentsData(metadata.attachments),
-        content
+        content: metadata.content
       };
     case "AudioMetadata": {
       const audioAttachments = getAttachmentsData(metadata.attachments)[0];
@@ -58,7 +56,7 @@ const getPostData = (
           type: "Audio",
           uri: metadata.audio.item || audioAttachments?.uri
         },
-        content
+        content: metadata.content
       };
     }
     case "VideoMetadata": {
@@ -73,7 +71,7 @@ const getPostData = (
           type: "Video",
           uri: sanitizeDStorageUrl(metadata.video.item || videoAttachments?.uri)
         },
-        content
+        content: metadata.content
       };
     }
     default:

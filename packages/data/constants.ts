@@ -60,9 +60,4 @@ export const COVER = "tr:w-1350,h-350";
 export const VIDEO_THUMBNAIL = "tr:h-1000";
 export const ATTACHMENT = "tr:w-1000";
 
-// Known Lens Protocol Attributes
-export const KNOWN_ATTRIBUTES = {
-  HIDE_OEMBED: "hideOembed"
-};
-
 export const LENS_NAMESPACE = "lens/";

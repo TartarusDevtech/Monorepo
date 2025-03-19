@@ -4,8 +4,6 @@ import Markup from "@components/Shared/Markup";
 import Oembed from "@components/Shared/Oembed";
 import Video from "@components/Shared/Video";
 import { EyeIcon } from "@heroicons/react/24/outline";
-import { KNOWN_ATTRIBUTES } from "@hey/data/constants";
-import getPostAttribute from "@hey/helpers/getPostAttribute";
 import getPostData from "@hey/helpers/getPostData";
 import getURLs from "@hey/helpers/getURLs";
 import isPostMetadataTypeAllowed from "@hey/helpers/isPostMetadataTypeAllowed";
@@ -67,12 +65,7 @@ const PostBody: FC<PostBodyProps> = ({
   const showSharingLink = metadata.__typename === "LinkMetadata";
   // Show checking in
   const showCheckin = metadata.__typename === "CheckingInMetadata";
-  // Hide oembed if the post has the hide_oembed attribute
-  const hideOembed =
-    getPostAttribute(metadata.attributes, KNOWN_ATTRIBUTES.HIDE_OEMBED) ===
-    "true";
   const showOembed =
-    !hideOembed &&
     !showSharingLink &&
     !showCheckin &&
     hasURLs &&

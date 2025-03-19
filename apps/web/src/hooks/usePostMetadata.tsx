@@ -7,7 +7,6 @@ import {
 } from "@lens-protocol/metadata";
 import { useCallback } from "react";
 import { usePostAttachmentStore } from "src/store/non-persisted/post/usePostAttachmentStore";
-import { usePostAttributesStore } from "src/store/non-persisted/post/usePostAttributesStore";
 import { usePostLicenseStore } from "src/store/non-persisted/post/usePostLicenseStore";
 import { usePostLiveStore } from "src/store/non-persisted/post/usePostLiveStore";
 import { usePostVideoStore } from "src/store/non-persisted/post/usePostVideoStore";
@@ -23,14 +22,6 @@ const usePostMetadata = () => {
   const { license } = usePostLicenseStore();
   const { attachments } = usePostAttachmentStore((state) => state);
   const { liveVideoConfig, showLiveVideoEditor } = usePostLiveStore();
-  const { attributes } = usePostAttributesStore();
-
-  const createLocalBaseMetadata = (baseMetadata: any) => ({
-    attributes:
-      (attributes || []).length > 0 || baseMetadata.attributes?.length > 0
-        ? [...(baseMetadata.attributes || []), ...(attributes || [])]
-        : undefined
-  });
 
   const processAttachments = () =>
     attachments
@@ -48,13 +39,11 @@ const usePostMetadata = () => {
       const isVideo = attachments[0]?.type === "Video";
       const isLiveStream = Boolean(showLiveVideoEditor && liveVideoConfig.id);
 
-      const localBaseMetadata = createLocalBaseMetadata(baseMetadata);
       const attachmentsToBeUploaded = processAttachments();
 
       if (isLiveStream) {
         return liveStream({
           ...baseMetadata,
-          ...localBaseMetadata,
           liveUrl: `https://livepeercdn.studio/hls/${liveVideoConfig.playbackId}/index.m3u8`,
           playbackUrl: `https://livepeercdn.studio/hls/${liveVideoConfig.playbackId}/index.m3u8`,
           startsAt: new Date().toISOString()
@@ -62,16 +51,12 @@ const usePostMetadata = () => {
       }
 
       if (!hasAttachments) {
-        return textOnly({
-          ...baseMetadata,
-          ...localBaseMetadata
-        });
+        return textOnly(baseMetadata);
       }
 
       if (isImage) {
         return image({
           ...baseMetadata,
-          ...localBaseMetadata,
           ...(attachmentsToBeUploaded.length > 0 && {
             attachments: attachmentsToBeUploaded
           }),
@@ -86,7 +71,6 @@ const usePostMetadata = () => {
       if (isAudio) {
         return audio({
           ...baseMetadata,
-          ...localBaseMetadata,
           ...(attachmentsToBeUploaded.length > 0 && {
             attachments: attachmentsToBeUploaded
           }),
@@ -105,7 +89,6 @@ const usePostMetadata = () => {
       if (isVideo) {
         return video({
           ...baseMetadata,
-          ...localBaseMetadata,
           ...(attachmentsToBeUploaded.length > 0 && {
             attachments: attachmentsToBeUploaded
           }),
@@ -122,7 +105,6 @@ const usePostMetadata = () => {
       return null;
     },
     [
-      attributes,
       attachments,
       videoDurationInSeconds,
       audioPost,
