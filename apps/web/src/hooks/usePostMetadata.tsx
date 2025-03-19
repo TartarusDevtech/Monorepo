@@ -1,4 +1,3 @@
-import { APP_NAME } from "@hey/data/constants";
 import {
   audio,
   image,
@@ -12,7 +11,6 @@ import { usePostAttributesStore } from "src/store/non-persisted/post/usePostAttr
 import { usePostLicenseStore } from "src/store/non-persisted/post/usePostLicenseStore";
 import { usePostLiveStore } from "src/store/non-persisted/post/usePostLiveStore";
 import { usePostVideoStore } from "src/store/non-persisted/post/usePostVideoStore";
-import { v4 as uuid } from "uuid";
 import { usePostAudioStore } from "../store/non-persisted/post/usePostAudioStore";
 
 interface UsePostMetadataProps {
@@ -28,12 +26,10 @@ const usePostMetadata = () => {
   const { attributes } = usePostAttributesStore();
 
   const createLocalBaseMetadata = (baseMetadata: any) => ({
-    appId: APP_NAME,
     attributes:
       (attributes || []).length > 0 || baseMetadata.attributes?.length > 0
         ? [...(baseMetadata.attributes || []), ...(attributes || [])]
-        : undefined,
-    id: uuid()
+        : undefined
   });
 
   const processAttachments = () =>
