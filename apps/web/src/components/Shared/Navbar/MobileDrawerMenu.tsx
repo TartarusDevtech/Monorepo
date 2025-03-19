@@ -10,7 +10,6 @@ import type { FC } from "react";
 import { useMobileDrawerModalStore } from "src/store/non-persisted/modal/useMobileDrawerModalStore";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import Slug from "../Slug";
-import AppVersion from "./NavItems/AppVersion";
 import Bookmarks from "./NavItems/Bookmarks";
 import Groups from "./NavItems/Groups";
 import Logout from "./NavItems/Logout";
@@ -110,9 +109,7 @@ const MobileDrawerMenu: FC = () => {
               onClick={handleCloseDrawer}
             />
           </div>
-          <div className="divider" />
         </div>
-        {currentAccount ? <AppVersion /> : null}
       </div>
     </div>
   );

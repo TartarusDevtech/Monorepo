@@ -1,12 +1,7 @@
-import urlcat from "urlcat";
-
 const getFavicon = (url: string) => {
   try {
     const { hostname } = new URL(url);
-
-    return urlcat("https://external-content.duckduckgo.com/ip3/:domain.ico", {
-      domain: hostname || "unknowndomain"
-    });
+    return `https://external-content.duckduckgo.com/ip3/${hostname || "unknowndomain"}.ico`;
   } catch {
     return "https://external-content.duckduckgo.com/ip3/unknowndomain.ico";
   }

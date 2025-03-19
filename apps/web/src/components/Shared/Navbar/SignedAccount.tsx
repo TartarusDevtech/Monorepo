@@ -12,7 +12,6 @@ import MenuTransition from "../MenuTransition";
 import Slug from "../Slug";
 import { NextLink } from "./MenuItems";
 import MobileDrawerMenu from "./MobileDrawerMenu";
-import AppVersion from "./NavItems/AppVersion";
 import Logout from "./NavItems/Logout";
 import Settings from "./NavItems/Settings";
 import StaffTools from "./NavItems/StaffTools";
@@ -130,8 +129,6 @@ const SignedAccount: FC = () => {
             >
               <ThemeSwitch />
             </MenuItem>
-            <div className="divider" />
-            <AppVersion />
           </MenuItems>
         </MenuTransition>
       </Menu>

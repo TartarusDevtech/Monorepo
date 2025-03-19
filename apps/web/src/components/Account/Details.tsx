@@ -24,7 +24,6 @@ import { useRouter } from "next/router";
 import type { FC, ReactNode } from "react";
 import { useState } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
-import urlcat from "urlcat";
 import Followerings from "./Followerings";
 import FollowersYouKnowOverview from "./FollowersYouKnowOverview";
 import InternalTools from "./InternalTools";
@@ -56,9 +55,7 @@ const Details: FC<DetailsProps> = ({ isSuspended = false, account }) => {
           href={
             attribute === "website"
               ? `https://${value.replace(/https?:\/\//, "")}`
-              : urlcat("https://x.com/:username", {
-                  username: value.replace("https://x.com/", "")
-                })
+              : `https://x.com/${value.replace("https://x.com/", "")}`
           }
           rel="noreferrer noopener"
           target="_blank"
