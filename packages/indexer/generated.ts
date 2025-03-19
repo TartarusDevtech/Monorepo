@@ -30,6 +30,7 @@ export type Scalars = {
   GrantId: { input: any; output: any; }
   IdToken: { input: any; output: any; }
   JSON: { input: any; output: any; }
+  JsonString: { input: any; output: any; }
   LegacyProfileId: { input: any; output: any; }
   LegacyPublicationId: { input: any; output: any; }
   LegacyRefreshToken: { input: any; output: any; }
@@ -3910,7 +3911,7 @@ export type PostGroupInfo = {
 
 export type PostMention = AccountMention | GroupMention;
 
-export type PostMetadata = ArticleMetadata | AudioMetadata | CheckingInMetadata | EmbedMetadata | EventMetadata | ImageMetadata | LinkMetadata | LivestreamMetadata | MintMetadata | SpaceMetadata | StoryMetadata | TextOnlyMetadata | ThreeDMetadata | TransactionMetadata | VideoMetadata;
+export type PostMetadata = ArticleMetadata | AudioMetadata | CheckingInMetadata | EmbedMetadata | EventMetadata | ImageMetadata | LinkMetadata | LivestreamMetadata | MintMetadata | SpaceMetadata | StoryMetadata | TextOnlyMetadata | ThreeDMetadata | TransactionMetadata | UnknownPostMetadata | VideoMetadata;
 
 export type PostMetadataContentWarningFilter = {
   oneOf: Array<ContentWarning>;
@@ -6178,6 +6179,11 @@ export type UnknownPostActionContract = {
   metadata?: Maybe<ActionMetadata>;
 };
 
+export type UnknownPostMetadata = {
+  __typename?: 'UnknownPostMetadata';
+  raw: Scalars['JsonString']['output'];
+};
+
 export type UnknownPostRuleConfig = {
   address: Scalars['EvmAddress']['input'];
   executeOn: Array<PostRuleExecuteOn>;
@@ -6814,12 +6820,14 @@ type PostMetadata_TransactionMetadata_Fragment = (
   & TransactionMetadataFragment
 );
 
+type PostMetadata_UnknownPostMetadata_Fragment = { __typename?: 'UnknownPostMetadata' };
+
 type PostMetadata_VideoMetadata_Fragment = (
   { __typename?: 'VideoMetadata' }
   & VideoMetadataFragment
 );
 
-export type PostMetadataFragment = PostMetadata_ArticleMetadata_Fragment | PostMetadata_AudioMetadata_Fragment | PostMetadata_CheckingInMetadata_Fragment | PostMetadata_EmbedMetadata_Fragment | PostMetadata_EventMetadata_Fragment | PostMetadata_ImageMetadata_Fragment | PostMetadata_LinkMetadata_Fragment | PostMetadata_LivestreamMetadata_Fragment | PostMetadata_MintMetadata_Fragment | PostMetadata_SpaceMetadata_Fragment | PostMetadata_StoryMetadata_Fragment | PostMetadata_TextOnlyMetadata_Fragment | PostMetadata_ThreeDMetadata_Fragment | PostMetadata_TransactionMetadata_Fragment | PostMetadata_VideoMetadata_Fragment;
+export type PostMetadataFragment = PostMetadata_ArticleMetadata_Fragment | PostMetadata_AudioMetadata_Fragment | PostMetadata_CheckingInMetadata_Fragment | PostMetadata_EmbedMetadata_Fragment | PostMetadata_EventMetadata_Fragment | PostMetadata_ImageMetadata_Fragment | PostMetadata_LinkMetadata_Fragment | PostMetadata_LivestreamMetadata_Fragment | PostMetadata_MintMetadata_Fragment | PostMetadata_SpaceMetadata_Fragment | PostMetadata_StoryMetadata_Fragment | PostMetadata_TextOnlyMetadata_Fragment | PostMetadata_ThreeDMetadata_Fragment | PostMetadata_TransactionMetadata_Fragment | PostMetadata_UnknownPostMetadata_Fragment | PostMetadata_VideoMetadata_Fragment;
 
 export type PostStatsFragment = { __typename?: 'PostStats', bookmarks: number, comments: number, quotes: number, reactions: number, reposts: number, collects: number, tips: number };
 
@@ -6871,6 +6879,9 @@ export type ReferencedPostFragment = { __typename?: 'Post', id: any, isDeleted: 
   ) | (
     { __typename?: 'TransactionMetadata' }
     & PostMetadata_TransactionMetadata_Fragment
+  ) | (
+    { __typename?: 'UnknownPostMetadata' }
+    & PostMetadata_UnknownPostMetadata_Fragment
   ) | (
     { __typename?: 'VideoMetadata' }
     & PostMetadata_VideoMetadata_Fragment

@@ -301,6 +301,7 @@ const result: PossibleTypesResultData = {
       "TextOnlyMetadata",
       "ThreeDMetadata",
       "TransactionMetadata",
+      "UnknownPostMetadata",
       "VideoMetadata"
     ],
     PostOperationValidationOutcome: [
