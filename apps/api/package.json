@@ -33,7 +33,6 @@
     "tsx": "^4.19.3",
     "ua-parser-js": "2.0.3",
     "urlcat": "^3.1.0",
-    "uuid": "^11.1.0",
     "viem": "^2.23.12",
     "zod": "^3.24.2"
   },
@@ -47,7 +46,6 @@
     "@types/node": "^22.13.10",
     "@types/request-ip": "^0.0.41",
     "@types/ua-parser-js": "^0.7.39",
-    "@types/uuid": "^10.0.0",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"

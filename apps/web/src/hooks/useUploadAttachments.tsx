@@ -1,10 +1,10 @@
 import uploadToIPFS from "@helpers/uploadToIPFS";
+import generateUUID from "@hey/helpers/generateUUID";
 import type { NewAttachment } from "@hey/types/misc";
 import imageCompression from "browser-image-compression";
 import { useCallback } from "react";
 import { toast } from "react-hot-toast";
 import { usePostAttachmentStore } from "src/store/non-persisted/post/usePostAttachmentStore";
-import { v4 as uuid } from "uuid";
 
 const useUploadAttachments = () => {
   const {
@@ -64,20 +64,17 @@ const useUploadAttachments = () => {
   };
 
   const createPreviewAttachments = (files: File[]): NewAttachment[] => {
-    return files.map((file: File) => {
-      const attachmentId = uuid();
-      return {
-        file,
-        id: attachmentId,
-        mimeType: file.type,
-        previewUri: URL.createObjectURL(file),
-        type: file.type.includes("image")
-          ? "Image"
-          : file.type.includes("video")
-            ? "Video"
-            : "Audio"
-      };
-    });
+    return files.map((file: File) => ({
+      file,
+      id: generateUUID(),
+      mimeType: file.type,
+      previewUri: URL.createObjectURL(file),
+      type: file.type.includes("image")
+        ? "Image"
+        : file.type.includes("video")
+          ? "Video"
+          : "Audio"
+    }));
   };
 
   const handleUploadAttachments = useCallback(

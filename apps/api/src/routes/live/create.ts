@@ -1,11 +1,11 @@
 import { LIVEPEER_KEY } from "@hey/data/constants";
+import generateUUID from "@hey/helpers/generateUUID";
 import parseJwt from "@hey/helpers/parseJwt";
 import type { Request, Response } from "express";
 import catchedError from "src/helpers/catchedError";
 import { rateLimiter } from "src/helpers/middlewares/rateLimiter";
 import validateLensAccount from "src/helpers/middlewares/validateLensAccount";
 import { invalidBody, noBody } from "src/helpers/responses";
-import { v4 as uuid } from "uuid";
 import { boolean, object } from "zod";
 
 interface ExtensionRequest {
@@ -39,7 +39,7 @@ export const post = [
       const payload = parseJwt(idToken);
       const response = await fetch("https://livepeer.studio/api/stream", {
         body: JSON.stringify({
-          name: `${payload.act.sub}-${uuid()}`,
+          name: `${payload.act.sub}-${generateUUID()}`,
           profiles: [
             {
               bitrate: 3000000,

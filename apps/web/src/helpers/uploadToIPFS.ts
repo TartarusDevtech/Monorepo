@@ -6,10 +6,10 @@ import {
   EVER_REGION,
   HEY_API_URL
 } from "@hey/data/constants";
+import generateUUID from "@hey/helpers/generateUUID";
 import { immutable } from "@lens-chain/storage-client";
 import axios from "axios";
 import { CHAIN } from "src/constants";
-import { v4 as uuid } from "uuid";
 import { storageClient } from "./storageClient";
 
 const FALLBACK_TYPE = "image/jpeg";
@@ -66,7 +66,7 @@ const uploadToIPFS = async (
             Body: file,
             Bucket: EVER_BUCKET,
             ContentType: file.type,
-            Key: `${currentDate}/${uuid()}`
+            Key: `${currentDate}/${generateUUID()}`
           };
           const task = new Upload({ client, params });
           task.on("httpUploadProgress", (e) => {
