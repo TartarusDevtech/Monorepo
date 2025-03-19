@@ -74,9 +74,6 @@ importers:
       tsx:
         specifier: ^4.19.3
         version: 4.19.3
-      urlcat:
-        specifier: ^3.1.0
-        version: 3.1.0
       viem:
         specifier: ^2.23.12
         version: 2.23.12(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2)
@@ -84,9 +81,6 @@ importers:
         specifier: ^3.24.2
         version: 3.24.2
     devDependencies:
-      '@faker-js/faker':
-        specifier: ^9.6.0
-        version: 9.6.0
       '@hey/config':
         specifier: workspace:*
         version: link:../../packages/config
@@ -332,9 +326,6 @@ importers:
       unist-util-visit-parents:
         specifier: ^6.0.1
         version: 6.0.1
-      urlcat:
-        specifier: ^3.1.0
-        version: 3.1.0
       use-resize-observer:
         specifier: ^9.1.0
         version: 9.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -492,9 +483,6 @@ importers:
       omit-deep:
         specifier: ^0.3.0
         version: 0.3.0
-      urlcat:
-        specifier: ^3.1.0
-        version: 3.1.0
       viem:
         specifier: ^2.23.12
         version: 2.23.12(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2)
@@ -1584,10 +1572,6 @@ packages:
 
   '@ethersproject/wordlists@5.8.0':
     resolution: {integrity: sha512-2df9bbXicZws2Sb5S6ET493uJ0Z84Fjr3pC4tu/qlnZERibZCeUVuqdtt+7Tv9xxhUxHoIekIA7avrKUWHrezg==}
-
-  '@faker-js/faker@9.6.0':
-    resolution: {integrity: sha512-3vm4by+B5lvsFPSyep3ELWmZfE3kicDtmemVpuwl1yH7tqtnHdsA6hG8fbXedMVdkzgtvzWoRgjSB4Q+FHnZiw==}
-    engines: {node: '>=18.0.0', npm: '>=9.0.0'}
 
   '@fastify/busboy@2.1.1':
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
@@ -8574,9 +8558,6 @@ packages:
   url-polyfill@1.1.13:
     resolution: {integrity: sha512-tXzkojrv2SujumYthZ/WjF7jaSfNhSXlYMpE5AYdL2I3D7DCeo+mch8KtW2rUuKjDg+3VXODXHVgipt8yGY/eQ==}
 
-  urlcat@3.1.0:
-    resolution: {integrity: sha512-qY6b94/aGMIHh70EEQ/4hfR2LUGZ+fPQNp64cf7yRX9kAp4XG2tx7LgYUU1Qkh17bFylME0u4n3lOezonougPw==}
-
   urlpattern-polyfill@10.0.0:
     resolution: {integrity: sha512-H/A06tKD7sS1O1X2SshBVeA5FLycRpjqiBeqGKmBwBDBy28EnRjORxTNe269KSSr5un5qyWi1iL61wLxpd+ZOg==}
 
@@ -10592,8 +10573,6 @@ snapshots:
       '@ethersproject/logger': 5.8.0
       '@ethersproject/properties': 5.8.0
       '@ethersproject/strings': 5.8.0
-
-  '@faker-js/faker@9.6.0': {}
 
   '@fastify/busboy@2.1.1': {}
 
@@ -19580,10 +19559,6 @@ snapshots:
       tslib: 2.6.3
 
   url-polyfill@1.1.13: {}
-
-  urlcat@3.1.0:
-    dependencies:
-      qs: 6.14.0
 
   urlpattern-polyfill@10.0.0: {}
 
