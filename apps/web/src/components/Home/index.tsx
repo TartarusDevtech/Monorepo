@@ -8,6 +8,7 @@ import { useHomeTabStore } from "src/store/persisted/useHomeTabStore";
 import FeedType from "./FeedType";
 import ForYou from "./ForYou";
 import Hero from "./Hero";
+import Highlights from "./Highlights";
 import Sidebar from "./Sidebar";
 import Timeline from "./Timeline";
 
@@ -28,6 +29,8 @@ const Home: NextPage = () => {
               <FeedType />
               {feedType === HomeFeedType.FOLLOWING ? (
                 <Timeline />
+              ) : feedType === HomeFeedType.HIGHLIGHTS ? (
+                <Highlights />
               ) : feedType === HomeFeedType.FORYOU ? (
                 <ForYou />
               ) : null}

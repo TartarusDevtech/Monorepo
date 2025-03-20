@@ -13,6 +13,7 @@ const cache = new InMemoryCache({
     Query: {
       fields: {
         timeline: createTimelineFieldPolicy(),
+        timelineHighlights: createTimelineFieldPolicy(),
         posts: createBasicFieldPolicy(),
         postReferences: createPostReferencesFieldPolicy(),
         postReactions: createPostReactionsFieldPolicy(),

@@ -9,11 +9,8 @@ const FeedType: FC = () => {
 
   const tabs = [
     { name: "Following", type: HomeFeedType.FOLLOWING },
-    {
-      badge: <New />,
-      name: "For You",
-      type: HomeFeedType.FORYOU
-    }
+    { name: "Highlights", type: HomeFeedType.HIGHLIGHTS },
+    { badge: <New />, name: "For You", type: HomeFeedType.FORYOU }
   ].filter(
     (
       tab
