@@ -5,9 +5,6 @@ fragment LoggedInPostOperations on LoggedInPostOperations {
   hasSimpleCollected
   hasTipped
   isNotInterested
-  hasCommented {
-    ...BooleanValue
-  }
   hasQuoted {
     ...BooleanValue
   }
