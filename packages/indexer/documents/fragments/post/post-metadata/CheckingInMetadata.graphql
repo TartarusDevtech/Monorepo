@@ -3,13 +3,6 @@ fragment CheckingInMetadata on CheckingInMetadata {
   content
   contentWarning
   tags
-  location
-  position
-  address {
-    country
-    locality
-    postalCode
-  }
   attributes {
     ...MetadataAttribute
   }

@@ -24,6 +24,7 @@ const getPostData = (
     case "MintMetadata":
     case "LivestreamMetadata":
     case "CheckingInMetadata":
+    case "SpaceMetadata":
       return {
         attachments: getAttachmentsData(metadata.attachments),
         content: metadata.content

@@ -6,7 +6,6 @@ import Video from "@components/Shared/Video";
 import { EyeIcon } from "@heroicons/react/24/outline";
 import getPostData from "@hey/helpers/getPostData";
 import getURLs from "@hey/helpers/getURLs";
-import isPostMetadataTypeAllowed from "@hey/helpers/isPostMetadataTypeAllowed";
 import { isRepost } from "@hey/helpers/postHelpers";
 import type { AnyPostFragment } from "@hey/indexer";
 import { H6 } from "@hey/ui";
@@ -16,9 +15,7 @@ import Link from "next/link";
 import type { FC } from "react";
 import { memo } from "react";
 import { isIOS, isMobile } from "react-device-detect";
-import Checkin from "./Checkin";
 import Metadata from "./Metadata";
-import NotSupportedPost from "./NotSupportedPost";
 
 interface PostBodyProps {
   contentClassName?: string;
@@ -53,21 +50,14 @@ const PostBody: FC<PostBodyProps> = ({
     }
   }
 
-  if (!isPostMetadataTypeAllowed(metadata.__typename)) {
-    return <NotSupportedPost type={metadata.__typename} />;
-  }
-
   // Show live if it's there
   const showLive = metadata.__typename === "LivestreamMetadata";
   // Show attachments if it's there
   const showAttachments = filteredAttachments.length > 0 || filteredAsset;
   // Show sharing link
   const showSharingLink = metadata.__typename === "LinkMetadata";
-  // Show checking in
-  const showCheckin = metadata.__typename === "CheckingInMetadata";
   const showOembed =
     !showSharingLink &&
-    !showCheckin &&
     hasURLs &&
     !showLive &&
     !showAttachments &&
@@ -101,7 +91,6 @@ const PostBody: FC<PostBodyProps> = ({
           <Video src={getSrc(metadata.liveUrl || metadata.playbackUrl)} />
         </div>
       ) : null}
-      {showCheckin ? <Checkin post={targetPost} /> : null}
       {showOembed ? <Oembed url={urls[0]} /> : null}
       {showSharingLink ? <Oembed url={metadata.sharingLink} /> : null}
       {targetPost.quoteOf ? <Quote post={targetPost.quoteOf} /> : null}
