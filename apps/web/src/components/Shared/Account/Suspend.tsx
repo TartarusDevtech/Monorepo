@@ -52,7 +52,7 @@ const Suspend: FC<SuspendProps> = ({ address }) => {
 
   return (
     <div className="text-red-500">
-      <ToggleWrapper title="Suspend and Report Account">
+      <ToggleWrapper title="Suspend Account">
         <Toggle disabled={isLoading} on={isSuspended} setOn={suspendAccount} />
       </ToggleWrapper>
     </div>
