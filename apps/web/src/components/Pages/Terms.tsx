@@ -4,7 +4,7 @@ import type { NextPage } from "next";
 import Link from "next/link";
 
 const Terms: NextPage = () => {
-  const updatedAt = "February 15, 2024";
+  const updatedAt = "March 21, 2025";
 
   return (
     <>
@@ -169,10 +169,10 @@ const Terms: NextPage = () => {
                 <p className="leading-7">
                   We are not responsible for the content or services of any
                   third-party, including, without limitation, any network, or
-                  apps like Discord, or MetaMask, and we make no representations
-                  regarding the content or accuracy of any third-party services
-                  or materials. Those are governed by the terms of use of the
-                  third-party providers.
+                  apps like Discord, or any EVM Wallets, and we make no
+                  representations regarding the content or accuracy of any
+                  third-party services or materials. Those are governed by the
+                  terms of use of the third-party providers.
                 </p>
                 <p className="leading-7">
                   Please review carefully the third-party's policies and
