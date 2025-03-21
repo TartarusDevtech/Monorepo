@@ -8,17 +8,6 @@ interface TypographyProps {
   className?: string;
 }
 
-export const H1: FC<TypographyProps> = forwardRef<
-  HTMLHeadingElement,
-  TypographyProps
->(({ as = "h1", children, className = "" }, ref) =>
-  createElement(
-    as,
-    { className: cn("text-4xl font-bold", className), ref },
-    children
-  )
-);
-
 export const H2: FC<TypographyProps> = forwardRef<
   HTMLHeadingElement,
   TypographyProps

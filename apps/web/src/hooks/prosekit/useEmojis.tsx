@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useMemo } from "react";
 
-export const GET_EMOJIS_QUERY_KEY = "getEmojis";
+const GET_EMOJIS_QUERY_KEY = "getEmojis";
 const DEFAULT_MAX_EMOJI_COUNT = 5;
 
 interface UseEmojisOptions {

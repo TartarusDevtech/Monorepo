@@ -1,4 +1,3 @@
-import packageJson from "../../package.json";
 import LensEndpoint from "./lens-endpoints";
 import getEnvConfig from "./utils/getEnvConfig";
 
@@ -26,7 +25,6 @@ export const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 export const APP_NAME = "Hey";
 export const APP_URL = "https://hey.xyz";
 export const DESCRIPTION = `${APP_NAME}.xyz is a decentralized, and permissionless social media app built with Lens Protocol 🌿`;
-export const APP_VERSION = packageJson.version;
 export const BRAND_COLOR = "#FB3A5D";
 
 // URLs
@@ -57,7 +55,6 @@ export const LIVEPEER_KEY = "70508bf8-2e16-4594-852d-5aed798f6403";
 export const AVATAR = "tr:w-350,h-350";
 export const EXPANDED_AVATAR = "tr:w-1000,h-1000";
 export const COVER = "tr:w-1350,h-350";
-export const VIDEO_THUMBNAIL = "tr:h-1000";
 export const ATTACHMENT = "tr:w-1000";
 
 export const LENS_NAMESPACE = "lens/";

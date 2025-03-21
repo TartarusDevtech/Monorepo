@@ -29,5 +29,5 @@ export { default as TabButton } from "./src/TabButton";
 export { TextArea } from "./src/TextArea";
 export { Toggle } from "./src/Toggle";
 export { Tooltip } from "./src/Tooltip";
-export { H1, H2, H3, H4, H5, H6 } from "./src/Typography";
+export { H2, H3, H4, H5, H6 } from "./src/Typography";
 export { WarningMessage } from "./src/WarningMessage";
