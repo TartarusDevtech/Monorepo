@@ -4,11 +4,6 @@ import type {
   PostMentionFragment
 } from "@hey/indexer";
 
-export interface StorageNodeResponse {
-  mimeType: string;
-  uri: string;
-}
-
 export interface NewAttachment {
   file?: File;
   id?: string;
