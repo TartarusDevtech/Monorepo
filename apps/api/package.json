@@ -38,7 +38,7 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/express-session": "^1.18.0",
-    "@types/node": "^22.13.10",
+    "@types/node": "^22.13.11",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
