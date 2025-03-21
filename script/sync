@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Usage: script/sync
-# Sync to private (main:yo/hey and private:heyverse/web) and public (public:heyverse/hey) repos.
+# Sync to private (main:yo/hey and private:heyverse/web) and public (public:heyverse/hey) repos with custom Git identity.
 
 set -e
 
@@ -10,12 +10,6 @@ PRIVATE_NAME="private"
 PUBLIC_NAME="public"
 PRIVATE_REPO="git@github.com:heyverse/web.git"
 PUBLIC_REPO="git@github.com:heyverse/hey.git"
-TEMP_NAME="bigint"
-TEMP_EMAIL="69431456+bigint@users.noreply.github.com"
-
-# Backup current identity
-OLD_NAME=$(git config user.name || echo "")
-OLD_EMAIL=$(git config user.email || echo "")
 
 # Add private remote if not exists
 if ! git remote get-url $PRIVATE_NAME &>/dev/null; then
@@ -30,16 +24,12 @@ if ! git remote get-url $PUBLIC_NAME &>/dev/null; then
 fi
 
 # Sync to  Pierre repo
-echo "🚀 Syncing to Pierre repo as $OLD_EMAIL..."
+echo "🚀 Syncing to Pierre repo..."
 git push $ORIGIN_NAME HEAD:main
 echo "✅ Synced to Pierre repo"
 
-# Set temp identity
-git config user.name "$TEMP_NAME"
-git config user.email "$TEMP_EMAIL"
-
 # Sync to private repo
-echo "🚀 Syncing to private repo as $TEMP_EMAIL..."
+echo "🚀 Syncing to private repo..."
 git push $PRIVATE_NAME HEAD:main
 echo "✅ Synced to private repo"
 
@@ -47,14 +37,9 @@ echo "✅ Synced to private repo"
 read -p "Do you want to sync to the public repo as well? (y/N): " confirm
 
 if [[ "$confirm" == "y" || "$confirm" == "Y" ]]; then
-  echo "🚀 Syncing to public repo as $TEMP_EMAIL..."
+  echo "🚀 Syncing to public repo..."
   git push $PUBLIC_NAME HEAD:main
   echo "✅ Synced to public repo"
 else
   echo "⏭️ Skipped syncing to public repo"
 fi
-
-# Restore original identity
-git config user.name "$OLD_NAME"
-git config user.email "$OLD_EMAIL"
-echo "🔁 Restored git identity to $OLD_NAME <$OLD_EMAIL>"
