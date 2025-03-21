@@ -4,7 +4,6 @@ declare namespace NodeJS {
     DATABASE_URL: string;
     PRIVATE_KEY: string;
     SECRET: string;
-    EVENT_TRACKER_URL: string;
     EVER_ACCESS_KEY: string;
     EVER_ACCESS_SECRET: string;
     DISCORD_EVENT_WEBHOOK_TOPIC: string;

@@ -6,7 +6,6 @@ import sendVerificationBuzz from "src/helpers/buzz/sendVerificationBuzz";
 import catchedError from "src/helpers/catchedError";
 import { heyWalletClient } from "src/helpers/heyWalletClient";
 import { noBody } from "src/helpers/responses";
-import trackEvent from "src/helpers/trackEvent";
 import { checksumAddress } from "viem";
 
 const TYPES = {
@@ -79,7 +78,6 @@ export const post = async (req: Request, res: Response) => {
     }
 
     sendVerificationBuzz({ account, operation });
-    trackEvent("verification", { operation });
 
     return res.status(200).json({ allowed: true, signature });
   } catch (error) {
