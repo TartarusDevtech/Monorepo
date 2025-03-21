@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Usage: script/sync
-# Sync to private and public repos with custom Git identity.
+# Sync to private (main:yo/hey and private:heyverse/web) and public (public:heyverse/hey) repos.
 
 set -e
 
