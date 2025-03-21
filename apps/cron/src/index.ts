@@ -1,6 +1,5 @@
 import logger from "@hey/helpers/logger";
 import cron from "node-cron";
-import checkAndRefillPaymaster from "./checkAndRefillPaymaster";
 import cleanPreferences from "./cleanPreferences";
 import dbVacuum from "./dbVacuum";
 import heartbeat from "./heartbeat";
@@ -20,11 +19,6 @@ const startCronJobs = () => {
 
   cron.schedule("0 */6 * * *", async () => {
     await dbVacuum();
-    return;
-  });
-
-  cron.schedule("*/30 * * * * *", async () => {
-    await checkAndRefillPaymaster();
     return;
   });
 };
