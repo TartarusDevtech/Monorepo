@@ -107,24 +107,6 @@ script/clean-branches
 script/update-lock-file
 ```
 
-## Other tools you might like
-
-### Ripgrep
-
-We use [Ripgrep](https://github.com/BurntSushi/ripgrep) to search for text in the codebase. It's like `grep` and `ag` had a baby, and that baby grew up to be a speed demon!
-
-Install it via Homebrew:
-
-```bash
-brew install ripgrep
-```
-
-Search for text in the codebase:
-
-```bash
-rg "const Verified"
-```
-
 ### Bundle Analyzer
 
 In `apps/web`, we've got a bundle analyzer that spills the beans on the size and contents of our production bundles. It's like having X-ray vision for your code!
