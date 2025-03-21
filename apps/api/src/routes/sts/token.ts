@@ -28,10 +28,11 @@ export const get = [
   rateLimiter({ requests: 50, within: 1 }),
   async (_: Request, res: Response) => {
     try {
-      const accessKeyId = process.env.EVER_ACCESS_KEY as string;
-      const secretAccessKey = process.env.EVER_ACCESS_SECRET as string;
       const stsClient = new STSClient({
-        credentials: { accessKeyId, secretAccessKey },
+        credentials: {
+          accessKeyId: process.env.EVER_ACCESS_KEY,
+          secretAccessKey: process.env.EVER_ACCESS_SECRET
+        },
         endpoint: EVER_API,
         region: EVER_REGION
       });
