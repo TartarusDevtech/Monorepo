@@ -17,10 +17,6 @@ TEMP_EMAIL="69431456+bigint@users.noreply.github.com"
 OLD_NAME=$(git config user.name || echo "")
 OLD_EMAIL=$(git config user.email || echo "")
 
-# Set temp identity
-git config user.name "$TEMP_NAME"
-git config user.email "$TEMP_EMAIL"
-
 # Add private remote if not exists
 if ! git remote get-url $PRIVATE_NAME &>/dev/null; then
   echo "🔧 Adding private remote..."
@@ -33,10 +29,14 @@ if ! git remote get-url $PUBLIC_NAME &>/dev/null; then
   git remote add $PUBLIC_NAME $PUBLIC_REPO
 fi
 
-# Sync to  main origin
-echo "🚀 Syncing to main origin..."
+# Sync to  Pierre repo
+echo "🚀 Syncing to Pierre repo as $OLD_EMAIL..."
 git push $ORIGIN_NAME HEAD:main
-echo "✅ Synced to main origin"
+echo "✅ Synced to Pierre repo"
+
+# Set temp identity
+git config user.name "$TEMP_NAME"
+git config user.email "$TEMP_EMAIL"
 
 # Sync to private repo
 echo "🚀 Syncing to private repo as $TEMP_EMAIL..."
