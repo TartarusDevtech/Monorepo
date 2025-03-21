@@ -5,6 +5,7 @@
 
 set -e
 
+ORIGIN_NAME="origin"
 PRIVATE_NAME="private"
 PUBLIC_NAME="public"
 PRIVATE_REPO="git@github.com:heyverse/web.git"
@@ -31,6 +32,11 @@ if ! git remote get-url $PUBLIC_NAME &>/dev/null; then
   echo "🔧 Adding public remote..."
   git remote add $PUBLIC_NAME $PUBLIC_REPO
 fi
+
+# Sync to  main origin
+echo "🚀 Syncing to main origin..."
+git push $ORIGIN_NAME HEAD:main
+echo "✅ Synced to main origin"
 
 # Sync to private repo
 echo "🚀 Syncing to private repo as $TEMP_EMAIL..."
