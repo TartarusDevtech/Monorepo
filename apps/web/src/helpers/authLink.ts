@@ -1,6 +1,7 @@
 import { ApolloLink, fromPromise, toPromise } from "@apollo/client";
 import { LENS_API_URL } from "@hey/data/constants";
 import parseJwt from "@hey/helpers/parseJwt";
+import type { RefreshResult } from "@hey/indexer";
 import axios from "axios";
 import {
   hydrateAuthTokens,
@@ -16,6 +17,7 @@ const REFRESH_AUTHENTICATION_MUTATION = `
         refreshToken
         idToken
       }
+      __typename
     }
   }
 `;
@@ -29,7 +31,7 @@ const executeTokenRefresh = async (
   attempt = 0
 ): Promise<string> => {
   try {
-    const response = await axios.post(
+    const { data } = await axios.post(
       LENS_API_URL,
       {
         operationName: "Refresh",
@@ -39,7 +41,7 @@ const executeTokenRefresh = async (
       { headers: { "Content-Type": "application/json" } }
     );
 
-    const refreshResult = response?.data?.data?.refresh;
+    const refreshResult = data?.data?.refresh as RefreshResult;
 
     if (!refreshResult) {
       throw new Error("No response from refresh");
