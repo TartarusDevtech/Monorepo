@@ -3,13 +3,6 @@ query AccountManagers($request: AccountManagersRequest!) {
     items {
       manager
       isLensManager
-      permissions {
-        canExecuteTransactions
-        canTransferTokens
-        canTransferNative
-        canSetMetadataUri
-      }
-      addedAt
     }
     pageInfo {
       ...PaginatedResultInfo

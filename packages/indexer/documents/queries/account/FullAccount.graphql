@@ -6,14 +6,6 @@ query FullAccount(
     ...Account
   }
   accountStats(request: $accountStatsRequest) {
-    feedStats {
-      comments
-      posts
-      quotes
-      reacted
-      reactions
-      reposts
-    }
     graphFollowStats {
       followers
       following
