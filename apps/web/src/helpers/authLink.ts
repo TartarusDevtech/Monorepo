@@ -51,17 +51,21 @@ const executeTokenRefresh = async (
 
     if (__typename === "AuthenticationTokens") {
       const {
-        accessToken,
+        accessToken: newAccessToken,
         refreshToken: newRefreshToken,
-        idToken
+        idToken: newIdToken
       } = refreshResult;
 
-      if (!accessToken || !newRefreshToken) {
+      if (!newAccessToken || !newRefreshToken) {
         throw new Error("Missing tokens in refresh response");
       }
 
-      signIn({ accessToken, idToken, refreshToken: newRefreshToken });
-      return accessToken;
+      signIn({
+        accessToken: newAccessToken,
+        idToken: newIdToken,
+        refreshToken: newRefreshToken
+      });
+      return newAccessToken;
     }
 
     if (__typename === "ForbiddenError") {
