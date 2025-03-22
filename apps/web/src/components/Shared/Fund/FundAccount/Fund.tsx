@@ -15,6 +15,7 @@ import toast from "react-hot-toast";
 import usePollTransactionStatus from "src/hooks/usePollTransactionStatus";
 import usePreventScrollOnNumberInput from "src/hooks/usePreventScrollOnNumberInput";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
+import { useFundModalStore } from "src/store/non-persisted/modal/useFundModalStore";
 import { formatUnits } from "viem";
 import { useAccount, useBalance } from "wagmi";
 
@@ -25,6 +26,7 @@ interface FundProps {
 }
 
 const Fund: FC<FundProps> = ({ isHeyTip, useNativeToken, onSuccess }) => {
+  const { setShowFundModal } = useFundModalStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [amount, setAmount] = useState(2);
   const [other, setOther] = useState(false);
@@ -46,6 +48,7 @@ const Fund: FC<FundProps> = ({ isHeyTip, useNativeToken, onSuccess }) => {
     setOther(false);
     onSuccess?.();
     setIsSubmitting(false);
+    setShowFundModal(false);
     trackEvent(Events.Account.DepositFunds);
     toast.success("Deposit initiated");
     pollTransactionStatus(hash, () => {
