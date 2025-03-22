@@ -1,21 +1,12 @@
 #!/bin/bash
 
 # Usage: script/sync
-# Sync to private (main:yo/hey and private:heyverse/web) and public (public:heyverse/hey) repos with custom Git identity.
+# Sync to public (public:heyverse/hey) repo.
 
 set -e
 
-ORIGIN_NAME="origin"
-PRIVATE_NAME="private"
 PUBLIC_NAME="public"
-PRIVATE_REPO="git@github.com:heyverse/web.git"
 PUBLIC_REPO="git@github.com:heyverse/hey.git"
-
-# Add private remote if not exists
-if ! git remote get-url $PRIVATE_NAME &>/dev/null; then
-  echo "🔧 Adding private remote..."
-  git remote add $PRIVATE_NAME $PRIVATE_REPO
-fi
 
 # Add public remote if not exists
 if ! git remote get-url $PUBLIC_NAME &>/dev/null; then
@@ -23,23 +14,6 @@ if ! git remote get-url $PUBLIC_NAME &>/dev/null; then
   git remote add $PUBLIC_NAME $PUBLIC_REPO
 fi
 
-# Sync to  Pierre repo
-echo "🚀 Syncing to Pierre repo..."
-git push $ORIGIN_NAME HEAD:main
-echo "✅ Synced to Pierre repo"
-
-# Sync to private repo
-echo "🚀 Syncing to private repo..."
-git push $PRIVATE_NAME HEAD:main
-echo "✅ Synced to private repo"
-
-# Ask before syncing to public repo
-read -p "Do you want to sync to the public repo as well? (y/N): " confirm
-
-if [[ "$confirm" == "y" || "$confirm" == "Y" ]]; then
-  echo "🚀 Syncing to public repo..."
-  git push $PUBLIC_NAME HEAD:main
-  echo "✅ Synced to public repo"
-else
-  echo "⏭️ Skipped syncing to public repo"
-fi
+echo "🚀 Syncing to public repo..."
+git push $PUBLIC_NAME HEAD:main
+echo "✅ Synced to public repo"
