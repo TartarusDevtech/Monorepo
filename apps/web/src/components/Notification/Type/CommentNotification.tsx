@@ -19,7 +19,6 @@ const CommentNotification: FC<CommentNotificationProps> = ({
   const firstAccount = notification.comment.author;
 
   const text = "commented on your";
-  // TODO: remove ? when we have commentOn field in the comment
   const type = notification.comment.commentOn?.__typename;
 
   return (

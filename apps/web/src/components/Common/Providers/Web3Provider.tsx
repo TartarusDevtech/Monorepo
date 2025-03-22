@@ -17,7 +17,6 @@ const config = createConfig(
   getDefaultConfig({
     chains: [chains.testnet, chains.testnet],
     transports: {
-      // TODO: Make this support mainnet also
       [chains.testnet.id]: getRpc({ mainnet: false }),
       [chains.testnet.id]: getRpc({ mainnet: false })
     },

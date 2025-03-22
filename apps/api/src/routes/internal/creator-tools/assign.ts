@@ -19,7 +19,6 @@ const validationSchema = object({
   accountAddress: string()
 });
 
-// TODO: Merge this with the one in permissions/assign
 export const post = [
   validateLensAccount,
   validateHasCreatorToolsAccess,
