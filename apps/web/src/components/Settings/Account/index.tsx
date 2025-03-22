@@ -5,7 +5,6 @@ import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
 import type { NextPage } from "next";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import SettingsSidebar from "../Sidebar";
-import RateLimits from "./RateLimits";
 import SuperFollow from "./SuperFollow";
 import Verification from "./Verification";
 
@@ -24,7 +23,6 @@ const AccountSettings: NextPage = () => {
       </GridItemFour>
       <GridItemEight className="space-y-5">
         <SuperFollow />
-        <RateLimits />
         <Verification />
       </GridItemEight>
     </GridLayout>
