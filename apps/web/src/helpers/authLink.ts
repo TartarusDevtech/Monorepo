@@ -39,25 +39,39 @@ const executeTokenRefresh = async (
       { headers: { "Content-Type": "application/json" } }
     );
 
-    const {
-      accessToken,
-      refreshToken: newRefreshToken,
-      idToken,
-      __typename
-    } = response?.data?.data?.refresh ?? {};
+    const refreshResult = response?.data?.data?.refresh;
 
-    if (__typename !== "AuthenticationTokens" && attempt < MAX_RETRIES) {
+    if (!refreshResult) {
+      throw new Error("No response from refresh");
+    }
+
+    const { __typename } = refreshResult;
+
+    if (__typename === "AuthenticationTokens") {
+      const {
+        accessToken,
+        refreshToken: newRefreshToken,
+        idToken
+      } = refreshResult;
+
+      if (!accessToken || !newRefreshToken) {
+        throw new Error("Missing tokens in refresh response");
+      }
+
+      signIn({ accessToken, idToken, refreshToken: newRefreshToken });
+      return accessToken;
+    }
+
+    if (__typename === "ForbiddenError") {
+      signOut();
+      throw new Error("Refresh token is invalid or expired");
+    }
+
+    if (attempt < MAX_RETRIES) {
       return executeTokenRefresh(refreshToken, attempt + 1);
     }
 
-    if (!accessToken || !newRefreshToken) {
-      signOut();
-      throw new Error("Invalid refresh response");
-    }
-
-    signIn({ accessToken, idToken, refreshToken: newRefreshToken });
-
-    return accessToken;
+    throw new Error("Unknown error during token refresh");
   } catch (error) {
     signOut();
     throw error;
