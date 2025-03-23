@@ -37,10 +37,7 @@ const Web3Provider: FC<Web3ProviderProps> = ({ children }) => {
     <WagmiProvider config={config}>
       <ConnectKitProvider
         theme="soft"
-        options={{
-          hideNoWalletCTA: true,
-          hideQuestionMarkCTA: true
-        }}
+        options={{ hideNoWalletCTA: true, hideQuestionMarkCTA: true }}
         customTheme={{
           "--ck-font-family": heyFont.style.fontFamily,
           "--ck-border-radius": "12px",
