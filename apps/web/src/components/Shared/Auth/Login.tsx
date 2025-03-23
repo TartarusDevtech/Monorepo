@@ -125,7 +125,7 @@ const Login: FC<LoginProps> = ({ setHasAccounts }) => {
             <Card className="w-full dark:divide-gray-700" forceRounded>
               <Loader
                 className="my-4"
-                message="Loading profiles managed by you..."
+                message="Loading accounts managed by you..."
                 small
               />
             </Card>

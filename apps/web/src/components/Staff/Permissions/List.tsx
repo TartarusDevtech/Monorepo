@@ -52,9 +52,9 @@ const List: FC = () => {
                       {permission.key}
                     </b>
                     <Badge variant="secondary">{permission.type}</Badge>
-                    {permission._count.profiles !== 0 && (
+                    {permission._count.accounts !== 0 && (
                       <Badge variant="warning">
-                        {permission._count.profiles} assigned
+                        {permission._count.accounts} assigned
                       </Badge>
                     )}
                   </div>

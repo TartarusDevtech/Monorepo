@@ -79,7 +79,7 @@ const List: FC = () => {
       <div className="flex items-center justify-between space-x-5 p-5">
         <Input
           onChange={(event) => setSearchText(event.target.value)}
-          placeholder="Search profiles..."
+          placeholder="Search accounts..."
           value={searchText}
         />
         {searchText ? null : (
@@ -131,7 +131,7 @@ const List: FC = () => {
           <EmptyState
             hideCard
             icon={<UsersIcon className="size-8" />}
-            message={<span>No profiles</span>}
+            message={<span>No accounts</span>}
           />
         )}
       </div>

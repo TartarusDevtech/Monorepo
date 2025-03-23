@@ -13,7 +13,7 @@ const Search: NextPage = () => {
     ? encodeURIComponent(query.q.join(" "))
     : encodeURIComponent(query.q || "");
 
-  if (!query.q || !["profiles", "posts"].includes(query.type as string)) {
+  if (!query.q || !["accounts", "posts"].includes(query.type as string)) {
     return <Custom404 />;
   }
 
@@ -25,10 +25,10 @@ const Search: NextPage = () => {
       url: `/search?q=${searchText}&type=posts`
     },
     {
-      active: query.type === "profiles",
+      active: query.type === "accounts",
       icon: <UsersIcon className="size-4" />,
-      title: "Profiles",
-      url: `/search?q=${searchText}&type=profiles`
+      title: "Accounts",
+      url: `/search?q=${searchText}&type=accounts`
     }
   ];
 
@@ -38,7 +38,7 @@ const Search: NextPage = () => {
         <Sidebar items={settingsSidebarItems} />
       </GridItemFour>
       <GridItemEight>
-        {query.type === "profiles" ? (
+        {query.type === "accounts" ? (
           <Accounts query={query.q as string} />
         ) : null}
         {query.type === "posts" ? <Posts query={query.q as string} /> : null}

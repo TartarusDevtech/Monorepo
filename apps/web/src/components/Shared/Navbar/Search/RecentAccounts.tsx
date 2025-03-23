@@ -36,7 +36,7 @@ const RecentAccounts: FC<RecentAccountsProps> = ({ onAccountClick }) => {
   return (
     <div>
       {loading ? (
-        <Loader className="my-3" message="Loading recent profiles" small />
+        <Loader className="my-3" message="Loading recent accounts" small />
       ) : (
         <div>
           <div className="flex items-center justify-between px-4 pt-1 pb-2">

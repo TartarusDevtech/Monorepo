@@ -50,7 +50,7 @@ const Search: FC<SearchProps> = ({ placeholder = "Search…" }) => {
     if (pathname === "/search") {
       push(`/search?q=${encodeURIComponent(searchText)}&type=${query.type}`);
     } else {
-      push(`/search?q=${encodeURIComponent(searchText)}&type=profiles`);
+      push(`/search?q=${encodeURIComponent(searchText)}&type=accounts`);
     }
     handleReset();
   };

@@ -57,7 +57,7 @@ const SettingsSidebar: FC = () => {
     },
     {
       icon: <NoSymbolIcon className="size-4" />,
-      title: "Blocked Profiles",
+      title: "Blocked accounts",
       url: "/settings/blocked"
     },
     {

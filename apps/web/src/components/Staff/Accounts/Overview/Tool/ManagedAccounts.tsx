@@ -21,11 +21,11 @@ const ManagedAccounts: FC<ManagedAccountsProps> = ({ address }) => {
     <>
       <div className="mt-5 flex items-center space-x-2 text-yellow-600">
         <UsersIcon className="size-5" />
-        <H5>Managed profiles</H5>
+        <H5>Managed accounts</H5>
       </div>
       <div className="mt-3">
         {loading ? (
-          <div>Loading managed profiles...</div>
+          <div>Loading managed accounts...</div>
         ) : (
           <div className="space-y-2">
             {data?.lastLoggedInAccount ? (

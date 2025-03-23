@@ -22,15 +22,15 @@ const BlockedSettings: NextPage = () => {
 
   return (
     <GridLayout>
-      <MetaTags title={`Blocked profiles • ${APP_NAME}`} />
+      <MetaTags title={`Blocked accounts • ${APP_NAME}`} />
       <GridItemFour>
         <SettingsSidebar />
       </GridItemFour>
       <GridItemEight>
         <Card>
           <CardHeader
-            body="This is a list of blocked profiles. You can unblock them at any time."
-            title="Blocked profiles"
+            body="This is a list of blocked accounts. You can unblock them at any time."
+            title="Blocked accounts"
           />
           <List />
         </Card>

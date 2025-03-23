@@ -43,7 +43,7 @@ const Accounts: FC<AccountsProps> = ({ query }) => {
         icon={<UsersIcon className="size-8" />}
         message={
           <span>
-            No profiles for <b>&ldquo;{query}&rdquo;</b>
+            No accounts for <b>&ldquo;{query}&rdquo;</b>
           </span>
         }
       />
@@ -51,7 +51,7 @@ const Accounts: FC<AccountsProps> = ({ query }) => {
   }
 
   if (error) {
-    return <ErrorMessage error={error} title="Failed to load profiles" />;
+    return <ErrorMessage error={error} title="Failed to load accounts" />;
   }
 
   return (

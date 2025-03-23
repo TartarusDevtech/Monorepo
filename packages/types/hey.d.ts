@@ -5,7 +5,7 @@ export type StaffPick = {
 };
 
 export type Permission = {
-  _count: { profiles: number };
+  _count: { accounts: number };
   createdAt: Date;
   id: string;
   key: string;

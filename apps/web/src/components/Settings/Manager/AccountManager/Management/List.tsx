@@ -77,8 +77,8 @@ const List: FC<ListProps> = ({ managed = false }) => {
         error={error}
         title={
           managed
-            ? "Failed to load managed profiles"
-            : "Failed to load un-managed profiles"
+            ? "Failed to load managed accounts"
+            : "Failed to load un-managed accounts"
         }
       />
     );
@@ -91,8 +91,8 @@ const List: FC<ListProps> = ({ managed = false }) => {
         icon={<UsersIcon className="size-8" />}
         message={
           managed
-            ? "You are not managing any profiles!"
-            : "You are not un-managing any profiles!"
+            ? "You are not managing any accounts!"
+            : "You are not un-managing any accounts!"
         }
       />
     );

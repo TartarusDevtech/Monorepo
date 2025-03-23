@@ -143,7 +143,7 @@ const Terms: NextPage = () => {
               <div className="space-y-5">
                 <p className="leading-7">
                   We are not responsible for any mistakes or inaccuracies on
-                  contents published on this Site. Profiles are fully
+                  contents published on this Site. Accounts are fully
                   responsible for what they are doing in the Site.
                 </p>
                 <p className="leading-7">
