@@ -63,11 +63,11 @@ const UnlinkUsername: FC = () => {
   return (
     <Card>
       <CardHeader
-        body="Unlinking your current username will remove it from your profile, preventing others from easily identifying and connecting with you based on your unique online identity."
+        body="Unlinking your current username will remove it from your account, preventing others from easily identifying and connecting with you based on your unique online identity."
         title={
           <span>
             Unlink <Slug slug={getAccount(currentAccount).usernameWithPrefix} />{" "}
-            from your profile
+            from your account
           </span>
         }
       />
