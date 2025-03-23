@@ -26,7 +26,10 @@ const SmallCollectButton: FC<SmallCollectButtonProps> = ({ post }) => {
         show={showCollectModal}
         title="Collect"
       >
-        <CollectActionBody post={post} />
+        <CollectActionBody
+          post={post}
+          setShowCollectModal={setShowCollectModal}
+        />
       </Modal>
     </>
   );

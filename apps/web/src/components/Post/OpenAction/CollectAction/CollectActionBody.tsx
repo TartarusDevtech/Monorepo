@@ -28,15 +28,19 @@ import { H3, H4, HelpTooltip, Modal, Tooltip, WarningMessage } from "@hey/ui";
 import { useCounter } from "@uidotdev/usehooks";
 import Link from "next/link";
 import plur from "plur";
-import { type FC, useState } from "react";
+import { type Dispatch, type FC, type SetStateAction, useState } from "react";
 import CollectActionButton from "./CollectActionButton";
 import Splits from "./Splits";
 
 interface CollectActionBodyProps {
   post: AnyPostFragment;
+  setShowCollectModal: Dispatch<SetStateAction<boolean>>;
 }
 
-const CollectActionBody: FC<CollectActionBodyProps> = ({ post }) => {
+const CollectActionBody: FC<CollectActionBodyProps> = ({
+  post,
+  setShowCollectModal
+}) => {
   const [showCollectorsModal, setShowCollectorsModal] = useState(false);
   const targetPost = isRepost(post) ? post?.repostOf : post;
   const [collects, { increment }] = useCounter(targetPost.stats.collects);
@@ -222,7 +226,10 @@ const CollectActionBody: FC<CollectActionBodyProps> = ({ post }) => {
         <div className="flex items-center space-x-2">
           <CollectActionButton
             collects={collects}
-            onCollectSuccess={() => increment()}
+            onCollectSuccess={() => {
+              increment();
+              setShowCollectModal(false);
+            }}
             postAction={collectAction}
             post={targetPost}
           />

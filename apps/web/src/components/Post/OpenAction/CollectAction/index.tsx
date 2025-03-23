@@ -39,7 +39,10 @@ const CollectAction: FC<CollectActionProps> = ({ post }) => {
         show={showCollectModal}
         title="Collect"
       >
-        <CollectActionBody post={post} />
+        <CollectActionBody
+          post={post}
+          setShowCollectModal={setShowCollectModal}
+        />
       </Modal>
     </div>
   );
