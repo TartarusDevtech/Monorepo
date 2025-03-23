@@ -6,37 +6,37 @@ import Link from "next/link";
 import type { FC } from "react";
 
 const Mention: FC<MarkupLinkProps> = ({ mentions, title }) => {
-  const handle = title;
+  const username = title;
 
-  if (!handle) {
+  if (!username) {
     return null;
   }
 
-  const fullHandles = mentions?.map((mention) => mention.replace.from);
+  const fullUsernames = mentions?.map((mention) => mention.replace.from);
 
-  if (!fullHandles?.includes(handle)) {
+  if (!fullUsernames?.includes(username)) {
     return title;
   }
 
-  const canShowUserPreview = (handle: string) => {
+  const canShowUserPreview = (username: string) => {
     const foundMention = mentions?.find(
-      (mention) => mention.replace.from === handle
+      (mention) => mention.replace.from === username
     );
 
     return Boolean(foundMention?.replace);
   };
 
-  const getNameFromMention = (handle: string): string => {
+  const getNameFromMention = (username: string): string => {
     const foundMention = mentions?.find(
-      (mention) => mention.replace.from === handle
+      (mention) => mention.replace.from === username
     );
 
     return foundMention?.replace.from.split("/")[1] || "";
   };
 
-  const getAddressFromMention = (handle: string): string => {
+  const getAddressFromMention = (username: string): string => {
     const foundMention = mentions?.find(
-      (mention) => mention.replace.from === handle
+      (mention) => mention.replace.from === username
     );
 
     return foundMention?.__typename === "AccountMention"
@@ -44,21 +44,21 @@ const Mention: FC<MarkupLinkProps> = ({ mentions, title }) => {
       : "";
   };
 
-  return canShowUserPreview(handle) ? (
+  return canShowUserPreview(username) ? (
     <Link
       className="outline-none focus:underline"
-      href={`/u/${getNameFromMention(handle)}`}
+      href={`/u/${getNameFromMention(username)}`}
       onClick={stopEventPropagation}
     >
       <AccountPreview
-        handle={getNameFromMention(handle)}
-        address={getAddressFromMention(handle)}
+        username={getNameFromMention(username)}
+        address={getAddressFromMention(username)}
       >
-        <Slug prefix="@" slug={getNameFromMention(handle)} useBrandColor />
+        <Slug prefix="@" slug={getNameFromMention(username)} useBrandColor />
       </AccountPreview>
     </Link>
   ) : (
-    <Slug prefix="@" slug={getNameFromMention(handle)} useBrandColor />
+    <Slug prefix="@" slug={getNameFromMention(username)} useBrandColor />
   );
 };
 

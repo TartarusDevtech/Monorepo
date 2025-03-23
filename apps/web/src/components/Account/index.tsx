@@ -130,7 +130,7 @@ const ViewProfile: NextPage = () => {
                 feedType === AccountFeedType.Media ||
                 feedType === AccountFeedType.Collects) && (
                 <AccountFeed
-                  handle={getAccount(account).usernameWithPrefix}
+                  username={getAccount(account).usernameWithPrefix}
                   accountDetailsLoading={accountDetailsLoading}
                   address={account.address}
                   type={feedType}

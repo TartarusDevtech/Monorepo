@@ -126,7 +126,7 @@ const Details: FC<DetailsProps> = ({ isSuspended = false, account }) => {
         </div>
         {currentAccount?.address !== account.address ? (
           <FollowersYouKnowOverview
-            handle={getAccount(account).username}
+            username={getAccount(account).username}
             address={account.address}
           />
         ) : null}

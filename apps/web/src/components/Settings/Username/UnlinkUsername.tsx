@@ -11,7 +11,7 @@ import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
-const UnlinkHandle: FC = () => {
+const UnlinkUsername: FC = () => {
   const { currentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
   const [unlinking, setUnlinking] = useState<boolean>(false);
@@ -63,9 +63,7 @@ const UnlinkHandle: FC = () => {
   return (
     <Card>
       <CardHeader
-        body="Unlinking your current handle will remove it from your profile,
-        preventing others from easily identifying and connecting with you based on
-        your unique online identity."
+        body="Unlinking your current username will remove it from your profile, preventing others from easily identifying and connecting with you based on your unique online identity."
         title={
           <span>
             Unlink <Slug slug={getAccount(currentAccount).usernameWithPrefix} />{" "}
@@ -82,4 +80,4 @@ const UnlinkHandle: FC = () => {
   );
 };
 
-export default UnlinkHandle;
+export default UnlinkUsername;

@@ -16,7 +16,7 @@ import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
-const LinkHandle: FC = () => {
+const LinkUsername: FC = () => {
   const { currentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
   const [linkingUsername, setLinkingUsername] = useState<null | string>(null);
@@ -62,7 +62,9 @@ const LinkHandle: FC = () => {
       return toast.error(Errors.Suspended);
     }
 
-    const confirmation = confirm("Are you sure you want to link this handle?");
+    const confirmation = confirm(
+      "Are you sure you want to link this username to your account?"
+    );
 
     if (!confirmation) {
       return;
@@ -94,10 +96,8 @@ const LinkHandle: FC = () => {
   return (
     <Card>
       <CardHeader
-        body="Linking your handle to your account showcases it publicly,
-            allowing others to easily identify and connect with you based on
-            your unique online identity."
-        title="Link a handle"
+        body="Linking your username to your account showcases it publicly, allowing others to easily identify and connect with you based on your unique online identity."
+        title="Link a username"
       />
       <div className="m-5 space-y-6">
         {usernames?.map((username) => (
@@ -131,4 +131,4 @@ const LinkHandle: FC = () => {
   );
 };
 
-export default LinkHandle;
+export default LinkUsername;

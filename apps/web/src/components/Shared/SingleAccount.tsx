@@ -62,7 +62,7 @@ const SingleAccount: FC<SingleAccountProps> = ({
 
   const AccountInfo: FC = () => (
     <AccountPreview
-      handle={account.username?.localName}
+      username={account.username?.localName}
       address={account.address}
       showUserPreview={showUserPreview}
     >

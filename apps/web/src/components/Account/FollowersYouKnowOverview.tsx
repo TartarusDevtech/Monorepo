@@ -8,13 +8,13 @@ import { type FC, type ReactNode, useState } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 interface FollowersYouKnowOverviewProps {
-  handle: string;
+  username: string;
   address: string;
   viaPopover?: boolean;
 }
 
 const FollowersYouKnowOverview: FC<FollowersYouKnowOverviewProps> = ({
-  handle,
+  username,
   address,
   viaPopover = false
 }) => {
@@ -71,7 +71,7 @@ const FollowersYouKnowOverview: FC<FollowersYouKnowOverviewProps> = ({
         title="Mutual Followers"
         size="md"
       >
-        <FollowersYouKnow handle={handle} address={address} />
+        <FollowersYouKnow username={username} address={address} />
       </Modal>
     </button>
   );

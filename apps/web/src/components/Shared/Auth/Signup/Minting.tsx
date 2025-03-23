@@ -4,7 +4,7 @@ import type { FC } from "react";
 import { useSignupStore } from ".";
 
 const Minting: FC = () => {
-  const { choosedHandle, setAccountAddress, setScreen, transactionHash } =
+  const { choosedUsername, setAccountAddress, setScreen, transactionHash } =
     useSignupStore();
 
   useAccountQuery({
@@ -17,7 +17,7 @@ const Minting: FC = () => {
     },
     pollInterval: 3000,
     skip: !transactionHash,
-    variables: { request: { username: { localName: choosedHandle } } }
+    variables: { request: { username: { localName: choosedUsername } } }
   });
 
   return (

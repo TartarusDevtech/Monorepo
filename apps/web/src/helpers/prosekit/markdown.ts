@@ -7,7 +7,7 @@ import remarkStringify from "remark-stringify";
 import { unified } from "unified";
 
 // By default, remark-stringify escapes underscores (i.e. "_" => "\_"). We want
-// to disable this behavior so that we can have underscores in mention handles.
+// to disable this behavior so that we can have underscores in mention usernames.
 const unescapeUnderscore = (str: string) => {
   return str.replace(/(^|[^\\])\\_/g, "$1_");
 };

@@ -31,7 +31,7 @@ const Followerings: FC<FolloweringsProps> = ({ account }) => {
   const stats = data.accountStats.graphFollowStats;
 
   type ModalContentProps = {
-    handle: string;
+    username: string;
     address: string;
   };
 
@@ -43,7 +43,7 @@ const Followerings: FC<FolloweringsProps> = ({ account }) => {
   ) => (
     <Modal onClose={() => setShow(false)} show={show} title={title} size="md">
       <Content
-        handle={getAccount(account).username}
+        username={getAccount(account).username}
         address={String(account.address)}
       />
     </Modal>

@@ -19,14 +19,14 @@ const MINIMUM_LOADING_ANIMATION_MS = 800;
 
 interface AccountPreviewProps {
   children: ReactNode;
-  handle?: string;
+  username?: string;
   address?: string;
   showUserPreview?: boolean;
 }
 
 const AccountPreview: FC<AccountPreviewProps> = ({
   children,
-  handle,
+  username,
   address,
   showUserPreview = true
 }) => {
@@ -48,7 +48,7 @@ const AccountPreview: FC<AccountPreviewProps> = ({
         accountRequest: {
           ...(address
             ? { address }
-            : { username: { localName: handle as string } })
+            : { username: { localName: username as string } })
         },
         accountStatsRequest: { account: address }
       }
@@ -56,7 +56,7 @@ const AccountPreview: FC<AccountPreviewProps> = ({
     setTimeout(() => setSyntheticLoading(false), MINIMUM_LOADING_ANIMATION_MS);
   };
 
-  if (!address && !handle) {
+  if (!address && !username) {
     return null;
   }
 
@@ -72,7 +72,7 @@ const AccountPreview: FC<AccountPreviewProps> = ({
             <div />
           </div>
           <div className="flex p-3">
-            <div>{handle || `#${address}`}</div>
+            <div>{username || `#${address}`}</div>
           </div>
         </div>
       );
@@ -148,7 +148,7 @@ const AccountPreview: FC<AccountPreviewProps> = ({
           </div>
           <div className="!text-xs">
             <FollowersYouKnowOverview
-              handle={getAccount(account).username}
+              username={getAccount(account).username}
               address={account.address}
               viaPopover
             />

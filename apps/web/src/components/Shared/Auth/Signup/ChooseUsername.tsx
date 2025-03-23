@@ -47,7 +47,7 @@ const validationSchema = object({
 
 const ChooseUsername: FC = () => {
   const {
-    setChoosedHandle,
+    setChoosedUsername,
     setScreen,
     setTransactionHash,
     setOnboardingToken
@@ -128,7 +128,7 @@ const ChooseUsername: FC = () => {
               createAccountWithUsername.__typename === "CreateAccountResponse"
             ) {
               setTransactionHash(createAccountWithUsername.hash);
-              setChoosedHandle(username);
+              setChoosedUsername(username);
               setScreen("minting");
               trackEvent(Events.Account.Signup);
             }

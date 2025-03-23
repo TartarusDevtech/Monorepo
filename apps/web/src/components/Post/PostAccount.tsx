@@ -32,7 +32,7 @@ const PostAccount: FC<PostAccountProps> = ({
       href={getAccount(account).link}
     >
       <AccountPreview
-        handle={account.username?.localName}
+        username={account.username?.localName}
         address={account.address}
         showUserPreview
       >

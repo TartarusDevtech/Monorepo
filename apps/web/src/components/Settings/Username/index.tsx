@@ -5,10 +5,10 @@ import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
 import type { NextPage } from "next";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import SettingsSidebar from "../Sidebar";
-import LinkHandle from "./LinkHandle";
-import UnlinkHandle from "./UnlinkHandle";
+import LinkUsername from "./LinkUsername";
+import UnlinkUsername from "./UnlinkUsername";
 
-const HandlesSettings: NextPage = () => {
+const UsernameSettings: NextPage = () => {
   const { currentAccount } = useAccountStore();
 
   if (!currentAccount) {
@@ -17,16 +17,16 @@ const HandlesSettings: NextPage = () => {
 
   return (
     <GridLayout>
-      <MetaTags title={`Handles settings • ${APP_NAME}`} />
+      <MetaTags title={`Username settings • ${APP_NAME}`} />
       <GridItemFour>
         <SettingsSidebar />
       </GridItemFour>
       <GridItemEight className="space-y-5">
-        <UnlinkHandle />
-        <LinkHandle />
+        <UnlinkUsername />
+        <LinkUsername />
       </GridItemEight>
     </GridLayout>
   );
 };
 
-export default HandlesSettings;
+export default UsernameSettings;

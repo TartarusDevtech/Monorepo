@@ -37,8 +37,8 @@ const SettingsSidebar: FC = () => {
     },
     {
       icon: <AtSymbolIcon className="size-4" />,
-      title: "Handles",
-      url: "/settings/handles"
+      title: "Username",
+      url: "/settings/username"
     },
     {
       icon: <AdjustmentsVerticalIcon className="size-4" />,

@@ -11,11 +11,11 @@ import { Virtuoso } from "react-virtuoso";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 interface FollowersYouKnowProps {
-  handle: string;
+  username: string;
   address: string;
 }
 
-const FollowersYouKnow: FC<FollowersYouKnowProps> = ({ handle, address }) => {
+const FollowersYouKnow: FC<FollowersYouKnowProps> = ({ username, address }) => {
   const { currentAccount } = useAccountStore();
 
   const request: FollowersYouKnowRequest = {
@@ -50,7 +50,7 @@ const FollowersYouKnow: FC<FollowersYouKnowProps> = ({ handle, address }) => {
         icon={<UsersIcon className="size-8" />}
         message={
           <div>
-            <span className="mr-1 font-bold">{handle}</span>
+            <span className="mr-1 font-bold">{username}</span>
             <span>doesn't have any mutual followers.</span>
           </div>
         }

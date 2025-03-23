@@ -19,7 +19,7 @@ import { useAccountFeedStore } from "src/store/non-persisted/useAccountFeedStore
 let virtuosoState: any = { ranges: [], screenTop: 0 };
 
 interface AccountFeedProps {
-  handle: string;
+  username: string;
   accountDetailsLoading: boolean;
   address: string;
   type:
@@ -30,7 +30,7 @@ interface AccountFeedProps {
 }
 
 const AccountFeed: FC<AccountFeedProps> = ({
-  handle,
+  username,
   accountDetailsLoading,
   address,
   type
@@ -40,7 +40,7 @@ const AccountFeed: FC<AccountFeedProps> = ({
 
   useEffect(() => {
     virtuosoState = { ranges: [], screenTop: 0 };
-  }, [address, handle]);
+  }, [address, username]);
 
   const getMediaFilters = () => {
     return Object.entries(mediaFeedFilters)
@@ -142,7 +142,7 @@ const AccountFeed: FC<AccountFeedProps> = ({
         icon={<ChatBubbleBottomCenterIcon className="size-8" />}
         message={
           <div>
-            <b className="mr-1">{handle}</b>
+            <b className="mr-1">{username}</b>
             <span>{getEmptyMessage()}</span>
           </div>
         }

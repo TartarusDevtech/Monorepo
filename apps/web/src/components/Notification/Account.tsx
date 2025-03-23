@@ -17,7 +17,7 @@ export const NotificationAccountAvatar: FC<NotificationProfileProps> = ({
 }) => {
   return (
     <AccountPreview
-      handle={account.username?.localName}
+      username={account.username?.localName}
       address={account.address}
     >
       <Link
@@ -44,7 +44,7 @@ export const NotificationAccountName: FC<NotificationProfileProps> = ({
 
   return (
     <AccountPreview
-      handle={account.username?.localName}
+      username={account.username?.localName}
       address={account.address}
     >
       <Link
