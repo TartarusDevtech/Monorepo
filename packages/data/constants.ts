@@ -15,7 +15,7 @@ export const HEY_TREASURY = "0x03Ba34f6Ea1496fa316873CF8350A3f7eaD317EF";
 export const HEY_TRPC_PRODUCTION_URL = "https://hey-api.up.railway.app";
 export const HEY_TRPC_URL = IS_PRODUCTION
   ? HEY_TRPC_PRODUCTION_URL
-  : "http://localhost:6969";
+  : "http://localhost:4784";
 
 export const IS_MAINNET = LENS_API_URL === LensEndpoint.Mainnet;
 export const ADDRESS_PLACEHOLDER = "0x03Ba3...7EF";

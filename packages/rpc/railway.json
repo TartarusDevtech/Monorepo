@@ -3,7 +3,7 @@
   "deploy": {
     "runtime": "V2",
     "startCommand": "pnpm --filter @hey/rpc start",
-    "healthcheckPath": "/",
+    "healthcheckPath": "/health.health",
     "healthcheckTimeout": 60,
     "restartPolicyType": "ALWAYS",
     "sleepApplication": false,
