@@ -1,7 +1,8 @@
 import { publicProcedure, router } from "../trpc";
 
 export const healthRouter = router({
-  health: publicProcedure.query(() => {
+  health: publicProcedure.query(({ ctx }) => {
+    ctx.res.setHeader("Gm-Control-Allow-Origin", "*");
     return { ping: "pong" };
   })
 });

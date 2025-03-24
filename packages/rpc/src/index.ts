@@ -1,3 +1,4 @@
+import logger from "@hey/helpers/logger";
 import { createHTTPServer } from "@trpc/server/adapters/standalone";
 import cors from "cors";
 import "dotenv/config";
@@ -27,10 +28,14 @@ export const appRouter = router({
 
 export type AppRouter = typeof appRouter;
 
-const server = createHTTPServer({
-  createContext: createContext as any,
+const PORT = 4784;
+
+createHTTPServer({
+  createContext,
   middleware: cors(),
   router: appRouter
-});
-
-server.listen(4784);
+})
+  .listen(PORT)
+  .on("listening", () => {
+    logger.info(`Server is running on port ${PORT}`);
+  });

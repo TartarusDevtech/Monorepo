@@ -4,8 +4,4 @@ import type { Context } from "./context";
 export const t = initTRPC.context<Context>().create();
 
 export const router = t.router;
-
-export const publicProcedure = t.procedure.use(async (opts) => {
-  opts.ctx;
-  return opts.next();
-});
+export const publicProcedure = t.procedure;
