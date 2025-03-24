@@ -1,8 +1,10 @@
 import { router } from "../../trpc";
-import { createLive } from "./createLive";
+import { authorization } from "./authorization";
+import { verification } from "./verification";
 
-export const liveRouter = router({
-  create: createLive
+export const lensRouter = router({
+  authorization,
+  verification
 });
 
-export type LiveRouter = typeof liveRouter;
+export type LensRouter = typeof lensRouter;
