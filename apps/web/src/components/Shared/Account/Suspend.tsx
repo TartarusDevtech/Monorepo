@@ -1,5 +1,5 @@
 import ToggleWrapper from "@components/Staff/Accounts/Overview/Tool/ToggleWrapper";
-import { useTRPC } from "@helpers/createTRPCClient";
+import { trpc } from "@helpers/createTRPCClient";
 import errorToast from "@helpers/errorToast";
 import { Permission, PermissionId } from "@hey/data/permissions";
 import { Toggle } from "@hey/ui";
@@ -12,8 +12,6 @@ interface SuspendProps {
 }
 
 const Suspend: FC<SuspendProps> = ({ address }) => {
-  const trpc = useTRPC();
-
   const { data: account, isLoading } = useQuery(
     trpc.internal.account.queryOptions({ address })
   );

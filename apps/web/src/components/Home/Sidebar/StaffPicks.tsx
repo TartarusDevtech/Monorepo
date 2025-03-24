@@ -1,6 +1,6 @@
 import SingleAccountShimmer from "@components/Shared/Shimmer/SingleAccountShimmer";
 import SingleAccount from "@components/Shared/SingleAccount";
-import { useTRPC } from "@helpers/createTRPCClient";
+import { trpc } from "@helpers/createTRPCClient";
 import { CursorArrowRippleIcon as CursorArrowRippleIconOutline } from "@heroicons/react/24/outline";
 import { useStaffPicksQuery } from "@hey/indexer";
 import type { StaffPicksRouterOutput } from "@hey/rpc/src/routers/staffPicks";
@@ -18,7 +18,6 @@ const Title: FC = () => <H5>Staff Picks</H5>;
 
 const StaffPicks: FC = () => {
   const { currentAccount } = useAccountStore();
-  const trpc = useTRPC();
   const {
     data: picks,
     isLoading: picksLoading,

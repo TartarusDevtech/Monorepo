@@ -1,5 +1,5 @@
 import SingleAccount from "@components/Shared/SingleAccount";
-import { useTRPC } from "@helpers/createTRPCClient";
+import { trpc } from "@helpers/createTRPCClient";
 import type { AccountFragment } from "@hey/indexer";
 import { useQuery } from "@tanstack/react-query";
 import type { FC } from "react";
@@ -13,7 +13,6 @@ interface AccountStaffToolProps {
 }
 
 const AccountStaffTool: FC<AccountStaffToolProps> = ({ account }) => {
-  const trpc = useTRPC();
   const { data: preferences } = useQuery(
     trpc.internal.account.queryOptions({ address: account.address })
   );

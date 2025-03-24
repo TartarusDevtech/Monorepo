@@ -1,5 +1,5 @@
 import Loader from "@components/Shared/Loader";
-import { useTRPC } from "@helpers/createTRPCClient";
+import { trpc } from "@helpers/createTRPCClient";
 import errorToast from "@helpers/errorToast";
 import { Toggle } from "@hey/ui";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -18,8 +18,6 @@ const UpdatePermissions: FC<UpdatePermissionsProps> = ({
   accountAddress,
   setPermissions
 }) => {
-  const trpc = useTRPC();
-
   const { data: allPermissions, isLoading } = useQuery(
     trpc.internal.permissions.all.queryOptions()
   );

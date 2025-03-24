@@ -1,5 +1,5 @@
 import Video from "@components/Shared/Video";
-import { useTRPC } from "@helpers/createTRPCClient";
+import { trpc } from "@helpers/createTRPCClient";
 import errorToast from "@helpers/errorToast";
 import {
   ClipboardDocumentIcon,
@@ -37,7 +37,6 @@ const LivestreamEditor: FC = () => {
   } = usePostLiveStore();
 
   const [screen, setScreen] = useState<"create" | "record">("create");
-  const trpc = useTRPC();
   const { mutate, isPending } = useMutation(
     trpc.live.create.mutationOptions({
       onSuccess: (data) => {

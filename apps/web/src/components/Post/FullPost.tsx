@@ -1,4 +1,4 @@
-import { useTRPC } from "@helpers/createTRPCClient";
+import { trpc } from "@helpers/createTRPCClient";
 import hasAccess from "@helpers/hasAccess";
 import { QueueListIcon } from "@heroicons/react/24/outline";
 import { Features } from "@hey/data/features";
@@ -31,7 +31,6 @@ const FullPost: FC<FullPostProps> = ({ hasHiddenComments, post }) => {
   const targetPost = isRepost(post) ? post?.repostOf : post;
   const { author, timestamp } = targetPost;
 
-  const trpc = useTRPC();
   const { data: accountDetails } = useQuery(
     trpc.account.get.queryOptions(
       { address: author.address },

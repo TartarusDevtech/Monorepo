@@ -1,5 +1,5 @@
 import trackEvent from "@helpers/analytics";
-import { useTRPC } from "@helpers/createTRPCClient";
+import { trpc } from "@helpers/createTRPCClient";
 import errorToast from "@helpers/errorToast";
 import { CheckCircleIcon as CheckCircleIconOutline } from "@heroicons/react/24/outline";
 import { CheckCircleIcon as CheckCircleIconSolid } from "@heroicons/react/24/solid";
@@ -21,7 +21,6 @@ const icons = [
 
 const AppIcon: FC = () => {
   const { appIcon, setAppIcon } = usePreferencesStore();
-  const trpc = useTRPC();
   const { mutate, isPending } = useMutation(
     trpc.preferences.update.mutationOptions({
       onSuccess: (data) => {

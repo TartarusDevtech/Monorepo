@@ -1,5 +1,5 @@
 import ToggleWrapper from "@components/Staff/Accounts/Overview/Tool/ToggleWrapper";
-import { useTRPC } from "@helpers/createTRPCClient";
+import { trpc } from "@helpers/createTRPCClient";
 import errorToast from "@helpers/errorToast";
 import { Permission, PermissionId } from "@hey/data/permissions";
 import type { AccountFragment } from "@hey/indexer";
@@ -15,7 +15,6 @@ interface CreatorToolProps {
 
 const CreatorTool: FC<CreatorToolProps> = ({ account }) => {
   const [permissions, setPermissions] = useState<string[]>([]);
-  const trpc = useTRPC();
 
   const { data: preferences, isLoading } = useQuery(
     trpc.internal.account.queryOptions({ address: account.address })

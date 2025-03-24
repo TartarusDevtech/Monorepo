@@ -1,5 +1,5 @@
 import Loader from "@components/Shared/Loader";
-import { useTRPC } from "@helpers/createTRPCClient";
+import { trpc } from "@helpers/createTRPCClient";
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
 import { Permission } from "@hey/data/permissions";
 import formatDate from "@hey/helpers/datetime/formatDate";
@@ -14,7 +14,6 @@ const List: FC = () => {
   const [permissions, setPermissions] = useState<
     [] | PermissionsRouterOutput["all"]
   >([]);
-  const trpc = useTRPC();
 
   const { data, isLoading, error } = useQuery(
     trpc.internal.permissions.all.queryOptions()

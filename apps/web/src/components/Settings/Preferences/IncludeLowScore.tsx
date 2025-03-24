@@ -1,6 +1,6 @@
 import ToggleWithHelper from "@components/Shared/ToggleWithHelper";
 import trackEvent from "@helpers/analytics";
-import { useTRPC } from "@helpers/createTRPCClient";
+import { trpc } from "@helpers/createTRPCClient";
 import errorToast from "@helpers/errorToast";
 import { SwatchIcon } from "@heroicons/react/24/outline";
 import { Events } from "@hey/data/events";
@@ -11,7 +11,6 @@ import { usePreferencesStore } from "src/store/persisted/usePreferencesStore";
 
 const IncludeLowScore: FC = () => {
   const { includeLowScore, setIncludeLowScore } = usePreferencesStore();
-  const trpc = useTRPC();
   const { mutate, isPending } = useMutation(
     trpc.preferences.update.mutationOptions({
       onSuccess: (data) => {

@@ -1,4 +1,4 @@
-import { useTRPC } from "@helpers/createTRPCClient";
+import { trpc } from "@helpers/createTRPCClient";
 import getCurrentSession from "@helpers/getCurrentSession";
 import { Permission } from "@hey/data/permissions";
 import { useQuery } from "@tanstack/react-query";
@@ -8,7 +8,6 @@ import { usePreferencesStore } from "src/store/persisted/usePreferencesStore";
 import { useVerifiedMembersStore } from "src/store/persisted/useVerifiedMembersStore";
 
 const PreferencesProvider: FC = () => {
-  const trpc = useTRPC();
   const { address: sessionAccountAddress } = getCurrentSession();
   const { setVerifiedMembers } = useVerifiedMembersStore();
   const { setAppIcon, setIncludeLowScore } = usePreferencesStore();

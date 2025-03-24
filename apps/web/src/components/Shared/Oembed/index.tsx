@@ -1,4 +1,4 @@
-import { useTRPC } from "@helpers/createTRPCClient";
+import { trpc } from "@helpers/createTRPCClient";
 import { ALLOWED_HTML_HOSTS } from "@hey/data/og";
 import getFavicon from "@hey/helpers/getFavicon";
 import { useQuery } from "@tanstack/react-query";
@@ -12,7 +12,6 @@ interface OembedProps {
 }
 
 const Oembed: FC<OembedProps> = ({ url }) => {
-  const trpc = useTRPC();
   const { data, error, isLoading } = useQuery(
     trpc.oembed.get.queryOptions({ url }, { enabled: Boolean(url) })
   );
