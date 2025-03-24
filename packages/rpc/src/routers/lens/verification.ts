@@ -1,7 +1,5 @@
-import { APP_NAME, HEY_APP } from "@hey/data/constants";
-import { PermissionId } from "@hey/data/permissions";
+import { HEY_APP } from "@hey/data/constants";
 import { Regex } from "@hey/data/regex";
-import prisma from "@hey/db/prisma/db/client";
 import { TRPCError } from "@trpc/server";
 import { type Address, checksumAddress } from "viem";
 import { object, string } from "zod";
@@ -38,33 +36,18 @@ export const verification = publicProcedure
   .mutation(async ({ input }) => {
     try {
       const { account, validator, nonce, deadline } = input;
-      const [signature, accountPermission] = await Promise.all([
-        heyWalletClient.signTypedData({
-          primaryType: "SourceStamp",
-          types: TYPES,
-          domain: DOMAIN,
-          message: {
-            source: checksumAddress(HEY_APP),
-            originalMsgSender: checksumAddress(account as Address),
-            validator: checksumAddress(validator as Address),
-            nonce,
-            deadline
-          }
-        }),
-        prisma.accountPermission.findFirst({
-          where: {
-            permissionId: PermissionId.Suspended,
-            accountAddress: account as string
-          }
-        })
-      ]);
-
-      if (accountPermission?.enabled) {
-        return {
-          allowed: false,
-          reason: `Account is suspended on ${APP_NAME}`
-        };
-      }
+      const signature = await heyWalletClient.signTypedData({
+        primaryType: "SourceStamp",
+        types: TYPES,
+        domain: DOMAIN,
+        message: {
+          source: checksumAddress(HEY_APP),
+          originalMsgSender: checksumAddress(account as Address),
+          validator: checksumAddress(validator as Address),
+          nonce,
+          deadline
+        }
+      });
 
       return { allowed: true, signature };
     } catch {
