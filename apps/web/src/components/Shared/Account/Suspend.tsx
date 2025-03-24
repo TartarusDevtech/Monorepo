@@ -1,14 +1,9 @@
 import ToggleWrapper from "@components/Staff/Accounts/Overview/Tool/ToggleWrapper";
+import { useTRPC } from "@helpers/createTRPCClient";
 import errorToast from "@helpers/errorToast";
-import { getAuthApiHeaders } from "@helpers/getAuthApiHeaders";
-import { HEY_API_URL } from "@hey/data/constants";
 import { Permission, PermissionId } from "@hey/data/permissions";
-import getInternalAccount, {
-  GET_INTERNAL_ACCOUNT_QUERY_KEY
-} from "@hey/helpers/api/getInternalAccount";
 import { Toggle } from "@hey/ui";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import type { FC } from "react";
 import toast from "react-hot-toast";
 
@@ -17,35 +12,18 @@ interface SuspendProps {
 }
 
 const Suspend: FC<SuspendProps> = ({ address }) => {
-  const queryClient = useQueryClient();
+  const trpc = useTRPC();
 
-  const { data: account, isLoading } = useQuery({
-    queryFn: () => getInternalAccount(address, getAuthApiHeaders()),
-    queryKey: [GET_INTERNAL_ACCOUNT_QUERY_KEY, address || ""]
-  });
+  const { data: account, isLoading } = useQuery(
+    trpc.internal.account.queryOptions({ address })
+  );
 
-  const suspendAccount = async () => {
-    try {
-      await Promise.all([
-        axios.post(
-          `${HEY_API_URL}/internal/permissions/assign`,
-          {
-            enabled: true,
-            id: PermissionId.Suspended,
-            accountAddress: address
-          },
-          { headers: getAuthApiHeaders() }
-        )
-      ]);
-
-      queryClient.invalidateQueries({
-        queryKey: [GET_INTERNAL_ACCOUNT_QUERY_KEY, address]
-      });
-      toast.success("Account suspended");
-    } catch (error) {
-      errorToast(error);
-    }
-  };
+  const { mutate } = useMutation(
+    trpc.internal.permissions.assign.mutationOptions({
+      onSuccess: () => toast.success("Account suspended"),
+      onError: errorToast
+    })
+  );
 
   const isSuspended =
     account?.permissions.includes(Permission.Suspended) || false;
@@ -53,7 +31,17 @@ const Suspend: FC<SuspendProps> = ({ address }) => {
   return (
     <div className="text-red-500">
       <ToggleWrapper title="Suspend Account">
-        <Toggle disabled={isLoading} on={isSuspended} setOn={suspendAccount} />
+        <Toggle
+          disabled={isLoading}
+          on={isSuspended}
+          setOn={() =>
+            mutate({
+              account: address,
+              enabled: true,
+              permission: PermissionId.Suspended
+            })
+          }
+        />
       </ToggleWrapper>
     </div>
   );

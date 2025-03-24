@@ -1,9 +1,7 @@
+import { useTRPC } from "@helpers/createTRPCClient";
 import hasAccess from "@helpers/hasAccess";
 import { QueueListIcon } from "@heroicons/react/24/outline";
 import { Features } from "@hey/data/features";
-import getAccountDetails, {
-  GET_ACCOUNT_DETAILS_QUERY_KEY
-} from "@hey/helpers/api/getAccountDetails";
 import formatDate from "@hey/helpers/datetime/formatDate";
 import { isRepost } from "@hey/helpers/postHelpers";
 import type { AnyPostFragment } from "@hey/indexer";
@@ -33,11 +31,13 @@ const FullPost: FC<FullPostProps> = ({ hasHiddenComments, post }) => {
   const targetPost = isRepost(post) ? post?.repostOf : post;
   const { author, timestamp } = targetPost;
 
-  const { data: accountDetails } = useQuery({
-    enabled: Boolean(author.address),
-    queryFn: () => getAccountDetails(author.address),
-    queryKey: [GET_ACCOUNT_DETAILS_QUERY_KEY, author.address]
-  });
+  const trpc = useTRPC();
+  const { data: accountDetails } = useQuery(
+    trpc.account.get.queryOptions(
+      { address: author.address },
+      { enabled: Boolean(author.address) }
+    )
+  );
 
   const isSuspended = isStaff ? false : accountDetails?.isSuspended;
 

@@ -1,32 +1,21 @@
-import { HEY_API_URL } from "@hey/data/constants";
+import { useTRPC } from "@helpers/createTRPCClient";
 import { ALLOWED_HTML_HOSTS } from "@hey/data/og";
 import getFavicon from "@hey/helpers/getFavicon";
-import type { OG } from "@hey/types/misc";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import type { FC } from "react";
 import Embed from "./Embed";
 import EmptyOembed from "./EmptyOembed";
 import Player from "./Player";
-
-const GET_OEMBED_QUERY_KEY = "getOembed";
 
 interface OembedProps {
   url: string;
 }
 
 const Oembed: FC<OembedProps> = ({ url }) => {
-  const { data, error, isLoading } = useQuery({
-    enabled: Boolean(url),
-    queryFn: async () => {
-      const { data } = await axios.get(`${HEY_API_URL}/oembed`, {
-        params: { url }
-      });
-      return data.oembed;
-    },
-    queryKey: [GET_OEMBED_QUERY_KEY, url],
-    refetchOnMount: false
-  });
+  const trpc = useTRPC();
+  const { data, error, isLoading } = useQuery(
+    trpc.oembed.get.queryOptions({ url }, { enabled: Boolean(url) })
+  );
 
   if (isLoading || error || !data) {
     if (error) {
@@ -42,7 +31,7 @@ const Oembed: FC<OembedProps> = ({ url }) => {
     return <EmptyOembed url={url} />;
   }
 
-  const og: OG = {
+  const og = {
     description: data?.description,
     favicon: getFavicon(data.url),
     html: data?.html,

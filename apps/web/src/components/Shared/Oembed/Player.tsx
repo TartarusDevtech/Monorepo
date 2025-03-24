@@ -1,11 +1,15 @@
-import type { OG } from "@hey/types/misc";
+import type { OembedRouterOutput } from "@hey/rpc/src/routers/oembed";
 import type { FC } from "react";
 
 interface PlayerProps {
-  og: OG;
+  og: OembedRouterOutput["get"];
 }
 
 const Player: FC<PlayerProps> = ({ og }) => {
+  if (!og) {
+    return null;
+  }
+
   return (
     <div className="mt-4 w-full text-sm">
       <div

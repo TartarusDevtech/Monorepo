@@ -1,5 +1,6 @@
 import Video from "@components/Shared/Video";
-import { getAuthApiHeaders } from "@helpers/getAuthApiHeaders";
+import { useTRPC } from "@helpers/createTRPCClient";
+import errorToast from "@helpers/errorToast";
 import {
   ClipboardDocumentIcon,
   SignalIcon,
@@ -7,10 +8,9 @@ import {
   VideoCameraSlashIcon
 } from "@heroicons/react/24/outline";
 import { XCircleIcon } from "@heroicons/react/24/solid";
-import { HEY_API_URL } from "@hey/data/constants";
 import { Card, Spinner, Tooltip } from "@hey/ui";
 import { getSrc } from "@livepeer/react/external";
-import axios from "axios";
+import { useMutation } from "@tanstack/react-query";
 import type { FC, ReactNode } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -37,27 +37,15 @@ const LivestreamEditor: FC = () => {
   } = usePostLiveStore();
 
   const [screen, setScreen] = useState<"create" | "record">("create");
-  const [creating, setCreating] = useState(false);
-
-  const handleCreateLiveStream = async (record: boolean) => {
-    try {
-      setCreating(true);
-      const { data } = await axios.post(
-        `${HEY_API_URL}/live/create`,
-        { record },
-        { headers: getAuthApiHeaders() }
-      );
-      setLiveVideoConfig({
-        id: data.result.id,
-        playbackId: data.result.playbackId,
-        streamKey: data.result.streamKey
-      });
-    } catch {
-      toast.error("Error creating live stream");
-    } finally {
-      setCreating(false);
-    }
-  };
+  const trpc = useTRPC();
+  const { mutate, isPending } = useMutation(
+    trpc.live.create.mutationOptions({
+      onSuccess: (data) => {
+        setLiveVideoConfig(data);
+      },
+      onError: errorToast
+    })
+  );
 
   return (
     <Card className="m-5 px-5 py-3" forceRounded>
@@ -82,7 +70,7 @@ const LivestreamEditor: FC = () => {
         </div>
       </div>
       <div className="mt-3 space-y-2">
-        {creating ? (
+        {isPending ? (
           <Wrapper>
             <Spinner size="xs" />
             <div>Creating Live Stream...</div>
@@ -142,7 +130,7 @@ const LivestreamEditor: FC = () => {
           <div className="flex items-center space-x-3">
             <button
               className="w-full"
-              onClick={() => handleCreateLiveStream(true)}
+              onClick={() => mutate({ record: true })}
               type="button"
             >
               <Wrapper>
@@ -152,7 +140,7 @@ const LivestreamEditor: FC = () => {
             </button>
             <button
               className="w-full"
-              onClick={() => handleCreateLiveStream(false)}
+              onClick={() => mutate({ record: false })}
               type="button"
             >
               <Wrapper>

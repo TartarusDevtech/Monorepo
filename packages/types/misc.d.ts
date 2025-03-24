@@ -13,16 +13,6 @@ export interface NewAttachment {
   uri?: string;
 }
 
-export interface OG {
-  description: null | string;
-  favicon: null | string;
-  html: null | string;
-  image: null | string;
-  site: null | string;
-  title: null | string;
-  url: string;
-}
-
 export interface Emoji {
   aliases: string[];
   category: string;

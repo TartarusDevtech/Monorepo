@@ -1,16 +1,20 @@
 import { ATTACHMENT } from "@hey/data/constants";
 import imageKit from "@hey/helpers/imageKit";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
-import type { OG } from "@hey/types/misc";
+import type { OembedRouterOutput } from "@hey/rpc/src/routers/oembed";
 import { Card, Image } from "@hey/ui";
 import Link from "next/link";
 import type { FC } from "react";
 
 interface EmbedProps {
-  og: OG;
+  og: OembedRouterOutput["get"];
 }
 
 const Embed: FC<EmbedProps> = ({ og }) => {
+  if (!og) {
+    return null;
+  }
+
   return (
     <div className="mt-4 w-full text-sm md:w-4/6">
       <Link

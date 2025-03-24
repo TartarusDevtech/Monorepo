@@ -1,27 +1,27 @@
 import { S3 } from "@aws-sdk/client-s3";
 import { Upload } from "@aws-sdk/lib-storage";
-import {
-  EVER_API,
-  EVER_BUCKET,
-  EVER_REGION,
-  HEY_API_URL
-} from "@hey/data/constants";
+import { EVER_API, EVER_BUCKET, EVER_REGION } from "@hey/data/constants";
 import generateUUID from "@hey/helpers/generateUUID";
 import { immutable } from "@lens-chain/storage-client";
-import axios from "axios";
 import { CHAIN } from "src/constants";
+import { queryClient, trpc } from "./createTRPCClient";
 import { storageClient } from "./storageClient";
 
 const FALLBACK_TYPE = "image/jpeg";
 const FILE_SIZE_LIMIT_MB = 5 * 1024 * 1024; // 5MB in bytes
 
 const getS3Client = async (): Promise<S3> => {
-  const { data } = await axios.get(`${HEY_API_URL}/sts/token`);
+  const data = await queryClient.fetchQuery(trpc.misc.sts.queryOptions());
+
+  if (!data) {
+    throw new Error("Failed to get S3 client");
+  }
+
   const client = new S3({
     credentials: {
-      accessKeyId: data?.accessKeyId,
-      secretAccessKey: data?.secretAccessKey,
-      sessionToken: data?.sessionToken
+      accessKeyId: data.accessKeyId ?? "",
+      secretAccessKey: data.secretAccessKey ?? "",
+      sessionToken: data.sessionToken ?? ""
     },
     endpoint: EVER_API,
     maxAttempts: 10,

@@ -5,7 +5,6 @@
 - [Node.js](https://nodejs.org/en/download/) (v18 or higher) - The backbone of our project, make sure you have this installed.
 - [pnpm](https://pnpm.io/installation) - Our trusty package manager, because who doesn't love faster installs?
 - [Postgres App](https://postgresapp.com/) - Our database of choice, because data needs a cozy home.
-- [Redis](https://redis.io/download) - The speedy in-memory data store, for when you need things done in a flash.
 
 ## Installation
 

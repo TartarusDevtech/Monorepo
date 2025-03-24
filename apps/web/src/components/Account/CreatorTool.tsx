@@ -1,17 +1,12 @@
 import ToggleWrapper from "@components/Staff/Accounts/Overview/Tool/ToggleWrapper";
+import { useTRPC } from "@helpers/createTRPCClient";
 import errorToast from "@helpers/errorToast";
-import { getAuthApiHeaders } from "@helpers/getAuthApiHeaders";
-import { HEY_API_URL } from "@hey/data/constants";
 import { Permission, PermissionId } from "@hey/data/permissions";
-import getInternalAccount, {
-  GET_INTERNAL_ACCOUNT_QUERY_KEY
-} from "@hey/helpers/api/getInternalAccount";
 import type { AccountFragment } from "@hey/indexer";
 import { Toggle } from "@hey/ui";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import type { FC } from "react";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 interface CreatorToolProps {
@@ -19,18 +14,21 @@ interface CreatorToolProps {
 }
 
 const CreatorTool: FC<CreatorToolProps> = ({ account }) => {
-  const [updating, setUpdating] = useState(false);
   const [permissions, setPermissions] = useState<string[]>([]);
+  const trpc = useTRPC();
 
-  const allowedPermissions = [
-    { id: PermissionId.Verified, key: Permission.Verified },
-    { id: PermissionId.StaffPick, key: Permission.StaffPick }
-  ];
+  const { data: preferences, isLoading } = useQuery(
+    trpc.internal.account.queryOptions({ address: account.address })
+  );
 
-  const { data: preferences, isLoading } = useQuery({
-    queryFn: () => getInternalAccount(account.address, getAuthApiHeaders()),
-    queryKey: [GET_INTERNAL_ACCOUNT_QUERY_KEY, account.address]
-  });
+  const { mutate, isPending } = useMutation(
+    trpc.internal.creatorTools.assign.mutationOptions({
+      onSuccess: () => {
+        toast.success("Permission updated");
+      },
+      onError: errorToast
+    })
+  );
 
   useEffect(() => {
     if (preferences) {
@@ -38,31 +36,25 @@ const CreatorTool: FC<CreatorToolProps> = ({ account }) => {
     }
   }, [preferences]);
 
-  const togglePermission = useCallback(
-    async (permission: { id: string; key: string }) => {
-      const { id, key } = permission;
-      const enabled = !permissions.includes(key);
+  const togglePermission = async (permission: { id: string; key: string }) => {
+    const { id, key } = permission;
+    const enabled = !permissions.includes(key);
 
-      try {
-        setUpdating(true);
-        await axios.post(
-          `${HEY_API_URL}/internal/creator-tools/assign`,
-          { enabled, id, accountAddress: account.address },
-          { headers: getAuthApiHeaders() }
-        );
+    await mutate({
+      account: account.address,
+      permission: id,
+      enabled
+    });
 
-        toast.success("Permission updated");
-        setPermissions((prev) =>
-          enabled ? [...prev, key] : prev.filter((f) => f !== key)
-        );
-      } catch (error) {
-        errorToast(error);
-      } finally {
-        setUpdating(false);
-      }
-    },
-    [permissions, account.address]
-  );
+    setPermissions((prev) =>
+      enabled ? [...prev, key] : prev.filter((f) => f !== key)
+    );
+  };
+
+  const allowedPermissions = [
+    { id: PermissionId.Verified, key: Permission.Verified },
+    { id: PermissionId.StaffPick, key: Permission.StaffPick }
+  ];
 
   return (
     <div className="space-y-2.5">
@@ -71,7 +63,7 @@ const CreatorTool: FC<CreatorToolProps> = ({ account }) => {
         {allowedPermissions.map((permission) => (
           <ToggleWrapper key={permission.id} title={permission.key}>
             <Toggle
-              disabled={updating || isLoading}
+              disabled={isLoading || isPending}
               on={permissions.includes(permission.key)}
               setOn={() => togglePermission(permission)}
             />

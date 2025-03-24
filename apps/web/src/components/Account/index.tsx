@@ -1,14 +1,12 @@
 import MetaTags from "@components/Common/MetaTags";
 import NewPost from "@components/Composer/NewPost";
 import Cover from "@components/Shared/Cover";
+import { useTRPC } from "@helpers/createTRPCClient";
 import hasAccess from "@helpers/hasAccess";
 import { NoSymbolIcon } from "@heroicons/react/24/outline";
 import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { AccountFeedType } from "@hey/data/enums";
 import { Features } from "@hey/data/features";
-import getAccountDetails, {
-  GET_ACCOUNT_DETAILS_QUERY_KEY
-} from "@hey/helpers/api/getAccountDetails";
 import getAccount from "@hey/helpers/getAccount";
 import isAccountDeleted from "@hey/helpers/isAccountDeleted";
 import { useAccountQuery } from "@hey/indexer";
@@ -32,6 +30,7 @@ const ViewProfile: NextPage = () => {
     query: { username, address, type }
   } = useRouter();
   const { currentAccount } = useAccountStore();
+  const trpc = useTRPC();
   const isStaff = hasAccess(Features.Staff);
 
   const lowerCaseAccountFeedType = [
@@ -62,11 +61,12 @@ const ViewProfile: NextPage = () => {
 
   const account = data?.account;
 
-  const { data: accountDetails, isLoading: accountDetailsLoading } = useQuery({
-    enabled: Boolean(account?.address),
-    queryFn: () => getAccountDetails(account?.address),
-    queryKey: [GET_ACCOUNT_DETAILS_QUERY_KEY, account?.address]
-  });
+  const { data: accountDetails, isLoading: accountDetailsLoading } = useQuery(
+    trpc.account.get.queryOptions(
+      { address: account?.address },
+      { enabled: Boolean(account?.address) }
+    )
+  );
 
   if (!isReady || loading) {
     return <AccountPageShimmer />;

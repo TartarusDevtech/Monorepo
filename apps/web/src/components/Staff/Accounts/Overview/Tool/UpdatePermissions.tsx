@@ -1,16 +1,9 @@
 import Loader from "@components/Shared/Loader";
+import { useTRPC } from "@helpers/createTRPCClient";
 import errorToast from "@helpers/errorToast";
-import { getAuthApiHeaders } from "@helpers/getAuthApiHeaders";
-import { HEY_API_URL } from "@hey/data/constants";
-import getAllPermissions, {
-  GET_ALL_PERMISSIONS_QUERY_KEY
-} from "@hey/helpers/api/getAllPermissions";
-import type { Permission } from "@hey/types/hey";
 import { Toggle } from "@hey/ui";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import type { Dispatch, FC, SetStateAction } from "react";
-import { useState } from "react";
 import toast from "react-hot-toast";
 import ToggleWrapper from "./ToggleWrapper";
 
@@ -25,12 +18,18 @@ const UpdatePermissions: FC<UpdatePermissionsProps> = ({
   accountAddress,
   setPermissions
 }) => {
-  const [updating, setUpdating] = useState(false);
+  const trpc = useTRPC();
 
-  const { data: allPermissions, isLoading } = useQuery({
-    queryFn: () => getAllPermissions(getAuthApiHeaders()),
-    queryKey: [GET_ALL_PERMISSIONS_QUERY_KEY]
-  });
+  const { data: allPermissions, isLoading } = useQuery(
+    trpc.internal.permissions.all.queryOptions()
+  );
+
+  const { mutate, isPending } = useMutation(
+    trpc.internal.permissions.assign.mutationOptions({
+      onSuccess: () => toast.success("Permission updated"),
+      onError: errorToast
+    })
+  );
 
   if (isLoading) {
     return <Loader className="my-5" message="Loading permissions" />;
@@ -39,27 +38,18 @@ const UpdatePermissions: FC<UpdatePermissionsProps> = ({
   const availablePermissions = allPermissions || [];
   const enabledFlags = permissions;
 
-  const updatePermission = async (permission: Permission) => {
-    const { id, key } = permission;
+  const updatePermission = async ({ id, key }: { id: string; key: string }) => {
     const enabled = !enabledFlags.includes(key);
 
-    setUpdating(true);
-    try {
-      await axios.post(
-        `${HEY_API_URL}/internal/permissions/assign`,
-        { enabled, id, accountAddress },
-        { headers: getAuthApiHeaders() }
-      );
+    await mutate({
+      account: accountAddress,
+      permission: id,
+      enabled
+    });
 
-      setPermissions(
-        enabled ? [...enabledFlags, key] : enabledFlags.filter((f) => f !== key)
-      );
-      toast.success("Permission updated");
-    } catch (error) {
-      errorToast(error);
-    } finally {
-      setUpdating(false);
-    }
+    setPermissions(
+      enabled ? [...enabledFlags, key] : enabledFlags.filter((f) => f !== key)
+    );
   };
 
   return (
@@ -67,9 +57,11 @@ const UpdatePermissions: FC<UpdatePermissionsProps> = ({
       {availablePermissions.map((permission) => (
         <ToggleWrapper key={permission.id} title={permission.key}>
           <Toggle
-            disabled={updating}
+            disabled={isPending}
             on={enabledFlags.includes(permission.key)}
-            setOn={() => updatePermission(permission)}
+            setOn={() =>
+              updatePermission({ id: permission.id, key: permission.key })
+            }
           />
         </ToggleWrapper>
       ))}

@@ -1,16 +1,13 @@
 import SingleAccountShimmer from "@components/Shared/Shimmer/SingleAccountShimmer";
 import SingleAccount from "@components/Shared/SingleAccount";
+import { useTRPC } from "@helpers/createTRPCClient";
 import { CursorArrowRippleIcon as CursorArrowRippleIconOutline } from "@heroicons/react/24/outline";
-import { HEY_API_URL } from "@hey/data/constants";
 import { useStaffPicksQuery } from "@hey/indexer";
-import type { StaffPick } from "@hey/types/hey";
+import type { StaffPicksRouterOutput } from "@hey/rpc/src/routers/staffPicks";
 import { Card, EmptyState, ErrorMessage, H5 } from "@hey/ui";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import type { FC } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
-
-const GET_STAFF_PICKS_QUERY_KEY = "getStaffPicks";
 
 interface BatchRange {
   end: number;
@@ -21,26 +18,15 @@ const Title: FC = () => <H5>Staff Picks</H5>;
 
 const StaffPicks: FC = () => {
   const { currentAccount } = useAccountStore();
-
-  const getStaffPicks = async (): Promise<StaffPick[]> => {
-    const response: {
-      data: { result: StaffPick[] };
-    } = await axios.get(`${HEY_API_URL}/staff-picks`);
-
-    return response.data.result;
-  };
-
+  const trpc = useTRPC();
   const {
     data: picks,
-    error: picksError,
-    isLoading: picksLoading
-  } = useQuery({
-    queryFn: getStaffPicks,
-    queryKey: [GET_STAFF_PICKS_QUERY_KEY]
-  });
+    isLoading: picksLoading,
+    error: picksError
+  } = useQuery(trpc.staffPicks.get.queryOptions());
 
   const dividePicks = (
-    picks: StaffPick[],
+    picks: StaffPicksRouterOutput["get"],
     totalBatches: number
   ): BatchRange[] => {
     const perBatch = Math.ceil(picks.length / totalBatches);

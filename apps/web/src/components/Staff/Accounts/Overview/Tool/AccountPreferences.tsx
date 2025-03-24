@@ -6,12 +6,12 @@ import {
   XCircleIcon
 } from "@heroicons/react/24/solid";
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
-import type { Preferences } from "@hey/types/hey";
+import type { PreferencesRouterOutput } from "@hey/rpc/src/routers/preferences";
 import { H5 } from "@hey/ui";
 import type { FC } from "react";
 
 interface AccountPreferencesProps {
-  preferences: Preferences;
+  preferences: PreferencesRouterOutput["get"];
 }
 
 const AccountPreferences: FC<AccountPreferencesProps> = ({ preferences }) => {

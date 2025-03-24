@@ -15,8 +15,7 @@
     "@hey/data": "workspace:*",
     "@hey/helpers": "workspace:*",
     "@prisma/client": "^6.5.0",
-    "dotenv": "^16.4.7",
-    "redis": "^4.7.0"
+    "dotenv": "^16.4.7"
   },
   "devDependencies": {
     "@hey/config": "workspace:*",

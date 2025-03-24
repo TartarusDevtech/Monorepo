@@ -1,30 +1,30 @@
 import Loader from "@components/Shared/Loader";
-import { getAuthApiHeaders } from "@helpers/getAuthApiHeaders";
+import { useTRPC } from "@helpers/createTRPCClient";
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
 import { Permission } from "@hey/data/permissions";
-import getAllPermissions, {
-  GET_ALL_PERMISSIONS_QUERY_KEY
-} from "@hey/helpers/api/getAllPermissions";
 import formatDate from "@hey/helpers/datetime/formatDate";
-import type { Permission as TPermission } from "@hey/types/hey";
+import type { PermissionsRouterOutput } from "@hey/rpc/src/routers/internal/permissions";
 import { Badge, Card, CardHeader, EmptyState, ErrorMessage } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import { useQuery } from "@tanstack/react-query";
 import type { FC } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const List: FC = () => {
-  const [permissions, setPermissions] = useState<[] | TPermission[]>([]);
+  const [permissions, setPermissions] = useState<
+    [] | PermissionsRouterOutput["all"]
+  >([]);
+  const trpc = useTRPC();
 
-  const { error, isLoading } = useQuery({
-    queryFn: () =>
-      getAllPermissions(getAuthApiHeaders()).then((permissions) => {
-        setPermissions(permissions);
-        return permissions;
-      }),
-    queryKey: [GET_ALL_PERMISSIONS_QUERY_KEY],
-    refetchInterval: 10000
-  });
+  const { data, isLoading, error } = useQuery(
+    trpc.internal.permissions.all.queryOptions()
+  );
+
+  useEffect(() => {
+    if (data) {
+      setPermissions(data);
+    }
+  }, [data]);
 
   return (
     <Card>

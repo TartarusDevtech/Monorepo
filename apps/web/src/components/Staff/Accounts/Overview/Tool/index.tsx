@@ -1,8 +1,5 @@
 import SingleAccount from "@components/Shared/SingleAccount";
-import { getAuthApiHeaders } from "@helpers/getAuthApiHeaders";
-import getInternalAccount, {
-  GET_INTERNAL_ACCOUNT_QUERY_KEY
-} from "@hey/helpers/api/getInternalAccount";
+import { useTRPC } from "@helpers/createTRPCClient";
 import type { AccountFragment } from "@hey/indexer";
 import { useQuery } from "@tanstack/react-query";
 import type { FC } from "react";
@@ -16,10 +13,10 @@ interface AccountStaffToolProps {
 }
 
 const AccountStaffTool: FC<AccountStaffToolProps> = ({ account }) => {
-  const { data: preferences } = useQuery({
-    queryFn: () => getInternalAccount(account.address, getAuthApiHeaders()),
-    queryKey: [GET_INTERNAL_ACCOUNT_QUERY_KEY, account.address || ""]
-  });
+  const trpc = useTRPC();
+  const { data: preferences } = useQuery(
+    trpc.internal.account.queryOptions({ address: account.address })
+  );
 
   return (
     <div>

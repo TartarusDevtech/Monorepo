@@ -1,7 +1,5 @@
 import logger from "@hey/helpers/logger";
-import dotenv from "dotenv";
-
-dotenv.config({ override: true });
+import "dotenv/config";
 
 const startJobs = async () => {
   logger.info("Jobs are started...");

@@ -1,14 +1,13 @@
 import trackEvent from "@helpers/analytics";
+import { useTRPC } from "@helpers/createTRPCClient";
 import errorToast from "@helpers/errorToast";
-import { getAuthApiHeaders } from "@helpers/getAuthApiHeaders";
 import { CheckCircleIcon as CheckCircleIconOutline } from "@heroicons/react/24/outline";
 import { CheckCircleIcon as CheckCircleIconSolid } from "@heroicons/react/24/solid";
-import { APP_NAME, HEY_API_URL, STATIC_IMAGES_URL } from "@hey/data/constants";
+import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Events } from "@hey/data/events";
 import { Card, CardHeader, Tooltip } from "@hey/ui";
-import axios from "axios";
+import { useMutation } from "@tanstack/react-query";
 import type { FC } from "react";
-import { useState } from "react";
 import toast from "react-hot-toast";
 import { usePreferencesStore } from "src/store/persisted/usePreferencesStore";
 
@@ -22,26 +21,20 @@ const icons = [
 
 const AppIcon: FC = () => {
   const { appIcon, setAppIcon } = usePreferencesStore();
-  const [updating, setUpdating] = useState(false);
-
-  const handleUpdateAppIcon = async (id: number) => {
-    try {
-      setUpdating(true);
-      await axios.post(
-        `${HEY_API_URL}/preferences/update`,
-        { appIcon: id },
-        { headers: getAuthApiHeaders() }
-      );
-
-      setAppIcon(id);
-      trackEvent(Events.Account.UpdateSettings, { type: "set_app_icon", id });
-      toast.success("App icon updated");
-    } catch (error) {
-      errorToast(error);
-    } finally {
-      setUpdating(false);
-    }
-  };
+  const trpc = useTRPC();
+  const { mutate, isPending } = useMutation(
+    trpc.preferences.update.mutationOptions({
+      onSuccess: (data) => {
+        setAppIcon(data.appIcon ?? 0);
+        trackEvent(Events.Account.UpdateSettings, {
+          type: "set_app_icon",
+          id: data.appIcon
+        });
+        toast.success("App icon updated");
+      },
+      onError: errorToast
+    })
+  );
 
   return (
     <Card>
@@ -54,8 +47,8 @@ const AppIcon: FC = () => {
           <Tooltip content={icon.name} key={icon.id} placement="top">
             <button
               className="flex flex-col items-center space-y-2"
-              disabled={updating}
-              onClick={() => handleUpdateAppIcon(icon.id)}
+              disabled={isPending}
+              onClick={() => mutate({ appIcon: icon.id })}
               type="button"
             >
               <img
