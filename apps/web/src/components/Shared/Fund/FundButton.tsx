@@ -5,13 +5,15 @@ import { useFundModalStore } from "src/store/non-persisted/modal/useFundModalSto
 interface FundButtonProps {
   label?: string;
   size?: "sm" | "md";
+  outline?: boolean;
   className?: string;
 }
 
 const FundButton: FC<FundButtonProps> = ({
+  label = "Fund account",
   size = "md",
-  className = "",
-  label = "Fund account"
+  outline = false,
+  className = ""
 }) => {
   const { setShowFundModal } = useFundModalStore();
 
@@ -21,6 +23,7 @@ const FundButton: FC<FundButtonProps> = ({
       className={className}
       onClick={() => setShowFundModal(true)}
       size={size}
+      outline={outline}
     >
       {label}
     </Button>

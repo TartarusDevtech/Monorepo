@@ -1,3 +1,4 @@
+import FundButton from "@components/Shared/Fund/FundButton";
 import Loader from "@components/Shared/Loader";
 import { DEFAULT_COLLECT_TOKEN, IS_MAINNET } from "@hey/data/constants";
 import { tokens } from "@hey/data/tokens";
@@ -39,7 +40,10 @@ const Balances: FC = () => {
           <Withdraw currency={currency} value={value} refetch={refetch} />
           {!currency && <Wrap value={value} refetch={refetch} />}
           {currency === DEFAULT_COLLECT_TOKEN && (
-            <Unwrap value={value} refetch={refetch} />
+            <>
+              <Unwrap value={value} refetch={refetch} />
+              <FundButton size="sm" outline />
+            </>
           )}
         </div>
       </div>

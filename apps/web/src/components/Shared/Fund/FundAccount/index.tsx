@@ -1,4 +1,8 @@
-import { DEFAULT_COLLECT_TOKEN, STATIC_IMAGES_URL } from "@hey/data/constants";
+import {
+  DEFAULT_COLLECT_TOKEN,
+  IS_MAINNET,
+  STATIC_IMAGES_URL
+} from "@hey/data/constants";
 import { Image } from "@hey/ui";
 import type { FC } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
@@ -32,9 +36,12 @@ const FundAccount: FC = () => {
           src={`${STATIC_IMAGES_URL}/tokens/gho.svg`}
           alt="wGHO"
         />
-        <div className="font-bold text-2xl">{accountBalance} wGHO</div>
+        <div className="font-bold text-2xl">
+          {accountBalance} {IS_MAINNET ? "wGHO" : "wGRASS"}
+        </div>
         <div className="ld-text-gray-500 text-sm">
-          Wrapped GHO enables various Hey-specific actions.
+          Wrapped {IS_MAINNET ? "GHO" : "GRASS"} enables various Hey-specific
+          actions.
         </div>
       </div>
       <Fund />
