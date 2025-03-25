@@ -3,8 +3,8 @@ import { MainnetContracts, TestnetContracts } from "./contracts";
 
 const mainnetTokens = [
   {
-    name: "Wrapped Grass",
-    symbol: "WGRASS",
+    name: "Wrapped GHO",
+    symbol: "WGHO",
     decimals: 18,
     contractAddress: MainnetContracts.DefaultToken
   }
