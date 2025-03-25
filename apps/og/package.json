@@ -14,11 +14,11 @@
     "@hey/data": "workspace:*",
     "@hey/helpers": "workspace:*",
     "@hey/indexer": "workspace:*",
-    "next": "^15.2.3",
+    "next": "^15.2.4",
     "react": "^19.0.0"
   },
   "devDependencies": {
-    "@types/node": "^22.13.11",
+    "@types/node": "^22.13.13",
     "@types/react": "^19.0.12",
     "typescript": "^5.7.3"
   }
