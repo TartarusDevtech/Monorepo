@@ -11,7 +11,7 @@ const StackedAvatars = ({ avatars, limit }: StackedAvatarsProps) => {
   }
 
   return (
-    <span className="flex contents">
+    <span className="flex">
       <span className="-space-x-2 contents">
         {avatars.slice(0, limit)?.map((avatar, index) => (
           <Image
