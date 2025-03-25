@@ -8,10 +8,7 @@ export const getVerified = publicProcedure.query(async ({ ctx }) => {
   try {
     const verifiedAccounts = await prisma.accountPermission.findMany({
       select: { accountAddress: true },
-      where: {
-        enabled: true,
-        permissionId: PermissionId.Verified
-      }
+      where: { enabled: true, permissionId: PermissionId.Verified }
     });
 
     ctx.res.setHeader("Cache-Control", CACHE_AGE_30_MINS);

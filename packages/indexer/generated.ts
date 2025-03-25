@@ -1065,6 +1065,7 @@ export type CreateGroupRequest = {
   admins?: InputMaybe<Array<Scalars['EvmAddress']['input']>>;
   feed?: InputMaybe<GroupFeedParams>;
   metadataUri?: InputMaybe<Scalars['URI']['input']>;
+  owner?: InputMaybe<Scalars['EvmAddress']['input']>;
   rules?: InputMaybe<GroupRulesConfigInput>;
 };
 
@@ -2508,7 +2509,7 @@ export enum MediaImageType {
 }
 
 export type MediaSnapshotNotificationAttributes = {
-  source?: InputMaybe<EntityId>;
+  source?: InputMaybe<PrimitiveId>;
 };
 
 export type MediaVideo = {
@@ -2620,7 +2621,7 @@ export enum MetadataLicenseType {
 }
 
 export type MetadataSnapshotNotificationAttributes = {
-  source?: InputMaybe<EntityId>;
+  source?: InputMaybe<PrimitiveId>;
 };
 
 export type MintMetadata = {
@@ -4198,6 +4199,19 @@ export type PostsRequest = {
 };
 
 export type PrimitiveData = AddressKeyValue | BigDecimalKeyValue | BooleanKeyValue | IntKeyValue | IntNullableKeyValue | RawKeyValue | StringKeyValue;
+
+export type PrimitiveId = {
+  account?: InputMaybe<Scalars['EvmAddress']['input']>;
+  accountAction?: InputMaybe<Scalars['EvmAddress']['input']>;
+  app?: InputMaybe<Scalars['EvmAddress']['input']>;
+  feed?: InputMaybe<Scalars['EvmAddress']['input']>;
+  graph?: InputMaybe<Scalars['EvmAddress']['input']>;
+  group?: InputMaybe<Scalars['EvmAddress']['input']>;
+  post?: InputMaybe<Scalars['PostId']['input']>;
+  postAction?: InputMaybe<Scalars['EvmAddress']['input']>;
+  sponsorship?: InputMaybe<Scalars['EvmAddress']['input']>;
+  usernameNamespace?: InputMaybe<Scalars['EvmAddress']['input']>;
+};
 
 export type Query = {
   __typename?: 'Query';
