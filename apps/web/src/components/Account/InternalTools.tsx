@@ -11,17 +11,16 @@ interface InternalToolsProps {
 }
 
 const InternalTools: FC<InternalToolsProps> = ({ account }) => {
-  const hasCreatorToolAccess = hasAccess(Features.CreatorTools);
   const isStaff = hasAccess(Features.Staff);
 
-  if (!hasCreatorToolAccess || !isStaff) {
+  if (!isStaff) {
     return null;
   }
 
   const Tools = () => (
     <>
-      {hasCreatorToolAccess && <CreatorTool account={account} />}
-      {isStaff && <StaffTool account={account} />}
+      <CreatorTool account={account} />
+      <StaffTool account={account} />
     </>
   );
 

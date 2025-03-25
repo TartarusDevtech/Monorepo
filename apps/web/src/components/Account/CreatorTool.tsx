@@ -21,10 +21,8 @@ const CreatorTool: FC<CreatorToolProps> = ({ account }) => {
   );
 
   const { mutate, isPending } = useMutation(
-    trpc.internal.creatorTools.assign.mutationOptions({
-      onSuccess: () => {
-        toast.success("Permission updated");
-      },
+    trpc.internal.permissions.assign.mutationOptions({
+      onSuccess: () => toast.success("Permission updated"),
       onError: errorToast
     })
   );

@@ -1,7 +1,7 @@
 import { AssumeRoleCommand, STSClient } from "@aws-sdk/client-sts";
 import { EVER_API, EVER_BUCKET, EVER_REGION } from "@hey/data/constants";
 import { TRPCError } from "@trpc/server";
-import rateLimiter from "src/middlewares/rateLimiter";
+import rateLimiter from "../../middlewares/rateLimiter";
 import { publicProcedure } from "../../trpc";
 
 const params = {
