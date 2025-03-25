@@ -4,14 +4,13 @@ import getAccount from "@hey/helpers/getAccount";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { AccountFragment } from "@hey/indexer";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 import { useBlockAlertStore } from "src/store/non-persisted/alert/useBlockAlertStore";
 
 interface BlockProps {
   account: AccountFragment;
 }
 
-const Block: FC<BlockProps> = ({ account }) => {
+const Block = ({ account }: BlockProps) => {
   const { setShowBlockOrUnblockAlert } = useBlockAlertStore();
   const isBlockedByMe = account.operations?.isBlockedByMe;
 

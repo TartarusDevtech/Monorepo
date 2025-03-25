@@ -9,7 +9,7 @@ import { useMeQuery } from "@hey/indexer";
 import { useIsClient } from "@uidotdev/usehooks";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
@@ -23,7 +23,7 @@ interface LayoutProps {
   children: ReactNode;
 }
 
-const Layout: FC<LayoutProps> = ({ children }) => {
+const Layout = ({ children }: LayoutProps) => {
   const { reload } = useRouter();
   const { resolvedTheme } = useTheme();
   const { currentAccount, setCurrentAccount } = useAccountStore();

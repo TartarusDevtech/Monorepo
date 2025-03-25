@@ -2,7 +2,7 @@ import LicensePicker from "@components/Composer/LicensePicker";
 import ToggleWithHelper from "@components/Shared/ToggleWithHelper";
 import type { CollectActionType } from "@hey/types/hey";
 import { Button } from "@hey/ui";
-import type { Dispatch, FC, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { useCollectActionStore } from "src/store/non-persisted/post/useCollectActionStore";
 import { usePostLicenseStore } from "src/store/non-persisted/post/usePostLicenseStore";
 import { isAddress } from "viem";
@@ -17,7 +17,7 @@ interface CollectFormProps {
   setShowModal: Dispatch<SetStateAction<boolean>>;
 }
 
-const CollectForm: FC<CollectFormProps> = ({ setShowModal }) => {
+const CollectForm = ({ setShowModal }: CollectFormProps) => {
   const { collectAction, reset, setCollectAction } = useCollectActionStore();
   const { setLicense } = usePostLicenseStore();
 

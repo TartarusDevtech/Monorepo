@@ -5,14 +5,13 @@ import getNumberOfDaysFromDate from "@hey/helpers/datetime/getNumberOfDaysFromDa
 import getTimeAddedNDay from "@hey/helpers/datetime/getTimeAddedNDay";
 import type { CollectActionType } from "@hey/types/hey";
 import { RangeSlider } from "@hey/ui";
-import type { FC } from "react";
 import { useCollectActionStore } from "src/store/non-persisted/post/useCollectActionStore";
 
 interface TimeLimitConfigProps {
   setCollectType: (data: CollectActionType) => void;
 }
 
-const TimeLimitConfig: FC<TimeLimitConfigProps> = ({ setCollectType }) => {
+const TimeLimitConfig = ({ setCollectType }: TimeLimitConfigProps) => {
   const { collectAction } = useCollectActionStore((state) => state);
 
   return (

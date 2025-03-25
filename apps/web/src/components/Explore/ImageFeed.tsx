@@ -7,13 +7,12 @@ import {
   useMlPostsExploreQuery
 } from "@hey/indexer";
 import { EmptyState, ErrorMessage } from "@hey/ui";
-import type { FC } from "react";
 
 interface ImageFeedProps {
   feedType: any;
 }
 
-const ImageFeed: FC<ImageFeedProps> = ({ feedType = "" }) => {
+const ImageFeed = ({ feedType = "" }: ImageFeedProps) => {
   const request: MlexplorePostsRequest = {
     pageSize: PageSize.Fifty
     // orderBy: feedType,

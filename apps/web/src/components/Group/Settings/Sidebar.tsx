@@ -3,13 +3,12 @@ import SingleGroup from "@components/Shared/SingleGroup";
 import { LockClosedIcon, UserGroupIcon } from "@heroicons/react/24/outline";
 import type { GroupFragment } from "@hey/indexer";
 import { useRouter } from "next/router";
-import type { FC } from "react";
 
 interface SettingsSidebarProps {
   group: GroupFragment;
 }
 
-const SettingsSidebar: FC<SettingsSidebarProps> = ({ group }) => {
+const SettingsSidebar = ({ group }: SettingsSidebarProps) => {
   const {
     pathname,
     query: { address }

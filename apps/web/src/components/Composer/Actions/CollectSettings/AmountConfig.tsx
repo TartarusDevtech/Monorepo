@@ -4,7 +4,6 @@ import { DEFAULT_COLLECT_TOKEN, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { tokens } from "@hey/data/tokens";
 import type { CollectActionType } from "@hey/types/hey";
 import { Input, Select } from "@hey/ui";
-import type { FC } from "react";
 import { useCollectActionStore } from "src/store/non-persisted/post/useCollectActionStore";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
@@ -12,7 +11,7 @@ interface AmountConfigProps {
   setCollectType: (data: CollectActionType) => void;
 }
 
-const AmountConfig: FC<AmountConfigProps> = ({ setCollectType }) => {
+const AmountConfig = ({ setCollectType }: AmountConfigProps) => {
   const { currentAccount } = useAccountStore();
   const { collectAction } = useCollectActionStore((state) => state);
 

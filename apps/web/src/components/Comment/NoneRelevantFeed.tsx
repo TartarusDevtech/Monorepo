@@ -10,7 +10,6 @@ import {
   usePostReferencesQuery
 } from "@hey/indexer";
 import { Card, StackedAvatars } from "@hey/ui";
-import type { FC } from "react";
 import { useState } from "react";
 import { Virtuoso } from "react-virtuoso";
 
@@ -18,7 +17,7 @@ interface NoneRelevantFeedProps {
   postId: string;
 }
 
-const NoneRelevantFeed: FC<NoneRelevantFeedProps> = ({ postId }) => {
+const NoneRelevantFeed = ({ postId }: NoneRelevantFeedProps) => {
   const { showHiddenComments } = useHiddenCommentFeedStore();
   const [showMore, setShowMore] = useState(false);
 

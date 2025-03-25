@@ -8,7 +8,6 @@ import {
   AutocompleteList,
   AutocompletePopover
 } from "prosekit/react/autocomplete";
-import type { FC } from "react";
 import { useState } from "react";
 import useEmojis from "src/hooks/prosekit/useEmojis";
 
@@ -17,7 +16,7 @@ interface EmojiItemProps {
   onSelect: VoidFunction;
 }
 
-const EmojiItem: FC<EmojiItemProps> = ({ emoji, onSelect }) => {
+const EmojiItem = ({ emoji, onSelect }: EmojiItemProps) => {
   return (
     <AutocompleteItem
       className="focusable-dropdown-item m-1 block cursor-pointer rounded-lg p-2 outline-none"

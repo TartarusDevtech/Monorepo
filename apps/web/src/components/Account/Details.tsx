@@ -21,7 +21,7 @@ import { Button, H3, Image, LightBox, Tooltip } from "@hey/ui";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useState } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import Followerings from "./Followerings";
@@ -35,7 +35,7 @@ interface DetailsProps {
   account: AccountFragment;
 }
 
-const Details: FC<DetailsProps> = ({ isSuspended = false, account }) => {
+const Details = ({ isSuspended = false, account }: DetailsProps) => {
   const { push } = useRouter();
   const { currentAccount } = useAccountStore();
   const [expandedImage, setExpandedImage] = useState<null | string>(null);

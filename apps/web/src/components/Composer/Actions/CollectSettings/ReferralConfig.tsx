@@ -2,14 +2,13 @@ import ToggleWithHelper from "@components/Shared/ToggleWithHelper";
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 import type { CollectActionType } from "@hey/types/hey";
 import { RangeSlider } from "@hey/ui";
-import type { FC } from "react";
 import { useCollectActionStore } from "src/store/non-persisted/post/useCollectActionStore";
 
 interface ReferralConfigProps {
   setCollectType: (data: CollectActionType) => void;
 }
 
-const ReferralConfig: FC<ReferralConfigProps> = ({ setCollectType }) => {
+const ReferralConfig = ({ setCollectType }: ReferralConfigProps) => {
   const { collectAction } = useCollectActionStore((state) => state);
 
   return (

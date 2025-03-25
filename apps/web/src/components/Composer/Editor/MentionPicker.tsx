@@ -9,7 +9,6 @@ import {
   AutocompleteList,
   AutocompletePopover
 } from "prosekit/react/autocomplete";
-import type { FC } from "react";
 import { useState } from "react";
 import type { MentionAccount } from "src/hooks/prosekit/useMentionQuery";
 import useMentionQuery from "src/hooks/prosekit/useMentionQuery";
@@ -19,7 +18,7 @@ interface MentionItemProps {
   account: MentionAccount;
 }
 
-const MentionItem: FC<MentionItemProps> = ({ onSelect, account }) => {
+const MentionItem = ({ onSelect, account }: MentionItemProps) => {
   return (
     <div className="m-0 p-0">
       <AutocompleteItem

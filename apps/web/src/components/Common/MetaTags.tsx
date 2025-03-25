@@ -6,7 +6,6 @@ import {
 } from "@hey/data/constants";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import type { FC } from "react";
 
 interface MetaTagsProps {
   creator?: string;
@@ -14,11 +13,11 @@ interface MetaTagsProps {
   title?: string;
 }
 
-const MetaTags: FC<MetaTagsProps> = ({
+const MetaTags = ({
   creator,
   description = DESCRIPTION,
   title = APP_NAME
-}) => {
+}: MetaTagsProps) => {
   const { asPath } = useRouter();
   const url = `${APP_URL}${asPath}`;
 

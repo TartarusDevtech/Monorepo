@@ -1,12 +1,11 @@
 import Suspend from "@components/Shared/Account/Suspend";
 import type { AccountFragment } from "@hey/indexer";
-import type { FC } from "react";
 
 interface StaffToolProps {
   account: AccountFragment;
 }
 
-const StaffTool: FC<StaffToolProps> = ({ account }) => {
+const StaffTool = ({ account }: StaffToolProps) => {
   return (
     <div className="space-y-2.5">
       <div className="font-bold">Staff Tool</div>

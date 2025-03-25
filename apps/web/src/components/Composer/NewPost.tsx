@@ -1,7 +1,6 @@
 import getAvatar from "@hey/helpers/getAvatar";
 import { Card, Image } from "@hey/ui";
 import { useRouter } from "next/router";
-import type { FC } from "react";
 import { useEffect, useState } from "react";
 import { usePostStore } from "src/store/non-persisted/post/usePostStore";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
@@ -11,7 +10,7 @@ interface NewPostProps {
   feed?: string;
 }
 
-const NewPost: FC<NewPostProps> = ({ feed }) => {
+const NewPost = ({ feed }: NewPostProps) => {
   const { isReady, query } = useRouter();
   const { currentAccount } = useAccountStore();
   const { setPostContent } = usePostStore();

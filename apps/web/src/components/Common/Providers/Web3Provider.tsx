@@ -10,7 +10,7 @@ import {
 import getRpc from "@hey/helpers/getRpc";
 import { chains } from "@lens-chain/sdk/viem";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { WagmiProvider, createConfig } from "wagmi";
 
 const config = createConfig(
@@ -32,7 +32,7 @@ interface Web3ProviderProps {
   children: ReactNode;
 }
 
-const Web3Provider: FC<Web3ProviderProps> = ({ children }) => {
+const Web3Provider = ({ children }: Web3ProviderProps) => {
   return (
     <WagmiProvider config={config}>
       <ConnectKitProvider

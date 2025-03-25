@@ -16,7 +16,6 @@ import type { PostFragment } from "@hey/indexer";
 import type { IGif } from "@hey/types/giphy";
 import type { NewAttachment } from "@hey/types/misc";
 import { Button, Card, H6 } from "@hey/ui";
-import type { FC } from "react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import useCreatePost from "src/hooks/useCreatePost";
@@ -51,7 +50,7 @@ interface NewPublicationProps {
   feed?: string;
 }
 
-const NewPublication: FC<NewPublicationProps> = ({ className, post, feed }) => {
+const NewPublication = ({ className, post, feed }: NewPublicationProps) => {
   const { currentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
 

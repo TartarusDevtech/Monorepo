@@ -5,12 +5,13 @@ import {
   useTransactionStatusQuery
 } from "@hey/indexer";
 import type { OptimisticPublication } from "@hey/types/misc";
-import type { FC } from "react";
 import { useOptimisticPublicationStore } from "src/store/persisted/useOptimisticPublicationStore";
 
-const Transaction: FC<{ transaction: OptimisticPublication }> = ({
-  transaction
-}) => {
+interface TransactionProps {
+  transaction: OptimisticPublication;
+}
+
+const Transaction = ({ transaction }: TransactionProps) => {
   const { removePublication } = useOptimisticPublicationStore();
   const { cache } = useApolloClient();
   const [getPost] = usePostLazyQuery();

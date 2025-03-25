@@ -2,7 +2,7 @@ import { GIPHY_KEY } from "@hey/data/constants";
 import type { IGif } from "@hey/types/giphy";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import type { Dispatch, FC, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 
 const GET_GIFS_QUERY_KEY = "getGifs";
 
@@ -13,12 +13,12 @@ interface GifsProps {
   setShowModal: Dispatch<SetStateAction<boolean>>;
 }
 
-const Gifs: FC<GifsProps> = ({
+const Gifs = ({
   debouncedGifInput,
   setGifAttachment,
   setSearchText,
   setShowModal
-}) => {
+}: GifsProps) => {
   const handleSelectGif = (item: IGif) => {
     setGifAttachment(item);
     setSearchText("");

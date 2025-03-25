@@ -4,7 +4,7 @@ import { TRPCProvider, queryClient, trpcClient } from "@helpers/trpc";
 import apolloClient from "@hey/indexer/apollo/client";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider } from "next-themes";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import ErrorBoundary from "../ErrorBoundary";
 import Layout from "../Layout";
 import OptimisticPublicationProvider from "./OptimisticPublicationProvider";
@@ -17,7 +17,7 @@ interface ProvidersProps {
   children: ReactNode;
 }
 
-const Providers: FC<ProvidersProps> = ({ children }) => {
+const Providers = ({ children }: ProvidersProps) => {
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>

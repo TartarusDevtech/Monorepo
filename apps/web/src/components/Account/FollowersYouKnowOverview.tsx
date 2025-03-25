@@ -4,7 +4,7 @@ import getAvatar from "@hey/helpers/getAvatar";
 import { type Follower, useFollowersYouKnowQuery } from "@hey/indexer";
 import { Modal, StackedAvatars } from "@hey/ui";
 import cn from "@hey/ui/cn";
-import { type FC, type ReactNode, useState } from "react";
+import { type ReactNode, useState } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 interface FollowersYouKnowOverviewProps {
@@ -13,11 +13,11 @@ interface FollowersYouKnowOverviewProps {
   viaPopover?: boolean;
 }
 
-const FollowersYouKnowOverview: FC<FollowersYouKnowOverviewProps> = ({
+const FollowersYouKnowOverview = ({
   username,
   address,
   viaPopover = false
-}) => {
+}: FollowersYouKnowOverviewProps) => {
   const { currentAccount } = useAccountStore();
   const [showMutualFollowersModal, setShowMutualFollowersModal] =
     useState(false);

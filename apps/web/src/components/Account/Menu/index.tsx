@@ -3,7 +3,6 @@ import { Menu, MenuButton, MenuItems } from "@headlessui/react";
 import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { AccountFragment } from "@hey/indexer";
-import type { FC } from "react";
 import { Fragment } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import Block from "./Block";
@@ -15,7 +14,7 @@ interface AccountMenuProps {
   account: AccountFragment;
 }
 
-const AccountMenu: FC<AccountMenuProps> = ({ account }) => {
+const AccountMenu = ({ account }: AccountMenuProps) => {
   const { currentAccount } = useAccountStore();
 
   return (

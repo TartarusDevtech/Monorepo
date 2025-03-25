@@ -8,7 +8,6 @@ import {
   usePostBookmarksQuery
 } from "@hey/indexer";
 import { Card, EmptyState, ErrorMessage } from "@hey/ui";
-import type { FC } from "react";
 import { useRef } from "react";
 import type { StateSnapshot, VirtuosoHandle } from "react-virtuoso";
 import { Virtuoso } from "react-virtuoso";
@@ -19,7 +18,7 @@ interface BookmarksFeedProps {
   focus?: MainContentFocus;
 }
 
-const BookmarksFeed: FC<BookmarksFeedProps> = ({ focus }) => {
+const BookmarksFeed = ({ focus }: BookmarksFeedProps) => {
   const virtuoso = useRef<VirtuosoHandle>(null);
 
   const request: PostBookmarksRequest = {

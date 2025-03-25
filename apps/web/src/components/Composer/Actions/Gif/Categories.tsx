@@ -3,7 +3,7 @@ import type { Category } from "@hey/types/giphy";
 import { H5 } from "@hey/ui";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import type { Dispatch, FC, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 
 const GET_GIPHY_CATEGORIES_QUERY_KEY = "getGiphyCategories";
 
@@ -11,7 +11,7 @@ interface CategoriesProps {
   setSearchText: Dispatch<SetStateAction<string>>;
 }
 
-const Categories: FC<CategoriesProps> = ({ setSearchText }) => {
+const Categories = ({ setSearchText }: CategoriesProps) => {
   const getGiphyCategories = async () => {
     try {
       const { data } = await axios.get(

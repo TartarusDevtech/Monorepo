@@ -1,14 +1,13 @@
 import ToggleWithHelper from "@components/Shared/ToggleWithHelper";
 import { UserGroupIcon } from "@heroicons/react/24/outline";
 import type { CollectActionType } from "@hey/types/hey";
-import type { FC } from "react";
 import { useCollectActionStore } from "src/store/non-persisted/post/useCollectActionStore";
 
 interface FollowersConfigProps {
   setCollectType: (data: CollectActionType) => void;
 }
 
-const FollowersConfig: FC<FollowersConfigProps> = ({ setCollectType }) => {
+const FollowersConfig = ({ setCollectType }: FollowersConfigProps) => {
   const { collectAction } = useCollectActionStore((state) => state);
 
   return (

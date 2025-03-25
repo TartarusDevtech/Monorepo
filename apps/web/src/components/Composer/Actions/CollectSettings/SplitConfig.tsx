@@ -10,7 +10,6 @@ import { ADDRESS_PLACEHOLDER } from "@hey/data/constants";
 import splitNumber from "@hey/helpers/splitNumber";
 import type { CollectActionType } from "@hey/types/hey";
 import { Button, H6, Input } from "@hey/ui";
-import type { FC } from "react";
 import { useState } from "react";
 import { useCollectActionStore } from "src/store/non-persisted/post/useCollectActionStore";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
@@ -21,10 +20,10 @@ interface SplitConfigProps {
   setCollectType: (data: CollectActionType) => void;
 }
 
-const SplitConfig: FC<SplitConfigProps> = ({
+const SplitConfig = ({
   isRecipientsDuplicated,
   setCollectType
-}) => {
+}: SplitConfigProps) => {
   const { currentAccount } = useAccountStore();
   const { collectAction } = useCollectActionStore((state) => state);
 

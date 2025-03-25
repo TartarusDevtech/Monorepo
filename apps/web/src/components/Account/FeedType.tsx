@@ -6,7 +6,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { AccountFeedType } from "@hey/data/enums";
 import { TabButton } from "@hey/ui";
-import type { Dispatch, FC, JSX, SetStateAction } from "react";
+import type { Dispatch, JSX, SetStateAction } from "react";
 import MediaFilter from "./Filters/MediaFilter";
 
 interface FeedTypeProps {
@@ -14,7 +14,7 @@ interface FeedTypeProps {
   setFeedType?: Dispatch<SetStateAction<AccountFeedType>>;
 }
 
-const FeedType: FC<FeedTypeProps> = ({ feedType, setFeedType }) => {
+const FeedType = ({ feedType, setFeedType }: FeedTypeProps) => {
   const switchFeedType = (type: AccountFeedType) => {
     setFeedType?.(type);
   };

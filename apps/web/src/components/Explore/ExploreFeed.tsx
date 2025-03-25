@@ -7,7 +7,6 @@ import {
   useMlPostsExploreQuery
 } from "@hey/indexer";
 import { Card, EmptyState, ErrorMessage } from "@hey/ui";
-import type { FC } from "react";
 import { useRef } from "react";
 import type { StateSnapshot, VirtuosoHandle } from "react-virtuoso";
 import { Virtuoso } from "react-virtuoso";
@@ -19,7 +18,7 @@ interface ExploreFeedProps {
   focus?: any;
 }
 
-const ExploreFeed: FC<ExploreFeedProps> = ({ feedType = "", focus }) => {
+const ExploreFeed = ({ feedType = "", focus }: ExploreFeedProps) => {
   const virtuoso = useRef<VirtuosoHandle>(null);
 
   const request: MlexplorePostsRequest = {

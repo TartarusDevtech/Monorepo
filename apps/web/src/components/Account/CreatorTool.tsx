@@ -5,7 +5,6 @@ import { Permission, PermissionId } from "@hey/data/permissions";
 import type { AccountFragment } from "@hey/indexer";
 import { Toggle } from "@hey/ui";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import type { FC } from "react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -13,7 +12,7 @@ interface CreatorToolProps {
   account: AccountFragment;
 }
 
-const CreatorTool: FC<CreatorToolProps> = ({ account }) => {
+const CreatorTool = ({ account }: CreatorToolProps) => {
   const [permissions, setPermissions] = useState<string[]>([]);
 
   const { data: preferences, isLoading } = useQuery(

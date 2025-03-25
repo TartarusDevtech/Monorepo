@@ -2,7 +2,7 @@ import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import type { IGif } from "@hey/types/giphy";
 import { Input } from "@hey/ui";
 import { useDebounce } from "@uidotdev/usehooks";
-import type { Dispatch, FC, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import Categories from "./Categories";
 import Gifs from "./Gifs";
@@ -12,10 +12,7 @@ interface GifSelectorProps {
   setShowModal: Dispatch<SetStateAction<boolean>>;
 }
 
-const GifSelector: FC<GifSelectorProps> = ({
-  setGifAttachment,
-  setShowModal
-}) => {
+const GifSelector = ({ setGifAttachment, setShowModal }: GifSelectorProps) => {
   const [searchText, setSearchText] = useState("");
   const debouncedGifInput = useDebounce<string>(searchText, 500);
 

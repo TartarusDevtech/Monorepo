@@ -9,7 +9,6 @@ import { Regex } from "@hey/data/regex";
 import { type GroupFragment, useSetGroupMetadataMutation } from "@hey/indexer";
 import { Button, Card, Form, Input, TextArea, useZodForm } from "@hey/ui";
 import { group as groupMetadata } from "@lens-protocol/metadata";
-import type { FC } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
@@ -33,7 +32,7 @@ interface GroupSettingsFormProps {
   group: GroupFragment;
 }
 
-const GroupSettingsForm: FC<GroupSettingsFormProps> = ({ group }) => {
+const GroupSettingsForm = ({ group }: GroupSettingsFormProps) => {
   const { currentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
   const [isSubmitting, setIsSubmitting] = useState(false);

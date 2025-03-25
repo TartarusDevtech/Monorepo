@@ -1,5 +1,5 @@
 import { Tooltip } from "@hey/ui";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface ToggleProps {
   children: ReactNode;
@@ -9,13 +9,13 @@ interface ToggleProps {
   tooltip?: string;
 }
 
-const Toggle: FC<ToggleProps> = ({
+const Toggle = ({
   children,
   disabled = false,
   onClick,
   pressed,
   tooltip
-}) => {
+}: ToggleProps) => {
   return (
     <Tooltip content={tooltip} placement="top">
       <button

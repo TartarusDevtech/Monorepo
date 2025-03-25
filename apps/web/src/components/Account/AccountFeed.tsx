@@ -10,7 +10,6 @@ import {
   usePostsQuery
 } from "@hey/indexer";
 import { Card, EmptyState, ErrorMessage } from "@hey/ui";
-import type { FC } from "react";
 import { useEffect, useRef } from "react";
 import type { StateSnapshot, VirtuosoHandle } from "react-virtuoso";
 import { Virtuoso } from "react-virtuoso";
@@ -29,12 +28,12 @@ interface AccountFeedProps {
     | AccountFeedType.Replies;
 }
 
-const AccountFeed: FC<AccountFeedProps> = ({
+const AccountFeed = ({
   username,
   accountDetailsLoading,
   address,
   type
-}) => {
+}: AccountFeedProps) => {
   const { mediaFeedFilters } = useAccountFeedStore();
   const virtuoso = useRef<VirtuosoHandle>(null);
 

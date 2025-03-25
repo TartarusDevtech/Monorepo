@@ -18,7 +18,7 @@ interface EditorProps {
   children: ReactNode;
 }
 
-const Provider: FC<EditorProps> = ({ children }) => {
+const Provider = ({ children }: EditorProps) => {
   const [handle, setHandle] = useState<EditorHandle | null>(null);
 
   return (

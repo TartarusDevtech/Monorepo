@@ -3,13 +3,13 @@ import GraphStatsShimmer from "@components/Shared/Shimmer/GraphStatsShimmer";
 import humanize from "@hey/helpers/humanize";
 import { type GroupFragment, useGroupStatsQuery } from "@hey/indexer";
 import { H4, Modal } from "@hey/ui";
-import { type FC, useState } from "react";
+import { useState } from "react";
 
 interface MembersCountProps {
   group: GroupFragment;
 }
 
-const MembersCount: FC<MembersCountProps> = ({ group }) => {
+const MembersCount = ({ group }: MembersCountProps) => {
   const [showMembersModal, setShowMembersModal] = useState(false);
 
   const { data, loading } = useGroupStatsQuery({

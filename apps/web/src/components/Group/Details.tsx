@@ -6,7 +6,6 @@ import getMentions from "@hey/helpers/getMentions";
 import type { GroupFragment } from "@hey/indexer";
 import { Button, H3, Image, LightBox } from "@hey/ui";
 import { useRouter } from "next/router";
-import type { FC } from "react";
 import { useState } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import MembersCount from "./MembersCount";
@@ -15,7 +14,7 @@ interface DetailsProps {
   group: GroupFragment;
 }
 
-const Details: FC<DetailsProps> = ({ group }) => {
+const Details = ({ group }: DetailsProps) => {
   const { push } = useRouter();
   const { currentAccount } = useAccountStore();
   const [expandedImage, setExpandedImage] = useState<null | string>(null);

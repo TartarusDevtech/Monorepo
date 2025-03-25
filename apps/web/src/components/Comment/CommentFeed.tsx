@@ -10,14 +10,13 @@ import {
   usePostReferencesQuery
 } from "@hey/indexer";
 import { Card, EmptyState, ErrorMessage } from "@hey/ui";
-import type { FC } from "react";
 import { Virtuoso } from "react-virtuoso";
 
 interface CommentFeedProps {
   postId: string;
 }
 
-const CommentFeed: FC<CommentFeedProps> = ({ postId }) => {
+const CommentFeed = ({ postId }: CommentFeedProps) => {
   const { showHiddenComments } = useHiddenCommentFeedStore();
 
   const request: PostReferencesRequest = {

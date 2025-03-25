@@ -2,7 +2,6 @@ import hasAccess from "@helpers/hasAccess";
 import { Features } from "@hey/data/features";
 import type { AccountFragment } from "@hey/indexer";
 import { Card } from "@hey/ui";
-import type { FC } from "react";
 import CreatorTool from "./CreatorTool";
 import StaffTool from "./StaffTool";
 
@@ -10,7 +9,7 @@ interface InternalToolsProps {
   account: AccountFragment;
 }
 
-const InternalTools: FC<InternalToolsProps> = ({ account }) => {
+const InternalTools = ({ account }: InternalToolsProps) => {
   const isStaff = hasAccess(Features.Staff);
 
   if (!isStaff) {

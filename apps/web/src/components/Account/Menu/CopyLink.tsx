@@ -4,14 +4,13 @@ import getAccount from "@hey/helpers/getAccount";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { AccountFragment } from "@hey/indexer";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 import toast from "react-hot-toast";
 
 interface CopyLinkProps {
   account: AccountFragment;
 }
 
-const CopyLink: FC<CopyLinkProps> = ({ account }) => {
+const CopyLink = ({ account }: CopyLinkProps) => {
   return (
     <MenuItem
       as="div"

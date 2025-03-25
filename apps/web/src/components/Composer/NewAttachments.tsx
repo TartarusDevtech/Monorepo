@@ -4,7 +4,6 @@ import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { NewAttachment } from "@hey/types/misc";
 import { Image } from "@hey/ui";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 import { useEffect, useRef } from "react";
 import { usePostAttachmentStore } from "src/store/non-persisted/post/usePostAttachmentStore";
 import { usePostVideoStore } from "src/store/non-persisted/post/usePostVideoStore";
@@ -38,10 +37,10 @@ interface NewAttachmentsProps {
   hideDelete?: boolean;
 }
 
-const NewAttachments: FC<NewAttachmentsProps> = ({
+const NewAttachments = ({
   attachments = [],
   hideDelete = false
-}) => {
+}: NewAttachmentsProps) => {
   const { setAttachments } = usePostAttachmentStore((state) => state);
   const { setVideoDurationInSeconds } = usePostVideoStore();
   const videoRef = useRef<HTMLVideoElement>(null);

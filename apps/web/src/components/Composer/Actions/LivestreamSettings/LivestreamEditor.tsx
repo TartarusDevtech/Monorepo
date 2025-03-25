@@ -11,7 +11,7 @@ import { XCircleIcon } from "@heroicons/react/24/solid";
 import { Card, Spinner, Tooltip } from "@hey/ui";
 import { getSrc } from "@livepeer/react/external";
 import { useMutation } from "@tanstack/react-query";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { usePostLiveStore } from "src/store/non-persisted/post/usePostLiveStore";
@@ -20,7 +20,7 @@ interface WrapperProps {
   children: ReactNode;
 }
 
-const Wrapper: FC<WrapperProps> = ({ children }) => {
+const Wrapper = ({ children }: WrapperProps) => {
   return (
     <Card className="flex justify-center p-3 font-bold hover:bg-gray-50 dark:hover:bg-gray-900">
       <div className="flex items-center space-x-2">{children}</div>

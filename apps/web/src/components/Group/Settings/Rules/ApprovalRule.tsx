@@ -10,7 +10,7 @@ import {
   useUpdateGroupRulesMutation
 } from "@hey/indexer";
 import { Card, CardHeader } from "@hey/ui";
-import { type FC, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
@@ -19,7 +19,7 @@ interface ApprovalRuleProps {
   group: GroupFragment;
 }
 
-const ApprovalRule: FC<ApprovalRuleProps> = ({ group }) => {
+const ApprovalRule = ({ group }: ApprovalRuleProps) => {
   const { isSuspended } = useAccountStatus();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const handleTransactionLifecycle = useTransactionLifecycle();

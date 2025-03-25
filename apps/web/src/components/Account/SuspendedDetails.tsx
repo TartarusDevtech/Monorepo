@@ -3,13 +3,12 @@ import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import getAccount from "@hey/helpers/getAccount";
 import type { AccountFragment } from "@hey/indexer";
 import { H3, Image } from "@hey/ui";
-import type { FC } from "react";
 
 interface SuspendedDetailsProps {
   account: AccountFragment;
 }
 
-const SuspendedDetails: FC<SuspendedDetailsProps> = ({ account }) => {
+const SuspendedDetails = ({ account }: SuspendedDetailsProps) => {
   const accountData = getAccount(account);
 
   return (

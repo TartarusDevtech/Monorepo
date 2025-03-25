@@ -4,14 +4,13 @@ import getAccount from "@hey/helpers/getAccount";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { AccountFragment } from "@hey/indexer";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 import { useMuteAlertStore } from "src/store/non-persisted/alert/useMuteAlertStore";
 
 interface MuteProps {
   account: AccountFragment;
 }
 
-const Mute: FC<MuteProps> = ({ account }) => {
+const Mute = ({ account }: MuteProps) => {
   const { setShowMuteOrUnmuteAlert } = useMuteAlertStore();
   const isMutedByMe = account.operations?.isMutedByMe;
 

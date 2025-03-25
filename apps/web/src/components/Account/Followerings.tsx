@@ -12,7 +12,7 @@ interface FolloweringsProps {
   account: AccountFragment;
 }
 
-const Followerings: FC<FolloweringsProps> = ({ account }) => {
+const Followerings = ({ account }: FolloweringsProps) => {
   const [showFollowingModal, setShowFollowingModal] = useState(false);
   const [showFollowersModal, setShowFollowersModal] = useState(false);
 

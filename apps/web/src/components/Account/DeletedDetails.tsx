@@ -3,13 +3,12 @@ import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import getAccount from "@hey/helpers/getAccount";
 import type { AccountFragment } from "@hey/indexer";
 import { H3, Image } from "@hey/ui";
-import type { FC } from "react";
 
 interface DeletedDetailsProps {
   account: AccountFragment;
 }
 
-const DeletedDetails: FC<DeletedDetailsProps> = ({ account }) => {
+const DeletedDetails = ({ account }: DeletedDetailsProps) => {
   const { name, usernameWithPrefix } = getAccount(account);
 
   return (
