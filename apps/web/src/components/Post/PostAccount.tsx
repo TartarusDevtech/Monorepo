@@ -6,7 +6,7 @@ import type { AccountFragment, PostGroupInfoFragment } from "@hey/indexer";
 import { Image } from "@hey/ui";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { memo } from "react";
 import AccountPreview from "../Shared/AccountPreview";
 import Slug from "../Shared/Slug";
@@ -18,12 +18,12 @@ interface PostAccountProps {
   timestamp: Date;
 }
 
-const PostAccount: FC<PostAccountProps> = ({
+const PostAccount = ({
   account,
   group,
   postSlug,
   timestamp
-}) => {
+}: PostAccountProps) => {
   const { pathname } = useRouter();
 
   const CustomLink = ({ children }: { children: ReactNode }) => (

@@ -1,6 +1,5 @@
 import SingleAccount from "@components/Shared/SingleAccount";
 import type { AccountFragment } from "@hey/indexer";
-import type { FC } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
@@ -8,7 +7,7 @@ interface MoreRelevantPeopleProps {
   accounts: AccountFragment[];
 }
 
-const MoreRelevantPeople: FC<MoreRelevantPeopleProps> = ({ accounts }) => {
+const MoreRelevantPeople = ({ accounts }: MoreRelevantPeopleProps) => {
   const { currentAccount } = useAccountStore();
 
   return (

@@ -3,14 +3,13 @@ import { ScaleIcon } from "@heroicons/react/24/outline";
 import getPostData from "@hey/helpers/getPostData";
 import type { PostMetadataFragment } from "@hey/indexer";
 import { Card } from "@hey/ui";
-import type { FC } from "react";
 import { memo } from "react";
 
 interface MetadataProps {
   metadata: PostMetadataFragment;
 }
 
-const Metadata: FC<MetadataProps> = ({ metadata }) => {
+const Metadata = ({ metadata }: MetadataProps) => {
   const filteredAsset = getPostData(metadata)?.asset;
   const license = getAssetLicense(filteredAsset?.license);
 

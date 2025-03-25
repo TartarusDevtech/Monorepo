@@ -12,7 +12,6 @@ import { H6 } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import { getSrc } from "@livepeer/react/external";
 import Link from "next/link";
-import type { FC } from "react";
 import { memo } from "react";
 import { isIOS, isMobile } from "react-device-detect";
 import Metadata from "./Metadata";
@@ -24,12 +23,12 @@ interface PostBodyProps {
   showMore?: boolean;
 }
 
-const PostBody: FC<PostBodyProps> = ({
+const PostBody = ({
   contentClassName = "",
   post,
   quoted = false,
   showMore = false
-}) => {
+}: PostBodyProps) => {
   const targetPost = isRepost(post) ? post.repostOf : post;
   const { id, metadata } = targetPost;
 

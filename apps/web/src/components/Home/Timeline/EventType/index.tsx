@@ -1,6 +1,5 @@
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { TimelineItemFragment } from "@hey/indexer";
-import type { FC } from "react";
 import Combined from "./Combined";
 import Reposted from "./Reposted";
 
@@ -13,7 +12,7 @@ interface ActionTypeProps {
   timelineItem: TimelineItemFragment;
 }
 
-const ActionType: FC<ActionTypeProps> = ({ timelineItem }) => {
+const ActionType = ({ timelineItem }: ActionTypeProps) => {
   const { reposts } = timelineItem;
   const canCombined = getCanCombined([reposts?.length || 0]);
 

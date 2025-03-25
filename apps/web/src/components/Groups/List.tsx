@@ -8,7 +8,6 @@ import {
   useGroupsQuery
 } from "@hey/indexer";
 import { Card, EmptyState, ErrorMessage } from "@hey/ui";
-import type { FC } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import { GroupsTabFocus } from ".";
@@ -17,7 +16,7 @@ interface ListProps {
   focus: GroupsTabFocus;
 }
 
-const List: FC<ListProps> = ({ focus }) => {
+const List = ({ focus }: ListProps) => {
   const { currentAccount } = useAccountStore();
 
   const request: GroupsRequest = {

@@ -3,7 +3,6 @@ import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { APP_NAME } from "@hey/data/constants";
 import { Card, H5 } from "@hey/ui";
 import Link from "next/link";
-import type { FC } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 interface StatusProps {
@@ -11,7 +10,7 @@ interface StatusProps {
   title: string;
 }
 
-const Status: FC<StatusProps> = ({ finished, title }) => (
+const Status = ({ finished, title }: StatusProps) => (
   <div className="flex items-center space-x-1.5">
     {finished ? (
       <CheckCircleIcon className="size-5" />

@@ -7,13 +7,12 @@ import {
 } from "@heroicons/react/24/outline";
 import { NotificationFeedType } from "@hey/data/enums";
 import { TabButton } from "@hey/ui";
-import type { FC } from "react";
 
 interface FeedTypeProps {
   feedType: NotificationFeedType;
 }
 
-const FeedType: FC<FeedTypeProps> = ({ feedType }) => {
+const FeedType = ({ feedType }: FeedTypeProps) => {
   const tabs = [
     {
       icon: <BellIcon className="size-4" />,

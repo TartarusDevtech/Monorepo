@@ -6,7 +6,6 @@ import type {
   PostGroupInfoFragment,
   TimelineItemFragment
 } from "@hey/indexer";
-import type { FC } from "react";
 import { usePostStore } from "src/store/non-persisted/post/usePostStore";
 import PostMenu from "./Actions/Menu";
 import PostAccount from "./PostAccount";
@@ -18,12 +17,12 @@ interface PostHeaderProps {
   quoted?: boolean;
 }
 
-const PostHeader: FC<PostHeaderProps> = ({
+const PostHeader = ({
   timelineItem,
   isNew = false,
   post,
   quoted = false
-}) => {
+}: PostHeaderProps) => {
   const { setQuotedPost } = usePostStore();
 
   const targetPost = isRepost(post) ? post?.repostOf : post;

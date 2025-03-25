@@ -4,7 +4,6 @@ import getPostData from "@hey/helpers/getPostData";
 import type { RepostNotificationFragment } from "@hey/indexer";
 import Link from "next/link";
 import plur from "plur";
-import type { FC } from "react";
 import { NotificationAccountAvatar } from "../Account";
 import AggregatedNotificationTitle from "../AggregatedNotificationTitle";
 
@@ -12,7 +11,7 @@ interface RepostNotificationProps {
   notification: RepostNotificationFragment;
 }
 
-const RepostNotification: FC<RepostNotificationProps> = ({ notification }) => {
+const RepostNotification = ({ notification }: RepostNotificationProps) => {
   const metadata = notification.post.metadata;
   const filteredContent = getPostData(metadata)?.content || "";
   const reposts = notification.reposts;

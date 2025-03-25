@@ -1,5 +1,5 @@
 import cn from "@hey/ui/cn";
-import type { Dispatch, FC, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { GroupsTabFocus } from ".";
 
 interface ListLinkProps {
@@ -9,7 +9,7 @@ interface ListLinkProps {
   type: GroupsTabFocus;
 }
 
-const ListLink: FC<ListLinkProps> = ({ focus, name, setFocus, type }) => (
+const ListLink = ({ focus, name, setFocus, type }: ListLinkProps) => (
   <button
     aria-label={name}
     className={cn(
@@ -29,7 +29,7 @@ interface ListFocusTypeProps {
   setFocus: Dispatch<SetStateAction<GroupsTabFocus>>;
 }
 
-const ListFocusType: FC<ListFocusTypeProps> = ({ focus, setFocus }) => (
+const ListFocusType = ({ focus, setFocus }: ListFocusTypeProps) => (
   <div className="mx-5 my-5 flex flex-wrap gap-3 sm:mx-0">
     <ListLink
       focus={focus}

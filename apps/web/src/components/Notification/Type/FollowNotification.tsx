@@ -2,7 +2,6 @@ import { UserPlusIcon } from "@heroicons/react/24/outline";
 import getAccount from "@hey/helpers/getAccount";
 import type { FollowNotificationFragment } from "@hey/indexer";
 import plur from "plur";
-import type { FC } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import { NotificationAccountAvatar } from "../Account";
 import AggregatedNotificationTitle from "../AggregatedNotificationTitle";
@@ -11,7 +10,7 @@ interface FollowNotificationProps {
   notification: FollowNotificationFragment;
 }
 
-const FollowNotification: FC<FollowNotificationProps> = ({ notification }) => {
+const FollowNotification = ({ notification }: FollowNotificationProps) => {
   const { currentAccount } = useAccountStore();
   const followers = notification.followers;
   const firstAccount = followers?.[0];

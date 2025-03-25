@@ -3,7 +3,6 @@ import SingleAccount from "@components/Shared/SingleAccount";
 import { UsersIcon } from "@heroicons/react/24/outline";
 import type { AccountFragment } from "@hey/indexer";
 import { EmptyState } from "@hey/ui";
-import type { FC } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
@@ -11,7 +10,7 @@ interface SuggestedProps {
   accounts: AccountFragment[];
 }
 
-const Suggested: FC<SuggestedProps> = ({ accounts }) => {
+const Suggested = ({ accounts }: SuggestedProps) => {
   const { currentAccount } = useAccountStore();
 
   if (accounts.length === 0) {

@@ -3,7 +3,6 @@ import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
 import getPostData from "@hey/helpers/getPostData";
 import type { QuoteNotificationFragment } from "@hey/indexer";
 import Link from "next/link";
-import type { FC } from "react";
 import { NotificationAccountAvatar } from "../Account";
 import AggregatedNotificationTitle from "../AggregatedNotificationTitle";
 
@@ -11,7 +10,7 @@ interface QuoteNotificationProps {
   notification: QuoteNotificationFragment;
 }
 
-const QuoteNotification: FC<QuoteNotificationProps> = ({ notification }) => {
+const QuoteNotification = ({ notification }: QuoteNotificationProps) => {
   const metadata = notification.quote.metadata;
   const filteredContent = getPostData(metadata)?.content || "";
   const firstAccount = notification.quote.author;

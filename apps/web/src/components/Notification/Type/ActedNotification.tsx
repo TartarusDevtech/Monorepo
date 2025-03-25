@@ -4,7 +4,6 @@ import getPostData from "@hey/helpers/getPostData";
 import { isRepost } from "@hey/helpers/postHelpers";
 import Link from "next/link";
 import plur from "plur";
-import type { FC } from "react";
 import { NotificationAccountAvatar } from "../Account";
 import AggregatedNotificationTitle from "../AggregatedNotificationTitle";
 
@@ -12,7 +11,7 @@ interface ActedNotificationProps {
   notification: any;
 }
 
-const ActedNotification: FC<ActedNotificationProps> = ({ notification }) => {
+const ActedNotification = ({ notification }: ActedNotificationProps) => {
   const post = notification.post;
   const targetPost = isRepost(post) ? post.repostOf : post;
   const { metadata } = targetPost;

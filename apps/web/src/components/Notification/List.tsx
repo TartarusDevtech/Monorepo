@@ -7,7 +7,6 @@ import {
 } from "@hey/indexer";
 import { Card, EmptyState, ErrorMessage } from "@hey/ui";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { usePreferencesStore } from "src/store/persisted/usePreferencesStore";
 import NotificationShimmer from "./Shimmer";
@@ -22,7 +21,7 @@ interface ListProps {
   feedType: string;
 }
 
-const List: FC<ListProps> = ({ feedType }) => {
+const List = ({ feedType }: ListProps) => {
   const { includeLowScore } = usePreferencesStore();
 
   const getNotificationType = () => {

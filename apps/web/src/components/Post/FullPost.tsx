@@ -8,7 +8,6 @@ import type { AnyPostFragment } from "@hey/indexer";
 import { Card, Tooltip } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import { useQuery } from "@tanstack/react-query";
-import type { FC } from "react";
 import { useHiddenCommentFeedStore } from ".";
 import PostActions from "./Actions";
 import HiddenPost from "./HiddenPost";
@@ -23,7 +22,7 @@ interface FullPostProps {
   post: AnyPostFragment;
 }
 
-const FullPost: FC<FullPostProps> = ({ hasHiddenComments, post }) => {
+const FullPost = ({ hasHiddenComments, post }: FullPostProps) => {
   const { setShowHiddenComments, showHiddenComments } =
     useHiddenCommentFeedStore();
   const isStaff = hasAccess(Features.Staff);

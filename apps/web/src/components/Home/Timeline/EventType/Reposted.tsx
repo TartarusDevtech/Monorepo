@@ -1,13 +1,12 @@
 import Accounts from "@components/Shared/Accounts";
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 import type { RepostFragment } from "@hey/indexer";
-import type { FC } from "react";
 
 interface RepostedProps {
   reposts: RepostFragment[];
 }
 
-const Reposted: FC<RepostedProps> = ({ reposts }) => {
+const Reposted = ({ reposts }: RepostedProps) => {
   const getRepostedAccounts = () => {
     let accounts = reposts.map((repost) => repost.author);
     accounts = accounts.filter(

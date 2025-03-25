@@ -1,7 +1,6 @@
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { AccountFragment } from "@hey/indexer";
 import Link from "next/link";
-import type { FC } from "react";
 import { NotificationAccountName } from "./Account";
 
 interface AggregatedNotificationTitleProps {
@@ -11,12 +10,12 @@ interface AggregatedNotificationTitleProps {
   type?: string;
 }
 
-const AggregatedNotificationTitle: FC<AggregatedNotificationTitleProps> = ({
+const AggregatedNotificationTitle = ({
   firstAccount,
   linkToType,
   text,
   type
-}) => {
+}: AggregatedNotificationTitleProps) => {
   return (
     <div>
       <NotificationAccountName account={firstAccount} />

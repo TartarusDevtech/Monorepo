@@ -12,7 +12,7 @@ import {
 } from "@hey/indexer";
 import { Button, Card, CardHeader, Image, Input, Tooltip } from "@hey/ui";
 import { useRouter } from "next/router";
-import { type FC, type RefObject, useEffect, useRef, useState } from "react";
+import { type RefObject, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import usePollTransactionStatus from "src/hooks/usePollTransactionStatus";
 import usePreventScrollOnNumberInput from "src/hooks/usePreventScrollOnNumberInput";
@@ -23,7 +23,7 @@ interface SuperJoinProps {
   group: GroupFragment;
 }
 
-const SuperJoin: FC<SuperJoinProps> = ({ group }) => {
+const SuperJoin = ({ group }: SuperJoinProps) => {
   const { reload } = useRouter();
   const { isSuspended } = useAccountStatus();
   const [isSubmitting, setIsSubmitting] = useState(false);

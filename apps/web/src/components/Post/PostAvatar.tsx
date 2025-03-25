@@ -7,7 +7,6 @@ import { Image } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import type { FC } from "react";
 import { memo } from "react";
 
 interface PostAvatarProps {
@@ -16,11 +15,11 @@ interface PostAvatarProps {
   quoted?: boolean;
 }
 
-const PostAvatar: FC<PostAvatarProps> = ({
+const PostAvatar = ({
   timelineItem,
   post,
   quoted = false
-}) => {
+}: PostAvatarProps) => {
   const { push } = useRouter();
   const targetPost = isRepost(post) ? post?.repostOf : post;
   const rootPost = timelineItem ? timelineItem?.primary : targetPost;

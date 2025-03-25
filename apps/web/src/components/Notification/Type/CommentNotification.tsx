@@ -3,7 +3,6 @@ import { ChatBubbleLeftIcon } from "@heroicons/react/24/outline";
 import getPostData from "@hey/helpers/getPostData";
 import type { CommentNotificationFragment } from "@hey/indexer";
 import Link from "next/link";
-import type { FC } from "react";
 import { NotificationAccountAvatar } from "../Account";
 import AggregatedNotificationTitle from "../AggregatedNotificationTitle";
 
@@ -11,9 +10,7 @@ interface CommentNotificationProps {
   notification: CommentNotificationFragment;
 }
 
-const CommentNotification: FC<CommentNotificationProps> = ({
-  notification
-}) => {
+const CommentNotification = ({ notification }: CommentNotificationProps) => {
   const metadata = notification.comment.metadata;
   const filteredContent = getPostData(metadata)?.content || "";
   const firstAccount = notification.comment.author;
