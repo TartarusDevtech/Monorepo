@@ -1,4 +1,4 @@
-import { trpc } from "@helpers/createTRPCClient";
+import { trpc } from "@helpers/trpc";
 import { ALLOWED_HTML_HOSTS } from "@hey/data/og";
 import getFavicon from "@hey/helpers/getFavicon";
 import { useQuery } from "@tanstack/react-query";

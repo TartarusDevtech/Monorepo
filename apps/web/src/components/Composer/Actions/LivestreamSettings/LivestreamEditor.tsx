@@ -1,6 +1,6 @@
 import Video from "@components/Shared/Video";
-import { trpc } from "@helpers/createTRPCClient";
 import errorToast from "@helpers/errorToast";
+import { trpc } from "@helpers/trpc";
 import {
   ClipboardDocumentIcon,
   SignalIcon,

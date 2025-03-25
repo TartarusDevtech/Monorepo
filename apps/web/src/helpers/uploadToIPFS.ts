@@ -4,8 +4,8 @@ import { EVER_API, EVER_BUCKET, EVER_REGION } from "@hey/data/constants";
 import generateUUID from "@hey/helpers/generateUUID";
 import { immutable } from "@lens-chain/storage-client";
 import { CHAIN } from "src/constants";
-import { queryClient, trpc } from "./createTRPCClient";
 import { storageClient } from "./storageClient";
+import { queryClient, trpc } from "./trpc";
 
 const FALLBACK_TYPE = "image/jpeg";
 const FILE_SIZE_LIMIT_MB = 5 * 1024 * 1024; // 5MB in bytes

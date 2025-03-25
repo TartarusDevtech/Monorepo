@@ -1,6 +1,6 @@
 import ToggleWrapper from "@components/Staff/Accounts/Overview/Tool/ToggleWrapper";
-import { trpc } from "@helpers/createTRPCClient";
 import errorToast from "@helpers/errorToast";
+import { trpc } from "@helpers/trpc";
 import { Permission, PermissionId } from "@hey/data/permissions";
 import { Toggle } from "@hey/ui";
 import { useMutation, useQuery } from "@tanstack/react-query";

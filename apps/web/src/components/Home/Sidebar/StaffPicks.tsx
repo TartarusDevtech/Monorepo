@@ -1,6 +1,6 @@
 import SingleAccountShimmer from "@components/Shared/Shimmer/SingleAccountShimmer";
 import SingleAccount from "@components/Shared/SingleAccount";
-import { trpc } from "@helpers/createTRPCClient";
+import { trpc } from "@helpers/trpc";
 import { CursorArrowRippleIcon as CursorArrowRippleIconOutline } from "@heroicons/react/24/outline";
 import { useStaffPicksQuery } from "@hey/indexer";
 import type { StaffPicksRouterOutput } from "@hey/rpc/src/routers/staffPicks";

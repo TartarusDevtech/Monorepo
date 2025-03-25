@@ -1,7 +1,7 @@
 import ToggleWithHelper from "@components/Shared/ToggleWithHelper";
 import trackEvent from "@helpers/analytics";
-import { trpc } from "@helpers/createTRPCClient";
 import errorToast from "@helpers/errorToast";
+import { trpc } from "@helpers/trpc";
 import { SwatchIcon } from "@heroicons/react/24/outline";
 import { Events } from "@hey/data/events";
 import { useMutation } from "@tanstack/react-query";

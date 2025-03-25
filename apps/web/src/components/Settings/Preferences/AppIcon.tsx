@@ -1,6 +1,6 @@
 import trackEvent from "@helpers/analytics";
-import { trpc } from "@helpers/createTRPCClient";
 import errorToast from "@helpers/errorToast";
+import { trpc } from "@helpers/trpc";
 import { CheckCircleIcon as CheckCircleIconOutline } from "@heroicons/react/24/outline";
 import { CheckCircleIcon as CheckCircleIconSolid } from "@heroicons/react/24/solid";
 import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";

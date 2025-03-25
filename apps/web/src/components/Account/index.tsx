@@ -1,8 +1,8 @@
 import MetaTags from "@components/Common/MetaTags";
 import NewPost from "@components/Composer/NewPost";
 import Cover from "@components/Shared/Cover";
-import { trpc } from "@helpers/createTRPCClient";
 import hasAccess from "@helpers/hasAccess";
+import { trpc } from "@helpers/trpc";
 import { NoSymbolIcon } from "@heroicons/react/24/outline";
 import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { AccountFeedType } from "@hey/data/enums";

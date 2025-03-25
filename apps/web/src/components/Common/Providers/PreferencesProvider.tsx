@@ -1,5 +1,5 @@
-import { trpc } from "@helpers/createTRPCClient";
 import getCurrentSession from "@helpers/getCurrentSession";
+import { trpc } from "@helpers/trpc";
 import { Permission } from "@hey/data/permissions";
 import { useQuery } from "@tanstack/react-query";
 import { type FC, useEffect } from "react";

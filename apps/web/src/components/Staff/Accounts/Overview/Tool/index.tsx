@@ -1,5 +1,5 @@
 import SingleAccount from "@components/Shared/SingleAccount";
-import { trpc } from "@helpers/createTRPCClient";
+import { trpc } from "@helpers/trpc";
 import type { AccountFragment } from "@hey/indexer";
 import { useQuery } from "@tanstack/react-query";
 import type { FC } from "react";
