@@ -1,11 +1,9 @@
-import type { AmountInput } from "@hey/indexer";
+import type { PayToCollectInput } from "@hey/indexer";
 
 export type CollectActionType = {
   enabled?: boolean;
-  amount?: AmountInput | null;
-  recipients?: RecipientDataInput[];
+  payToCollect?: PayToCollectInput;
   collectLimit?: null | number;
   followerOnly?: boolean;
-  referralShare?: number;
   endsAt?: null | string;
 };

@@ -2,13 +2,11 @@ import type { CollectActionType } from "@hey/types/hey";
 import { create } from "zustand";
 
 const INITIAL_COLLECT_ACTION: CollectActionType = {
-  amount: null,
   collectLimit: null,
-  endsAt: null,
   followerOnly: false,
-  recipients: undefined,
-  referralShare: 0,
-  enabled: false
+  payToCollect: undefined,
+  enabled: false,
+  endsAt: null
 };
 
 interface State {

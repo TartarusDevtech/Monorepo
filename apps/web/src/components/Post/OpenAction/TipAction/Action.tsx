@@ -3,7 +3,10 @@ import FundButton from "@components/Shared/Fund/FundButton";
 import LoginButton from "@components/Shared/LoginButton";
 import trackEvent from "@helpers/analytics";
 import errorToast from "@helpers/errorToast";
-import { DEFAULT_COLLECT_TOKEN, IS_MAINNET } from "@hey/data/constants";
+import {
+  DEFAULT_COLLECT_TOKEN,
+  WRAPPED_NATIVE_TOKEN_SYMBOL
+} from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
 import {
@@ -40,7 +43,6 @@ const Action = ({ closePopover, post }: ActionProps) => {
   const { cache } = useApolloClient();
   const inputRef = useRef<HTMLInputElement>(null);
   usePreventScrollOnNumberInput(inputRef as RefObject<HTMLInputElement>);
-  const symbol = IS_MAINNET ? "wGHO" : "wGRASS";
 
   const { data: balanceData, isLoading: balanceLoading } = useBalance({
     address: currentAccount?.address,
@@ -69,7 +71,7 @@ const Action = ({ closePopover, post }: ActionProps) => {
     closePopover();
     updateCache();
     trackEvent(Events.Post.Tip, { amount: amount });
-    toast.success(`Tipped ${amount} ${symbol}`);
+    toast.success(`Tipped ${amount} ${WRAPPED_NATIVE_TOKEN_SYMBOL}`);
   };
 
   const onError = (error: any) => {
@@ -144,7 +146,7 @@ const Action = ({ closePopover, post }: ActionProps) => {
           <span>Balance:</span>
           <span>
             {balanceData ? (
-              `${balance} ${symbol}`
+              `${balance} ${WRAPPED_NATIVE_TOKEN_SYMBOL}`
             ) : (
               <div className="shimmer h-2.5 w-14 rounded-full" />
             )}

@@ -1,6 +1,6 @@
 import trackEvent from "@helpers/analytics";
 import errorToast from "@helpers/errorToast";
-import { IS_MAINNET } from "@hey/data/constants";
+import { WRAPPED_NATIVE_TOKEN_SYMBOL } from "@hey/data/constants";
 import { Events } from "@hey/data/events";
 import { useWrapTokensMutation } from "@hey/indexer";
 import { Button, Input, Modal } from "@hey/ui";
@@ -68,7 +68,7 @@ const Wrap = ({ value, refetch }: WrapProps) => {
         onClick={() => setShowModal(true)}
         disabled={isSubmitting || valueToWrap === "0"}
       >
-        Wrap to {IS_MAINNET ? "wGHO" : "wGRASS"}
+        Wrap to {WRAPPED_NATIVE_TOKEN_SYMBOL}
       </Button>
       <Modal title="Wrap" show={showModal} onClose={() => setShowModal(false)}>
         <div className="p-5">

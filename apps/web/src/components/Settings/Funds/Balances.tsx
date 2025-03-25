@@ -1,6 +1,9 @@
 import FundButton from "@components/Shared/Fund/FundButton";
 import Loader from "@components/Shared/Loader";
-import { DEFAULT_COLLECT_TOKEN, IS_MAINNET } from "@hey/data/constants";
+import {
+  DEFAULT_COLLECT_TOKEN,
+  NATIVE_TOKEN_SYMBOL
+} from "@hey/data/constants";
 import { tokens } from "@hey/data/tokens";
 import getTokenImage from "@hey/helpers/getTokenImage";
 import { useAccountBalancesQuery } from "@hey/indexer";
@@ -68,10 +71,7 @@ const Balances = () => {
       {data?.accountBalances.map((balance, index) => (
         <div key={index}>
           {balance.__typename === "NativeAmount" && (
-            <TokenBalance
-              value={balance.value}
-              symbol={IS_MAINNET ? "GHO" : "GRASS"}
-            />
+            <TokenBalance value={balance.value} symbol={NATIVE_TOKEN_SYMBOL} />
           )}
           {balance.__typename === "Erc20Amount" && (
             <TokenBalance

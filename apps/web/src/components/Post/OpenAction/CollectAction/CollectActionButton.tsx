@@ -1,6 +1,6 @@
 import { useApolloClient } from "@apollo/client";
+import FundButton from "@components/Shared/Fund/FundButton";
 import LoginButton from "@components/Shared/LoginButton";
-import NoBalanceError from "@components/Shared/NoBalanceError";
 import trackEvent from "@helpers/analytics";
 import errorToast from "@helpers/errorToast";
 import { HEY_TREASURY } from "@hey/data/constants";
@@ -13,7 +13,7 @@ import {
   type PostFragment,
   useExecutePostActionMutation
 } from "@hey/indexer";
-import { Button, WarningMessage } from "@hey/ui";
+import { Button } from "@hey/ui";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
@@ -135,7 +135,7 @@ const CollectActionButton = ({
           action: {
             simpleCollect: {
               selected: true,
-              referrals: [{ address: HEY_TREASURY, percent: 5 }]
+              referrals: [{ address: HEY_TREASURY, percent: 100 }]
             }
           }
         }
@@ -161,12 +161,7 @@ const CollectActionButton = ({
   }
 
   if (!hasAmount) {
-    return (
-      <WarningMessage
-        className="mt-5 w-full"
-        message={<NoBalanceError assetSymbol={collectAction?.assetSymbol} />}
-      />
-    );
+    return <FundButton className="mt-5 w-full" />;
   }
 
   return (

@@ -1,7 +1,12 @@
 import trackEvent from "@helpers/analytics";
 import errorToast from "@helpers/errorToast";
 import { getSimplePaymentDetails } from "@helpers/rules";
-import { DEFAULT_COLLECT_TOKEN, STATIC_IMAGES_URL } from "@hey/data/constants";
+import {
+  DEFAULT_COLLECT_TOKEN,
+  IS_MAINNET,
+  STATIC_IMAGES_URL,
+  WRAPPED_NATIVE_TOKEN_SYMBOL
+} from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
 import {
@@ -113,11 +118,16 @@ const SuperJoin = ({ group }: SuperJoinProps) => {
           label="Amount"
           placeholder="1"
           prefix={
-            <Tooltip content="Payable in wGHO" placement="top">
+            <Tooltip
+              content={`Payable in ${WRAPPED_NATIVE_TOKEN_SYMBOL}`}
+              placement="top"
+            >
               <Image
                 className="size-5"
-                src={`${STATIC_IMAGES_URL}/tokens/gho.svg`}
-                alt="wGHO"
+                src={`${STATIC_IMAGES_URL}/tokens/${
+                  IS_MAINNET ? "gho.svg" : "grass.svg"
+                }`}
+                alt={WRAPPED_NATIVE_TOKEN_SYMBOL}
               />
             </Tooltip>
           }

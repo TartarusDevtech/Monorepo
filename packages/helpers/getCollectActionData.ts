@@ -17,13 +17,16 @@ const getCollectActionData = (
   switch (collectAction.__typename) {
     case "SimpleCollectAction":
       return {
-        amount: Number.parseFloat(collectAction.amount?.value || "0"),
-        assetAddress: collectAction.amount?.asset?.contract?.address,
-        assetDecimals: collectAction.amount?.asset?.decimals,
-        assetSymbol: collectAction.amount?.asset?.symbol,
+        amount: Number.parseFloat(
+          collectAction.payToCollect?.amount?.value || "0"
+        ),
+        assetAddress:
+          collectAction.payToCollect?.amount?.asset?.contract?.address,
+        assetDecimals: collectAction.payToCollect?.amount?.asset?.decimals,
+        assetSymbol: collectAction.payToCollect?.amount?.asset?.symbol,
         collectLimit: Number(collectAction.collectLimit),
         endsAt: collectAction.endsAt,
-        recipients: collectAction.recipients || []
+        recipients: collectAction.payToCollect?.recipients || []
       };
     default:
       return null;

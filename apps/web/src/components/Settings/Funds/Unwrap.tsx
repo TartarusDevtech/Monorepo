@@ -1,6 +1,6 @@
 import trackEvent from "@helpers/analytics";
 import errorToast from "@helpers/errorToast";
-import { IS_MAINNET } from "@hey/data/constants";
+import { NATIVE_TOKEN_SYMBOL } from "@hey/data/constants";
 import { Events } from "@hey/data/events";
 import { useUnwrapTokensMutation } from "@hey/indexer";
 import { Button, Input, Modal } from "@hey/ui";
@@ -68,7 +68,7 @@ const Unwrap = ({ value, refetch }: UnwrapProps) => {
         onClick={() => setShowModal(true)}
         disabled={isSubmitting}
       >
-        Unwrap to {IS_MAINNET ? "GHO" : "GRASS"}
+        Unwrap to {NATIVE_TOKEN_SYMBOL}
       </Button>
       <Modal
         title="Unwrap"

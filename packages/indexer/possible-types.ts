@@ -6,6 +6,10 @@ export interface PossibleTypesResultData {
 const result: PossibleTypesResultData = {
   possibleTypes: {
     AccountAction: ["TippingAccountAction", "UnknownAccountAction"],
+    AccountActionExecuted: [
+      "TippingAccountActionExecuted",
+      "UnknownAccountActionExecuted"
+    ],
     AccountAvailable: ["AccountManaged", "AccountOwned"],
     AccountFollowOperationValidationOutcome: [
       "AccountFollowOperationValidationFailed",
@@ -34,13 +38,6 @@ const result: PossibleTypesResultData = {
       "TransactionWillFail"
     ],
     AddAppSignersResult: [
-      "SelfFundedTransactionRequest",
-      "SponsoredTransactionRequest",
-      "TransactionWillFail"
-    ],
-    AddGroupMembersResult: [
-      "AddGroupMembersResponse",
-      "GroupOperationValidationFailed",
       "SelfFundedTransactionRequest",
       "SponsoredTransactionRequest",
       "TransactionWillFail"
@@ -267,9 +264,13 @@ const result: PossibleTypesResultData = {
       "NamespaceOperationValidationUnknown"
     ],
     Notification: [
+      "AccountActionExecutedNotification",
       "CommentNotification",
       "FollowNotification",
+      "GroupMembershipRequestApprovedNotification",
+      "GroupMembershipRequestRejectedNotification",
       "MentionNotification",
+      "PostActionExecutedNotification",
       "QuoteNotification",
       "ReactionNotification",
       "RepostNotification"
@@ -284,6 +285,11 @@ const result: PossibleTypesResultData = {
       "SimpleCollectActionContract",
       "TippingPostActionContract",
       "UnknownPostActionContract"
+    ],
+    PostActionExecuted: [
+      "SimpleCollectPostActionExecuted",
+      "TippingPostActionExecuted",
+      "UnknownPostActionExecuted"
     ],
     PostMention: ["AccountMention", "GroupMention"],
     PostMetadata: [

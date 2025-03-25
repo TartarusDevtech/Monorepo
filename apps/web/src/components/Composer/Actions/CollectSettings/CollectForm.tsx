@@ -9,7 +9,6 @@ import { isAddress } from "viem";
 import AmountConfig from "./AmountConfig";
 import CollectLimitConfig from "./CollectLimitConfig";
 import FollowersConfig from "./FollowersConfig";
-import ReferralConfig from "./ReferralConfig";
 import SplitConfig from "./SplitConfig";
 import TimeLimitConfig from "./TimeLimitConfig";
 
@@ -18,10 +17,10 @@ interface CollectFormProps {
 }
 
 const CollectForm = ({ setShowModal }: CollectFormProps) => {
-  const { collectAction, reset, setCollectAction } = useCollectActionStore();
+  const { collectAction, setCollectAction, reset } = useCollectActionStore();
   const { setLicense } = usePostLicenseStore();
 
-  const recipients = collectAction.recipients || [];
+  const recipients = collectAction.payToCollect?.recipients || [];
   const splitTotal = recipients.reduce((acc, { percent }) => acc + percent, 0);
 
   const validationChecks = {
@@ -70,16 +69,11 @@ const CollectForm = ({ setShowModal }: CollectFormProps) => {
         <>
           <div className="m-5">
             <AmountConfig setCollectType={setCollectType} />
-            {collectAction.amount?.value && (
-              <>
-                <ReferralConfig setCollectType={setCollectType} />
-                <SplitConfig
-                  isRecipientsDuplicated={
-                    validationChecks.isRecipientsDuplicated
-                  }
-                  setCollectType={setCollectType}
-                />
-              </>
+            {collectAction.payToCollect?.amount.value && (
+              <SplitConfig
+                isRecipientsDuplicated={validationChecks.isRecipientsDuplicated}
+                setCollectType={setCollectType}
+              />
             )}
             <CollectLimitConfig setCollectType={setCollectType} />
             <TimeLimitConfig setCollectType={setCollectType} />
@@ -103,7 +97,9 @@ const CollectForm = ({ setShowModal }: CollectFormProps) => {
         </Button>
         <Button
           disabled={
-            (Number.parseFloat(collectAction.amount?.value as string) <= 0 &&
+            (Number.parseFloat(
+              collectAction.payToCollect?.amount.value as string
+            ) <= 0 &&
               collectAction.enabled) ||
             Object.values(validationChecks).some(Boolean)
           }

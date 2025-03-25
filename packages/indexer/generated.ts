@@ -80,6 +80,14 @@ export type AccountActionExecuteInput = {
   unknown?: InputMaybe<UnknownActionExecuteInput>;
 };
 
+export type AccountActionExecuted = TippingAccountActionExecuted | UnknownAccountActionExecuted;
+
+export type AccountActionExecutedNotification = {
+  __typename?: 'AccountActionExecutedNotification';
+  actions: Array<AccountActionExecuted>;
+  id: Scalars['GeneratedNotificationId']['output'];
+};
+
 export type AccountActionFilter = {
   address?: InputMaybe<Scalars['EvmAddress']['input']>;
   tipping?: InputMaybe<Scalars['AlwaysTrue']['input']>;
@@ -510,19 +518,6 @@ export type AddAppSignersRequest = {
 };
 
 export type AddAppSignersResult = SelfFundedTransactionRequest | SponsoredTransactionRequest | TransactionWillFail;
-
-export type AddGroupMembersRequest = {
-  accounts: Array<Scalars['EvmAddress']['input']>;
-  group: Scalars['EvmAddress']['input'];
-  rulesProcessingParams?: InputMaybe<Array<GroupRulesProcessingParams>>;
-};
-
-export type AddGroupMembersResponse = {
-  __typename?: 'AddGroupMembersResponse';
-  hash: Scalars['TxHash']['output'];
-};
-
-export type AddGroupMembersResult = AddGroupMembersResponse | GroupOperationValidationFailed | SelfFundedTransactionRequest | SponsoredTransactionRequest | TransactionWillFail;
 
 export type AddReactionFailure = {
   __typename?: 'AddReactionFailure';
@@ -961,11 +956,10 @@ export type CreateAccountResponse = {
 
 export type CreateAccountWithUsernameRequest = {
   accountManager?: InputMaybe<Array<Scalars['EvmAddress']['input']>>;
-  assignNamespaceRuleProcessingParams?: InputMaybe<Array<NamespaceRulesProcessingParams>>;
-  createNamespaceRuleProcessingParams?: InputMaybe<Array<NamespaceRulesProcessingParams>>;
+  assignUsernameRuleProcessingParams?: InputMaybe<Array<NamespaceRulesProcessingParams>>;
+  createUsernameRuleProcessingParams?: InputMaybe<Array<NamespaceRulesProcessingParams>>;
   enableSignless?: Scalars['Boolean']['input'];
   metadataUri: Scalars['URI']['input'];
-  unassignAccountNamespaceRuleProcessingParams?: InputMaybe<Array<NamespaceRulesProcessingParams>>;
   username: UsernameInput;
 };
 
@@ -1962,6 +1956,20 @@ export type GroupMembershipRequest = {
   ruleId: Scalars['RuleId']['output'];
 };
 
+export type GroupMembershipRequestApprovedNotification = {
+  __typename?: 'GroupMembershipRequestApprovedNotification';
+  approvedBy: Account;
+  group: Group;
+  id: Scalars['GeneratedNotificationId']['output'];
+};
+
+export type GroupMembershipRequestRejectedNotification = {
+  __typename?: 'GroupMembershipRequestRejectedNotification';
+  group: Group;
+  id: Scalars['GeneratedNotificationId']['output'];
+  rejectedBy: Account;
+};
+
 export type GroupMembershipRequestsFilter = {
   searchBy?: InputMaybe<UsernameSearchInput>;
 };
@@ -2674,7 +2682,6 @@ export type Mutation = {
   addAppFeeds: AddAppFeedsResult;
   addAppGroups: AddAppGroupsResult;
   addAppSigners: AddAppSignersResult;
-  addGroupMembers: AddGroupMembersResult;
   addPostNotInterested: Scalars['Void']['output'];
   addReaction: AddReactionResult;
   approveGroupMembershipRequests: ApproveGroupMembershipResult;
@@ -2808,11 +2815,6 @@ export type MutationAddAppGroupsArgs = {
 
 export type MutationAddAppSignersArgs = {
   request: AddAppSignersRequest;
-};
-
-
-export type MutationAddGroupMembersArgs = {
-  request: AddGroupMembersRequest;
 };
 
 
@@ -3488,7 +3490,7 @@ export type NotIndexedYetStatus = {
   txHasMined: Scalars['Boolean']['output'];
 };
 
-export type Notification = CommentNotification | FollowNotification | MentionNotification | QuoteNotification | ReactionNotification | RepostNotification;
+export type Notification = AccountActionExecutedNotification | CommentNotification | FollowNotification | GroupMembershipRequestApprovedNotification | GroupMembershipRequestRejectedNotification | MentionNotification | PostActionExecutedNotification | QuoteNotification | ReactionNotification | RepostNotification;
 
 export type NotificationAccountFollow = {
   __typename?: 'NotificationAccountFollow';
@@ -3531,7 +3533,11 @@ export type NotificationRequest = {
 
 export enum NotificationType {
   Commented = 'COMMENTED',
+  ExecutedAccountAction = 'EXECUTED_ACCOUNT_ACTION',
+  ExecutedPostAction = 'EXECUTED_POST_ACTION',
   Followed = 'FOLLOWED',
+  GroupMembershipRequestApproved = 'GROUP_MEMBERSHIP_REQUEST_APPROVED',
+  GroupMembershipRequestRejected = 'GROUP_MEMBERSHIP_REQUEST_REJECTED',
   Mentioned = 'MENTIONED',
   Quoted = 'QUOTED',
   Reacted = 'REACTED',
@@ -3740,6 +3746,19 @@ export type PausingRequest = {
 
 export type PausingResult = SelfFundedTransactionRequest | SponsoredTransactionRequest | TransactionWillFail;
 
+export type PayToCollectConfig = {
+  __typename?: 'PayToCollectConfig';
+  amount: Erc20Amount;
+  recipients: Array<RecipientPercent>;
+  referralShare?: Maybe<Scalars['Float']['output']>;
+};
+
+export type PayToCollectInput = {
+  amount: AmountInput;
+  recipients: Array<RecipientPercentInput>;
+  referralShare?: InputMaybe<Scalars['Float']['input']>;
+};
+
 export type PaymasterParams = {
   __typename?: 'PaymasterParams';
   paymaster: Scalars['EvmAddress']['output'];
@@ -3820,6 +3839,15 @@ export type PostActionExecuteInput = {
   simpleCollect?: InputMaybe<SimpleCollectExecuteInput>;
   tipping?: InputMaybe<AmountInput>;
   unknown?: InputMaybe<UnknownActionExecuteInput>;
+};
+
+export type PostActionExecuted = SimpleCollectPostActionExecuted | TippingPostActionExecuted | UnknownPostActionExecuted;
+
+export type PostActionExecutedNotification = {
+  __typename?: 'PostActionExecutedNotification';
+  actions: Array<PostActionExecuted>;
+  id: Scalars['GeneratedNotificationId']['output'];
+  post: Post;
 };
 
 export type PostActionFilter = {
@@ -4663,12 +4691,12 @@ export type ReactionNotification = {
 export type RecipientPercent = {
   __typename?: 'RecipientPercent';
   address: Scalars['EvmAddress']['output'];
-  percent: Scalars['Int']['output'];
+  percent: Scalars['Float']['output'];
 };
 
 export type RecipientPercentInput = {
   address: Scalars['EvmAddress']['input'];
-  percent: Scalars['Int']['input'];
+  percent: Scalars['Float']['input'];
 };
 
 export type RecommendAccount = {
@@ -4682,7 +4710,7 @@ export type ReferencingPostInput = {
 
 export type ReferralCut = {
   address: Scalars['EvmAddress']['input'];
-  percent: Scalars['Int']['input'];
+  percent: Scalars['Float']['input'];
 };
 
 export type RefreshMetadataRequest = {
@@ -4945,24 +4973,20 @@ export type SignedAuthChallenge = {
 export type SimpleCollectAction = {
   __typename?: 'SimpleCollectAction';
   address: Scalars['EvmAddress']['output'];
-  amount?: Maybe<Erc20Amount>;
   collectLimit?: Maybe<Scalars['Int']['output']>;
   collectNftAddress: Scalars['EvmAddress']['output'];
   endsAt?: Maybe<Scalars['DateTime']['output']>;
   followerOnGraph?: Maybe<FollowerOn>;
   isImmutable: Scalars['Boolean']['output'];
-  recipients?: Maybe<Array<RecipientPercent>>;
-  referralShare?: Maybe<Scalars['Int']['output']>;
+  payToCollect?: Maybe<PayToCollectConfig>;
 };
 
 export type SimpleCollectActionConfigInput = {
-  amount?: InputMaybe<AmountInput>;
   collectLimit?: InputMaybe<Scalars['Int']['input']>;
   endsAt?: InputMaybe<Scalars['DateTime']['input']>;
   followerOnGraph?: InputMaybe<FollowerOnInput>;
   isImmutable?: Scalars['Boolean']['input'];
-  recipients?: InputMaybe<Array<RecipientPercentInput>>;
-  referralShare?: InputMaybe<Scalars['Int']['input']>;
+  payToCollect?: InputMaybe<PayToCollectInput>;
 };
 
 export type SimpleCollectActionContract = {
@@ -4973,6 +4997,13 @@ export type SimpleCollectActionContract = {
 export type SimpleCollectExecuteInput = {
   referrals?: InputMaybe<Array<ReferralCut>>;
   selected: Scalars['AlwaysTrue']['input'];
+};
+
+export type SimpleCollectPostActionExecuted = {
+  __typename?: 'SimpleCollectPostActionExecuted';
+  action: SimpleCollectAction;
+  executedAt: Scalars['DateTime']['output'];
+  executedBy: Account;
 };
 
 export type SimpleCollectValidationFailed = {
@@ -5013,6 +5044,7 @@ export type SimplePaymentGroupRuleConfig = {
 };
 
 export enum SnsNotificationType {
+  AccountActionExecuted = 'ACCOUNT_ACTION_EXECUTED',
   AccountBlocked = 'ACCOUNT_BLOCKED',
   AccountContentConsumed = 'ACCOUNT_CONTENT_CONSUMED',
   AccountCreated = 'ACCOUNT_CREATED',
@@ -5034,8 +5066,8 @@ export enum SnsNotificationType {
   MediaSnapshotSuccess = 'MEDIA_SNAPSHOT_SUCCESS',
   MetadataSnapshotError = 'METADATA_SNAPSHOT_ERROR',
   MetadataSnapshotSuccess = 'METADATA_SNAPSHOT_SUCCESS',
-  MlProfileSignal = 'MlProfileSignal',
-  PostActionCompleted = 'POST_ACTION_COMPLETED',
+  MlAccountSignal = 'ML_ACCOUNT_SIGNAL',
+  PostActionExecuted = 'POST_ACTION_EXECUTED',
   PostCollected = 'POST_COLLECTED',
   PostCreated = 'POST_CREATED',
   PostDeleted = 'POST_DELETED',
@@ -5103,7 +5135,8 @@ export type SpaceMetadata = {
 };
 
 export enum SponsoredFallbackReason {
-  InvolvesFunds = 'INVOLVES_FUNDS',
+  CannotDelegate = 'CANNOT_DELEGATE',
+  RequiresSignature = 'REQUIRES_SIGNATURE',
   SignlessDisabled = 'SIGNLESS_DISABLED',
   SignlessFailed = 'SIGNLESS_FAILED'
 }
@@ -5846,9 +5879,23 @@ export type TippingAccountAction = {
   address: Scalars['EvmAddress']['output'];
 };
 
+export type TippingAccountActionExecuted = {
+  __typename?: 'TippingAccountActionExecuted';
+  amount: Erc20Amount;
+  executedAt: Scalars['DateTime']['output'];
+  executedBy: Account;
+};
+
 export type TippingPostActionContract = {
   __typename?: 'TippingPostActionContract';
   address: Scalars['EvmAddress']['output'];
+};
+
+export type TippingPostActionExecuted = {
+  __typename?: 'TippingPostActionExecuted';
+  amount: Erc20Amount;
+  executedAt: Scalars['DateTime']['output'];
+  executedBy: Account;
 };
 
 export type TokenAmountInput = {
@@ -6001,7 +6048,11 @@ export enum TransactionOperation {
   GroupRuleReconfigured = 'GROUP_RULE_RECONFIGURED',
   GroupRuleSelectorDisabled = 'GROUP_RULE_SELECTOR_DISABLED',
   GroupRuleSelectorEnabled = 'GROUP_RULE_SELECTOR_ENABLED',
+  NamespaceExtraDataAdded = 'NAMESPACE_EXTRA_DATA_ADDED',
+  NamespaceExtraDataRemoved = 'NAMESPACE_EXTRA_DATA_REMOVED',
+  NamespaceExtraDataUpdated = 'NAMESPACE_EXTRA_DATA_UPDATED',
   NamespaceFactoryDeployment = 'NAMESPACE_FACTORY_DEPLOYMENT',
+  NamespaceMetadataUriSet = 'NAMESPACE_METADATA_URI_SET',
   PostActionConfigured = 'POST_ACTION_CONFIGURED',
   PostActionDisabled = 'POST_ACTION_DISABLED',
   PostActionEnabled = 'POST_ACTION_ENABLED',
@@ -6021,9 +6072,6 @@ export enum TransactionOperation {
   SponsorshipSignerAdded = 'SPONSORSHIP_SIGNER_ADDED',
   SponsorshipSignerRemoved = 'SPONSORSHIP_SIGNER_REMOVED',
   SponsorshipUnpaused = 'SPONSORSHIP_UNPAUSED',
-  SponsorAddedToApprovedSigners = 'SPONSOR_ADDED_TO_APPROVED_SIGNERS',
-  SponsorFreePaymasterCreated = 'SPONSOR_FREE_PAYMASTER_CREATED',
-  SponsorMetadataUriChanged = 'SPONSOR_METADATA_URI_CHANGED',
   UsernameAccessControlAdded = 'USERNAME_ACCESS_CONTROL_ADDED',
   UsernameAccessControlUpdated = 'USERNAME_ACCESS_CONTROL_UPDATED',
   UsernameAssigned = 'USERNAME_ASSIGNED',
@@ -6031,7 +6079,6 @@ export enum TransactionOperation {
   UsernameExtraDataAdded = 'USERNAME_EXTRA_DATA_ADDED',
   UsernameExtraDataRemoved = 'USERNAME_EXTRA_DATA_REMOVED',
   UsernameExtraDataUpdated = 'USERNAME_EXTRA_DATA_UPDATED',
-  UsernameMetadataUriSet = 'USERNAME_METADATA_URI_SET',
   UsernameReleased = 'USERNAME_RELEASED',
   UsernameRemoved = 'USERNAME_REMOVED',
   UsernameReserved = 'USERNAME_RESERVED',
@@ -6141,6 +6188,14 @@ export type UnknownAccountAction = {
   metadata?: Maybe<ActionMetadata>;
 };
 
+export type UnknownAccountActionExecuted = {
+  __typename?: 'UnknownAccountActionExecuted';
+  action: UnknownAccountAction;
+  executedAt: Scalars['DateTime']['output'];
+  executedBy: Account;
+  params: Array<RawKeyValue>;
+};
+
 export type UnknownAccountRuleConfig = {
   address: Scalars['EvmAddress']['input'];
   params?: InputMaybe<Array<AnyKeyValueInput>>;
@@ -6191,6 +6246,14 @@ export type UnknownPostActionContract = {
   __typename?: 'UnknownPostActionContract';
   address: Scalars['EvmAddress']['output'];
   metadata?: Maybe<ActionMetadata>;
+};
+
+export type UnknownPostActionExecuted = {
+  __typename?: 'UnknownPostActionExecuted';
+  action: UnknownPostAction;
+  executedAt: Scalars['DateTime']['output'];
+  executedBy: Account;
+  params: Array<RawKeyValue>;
 };
 
 export type UnknownPostMetadata = {
@@ -6918,10 +6981,10 @@ export type RepostFragment = { __typename?: 'Repost', id: any, isDeleted: boolea
     & PostFragment
   ) };
 
-export type SimpleCollectActionFragment = { __typename?: 'SimpleCollectAction', address: any, referralShare?: number | null, collectLimit?: number | null, endsAt?: any | null, recipients?: Array<{ __typename?: 'RecipientPercent', address: any, percent: number }> | null, amount?: (
-    { __typename?: 'Erc20Amount' }
-    & Erc20AmountFragment
-  ) | null };
+export type SimpleCollectActionFragment = { __typename?: 'SimpleCollectAction', address: any, collectLimit?: number | null, endsAt?: any | null, payToCollect?: { __typename?: 'PayToCollectConfig', recipients: Array<{ __typename?: 'RecipientPercent', address: any, percent: number }>, amount: (
+      { __typename?: 'Erc20Amount' }
+      & Erc20AmountFragment
+    ) } | null };
 
 export type UnknownPostActionFragment = { __typename: 'UnknownPostAction' };
 
@@ -7879,16 +7942,16 @@ export type NotificationsQueryVariables = Exact<{
 }>;
 
 
-export type NotificationsQuery = { __typename?: 'Query', notifications: { __typename?: 'PaginatedNotificationResult', items: Array<(
+export type NotificationsQuery = { __typename?: 'Query', notifications: { __typename?: 'PaginatedNotificationResult', items: Array<{ __typename?: 'AccountActionExecutedNotification' } | (
       { __typename?: 'CommentNotification' }
       & CommentNotificationFragment
     ) | (
       { __typename?: 'FollowNotification' }
       & FollowNotificationFragment
-    ) | (
+    ) | { __typename?: 'GroupMembershipRequestApprovedNotification' } | { __typename?: 'GroupMembershipRequestRejectedNotification' } | (
       { __typename?: 'MentionNotification' }
       & MentionNotificationFragment
-    ) | (
+    ) | { __typename?: 'PostActionExecutedNotification' } | (
       { __typename?: 'QuoteNotification' }
       & QuoteNotificationFragment
     ) | (
@@ -8231,9 +8294,9 @@ export const RepostNotificationFragmentDoc = {"kind":"Document","definitions":[{
 export const AnyPostFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AnyPost"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AnyPost"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Post"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Post"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Repost"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Repost"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AnyKeyValue"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AnyKeyValue"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AddressKeyValue"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"address"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BigDecimalKeyValue"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"bigDecimal"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"StringKeyValue"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"string"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"BooleanValue"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"BooleanValue"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"onChain"}},{"kind":"Field","name":{"kind":"Name","value":"optimistic"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Account"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Account"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"owner"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"rules"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"anyOf"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"AccountFollowRule"}}]}},{"kind":"Field","name":{"kind":"Name","value":"required"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"AccountFollowRule"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"operations"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LoggedInAccountOperations"}}]}},{"kind":"Field","name":{"kind":"Name","value":"metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"AccountMetadata"}}]}},{"kind":"Field","name":{"kind":"Name","value":"username"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"request"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"autoResolve"},"value":{"kind":"BooleanValue","value":true}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Username"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AccountFollowRule"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AccountFollowRule"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"config"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"AnyKeyValue"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AccountMetadata"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AccountMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"picture"}},{"kind":"Field","name":{"kind":"Name","value":"coverPicture"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MetadataAttribute"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LoggedInAccountOperations"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"LoggedInAccountOperations"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"isFollowedByMe"}},{"kind":"Field","name":{"kind":"Name","value":"isFollowingMe"}},{"kind":"Field","name":{"kind":"Name","value":"isMutedByMe"}},{"kind":"Field","name":{"kind":"Name","value":"isBlockedByMe"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Username"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Username"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"namespace"}},{"kind":"Field","name":{"kind":"Name","value":"localName"}},{"kind":"Field","name":{"kind":"Name","value":"linkedTo"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"GroupMetadata"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"GroupMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"icon"}},{"kind":"Field","name":{"kind":"Name","value":"coverPicture"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AccountMention"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AccountMention"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"account"}},{"kind":"Field","name":{"kind":"Name","value":"namespace"}},{"kind":"Field","name":{"kind":"Name","value":"replace"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"GroupMention"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"GroupMention"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"group"}},{"kind":"Field","name":{"kind":"Name","value":"replace"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"to"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LoggedInPostOperations"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"LoggedInPostOperations"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"hasBookmarked"}},{"kind":"Field","name":{"kind":"Name","value":"hasReacted"}},{"kind":"Field","name":{"kind":"Name","value":"hasSimpleCollected"}},{"kind":"Field","name":{"kind":"Name","value":"hasTipped"}},{"kind":"Field","name":{"kind":"Name","value":"isNotInterested"}},{"kind":"Field","name":{"kind":"Name","value":"hasQuoted"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"BooleanValue"}}]}},{"kind":"Field","name":{"kind":"Name","value":"hasReposted"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"BooleanValue"}}]}},{"kind":"Field","name":{"kind":"Name","value":"canRepost"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}},{"kind":"Field","name":{"kind":"Name","value":"canQuote"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}},{"kind":"Field","name":{"kind":"Name","value":"canComment"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Post"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Post"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ReferencedPost"}},{"kind":"Field","name":{"kind":"Name","value":"root"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ReferencedPost"}}]}},{"kind":"Field","name":{"kind":"Name","value":"commentOn"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ReferencedPost"}}]}},{"kind":"Field","name":{"kind":"Name","value":"quoteOf"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ReferencedPost"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PostFeedInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PostFeedInfo"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"group"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"PostGroupInfo"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PostGroupInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PostGroupInfo"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"GroupMetadata"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PostMention"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PostMention"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AccountMention"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"AccountMention"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"GroupMention"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"GroupMention"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PostMetadata"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PostMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"VideoMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"VideoMetadata"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ArticleMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ArticleMetadata"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AudioMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"AudioMetadata"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ImageMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ImageMetadata"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"LinkMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LinkMetadata"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"LivestreamMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LivestreamMetadata"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"MintMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MintMetadata"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"TextOnlyMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"TextOnlyMetadata"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CheckingInMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"CheckingInMetadata"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SpaceMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SpaceMetadata"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"StoryMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"StoryMetadata"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ThreeDMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ThreeDMetadata"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"EmbedMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"EmbedMetadata"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"TransactionMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"TransactionMetadata"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"EventMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"EventMetadata"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PostStats"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PostStats"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"bookmarks"}},{"kind":"Field","name":{"kind":"Name","value":"comments"}},{"kind":"Field","name":{"kind":"Name","value":"quotes"}},{"kind":"Field","name":{"kind":"Name","value":"reactions"}},{"kind":"Field","name":{"kind":"Name","value":"reposts"}},{"kind":"Field","name":{"kind":"Name","value":"collects"}},{"kind":"Field","name":{"kind":"Name","value":"tips"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ReferencedPost"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Post"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"isDeleted"}},{"kind":"Field","name":{"kind":"Name","value":"feed"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"PostFeedInfo"}}]}},{"kind":"Field","name":{"kind":"Name","value":"author"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Account"}}]}},{"kind":"Field","name":{"kind":"Name","value":"metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"PostMetadata"}}]}},{"kind":"Field","name":{"kind":"Name","value":"stats"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"PostStats"}}]}},{"kind":"Field","name":{"kind":"Name","value":"operations"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"LoggedInPostOperations"}}]}},{"kind":"Field","name":{"kind":"Name","value":"actions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}},{"kind":"Field","name":{"kind":"Name","value":"mentions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"PostMention"}}]}},{"kind":"Field","name":{"kind":"Name","value":"timestamp"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Repost"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Repost"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"isDeleted"}},{"kind":"Field","name":{"kind":"Name","value":"author"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Account"}}]}},{"kind":"Field","name":{"kind":"Name","value":"repostOf"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Post"}}]}},{"kind":"Field","name":{"kind":"Name","value":"timestamp"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ArticleMetadata"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ArticleMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"contentWarning"}},{"kind":"Field","name":{"kind":"Name","value":"tags"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MetadataAttribute"}}]}},{"kind":"Field","name":{"kind":"Name","value":"attachments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"AnyMedia"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AudioMetadata"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AudioMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"contentWarning"}},{"kind":"Field","name":{"kind":"Name","value":"tags"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MetadataAttribute"}}]}},{"kind":"Field","name":{"kind":"Name","value":"audio"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MediaAudio"}}]}},{"kind":"Field","name":{"kind":"Name","value":"attachments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"AnyMedia"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CheckingInMetadata"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CheckingInMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"contentWarning"}},{"kind":"Field","name":{"kind":"Name","value":"tags"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MetadataAttribute"}}]}},{"kind":"Field","name":{"kind":"Name","value":"attachments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"AnyMedia"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"EmbedMetadata"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"EmbedMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"contentWarning"}},{"kind":"Field","name":{"kind":"Name","value":"tags"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MetadataAttribute"}}]}},{"kind":"Field","name":{"kind":"Name","value":"attachments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"AnyMedia"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"EventMetadata"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"EventMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"contentWarning"}},{"kind":"Field","name":{"kind":"Name","value":"tags"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MetadataAttribute"}}]}},{"kind":"Field","name":{"kind":"Name","value":"attachments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"AnyMedia"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ImageMetadata"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ImageMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"contentWarning"}},{"kind":"Field","name":{"kind":"Name","value":"tags"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MetadataAttribute"}}]}},{"kind":"Field","name":{"kind":"Name","value":"attachments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"AnyMedia"}}]}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MediaImage"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LinkMetadata"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"LinkMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"contentWarning"}},{"kind":"Field","name":{"kind":"Name","value":"sharingLink"}},{"kind":"Field","name":{"kind":"Name","value":"tags"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MetadataAttribute"}}]}},{"kind":"Field","name":{"kind":"Name","value":"attachments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"AnyMedia"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LivestreamMetadata"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"LivestreamMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"playbackUrl"}},{"kind":"Field","name":{"kind":"Name","value":"liveUrl"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"contentWarning"}},{"kind":"Field","name":{"kind":"Name","value":"tags"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MetadataAttribute"}}]}},{"kind":"Field","name":{"kind":"Name","value":"attachments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"AnyMedia"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"MetadataAttribute"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"MetadataAttribute"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"key"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"MintMetadata"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"MintMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"contentWarning"}},{"kind":"Field","name":{"kind":"Name","value":"tags"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MetadataAttribute"}}]}},{"kind":"Field","name":{"kind":"Name","value":"attachments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"AnyMedia"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SpaceMetadata"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SpaceMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"contentWarning"}},{"kind":"Field","name":{"kind":"Name","value":"tags"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MetadataAttribute"}}]}},{"kind":"Field","name":{"kind":"Name","value":"attachments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"AnyMedia"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"StoryMetadata"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"StoryMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"contentWarning"}},{"kind":"Field","name":{"kind":"Name","value":"tags"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MetadataAttribute"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"TextOnlyMetadata"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"TextOnlyMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"contentWarning"}},{"kind":"Field","name":{"kind":"Name","value":"tags"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MetadataAttribute"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ThreeDMetadata"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ThreeDMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"contentWarning"}},{"kind":"Field","name":{"kind":"Name","value":"tags"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MetadataAttribute"}}]}},{"kind":"Field","name":{"kind":"Name","value":"attachments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"AnyMedia"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"TransactionMetadata"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"TransactionMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"contentWarning"}},{"kind":"Field","name":{"kind":"Name","value":"tags"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MetadataAttribute"}}]}},{"kind":"Field","name":{"kind":"Name","value":"attachments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"AnyMedia"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"VideoMetadata"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"VideoMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"content"}},{"kind":"Field","name":{"kind":"Name","value":"contentWarning"}},{"kind":"Field","name":{"kind":"Name","value":"tags"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MetadataAttribute"}}]}},{"kind":"Field","name":{"kind":"Name","value":"video"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MediaVideo"}}]}},{"kind":"Field","name":{"kind":"Name","value":"attachments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"AnyMedia"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"AnyMedia"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AnyMedia"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"MediaVideo"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MediaVideo"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"MediaImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MediaImage"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"MediaAudio"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"MediaAudio"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"MediaAudio"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"MediaAudio"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"artist"}},{"kind":"Field","name":{"kind":"Name","value":"item"}},{"kind":"Field","name":{"kind":"Name","value":"cover"}},{"kind":"Field","name":{"kind":"Name","value":"license"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"MediaImage"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"MediaImage"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"item"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"MediaVideo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"MediaVideo"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"item"}},{"kind":"Field","name":{"kind":"Name","value":"cover"}},{"kind":"Field","name":{"kind":"Name","value":"license"}}]}}]} as unknown as DocumentNode;
 export const Erc20FragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Erc20"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Erc20"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"contract"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"decimals"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"symbol"}}]}}]} as unknown as DocumentNode;
 export const Erc20AmountFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Erc20Amount"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Erc20Amount"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"asset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Erc20"}}]}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Erc20"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Erc20"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"contract"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"decimals"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"symbol"}}]}}]} as unknown as DocumentNode;
-export const SimpleCollectActionFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SimpleCollectAction"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SimpleCollectAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"referralShare"}},{"kind":"Field","name":{"kind":"Name","value":"collectLimit"}},{"kind":"Field","name":{"kind":"Name","value":"endsAt"}},{"kind":"Field","name":{"kind":"Name","value":"recipients"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"percent"}}]}},{"kind":"Field","name":{"kind":"Name","value":"amount"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Erc20Amount"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Erc20"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Erc20"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"contract"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"decimals"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"symbol"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Erc20Amount"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Erc20Amount"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"asset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Erc20"}}]}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]} as unknown as DocumentNode;
+export const SimpleCollectActionFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SimpleCollectAction"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SimpleCollectAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"collectLimit"}},{"kind":"Field","name":{"kind":"Name","value":"endsAt"}},{"kind":"Field","name":{"kind":"Name","value":"payToCollect"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"recipients"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"percent"}}]}},{"kind":"Field","name":{"kind":"Name","value":"amount"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Erc20Amount"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Erc20"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Erc20"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"contract"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"decimals"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"symbol"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Erc20Amount"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Erc20Amount"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"asset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Erc20"}}]}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]} as unknown as DocumentNode;
 export const UnknownPostActionFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"UnknownPostAction"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"UnknownPostAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}}]} as unknown as DocumentNode;
-export const PostActionFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PostAction"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PostAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SimpleCollectAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SimpleCollectAction"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"UnknownPostAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"UnknownPostAction"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Erc20"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Erc20"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"contract"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"decimals"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"symbol"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Erc20Amount"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Erc20Amount"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"asset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Erc20"}}]}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SimpleCollectAction"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SimpleCollectAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"referralShare"}},{"kind":"Field","name":{"kind":"Name","value":"collectLimit"}},{"kind":"Field","name":{"kind":"Name","value":"endsAt"}},{"kind":"Field","name":{"kind":"Name","value":"recipients"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"percent"}}]}},{"kind":"Field","name":{"kind":"Name","value":"amount"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Erc20Amount"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"UnknownPostAction"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"UnknownPostAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}}]} as unknown as DocumentNode;
+export const PostActionFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PostAction"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PostAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SimpleCollectAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SimpleCollectAction"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"UnknownPostAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"UnknownPostAction"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Erc20"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Erc20"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"contract"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"decimals"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"symbol"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Erc20Amount"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Erc20Amount"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"asset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Erc20"}}]}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SimpleCollectAction"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SimpleCollectAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"collectLimit"}},{"kind":"Field","name":{"kind":"Name","value":"endsAt"}},{"kind":"Field","name":{"kind":"Name","value":"payToCollect"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"recipients"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"percent"}}]}},{"kind":"Field","name":{"kind":"Name","value":"amount"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Erc20Amount"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"UnknownPostAction"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"UnknownPostAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}}]} as unknown as DocumentNode;
 export const UnknownPostMetadataFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"UnknownPostMetadata"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"UnknownPostMetadata"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"raw"}}]}}]} as unknown as DocumentNode;
 export const SelfFundedTransactionRequestFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SelfFundedTransactionRequest"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SelfFundedTransactionRequest"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"reason"}},{"kind":"Field","name":{"kind":"Name","value":"raw"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"chainId"}},{"kind":"Field","name":{"kind":"Name","value":"data"}},{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"gasLimit"}},{"kind":"Field","name":{"kind":"Name","value":"maxFeePerGas"}},{"kind":"Field","name":{"kind":"Name","value":"maxPriorityFeePerGas"}},{"kind":"Field","name":{"kind":"Name","value":"nonce"}},{"kind":"Field","name":{"kind":"Name","value":"to"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}}]} as unknown as DocumentNode;
 export const SponsoredTransactionRequestFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SponsoredTransactionRequest"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SponsoredTransactionRequest"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"reason"}},{"kind":"Field","name":{"kind":"Name","value":"raw"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"chainId"}},{"kind":"Field","name":{"kind":"Name","value":"data"}},{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"gasLimit"}},{"kind":"Field","name":{"kind":"Name","value":"maxFeePerGas"}},{"kind":"Field","name":{"kind":"Name","value":"maxPriorityFeePerGas"}},{"kind":"Field","name":{"kind":"Name","value":"nonce"}},{"kind":"Field","name":{"kind":"Name","value":"to"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"value"}},{"kind":"Field","name":{"kind":"Name","value":"customData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"customSignature"}},{"kind":"Field","name":{"kind":"Name","value":"factoryDeps"}},{"kind":"Field","name":{"kind":"Name","value":"gasPerPubdata"}},{"kind":"Field","name":{"kind":"Name","value":"paymasterParams"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"paymaster"}},{"kind":"Field","name":{"kind":"Name","value":"paymasterInput"}}]}}]}}]}}]}}]} as unknown as DocumentNode;
@@ -8914,7 +8977,7 @@ export function useMlPostsForYouSuspenseQuery(baseOptions?: Apollo.SkipToken | A
 export type MlPostsForYouQueryHookResult = ReturnType<typeof useMlPostsForYouQuery>;
 export type MlPostsForYouLazyQueryHookResult = ReturnType<typeof useMlPostsForYouLazyQuery>;
 export type MlPostsForYouSuspenseQueryHookResult = ReturnType<typeof useMlPostsForYouSuspenseQuery>;
-export const CollectActionDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"CollectAction"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"request"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"PostRequest"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"post"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"request"},"value":{"kind":"Variable","name":{"kind":"Name","value":"request"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Post"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"actions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"PostAction"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Repost"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"repostOf"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"actions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"PostAction"}}]}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Erc20"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Erc20"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"contract"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"decimals"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"symbol"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Erc20Amount"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Erc20Amount"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"asset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Erc20"}}]}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PostAction"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PostAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SimpleCollectAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SimpleCollectAction"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"UnknownPostAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"UnknownPostAction"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SimpleCollectAction"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SimpleCollectAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"referralShare"}},{"kind":"Field","name":{"kind":"Name","value":"collectLimit"}},{"kind":"Field","name":{"kind":"Name","value":"endsAt"}},{"kind":"Field","name":{"kind":"Name","value":"recipients"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"percent"}}]}},{"kind":"Field","name":{"kind":"Name","value":"amount"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Erc20Amount"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"UnknownPostAction"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"UnknownPostAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}}]} as unknown as DocumentNode;
+export const CollectActionDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"CollectAction"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"request"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"PostRequest"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"post"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"request"},"value":{"kind":"Variable","name":{"kind":"Name","value":"request"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Post"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"actions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"PostAction"}}]}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Repost"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"repostOf"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"actions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"PostAction"}}]}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Erc20"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Erc20"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"contract"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"decimals"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"symbol"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Erc20Amount"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Erc20Amount"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"asset"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Erc20"}}]}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PostAction"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PostAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SimpleCollectAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SimpleCollectAction"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"UnknownPostAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"UnknownPostAction"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SimpleCollectAction"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SimpleCollectAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"collectLimit"}},{"kind":"Field","name":{"kind":"Name","value":"endsAt"}},{"kind":"Field","name":{"kind":"Name","value":"payToCollect"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"recipients"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"percent"}}]}},{"kind":"Field","name":{"kind":"Name","value":"amount"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Erc20Amount"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"UnknownPostAction"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"UnknownPostAction"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}}]}}]} as unknown as DocumentNode;
 export function useCollectActionQuery(baseOptions: Apollo.QueryHookOptions<CollectActionQuery, CollectActionQueryVariables> & ({ variables: CollectActionQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<CollectActionQuery, CollectActionQueryVariables>(CollectActionDocument, options);

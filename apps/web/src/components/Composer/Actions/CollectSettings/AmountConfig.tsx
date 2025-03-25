@@ -15,7 +15,7 @@ const AmountConfig = ({ setCollectType }: AmountConfigProps) => {
   const { currentAccount } = useAccountStore();
   const { collectAction } = useCollectActionStore((state) => state);
 
-  const enabled = Boolean(collectAction.amount?.value);
+  const enabled = Boolean(collectAction.payToCollect?.amount.value);
 
   return (
     <div>
@@ -26,16 +26,19 @@ const AmountConfig = ({ setCollectType }: AmountConfigProps) => {
         on={enabled}
         setOn={() => {
           setCollectType({
-            amount: enabled
-              ? null
-              : { currency: DEFAULT_COLLECT_TOKEN, value: "1" },
-            recipients: enabled
+            payToCollect: enabled
               ? undefined
-              : [{ address: currentAccount?.address, percent: 100 }]
+              : {
+                  amount: { currency: DEFAULT_COLLECT_TOKEN, value: "1" },
+                  referralShare: 5, // 5% for the Hey platform fees
+                  recipients: [
+                    { address: currentAccount?.address, percent: 100 }
+                  ]
+                }
           });
         }}
       />
-      {collectAction.amount?.value ? (
+      {collectAction.payToCollect?.amount.value ? (
         <div className="mt-4 ml-8">
           <div className="flex space-x-2 text-sm">
             <Input
@@ -43,26 +46,37 @@ const AmountConfig = ({ setCollectType }: AmountConfigProps) => {
               max="100000"
               min="0"
               onChange={(event) => {
+                if (!collectAction.payToCollect) return;
                 setCollectType({
-                  amount: {
-                    currency: collectAction.amount?.currency,
-                    value: event.target.value ? event.target.value : "0"
+                  payToCollect: {
+                    ...collectAction.payToCollect,
+                    amount: {
+                      currency: collectAction.payToCollect?.amount.currency,
+                      value: event.target.value ? event.target.value : "0"
+                    }
                   }
                 });
               }}
               placeholder="0.5"
               type="number"
-              value={Number.parseFloat(collectAction.amount.value)}
+              value={Number.parseFloat(
+                collectAction.payToCollect?.amount.value
+              )}
             />
             <div className="w-5/6">
               <div className="label">Select currency</div>
               <Select
                 iconClassName="size-4"
                 onChange={(value) => {
+                  if (!collectAction.payToCollect) return;
                   setCollectType({
-                    amount: {
-                      currency: value,
-                      value: collectAction.amount?.value as string
+                    payToCollect: {
+                      ...collectAction.payToCollect,
+                      amount: {
+                        currency: value,
+                        value: collectAction.payToCollect?.amount
+                          .value as string
+                      }
                     }
                   });
                 }}
@@ -70,7 +84,8 @@ const AmountConfig = ({ setCollectType }: AmountConfigProps) => {
                   icon: `${STATIC_IMAGES_URL}/tokens/${token.symbol}.svg`,
                   label: token.name,
                   selected:
-                    token.contractAddress === collectAction.amount?.currency,
+                    token.contractAddress ===
+                    collectAction.payToCollect?.amount.currency,
                   value: token.contractAddress
                 }))}
               />

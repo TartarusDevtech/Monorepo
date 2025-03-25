@@ -67,9 +67,11 @@ const CollectActionBody = ({
   const collectAction = targetAction as SimpleCollectActionFragment;
   const endTimestamp = collectAction?.endsAt;
   const collectLimit = Number(collectAction?.collectLimit);
-  const amount = Number.parseFloat(collectAction?.amount?.value || "0");
-  const currency = collectAction?.amount?.asset?.symbol;
-  const recipients = collectAction?.recipients || [];
+  const amount = Number.parseFloat(
+    collectAction?.payToCollect?.amount?.value || "0"
+  );
+  const currency = collectAction?.payToCollect?.amount?.asset?.symbol;
+  const recipients = collectAction?.payToCollect?.recipients || [];
   const percentageCollected = (collects / collectLimit) * 100;
   const enabledTokens = tokens.map((t) => t.symbol);
   const isTokenEnabled = enabledTokens?.includes(currency || "");

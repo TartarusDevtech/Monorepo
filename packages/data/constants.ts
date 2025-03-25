@@ -58,3 +58,5 @@ export const COVER = "tr:w-1350,h-350";
 export const ATTACHMENT = "tr:w-1000";
 
 export const LENS_NAMESPACE = "lens/";
+export const NATIVE_TOKEN_SYMBOL = IS_MAINNET ? "GHO" : "GRASS";
+export const WRAPPED_NATIVE_TOKEN_SYMBOL = IS_MAINNET ? "wGHO" : "wGRASS";

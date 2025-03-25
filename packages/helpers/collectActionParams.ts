@@ -4,17 +4,10 @@ import type { CollectActionType } from "@hey/types/hey";
 const collectActionParams = (
   collectAction: CollectActionType
 ): PostActionConfigInput | null => {
-  const { amount, collectLimit, endsAt, recipients, referralShare } =
-    collectAction;
+  const { payToCollect, collectLimit, endsAt } = collectAction;
 
   return {
-    simpleCollect: {
-      amount: amount ?? undefined,
-      collectLimit: collectLimit ?? undefined,
-      endsAt: endsAt ?? undefined,
-      recipients: recipients ?? undefined,
-      referralShare: referralShare ?? undefined
-    }
+    simpleCollect: { payToCollect, collectLimit, endsAt }
   };
 };
 

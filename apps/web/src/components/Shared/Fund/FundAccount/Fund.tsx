@@ -1,6 +1,10 @@
 import trackEvent from "@helpers/analytics";
 import errorToast from "@helpers/errorToast";
-import { DEFAULT_COLLECT_TOKEN } from "@hey/data/constants";
+import {
+  DEFAULT_COLLECT_TOKEN,
+  NATIVE_TOKEN_SYMBOL,
+  WRAPPED_NATIVE_TOKEN_SYMBOL
+} from "@hey/data/constants";
 import { Events } from "@hey/data/events";
 import { useDepositMutation } from "@hey/indexer";
 import { Button, Card, Input, Spinner } from "@hey/ui";
@@ -29,7 +33,9 @@ const Fund = ({ isHeyTip, useNativeToken, onSuccess }: FundProps) => {
   const { address } = useAccount();
   const handleTransactionLifecycle = useTransactionLifecycle();
   const pollTransactionStatus = usePollTransactionStatus();
-  const symbol = useNativeToken ? "GHO" : "wGHO";
+  const symbol = useNativeToken
+    ? NATIVE_TOKEN_SYMBOL
+    : WRAPPED_NATIVE_TOKEN_SYMBOL;
 
   const { data, isLoading } = useBalance({
     address,
@@ -42,10 +48,10 @@ const Fund = ({ isHeyTip, useNativeToken, onSuccess }: FundProps) => {
     setOther(false);
     onSuccess?.();
     setIsSubmitting(false);
-    setShowFundModal(false);
     trackEvent(Events.Account.DepositFunds);
     toast.success("Deposit initiated");
     pollTransactionStatus(hash, () => {
+      setShowFundModal(false);
       toast.success(
         isHeyTip ? "Thank you for your support!" : "Funded account successfully"
       );
@@ -126,21 +132,21 @@ const Fund = ({ isHeyTip, useNativeToken, onSuccess }: FundProps) => {
             onClick={() => handleSetAmount(2)}
             outline={amount !== 2}
           >
-            2 {symbol}
+            2
           </Button>
           <Button
             className="w-full"
             onClick={() => handleSetAmount(5)}
             outline={amount !== 5}
           >
-            5 {symbol}
+            5
           </Button>
           <Button
             className="w-full"
             onClick={() => handleSetAmount(10)}
             outline={amount !== 10}
           >
-            10 {symbol}
+            10
           </Button>
           <Button
             className="w-full"

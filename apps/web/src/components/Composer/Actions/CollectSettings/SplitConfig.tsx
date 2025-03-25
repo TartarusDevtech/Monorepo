@@ -28,7 +28,7 @@ const SplitConfig = ({
   const { collectAction } = useCollectActionStore((state) => state);
 
   const currentAddress = currentAccount?.address || "";
-  const recipients = collectAction.recipients || [];
+  const recipients = collectAction.payToCollect?.recipients || [];
   const [isToggleOn, setIsToggleOn] = useState(
     recipients.length > 1 ||
       (recipients.length === 1 && recipients[0].address !== currentAddress)
@@ -43,7 +43,13 @@ const SplitConfig = ({
         percent: equalSplits[i]
       };
     });
-    setCollectType({ recipients: [...splits] });
+    if (!collectAction.payToCollect) return;
+    setCollectType({
+      payToCollect: {
+        ...collectAction.payToCollect,
+        recipients: [...splits]
+      }
+    });
   };
 
   const onChangeRecipientOrPercent = (
@@ -63,7 +69,13 @@ const SplitConfig = ({
       });
     };
 
-    setCollectType({ recipients: getRecipients(value) });
+    if (!collectAction.payToCollect) return;
+    setCollectType({
+      payToCollect: {
+        ...collectAction.payToCollect,
+        recipients: getRecipients(value)
+      }
+    });
   };
 
   const updateRecipient = (index: number, value: string) => {
@@ -73,18 +85,32 @@ const SplitConfig = ({
   const handleRemoveRecipient = (index: number) => {
     const updatedRecipients = recipients.filter((_, i) => i !== index);
     if (updatedRecipients.length === 0) {
+      if (!collectAction.payToCollect) return;
       setCollectType({
-        recipients: [{ address: currentAddress, percent: 100 }]
+        payToCollect: {
+          ...collectAction.payToCollect,
+          recipients: [{ address: currentAddress, percent: 100 }]
+        }
       });
       setIsToggleOn(false);
     } else {
-      setCollectType({ recipients: updatedRecipients });
+      if (!collectAction.payToCollect) return;
+      setCollectType({
+        payToCollect: {
+          ...collectAction.payToCollect,
+          recipients: updatedRecipients
+        }
+      });
     }
   };
 
   const toggleSplit = () => {
+    if (!collectAction.payToCollect) return;
     setCollectType({
-      recipients: [{ address: currentAddress, percent: 100 }]
+      payToCollect: {
+        ...collectAction.payToCollect,
+        recipients: [{ address: currentAddress, percent: 100 }]
+      }
     });
     setIsToggleOn(!isToggleOn);
   };
@@ -154,8 +180,12 @@ const SplitConfig = ({
               <Button
                 icon={<PlusIcon className="size-3" />}
                 onClick={() => {
+                  if (!collectAction.payToCollect) return;
                   setCollectType({
-                    recipients: [...recipients, { address: "", percent: 0 }]
+                    payToCollect: {
+                      ...collectAction.payToCollect,
+                      recipients: [...recipients, { address: "", percent: 0 }]
+                    }
                   });
                 }}
                 outline

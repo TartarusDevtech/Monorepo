@@ -1,7 +1,9 @@
 import {
   DEFAULT_COLLECT_TOKEN,
   IS_MAINNET,
-  STATIC_IMAGES_URL
+  NATIVE_TOKEN_SYMBOL,
+  STATIC_IMAGES_URL,
+  WRAPPED_NATIVE_TOKEN_SYMBOL
 } from "@hey/data/constants";
 import { Image } from "@hey/ui";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
@@ -32,15 +34,16 @@ const FundAccount = () => {
       <div className="flex flex-col items-center gap-2 text-center">
         <Image
           className="size-12 rounded-full"
-          src={`${STATIC_IMAGES_URL}/tokens/gho.svg`}
-          alt="wGHO"
+          src={`${STATIC_IMAGES_URL}/tokens/${
+            IS_MAINNET ? "gho.svg" : "grass.svg"
+          }`}
+          alt={WRAPPED_NATIVE_TOKEN_SYMBOL}
         />
         <div className="font-bold text-2xl">
-          {accountBalance} {IS_MAINNET ? "wGHO" : "wGRASS"}
+          {accountBalance} {WRAPPED_NATIVE_TOKEN_SYMBOL}
         </div>
         <div className="ld-text-gray-500 text-sm">
-          Wrapped {IS_MAINNET ? "GHO" : "GRASS"} enables various Hey-specific
-          actions.
+          Wrapped {NATIVE_TOKEN_SYMBOL} enables various Hey-specific actions.
         </div>
       </div>
       <Fund />
