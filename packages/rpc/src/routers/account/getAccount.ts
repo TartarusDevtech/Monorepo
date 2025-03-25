@@ -1,6 +1,5 @@
 import { PermissionId } from "@hey/data/permissions";
 import { Regex } from "@hey/data/regex";
-import prisma from "@hey/db/prisma/db/client";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import rateLimiter from "../../middlewares/rateLimiter";
@@ -18,17 +17,15 @@ export const getAccount = publicProcedure
   .use(rateLimiter({ requests: 250 }))
   .input(ParamsSchema)
   .output(ResponseSchema)
-  .query(async ({ input }) => {
+  .query(async ({ ctx, input }) => {
     try {
       const { address } = input;
-      const [accountPermission] = await prisma.$transaction([
-        prisma.accountPermission.findFirst({
-          where: {
-            permissionId: PermissionId.Suspended,
-            accountAddress: address
-          }
-        })
-      ]);
+      const accountPermission = await ctx.prisma.accountPermission.findFirst({
+        where: {
+          permissionId: PermissionId.Suspended,
+          accountAddress: address
+        }
+      });
 
       return {
         isSuspended: accountPermission?.permissionId === PermissionId.Suspended

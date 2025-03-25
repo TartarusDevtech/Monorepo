@@ -1,6 +1,5 @@
 import { PermissionId } from "@hey/data/permissions";
 import { Regex } from "@hey/data/regex";
-import prisma from "@hey/db/prisma/db/client";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { VERIFICATION_ENDPOINT } from "../../helpers/constants";
@@ -19,10 +18,10 @@ const ResponseSchema = z.object({
 export const authorization = publicProcedure
   .input(ParamsSchema)
   .output(ResponseSchema)
-  .mutation(async ({ input }) => {
+  .mutation(async ({ ctx, input }) => {
     try {
       const { account } = input;
-      const suspended = await prisma.accountPermission.findFirst({
+      const suspended = await ctx.prisma.accountPermission.findFirst({
         where: {
           permissionId: PermissionId.Suspended,
           accountAddress: account

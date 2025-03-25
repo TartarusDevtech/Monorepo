@@ -1,4 +1,3 @@
-import prisma from "@hey/db/prisma/db/client";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { staffAccess } from "../../../middlewares/staffAccess";
@@ -19,9 +18,9 @@ const ResponseSchema = z.array(
 export const getPermissions = authedProcedure
   .use(staffAccess)
   .output(ResponseSchema)
-  .query(async () => {
+  .query(async ({ ctx }) => {
     try {
-      const permissions = await prisma.permission.findMany({
+      const permissions = await ctx.prisma.permission.findMany({
         include: { _count: { select: { accounts: true } } },
         orderBy: { accounts: { _count: "desc" } }
       });

@@ -1,4 +1,3 @@
-import prisma from "@hey/db/prisma/db/client";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import rateLimiter from "../../middlewares/rateLimiter";
@@ -20,7 +19,7 @@ export const updatePreferences = authedProcedure
   .output(ResponseSchema)
   .mutation(async ({ ctx, input }) => {
     try {
-      const preference = await prisma.preference.upsert({
+      const preference = await ctx.prisma.preference.upsert({
         create: { ...input, accountAddress: ctx.account as string },
         update: input,
         where: { accountAddress: ctx.account as string }

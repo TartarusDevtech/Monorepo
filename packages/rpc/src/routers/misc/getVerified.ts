@@ -1,5 +1,4 @@
 import { PermissionId } from "@hey/data/permissions";
-import prisma from "@hey/db/prisma/db/client";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { CACHE_AGE_30_MINS } from "../../helpers/constants";
@@ -13,7 +12,7 @@ export const getVerified = publicProcedure
   .output(ResponseSchema)
   .query(async ({ ctx }) => {
     try {
-      const verifiedAccounts = await prisma.accountPermission.findMany({
+      const verifiedAccounts = await ctx.prisma.accountPermission.findMany({
         select: { accountAddress: true },
         where: { enabled: true, permissionId: PermissionId.Verified }
       });

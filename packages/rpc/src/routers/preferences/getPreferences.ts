@@ -1,4 +1,3 @@
-import prisma from "@hey/db/prisma/db/client";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import rateLimiter from "../../middlewares/rateLimiter";
@@ -15,11 +14,11 @@ export const getPreferences = authedProcedure
   .output(ResponseSchema)
   .query(async ({ ctx }) => {
     try {
-      const [preference, permissions] = await prisma.$transaction([
-        prisma.preference.findUnique({
+      const [preference, permissions] = await ctx.prisma.$transaction([
+        ctx.prisma.preference.findUnique({
           where: { accountAddress: ctx.account as string }
         }),
-        prisma.accountPermission.findMany({
+        ctx.prisma.accountPermission.findMany({
           include: { permission: { select: { key: true } } },
           where: { enabled: true, accountAddress: ctx.account as string }
         })
