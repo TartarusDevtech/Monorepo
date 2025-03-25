@@ -1,5 +1,5 @@
 import {} from "@aws-sdk/client-sts";
-import { CACHE_AGE_1_DAY } from "@src/helpers/constants";
+import { CACHE_AGE_1_DAY } from "../../helpers/constants";
 import { TRPCError } from "@trpc/server";
 import { object, string } from "zod";
 import { publicProcedure } from "../../trpc";

@@ -1,7 +1,7 @@
 import { PermissionId } from "@hey/data/permissions";
 import prisma from "@hey/db/prisma/db/client";
-import { CACHE_AGE_30_MINS } from "@src/helpers/constants";
 import { TRPCError } from "@trpc/server";
+import { CACHE_AGE_30_MINS } from "../../helpers/constants";
 import { publicProcedure } from "../../trpc";
 
 const getRandomPicks = (
