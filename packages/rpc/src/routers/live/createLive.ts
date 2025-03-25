@@ -1,13 +1,24 @@
 import { LIVEPEER_KEY } from "@hey/data/constants";
 import generateUUID from "@hey/helpers/generateUUID";
 import { TRPCError } from "@trpc/server";
-import { boolean, object } from "zod";
+import { z } from "zod";
 import rateLimiter from "../../middlewares/rateLimiter";
 import { authedProcedure } from "../../procedures/authedProcedure";
 
+const ParamsSchema = z.object({
+  record: z.boolean()
+});
+
+const ResponseSchema = z.object({
+  id: z.string(),
+  playbackId: z.string(),
+  streamKey: z.string()
+});
+
 export const createLive = authedProcedure
   .use(rateLimiter({ requests: 10 }))
-  .input(object({ record: boolean() }))
+  .input(ParamsSchema)
+  .output(ResponseSchema)
   .mutation(async ({ ctx, input }) => {
     try {
       const { record } = input;

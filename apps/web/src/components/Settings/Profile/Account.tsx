@@ -25,24 +25,24 @@ import usePollTransactionStatus from "src/hooks/usePollTransactionStatus";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
-import type { z } from "zod";
-import { object, string, union } from "zod";
+import { z } from "zod";
 
-const validationSchema = object({
-  bio: string().max(260, { message: "Bio should not exceed 260 characters" }),
-  location: string().max(100, {
+const validationSchema = z.object({
+  bio: z.string().max(260, { message: "Bio should not exceed 260 characters" }),
+  location: z.string().max(100, {
     message: "Location should not exceed 100 characters"
   }),
-  name: string()
+  name: z
+    .string()
     .max(100, { message: "Name should not exceed 100 characters" })
     .regex(Regex.accountNameValidator, {
       message: "Account name must not contain restricted symbols"
     }),
-  website: union([
-    string().regex(Regex.url, { message: "Invalid website" }),
-    string().max(0)
+  website: z.union([
+    z.string().regex(Regex.url, { message: "Invalid website" }),
+    z.string().max(0)
   ]),
-  x: string().max(100, { message: "X handle must not exceed 100 characters" })
+  x: z.string().max(100, { message: "X handle must not exceed 100 characters" })
 });
 
 const AccountSettingsForm: FC = () => {

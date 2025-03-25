@@ -4,14 +4,14 @@ import type { APITypes } from "plyr-react";
 import type { ChangeEvent, FC } from "react";
 import { useRef, useState } from "react";
 import { usePostAudioStore } from "src/store/non-persisted/post/usePostAudioStore";
-import { object, string } from "zod";
+import { z } from "zod";
 import CoverImage from "./CoverImage";
 import Player from "./Player";
 
-export const AudioPostSchema = object({
-  artist: string().trim().min(1, { message: "Invalid artist name" }),
-  cover: string().trim().min(1, { message: "Invalid cover image" }),
-  title: string().trim().min(1, { message: "Invalid audio title" })
+export const AudioPostSchema = z.object({
+  artist: z.string().trim().min(1, { message: "Invalid artist name" }),
+  cover: z.string().trim().min(1, { message: "Invalid cover image" }),
+  title: z.string().trim().min(1, { message: "Invalid audio title" })
 });
 
 interface AudioProps {

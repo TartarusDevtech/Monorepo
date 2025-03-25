@@ -24,7 +24,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import useHandleWrongNetwork from "src/hooks/useHandleWrongNetwork";
 import { useAccount, useSignMessage } from "wagmi";
-import { object, string, type z } from "zod";
+import { z } from "zod";
 import { useSignupStore } from ".";
 import AuthMessage from "../AuthMessage";
 
@@ -35,8 +35,9 @@ export const SignupMessage = () => (
   />
 );
 
-const validationSchema = object({
-  username: string()
+const validationSchema = z.object({
+  username: z
+    .string()
     .min(3, { message: "Username must be at least 3 characters long" })
     .max(26, { message: "Username must be at most 26 characters long" })
     .regex(Regex.username, {

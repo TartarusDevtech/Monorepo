@@ -1,10 +1,18 @@
 import prisma from "@hey/db/prisma/db/client";
 import { TRPCError } from "@trpc/server";
+import { z } from "zod";
 import rateLimiter from "../../middlewares/rateLimiter";
 import { authedProcedure } from "../../procedures/authedProcedure";
 
+const ResponseSchema = z.object({
+  appIcon: z.number(),
+  includeLowScore: z.boolean(),
+  permissions: z.array(z.string())
+});
+
 export const getPreferences = authedProcedure
   .use(rateLimiter({ requests: 100 }))
+  .output(ResponseSchema)
   .query(async ({ ctx }) => {
     try {
       const [preference, permissions] = await prisma.$transaction([

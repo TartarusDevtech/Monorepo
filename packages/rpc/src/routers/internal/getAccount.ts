@@ -1,13 +1,24 @@
 import { Regex } from "@hey/data/regex";
 import prisma from "@hey/db/prisma/db/client";
 import { TRPCError } from "@trpc/server";
-import { object, string } from "zod";
+import { z } from "zod";
 import { staffAccess } from "../../middlewares/staffAccess";
 import { authedProcedure } from "../../procedures/authedProcedure";
 
+const ParamsSchema = z.object({
+  address: z.string().regex(Regex.evmAddress)
+});
+
+const ResponseSchema = z.object({
+  appIcon: z.number(),
+  includeLowScore: z.boolean(),
+  permissions: z.array(z.string())
+});
+
 export const getAccount = authedProcedure
   .use(staffAccess)
-  .input(object({ address: string().regex(Regex.evmAddress) }))
+  .input(ParamsSchema)
+  .output(ResponseSchema)
   .query(async ({ input }) => {
     try {
       const { address } = input;

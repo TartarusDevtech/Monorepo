@@ -18,11 +18,11 @@ import type { FC } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
-import { object, string, type z } from "zod";
+import { z } from "zod";
 import Reason from "./Reason";
 
-const validationSchema = object({
-  additionalComment: string().max(260, {
+const validationSchema = z.object({
+  additionalComment: z.string().max(260, {
     message: "Additional comments should not exceed 260 characters"
   })
 });

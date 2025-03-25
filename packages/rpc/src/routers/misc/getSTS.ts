@@ -1,8 +1,15 @@
 import { AssumeRoleCommand, STSClient } from "@aws-sdk/client-sts";
 import { EVER_API, EVER_BUCKET, EVER_REGION } from "@hey/data/constants";
 import { TRPCError } from "@trpc/server";
+import { z } from "zod";
 import rateLimiter from "../../middlewares/rateLimiter";
 import { publicProcedure } from "../../trpc";
+
+const ResponseSchema = z.object({
+  accessKeyId: z.string().optional(),
+  secretAccessKey: z.string().optional(),
+  sessionToken: z.string().optional()
+});
 
 const params = {
   DurationSeconds: 900,
@@ -26,6 +33,7 @@ const params = {
 
 export const getSTS = publicProcedure
   .use(rateLimiter({ requests: 50 }))
+  .output(ResponseSchema)
   .query(async () => {
     try {
       const stsClient = new STSClient({

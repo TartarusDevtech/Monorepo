@@ -15,16 +15,16 @@ import toast from "react-hot-toast";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
-import type { z } from "zod";
-import { object, string } from "zod";
+import { z } from "zod";
 
-const validationSchema = object({
-  name: string()
+const validationSchema = z.object({
+  name: z
+    .string()
     .max(100, { message: "Name should not exceed 100 characters" })
     .regex(Regex.accountNameValidator, {
       message: "Account name must not contain restricted symbols"
     }),
-  description: string().max(260, {
+  description: z.string().max(260, {
     message: "Description should not exceed 260 characters"
   })
 });

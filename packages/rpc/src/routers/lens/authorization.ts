@@ -2,12 +2,23 @@ import { PermissionId } from "@hey/data/permissions";
 import { Regex } from "@hey/data/regex";
 import prisma from "@hey/db/prisma/db/client";
 import { TRPCError } from "@trpc/server";
-import { object, string } from "zod";
+import { z } from "zod";
 import { VERIFICATION_ENDPOINT } from "../../helpers/constants";
 import { publicProcedure } from "../../trpc";
 
+const ParamsSchema = z.object({
+  account: z.string().regex(Regex.evmAddress)
+});
+
+const ResponseSchema = z.object({
+  allowed: z.boolean(),
+  sponsored: z.boolean(),
+  appVerificationEndpoint: z.string()
+});
+
 export const authorization = publicProcedure
-  .input(object({ account: string().regex(Regex.evmAddress) }))
+  .input(ParamsSchema)
+  .output(ResponseSchema)
   .mutation(async ({ input }) => {
     try {
       const { account } = input;

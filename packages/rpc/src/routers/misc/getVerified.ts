@@ -1,12 +1,16 @@
 import { PermissionId } from "@hey/data/permissions";
 import prisma from "@hey/db/prisma/db/client";
 import { TRPCError } from "@trpc/server";
+import { z } from "zod";
 import { CACHE_AGE_30_MINS } from "../../helpers/constants";
 import rateLimiter from "../../middlewares/rateLimiter";
 import { publicProcedure } from "../../trpc";
 
+const ResponseSchema = z.array(z.string());
+
 export const getVerified = publicProcedure
   .use(rateLimiter({ requests: 250 }))
+  .output(ResponseSchema)
   .query(async ({ ctx }) => {
     try {
       const verifiedAccounts = await prisma.accountPermission.findMany({

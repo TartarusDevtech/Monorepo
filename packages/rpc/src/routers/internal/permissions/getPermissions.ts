@@ -1,10 +1,24 @@
 import prisma from "@hey/db/prisma/db/client";
 import { TRPCError } from "@trpc/server";
+import { z } from "zod";
 import { staffAccess } from "../../../middlewares/staffAccess";
 import { authedProcedure } from "../../../procedures/authedProcedure";
 
+const ResponseSchema = z.array(
+  z.object({
+    _count: z.object({
+      accounts: z.number()
+    }),
+    id: z.string(),
+    key: z.string(),
+    type: z.string(),
+    createdAt: z.date()
+  })
+);
+
 export const getPermissions = authedProcedure
   .use(staffAccess)
+  .output(ResponseSchema)
   .query(async () => {
     try {
       const permissions = await prisma.permission.findMany({

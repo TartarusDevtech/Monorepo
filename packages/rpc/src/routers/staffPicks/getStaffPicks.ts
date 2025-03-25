@@ -1,9 +1,12 @@
 import { PermissionId } from "@hey/data/permissions";
 import prisma from "@hey/db/prisma/db/client";
 import { TRPCError } from "@trpc/server";
+import { z } from "zod";
 import { CACHE_AGE_30_MINS } from "../../helpers/constants";
 import rateLimiter from "../../middlewares/rateLimiter";
 import { publicProcedure } from "../../trpc";
+
+const ResponseSchema = z.array(z.object({ accountAddress: z.string() }));
 
 const getRandomPicks = (
   data: { accountAddress: string }[]
@@ -14,6 +17,7 @@ const getRandomPicks = (
 
 export const getStaffPicks = publicProcedure
   .use(rateLimiter({ requests: 100 }))
+  .output(ResponseSchema)
   .query(async ({ ctx }) => {
     try {
       const accountPermission = await prisma.accountPermission.findMany({
