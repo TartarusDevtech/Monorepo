@@ -30,13 +30,13 @@ const Balances: FC = () => {
 
   const TokenBalance = ({ value, symbol, currency }: TokenBalanceProps) => {
     return (
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-5">
         <div className="flex items-center gap-2">
           <Image src={getTokenImage(symbol)} alt={symbol} className="size-5" />
           <b>{Number.parseFloat(value).toFixed(2)} </b>
           {symbol}
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <Withdraw currency={currency} value={value} refetch={refetch} />
           {!currency && <Wrap value={value} refetch={refetch} />}
           {currency === DEFAULT_COLLECT_TOKEN && (
