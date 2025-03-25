@@ -12,10 +12,10 @@ export const DEFAULT_COLLECT_TOKEN = getEnvConfig().defaultCollectToken;
 export const HEY_APP = getEnvConfig().appAddress;
 export const HEY_SPONSOR = getEnvConfig().sponsorAddress;
 export const HEY_TREASURY = "0x03Ba34f6Ea1496fa316873CF8350A3f7eaD317EF";
-export const HEY_TRPC_PRODUCTION_URL = "https://hey-api.up.railway.app";
+export const HEY_TRPC_PRODUCTION_URL = "https://hey-api.up.railway.app/trpc";
 export const HEY_TRPC_URL = IS_PRODUCTION
   ? HEY_TRPC_PRODUCTION_URL
-  : "http://localhost:4784";
+  : "http://localhost:4784/trpc";
 
 export const IS_MAINNET = LENS_API_URL === LensEndpoint.Mainnet;
 export const ADDRESS_PLACEHOLDER = "0x03Ba3...7EF";

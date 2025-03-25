@@ -1,12 +1,15 @@
 import logger from "@hey/helpers/logger";
-import { createHTTPServer } from "@trpc/server/adapters/standalone";
+import * as trpcExpress from "@trpc/server/adapters/express";
 import cors from "cors";
 import "dotenv/config";
+import express from "express";
 import { createContext } from "./context";
+import { lensAuthorization } from "./http/lens/lensAuthorization";
+import { lensVerification } from "./http/lens/lensVerification";
+import { ping } from "./http/ping";
 import { accountRouter } from "./routers/account";
 import { healthRouter } from "./routers/health";
 import { internalRouter } from "./routers/internal";
-import { lensRouter } from "./routers/lens";
 import { liveRouter } from "./routers/live";
 import { miscRouter } from "./routers/misc";
 import { oembedRouter } from "./routers/oembed";
@@ -19,7 +22,6 @@ export const appRouter = router({
   health: healthRouter,
   internal: internalRouter,
   live: liveRouter,
-  lens: lensRouter,
   misc: miscRouter,
   oembed: oembedRouter,
   preferences: preferencesRouter,
@@ -28,14 +30,32 @@ export const appRouter = router({
 
 export type AppRouter = typeof appRouter;
 
-const PORT = 4784;
+const app = express();
 
-createHTTPServer({
-  createContext,
-  middleware: cors(),
-  router: appRouter
-})
-  .listen(PORT)
-  .on("listening", () => {
-    logger.info(`Server is running on port ${PORT}`);
-  });
+app.use(cors());
+app.use(express.json());
+
+app.use(
+  "/trpc",
+  trpcExpress.createExpressMiddleware({
+    router: appRouter,
+    createContext
+  })
+);
+
+app.get("/ping", (_, res) => {
+  ping(res);
+});
+
+app.post("/lens/authorization", (req, res) => {
+  lensAuthorization(req, res);
+});
+
+app.post("/lens/verification", (req, res) => {
+  lensVerification(req, res);
+});
+
+const PORT = 4784;
+app.listen(PORT, () => {
+  logger.info(`Server running on port ${PORT}`);
+});
