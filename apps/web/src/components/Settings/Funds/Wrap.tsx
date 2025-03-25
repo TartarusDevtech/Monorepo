@@ -65,7 +65,7 @@ const Wrap: FC<WrapProps> = ({ value, refetch }) => {
         size="sm"
         outline
         onClick={() => setShowModal(true)}
-        disabled={isSubmitting}
+        disabled={isSubmitting || valueToWrap === "0"}
       >
         Wrap
       </Button>

@@ -73,7 +73,7 @@ const Withdraw: FC<WithdrawProps> = ({ currency, value, refetch }) => {
         size="sm"
         outline
         onClick={() => setShowModal(true)}
-        disabled={isSubmitting}
+        disabled={isSubmitting || valueToWithdraw === "0"}
       >
         Withdraw
       </Button>
