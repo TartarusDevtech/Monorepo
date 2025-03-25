@@ -29,5 +29,3 @@ export const rubikMonoOneFont = Rubik_Mono_One({
   subsets: ["latin"],
   weight: "400"
 });
-
-// Account theme fonts
