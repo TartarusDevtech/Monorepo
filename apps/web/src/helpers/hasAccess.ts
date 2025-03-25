@@ -4,6 +4,11 @@ import getCurrentSession from "./getCurrentSession";
 
 const hasAccess = (feature: string): boolean => {
   const { address } = getCurrentSession();
+
+  if (!address) {
+    return false;
+  }
+
   const accounts = Access[feature].map((account) => getAddress(account));
   return accounts.includes(getAddress(address));
 };
