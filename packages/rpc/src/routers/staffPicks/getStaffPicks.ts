@@ -1,5 +1,6 @@
 import { PermissionId } from "@hey/data/permissions";
 import prisma from "@hey/db/prisma/db/client";
+import { CACHE_AGE_30_MINS } from "@src/helpers/constants";
 import { TRPCError } from "@trpc/server";
 import { publicProcedure } from "../../trpc";
 
@@ -10,13 +11,14 @@ const getRandomPicks = (
   return random.slice(0, 150);
 };
 
-export const getStaffPicks = publicProcedure.query(async () => {
+export const getStaffPicks = publicProcedure.query(async ({ ctx }) => {
   try {
     const accountPermission = await prisma.accountPermission.findMany({
       select: { accountAddress: true },
       where: { enabled: true, permissionId: PermissionId.StaffPick }
     });
 
+    ctx.res.setHeader("Cache-Control", CACHE_AGE_30_MINS);
     return getRandomPicks(accountPermission);
   } catch {
     throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });

@@ -1,9 +1,10 @@
 import { PermissionId } from "@hey/data/permissions";
 import prisma from "@hey/db/prisma/db/client";
+import { CACHE_AGE_30_MINS } from "@src/helpers/constants";
 import { TRPCError } from "@trpc/server";
 import { publicProcedure } from "../../trpc";
 
-export const getVerified = publicProcedure.query(async () => {
+export const getVerified = publicProcedure.query(async ({ ctx }) => {
   try {
     const verifiedAccounts = await prisma.accountPermission.findMany({
       select: { accountAddress: true },
@@ -13,6 +14,7 @@ export const getVerified = publicProcedure.query(async () => {
       }
     });
 
+    ctx.res.setHeader("Cache-Control", CACHE_AGE_30_MINS);
     return verifiedAccounts.map(({ accountAddress }) => accountAddress);
   } catch {
     throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
