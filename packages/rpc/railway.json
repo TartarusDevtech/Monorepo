@@ -8,7 +8,7 @@
   "deploy": {
     "runtime": "V2",
     "startCommand": "pnpm --filter @hey/rpc start",
-    "healthcheckPath": "/health.health",
+    "healthcheckPath": "/ping",
     "healthcheckTimeout": 60,
     "restartPolicyType": "ALWAYS",
     "sleepApplication": false,
