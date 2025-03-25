@@ -6,7 +6,6 @@ import getAccount from "@hey/helpers/getAccount";
 import getTokenImage from "@hey/helpers/getTokenImage";
 import type { AccountFollowRules, AccountFragment } from "@hey/indexer";
 import { H3, H5 } from "@hey/ui";
-import type { FC } from "react";
 import { useSuperFollowModalStore } from "src/store/non-persisted/modal/useSuperFollowModalStore";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import type { Address } from "viem";
@@ -16,7 +15,7 @@ import Loader from "../Loader";
 import Slug from "../Slug";
 import Follow from "./Follow";
 
-const SuperFollow: FC = () => {
+const SuperFollow = () => {
   const { currentAccount } = useAccountStore();
   const { superFollowingAccount, setShowSuperFollowModal } =
     useSuperFollowModalStore();

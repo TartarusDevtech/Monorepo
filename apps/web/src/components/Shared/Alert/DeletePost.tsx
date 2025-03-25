@@ -5,13 +5,12 @@ import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
 import { useDeletePostMutation } from "@hey/indexer";
 import { Alert } from "@hey/ui";
-import type { FC } from "react";
 import { toast } from "react-hot-toast";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
 import { useDeletePostAlertStore } from "src/store/non-persisted/alert/useDeletePostAlertStore";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 
-const DeletePost: FC = () => {
+const DeletePost = () => {
   const { deletingPost, setShowPostDeleteAlert, showPostDeleteAlert } =
     useDeletePostAlertStore();
   const { isSuspended } = useAccountStatus();

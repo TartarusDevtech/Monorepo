@@ -2,12 +2,12 @@ import getCurrentSession from "@helpers/getCurrentSession";
 import { trpc } from "@helpers/trpc";
 import { Permission } from "@hey/data/permissions";
 import { useQuery } from "@tanstack/react-query";
-import { type FC, useEffect } from "react";
+import { useEffect } from "react";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 import { usePreferencesStore } from "src/store/persisted/usePreferencesStore";
 import { useVerifiedMembersStore } from "src/store/persisted/useVerifiedMembersStore";
 
-const PreferencesProvider: FC = () => {
+const PreferencesProvider = () => {
   const { address: sessionAccountAddress } = getCurrentSession();
   const { setVerifiedMembers } = useVerifiedMembersStore();
   const { setAppIcon, setIncludeLowScore } = usePreferencesStore();

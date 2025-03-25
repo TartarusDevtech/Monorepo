@@ -7,7 +7,6 @@ import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Events } from "@hey/data/events";
 import { Card, CardHeader, Tooltip } from "@hey/ui";
 import { useMutation } from "@tanstack/react-query";
-import type { FC } from "react";
 import toast from "react-hot-toast";
 import { usePreferencesStore } from "src/store/persisted/usePreferencesStore";
 
@@ -19,7 +18,7 @@ const icons = [
   { id: 4, name: "Violet" }
 ];
 
-const AppIcon: FC = () => {
+const AppIcon = () => {
   const { appIcon, setAppIcon } = usePreferencesStore();
   const { mutate, isPending } = useMutation(
     trpc.preferences.update.mutationOptions({

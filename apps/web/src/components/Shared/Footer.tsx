@@ -1,6 +1,5 @@
 import { APP_NAME, APP_URL } from "@hey/data/constants";
 import Link from "next/link";
-import type { FC } from "react";
 const currentYear = new Date().getFullYear();
 
 const links = [
@@ -14,7 +13,7 @@ const links = [
   { href: "/support", label: "Support" }
 ];
 
-const Footer: FC = () => {
+const Footer = () => {
   return (
     <footer className="sticky top-20 mt-4 flex flex-wrap gap-x-[12px] gap-y-2 px-3 text-sm lg:px-0">
       <span className="ld-text-gray-500 font-bold">

@@ -2,13 +2,13 @@ import errorToast from "@helpers/errorToast";
 import { Errors } from "@hey/data/errors";
 import { useAuthenticateMutation, useChallengeMutation } from "@hey/indexer";
 import { Button, Card, CardHeader, H6 } from "@hey/ui";
-import { type FC, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import useHandleWrongNetwork from "src/hooks/useHandleWrongNetwork";
 import { hydrateAuthTokens } from "src/store/persisted/useAuthStore";
 import { useAccount, useSignMessage } from "wagmi";
 
-const Tokens: FC = () => {
+const Tokens = () => {
   const { accessToken, idToken, refreshToken } = hydrateAuthTokens();
   const [builderToken, setBuilderToken] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);

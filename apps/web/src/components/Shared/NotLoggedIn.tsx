@@ -2,9 +2,8 @@ import MetaTags from "@components/Common/MetaTags";
 import LoginButton from "@components/Shared/LoginButton";
 import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { H2 } from "@hey/ui";
-import type { FC } from "react";
 
-const NotLoggedIn: FC = () => {
+const NotLoggedIn = () => {
   return (
     <div className="page-center flex-col">
       <MetaTags title={`Not logged in • ${APP_NAME}`} />

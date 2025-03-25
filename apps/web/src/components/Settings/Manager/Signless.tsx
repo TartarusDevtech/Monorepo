@@ -5,13 +5,12 @@ import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
 import { useEnableSignlessMutation } from "@hey/indexer";
 import { Button, Card, CardHeader } from "@hey/ui";
-import type { FC } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 
-const Signless: FC = () => {
+const Signless = () => {
   const { isSuspended } = useAccountStatus();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const handleTransactionLifecycle = useTransactionLifecycle();

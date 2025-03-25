@@ -3,9 +3,8 @@ import { rubikMonoOneFont } from "@helpers/fonts";
 import { APP_NAME, APP_URL, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Button, Card } from "@hey/ui";
 import Link from "next/link";
-import type { FC } from "react";
 
-const Gitcoin: FC = () => {
+const Gitcoin = () => {
   return (
     <Card
       as="aside"

@@ -84,7 +84,7 @@ const AccountPreview: FC<AccountPreviewProps> = ({
       );
     }
 
-    const UserAvatar: FC = () => (
+    const UserAvatar = () => (
       <Image
         alt={account.address}
         className="size-12 rounded-full border bg-gray-200 dark:border-gray-700"
@@ -95,7 +95,7 @@ const AccountPreview: FC<AccountPreviewProps> = ({
       />
     );
 
-    const UserName: FC = () => (
+    const UserName = () => (
       <>
         <div className="flex max-w-sm items-center gap-1 truncate">
           <div className="text-md">{getAccount(account).name}</div>

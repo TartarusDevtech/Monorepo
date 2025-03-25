@@ -7,11 +7,10 @@ import {
   useTimelineHighlightsQuery
 } from "@hey/indexer";
 import { Card, EmptyState, ErrorMessage } from "@hey/ui";
-import type { FC } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
-const Highlights: FC = () => {
+const Highlights = () => {
   const { currentAccount } = useAccountStore();
 
   const request: TimelineHighlightsRequest = {

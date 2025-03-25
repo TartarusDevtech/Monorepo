@@ -10,14 +10,13 @@ import {
   useUnmuteMutation
 } from "@hey/indexer";
 import { Alert } from "@hey/ui";
-import type { FC } from "react";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useMuteAlertStore } from "src/store/non-persisted/alert/useMuteAlertStore";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
-const MuteOrUnmuteAccount: FC = () => {
+const MuteOrUnmuteAccount = () => {
   const { currentAccount } = useAccountStore();
   const {
     mutingOrUnmutingAccount,

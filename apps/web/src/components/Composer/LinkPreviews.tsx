@@ -1,10 +1,9 @@
 import Oembed from "@components/Shared/Oembed";
 import getURLs from "@hey/helpers/getURLs";
-import type { FC } from "react";
 import { usePostAttachmentStore } from "src/store/non-persisted/post/usePostAttachmentStore";
 import { usePostStore } from "src/store/non-persisted/post/usePostStore";
 
-const LinkPreviews: FC = () => {
+const LinkPreviews = () => {
   const { postContent, quotedPost } = usePostStore();
   const { attachments } = usePostAttachmentStore((state) => state);
   const urls = getURLs(postContent);

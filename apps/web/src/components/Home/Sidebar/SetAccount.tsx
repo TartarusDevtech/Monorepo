@@ -22,7 +22,7 @@ const Status: FC<StatusProps> = ({ finished, title }) => (
   </div>
 );
 
-const SetAccount: FC = () => {
+const SetAccount = () => {
   const { currentAccount } = useAccountStore();
 
   const doneSetup =

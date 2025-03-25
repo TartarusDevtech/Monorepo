@@ -26,7 +26,7 @@ const SingleGroup: FC<SingleGroupProps> = ({
   showDescription = false,
   group
 }) => {
-  const GroupAvatar: FC = () => (
+  const GroupAvatar = () => (
     <Image
       alt={group.address}
       className={cn(
@@ -40,7 +40,7 @@ const SingleGroup: FC<SingleGroupProps> = ({
     />
   );
 
-  const GroupInfo: FC = () => (
+  const GroupInfo = () => (
     <div className="mr-8 flex items-center space-x-3">
       <GroupAvatar />
       <div>

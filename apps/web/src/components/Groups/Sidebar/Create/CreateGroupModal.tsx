@@ -8,7 +8,7 @@ import { Regex } from "@hey/data/regex";
 import { useCreateGroupMutation } from "@hey/indexer";
 import { Button, Form, Input, TextArea, useZodForm } from "@hey/ui";
 import { group } from "@lens-protocol/metadata";
-import { type FC, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
@@ -27,7 +27,7 @@ const ValidationSchema = z.object({
   })
 });
 
-const CreateGroupModal: FC = () => {
+const CreateGroupModal = () => {
   const { isSuspended } = useAccountStatus();
   const { setScreen, setTransactionHash } = useCreateGroupStore();
   const [pfpUrl, setPfpUrl] = useState<string | undefined>();

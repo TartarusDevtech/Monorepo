@@ -11,7 +11,6 @@ import {
   useUnblockMutation
 } from "@hey/indexer";
 import { Alert } from "@hey/ui";
-import type { FC } from "react";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
@@ -19,7 +18,7 @@ import { useBlockAlertStore } from "src/store/non-persisted/alert/useBlockAlertS
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
-const BlockOrUnblockAccount: FC = () => {
+const BlockOrUnblockAccount = () => {
   const { currentAccount } = useAccountStore();
   const {
     blockingorUnblockingAccount,

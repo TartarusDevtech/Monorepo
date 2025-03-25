@@ -1,7 +1,6 @@
 import WrongWallet from "@components/Shared/Settings/WrongWallet";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { Button, Card, Modal, TabButton } from "@hey/ui";
-import type { FC } from "react";
 import { useState } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import { useAccount } from "wagmi";
@@ -16,7 +15,7 @@ enum Type {
   UNMANAGED = "UNMANAGED"
 }
 
-const AccountManager: FC = () => {
+const AccountManager = () => {
   const { currentAccount } = useAccountStore();
   const [type, setType] = useState<Type>(Type.MANAGERS);
   const [showAddManagerModal, setShowAddManagerModal] = useState(false);

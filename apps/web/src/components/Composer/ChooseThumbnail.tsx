@@ -4,7 +4,7 @@ import { CheckCircleIcon, PhotoIcon } from "@heroicons/react/24/outline";
 import { generateVideoThumbnails } from "@hey/helpers/generateVideoThumbnails";
 import getFileFromDataURL from "@hey/helpers/getFileFromDataURL";
 import { Spinner } from "@hey/ui";
-import type { ChangeEvent, FC } from "react";
+import type { ChangeEvent } from "react";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { usePostAttachmentStore } from "src/store/non-persisted/post/usePostAttachmentStore";
@@ -18,7 +18,7 @@ interface Thumbnail {
   decentralizedUrl: string;
 }
 
-const ChooseThumbnail: FC = () => {
+const ChooseThumbnail = () => {
   const [thumbnails, setThumbnails] = useState<Thumbnail[]>([]);
   const [imageUploading, setImageUploading] = useState(false);
   const [selectedThumbnailIndex, setSelectedThumbnailIndex] = useState(-1);

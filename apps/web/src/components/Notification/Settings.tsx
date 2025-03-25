@@ -1,10 +1,9 @@
 import IncludeLowScore from "@components/Settings/Preferences/IncludeLowScore";
 import { Cog6ToothIcon } from "@heroicons/react/24/outline";
 import { Modal, Tooltip } from "@hey/ui";
-import type { FC } from "react";
 import { useState } from "react";
 
-const Settings: FC = () => {
+const Settings = () => {
   const [showNotificationSettings, setShowNotificationSettings] =
     useState(false);
 

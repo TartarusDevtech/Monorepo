@@ -1,11 +1,10 @@
 import { VideoCameraIcon } from "@heroicons/react/24/outline";
 import { Tooltip } from "@hey/ui";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 import { usePostAttachmentStore } from "src/store/non-persisted/post/usePostAttachmentStore";
 import { usePostLiveStore } from "src/store/non-persisted/post/usePostLiveStore";
 
-const LivestreamSettings: FC = () => {
+const LivestreamSettings = () => {
   const { resetLiveVideoConfig, setShowLiveVideoEditor, showLiveVideoEditor } =
     usePostLiveStore();
   const { attachments } = usePostAttachmentStore((state) => state);

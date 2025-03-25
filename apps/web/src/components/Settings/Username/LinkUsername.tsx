@@ -9,14 +9,13 @@ import {
   useUsernamesQuery
 } from "@hey/indexer";
 import { Button, Card, CardHeader, EmptyState } from "@hey/ui";
-import type { FC } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
-const LinkUsername: FC = () => {
+const LinkUsername = () => {
   const { currentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
   const [linkingUsername, setLinkingUsername] = useState<null | string>(null);

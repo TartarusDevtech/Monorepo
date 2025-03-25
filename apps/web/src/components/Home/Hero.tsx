@@ -1,7 +1,6 @@
 import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
-import type { FC } from "react";
 
-const Hero: FC = () => {
+const Hero = () => {
   return (
     <div className="divider py-12">
       <div className="mx-auto flex w-full max-w-screen-xl items-center px-5 py-8 sm:py-12">

@@ -1,7 +1,6 @@
 import NewPublication from "@components/Composer/NewPublication";
 import ReportPost from "@components/Shared/Modal/ReportPost";
 import { Modal } from "@hey/ui";
-import type { FC } from "react";
 import { useAuthModalStore } from "src/store/non-persisted/modal/useAuthModalStore";
 import { useFundModalStore } from "src/store/non-persisted/modal/useFundModalStore";
 import { useNewPostModalStore } from "src/store/non-persisted/modal/useNewPostModalStore";
@@ -19,7 +18,7 @@ import SuperJoin from "./Group/SuperJoin";
 import ReportAccount from "./Modal/ReportAccount";
 import SwitchAccounts from "./SwitchAccounts";
 
-const GlobalModals: FC = () => {
+const GlobalModals = () => {
   const { setShowSwitchAccountModal, showSwitchAccountModal } =
     useSwitchAccountModalStore();
   const { showNewPostModal, setShowNewPostModal } = useNewPostModalStore();

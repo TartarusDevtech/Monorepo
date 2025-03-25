@@ -1,10 +1,10 @@
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import { H4 } from "@hey/ui";
 import { useRouter } from "next/router";
-import { type FC, useEffect } from "react";
+import { useEffect } from "react";
 import { useCreateGroupStore } from "./CreateGroup";
 
-const Success: FC = () => {
+const Success = () => {
   const { push } = useRouter();
   const { groupAddress, setScreen } = useCreateGroupStore();
 

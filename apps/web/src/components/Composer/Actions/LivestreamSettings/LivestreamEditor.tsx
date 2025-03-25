@@ -28,7 +28,7 @@ const Wrapper: FC<WrapperProps> = ({ children }) => {
   );
 };
 
-const LivestreamEditor: FC = () => {
+const LivestreamEditor = () => {
   const {
     liveVideoConfig,
     resetLiveVideoConfig,

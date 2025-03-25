@@ -1,6 +1,4 @@
-import type { FC } from "react";
-
-const NotificationShimmer: FC = () => {
+const NotificationShimmer = () => {
   return (
     <div className="flex items-start justify-between p-5">
       <div className="w-4/5 space-y-4">

@@ -6,7 +6,6 @@ import { useStaffPicksQuery } from "@hey/indexer";
 import type { StaffPicksRouterOutput } from "@hey/rpc/src/routers/staffPicks";
 import { Card, EmptyState, ErrorMessage, H5 } from "@hey/ui";
 import { useQuery } from "@tanstack/react-query";
-import type { FC } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 interface BatchRange {
@@ -14,9 +13,9 @@ interface BatchRange {
   start: number;
 }
 
-const Title: FC = () => <H5>Staff Picks</H5>;
+const Title = () => <H5>Staff Picks</H5>;
 
-const StaffPicks: FC = () => {
+const StaffPicks = () => {
   const { currentAccount } = useAccountStore();
   const {
     data: picks,

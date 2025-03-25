@@ -73,7 +73,7 @@ const Transaction: FC<{ transaction: OptimisticPublication }> = ({
   return null;
 };
 
-const OptimisticPublicationProvider: FC = () => {
+const OptimisticPublicationProvider = () => {
   const { txnQueue } = useOptimisticPublicationStore();
 
   return (

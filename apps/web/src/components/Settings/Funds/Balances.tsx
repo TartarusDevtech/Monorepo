@@ -5,13 +5,12 @@ import { tokens } from "@hey/data/tokens";
 import getTokenImage from "@hey/helpers/getTokenImage";
 import { useAccountBalancesQuery } from "@hey/indexer";
 import { ErrorMessage, Image } from "@hey/ui";
-import type { FC } from "react";
 import type { Address } from "viem";
 import Unwrap from "./Unwrap";
 import Withdraw from "./Withdraw";
 import Wrap from "./Wrap";
 
-const Balances: FC = () => {
+const Balances = () => {
   const { data, loading, error, refetch } = useAccountBalancesQuery({
     variables: {
       request: {

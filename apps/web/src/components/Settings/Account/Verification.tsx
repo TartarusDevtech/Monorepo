@@ -1,10 +1,10 @@
 import isVerified from "@helpers/isVerified";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import { Button, Card, H5, Modal } from "@hey/ui";
-import { type FC, useState } from "react";
+import { useState } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
-const Verification: FC = () => {
+const Verification = () => {
   const { currentAccount } = useAccountStore();
   const [showModal, setShowModal] = useState(false);
 

@@ -5,11 +5,10 @@ import { trpc } from "@helpers/trpc";
 import { SwatchIcon } from "@heroicons/react/24/outline";
 import { Events } from "@hey/data/events";
 import { useMutation } from "@tanstack/react-query";
-import type { FC } from "react";
 import toast from "react-hot-toast";
 import { usePreferencesStore } from "src/store/persisted/usePreferencesStore";
 
-const IncludeLowScore: FC = () => {
+const IncludeLowScore = () => {
   const { includeLowScore, setIncludeLowScore } = usePreferencesStore();
   const { mutate, isPending } = useMutation(
     trpc.preferences.update.mutationOptions({

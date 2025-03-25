@@ -1,9 +1,8 @@
 import { useGroupQuery } from "@hey/indexer";
 import { H4, Spinner } from "@hey/ui";
-import type { FC } from "react";
 import { useCreateGroupStore } from "./CreateGroup";
 
-const Minting: FC = () => {
+const Minting = () => {
   const { setScreen, transactionHash, setGroupAddress } = useCreateGroupStore();
 
   useGroupQuery({

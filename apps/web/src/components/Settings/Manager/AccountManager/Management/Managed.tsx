@@ -1,7 +1,6 @@
-import type { FC } from "react";
 import List from "./List";
 
-const Managed: FC = () => {
+const Managed = () => {
   return (
     <div className="pt-2">
       <div className="mx-5 mb-5">

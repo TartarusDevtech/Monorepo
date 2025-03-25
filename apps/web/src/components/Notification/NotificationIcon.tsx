@@ -1,9 +1,8 @@
 import { BellIcon } from "@heroicons/react/24/outline";
 import { Tooltip } from "@hey/ui";
 import Link from "next/link";
-import type { FC } from "react";
 
-const NotificationIcon: FC = () => {
+const NotificationIcon = () => {
   return (
     <Tooltip content="Notifications" placement="bottom">
       <Link

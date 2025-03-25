@@ -33,7 +33,7 @@ const EmojiItem: FC<EmojiItemProps> = ({ emoji, onSelect }) => {
   );
 };
 
-const EmojiPicker: FC = () => {
+const EmojiPicker = () => {
   const editor = useEditor<EditorExtension>();
   const [query, setQuery] = useState("");
   const { emojis } = useEmojis({ query });

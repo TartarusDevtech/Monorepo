@@ -18,7 +18,6 @@ import {
   MetadataAttributeType,
   account as accountMetadata
 } from "@lens-protocol/metadata";
-import type { FC } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import usePollTransactionStatus from "src/hooks/usePollTransactionStatus";
@@ -45,7 +44,7 @@ const ValidationSchema = z.object({
   x: z.string().max(100, { message: "X handle must not exceed 100 characters" })
 });
 
-const AccountSettingsForm: FC = () => {
+const AccountSettingsForm = () => {
   const { currentAccount, setCurrentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
   const [isSubmitting, setIsSubmitting] = useState(false);

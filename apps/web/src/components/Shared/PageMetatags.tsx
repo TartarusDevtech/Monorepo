@@ -1,9 +1,8 @@
 import { APP_NAME, DESCRIPTION } from "@hey/data/constants";
 import { useRouter } from "next/router";
-import type { FC } from "react";
 import MetaTags from "../Common/MetaTags";
 
-const PageMetatags: FC = () => {
+const PageMetatags = () => {
   const { pathname } = useRouter();
 
   const ogData: Record<string, { description: string; title: string }> = {

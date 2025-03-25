@@ -32,7 +32,7 @@ const SingleAccount: FC<SingleAccountProps> = ({
   showBio = false,
   showUserPreview = true
 }) => {
-  const UserAvatar: FC = () => (
+  const UserAvatar = () => (
     <Image
       alt={account.address}
       className={cn(
@@ -46,7 +46,7 @@ const SingleAccount: FC<SingleAccountProps> = ({
     />
   );
 
-  const UserName: FC = () => (
+  const UserName = () => (
     <>
       <div className="flex max-w-sm items-center">
         <div className={cn(isBig ? "font-bold" : "text-md", "grid")}>
@@ -60,7 +60,7 @@ const SingleAccount: FC<SingleAccountProps> = ({
     </>
   );
 
-  const AccountInfo: FC = () => (
+  const AccountInfo = () => (
     <AccountPreview
       username={account.username?.localName}
       address={account.address}

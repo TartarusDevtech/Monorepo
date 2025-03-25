@@ -2,10 +2,9 @@ import getAssetLicense from "@helpers/getAssetLicense";
 import { MetadataLicenseType } from "@hey/indexer";
 import { Select, Tooltip } from "@hey/ui";
 import Link from "next/link";
-import type { FC } from "react";
 import { usePostLicenseStore } from "src/store/non-persisted/post/usePostLicenseStore";
 
-const LicensePicker: FC = () => {
+const LicensePicker = () => {
   const { license, setLicense } = usePostLicenseStore();
 
   const otherOptions = Object.values(MetadataLicenseType)

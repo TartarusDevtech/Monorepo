@@ -25,7 +25,7 @@ const SmallSingleAccount: FC<SmallSingleAccountProps> = ({
   smallAvatar = false,
   timestamp = ""
 }) => {
-  const UserAvatar: FC = () => (
+  const UserAvatar = () => (
     <Image
       alt={account.address}
       className={cn(
@@ -39,7 +39,7 @@ const SmallSingleAccount: FC<SmallSingleAccountProps> = ({
     />
   );
 
-  const UserName: FC = () => (
+  const UserName = () => (
     <div className="flex max-w-full flex-wrap items-center">
       <div className={cn(!hideSlug && "max-w-[75%]", "mr-1 truncate")}>
         {getAccount(account).name}
@@ -60,7 +60,7 @@ const SmallSingleAccount: FC<SmallSingleAccountProps> = ({
     </div>
   );
 
-  const AccountInfo: FC = () => (
+  const AccountInfo = () => (
     <div className="flex items-center space-x-2">
       <UserAvatar />
       <UserName />

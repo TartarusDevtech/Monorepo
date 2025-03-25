@@ -12,7 +12,7 @@ import {
   MediaImageMimeType
 } from "@lens-protocol/metadata";
 import { useClickAway } from "@uidotdev/usehooks";
-import type { ChangeEvent, FC, JSX, MutableRefObject } from "react";
+import type { ChangeEvent, JSX, MutableRefObject } from "react";
 import { useId, useState } from "react";
 import toast from "react-hot-toast";
 import useUploadAttachments from "src/hooks/useUploadAttachments";
@@ -29,7 +29,7 @@ const VideoMimeType = [
 ];
 const MAX_IMAGE_UPLOAD = 4;
 
-const Attachment: FC = () => {
+const Attachment = () => {
   const { attachments, isUploading } = usePostAttachmentStore((state) => state);
   const { handleUploadAttachments } = useUploadAttachments();
   const [showMenu, setShowMenu] = useState(false);

@@ -1,6 +1,5 @@
 import { APP_NAME } from "@hey/data/constants";
 import { Button, Card, H5, Modal } from "@hey/ui";
-import type { FC } from "react";
 import { useState } from "react";
 import { createTrackedSelector } from "react-tracked";
 import { create } from "zustand";
@@ -28,7 +27,7 @@ const store = create<CreateGroupState>((set) => ({
 
 export const useCreateGroupStore = createTrackedSelector(store);
 
-const CreateGroup: FC = () => {
+const CreateGroup = () => {
   const [showModal, setShowModal] = useState(false);
   const { screen } = useCreateGroupStore();
 

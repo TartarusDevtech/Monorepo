@@ -12,14 +12,13 @@ import {
   useRevokeAuthenticationMutation
 } from "@hey/indexer";
 import { Button, EmptyState, ErrorMessage } from "@hey/ui";
-import type { FC } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Virtuoso } from "react-virtuoso";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
-const List: FC = () => {
+const List = () => {
   const { currentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
   const [revoking, setRevoking] = useState(false);

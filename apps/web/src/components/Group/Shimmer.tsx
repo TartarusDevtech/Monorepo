@@ -1,8 +1,7 @@
 import PostsShimmer from "@components/Shared/Shimmer/PostsShimmer";
 import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
-import type { FC } from "react";
 
-const GroupPageShimmer: FC = () => {
+const GroupPageShimmer = () => {
   return (
     <>
       <div className="container mx-auto max-w-[1350px]">

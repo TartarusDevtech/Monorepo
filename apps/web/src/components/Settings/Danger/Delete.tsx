@@ -17,13 +17,12 @@ import {
   WarningMessage
 } from "@hey/ui";
 import Link from "next/link";
-import type { FC } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import useHandleWrongNetwork from "src/hooks/useHandleWrongNetwork";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
-const DeleteSettings: FC = () => {
+const DeleteSettings = () => {
   const { currentAccount } = useAccountStore();
   const [showWarningModal, setShowWarningModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);

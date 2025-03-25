@@ -1,10 +1,10 @@
 import New from "@components/Shared/Badges/New";
 import { HomeFeedType } from "@hey/data/enums";
 import { TabButton } from "@hey/ui";
-import type { FC, JSX } from "react";
+import type { JSX } from "react";
 import { useHomeTabStore } from "src/store/persisted/useHomeTabStore";
 
-const FeedType: FC = () => {
+const FeedType = () => {
   const { feedType, setFeedType } = useHomeTabStore();
 
   const tabs = [

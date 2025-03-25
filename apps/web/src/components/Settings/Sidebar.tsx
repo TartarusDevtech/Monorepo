@@ -13,10 +13,9 @@ import {
   UserIcon
 } from "@heroicons/react/24/outline";
 import type { AccountFragment } from "@hey/indexer";
-import type { FC } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
-const SettingsSidebar: FC = () => {
+const SettingsSidebar = () => {
   const { currentAccount } = useAccountStore();
 
   const sidebarItems = [

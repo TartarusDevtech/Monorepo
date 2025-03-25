@@ -1,9 +1,8 @@
 import GraphStatsShimmer from "@components/Shared/Shimmer/GraphStatsShimmer";
 import PostsShimmer from "@components/Shared/Shimmer/PostsShimmer";
 import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
-import type { FC } from "react";
 
-const AccountPageShimmer: FC = () => {
+const AccountPageShimmer = () => {
   return (
     <>
       <div className="container mx-auto max-w-[1350px]">

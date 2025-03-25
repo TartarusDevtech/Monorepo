@@ -5,7 +5,6 @@ import { Image } from "@hey/ui";
 import "prosekit/basic/style.css";
 import { createEditor } from "prosekit/core";
 import { ProseKit } from "prosekit/react";
-import type { FC } from "react";
 import { useMemo, useRef } from "react";
 import useContentChange from "src/hooks/prosekit/useContentChange";
 import useFocus from "src/hooks/prosekit/useFocus";
@@ -15,7 +14,7 @@ import { useAccountStore } from "src/store/persisted/useAccountStore";
 import { useEditorHandle } from "./EditorHandle";
 import EditorMenus from "./EditorMenus";
 
-const Editor: FC = () => {
+const Editor = () => {
   const { currentAccount } = useAccountStore();
   const { postContent } = usePostStore();
   const defaultMarkdownRef = useRef(postContent);

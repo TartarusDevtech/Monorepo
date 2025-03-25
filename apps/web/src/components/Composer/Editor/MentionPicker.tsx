@@ -45,7 +45,7 @@ const MentionItem: FC<MentionItemProps> = ({ onSelect, account }) => {
   );
 };
 
-const MentionPicker: FC = () => {
+const MentionPicker = () => {
   const editor = useEditor<EditorExtension>();
   const [queryString, setQueryString] = useState<string>("");
   const results = useMentionQuery(queryString);

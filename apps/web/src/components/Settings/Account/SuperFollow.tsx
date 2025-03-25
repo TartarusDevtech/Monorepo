@@ -13,7 +13,7 @@ import {
 } from "@hey/indexer";
 import { Button, Card, CardHeader, Image, Input, Tooltip } from "@hey/ui";
 import { useRouter } from "next/router";
-import { type FC, type RefObject, useEffect, useRef, useState } from "react";
+import { type RefObject, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import usePollTransactionStatus from "src/hooks/usePollTransactionStatus";
 import usePreventScrollOnNumberInput from "src/hooks/usePreventScrollOnNumberInput";
@@ -21,7 +21,7 @@ import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
-const SuperFollow: FC = () => {
+const SuperFollow = () => {
   const { reload } = useRouter();
   const { currentAccount, setCurrentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();

@@ -12,7 +12,6 @@ import {
   useRemoveAccountManagerMutation
 } from "@hey/indexer";
 import { Button, EmptyState, ErrorMessage } from "@hey/ui";
-import type { FC } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Virtuoso } from "react-virtuoso";
@@ -20,7 +19,7 @@ import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
-const List: FC = () => {
+const List = () => {
   const { currentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
   const [removingAddress, setRemovingAddress] = useState<string | null>(null);

@@ -4,14 +4,13 @@ import { Errors } from "@hey/data/errors";
 import getAccount from "@hey/helpers/getAccount";
 import { useUnassignUsernameFromAccountMutation } from "@hey/indexer";
 import { Button, Card, CardHeader } from "@hey/ui";
-import type { FC } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
-const UnlinkUsername: FC = () => {
+const UnlinkUsername = () => {
   const { currentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
   const [unlinking, setUnlinking] = useState<boolean>(false);
