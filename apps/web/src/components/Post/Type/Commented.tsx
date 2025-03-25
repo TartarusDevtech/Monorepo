@@ -1,12 +1,11 @@
 import type { PostFragment } from "@hey/indexer";
-import type { FC } from "react";
 import ThreadBody from "../ThreadBody";
 
 interface CommentedProps {
   commentOn: PostFragment;
 }
 
-const Commented: FC<CommentedProps> = ({ commentOn }) => {
+const Commented = ({ commentOn }: CommentedProps) => {
   return <ThreadBody post={commentOn} />;
 };
 

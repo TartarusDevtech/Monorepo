@@ -4,7 +4,6 @@ import {
 } from "@helpers/rules";
 import type { GroupFragment, GroupRules } from "@hey/indexer";
 import { Button } from "@hey/ui";
-import type { FC } from "react";
 import { useSuperJoinModalStore } from "src/store/non-persisted/modal/useSuperJoinModalStore";
 import Join from "./Join";
 
@@ -14,11 +13,11 @@ interface JoinWithRulesCheckProps {
   small: boolean;
 }
 
-const JoinWithRulesCheck: FC<JoinWithRulesCheckProps> = ({
+const JoinWithRulesCheck = ({
   group,
   setJoined,
   small
-}) => {
+}: JoinWithRulesCheckProps) => {
   const { setShowSuperJoinModal } = useSuperJoinModalStore();
   const { assetContract: requiredSimplePayment } = getSimplePaymentDetails(
     group.rules as GroupRules

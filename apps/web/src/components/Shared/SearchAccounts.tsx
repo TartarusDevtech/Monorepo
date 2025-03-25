@@ -5,7 +5,7 @@ import {
   useAccountsLazyQuery
 } from "@hey/indexer";
 import { Card, Input } from "@hey/ui";
-import type { ChangeEvent, FC } from "react";
+import type { ChangeEvent } from "react";
 import Loader from "./Loader";
 import SmallSingleAccount from "./SmallSingleAccount";
 
@@ -18,14 +18,14 @@ interface SearchAccountsProps {
   value: string;
 }
 
-const SearchAccounts: FC<SearchAccountsProps> = ({
+const SearchAccounts = ({
   error = false,
   hideDropdown = false,
   onChange,
   onAccountSelected,
   placeholder = "Search…",
   value
-}) => {
+}: SearchAccountsProps) => {
   const [searchAccounts, { data, loading }] = useAccountsLazyQuery();
 
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {

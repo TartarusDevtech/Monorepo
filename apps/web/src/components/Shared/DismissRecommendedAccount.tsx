@@ -3,15 +3,14 @@ import {
   type AccountFragment,
   useMlDismissRecommendedAccountsMutation
 } from "@hey/indexer";
-import type { FC } from "react";
 
 interface DismissRecommendedAccountProps {
   account: AccountFragment;
 }
 
-const DismissRecommendedAccount: FC<DismissRecommendedAccountProps> = ({
+const DismissRecommendedAccount = ({
   account
-}) => {
+}: DismissRecommendedAccountProps) => {
   const [dismissRecommendedAccount] = useMlDismissRecommendedAccountsMutation({
     update: (cache) => {
       cache.evict({ id: cache.identify(account) });

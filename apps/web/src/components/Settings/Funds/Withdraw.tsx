@@ -3,7 +3,7 @@ import errorToast from "@helpers/errorToast";
 import { Events } from "@hey/data/events";
 import { useWithdrawMutation } from "@hey/indexer";
 import { Button, Input, Modal } from "@hey/ui";
-import { type FC, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import usePollTransactionStatus from "src/hooks/usePollTransactionStatus";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
@@ -15,7 +15,7 @@ interface WithdrawProps {
   refetch: () => void;
 }
 
-const Withdraw: FC<WithdrawProps> = ({ currency, value, refetch }) => {
+const Withdraw = ({ currency, value, refetch }: WithdrawProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [valueToWithdraw, setValueToWithdraw] = useState(value);

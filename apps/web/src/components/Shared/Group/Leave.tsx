@@ -9,7 +9,7 @@ import {
   useLeaveGroupMutation
 } from "@hey/indexer";
 import { Button } from "@hey/ui";
-import { type FC, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
@@ -20,7 +20,7 @@ interface LeaveProps {
   small: boolean;
 }
 
-const Leave: FC<LeaveProps> = ({ group, setJoined, small }) => {
+const Leave = ({ group, setJoined, small }: LeaveProps) => {
   const { isSuspended } = useAccountStatus();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { cache } = useApolloClient();

@@ -4,13 +4,7 @@ import { DEFAULT_COLLECT_TOKEN } from "@hey/data/constants";
 import { Events } from "@hey/data/events";
 import { useDepositMutation } from "@hey/indexer";
 import { Button, Card, Input, Spinner } from "@hey/ui";
-import {
-  type ChangeEvent,
-  type FC,
-  type RefObject,
-  useRef,
-  useState
-} from "react";
+import { type ChangeEvent, type RefObject, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import usePollTransactionStatus from "src/hooks/usePollTransactionStatus";
 import usePreventScrollOnNumberInput from "src/hooks/usePreventScrollOnNumberInput";
@@ -25,7 +19,7 @@ interface FundProps {
   onSuccess?: () => void;
 }
 
-const Fund: FC<FundProps> = ({ isHeyTip, useNativeToken, onSuccess }) => {
+const Fund = ({ isHeyTip, useNativeToken, onSuccess }: FundProps) => {
   const { setShowFundModal } = useFundModalStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [amount, setAmount] = useState(2);

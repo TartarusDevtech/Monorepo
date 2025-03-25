@@ -1,6 +1,6 @@
 import type { AnyPostFragment } from "@hey/indexer";
 import { useRouter } from "next/router";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface PostWrapperProps {
   children: ReactNode | ReactNode[];
@@ -8,11 +8,7 @@ interface PostWrapperProps {
   post: AnyPostFragment;
 }
 
-const PostWrapper: FC<PostWrapperProps> = ({
-  children,
-  className = "",
-  post
-}) => {
+const PostWrapper = ({ children, className = "", post }: PostWrapperProps) => {
   const { push } = useRouter();
 
   const handleClick = () => {

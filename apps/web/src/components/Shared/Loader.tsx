@@ -1,6 +1,5 @@
 import { Spinner } from "@hey/ui";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 
 interface LoaderProps {
   className?: string;
@@ -8,11 +7,7 @@ interface LoaderProps {
   small?: boolean;
 }
 
-const Loader: FC<LoaderProps> = ({
-  className = "",
-  message,
-  small = false
-}) => {
+const Loader = ({ className = "", message, small = false }: LoaderProps) => {
   return (
     <div className={cn("space-y-2 text-center font-bold", className)}>
       <Spinner className="mx-auto" size={small ? "sm" : "md"} />

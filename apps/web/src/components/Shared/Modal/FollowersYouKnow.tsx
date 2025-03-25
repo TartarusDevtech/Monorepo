@@ -6,7 +6,6 @@ import {
   useFollowersYouKnowQuery
 } from "@hey/indexer";
 import { EmptyState, ErrorMessage } from "@hey/ui";
-import type { FC } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
@@ -15,7 +14,7 @@ interface FollowersYouKnowProps {
   address: string;
 }
 
-const FollowersYouKnow: FC<FollowersYouKnowProps> = ({ username, address }) => {
+const FollowersYouKnow = ({ username, address }: FollowersYouKnowProps) => {
   const { currentAccount } = useAccountStore();
 
   const request: FollowersYouKnowRequest = {

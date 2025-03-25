@@ -1,7 +1,7 @@
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import { Card } from "@hey/ui";
 import cn from "@hey/ui/cn";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface WrapperProps {
   children: ReactNode;
@@ -9,11 +9,11 @@ interface WrapperProps {
   zeroPadding?: boolean;
 }
 
-const Wrapper: FC<WrapperProps> = ({
+const Wrapper = ({
   children,
   className = "",
   zeroPadding = false
-}) => (
+}: WrapperProps) => (
   <Card
     className={cn("mt-3 cursor-auto", className, { "p-5": !zeroPadding })}
     forceRounded

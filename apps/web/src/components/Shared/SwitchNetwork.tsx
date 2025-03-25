@@ -1,6 +1,5 @@
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 import { Button } from "@hey/ui";
-import type { FC } from "react";
 import { useSwitchChain } from "wagmi";
 
 interface SwitchNetworkProps {
@@ -10,12 +9,12 @@ interface SwitchNetworkProps {
   toChainId: number;
 }
 
-const SwitchNetwork: FC<SwitchNetworkProps> = ({
+const SwitchNetwork = ({
   className = "",
   onSwitch,
   title = "Switch Network",
   toChainId
-}) => {
+}: SwitchNetworkProps) => {
   const { switchChain } = useSwitchChain();
 
   return (

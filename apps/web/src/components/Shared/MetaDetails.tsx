@@ -1,6 +1,6 @@
 import { H6 } from "@hey/ui";
 import cn from "@hey/ui/cn";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { toast } from "react-hot-toast";
 
 interface MetaDetailsProps {
@@ -11,13 +11,13 @@ interface MetaDetailsProps {
   value?: string;
 }
 
-const MetaDetails: FC<MetaDetailsProps> = ({
+const MetaDetails = ({
   children,
   icon,
   noFlex = false,
   title,
   value
-}) => {
+}: MetaDetailsProps) => {
   const handleClick = async () => {
     if (value) {
       await navigator.clipboard.writeText(value);

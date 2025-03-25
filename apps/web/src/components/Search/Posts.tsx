@@ -3,7 +3,6 @@ import PostsShimmer from "@components/Shared/Shimmer/PostsShimmer";
 import { ChatBubbleBottomCenterIcon } from "@heroicons/react/24/outline";
 import { PageSize, type PostsRequest, usePostsQuery } from "@hey/indexer";
 import { Card, EmptyState, ErrorMessage } from "@hey/ui";
-import type { FC } from "react";
 import { useRef } from "react";
 import type { StateSnapshot, VirtuosoHandle } from "react-virtuoso";
 import { Virtuoso } from "react-virtuoso";
@@ -14,7 +13,7 @@ interface PostsProps {
   query: string;
 }
 
-const Posts: FC<PostsProps> = ({ query }) => {
+const Posts = ({ query }: PostsProps) => {
   const virtuoso = useRef<VirtuosoHandle>(null);
 
   const request: PostsRequest = {

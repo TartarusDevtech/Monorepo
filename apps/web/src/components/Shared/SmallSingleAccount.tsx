@@ -5,7 +5,6 @@ import type { AccountFragment } from "@hey/indexer";
 import { Image } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import Link from "next/link";
-import type { FC } from "react";
 import { memo } from "react";
 import Verified from "./Account/Icons/Verified";
 import Slug from "./Slug";
@@ -18,13 +17,13 @@ interface SmallSingleAccountProps {
   timestamp?: Date;
 }
 
-const SmallSingleAccount: FC<SmallSingleAccountProps> = ({
+const SmallSingleAccount = ({
   hideSlug = false,
   linkToAccount = false,
   account,
   smallAvatar = false,
-  timestamp = ""
-}) => {
+  timestamp
+}: SmallSingleAccountProps) => {
   const UserAvatar = () => (
     <Image
       alt={account.address}

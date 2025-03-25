@@ -1,6 +1,5 @@
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { AccountFragment } from "@hey/indexer";
-import type { FC } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import FollowWithRulesCheck from "./FollowWithRulesCheck";
 import Unfollow from "./Unfollow";
@@ -14,14 +13,14 @@ interface FollowUnfollowButtonProps {
   unfollowTitle?: string;
 }
 
-const FollowUnfollowButton: FC<FollowUnfollowButtonProps> = ({
+const FollowUnfollowButton = ({
   buttonClassName = "",
   hideFollowButton = false,
   hideUnfollowButton = false,
   account,
   small = false,
   unfollowTitle = "Following"
-}) => {
+}: FollowUnfollowButtonProps) => {
   const { currentAccount } = useAccountStore();
 
   if (currentAccount?.address === account.address) {

@@ -10,7 +10,7 @@ import {
 import { Spinner } from "@hey/ui";
 import type { Src } from "@livepeer/react";
 import * as Player from "@livepeer/react/player";
-import { type FC, type ReactNode, memo } from "react";
+import { type ReactNode, memo } from "react";
 
 const PlayerLoading = () => (
   <div className="absolute inset-0 flex flex-col items-center justify-center">
@@ -24,7 +24,7 @@ interface ErrorProps {
   title: string;
 }
 
-const PlayerError: FC<ErrorProps> = ({ matcher, icon, title }) => {
+const PlayerError = ({ matcher, icon, title }: ErrorProps) => {
   return (
     <Player.ErrorIndicator
       matcher={matcher}
@@ -43,7 +43,7 @@ interface VideoProps {
   poster?: string;
 }
 
-const Video: FC<VideoProps> = ({ src, poster }) => {
+const Video = ({ src, poster }: VideoProps) => {
   if (!src) {
     return null;
   }

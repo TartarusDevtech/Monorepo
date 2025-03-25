@@ -4,7 +4,7 @@ import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { Emoji } from "@hey/types/misc";
 import { ErrorMessage, Input } from "@hey/ui";
 import cn from "@hey/ui/cn";
-import type { ChangeEvent, FC } from "react";
+import type { ChangeEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 import useEmojis from "src/hooks/prosekit/useEmojis";
 import Loader from "../Loader";
@@ -13,7 +13,7 @@ interface ListProps {
   setEmoji: (emoji: string) => void;
 }
 
-const List: FC<ListProps> = ({ setEmoji }) => {
+const List = ({ setEmoji }: ListProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [searchText, setSearchText] = useState("");
   const { emojis, error, isLoading } = useEmojis({

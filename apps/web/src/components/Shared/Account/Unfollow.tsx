@@ -9,7 +9,6 @@ import {
   useUnfollowMutation
 } from "@hey/indexer";
 import { Button } from "@hey/ui";
-import type { FC } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
@@ -24,12 +23,12 @@ interface UnfollowProps {
   title: string;
 }
 
-const Unfollow: FC<UnfollowProps> = ({
+const Unfollow = ({
   buttonClassName,
   account,
   small,
   title
-}) => {
+}: UnfollowProps) => {
   const { currentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
   const { setShowAuthModal } = useAuthModalStore();

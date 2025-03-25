@@ -1,5 +1,5 @@
 import { H6, Toggle } from "@hey/ui";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface ToggleWithHelperProps {
   description: ReactNode;
@@ -10,14 +10,14 @@ interface ToggleWithHelperProps {
   setOn: (on: boolean) => void;
 }
 
-const ToggleWithHelper: FC<ToggleWithHelperProps> = ({
+const ToggleWithHelper = ({
   description,
   disabled = false,
   heading,
   icon,
   on,
   setOn
-}) => {
+}: ToggleWithHelperProps) => {
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-start space-x-3">

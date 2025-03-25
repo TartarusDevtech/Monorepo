@@ -10,7 +10,7 @@ import sanitizeDStorageUrl from "@hey/helpers/sanitizeDStorageUrl";
 import { getCroppedImg } from "@hey/image-cropper/cropUtils";
 import type { Area } from "@hey/image-cropper/types";
 import { Button, Image, Modal } from "@hey/ui";
-import type { ChangeEvent, FC } from "react";
+import type { ChangeEvent } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -19,7 +19,7 @@ interface CoverUploadProps {
   setSrc: (src: string) => void;
 }
 
-const CoverUpload: FC<CoverUploadProps> = ({ src, setSrc }) => {
+const CoverUpload = ({ src, setSrc }: CoverUploadProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [pictureSrc, setPictureSrc] = useState(src);
   const [showPictureCropModal, setShowPictureCropModal] = useState(false);

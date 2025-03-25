@@ -5,7 +5,6 @@ import type { MetadataAsset } from "@hey/types/misc";
 import { Image, LightBox } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import { getSrc } from "@livepeer/react/external";
-import type { FC } from "react";
 import { memo, useState } from "react";
 import Audio from "./Audio";
 import Video from "./Video";
@@ -30,7 +29,7 @@ interface AttachmentsProps {
   attachments: MetadataAttachment[];
 }
 
-const Attachments: FC<AttachmentsProps> = ({ asset, attachments }) => {
+const Attachments = ({ asset, attachments }: AttachmentsProps) => {
   const [expandedImage, setExpandedImage] = useState<null | string>(null);
   const processedAttachments = attachments.slice(0, 10);
 

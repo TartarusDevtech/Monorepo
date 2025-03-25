@@ -6,7 +6,7 @@ import imageKit from "@hey/helpers/imageKit";
 import sanitizeDStorageUrl from "@hey/helpers/sanitizeDStorageUrl";
 import { Image, Spinner } from "@hey/ui";
 import cn from "@hey/ui/cn";
-import type { ChangeEvent, FC, Ref } from "react";
+import type { ChangeEvent, Ref } from "react";
 import { useState } from "react";
 
 interface CoverImageProps {
@@ -17,13 +17,13 @@ interface CoverImageProps {
   setCover: (previewUri: string, url: string, mimeType: string) => void;
 }
 
-const CoverImage: FC<CoverImageProps> = ({
+const CoverImage = ({
   cover,
   expandCover,
   imageRef,
   isNew = false,
   setCover
-}) => {
+}: CoverImageProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const onError = (error: any) => {

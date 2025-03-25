@@ -9,7 +9,6 @@ import {
   useFollowMutation
 } from "@hey/indexer";
 import { Button } from "@hey/ui";
-import type { FC } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
@@ -25,13 +24,13 @@ interface FollowProps {
   title?: string;
 }
 
-const Follow: FC<FollowProps> = ({
+const Follow = ({
   onFollow,
   buttonClassName,
   account,
   small,
   title = "Follow"
-}) => {
+}: FollowProps) => {
   const { currentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
   const { setShowAuthModal } = useAuthModalStore();

@@ -2,7 +2,6 @@ import isVerified from "@helpers/isVerified";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import { Tooltip } from "@hey/ui";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 
 interface VerifiedProps {
   address: string;
@@ -10,11 +9,11 @@ interface VerifiedProps {
   iconClassName?: string;
 }
 
-const Verified: FC<VerifiedProps> = ({
+const Verified = ({
   address,
   showTooltip = false,
   iconClassName = ""
-}) => {
+}: VerifiedProps) => {
   if (!isVerified(address)) {
     return null;
   }

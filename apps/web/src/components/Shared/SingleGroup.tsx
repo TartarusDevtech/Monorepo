@@ -4,7 +4,6 @@ import type { GroupFragment } from "@hey/indexer";
 import { Image } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import Link from "next/link";
-import type { FC } from "react";
 import { memo } from "react";
 import JoinLeaveButton from "./Group/JoinLeaveButton";
 import Markup from "./Markup";
@@ -18,14 +17,14 @@ interface SingleGroupProps {
   group: GroupFragment;
 }
 
-const SingleGroup: FC<SingleGroupProps> = ({
+const SingleGroup = ({
   hideJoinButton = false,
   hideLeaveButton = false,
   isBig = false,
   linkToGroup = true,
   showDescription = false,
   group
-}) => {
+}: SingleGroupProps) => {
   const GroupAvatar = () => (
     <Image
       alt={group.address}

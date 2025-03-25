@@ -12,7 +12,7 @@ import {
 } from "@hey/indexer";
 import { Button, Card, ErrorMessage } from "@hey/ui";
 import { useRouter } from "next/router";
-import type { Dispatch, FC, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { CHAIN } from "src/constants";
@@ -27,7 +27,7 @@ interface LoginProps {
   setHasAccounts: Dispatch<SetStateAction<boolean>>;
 }
 
-const Login: FC<LoginProps> = ({ setHasAccounts }) => {
+const Login = ({ setHasAccounts }: LoginProps) => {
   const { reload } = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [loggingInAccountId, setLoggingInAccountId] = useState<null | string>(

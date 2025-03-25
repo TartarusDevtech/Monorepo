@@ -1,5 +1,4 @@
 import { useAccountQuery } from "@hey/indexer";
-import type { FC } from "react";
 import SmallSingleAccountShimmer from "./Shimmer/SmallSingleAccountShimmer";
 import SmallSingleAccount from "./SmallSingleAccount";
 
@@ -9,11 +8,11 @@ interface LazySmallSingleAccountProps {
   linkToAccount?: boolean;
 }
 
-const LazySmallSingleAccount: FC<LazySmallSingleAccountProps> = ({
+const LazySmallSingleAccount = ({
   hideSlug = false,
   address,
   linkToAccount = false
-}) => {
+}: LazySmallSingleAccountProps) => {
   const { data, loading } = useAccountQuery({
     variables: { request: { address } }
   });

@@ -5,7 +5,6 @@ import type { AccountFragment } from "@hey/indexer";
 import { Image } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import Link from "next/link";
-import type { FC } from "react";
 import { memo } from "react";
 import FollowUnfollowButton from "./Account/FollowUnfollowButton";
 import Verified from "./Account/Icons/Verified";
@@ -23,7 +22,7 @@ interface SingleAccountProps {
   showUserPreview?: boolean;
 }
 
-const SingleAccount: FC<SingleAccountProps> = ({
+const SingleAccount = ({
   hideFollowButton = false,
   hideUnfollowButton = false,
   isBig = false,
@@ -31,7 +30,7 @@ const SingleAccount: FC<SingleAccountProps> = ({
   account,
   showBio = false,
   showUserPreview = true
-}) => {
+}: SingleAccountProps) => {
   const UserAvatar = () => (
     <Image
       alt={account.address}

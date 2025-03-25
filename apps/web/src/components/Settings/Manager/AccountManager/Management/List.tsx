@@ -11,7 +11,6 @@ import {
   useUnhideManagedAccountMutation
 } from "@hey/indexer";
 import { Button, EmptyState, ErrorMessage } from "@hey/ui";
-import type { FC } from "react";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { Virtuoso } from "react-virtuoso";
@@ -21,7 +20,7 @@ interface ListProps {
   managed?: boolean;
 }
 
-const List: FC<ListProps> = ({ managed = false }) => {
+const List = ({ managed = false }: ListProps) => {
   const { address } = useAccount();
 
   const lastLoggedInAccountRequest: LastLoggedInAccountRequest = { address };

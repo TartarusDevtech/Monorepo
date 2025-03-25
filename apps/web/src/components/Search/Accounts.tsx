@@ -3,14 +3,13 @@ import SingleAccount from "@components/Shared/SingleAccount";
 import { UsersIcon } from "@heroicons/react/24/outline";
 import { type AccountsRequest, PageSize, useAccountsQuery } from "@hey/indexer";
 import { Card, EmptyState, ErrorMessage } from "@hey/ui";
-import type { FC } from "react";
 import { Virtuoso } from "react-virtuoso";
 
 interface AccountsProps {
   query: string;
 }
 
-const Accounts: FC<AccountsProps> = ({ query }) => {
+const Accounts = ({ query }: AccountsProps) => {
   const request: AccountsRequest = {
     pageSize: PageSize.Fifty,
     filter: { searchBy: { localNameQuery: query } }

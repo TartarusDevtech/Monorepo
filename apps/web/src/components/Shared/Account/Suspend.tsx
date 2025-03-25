@@ -4,14 +4,13 @@ import { trpc } from "@helpers/trpc";
 import { Permission, PermissionId } from "@hey/data/permissions";
 import { Toggle } from "@hey/ui";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import type { FC } from "react";
 import toast from "react-hot-toast";
 
 interface SuspendProps {
   address: string;
 }
 
-const Suspend: FC<SuspendProps> = ({ address }) => {
+const Suspend = ({ address }: SuspendProps) => {
   const { data: account, isLoading } = useQuery(
     trpc.internal.account.queryOptions({ address })
   );

@@ -1,6 +1,6 @@
 import { MainContentFocus } from "@hey/indexer";
 import cn from "@hey/ui/cn";
-import type { Dispatch, FC, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 
 interface FeedLinkProps {
   focus?: MainContentFocus;
@@ -9,7 +9,7 @@ interface FeedLinkProps {
   type?: MainContentFocus;
 }
 
-const FeedLink: FC<FeedLinkProps> = ({ focus, name, setFocus, type }) => (
+const FeedLink = ({ focus, name, setFocus, type }: FeedLinkProps) => (
   <button
     aria-label={name}
     className={cn(
@@ -29,7 +29,7 @@ interface FeedFocusTypeProps {
   setFocus: Dispatch<SetStateAction<MainContentFocus | undefined>>;
 }
 
-const FeedFocusType: FC<FeedFocusTypeProps> = ({ focus, setFocus }) => (
+const FeedFocusType = ({ focus, setFocus }: FeedFocusTypeProps) => (
   <div className="mx-5 my-5 flex flex-wrap gap-3 sm:mx-0">
     <FeedLink focus={focus} name="All posts" setFocus={setFocus} />
     <FeedLink

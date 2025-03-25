@@ -1,5 +1,5 @@
 import type { AccountFragment } from "@hey/indexer";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import FallbackAccountName from "./FallbackAccountName";
 
 interface AccountsProps {
@@ -7,8 +7,8 @@ interface AccountsProps {
   accounts: AccountFragment[];
 }
 
-const Accounts: FC<AccountsProps> = ({ context, accounts }) => {
-  const Wrapper: FC<{ children: ReactNode }> = ({ children }) => (
+const Accounts = ({ context, accounts }: AccountsProps) => {
+  const Wrapper = ({ children }: { children: ReactNode }) => (
     <>
       {children}
       {context && <span> {context}</span>}

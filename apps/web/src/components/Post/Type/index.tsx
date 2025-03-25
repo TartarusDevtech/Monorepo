@@ -1,7 +1,6 @@
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { AnyPostFragment } from "@hey/indexer";
 import { useRouter } from "next/router";
-import type { FC } from "react";
 import Commented from "./Commented";
 import Reposted from "./Reposted";
 
@@ -11,11 +10,7 @@ interface PostTypeProps {
   showType: boolean;
 }
 
-const PostType: FC<PostTypeProps> = ({
-  post,
-  showThread = false,
-  showType
-}) => {
+const PostType = ({ post, showThread = false, showType }: PostTypeProps) => {
   const { pathname } = useRouter();
   const type = post.__typename;
 

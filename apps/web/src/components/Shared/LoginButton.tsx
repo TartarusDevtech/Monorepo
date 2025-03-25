@@ -1,7 +1,7 @@
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Button } from "@hey/ui";
 import cn from "@hey/ui/cn";
-import type { FC, MouseEvent } from "react";
+import type { MouseEvent } from "react";
 import { useAuthModalStore } from "src/store/non-persisted/modal/useAuthModalStore";
 
 interface LoginButtonProps {
@@ -11,12 +11,12 @@ interface LoginButtonProps {
   title?: string;
 }
 
-const LoginButton: FC<LoginButtonProps> = ({
+const LoginButton = ({
   className = "",
   isBig = false,
   isFullWidth = false,
   title = "Login"
-}) => {
+}: LoginButtonProps) => {
   const { setShowAuthModal } = useAuthModalStore();
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {

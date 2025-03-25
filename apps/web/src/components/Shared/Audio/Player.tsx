@@ -1,7 +1,7 @@
 import type { APITypes } from "plyr-react";
 import Plyr from "plyr-react";
-import type { FC, Ref } from "react";
 import "plyr-react/plyr.css";
+import type { Ref } from "react";
 import { memo } from "react";
 
 interface PlayerProps {
@@ -9,7 +9,7 @@ interface PlayerProps {
   src: string;
 }
 
-const Player: FC<PlayerProps> = ({ playerRef, src }) => {
+const Player = ({ playerRef, src }: PlayerProps) => {
   return (
     <Plyr
       options={{

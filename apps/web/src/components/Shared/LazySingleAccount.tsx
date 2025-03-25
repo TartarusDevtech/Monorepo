@@ -1,5 +1,4 @@
 import { useAccountQuery } from "@hey/indexer";
-import type { FC } from "react";
 import type { Address } from "viem";
 import SingleAccountShimmer from "./Shimmer/SingleAccountShimmer";
 import SingleAccount from "./SingleAccount";
@@ -9,7 +8,7 @@ interface LazySingleAccountProps {
   address: Address;
 }
 
-const LazySingleAccount: FC<LazySingleAccountProps> = ({ address }) => {
+const LazySingleAccount = ({ address }: LazySingleAccountProps) => {
   const { data, loading } = useAccountQuery({
     skip: !address,
     variables: { request: { address } }

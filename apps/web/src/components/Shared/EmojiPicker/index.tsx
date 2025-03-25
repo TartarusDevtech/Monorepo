@@ -2,7 +2,7 @@ import { FaceSmileIcon } from "@heroicons/react/24/outline";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import { Tooltip } from "@hey/ui";
 import { useClickAway } from "@uidotdev/usehooks";
-import type { Dispatch, FC, MutableRefObject, SetStateAction } from "react";
+import type { Dispatch, MutableRefObject, SetStateAction } from "react";
 import List from "./List";
 
 interface EmojiPickerProps {
@@ -12,12 +12,12 @@ interface EmojiPickerProps {
   showEmojiPicker: boolean;
 }
 
-const EmojiPicker: FC<EmojiPickerProps> = ({
+const EmojiPicker = ({
   emoji,
   setEmoji,
   setShowEmojiPicker,
   showEmojiPicker
-}) => {
+}: EmojiPickerProps) => {
   const listRef = useClickAway(() => {
     setShowEmojiPicker(false);
   }) as MutableRefObject<HTMLDivElement>;

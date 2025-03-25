@@ -6,7 +6,7 @@ import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
 import { useAddAccountManagerMutation } from "@hey/indexer";
 import { Button } from "@hey/ui";
-import type { Dispatch, FC, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
@@ -18,9 +18,9 @@ interface AddAccountManagerProps {
   setShowAddManagerModal: Dispatch<SetStateAction<boolean>>;
 }
 
-const AddAccountManager: FC<AddAccountManagerProps> = ({
+const AddAccountManager = ({
   setShowAddManagerModal
-}) => {
+}: AddAccountManagerProps) => {
   const { currentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
   const [manager, setManager] = useState("");

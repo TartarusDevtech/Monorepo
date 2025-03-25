@@ -6,7 +6,7 @@ import ImageCropper from "@hey/image-cropper/ImageCropper";
 import type { Area, Point, Size } from "@hey/image-cropper/types";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
-import type { Dispatch, FC } from "react";
+import type { Dispatch } from "react";
 import { useEffect, useRef, useState } from "react";
 import useResizeObserver from "use-resize-observer";
 
@@ -16,11 +16,11 @@ interface ImageCropperControllerProps {
   targetSize: Size;
 }
 
-const ImageCropperController: FC<ImageCropperControllerProps> = ({
+const ImageCropperController = ({
   imageSrc,
   setCroppedAreaPixels,
   targetSize
-}) => {
+}: ImageCropperControllerProps) => {
   const [crop, setCrop] = useState<Point>({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [maxZoom, setMaxZoom] = useState(1);

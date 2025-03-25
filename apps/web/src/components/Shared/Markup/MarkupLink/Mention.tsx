@@ -3,9 +3,8 @@ import Slug from "@components/Shared/Slug";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { MarkupLinkProps } from "@hey/types/misc";
 import Link from "next/link";
-import type { FC } from "react";
 
-const Mention: FC<MarkupLinkProps> = ({ mentions, title }) => {
+const Mention = ({ mentions, title }: MarkupLinkProps) => {
   const username = title;
 
   if (!username) {

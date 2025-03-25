@@ -1,5 +1,4 @@
 import { Button } from "@hey/ui";
-import type { FC } from "react";
 import { useFundModalStore } from "src/store/non-persisted/modal/useFundModalStore";
 
 interface FundButtonProps {
@@ -9,12 +8,12 @@ interface FundButtonProps {
   className?: string;
 }
 
-const FundButton: FC<FundButtonProps> = ({
+const FundButton = ({
   label = "Fund account",
   size = "md",
   outline = false,
   className = ""
-}) => {
+}: FundButtonProps) => {
   const { setShowFundModal } = useFundModalStore();
 
   return (

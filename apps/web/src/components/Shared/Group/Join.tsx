@@ -5,7 +5,7 @@ import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
 import { type GroupFragment, useJoinGroupMutation } from "@hey/indexer";
 import { Button } from "@hey/ui";
-import { type FC, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
@@ -18,13 +18,13 @@ interface JoinProps {
   title?: string;
 }
 
-const Join: FC<JoinProps> = ({
+const Join = ({
   group,
   setJoined,
   small,
   className = "",
   title = "Join"
-}) => {
+}: JoinProps) => {
   const { isSuspended } = useAccountStatus();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { cache } = useApolloClient();

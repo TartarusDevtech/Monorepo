@@ -1,4 +1,3 @@
-import type { FC } from "react";
 import { useEffect, useState } from "react";
 
 type TimeLeft = {
@@ -12,7 +11,7 @@ interface CountdownTimerProps {
   targetDate: string;
 }
 
-const CountdownTimer: FC<CountdownTimerProps> = ({ targetDate }) => {
+const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
   const calculateTimeLeft = (): TimeLeft => {
     const now = new Date().getTime();
     const target = new Date(targetDate).getTime() - 30000; // Subtract 30 seconds

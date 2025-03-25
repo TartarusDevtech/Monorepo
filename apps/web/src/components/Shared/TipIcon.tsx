@@ -1,10 +1,8 @@
-import type { FC } from "react";
-
 interface TipIconProps {
   className?: string;
 }
 
-export const TipIcon: FC<TipIconProps> = ({ className }) => (
+export const TipIcon = ({ className }: TipIconProps) => (
   <svg
     className={className}
     fill="none"

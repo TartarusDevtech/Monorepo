@@ -4,7 +4,7 @@ import { IS_MAINNET } from "@hey/data/constants";
 import { Events } from "@hey/data/events";
 import { useUnwrapTokensMutation } from "@hey/indexer";
 import { Button, Input, Modal } from "@hey/ui";
-import { type FC, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import usePollTransactionStatus from "src/hooks/usePollTransactionStatus";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
@@ -14,7 +14,7 @@ interface UnwrapProps {
   refetch: () => void;
 }
 
-const Unwrap: FC<UnwrapProps> = ({ value, refetch }) => {
+const Unwrap = ({ value, refetch }: UnwrapProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [valueToUnwrap, setValueToUnwrap] = useState(value);

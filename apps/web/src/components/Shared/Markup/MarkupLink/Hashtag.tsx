@@ -1,9 +1,8 @@
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { MarkupLinkProps } from "@hey/types/misc";
 import Link from "next/link";
-import type { FC } from "react";
 
-const Hashtag: FC<MarkupLinkProps> = ({ title }) => {
+const Hashtag = ({ title }: MarkupLinkProps) => {
   if (!title) {
     return null;
   }

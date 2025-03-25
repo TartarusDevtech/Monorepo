@@ -10,7 +10,7 @@ import { getCroppedImg } from "@hey/image-cropper/cropUtils";
 import type { Area } from "@hey/image-cropper/types";
 import { Button, Image, Modal } from "@hey/ui";
 import cn from "@hey/ui/cn";
-import type { ChangeEvent, FC } from "react";
+import type { ChangeEvent } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -20,11 +20,7 @@ interface AvatarUploadProps {
   isSmall?: boolean;
 }
 
-const AvatarUpload: FC<AvatarUploadProps> = ({
-  src,
-  setSrc,
-  isSmall = false
-}) => {
+const AvatarUpload = ({ src, setSrc, isSmall = false }: AvatarUploadProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [pictureSrc, setPictureSrc] = useState(src);
   const [showPictureCropModal, setShowPictureCropModal] = useState(false);

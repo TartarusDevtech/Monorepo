@@ -4,7 +4,6 @@ import { UsersIcon } from "@heroicons/react/24/outline";
 import type { FollowersRequest } from "@hey/indexer";
 import { PageSize, useFollowersQuery } from "@hey/indexer";
 import { EmptyState, ErrorMessage } from "@hey/ui";
-import type { FC } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
@@ -13,7 +12,7 @@ interface FollowersProps {
   address: string;
 }
 
-const Followers: FC<FollowersProps> = ({ username, address }) => {
+const Followers = ({ username, address }: FollowersProps) => {
   const { currentAccount } = useAccountStore();
 
   const request: FollowersRequest = {

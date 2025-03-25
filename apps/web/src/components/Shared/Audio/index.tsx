@@ -1,7 +1,7 @@
 import { PauseIcon, PlayIcon } from "@heroicons/react/24/solid";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { APITypes } from "plyr-react";
-import type { ChangeEvent, FC } from "react";
+import type { ChangeEvent } from "react";
 import { useRef, useState } from "react";
 import { usePostAudioStore } from "src/store/non-persisted/post/usePostAudioStore";
 import { z } from "zod";
@@ -23,14 +23,14 @@ interface AudioProps {
   title?: string;
 }
 
-const Audio: FC<AudioProps> = ({
+const Audio = ({
   artist,
   expandCover,
   isNew = false,
   poster,
   src,
   title
-}) => {
+}: AudioProps) => {
   const { audioPost, setAudioPost } = usePostAudioStore();
   const [newPreviewUri, setNewPreviewUri] = useState<null | string>(null);
   const [playing, setPlaying] = useState(false);

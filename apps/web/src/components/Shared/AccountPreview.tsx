@@ -8,7 +8,7 @@ import { type AccountStats, useFullAccountLazyQuery } from "@hey/indexer";
 import { Card, Image } from "@hey/ui";
 import * as HoverCard from "@radix-ui/react-hover-card";
 import plur from "plur";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useState } from "react";
 import FollowUnfollowButton from "./Account/FollowUnfollowButton";
 import Verified from "./Account/Icons/Verified";
@@ -24,12 +24,12 @@ interface AccountPreviewProps {
   showUserPreview?: boolean;
 }
 
-const AccountPreview: FC<AccountPreviewProps> = ({
+const AccountPreview = ({
   children,
   username,
   address,
   showUserPreview = true
-}) => {
+}: AccountPreviewProps) => {
   const [loadAccount, { data, loading }] = useFullAccountLazyQuery({
     fetchPolicy: "cache-and-network"
   });

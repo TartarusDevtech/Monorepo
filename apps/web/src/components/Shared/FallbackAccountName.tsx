@@ -2,7 +2,7 @@ import getAccount from "@hey/helpers/getAccount";
 import type { AccountFragment } from "@hey/indexer";
 import cn from "@hey/ui/cn";
 import Link from "next/link";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import Slug from "./Slug";
 
 interface FallbackAccountNameProps {
@@ -11,11 +11,11 @@ interface FallbackAccountNameProps {
   separator?: ReactNode;
 }
 
-const FallbackAccountName: FC<FallbackAccountNameProps> = ({
+const FallbackAccountName = ({
   className = "",
   account,
   separator = ""
-}) => {
+}: FallbackAccountNameProps) => {
   if (!account) {
     return null;
   }

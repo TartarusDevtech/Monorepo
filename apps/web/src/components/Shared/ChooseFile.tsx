@@ -1,5 +1,5 @@
 import { PaperClipIcon } from "@heroicons/react/24/outline";
-import type { ChangeEventHandler, FC } from "react";
+import type { ChangeEventHandler } from "react";
 import { useId } from "react";
 
 interface ChooseFileProps {
@@ -7,7 +7,7 @@ interface ChooseFileProps {
   disabled?: boolean;
 }
 
-const ChooseFile: FC<ChooseFileProps> = ({ onChange, disabled }) => {
+const ChooseFile = ({ onChange, disabled }: ChooseFileProps) => {
   const id = useId();
 
   return (

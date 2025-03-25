@@ -1,6 +1,5 @@
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { GroupFragment } from "@hey/indexer";
-import type { FC } from "react";
 import { useEffect, useState } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import JoinWithRulesCheck from "./JoinWithRulesCheck";
@@ -13,12 +12,12 @@ interface JoinLeaveButtonProps {
   small?: boolean;
 }
 
-const JoinLeaveButton: FC<JoinLeaveButtonProps> = ({
+const JoinLeaveButton = ({
   hideJoinButton = false,
   hideLeaveButton = false,
   group,
   small = false
-}) => {
+}: JoinLeaveButtonProps) => {
   const { currentAccount } = useAccountStore();
   const [joined, setJoined] = useState(group.operations?.isMember);
 

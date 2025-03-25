@@ -4,7 +4,7 @@ import { IS_MAINNET } from "@hey/data/constants";
 import { Events } from "@hey/data/events";
 import { useWrapTokensMutation } from "@hey/indexer";
 import { Button, Input, Modal } from "@hey/ui";
-import { type FC, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import usePollTransactionStatus from "src/hooks/usePollTransactionStatus";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
@@ -14,7 +14,7 @@ interface WrapProps {
   refetch: () => void;
 }
 
-const Wrap: FC<WrapProps> = ({ value, refetch }) => {
+const Wrap = ({ value, refetch }: WrapProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [valueToWrap, setValueToWrap] = useState(value);
