@@ -2,7 +2,7 @@ import { Regex } from "@hey/data/regex";
 import prisma from "@hey/db/prisma/db/client";
 import { TRPCError } from "@trpc/server";
 import { boolean, object, string } from "zod";
-import { staffMiddleware } from "../../../middlewares/staffMiddleware";
+import { staffAccess } from "../../../middlewares/staffAccess";
 import { authedProcedure } from "../../../procedures/authedProcedure";
 
 export const assignPermission = authedProcedure
@@ -13,7 +13,7 @@ export const assignPermission = authedProcedure
       enabled: boolean()
     })
   )
-  .use(staffMiddleware)
+  .use(staffAccess)
   .mutation(async ({ input }) => {
     try {
       const { account, permission, enabled } = input;

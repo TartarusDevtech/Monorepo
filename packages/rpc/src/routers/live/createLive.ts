@@ -2,9 +2,11 @@ import { LIVEPEER_KEY } from "@hey/data/constants";
 import generateUUID from "@hey/helpers/generateUUID";
 import { TRPCError } from "@trpc/server";
 import { boolean, object } from "zod";
+import rateLimiter from "../../middlewares/rateLimiter";
 import { authedProcedure } from "../../procedures/authedProcedure";
 
 export const createLive = authedProcedure
+  .use(rateLimiter({ requests: 10 }))
   .input(object({ record: boolean() }))
   .mutation(async ({ ctx, input }) => {
     try {

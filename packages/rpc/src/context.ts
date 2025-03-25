@@ -7,10 +7,10 @@ export const createContext = async ({ req, res }: CreateHTTPContextOptions) => {
 
     if (token) {
       const payload = parseJwt(token);
-      return { res, token, account: payload.act.sub };
+      return { req, res, token, account: payload.act.sub };
     }
 
-    return { res, token: null, account: null };
+    return { req, res, token: null, account: null };
   }
 
   return await getFromHeader();

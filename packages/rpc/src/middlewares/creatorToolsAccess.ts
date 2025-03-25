@@ -3,14 +3,14 @@ import { TRPCError } from "@trpc/server";
 import { type Address, getAddress } from "viem";
 import { t } from "../trpc";
 
-export const staffMiddleware = t.middleware(async (opts) => {
+export const creatorToolsAccess = t.middleware(async (opts) => {
   const { account } = opts.ctx;
 
-  const isStaff = Access["staff"]
+  const hasCreatorToolsAccess = Access["creator-tools"]
     .map((account) => getAddress(account))
     .includes(getAddress(account as Address));
 
-  if (!isStaff) {
+  if (!hasCreatorToolsAccess) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
 

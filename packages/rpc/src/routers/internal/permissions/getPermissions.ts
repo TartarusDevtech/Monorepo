@@ -1,10 +1,10 @@
 import prisma from "@hey/db/prisma/db/client";
 import { TRPCError } from "@trpc/server";
-import { staffMiddleware } from "../../../middlewares/staffMiddleware";
+import { staffAccess } from "../../../middlewares/staffAccess";
 import { authedProcedure } from "../../../procedures/authedProcedure";
 
 export const getPermissions = authedProcedure
-  .use(staffMiddleware)
+  .use(staffAccess)
   .query(async () => {
     try {
       const permissions = await prisma.permission.findMany({

@@ -1,11 +1,13 @@
 import {} from "@aws-sdk/client-sts";
-import { CACHE_AGE_1_DAY } from "../../helpers/constants";
 import { TRPCError } from "@trpc/server";
 import { object, string } from "zod";
+import { CACHE_AGE_1_DAY } from "../../helpers/constants";
+import rateLimiter from "../../middlewares/rateLimiter";
 import { publicProcedure } from "../../trpc";
 import getMetadata from "./helpers/getMetadata";
 
 export const getOembed = publicProcedure
+  .use(rateLimiter({ requests: 500 }))
   .input(object({ url: string().url() }))
   .query(async ({ input, ctx }) => {
     try {

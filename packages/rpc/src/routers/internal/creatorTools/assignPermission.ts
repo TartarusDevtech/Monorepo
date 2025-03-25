@@ -2,10 +2,11 @@ import { Regex } from "@hey/data/regex";
 import prisma from "@hey/db/prisma/db/client";
 import { TRPCError } from "@trpc/server";
 import { boolean, object, string } from "zod";
-import { creatorToolsAccessMiddleware } from "../../../middlewares/creatorToolsAccessMiddleware";
+import { creatorToolsAccess } from "../../../middlewares/creatorToolsAccess";
 import { authedProcedure } from "../../../procedures/authedProcedure";
 
 export const assignPermission = authedProcedure
+  .use(creatorToolsAccess)
   .input(
     object({
       account: string().regex(Regex.evmAddress),
@@ -13,7 +14,6 @@ export const assignPermission = authedProcedure
       enabled: boolean()
     })
   )
-  .use(creatorToolsAccessMiddleware)
   .mutation(async ({ input }) => {
     try {
       const { account, permission, enabled } = input;

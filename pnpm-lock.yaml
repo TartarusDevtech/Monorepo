@@ -464,6 +464,9 @@ importers:
       '@lens-protocol/metadata':
         specifier: next
         version: 2.0.0-next.7(typescript@5.8.2)(zod@3.24.2)
+      '@trpc-limiter/memory':
+        specifier: ^1.0.0
+        version: 1.0.0(@trpc/server@11.0.0(typescript@5.8.2))
       '@trpc/server':
         specifier: ^11.0.0
         version: 11.0.0(typescript@5.8.2)
@@ -3082,6 +3085,20 @@ packages:
 
   '@tanstack/virtual-core@3.13.5':
     resolution: {integrity: sha512-gMLNylxhJdUlfRR1G3U9rtuwUh2IjdrrniJIDcekVJN3/3i+bluvdMi3+eodnxzJq5nKnxnigo9h0lIpaqV6HQ==}
+
+  '@trpc-limiter/core@1.0.0':
+    resolution: {integrity: sha512-Wjq2oTCmCdwNbZKRfKpzpl1Um9QXGE8OHXOab+EUSj5Wk+26I/V6Vs2p0VBFAz6eEsBn36982cCC/vaaznA8+Q==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@trpc/client': next
+      '@trpc/server': next
+
+  '@trpc-limiter/memory@1.0.0':
+    resolution: {integrity: sha512-3ahqbHV7mVLH7+H69kOaNozMsID+3P4hoU178viPIGbfrOCiu2SGUFgB+TdGl2SZ6PNPmeCACF1AlfTfIerDvw==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@trpc/client': next
+      '@trpc/server': next
 
   '@trpc/client@11.0.0':
     resolution: {integrity: sha512-U2THlxsdr4ykAX5lpTU8k5WRADPQ+68Ex2gfUht3MlCxGK7njBmNSSzjpQSWNt7tMI/xsYrddFiRlmEPrh+Cbg==}
@@ -10528,6 +10545,15 @@ snapshots:
       react-dom: 19.0.0(react@19.0.0)
 
   '@tanstack/virtual-core@3.13.5': {}
+
+  '@trpc-limiter/core@1.0.0(@trpc/server@11.0.0(typescript@5.8.2))':
+    dependencies:
+      '@trpc/server': 11.0.0(typescript@5.8.2)
+
+  '@trpc-limiter/memory@1.0.0(@trpc/server@11.0.0(typescript@5.8.2))':
+    dependencies:
+      '@trpc-limiter/core': 1.0.0(@trpc/server@11.0.0(typescript@5.8.2))
+      '@trpc/server': 11.0.0(typescript@5.8.2)
 
   '@trpc/client@11.0.0(@trpc/server@11.0.0(typescript@5.8.2))(typescript@5.8.2)':
     dependencies:

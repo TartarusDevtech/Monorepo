@@ -3,9 +3,11 @@ import { Regex } from "@hey/data/regex";
 import prisma from "@hey/db/prisma/db/client";
 import { TRPCError } from "@trpc/server";
 import { object, string } from "zod";
+import rateLimiter from "../../middlewares/rateLimiter";
 import { publicProcedure } from "../../trpc";
 
 export const getAccount = publicProcedure
+  .use(rateLimiter({ requests: 250 }))
   .input(object({ address: string().regex(Regex.evmAddress) }))
   .query(async ({ input }) => {
     try {
