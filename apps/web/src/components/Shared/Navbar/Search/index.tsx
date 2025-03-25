@@ -12,7 +12,7 @@ import { Card, Input } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import { useClickAway, useDebounce } from "@uidotdev/usehooks";
 import { useRouter } from "next/router";
-import type { ChangeEvent, FC, MutableRefObject } from "react";
+import type { ChangeEvent, MutableRefObject } from "react";
 import { useEffect, useState } from "react";
 import { useSearchStore } from "src/store/persisted/useSearchStore";
 import RecentAccounts from "./RecentAccounts";
@@ -21,7 +21,7 @@ interface SearchProps {
   placeholder?: string;
 }
 
-const Search: FC<SearchProps> = ({ placeholder = "Search…" }) => {
+const Search = ({ placeholder = "Search…" }: SearchProps) => {
   const { pathname, push, query } = useRouter();
   const { addAccount } = useSearchStore();
   const [showDropdown, setShowDropdown] = useState(false);

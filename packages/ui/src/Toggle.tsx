@@ -1,5 +1,4 @@
 import * as Switch from "@radix-ui/react-switch";
-import type { FC } from "react";
 import cn from "../cn";
 
 interface ToggleProps {
@@ -8,7 +7,7 @@ interface ToggleProps {
   setOn: (on: boolean) => void;
 }
 
-export const Toggle: FC<ToggleProps> = ({ disabled = false, on, setOn }) => {
+export const Toggle = ({ disabled = false, on, setOn }: ToggleProps) => {
   return (
     <Switch.Root
       aria-label="Toggle"

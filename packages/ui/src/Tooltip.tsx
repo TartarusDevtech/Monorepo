@@ -1,5 +1,5 @@
 import * as RadixTooltip from "@radix-ui/react-tooltip";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface TooltipProps {
   children: ReactNode;
@@ -9,13 +9,13 @@ interface TooltipProps {
   withDelay?: boolean;
 }
 
-export const Tooltip: FC<TooltipProps> = ({
+export const Tooltip = ({
   children,
   className = "",
   content,
   placement = "right",
   withDelay = false
-}) => {
+}: TooltipProps) => {
   return (
     <RadixTooltip.Provider delayDuration={withDelay ? 400 : 0}>
       <RadixTooltip.Root>

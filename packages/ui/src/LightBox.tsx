@@ -1,13 +1,12 @@
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { PLACEHOLDER_IMAGE } from "@hey/data/constants";
-import type { FC } from "react";
 
 interface LightBoxProps {
   onClose: () => void;
   url: null | string;
 }
 
-export const LightBox: FC<LightBoxProps> = ({ onClose, url }) => {
+export const LightBox = ({ onClose, url }: LightBoxProps) => {
   const show = Boolean(url);
 
   if (!show) {

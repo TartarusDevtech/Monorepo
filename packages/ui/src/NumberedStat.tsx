@@ -1,5 +1,5 @@
 import humanize from "@hey/helpers/humanize";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Card } from "./Card";
 import { H4 } from "./Typography";
 
@@ -9,7 +9,7 @@ interface NumberedStatsProps {
   suffix?: string;
 }
 
-const NumberedStat: FC<NumberedStatsProps> = ({ count, name, suffix }) => {
+const NumberedStat = ({ count, name, suffix }: NumberedStatsProps) => {
   return (
     <Card className="p-5" forceRounded>
       <div>{name}</div>

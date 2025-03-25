@@ -8,7 +8,6 @@ import {
   useGroupMembersQuery
 } from "@hey/indexer";
 import { EmptyState, ErrorMessage } from "@hey/ui";
-import type { FC } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
@@ -16,7 +15,7 @@ interface MembersProps {
   group: GroupFragment;
 }
 
-const Members: FC<MembersProps> = ({ group }) => {
+const Members = ({ group }: MembersProps) => {
   const { currentAccount } = useAccountStore();
 
   const request: GroupMembersRequest = {

@@ -7,7 +7,6 @@ import {
   usePostReactionsQuery
 } from "@hey/indexer";
 import { EmptyState, ErrorMessage } from "@hey/ui";
-import type { FC } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
@@ -15,7 +14,7 @@ interface LikesProps {
   postId: string;
 }
 
-const Likes: FC<LikesProps> = ({ postId }) => {
+const Likes = ({ postId }: LikesProps) => {
   const { currentAccount } = useAccountStore();
 
   const request: PostReactionsRequest = {

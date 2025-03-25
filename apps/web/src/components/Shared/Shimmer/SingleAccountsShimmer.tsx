@@ -1,5 +1,4 @@
 import { Card } from "@hey/ui";
-import type { FC } from "react";
 import SingleAccountShimmer from "./SingleAccountShimmer";
 
 interface SingleAccountsShimmerProps {
@@ -7,10 +6,10 @@ interface SingleAccountsShimmerProps {
   showFollowUnfollowButton?: boolean;
 }
 
-const SingleAccountsShimmer: FC<SingleAccountsShimmerProps> = ({
+const SingleAccountsShimmer = ({
   isBig = false,
   showFollowUnfollowButton = false
-}) => {
+}: SingleAccountsShimmerProps) => {
   return (
     <div className="space-y-3">
       <Card className="p-5">

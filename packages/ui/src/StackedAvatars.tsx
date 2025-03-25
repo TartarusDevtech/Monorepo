@@ -1,4 +1,3 @@
-import type { FC } from "react";
 import { Image } from "./Image";
 
 interface StackedAvatarsProps {
@@ -6,7 +5,7 @@ interface StackedAvatarsProps {
   limit?: number;
 }
 
-const StackedAvatars: FC<StackedAvatarsProps> = ({ avatars, limit }) => {
+const StackedAvatars = ({ avatars, limit }: StackedAvatarsProps) => {
   if (!avatars) {
     return null;
   }

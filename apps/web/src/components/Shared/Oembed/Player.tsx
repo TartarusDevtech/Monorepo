@@ -1,11 +1,10 @@
 import type { OembedRouterOutput } from "@hey/rpc/src/routers/oembed";
-import type { FC } from "react";
 
 interface PlayerProps {
   og: OembedRouterOutput["get"];
 }
 
-const Player: FC<PlayerProps> = ({ og }) => {
+const Player = ({ og }: PlayerProps) => {
   if (!og) {
     return null;
   }

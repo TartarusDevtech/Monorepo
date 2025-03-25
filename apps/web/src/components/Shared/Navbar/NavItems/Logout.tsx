@@ -4,7 +4,6 @@ import { ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/outline";
 import { useRevokeAuthenticationMutation } from "@hey/indexer";
 import cn from "@hey/ui/cn";
 import { useRouter } from "next/router";
-import type { FC } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { signOut } from "src/store/persisted/useAuthStore";
@@ -15,7 +14,7 @@ interface LogoutProps {
   onClick?: () => void;
 }
 
-const Logout: FC<LogoutProps> = ({ className = "", onClick }) => {
+const Logout = ({ className = "", onClick }: LogoutProps) => {
   const { reload } = useRouter();
   const { resetPreferences } = usePreferencesStore();
   const [revoking, setRevoking] = useState(false);

@@ -14,7 +14,6 @@ import {
   TextArea,
   useZodForm
 } from "@hey/ui";
-import type { FC } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
@@ -31,7 +30,7 @@ interface ReportAccountProps {
   account?: AccountFragment;
 }
 
-const ReportAccount: FC<ReportAccountProps> = ({ account }) => {
+const ReportAccount = ({ account }: ReportAccountProps) => {
   const { isSuspended } = useAccountStatus();
   const [reason, setReason] = useState("");
 

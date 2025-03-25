@@ -1,13 +1,12 @@
 import { LinkIcon } from "@heroicons/react/24/outline";
 import { PLACEHOLDER_IMAGE } from "@hey/data/constants";
 import { Card, Image } from "@hey/ui";
-import type { FC } from "react";
 
 interface EmptyOembedProps {
   url: string;
 }
 
-const EmptyOembed: FC<EmptyOembedProps> = ({ url }) => {
+const EmptyOembed = ({ url }: EmptyOembedProps) => {
   return (
     <div className="mt-4 w-full text-sm md:w-4/6">
       <Card className="p-3" forceRounded>

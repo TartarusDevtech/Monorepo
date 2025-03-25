@@ -1,4 +1,3 @@
-import type { FC } from "react";
 import cn from "../cn";
 import { H6 } from "./Typography";
 
@@ -8,11 +7,11 @@ interface ErrorMessageProps {
   title?: string;
 }
 
-export const ErrorMessage: FC<ErrorMessageProps> = ({
+export const ErrorMessage = ({
   className = "",
   error,
   title
-}) => {
+}: ErrorMessageProps) => {
   if (!error) {
     return null;
   }

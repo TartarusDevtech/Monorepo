@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import cn from "../cn";
 import { Card } from "./Card";
 
@@ -9,12 +9,12 @@ interface EmptyStateProps {
   className?: string;
 }
 
-export const EmptyState: FC<EmptyStateProps> = ({
+export const EmptyState = ({
   hideCard = false,
   icon,
   message,
   className = ""
-}) => {
+}: EmptyStateProps) => {
   return (
     <Card
       className={cn(

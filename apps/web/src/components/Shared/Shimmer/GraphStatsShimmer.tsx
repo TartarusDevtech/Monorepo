@@ -1,10 +1,8 @@
-import type { FC } from "react";
-
 interface GraphStatsShimmerProps {
   count: number;
 }
 
-const GraphStatsShimmer: FC<GraphStatsShimmerProps> = ({ count }) => {
+const GraphStatsShimmer = ({ count }: GraphStatsShimmerProps) => {
   return (
     <div className="flex gap-5 pb-1">
       {Array.from({ length: count }).map((_, index) => (

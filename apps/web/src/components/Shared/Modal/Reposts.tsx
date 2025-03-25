@@ -8,7 +8,6 @@ import {
   useWhoReferencedPostQuery
 } from "@hey/indexer";
 import { EmptyState, ErrorMessage } from "@hey/ui";
-import type { FC } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
@@ -16,7 +15,7 @@ interface RepostsProps {
   postId: string;
 }
 
-const Reposts: FC<RepostsProps> = ({ postId }) => {
+const Reposts = ({ postId }: RepostsProps) => {
   const { currentAccount } = useAccountStore();
 
   const request: WhoReferencedPostRequest = {

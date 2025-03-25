@@ -1,5 +1,4 @@
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 
 interface SingleAccountShimmerProps {
   className?: string;
@@ -7,11 +6,11 @@ interface SingleAccountShimmerProps {
   showFollowUnfollowButton?: boolean;
 }
 
-const SingleAccountShimmer: FC<SingleAccountShimmerProps> = ({
+const SingleAccountShimmer = ({
   className = "",
   isBig = false,
   showFollowUnfollowButton = false
-}) => {
+}: SingleAccountShimmerProps) => {
   return (
     <div className={cn("flex items-center justify-between", className)}>
       <div className="flex items-center space-x-3">

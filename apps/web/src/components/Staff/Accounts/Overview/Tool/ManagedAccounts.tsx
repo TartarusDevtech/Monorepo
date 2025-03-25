@@ -3,13 +3,12 @@ import { UsersIcon } from "@heroicons/react/24/outline";
 import { useAccountsAvailableQuery } from "@hey/indexer";
 import { H5 } from "@hey/ui";
 import Link from "next/link";
-import type { FC } from "react";
 
 interface ManagedAccountsProps {
   address: string;
 }
 
-const ManagedAccounts: FC<ManagedAccountsProps> = ({ address }) => {
+const ManagedAccounts = ({ address }: ManagedAccountsProps) => {
   const { data, loading } = useAccountsAvailableQuery({
     variables: {
       lastLoggedInAccountRequest: { address },

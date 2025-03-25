@@ -1,11 +1,11 @@
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface ToggleWrapperProps {
   children: ReactNode;
   title: ReactNode;
 }
 
-const ToggleWrapper: FC<ToggleWrapperProps> = ({ children, title }) => (
+const ToggleWrapper = ({ children, title }: ToggleWrapperProps) => (
   <span className="flex items-center space-x-2 text-sm">
     <span>{children}</span>
     <span>{title}</span>

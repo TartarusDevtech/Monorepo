@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import cn from "../cn";
 
 interface GridProps {
@@ -7,11 +7,11 @@ interface GridProps {
   classNameChild?: string;
 }
 
-export const GridLayout: FC<GridProps> = ({
+export const GridLayout = ({
   children,
   className = "",
   classNameChild = ""
-}) => {
+}: GridProps) => {
   return (
     <div
       className={cn(
@@ -26,7 +26,7 @@ export const GridLayout: FC<GridProps> = ({
   );
 };
 
-export const GridItemFour: FC<GridProps> = ({ children, className = "" }) => {
+export const GridItemFour = ({ children, className = "" }: GridProps) => {
   return (
     <div className={cn("col-span-11 md:col-span-11 lg:col-span-4", className)}>
       {children}
@@ -34,7 +34,7 @@ export const GridItemFour: FC<GridProps> = ({ children, className = "" }) => {
   );
 };
 
-export const GridItemEight: FC<GridProps> = ({ children, className = "" }) => {
+export const GridItemEight = ({ children, className = "" }: GridProps) => {
   return (
     <div
       className={cn("col-span-11 mb-5 md:col-span-11 lg:col-span-7", className)}
@@ -44,7 +44,7 @@ export const GridItemEight: FC<GridProps> = ({ children, className = "" }) => {
   );
 };
 
-export const GridItemTwelve: FC<GridProps> = ({ children, className = "" }) => {
+export const GridItemTwelve = ({ children, className = "" }: GridProps) => {
   return (
     <div
       className={cn(

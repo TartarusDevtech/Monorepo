@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import cn from "../cn";
 import { H6 } from "./Typography";
 
@@ -8,11 +8,11 @@ interface WarningMessageProps {
   title?: string;
 }
 
-export const WarningMessage: FC<WarningMessageProps> = ({
+export const WarningMessage = ({
   className = "",
   message,
   title
-}) => {
+}: WarningMessageProps) => {
   if (!message) {
     return null;
   }

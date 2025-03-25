@@ -1,12 +1,11 @@
 import { ShieldCheckIcon } from "@heroicons/react/24/outline";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 
-interface SettingsProps {
+interface StaffToolsProps {
   className?: string;
 }
 
-const StaffTools: FC<SettingsProps> = ({ className = "" }) => {
+const StaffTools = ({ className = "" }: StaffToolsProps) => {
   return (
     <div
       className={cn(

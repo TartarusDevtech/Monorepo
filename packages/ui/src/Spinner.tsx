@@ -1,4 +1,3 @@
-import type { FC } from "react";
 import cn from "../cn";
 
 interface SpinnerProps {
@@ -7,11 +6,11 @@ interface SpinnerProps {
   variant?: "danger" | "primary" | "warning";
 }
 
-export const Spinner: FC<SpinnerProps> = ({
+export const Spinner = ({
   className = "",
   size = "md",
   variant = "primary"
-}) => {
+}: SpinnerProps) => {
   return (
     <div
       className={cn(

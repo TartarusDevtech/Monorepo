@@ -4,13 +4,12 @@ import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { OembedRouterOutput } from "@hey/rpc/src/routers/oembed";
 import { Card, Image } from "@hey/ui";
 import Link from "next/link";
-import type { FC } from "react";
 
 interface EmbedProps {
   og: OembedRouterOutput["get"];
 }
 
-const Embed: FC<EmbedProps> = ({ og }) => {
+const Embed = ({ og }: EmbedProps) => {
   if (!og) {
     return null;
   }

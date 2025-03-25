@@ -1,12 +1,11 @@
 import { UserIcon } from "@heroicons/react/24/outline";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 
 interface YourAccountProps {
   className?: string;
 }
 
-const YourAccount: FC<YourAccountProps> = ({ className = "" }) => {
+const YourAccount = ({ className = "" }: YourAccountProps) => {
   return (
     <div
       className={cn(

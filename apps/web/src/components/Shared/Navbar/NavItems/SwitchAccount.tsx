@@ -1,13 +1,12 @@
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 import { useSwitchAccountModalStore } from "src/store/non-persisted/modal/useSwitchAccountModalStore";
 
 interface SwitchAccountProps {
   className?: string;
 }
 
-const SwitchAccount: FC<SwitchAccountProps> = ({ className = "" }) => {
+const SwitchAccount = ({ className = "" }: SwitchAccountProps) => {
   const { setShowSwitchAccountModal } = useSwitchAccountModalStore();
 
   return (

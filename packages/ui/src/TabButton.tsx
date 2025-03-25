@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import cn from "../cn";
 
 interface TabButtonProps {
@@ -13,7 +13,7 @@ interface TabButtonProps {
   type?: string;
 }
 
-const TabButton: FC<TabButtonProps> = ({
+const TabButton = ({
   active,
   badge,
   className = "",
@@ -22,7 +22,7 @@ const TabButton: FC<TabButtonProps> = ({
   onClick,
   showOnSm = false,
   type
-}) => {
+}: TabButtonProps) => {
   const router = useRouter();
 
   return (

@@ -1,14 +1,13 @@
 import { UserGroupIcon } from "@heroicons/react/24/outline";
 import cn from "@hey/ui/cn";
 import Link from "next/link";
-import type { FC } from "react";
 
 interface GroupsProps {
   className?: string;
   onClick?: () => void;
 }
 
-const Groups: FC<GroupsProps> = ({ className = "", onClick }) => {
+const Groups = ({ className = "", onClick }: GroupsProps) => {
   return (
     <Link
       className={cn(

@@ -4,7 +4,6 @@ import { UsersIcon } from "@heroicons/react/24/outline";
 import type { FollowingRequest } from "@hey/indexer";
 import { PageSize, useFollowingQuery } from "@hey/indexer";
 import { EmptyState, ErrorMessage } from "@hey/ui";
-import type { FC } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
@@ -13,7 +12,7 @@ interface FollowingProps {
   address: string;
 }
 
-const Following: FC<FollowingProps> = ({ username, address }) => {
+const Following = ({ username, address }: FollowingProps) => {
   const request: FollowingRequest = {
     pageSize: PageSize.Fifty,
     account: address

@@ -6,14 +6,13 @@ import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import { useAccountsBulkQuery } from "@hey/indexer";
 import { H6 } from "@hey/ui";
 import { useRouter } from "next/router";
-import type { FC } from "react";
 import { useSearchStore } from "src/store/persisted/useSearchStore";
 
 interface RecentAccountsProps {
   onAccountClick: () => void;
 }
 
-const RecentAccounts: FC<RecentAccountsProps> = ({ onAccountClick }) => {
+const RecentAccounts = ({ onAccountClick }: RecentAccountsProps) => {
   const { push } = useRouter();
   const {
     addAccount,
