@@ -1,8 +1,8 @@
 import { HEY_APP } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import type { Request, Response } from "express";
-import { heyWalletClient } from "src/helpers/heyWalletClient";
 import { type Address, checksumAddress } from "viem";
+import { heyWalletClient } from "../../helpers/heyWalletClient";
 
 const TYPES = {
   SourceStamp: [
