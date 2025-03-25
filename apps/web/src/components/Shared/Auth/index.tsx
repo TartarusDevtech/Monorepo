@@ -1,6 +1,5 @@
 import Login from "@components/Shared/Auth/Login";
 import { APP_NAME } from "@hey/data/constants";
-import type { FC } from "react";
 import { useState } from "react";
 import { useAuthModalStore } from "src/store/non-persisted/modal/useAuthModalStore";
 import { useAccount } from "wagmi";
@@ -15,7 +14,7 @@ const NotConnected = ({ isLogin }: { isLogin?: boolean }) => (
   />
 );
 
-const Auth: FC = () => {
+const Auth = () => {
   const { authModalType } = useAuthModalStore();
   const [hasAccounts, setHasAccounts] = useState(true);
   const { isConnected } = useAccount();

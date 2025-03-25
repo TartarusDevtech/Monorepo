@@ -7,10 +7,9 @@ import type { PermissionsRouterOutput } from "@hey/rpc/src/routers/internal/perm
 import { Badge, Card, CardHeader, EmptyState, ErrorMessage } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import { useQuery } from "@tanstack/react-query";
-import type { FC } from "react";
 import { useEffect, useState } from "react";
 
-const List: FC = () => {
+const List = () => {
   const [permissions, setPermissions] = useState<
     [] | PermissionsRouterOutput["all"]
   >([]);

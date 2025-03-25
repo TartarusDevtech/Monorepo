@@ -1,6 +1,4 @@
-import type { FC } from "react";
-
-const PostShimmer: FC = () => {
+const PostShimmer = () => {
   return (
     <div className="flex items-start space-x-3 px-5 py-4">
       <div>

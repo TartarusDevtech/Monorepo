@@ -1,9 +1,8 @@
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { Card } from "@hey/ui";
-import type { FC } from "react";
 import PostShimmer from "./PostShimmer";
 
-const PostListShimmer: FC = () => {
+const PostListShimmer = () => {
   return (
     <Card className="divide-y dark:divide-gray-700">
       <div className="flex items-center space-x-3 px-5 py-6">

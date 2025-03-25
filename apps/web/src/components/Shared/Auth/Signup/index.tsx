@@ -1,5 +1,4 @@
 import SwitchNetwork from "@components/Shared/SwitchNetwork";
-import type { FC } from "react";
 import { createTrackedSelector } from "react-tracked";
 import { CHAIN } from "src/constants";
 import { useAccount, useChainId } from "wagmi";
@@ -37,7 +36,7 @@ const store = create<SignupState>((set) => ({
 
 export const useSignupStore = createTrackedSelector(store);
 
-const Signup: FC = () => {
+const Signup = () => {
   const { screen } = useSignupStore();
   const chain = useChainId();
   const { connector: activeConnector } = useAccount();

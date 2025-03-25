@@ -1,7 +1,6 @@
-import type { FC } from "react";
 import Suspended from "./Suspended";
 
-const GlobalBanners: FC = () => {
+const GlobalBanners = () => {
   return (
     <>
       <Suspended />

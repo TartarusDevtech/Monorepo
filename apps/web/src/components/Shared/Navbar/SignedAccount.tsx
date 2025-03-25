@@ -5,7 +5,6 @@ import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import { Image } from "@hey/ui";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 import { useMobileDrawerModalStore } from "src/store/non-persisted/modal/useMobileDrawerModalStore";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import MenuTransition from "../MenuTransition";
@@ -19,7 +18,7 @@ import SwitchAccount from "./NavItems/SwitchAccount";
 import ThemeSwitch from "./NavItems/ThemeSwitch";
 import YourAccount from "./NavItems/YourAccount";
 
-const SignedAccount: FC = () => {
+const SignedAccount = () => {
   const { currentAccount } = useAccountStore();
   const { setShowMobileDrawer, showMobileDrawer } = useMobileDrawerModalStore();
   const isStaff = hasAccess(Features.Staff);

@@ -2,10 +2,9 @@ import { NoSymbolIcon } from "@heroicons/react/24/outline";
 import { APP_NAME } from "@hey/data/constants";
 import { GridItemEight, GridLayout } from "@hey/ui";
 import Link from "next/link";
-import type { FC } from "react";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 
-const Suspended: FC = () => {
+const Suspended = () => {
   const { isSuspended } = useAccountStatus();
 
   if (!isSuspended) {

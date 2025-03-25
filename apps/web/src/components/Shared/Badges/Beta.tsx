@@ -1,8 +1,7 @@
 import { StarIcon } from "@heroicons/react/24/solid";
 import { Badge } from "@hey/ui";
-import type { FC } from "react";
 
-const Beta: FC = () => {
+const Beta = () => {
   return (
     <Badge className="flex items-center space-x-1">
       <StarIcon className="size-3" />

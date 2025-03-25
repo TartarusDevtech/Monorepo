@@ -8,7 +8,6 @@ import { tokens } from "@hey/data/tokens";
 import getTokenImage from "@hey/helpers/getTokenImage";
 import type { Group, GroupRules } from "@hey/indexer";
 import { H3, H5 } from "@hey/ui";
-import type { FC } from "react";
 import { useSuperJoinModalStore } from "src/store/non-persisted/modal/useSuperJoinModalStore";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import type { Address } from "viem";
@@ -17,7 +16,7 @@ import FundButton from "../Fund/FundButton";
 import Loader from "../Loader";
 import Join from "./Join";
 
-const SuperJoin: FC = () => {
+const SuperJoin = () => {
   const { currentAccount } = useAccountStore();
   const { superJoiningGroup, setShowSuperJoinModal } = useSuperJoinModalStore();
   const { assetContract, assetSymbol, amount } = getSimplePaymentDetails(

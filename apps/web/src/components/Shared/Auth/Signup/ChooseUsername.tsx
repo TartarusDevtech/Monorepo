@@ -19,7 +19,6 @@ import {
 } from "@hey/indexer";
 import { Button, Form, Input, useZodForm } from "@hey/ui";
 import { account as accountMetadata } from "@lens-protocol/metadata";
-import type { FC } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import useHandleWrongNetwork from "src/hooks/useHandleWrongNetwork";
@@ -46,7 +45,7 @@ const ValidationSchema = z.object({
     })
 });
 
-const ChooseUsername: FC = () => {
+const ChooseUsername = () => {
   const {
     setChoosedUsername,
     setScreen,

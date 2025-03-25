@@ -3,9 +3,8 @@ import { HomeIcon } from "@heroicons/react/24/outline";
 import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Button, H2 } from "@hey/ui";
 import Link from "next/link";
-import type { FC } from "react";
 
-const Custom404: FC = () => {
+const Custom404 = () => {
   return (
     <div className="page-center flex-col">
       <MetaTags title={`404 • ${APP_NAME}`} />

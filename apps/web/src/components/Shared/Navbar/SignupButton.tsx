@@ -1,9 +1,8 @@
 import { Button } from "@hey/ui";
-import type { FC } from "react";
 import { useAuthModalStore } from "src/store/non-persisted/modal/useAuthModalStore";
 import { useSignupStore } from "../Auth/Signup";
 
-const SignupButton: FC = () => {
+const SignupButton = () => {
   const { setShowAuthModal } = useAuthModalStore();
   const { setScreen } = useSignupStore();
 

@@ -2,11 +2,10 @@ import Loader from "@components/Shared/Loader";
 import { BLOCK_EXPLORER_URL, HEY_SPONSOR } from "@hey/data/constants";
 import { Card, CardHeader, ErrorMessage, NumberedStat } from "@hey/ui";
 import Link from "next/link";
-import type { FC } from "react";
 import { formatEther } from "viem";
 import { useBalance } from "wagmi";
 
-const Sponsorship: FC = () => {
+const Sponsorship = () => {
   const { data, isLoading, error } = useBalance({
     address: HEY_SPONSOR,
     query: { refetchInterval: 2000 }

@@ -1,13 +1,13 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { H6 } from "@hey/ui";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import MenuTransition from "../MenuTransition";
 import Bookmarks from "./NavItems/Bookmarks";
 import Groups from "./NavItems/Groups";
 import Support from "./NavItems/Support";
-const MoreNavItems: FC = () => {
+
+const MoreNavItems = () => {
   const { currentAccount } = useAccountStore();
 
   return (

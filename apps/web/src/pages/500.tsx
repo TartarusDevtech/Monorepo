@@ -5,9 +5,8 @@ import { APP_NAME } from "@hey/data/constants";
 import { Button, H2 } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import Link from "next/link";
-import type { FC } from "react";
 
-const Custom500: FC = () => {
+const Custom500 = () => {
   return (
     <div className={cn("page-center flex-col", heyFont.className)}>
       <MetaTags title={`500 • ${APP_NAME}`} />

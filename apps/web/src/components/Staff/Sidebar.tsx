@@ -4,7 +4,6 @@ import {
   ClipboardIcon,
   UserIcon
 } from "@heroicons/react/24/outline";
-import type { FC } from "react";
 
 const sidebarItems = [
   {
@@ -24,7 +23,7 @@ const sidebarItems = [
   }
 ];
 
-const StaffSidebar: FC = () => {
+const StaffSidebar = () => {
   return (
     <div className="mb-4 px-3 sm:px-0">
       <Sidebar items={sidebarItems} />

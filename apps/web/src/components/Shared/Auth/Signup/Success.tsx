@@ -3,13 +3,12 @@ import { Errors } from "@hey/data/errors";
 import { useSwitchAccountMutation } from "@hey/indexer";
 import { H4 } from "@hey/ui";
 import { useRouter } from "next/router";
-import type { FC } from "react";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { signIn } from "src/store/persisted/useAuthStore";
 import { useSignupStore } from ".";
 
-const Success: FC = () => {
+const Success = () => {
   const { reload } = useRouter();
   const { accountAddress, onboardingToken } = useSignupStore();
   const [switchAccount] = useSwitchAccountMutation();

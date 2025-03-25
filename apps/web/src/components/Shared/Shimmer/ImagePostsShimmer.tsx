@@ -1,6 +1,4 @@
-import type { FC } from "react";
-
-const ImagePostsShimmer: FC = () => {
+const ImagePostsShimmer = () => {
   return (
     <div className="grid grid-cols-3 gap-4">
       {Array.from({ length: 6 }).map((_, index) => (

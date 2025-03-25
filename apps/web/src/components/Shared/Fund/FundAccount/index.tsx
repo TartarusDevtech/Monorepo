@@ -4,14 +4,13 @@ import {
   STATIC_IMAGES_URL
 } from "@hey/data/constants";
 import { Image } from "@hey/ui";
-import type { FC } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import { formatUnits } from "viem";
 import { useBalance } from "wagmi";
 import Loader from "../../Loader";
 import Fund from "./Fund";
 
-const FundAccount: FC = () => {
+const FundAccount = () => {
   const { currentAccount } = useAccountStore();
 
   const { data, isLoading } = useBalance({

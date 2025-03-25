@@ -5,7 +5,6 @@ import { H6 } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import type { FC } from "react";
 import { useState } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import { usePreferencesStore } from "src/store/persisted/usePreferencesStore";
@@ -13,7 +12,7 @@ import MenuItems from "./MenuItems";
 import MoreNavItems from "./MoreNavItems";
 import Search from "./Search";
 
-const Navbar: FC = () => {
+const Navbar = () => {
   const { currentAccount } = useAccountStore();
   const { appIcon } = usePreferencesStore();
   const [showSearch, setShowSearch] = useState(false);

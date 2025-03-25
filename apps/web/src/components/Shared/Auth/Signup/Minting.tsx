@@ -1,9 +1,8 @@
 import { useAccountQuery } from "@hey/indexer";
 import { H4, Spinner } from "@hey/ui";
-import type { FC } from "react";
 import { useSignupStore } from ".";
 
-const Minting: FC = () => {
+const Minting = () => {
   const { choosedUsername, setAccountAddress, setScreen, transactionHash } =
     useSignupStore();
 

@@ -11,11 +11,10 @@ import {
 import { Card, EmptyState, ErrorMessage, Input, Select } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import { useDebounce } from "@uidotdev/usehooks";
-import type { FC } from "react";
 import { useEffect, useState } from "react";
 import { Virtuoso } from "react-virtuoso";
 
-const List: FC = () => {
+const List = () => {
   const [orderBy, setOrderBy] = useState<AccountsOrderBy>(
     AccountsOrderBy.AccountScore
   );
