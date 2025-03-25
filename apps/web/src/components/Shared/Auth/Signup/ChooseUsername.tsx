@@ -75,10 +75,11 @@ const ChooseUsername = () => {
 
   useAccountQuery({
     fetchPolicy: "no-cache",
-    onCompleted: (data) => setIsAvailable(!data.account),
     variables: {
       request: { username: { localName: username?.toLowerCase() } }
-    }
+    },
+    onCompleted: (data) => setIsAvailable(!data.account),
+    skip: !canCheck
   });
 
   const handleSignup = async ({
