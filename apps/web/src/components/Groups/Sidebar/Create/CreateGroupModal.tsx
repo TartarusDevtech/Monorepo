@@ -15,7 +15,7 @@ import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 import { z } from "zod";
 import { useCreateGroupStore } from "./CreateGroup";
 
-const validationSchema = z.object({
+const ValidationSchema = z.object({
   name: z
     .string()
     .max(100, { message: "Name should not exceed 100 characters" })
@@ -35,7 +35,7 @@ const CreateGroupModal: FC = () => {
   const handleTransactionLifecycle = useTransactionLifecycle();
 
   const form = useZodForm({
-    schema: validationSchema
+    schema: ValidationSchema
   });
 
   const onCompleted = (hash: string) => {
@@ -65,7 +65,7 @@ const CreateGroupModal: FC = () => {
     onError
   });
 
-  const handleCreateGroup = async (data: z.infer<typeof validationSchema>) => {
+  const handleCreateGroup = async (data: z.infer<typeof ValidationSchema>) => {
     if (isSuspended) {
       return toast.error(Errors.Suspended);
     }

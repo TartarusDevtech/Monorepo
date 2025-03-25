@@ -18,7 +18,7 @@ import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 import { z } from "zod";
 import Reason from "./Reason";
 
-const validationSchema = z.object({
+const ValidationSchema = z.object({
   additionalComment: z.string().max(260, {
     message: "Additional comments should not exceed 260 characters"
   })
@@ -33,7 +33,7 @@ const ReportPost: FC<ReportPostProps> = ({ postId }) => {
   const [reason, setReason] = useState("");
 
   const form = useZodForm({
-    schema: validationSchema
+    schema: ValidationSchema
   });
 
   const [createReport, { data, error, loading }] = useReportPostMutation({
@@ -42,7 +42,7 @@ const ReportPost: FC<ReportPostProps> = ({ postId }) => {
 
   const reportPost = async ({
     additionalComment
-  }: z.infer<typeof validationSchema>) => {
+  }: z.infer<typeof ValidationSchema>) => {
     if (isSuspended) {
       return toast.error(Errors.Suspended);
     }

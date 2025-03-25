@@ -27,7 +27,7 @@ import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import { z } from "zod";
 
-const validationSchema = z.object({
+const ValidationSchema = z.object({
   bio: z.string().max(260, { message: "Bio should not exceed 260 characters" }),
   location: z.string().max(100, {
     message: "Location should not exceed 100 characters"
@@ -108,11 +108,11 @@ const AccountSettingsForm: FC = () => {
         currentAccount?.metadata?.attributes
       )?.replace(/(https:\/\/)?x\.com\//, "")
     },
-    schema: validationSchema
+    schema: ValidationSchema
   });
 
   const updateAccount = async (
-    data: z.infer<typeof validationSchema>,
+    data: z.infer<typeof ValidationSchema>,
     pfpUrl: string | undefined,
     coverUrl: string | undefined
   ) => {

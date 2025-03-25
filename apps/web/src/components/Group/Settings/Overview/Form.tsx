@@ -17,7 +17,7 @@ import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import { z } from "zod";
 
-const validationSchema = z.object({
+const ValidationSchema = z.object({
   name: z
     .string()
     .max(100, { message: "Name should not exceed 100 characters" })
@@ -76,10 +76,10 @@ const GroupSettingsForm: FC<GroupSettingsFormProps> = ({ group }) => {
       name: group?.metadata?.name || "",
       description: group?.metadata?.description || ""
     },
-    schema: validationSchema
+    schema: ValidationSchema
   });
 
-  const updateGroup = async (data: z.infer<typeof validationSchema>) => {
+  const updateGroup = async (data: z.infer<typeof ValidationSchema>) => {
     if (!currentAccount) {
       return toast.error(Errors.SignWallet);
     }
