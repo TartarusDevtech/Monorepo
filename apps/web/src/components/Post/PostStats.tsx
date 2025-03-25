@@ -6,14 +6,13 @@ import type { PostFragment } from "@hey/indexer";
 import { Modal } from "@hey/ui";
 import Link from "next/link";
 import plur from "plur";
-import type { FC } from "react";
 import { memo, useState } from "react";
 
 interface PostStatsProps {
   post: PostFragment;
 }
 
-const PostStats: FC<PostStatsProps> = ({ post }) => {
+const PostStats = ({ post }: PostStatsProps) => {
   const [showLikesModal, setShowLikesModal] = useState(false);
   const [showRepostsModal, setShowRepostsModal] = useState(false);
   const [showCollectorsModal, setShowCollectorsModal] = useState(false);

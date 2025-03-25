@@ -8,7 +8,6 @@ import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { AnyPostFragment } from "@hey/indexer";
 import { Spinner, Tooltip } from "@hey/ui";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 import { useState } from "react";
 import Quote from "./Quote";
 import Repost from "./Repost";
@@ -19,7 +18,7 @@ interface ShareMenuProps {
   showCount: boolean;
 }
 
-const ShareMenu: FC<ShareMenuProps> = ({ post, showCount }) => {
+const ShareMenu = ({ post, showCount }: ShareMenuProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const targetPost = isRepost(post) ? post?.repostOf : post;
   const hasReposted =

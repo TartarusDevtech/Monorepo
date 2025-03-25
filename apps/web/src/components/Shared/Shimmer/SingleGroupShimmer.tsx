@@ -1,5 +1,4 @@
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 
 interface SingleGroupShimmerProps {
   className?: string;
@@ -7,11 +6,11 @@ interface SingleGroupShimmerProps {
   showJoinLeaveButton?: boolean;
 }
 
-const SingleGroupShimmer: FC<SingleGroupShimmerProps> = ({
+const SingleGroupShimmer = ({
   className = "",
   isBig = false,
   showJoinLeaveButton = false
-}) => {
+}: SingleGroupShimmerProps) => {
   return (
     <div className={cn("flex items-center justify-between", className)}>
       <div className="flex items-center space-x-3">

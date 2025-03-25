@@ -14,7 +14,6 @@ import {
   useExecutePostActionMutation
 } from "@hey/indexer";
 import { Button, WarningMessage } from "@hey/ui";
-import type { FC } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
@@ -30,12 +29,12 @@ interface CollectActionButtonProps {
   post: PostFragment;
 }
 
-const CollectActionButton: FC<CollectActionButtonProps> = ({
+const CollectActionButton = ({
   collects,
   onCollectSuccess = () => {},
   postAction,
   post
-}) => {
+}: CollectActionButtonProps) => {
   const collectAction = getCollectActionData(postAction as any);
   const { currentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();

@@ -6,7 +6,6 @@ import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { PostFragment } from "@hey/indexer";
 import { Tooltip } from "@hey/ui";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 import Action from "./Action";
 
 interface TipActionProps {
@@ -14,7 +13,7 @@ interface TipActionProps {
   showCount: boolean;
 }
 
-const TipAction: FC<TipActionProps> = ({ post, showCount }) => {
+const TipAction = ({ post, showCount }: TipActionProps) => {
   const hasTipped = post.operations?.hasTipped;
   const { tips } = post.stats;
 

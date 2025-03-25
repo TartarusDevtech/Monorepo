@@ -4,14 +4,14 @@ import nFormatter from "@hey/helpers/nFormatter";
 import type { PostFragment } from "@hey/indexer";
 import { Modal, Tooltip } from "@hey/ui";
 import plur from "plur";
-import { type FC, useState } from "react";
+import { useState } from "react";
 import CollectActionBody from "./CollectActionBody";
 
 interface CollectActionProps {
   post: PostFragment;
 }
 
-const CollectAction: FC<CollectActionProps> = ({ post }) => {
+const CollectAction = ({ post }: CollectActionProps) => {
   const [showCollectModal, setShowCollectModal] = useState(false);
   const { collects } = post.stats;
 

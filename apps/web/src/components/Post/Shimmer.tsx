@@ -4,15 +4,14 @@ import PostShimmer from "@components/Shared/Shimmer/PostShimmer";
 import PostsShimmer from "@components/Shared/Shimmer/PostsShimmer";
 import SingleAccountShimmer from "@components/Shared/Shimmer/SingleAccountShimmer";
 import { Card, GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
-import type { FC } from "react";
 
 interface PublicationPageShimmerProps {
   publicationList?: boolean;
 }
 
-const PublicationPageShimmer: FC<PublicationPageShimmerProps> = ({
+const PublicationPageShimmer = ({
   publicationList = false
-}) => {
+}: PublicationPageShimmerProps) => {
   return (
     <GridLayout>
       <GridItemEight className="space-y-5">

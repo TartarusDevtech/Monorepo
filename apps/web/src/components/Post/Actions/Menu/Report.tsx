@@ -3,14 +3,13 @@ import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { PostFragment } from "@hey/indexer";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 import { useReportPostModalStore } from "src/store/non-persisted/modal/useReportPostModalStore";
 
 interface ReportProps {
   post: PostFragment;
 }
 
-const Report: FC<ReportProps> = ({ post }) => {
+const Report = ({ post }: ReportProps) => {
   const { setShowReportPostModal } = useReportPostModalStore();
 
   return (

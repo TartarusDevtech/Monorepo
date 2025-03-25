@@ -3,7 +3,6 @@ import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
 import { Errors } from "@hey/data/errors";
 import type { PostFragment } from "@hey/indexer";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 import toast from "react-hot-toast";
 import { useNewPostModalStore } from "src/store/non-persisted/modal/useNewPostModalStore";
 import { usePostStore } from "src/store/non-persisted/post/usePostStore";
@@ -14,7 +13,7 @@ interface QuoteProps {
   post: PostFragment;
 }
 
-const Quote: FC<QuoteProps> = ({ post }) => {
+const Quote = ({ post }: QuoteProps) => {
   const { currentAccount } = useAccountStore();
   const { setShowNewPostModal } = useNewPostModalStore();
   const { setQuotedPost } = usePostStore();

@@ -12,14 +12,13 @@ import {
 } from "@hey/indexer";
 import cn from "@hey/ui/cn";
 import { useRouter } from "next/router";
-import type { FC } from "react";
 import { toast } from "react-hot-toast";
 
 interface BookmarkProps {
   post: PostFragment;
 }
 
-const Bookmark: FC<BookmarkProps> = ({ post }) => {
+const Bookmark = ({ post }: BookmarkProps) => {
   const { pathname } = useRouter();
   const hasBookmarked = post.operations?.hasBookmarked;
 

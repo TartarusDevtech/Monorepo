@@ -2,7 +2,6 @@ import ActionType from "@components/Home/Timeline/EventType";
 import PostWrapper from "@components/Shared/PostWrapper";
 import type { AnyPostFragment, TimelineItemFragment } from "@hey/indexer";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 import { memo } from "react";
 import PostActions from "./Actions";
 import HiddenPost from "./HiddenPost";
@@ -22,7 +21,7 @@ interface SinglePostProps {
   showType?: boolean;
 }
 
-const SinglePost: FC<SinglePostProps> = ({
+const SinglePost = ({
   timelineItem,
   isFirst = false,
   isLast = false,
@@ -31,7 +30,7 @@ const SinglePost: FC<SinglePostProps> = ({
   showMore = true,
   showThread = true,
   showType = true
-}) => {
+}: SinglePostProps) => {
   const rootPost = timelineItem ? timelineItem?.primary : post;
 
   return (

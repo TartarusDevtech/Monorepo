@@ -1,6 +1,5 @@
 import SidebarMenu from "@components/Shared/Sidebar/SidebarMenu";
 import SidebarTabs from "@components/Shared/Sidebar/SidebarTabs";
-import type { FC } from "react";
 
 export interface SidebarProps {
   items: {
@@ -12,7 +11,7 @@ export interface SidebarProps {
   }[];
 }
 
-const Sidebar: FC<SidebarProps> = ({ items }) => {
+const Sidebar = ({ items }: SidebarProps) => {
   return (
     <>
       <div className="hidden lg:block">

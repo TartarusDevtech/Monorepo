@@ -1,6 +1,5 @@
 import type { PostFragment } from "@hey/indexer";
 import { Button, Modal } from "@hey/ui";
-import type { FC } from "react";
 import { useState } from "react";
 import CollectActionBody from "./CollectActionBody";
 
@@ -8,7 +7,7 @@ interface SmallCollectButtonProps {
   post: PostFragment;
 }
 
-const SmallCollectButton: FC<SmallCollectButtonProps> = ({ post }) => {
+const SmallCollectButton = ({ post }: SmallCollectButtonProps) => {
   const [showCollectModal, setShowCollectModal] = useState(false);
   const hasSimpleCollected = post.operations?.hasSimpleCollected;
 

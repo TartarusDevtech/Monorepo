@@ -10,7 +10,6 @@ import {
   useUnhideReplyMutation
 } from "@hey/indexer";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 import { toast } from "react-hot-toast";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 
@@ -18,7 +17,7 @@ interface HideCommentProps {
   post: PostFragment;
 }
 
-const HideComment: FC<HideCommentProps> = ({ post }) => {
+const HideComment = ({ post }: HideCommentProps) => {
   const { currentAccount } = useAccountStore();
   const { showHiddenComments } = useHiddenCommentFeedStore();
 

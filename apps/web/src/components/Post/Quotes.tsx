@@ -12,7 +12,6 @@ import {
 } from "@hey/indexer";
 import { Card, EmptyState, ErrorMessage, H5 } from "@hey/ui";
 import Link from "next/link";
-import type { FC } from "react";
 import { Virtuoso } from "react-virtuoso";
 import SinglePost from "./SinglePost";
 
@@ -20,7 +19,7 @@ interface QuotesProps {
   post: PostFragment;
 }
 
-const Quotes: FC<QuotesProps> = ({ post }) => {
+const Quotes = ({ post }: QuotesProps) => {
   const request: PostReferencesRequest = {
     pageSize: PageSize.Fifty,
     referenceTypes: [PostReferenceType.QuoteOf],

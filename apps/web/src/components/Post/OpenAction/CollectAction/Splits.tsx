@@ -6,13 +6,12 @@ import getAvatar from "@hey/helpers/getAvatar";
 import { type RecipientPercent, useAccountsBulkQuery } from "@hey/indexer";
 import { Image } from "@hey/ui";
 import Link from "next/link";
-import type { FC } from "react";
 
 interface SplitsProps {
   recipients: RecipientPercent[];
 }
 
-const Splits: FC<SplitsProps> = ({ recipients }) => {
+const Splits = ({ recipients }: SplitsProps) => {
   const { data: recipientProfilesData, loading } = useAccountsBulkQuery({
     skip: !recipients?.length,
     variables: {

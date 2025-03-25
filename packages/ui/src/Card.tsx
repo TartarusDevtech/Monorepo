@@ -1,4 +1,4 @@
-import type { ElementType, FC, MouseEvent, ReactNode } from "react";
+import type { ElementType, MouseEvent, ReactNode } from "react";
 import cn from "../cn";
 
 interface CardProps {
@@ -9,13 +9,13 @@ interface CardProps {
   onClick?: (event: MouseEvent<HTMLDivElement>) => void;
 }
 
-export const Card: FC<CardProps> = ({
+export const Card = ({
   as: Tag = "div",
   children,
   className = "",
   forceRounded = false,
   onClick
-}) => {
+}: CardProps) => {
   return (
     <Tag
       className={cn(

@@ -13,7 +13,7 @@ import {
 } from "@hey/indexer";
 import { Button, Input, Spinner } from "@hey/ui";
 import cn from "@hey/ui/cn";
-import type { ChangeEvent, FC, RefObject } from "react";
+import type { ChangeEvent, RefObject } from "react";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import usePreventScrollOnNumberInput from "src/hooks/usePreventScrollOnNumberInput";
@@ -30,7 +30,7 @@ interface ActionProps {
   post: PostFragment;
 }
 
-const Action: FC<ActionProps> = ({ closePopover, post }) => {
+const Action = ({ closePopover, post }: ActionProps) => {
   const { currentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
   const [isSubmitting, setIsSubmitting] = useState(false);

@@ -12,7 +12,7 @@ import {
 } from "@hey/indexer";
 import cn from "@hey/ui/cn";
 import { useCounter } from "@uidotdev/usehooks";
-import type { Dispatch, FC, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { toast } from "react-hot-toast";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
@@ -24,7 +24,7 @@ interface RepostProps {
   setIsSubmitting: Dispatch<SetStateAction<boolean>>;
 }
 
-const Repost: FC<RepostProps> = ({ isSubmitting, post, setIsSubmitting }) => {
+const Repost = ({ isSubmitting, post, setIsSubmitting }: RepostProps) => {
   const { currentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
   const hasReposted =

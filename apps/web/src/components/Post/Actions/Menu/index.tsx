@@ -4,7 +4,6 @@ import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { PostFragment } from "@hey/indexer";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 import { Fragment } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import Bookmark from "./Bookmark";
@@ -19,7 +18,7 @@ interface PostMenuProps {
   post: PostFragment;
 }
 
-const PostMenu: FC<PostMenuProps> = ({ post }) => {
+const PostMenu = ({ post }: PostMenuProps) => {
   const { currentAccount } = useAccountStore();
   const iconClassName = "w-[15px] sm:w-[18px]";
 

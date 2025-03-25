@@ -11,14 +11,13 @@ import {
   useUndoPostNotInterestedMutation
 } from "@hey/indexer";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 import { toast } from "react-hot-toast";
 
 interface NotInterestedProps {
   post: PostFragment;
 }
 
-const NotInterested: FC<NotInterestedProps> = ({ post }) => {
+const NotInterested = ({ post }: NotInterestedProps) => {
   const notInterested = post.operations?.isNotInterested;
 
   const request: PostNotInterestedRequest = {

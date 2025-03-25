@@ -6,7 +6,7 @@ import { Errors } from "@hey/data/errors";
 import { isRepost } from "@hey/helpers/postHelpers";
 import { type AnyPostFragment, useDeletePostMutation } from "@hey/indexer";
 import cn from "@hey/ui/cn";
-import type { Dispatch, FC, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { toast } from "react-hot-toast";
 import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
@@ -17,11 +17,11 @@ interface UndoRepostProps {
   setIsSubmitting: Dispatch<SetStateAction<boolean>>;
 }
 
-const UndoRepost: FC<UndoRepostProps> = ({
+const UndoRepost = ({
   post,
   isSubmitting,
   setIsSubmitting
-}) => {
+}: UndoRepostProps) => {
   const { currentAccount } = useAccountStore();
   const { cache } = useApolloClient();
   const handleTransactionLifecycle = useTransactionLifecycle();

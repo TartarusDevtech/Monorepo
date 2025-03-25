@@ -1,15 +1,14 @@
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 
 interface SmallSingleAccountShimmerProps {
   hideSlug?: boolean;
   smallAvatar?: boolean;
 }
 
-const SmallSingleAccountShimmer: FC<SmallSingleAccountShimmerProps> = ({
+const SmallSingleAccountShimmer = ({
   hideSlug = false,
   smallAvatar = false
-}) => {
+}: SmallSingleAccountShimmerProps) => {
   return (
     <div className="flex items-center space-x-3">
       <div

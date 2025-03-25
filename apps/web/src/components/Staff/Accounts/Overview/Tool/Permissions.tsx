@@ -1,6 +1,5 @@
 import { FlagIcon } from "@heroicons/react/24/outline";
 import { H5 } from "@hey/ui";
-import type { FC } from "react";
 import { useEffect, useState } from "react";
 import UpdatePermissions from "./UpdatePermissions";
 
@@ -9,7 +8,7 @@ interface PermissionsProps {
   accountAddress: string;
 }
 
-const Permissions: FC<PermissionsProps> = ({ permissions, accountAddress }) => {
+const Permissions = ({ permissions, accountAddress }: PermissionsProps) => {
   const [keys, setKeys] = useState<string[]>([]);
 
   useEffect(() => {

@@ -4,13 +4,12 @@ import { ShieldCheckIcon } from "@heroicons/react/24/solid";
 import formatAddress from "@hey/helpers/formatAddress";
 import type { AccountFragment } from "@hey/indexer";
 import { H5 } from "@hey/ui";
-import type { FC } from "react";
 
 interface AccountOverviewProps {
   account: AccountFragment;
 }
 
-const AccountOverview: FC<AccountOverviewProps> = ({ account }) => {
+const AccountOverview = ({ account }: AccountOverviewProps) => {
   return (
     <>
       <div className="divider my-5 border-yellow-600 border-dashed" />

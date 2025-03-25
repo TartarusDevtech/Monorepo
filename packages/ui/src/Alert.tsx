@@ -5,7 +5,7 @@ import {
   Transition,
   TransitionChild
 } from "@headlessui/react";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Fragment } from "react";
 import { Button } from "./Button";
 import { H4 } from "./Typography";
@@ -23,7 +23,7 @@ interface AlertProps {
   title: ReactNode;
 }
 
-export const Alert: FC<AlertProps> = ({
+export const Alert = ({
   cancelText = "Cancel",
   children,
   confirmText,
@@ -34,7 +34,7 @@ export const Alert: FC<AlertProps> = ({
   onConfirm,
   show,
   title
-}) => {
+}: AlertProps) => {
   return (
     <Transition as={Fragment} show={show}>
       <Dialog

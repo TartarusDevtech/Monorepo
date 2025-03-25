@@ -8,13 +8,12 @@ import {
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import type { PreferencesRouterOutput } from "@hey/rpc/src/routers/preferences";
 import { H5 } from "@hey/ui";
-import type { FC } from "react";
 
 interface AccountPreferencesProps {
   preferences: PreferencesRouterOutput["get"];
 }
 
-const AccountPreferences: FC<AccountPreferencesProps> = ({ preferences }) => {
+const AccountPreferences = ({ preferences }: AccountPreferencesProps) => {
   if (!preferences) {
     return null;
   }

@@ -6,7 +6,6 @@ import {
   useAccountsBulkQuery
 } from "@hey/indexer";
 import { Card, ErrorMessage, Modal } from "@hey/ui";
-import type { FC } from "react";
 import { useState } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import MoreRelevantPeople from "./MoreRelevantPeople";
@@ -15,7 +14,7 @@ interface RelevantPeopleProps {
   mentions: PostMentionFragment[];
 }
 
-const RelevantPeople: FC<RelevantPeopleProps> = ({ mentions }) => {
+const RelevantPeople = ({ mentions }: RelevantPeopleProps) => {
   const { currentAccount } = useAccountStore();
   const [showMore, setShowMore] = useState(false);
 

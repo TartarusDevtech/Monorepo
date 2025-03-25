@@ -28,7 +28,7 @@ import { H3, H4, HelpTooltip, Modal, Tooltip, WarningMessage } from "@hey/ui";
 import { useCounter } from "@uidotdev/usehooks";
 import Link from "next/link";
 import plur from "plur";
-import { type Dispatch, type FC, type SetStateAction, useState } from "react";
+import { type Dispatch, type SetStateAction, useState } from "react";
 import CollectActionButton from "./CollectActionButton";
 import Splits from "./Splits";
 
@@ -37,10 +37,10 @@ interface CollectActionBodyProps {
   setShowCollectModal: Dispatch<SetStateAction<boolean>>;
 }
 
-const CollectActionBody: FC<CollectActionBodyProps> = ({
+const CollectActionBody = ({
   post,
   setShowCollectModal
-}) => {
+}: CollectActionBodyProps) => {
   const [showCollectorsModal, setShowCollectorsModal] = useState(false);
   const targetPost = isRepost(post) ? post?.repostOf : post;
   const [collects, { increment }] = useCounter(targetPost.stats.collects);

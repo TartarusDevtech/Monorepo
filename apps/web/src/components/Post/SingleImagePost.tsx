@@ -3,14 +3,13 @@ import getPostData from "@hey/helpers/getPostData";
 import { isRepost } from "@hey/helpers/postHelpers";
 import type { AnyPostFragment } from "@hey/indexer";
 import Link from "next/link";
-import type { FC } from "react";
 import { memo } from "react";
 
 interface SingleImagePostProps {
   post: AnyPostFragment;
 }
 
-const SingleImagePost: FC<SingleImagePostProps> = ({ post }) => {
+const SingleImagePost = ({ post }: SingleImagePostProps) => {
   const targetPost = isRepost(post) ? post.repostOf : post;
   const filteredAttachments =
     getPostData(targetPost.metadata)?.attachments || [];

@@ -1,7 +1,6 @@
 import { isRepost } from "@hey/helpers/postHelpers";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { AnyPostFragment } from "@hey/indexer";
-import type { FC } from "react";
 import { memo } from "react";
 import CollectAction from "../OpenAction/CollectAction";
 import SmallCollectButton from "../OpenAction/CollectAction/SmallCollectButton";
@@ -15,7 +14,7 @@ interface PostActionsProps {
   showCount?: boolean;
 }
 
-const PostActions: FC<PostActionsProps> = ({ post, showCount = false }) => {
+const PostActions = ({ post, showCount = false }: PostActionsProps) => {
   const targetPost = isRepost(post) ? post.repostOf : post;
   const hasPostAction = (targetPost.actions?.length || 0) > 0;
   const canAct =

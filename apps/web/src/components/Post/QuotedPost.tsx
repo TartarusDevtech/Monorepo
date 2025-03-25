@@ -1,6 +1,5 @@
 import PostWrapper from "@components/Shared/PostWrapper";
 import type { PostFragment } from "@hey/indexer";
-import type { FC } from "react";
 import HiddenPost from "./HiddenPost";
 import PostAvatar from "./PostAvatar";
 import PostBody from "./PostBody";
@@ -11,7 +10,7 @@ interface QuotedPostProps {
   post: PostFragment;
 }
 
-const QuotedPost: FC<QuotedPostProps> = ({ isNew = false, post }) => {
+const QuotedPost = ({ isNew = false, post }: QuotedPostProps) => {
   return (
     <PostWrapper
       className="cursor-pointer p-4 transition-colors first:rounded-t-xl last:rounded-b-xl hover:bg-gray-100 dark:hover:bg-gray-900"

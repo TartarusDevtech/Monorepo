@@ -1,6 +1,5 @@
 import PostWrapper from "@components/Shared/PostWrapper";
 import type { PostFragment } from "@hey/indexer";
-import type { FC } from "react";
 import PostActions from "./Actions";
 import HiddenPost from "./HiddenPost";
 import PostAvatar from "./PostAvatar";
@@ -11,7 +10,7 @@ interface ThreadBodyProps {
   post: PostFragment;
 }
 
-const ThreadBody: FC<ThreadBodyProps> = ({ post }) => {
+const ThreadBody = ({ post }: ThreadBodyProps) => {
   return (
     <PostWrapper post={post}>
       <div className="relative flex items-start space-x-3 pb-3">

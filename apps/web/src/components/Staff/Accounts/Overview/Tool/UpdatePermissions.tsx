@@ -3,7 +3,7 @@ import errorToast from "@helpers/errorToast";
 import { trpc } from "@helpers/trpc";
 import { Toggle } from "@hey/ui";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import type { Dispatch, FC, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import toast from "react-hot-toast";
 import ToggleWrapper from "./ToggleWrapper";
 
@@ -13,11 +13,11 @@ interface UpdatePermissionsProps {
   setPermissions: Dispatch<SetStateAction<string[]>>;
 }
 
-const UpdatePermissions: FC<UpdatePermissionsProps> = ({
+const UpdatePermissions = ({
   permissions,
   accountAddress,
   setPermissions
-}) => {
+}: UpdatePermissionsProps) => {
   const { data: allPermissions, isLoading } = useQuery(
     trpc.internal.permissions.all.queryOptions()
   );

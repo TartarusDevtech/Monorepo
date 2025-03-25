@@ -2,13 +2,12 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { Card } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import { useRouter } from "next/router";
-import type { FC } from "react";
 import { useState } from "react";
 import type { SidebarProps } from ".";
 import MenuTransition from "../MenuTransition";
 import { NextLink } from "../Navbar/MenuItems";
 
-const SidebarMenu: FC<SidebarProps> = ({ items }) => {
+const SidebarMenu = ({ items }: SidebarProps) => {
   const { pathname } = useRouter();
   const menuItems = items.filter((item) => item?.enabled !== false);
   const [selectedItem, setSelectedItem] = useState(

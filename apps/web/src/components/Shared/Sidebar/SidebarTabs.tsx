@@ -1,7 +1,7 @@
 import cn from "@hey/ui/cn";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface MenuProps {
   children: ReactNode;
@@ -21,7 +21,7 @@ interface SidebarProps {
   items: SidebarItem[];
 }
 
-const Menu: FC<MenuProps> = ({ children, current, url }) => (
+const Menu = ({ children, current, url }: MenuProps) => (
   <Link
     className={cn(
       { "font-bold text-black dark:text-white": current },
@@ -36,7 +36,7 @@ const Menu: FC<MenuProps> = ({ children, current, url }) => (
   </Link>
 );
 
-const SidebarTabs: FC<SidebarProps> = ({ items }) => {
+const SidebarTabs = ({ items }: SidebarProps) => {
   const { pathname } = useRouter();
   const menuItems = items.filter((item) => item.enabled !== false);
 

@@ -4,14 +4,13 @@ import nFormatter from "@hey/helpers/nFormatter";
 import type { PostFragment } from "@hey/indexer";
 import { Tooltip } from "@hey/ui";
 import { useRouter } from "next/router";
-import type { FC } from "react";
 
 interface CommentProps {
   post: PostFragment;
   showCount: boolean;
 }
 
-const Comment: FC<CommentProps> = ({ post, showCount }) => {
+const Comment = ({ post, showCount }: CommentProps) => {
   const { push } = useRouter();
   const count = post.stats.comments;
   const iconClassName = showCount

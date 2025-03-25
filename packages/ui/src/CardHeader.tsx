@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { H5 } from "./Typography";
 
 interface CardHeaderProps {
@@ -7,11 +7,7 @@ interface CardHeaderProps {
   title: ReactNode;
 }
 
-const CardHeader: FC<CardHeaderProps> = ({
-  body,
-  hideDivider = false,
-  title
-}) => {
+const CardHeader = ({ body, hideDivider = false, title }: CardHeaderProps) => {
   return (
     <>
       <div className="m-5 space-y-2">

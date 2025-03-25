@@ -16,7 +16,6 @@ import {
 import { Tooltip } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import { useCounter, useToggle } from "@uidotdev/usehooks";
-import type { FC } from "react";
 import toast from "react-hot-toast";
 import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
@@ -26,7 +25,7 @@ interface LikeProps {
   showCount: boolean;
 }
 
-const Like: FC<LikeProps> = ({ post, showCount }) => {
+const Like = ({ post, showCount }: LikeProps) => {
   const { currentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
 

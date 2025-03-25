@@ -4,14 +4,13 @@ import getPostData from "@hey/helpers/getPostData";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { PostFragment } from "@hey/indexer";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 import toast from "react-hot-toast";
 
 interface CopyPostTextProps {
   post: PostFragment;
 }
 
-const CopyPostText: FC<CopyPostTextProps> = ({ post }) => {
+const CopyPostText = ({ post }: CopyPostTextProps) => {
   const filteredContent = getPostData(post.metadata)?.content || "";
 
   return (

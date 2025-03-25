@@ -3,14 +3,13 @@ import { ClipboardDocumentIcon } from "@heroicons/react/24/outline";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { PostFragment } from "@hey/indexer";
 import cn from "@hey/ui/cn";
-import type { FC } from "react";
 import toast from "react-hot-toast";
 
 interface ShareProps {
   post: PostFragment;
 }
 
-const Share: FC<ShareProps> = ({ post }) => {
+const Share = ({ post }: ShareProps) => {
   return (
     <MenuItem
       as="div"
