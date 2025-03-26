@@ -69,9 +69,6 @@ importers:
       '@hey/data':
         specifier: workspace:*
         version: link:../../packages/data
-      '@hey/db':
-        specifier: workspace:*
-        version: link:../../packages/db
       '@hey/helpers':
         specifier: workspace:*
         version: link:../../packages/helpers

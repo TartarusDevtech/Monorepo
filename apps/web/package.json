@@ -16,7 +16,6 @@
     "@headlessui/react": "2.2.0",
     "@heroicons/react": "^2.2.0",
     "@hey/data": "workspace:*",
-    "@hey/db": "workspace:*",
     "@hey/helpers": "workspace:*",
     "@hey/indexer": "workspace:*",
     "@hey/rpc": "workspace:*",
