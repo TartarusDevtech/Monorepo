@@ -3,6 +3,7 @@ fragment SimpleCollectAction on SimpleCollectAction {
   collectLimit
   endsAt
   payToCollect {
+    referralShare
     recipients {
       address
       percent
