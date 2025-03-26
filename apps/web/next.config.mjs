@@ -20,6 +20,24 @@ const nextConfig = {
   productionBrowserSourceMaps: true,
   reactStrictMode: false,
   devIndicators: false,
+  webpack(config) {
+    config.optimization.splitChunks = {
+      chunks: "all",
+      minSize: 100 * 1024, // 100KB
+      maxSize: 180 * 1024, // 180KB
+      automaticNameDelimiter: ".",
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          reuseExistingChunk: true
+        },
+        default: { minChunks: 2, priority: -20, reuseExistingChunk: true }
+      }
+    };
+
+    return config;
+  },
   headers() {
     return [
       {
