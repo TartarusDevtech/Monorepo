@@ -1,5 +1,3 @@
-@import url("@hey/image-cropper/styles.css");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -130,23 +128,6 @@ iframe {
 
 #typeahead-menu {
   @apply z-20;
-}
-
-.rc-slider-rail {
-  @apply bg-black dark:bg-white !important;
-  @apply opacity-30;
-}
-
-.rc-slider-track {
-  @apply bg-black dark:bg-white !important;
-}
-
-.rc-slider-handle {
-  @apply border-black dark:border-white !important;
-}
-
-.rc-slider-handle-dragging {
-  box-shadow: 0 0 0 5px rgb(139 92 246 / 0.3) !important;
 }
 
 /* Markup styles */

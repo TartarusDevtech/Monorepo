@@ -1,17 +1,16 @@
 import ChooseFile from "@/components/Shared/ChooseFile";
-import ImageCropperController from "@/components/Shared/ImageCropperController";
 import uploadCroppedImage, { readFile } from "@/helpers/accountPictureUtils";
+import getCroppedImg from "@/helpers/cropUtils";
 import errorToast from "@/helpers/errorToast";
 import { AVATAR, DEFAULT_AVATAR } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import imageKit from "@hey/helpers/imageKit";
 import sanitizeDStorageUrl from "@hey/helpers/sanitizeDStorageUrl";
-import { getCroppedImg } from "@hey/image-cropper/cropUtils";
-import type { Area } from "@hey/image-cropper/types";
 import { Button, Image, Modal } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import type { ChangeEvent } from "react";
 import { useState } from "react";
+import Cropper, { type Area } from "react-easy-crop";
 import toast from "react-hot-toast";
 
 interface AvatarUploadProps {
@@ -23,11 +22,12 @@ interface AvatarUploadProps {
 const AvatarUpload = ({ src, setSrc, isSmall = false }: AvatarUploadProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [pictureSrc, setPictureSrc] = useState(src);
-  const [showPictureCropModal, setShowPictureCropModal] = useState(false);
-  const [croppedPictureAreaPixels, setCroppedPictureAreaPixels] =
-    useState<Area | null>(null);
-  const [uploadedPictureUrl, setUploadedPictureUrl] = useState("");
-  const [uploadingPicture, setUploadingPicture] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [uploadedPicture, setUploadedPicture] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const [area, setArea] = useState<Area | null>(null);
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(1);
 
   const onError = (error: any) => {
     setIsSubmitting(false);
@@ -36,27 +36,26 @@ const AvatarUpload = ({ src, setSrc, isSmall = false }: AvatarUploadProps) => {
 
   const handleUploadAndSave = async () => {
     try {
-      const croppedImage = await getCroppedImg(
-        pictureSrc,
-        croppedPictureAreaPixels
-      );
+      setUploading(true);
+      const croppedImage = await getCroppedImg(pictureSrc, area);
 
       if (!croppedImage) {
         return toast.error(Errors.SomethingWentWrong);
       }
 
-      setUploadingPicture(true);
-
       const decentralizedUrl = await uploadCroppedImage(croppedImage);
       const dataUrl = croppedImage.toDataURL("image/png");
 
       setSrc(decentralizedUrl);
-      setUploadedPictureUrl(dataUrl);
+      setUploadedPicture(dataUrl);
     } catch (error) {
       onError(error);
     } finally {
-      setShowPictureCropModal(false);
-      setUploadingPicture(false);
+      setArea(null);
+      setCrop({ x: 0, y: 0 });
+      setZoom(1);
+      setShowModal(false);
+      setUploading(false);
     }
   };
 
@@ -64,8 +63,12 @@ const AvatarUpload = ({ src, setSrc, isSmall = false }: AvatarUploadProps) => {
     const file = evt.target.files?.[0];
     if (file) {
       setPictureSrc(await readFile(file));
-      setShowPictureCropModal(true);
+      setShowModal(true);
     }
+  };
+
+  const onCropComplete = (_: Area, croppedAreaPixels: Area) => {
+    setArea(croppedAreaPixels);
   };
 
   const pictureUrl = pictureSrc || DEFAULT_AVATAR;
@@ -84,7 +87,7 @@ const AvatarUpload = ({ src, setSrc, isSmall = false }: AvatarUploadProps) => {
             onError={({ currentTarget }) => {
               currentTarget.src = sanitizeDStorageUrl(src);
             }}
-            src={uploadedPictureUrl || renderPictureUrl}
+            src={uploadedPicture || renderPictureUrl}
           />
           <ChooseFile onChange={(event) => onFileChange(event)} />
         </div>
@@ -95,21 +98,29 @@ const AvatarUpload = ({ src, setSrc, isSmall = false }: AvatarUploadProps) => {
             ? undefined
             : () => {
                 setPictureSrc("");
-                setShowPictureCropModal(false);
+                setShowModal(false);
               }
         }
-        show={showPictureCropModal}
-        size="sm"
+        show={showModal}
+        size="xs"
         title="Crop picture"
       >
-        <div className="p-5 text-right">
-          <ImageCropperController
-            imageSrc={pictureSrc}
-            setCroppedAreaPixels={setCroppedPictureAreaPixels}
-            targetSize={{ height: 300, width: 300 }}
-          />
+        <div className="space-y-5 p-5">
+          <div className="relative flex size-64 w-full">
+            <Cropper
+              cropShape="round"
+              image={pictureSrc}
+              crop={crop}
+              zoom={zoom}
+              aspect={5 / 5}
+              onCropChange={setCrop}
+              onCropComplete={onCropComplete}
+              onZoomChange={setZoom}
+            />
+          </div>
           <Button
-            disabled={uploadingPicture || !pictureSrc}
+            className="w-full"
+            disabled={uploading || !pictureSrc}
             onClick={handleUploadAndSave}
             type="submit"
           >
