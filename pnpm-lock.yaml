@@ -18,6 +18,82 @@ importers:
         specifier: ^2.1.14
         version: 2.1.14(@types/node@22.13.13)(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)
 
+  apps/api:
+    dependencies:
+      '@aws-sdk/client-sts':
+        specifier: ^3.775.0
+        version: 3.775.0
+      '@hey/data':
+        specifier: workspace:*
+        version: link:../../packages/data
+      '@hey/db':
+        specifier: workspace:*
+        version: link:../../packages/db
+      '@hey/helpers':
+        specifier: workspace:*
+        version: link:../../packages/helpers
+      '@lens-protocol/metadata':
+        specifier: next
+        version: 2.0.0-next.7(typescript@5.8.2)(zod@3.24.2)
+      '@trpc-limiter/memory':
+        specifier: ^1.0.0
+        version: 1.0.0(@trpc/server@11.0.0(typescript@5.8.2))
+      '@trpc/server':
+        specifier: ^11.0.0
+        version: 11.0.0(typescript@5.8.2)
+      axios:
+        specifier: ^1.8.4
+        version: 1.8.4
+      cors:
+        specifier: ^2.8.5
+        version: 2.8.5
+      dotenv:
+        specifier: ^16.4.7
+        version: 16.4.7
+      express:
+        specifier: ^4.21.2
+        version: 4.21.2
+      graphql:
+        specifier: ^16.10.0
+        version: 16.10.0
+      jose:
+        specifier: ^6.0.10
+        version: 6.0.10
+      linkedom:
+        specifier: ^0.18.9
+        version: 0.18.9
+      tsx:
+        specifier: ^4.19.3
+        version: 4.19.3
+      viem:
+        specifier: ^2.23.15
+        version: 2.23.15(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2)
+      zod:
+        specifier: ^3.24.2
+        version: 3.24.2
+    devDependencies:
+      '@hey/config':
+        specifier: workspace:*
+        version: link:../../packages/config
+      '@hey/types':
+        specifier: workspace:*
+        version: link:../../packages/types
+      '@types/cors':
+        specifier: ^2.8.17
+        version: 2.8.17
+      '@types/express':
+        specifier: ^5.0.1
+        version: 5.0.1
+      '@types/node':
+        specifier: ^22.13.13
+        version: 22.13.13
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@22.13.13)(typescript@5.8.2)
+      typescript:
+        specifier: ^5.7.3
+        version: 5.8.2
+
   apps/og:
     dependencies:
       '@hey/config':
@@ -66,6 +142,9 @@ importers:
       '@heroicons/react':
         specifier: ^2.2.0
         version: 2.2.0(react@19.0.0)
+      '@hey/api':
+        specifier: workspace:*
+        version: link:../api
       '@hey/data':
         specifier: workspace:*
         version: link:../../packages/data
@@ -75,9 +154,6 @@ importers:
       '@hey/indexer':
         specifier: workspace:*
         version: link:../../packages/indexer
-      '@hey/rpc':
-        specifier: workspace:*
-        version: link:../../packages/rpc
       '@hey/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -363,82 +439,6 @@ importers:
       '@types/node':
         specifier: ^22.13.13
         version: 22.13.13
-      typescript:
-        specifier: ^5.7.3
-        version: 5.8.2
-
-  packages/rpc:
-    dependencies:
-      '@aws-sdk/client-sts':
-        specifier: ^3.775.0
-        version: 3.775.0
-      '@hey/data':
-        specifier: workspace:*
-        version: link:../data
-      '@hey/db':
-        specifier: workspace:*
-        version: link:../db
-      '@hey/helpers':
-        specifier: workspace:*
-        version: link:../helpers
-      '@lens-protocol/metadata':
-        specifier: next
-        version: 2.0.0-next.7(typescript@5.8.2)(zod@3.24.2)
-      '@trpc-limiter/memory':
-        specifier: ^1.0.0
-        version: 1.0.0(@trpc/server@11.0.0(typescript@5.8.2))
-      '@trpc/server':
-        specifier: ^11.0.0
-        version: 11.0.0(typescript@5.8.2)
-      axios:
-        specifier: ^1.8.4
-        version: 1.8.4
-      cors:
-        specifier: ^2.8.5
-        version: 2.8.5
-      dotenv:
-        specifier: ^16.4.7
-        version: 16.4.7
-      express:
-        specifier: ^4.21.2
-        version: 4.21.2
-      graphql:
-        specifier: ^16.10.0
-        version: 16.10.0
-      jose:
-        specifier: ^6.0.10
-        version: 6.0.10
-      linkedom:
-        specifier: ^0.18.9
-        version: 0.18.9
-      tsx:
-        specifier: ^4.19.3
-        version: 4.19.3
-      viem:
-        specifier: ^2.23.15
-        version: 2.23.15(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2)
-      zod:
-        specifier: ^3.24.2
-        version: 3.24.2
-    devDependencies:
-      '@hey/config':
-        specifier: workspace:*
-        version: link:../config
-      '@hey/types':
-        specifier: workspace:*
-        version: link:../types
-      '@types/cors':
-        specifier: ^2.8.17
-        version: 2.8.17
-      '@types/express':
-        specifier: ^5.0.1
-        version: 5.0.1
-      '@types/node':
-        specifier: ^22.13.13
-        version: 22.13.13
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@22.13.13)(typescript@5.8.2)
       typescript:
         specifier: ^5.7.3
         version: 5.8.2

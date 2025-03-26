@@ -5,8 +5,8 @@ import {
   Cog6ToothIcon,
   XCircleIcon
 } from "@heroicons/react/24/solid";
+import type { PreferencesRouterOutput } from "@hey/api/src/routers/preferences";
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
-import type { PreferencesRouterOutput } from "@hey/rpc/src/routers/preferences";
 import { H5 } from "@hey/ui";
 import Image from "next/image";
 

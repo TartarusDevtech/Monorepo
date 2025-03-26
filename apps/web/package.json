@@ -18,7 +18,7 @@
     "@hey/data": "workspace:*",
     "@hey/helpers": "workspace:*",
     "@hey/indexer": "workspace:*",
-    "@hey/rpc": "workspace:*",
+    "@hey/api": "workspace:*",
     "@hey/ui": "workspace:*",
     "@lens-chain/sdk": "canary",
     "@lens-chain/storage-client": "^1.0.3",

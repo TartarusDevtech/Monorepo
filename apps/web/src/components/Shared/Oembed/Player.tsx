@@ -1,4 +1,4 @@
-import type { OembedRouterOutput } from "@hey/rpc/src/routers/oembed";
+import type { OembedRouterOutput } from "@hey/api/src/routers/oembed";
 
 interface PlayerProps {
   og: OembedRouterOutput["get"];

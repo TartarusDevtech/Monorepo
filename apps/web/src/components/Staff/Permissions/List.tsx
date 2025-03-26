@@ -1,9 +1,9 @@
 import Loader from "@/components/Shared/Loader";
 import { trpc } from "@/helpers/trpc";
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
+import type { PermissionsRouterOutput } from "@hey/api/src/routers/internal/permissions";
 import { Permission } from "@hey/data/permissions";
 import formatDate from "@hey/helpers/datetime/formatDate";
-import type { PermissionsRouterOutput } from "@hey/rpc/src/routers/internal/permissions";
 import { Badge, Card, CardHeader, EmptyState, ErrorMessage } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import { useQuery } from "@tanstack/react-query";

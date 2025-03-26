@@ -1,6 +1,6 @@
 import { hydrateAuthTokens } from "@/store/persisted/useAuthStore";
+import type { AppRouter } from "@hey/api/src";
 import { HEY_TRPC_URL } from "@hey/data/constants";
-import type { AppRouter } from "@hey/rpc/src";
 import { QueryClient } from "@tanstack/react-query";
 import { createTRPCClient, httpLink } from "@trpc/client";
 import {
