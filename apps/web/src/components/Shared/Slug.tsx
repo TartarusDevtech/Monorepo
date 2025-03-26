@@ -1,4 +1,4 @@
-import cn from "@hey/ui/cn";
+import cn from "@/helpers/cn";
 
 interface SlugProps {
   className?: string;

@@ -1,5 +1,9 @@
 import PostsShimmer from "@/components/Shared/Shimmer/PostsShimmer";
-import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
+import {
+  GridItemEight,
+  GridItemFour,
+  GridLayout
+} from "@/components/Shared/UI";
 
 const GroupPageShimmer = () => {
   return (

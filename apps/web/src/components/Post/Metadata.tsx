@@ -1,8 +1,8 @@
+import { Card } from "@/components/Shared/UI";
 import getAssetLicense from "@/helpers/getAssetLicense";
 import { ScaleIcon } from "@heroicons/react/24/outline";
 import getPostData from "@hey/helpers/getPostData";
 import type { PostMetadataFragment } from "@hey/indexer";
-import { Card } from "@hey/ui";
 import { memo } from "react";
 
 interface MetadataProps {

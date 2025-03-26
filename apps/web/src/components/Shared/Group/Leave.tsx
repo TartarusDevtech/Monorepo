@@ -1,3 +1,4 @@
+import { Button } from "@/components/Shared/UI";
 import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
@@ -10,7 +11,6 @@ import {
   type LoggedInGroupOperationsFragment,
   useLeaveGroupMutation
 } from "@hey/indexer";
-import { Button } from "@hey/ui";
 import { useState } from "react";
 import toast from "react-hot-toast";
 

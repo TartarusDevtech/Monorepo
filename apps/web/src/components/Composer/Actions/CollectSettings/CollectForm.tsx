@@ -1,9 +1,9 @@
 import LicensePicker from "@/components/Composer/LicensePicker";
 import ToggleWithHelper from "@/components/Shared/ToggleWithHelper";
+import { Button } from "@/components/Shared/UI";
 import { useCollectActionStore } from "@/store/non-persisted/post/useCollectActionStore";
 import { usePostLicenseStore } from "@/store/non-persisted/post/usePostLicenseStore";
 import type { CollectActionType } from "@hey/types/hey";
-import { Button } from "@hey/ui";
 import type { Dispatch, SetStateAction } from "react";
 import { isAddress } from "viem";
 import AmountConfig from "./AmountConfig";

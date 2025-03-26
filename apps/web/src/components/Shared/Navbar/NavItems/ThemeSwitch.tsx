@@ -1,5 +1,5 @@
+import cn from "@/helpers/cn";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
-import cn from "@hey/ui/cn";
 import { useTheme } from "next-themes";
 
 interface ThemeSwitchProps {

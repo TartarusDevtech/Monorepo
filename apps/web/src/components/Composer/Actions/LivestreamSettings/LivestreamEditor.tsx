@@ -1,3 +1,4 @@
+import { Card, Spinner, Tooltip } from "@/components/Shared/UI";
 import Video from "@/components/Shared/Video";
 import errorToast from "@/helpers/errorToast";
 import { trpc } from "@/helpers/trpc";
@@ -9,7 +10,6 @@ import {
   VideoCameraSlashIcon
 } from "@heroicons/react/24/outline";
 import { XCircleIcon } from "@heroicons/react/24/solid";
-import { Card, Spinner, Tooltip } from "@hey/ui";
 import { getSrc } from "@livepeer/react/external";
 import { useMutation } from "@tanstack/react-query";
 import type { ReactNode } from "react";

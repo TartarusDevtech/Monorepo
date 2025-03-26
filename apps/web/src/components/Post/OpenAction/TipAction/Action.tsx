@@ -1,6 +1,8 @@
 import FundButton from "@/components/Shared/Fund/FundButton";
 import LoginButton from "@/components/Shared/LoginButton";
+import { Button, Input, Spinner } from "@/components/Shared/UI";
 import trackEvent from "@/helpers/analytics";
+import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
 import usePreventScrollOnNumberInput from "@/hooks/usePreventScrollOnNumberInput";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
@@ -18,8 +20,6 @@ import {
   type PostFragment,
   useExecutePostActionMutation
 } from "@hey/indexer";
-import { Button, Input, Spinner } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import type { ChangeEvent, RefObject } from "react";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";

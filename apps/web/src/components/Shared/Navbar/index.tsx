@@ -1,10 +1,10 @@
 import NotificationIcon from "@/components/Notification/NotificationIcon";
+import { H6 } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { usePreferencesStore } from "@/store/persisted/usePreferencesStore";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
-import { H6 } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";

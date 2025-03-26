@@ -1,9 +1,13 @@
 import MetaTags from "@/components/Common/MetaTags";
 import Footer from "@/components/Shared/Footer";
 import NotLoggedIn from "@/components/Shared/NotLoggedIn";
+import {
+  GridItemEight,
+  GridItemFour,
+  GridLayout
+} from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { APP_NAME } from "@hey/data/constants";
-import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
 import { useState } from "react";
 import List from "./List";
 import ListFocusType from "./ListFocusType";

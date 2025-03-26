@@ -1,5 +1,6 @@
 import NewPublication from "@/components/Composer/NewPublication";
 import ReportPost from "@/components/Shared/Modal/ReportPost";
+import { Modal } from "@/components/Shared/UI";
 import { useAuthModalStore } from "@/store/non-persisted/modal/useAuthModalStore";
 import { useFundModalStore } from "@/store/non-persisted/modal/useFundModalStore";
 import { useNewPostModalStore } from "@/store/non-persisted/modal/useNewPostModalStore";
@@ -8,7 +9,6 @@ import { useReportPostModalStore } from "@/store/non-persisted/modal/useReportPo
 import { useSuperFollowModalStore } from "@/store/non-persisted/modal/useSuperFollowModalStore";
 import { useSuperJoinModalStore } from "@/store/non-persisted/modal/useSuperJoinModalStore";
 import { useSwitchAccountModalStore } from "@/store/non-persisted/modal/useSwitchAccountModalStore";
-import { Modal } from "@hey/ui";
 import SuperFollow from "./Account/SuperFollow";
 import Auth from "./Auth";
 import { useSignupStore } from "./Auth/Signup";

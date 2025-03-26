@@ -1,7 +1,7 @@
+import { H6 } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { H6 } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import MenuTransition from "../MenuTransition";
 import Bookmarks from "./NavItems/Bookmarks";
 import Groups from "./NavItems/Groups";

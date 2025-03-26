@@ -1,4 +1,6 @@
+import { Tooltip } from "@/components/Shared/UI";
 import trackEvent from "@/helpers/analytics";
+import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
@@ -15,8 +17,6 @@ import {
   useAddReactionMutation,
   useUndoReactionMutation
 } from "@hey/indexer";
-import { Tooltip } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import { useCounter, useToggle } from "@uidotdev/usehooks";
 import toast from "react-hot-toast";
 

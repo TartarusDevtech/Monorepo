@@ -1,7 +1,7 @@
+import { GridItemEight, GridLayout } from "@/components/Shared/UI";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { NoSymbolIcon } from "@heroicons/react/24/outline";
 import { APP_NAME } from "@hey/data/constants";
-import { GridItemEight, GridLayout } from "@hey/ui";
 import Link from "next/link";
 
 const Suspended = () => {

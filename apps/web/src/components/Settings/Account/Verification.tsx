@@ -1,7 +1,7 @@
+import { Button, Card, H5, Modal } from "@/components/Shared/UI";
 import isVerified from "@/helpers/isVerified";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
-import { Button, Card, H5, Modal } from "@hey/ui";
 import { useState } from "react";
 
 const Verification = () => {

@@ -1,5 +1,6 @@
 import FundButton from "@/components/Shared/Fund/FundButton";
 import Loader from "@/components/Shared/Loader";
+import { ErrorMessage, Image } from "@/components/Shared/UI";
 import {
   DEFAULT_COLLECT_TOKEN,
   NATIVE_TOKEN_SYMBOL
@@ -7,7 +8,6 @@ import {
 import { tokens } from "@hey/data/tokens";
 import getTokenImage from "@hey/helpers/getTokenImage";
 import { useAccountBalancesQuery } from "@hey/indexer";
-import { ErrorMessage, Image } from "@hey/ui";
 import type { Address } from "viem";
 import Unwrap from "./Unwrap";
 import Withdraw from "./Withdraw";

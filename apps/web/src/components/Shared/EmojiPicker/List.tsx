@@ -1,10 +1,10 @@
+import { ErrorMessage, Input } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import useEmojis from "@/hooks/prosekit/useEmojis";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Errors } from "@hey/data/errors";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { Emoji } from "@hey/types/misc";
-import { ErrorMessage, Input } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import type { ChangeEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 import Loader from "../Loader";

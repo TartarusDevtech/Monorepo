@@ -1,7 +1,7 @@
+import { Tooltip } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import isVerified from "@/helpers/isVerified";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
-import { Tooltip } from "@hey/ui";
-import cn from "@hey/ui/cn";
 
 interface VerifiedProps {
   address: string;

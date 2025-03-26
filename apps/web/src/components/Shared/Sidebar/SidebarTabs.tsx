@@ -1,4 +1,4 @@
-import cn from "@hey/ui/cn";
+import cn from "@/helpers/cn";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import type { ReactNode } from "react";

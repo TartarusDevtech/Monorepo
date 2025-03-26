@@ -1,5 +1,5 @@
+import cn from "@/helpers/cn";
 import { MainContentFocus } from "@hey/indexer";
-import cn from "@hey/ui/cn";
 import type { Dispatch, SetStateAction } from "react";
 
 interface FeedLinkProps {

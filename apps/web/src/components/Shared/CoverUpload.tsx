@@ -1,4 +1,5 @@
 import ChooseFile from "@/components/Shared/ChooseFile";
+import { Button, Image, Modal } from "@/components/Shared/UI";
 import uploadCroppedImage, { readFile } from "@/helpers/accountPictureUtils";
 import getCroppedImg from "@/helpers/cropUtils";
 import errorToast from "@/helpers/errorToast";
@@ -7,7 +8,6 @@ import { COVER, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import imageKit from "@hey/helpers/imageKit";
 import sanitizeDStorageUrl from "@hey/helpers/sanitizeDStorageUrl";
-import { Button, Image, Modal } from "@hey/ui";
 import type { ChangeEvent } from "react";
 import { useState } from "react";
 import Cropper, { type Area } from "react-easy-crop";
@@ -84,8 +84,9 @@ const CoverUpload = ({ src, setSrc }: CoverUploadProps) => {
             <Image
               alt="Cover picture crop preview"
               className="h-[175px] w-[675px] rounded-lg object-cover"
-              onError={({ currentTarget }) => {
-                currentTarget.src = sanitizeDStorageUrl(src);
+              onError={(event: React.SyntheticEvent<HTMLImageElement>) => {
+                const target = event.currentTarget;
+                target.src = sanitizeDStorageUrl(src);
               }}
               src={uploadedPicture || renderPictureUrl}
             />

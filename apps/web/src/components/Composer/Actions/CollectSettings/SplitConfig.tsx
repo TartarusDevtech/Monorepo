@@ -1,5 +1,6 @@
 import SearchAccounts from "@/components/Shared/SearchAccounts";
 import ToggleWithHelper from "@/components/Shared/ToggleWithHelper";
+import { Button, H6, Input } from "@/components/Shared/UI";
 import { useCollectActionStore } from "@/store/non-persisted/post/useCollectActionStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
@@ -11,7 +12,6 @@ import {
 import { ADDRESS_PLACEHOLDER } from "@hey/data/constants";
 import splitNumber from "@hey/helpers/splitNumber";
 import type { CollectActionType } from "@hey/types/hey";
-import { Button, H6, Input } from "@hey/ui";
 import { useState } from "react";
 import { isAddress } from "viem";
 

@@ -1,4 +1,5 @@
 import trackEvent from "@/helpers/analytics";
+import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
@@ -13,7 +14,6 @@ import {
   type PostFragment,
   useRepostMutation
 } from "@hey/indexer";
-import cn from "@hey/ui/cn";
 import { useCounter } from "@uidotdev/usehooks";
 import type { Dispatch, SetStateAction } from "react";
 import { toast } from "react-hot-toast";

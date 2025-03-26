@@ -2,6 +2,7 @@ import FollowUnfollowButton from "@/components/Shared/Account/FollowUnfollowButt
 import Verified from "@/components/Shared/Account/Icons/Verified";
 import Markup from "@/components/Shared/Markup";
 import Slug from "@/components/Shared/Slug";
+import { Button, H3, Image, LightBox, Tooltip } from "@/components/Shared/UI";
 import hasAccess from "@/helpers/hasAccess";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
@@ -18,7 +19,6 @@ import getAvatar from "@hey/helpers/getAvatar";
 import getFavicon from "@hey/helpers/getFavicon";
 import getMentions from "@hey/helpers/getMentions";
 import type { AccountFragment } from "@hey/indexer";
-import { Button, H3, Image, LightBox, Tooltip } from "@hey/ui";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useRouter } from "next/router";

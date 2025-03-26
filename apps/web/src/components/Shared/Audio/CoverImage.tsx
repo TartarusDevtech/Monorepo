@@ -1,11 +1,11 @@
+import { Image, Spinner } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
 import { uploadFileToIPFS } from "@/helpers/uploadToIPFS";
 import { PhotoIcon } from "@heroicons/react/24/outline";
 import { ATTACHMENT } from "@hey/data/constants";
 import imageKit from "@hey/helpers/imageKit";
 import sanitizeDStorageUrl from "@hey/helpers/sanitizeDStorageUrl";
-import { Image, Spinner } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import type { ChangeEvent, Ref } from "react";
 import { useState } from "react";
 

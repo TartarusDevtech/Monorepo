@@ -1,6 +1,6 @@
 import MetaTags from "@/components/Common/MetaTags";
+import { Card, GridItemTwelve, GridLayout, H3 } from "@/components/Shared/UI";
 import { APP_NAME } from "@hey/data/constants";
-import { Card, GridItemTwelve, GridLayout, H3 } from "@hey/ui";
 import Link from "next/link";
 
 const Support = () => {

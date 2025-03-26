@@ -1,4 +1,11 @@
 import AvatarUpload from "@/components/Shared/AvatarUpload";
+import {
+  Button,
+  Form,
+  Input,
+  TextArea,
+  useZodForm
+} from "@/components/Shared/UI";
 import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import uploadMetadata from "@/helpers/uploadMetadata";
@@ -8,7 +15,6 @@ import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
 import { Regex } from "@hey/data/regex";
 import { useCreateGroupMutation } from "@hey/indexer";
-import { Button, Form, Input, TextArea, useZodForm } from "@hey/ui";
 import { group } from "@lens-protocol/metadata";
 import { useState } from "react";
 import toast from "react-hot-toast";

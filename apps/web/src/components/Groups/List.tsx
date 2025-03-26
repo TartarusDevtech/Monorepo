@@ -1,5 +1,6 @@
 import GroupListShimmer from "@/components/Shared/Shimmer/GroupListShimmer";
 import SingleGroup from "@/components/Shared/SingleGroup";
+import { Card, EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { UserGroupIcon } from "@heroicons/react/24/outline";
 import {
@@ -8,7 +9,6 @@ import {
   PageSize,
   useGroupsQuery
 } from "@hey/indexer";
-import { Card, EmptyState, ErrorMessage } from "@hey/ui";
 import { Virtuoso } from "react-virtuoso";
 import { GroupsTabFocus } from ".";
 

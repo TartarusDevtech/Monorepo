@@ -1,3 +1,11 @@
+import {
+  Button,
+  Card,
+  CardHeader,
+  Image,
+  Input,
+  Tooltip
+} from "@/components/Shared/UI";
 import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import { getSimplePaymentDetails } from "@/helpers/rules";
@@ -21,7 +29,6 @@ import {
   useMeLazyQuery,
   useUpdateAccountFollowRulesMutation
 } from "@hey/indexer";
-import { Button, Card, CardHeader, Image, Input, Tooltip } from "@hey/ui";
 import { useRouter } from "next/router";
 import { type RefObject, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";

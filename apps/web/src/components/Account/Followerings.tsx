@@ -1,10 +1,10 @@
 import Followers from "@/components/Shared/Modal/Followers";
 import Following from "@/components/Shared/Modal/Following";
 import GraphStatsShimmer from "@/components/Shared/Shimmer/GraphStatsShimmer";
+import { H4, Modal } from "@/components/Shared/UI";
 import getAccount from "@hey/helpers/getAccount";
 import humanize from "@hey/helpers/humanize";
 import { type AccountFragment, useAccountStatsQuery } from "@hey/indexer";
-import { H4, Modal } from "@hey/ui";
 import plur from "plur";
 import { type FC, useState } from "react";
 

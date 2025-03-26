@@ -1,5 +1,5 @@
+import { Button } from "@/components/Shared/UI";
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
-import { Button } from "@hey/ui";
 import { useSwitchChain } from "wagmi";
 
 interface SwitchNetworkProps {

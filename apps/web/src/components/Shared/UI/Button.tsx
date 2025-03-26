@@ -1,6 +1,6 @@
+import cn from "@/helpers/cn";
 import type { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
 import { forwardRef } from "react";
-import cn from "../cn";
 
 interface ButtonProps
   extends DetailedHTMLProps<

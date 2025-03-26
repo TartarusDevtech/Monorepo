@@ -1,4 +1,5 @@
 import ToggleWithHelper from "@/components/Shared/ToggleWithHelper";
+import { Card, CardHeader } from "@/components/Shared/UI";
 import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
@@ -11,7 +12,6 @@ import {
   GroupRuleType,
   useUpdateGroupRulesMutation
 } from "@hey/indexer";
-import { Card, CardHeader } from "@hey/ui";
 import { useState } from "react";
 import toast from "react-hot-toast";
 

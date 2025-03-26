@@ -1,6 +1,6 @@
+import cn from "@/helpers/cn";
 import getAccount from "@hey/helpers/getAccount";
 import type { AccountFragment } from "@hey/indexer";
-import cn from "@hey/ui/cn";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import Slug from "./Slug";

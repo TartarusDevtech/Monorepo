@@ -1,9 +1,9 @@
 import MetaDetails from "@/components/Shared/MetaDetails";
+import { H5 } from "@/components/Shared/UI";
 import { BanknotesIcon, HashtagIcon } from "@heroicons/react/24/outline";
 import { ShieldCheckIcon } from "@heroicons/react/24/solid";
 import formatAddress from "@hey/helpers/formatAddress";
 import type { AccountFragment } from "@hey/indexer";
-import { H5 } from "@hey/ui";
 
 interface AccountOverviewProps {
   account: AccountFragment;

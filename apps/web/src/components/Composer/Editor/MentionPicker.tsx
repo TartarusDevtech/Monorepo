@@ -1,10 +1,10 @@
 import Verified from "@/components/Shared/Account/Icons/Verified";
+import { Image } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import type { EditorExtension } from "@/helpers/prosekit/extension";
 import type { MentionAccount } from "@/hooks/prosekit/useMentionQuery";
 import useMentionQuery from "@/hooks/prosekit/useMentionQuery";
 import { EditorRegex } from "@hey/data/regex";
-import { Image } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import { useEditor } from "prosekit/react";
 import {
   AutocompleteItem,

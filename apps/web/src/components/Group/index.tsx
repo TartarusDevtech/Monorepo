@@ -1,17 +1,17 @@
 import MetaTags from "@/components/Common/MetaTags";
 import NewPost from "@/components/Composer/NewPost";
 import Cover from "@/components/Shared/Cover";
-import Custom404 from "@/pages/404";
-import Custom500 from "@/pages/500";
-import { useAccountStore } from "@/store/persisted/useAccountStore";
-import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
-import { useGroupQuery } from "@hey/indexer";
 import {
   GridItemEight,
   GridItemFour,
   GridLayout,
   WarningMessage
-} from "@hey/ui";
+} from "@/components/Shared/UI";
+import Custom404 from "@/pages/404";
+import Custom500 from "@/pages/500";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
+import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
+import { useGroupQuery } from "@hey/indexer";
 import { useRouter } from "next/router";
 import Details from "./Details";
 import GroupFeed from "./GroupFeed";

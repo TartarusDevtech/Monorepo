@@ -1,4 +1,5 @@
 import MetaDetails from "@/components/Shared/MetaDetails";
+import { H5 } from "@/components/Shared/UI";
 import { BellIcon, CursorArrowRaysIcon } from "@heroicons/react/24/outline";
 import {
   CheckCircleIcon,
@@ -7,7 +8,6 @@ import {
 } from "@heroicons/react/24/solid";
 import type { PreferencesRouterOutput } from "@hey/api/src/routers/preferences";
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
-import { H5 } from "@hey/ui";
 import Image from "next/image";
 
 interface AccountPreferencesProps {

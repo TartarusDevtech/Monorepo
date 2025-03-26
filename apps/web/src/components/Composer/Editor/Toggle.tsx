@@ -1,4 +1,4 @@
-import { Tooltip } from "@hey/ui";
+import { Tooltip } from "@/components/Shared/UI";
 import type { ReactNode } from "react";
 
 interface ToggleProps {

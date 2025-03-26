@@ -1,7 +1,7 @@
+import { Select, Tooltip } from "@/components/Shared/UI";
 import getAssetLicense from "@/helpers/getAssetLicense";
 import { usePostLicenseStore } from "@/store/non-persisted/post/usePostLicenseStore";
 import { MetadataLicenseType } from "@hey/indexer";
-import { Select, Tooltip } from "@hey/ui";
 import Link from "next/link";
 
 const LicensePicker = () => {

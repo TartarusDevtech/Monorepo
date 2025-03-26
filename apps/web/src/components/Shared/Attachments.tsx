@@ -1,9 +1,9 @@
+import { Image, LightBox } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import { ATTACHMENT } from "@hey/data/constants";
 import imageKit from "@hey/helpers/imageKit";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { MetadataAsset } from "@hey/types/misc";
-import { Image, LightBox } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import { getSrc } from "@livepeer/react/external";
 import { memo, useState } from "react";
 import Audio from "./Audio";

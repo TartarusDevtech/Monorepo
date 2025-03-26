@@ -1,5 +1,6 @@
 import AccountListShimmer from "@/components/Shared/Shimmer/AccountListShimmer";
 import SingleAccount from "@/components/Shared/SingleAccount";
+import { EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { UsersIcon } from "@heroicons/react/24/outline";
 import {
@@ -8,7 +9,6 @@ import {
   PageSize,
   useGroupMembersQuery
 } from "@hey/indexer";
-import { EmptyState, ErrorMessage } from "@hey/ui";
 import { Virtuoso } from "react-virtuoso";
 
 interface MembersProps {

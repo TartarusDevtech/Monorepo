@@ -1,5 +1,5 @@
+import { Badge } from "@/components/Shared/UI";
 import { PuzzlePieceIcon } from "@heroicons/react/24/outline";
-import { Badge } from "@hey/ui";
 
 const Alpha = () => {
   return (

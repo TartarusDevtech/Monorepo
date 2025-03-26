@@ -1,8 +1,8 @@
+import { Toggle } from "@/components/Shared/UI";
 import ToggleWrapper from "@/components/Staff/Accounts/Overview/Tool/ToggleWrapper";
 import errorToast from "@/helpers/errorToast";
 import { trpc } from "@/helpers/trpc";
 import { Permission, PermissionId } from "@hey/data/permissions";
-import { Toggle } from "@hey/ui";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 

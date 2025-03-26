@@ -1,5 +1,5 @@
+import cn from "@/helpers/cn";
 import { BookmarkIcon } from "@heroicons/react/24/outline";
-import cn from "@hey/ui/cn";
 import Link from "next/link";
 
 interface BookmarksProps {

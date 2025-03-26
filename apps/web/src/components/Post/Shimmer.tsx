@@ -3,7 +3,12 @@ import PostListShimmer from "@/components/Shared/Shimmer/PostListShimmer";
 import PostShimmer from "@/components/Shared/Shimmer/PostShimmer";
 import PostsShimmer from "@/components/Shared/Shimmer/PostsShimmer";
 import SingleAccountShimmer from "@/components/Shared/Shimmer/SingleAccountShimmer";
-import { Card, GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
+import {
+  Card,
+  GridItemEight,
+  GridItemFour,
+  GridLayout
+} from "@/components/Shared/UI";
 
 interface PublicationPageShimmerProps {
   publicationList?: boolean;

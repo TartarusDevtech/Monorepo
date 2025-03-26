@@ -1,5 +1,5 @@
+import { Badge } from "@/components/Shared/UI";
 import { StarIcon } from "@heroicons/react/24/solid";
-import { Badge } from "@hey/ui";
 
 const Beta = () => {
   return (

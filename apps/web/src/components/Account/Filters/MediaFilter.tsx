@@ -1,9 +1,9 @@
 import MenuTransition from "@/components/Shared/MenuTransition";
+import { Checkbox, Tooltip } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import { useAccountFeedStore } from "@/store/non-persisted/useAccountFeedStore";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { AdjustmentsVerticalIcon } from "@heroicons/react/24/outline";
-import { Checkbox, Tooltip } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import type { ChangeEvent } from "react";
 
 const MediaFilter = () => {

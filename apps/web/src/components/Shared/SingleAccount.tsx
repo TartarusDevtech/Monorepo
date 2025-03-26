@@ -1,9 +1,9 @@
+import { Image } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import getMentions from "@hey/helpers/getMentions";
 import type { AccountFragment } from "@hey/indexer";
-import { Image } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import Link from "next/link";
 import { memo } from "react";
 import FollowUnfollowButton from "./Account/FollowUnfollowButton";

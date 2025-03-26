@@ -1,7 +1,7 @@
 import ActionType from "@/components/Home/Timeline/EventType";
 import PostWrapper from "@/components/Shared/PostWrapper";
+import cn from "@/helpers/cn";
 import type { AnyPostFragment, TimelineItemFragment } from "@hey/indexer";
-import cn from "@hey/ui/cn";
 import { memo } from "react";
 import PostActions from "./Actions";
 import HiddenPost from "./HiddenPost";

@@ -1,5 +1,5 @@
-import { Spinner } from "@hey/ui";
-import cn from "@hey/ui/cn";
+import { Spinner } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 
 interface LoaderProps {
   className?: string;

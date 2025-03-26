@@ -1,3 +1,4 @@
+import { Button, Card, Input, Spinner } from "@/components/Shared/UI";
 import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";
@@ -11,7 +12,6 @@ import {
 } from "@hey/data/constants";
 import { Events } from "@hey/data/events";
 import { useDepositMutation } from "@hey/indexer";
-import { Button, Card, Input, Spinner } from "@hey/ui";
 import { type ChangeEvent, type RefObject, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { formatUnits } from "viem";

@@ -1,4 +1,5 @@
 import SearchAccounts from "@/components/Shared/SearchAccounts";
+import { Button } from "@/components/Shared/UI";
 import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
@@ -8,7 +9,6 @@ import { ADDRESS_PLACEHOLDER } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
 import { useAddAccountManagerMutation } from "@hey/indexer";
-import { Button } from "@hey/ui";
 import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";

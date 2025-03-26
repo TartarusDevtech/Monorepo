@@ -1,4 +1,4 @@
-import cn from "../cn";
+import cn from "@/helpers/cn";
 import { H6 } from "./Typography";
 
 interface ErrorMessageProps {

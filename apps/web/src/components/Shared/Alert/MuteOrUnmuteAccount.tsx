@@ -1,3 +1,4 @@
+import { Alert } from "@/components/Shared/UI";
 import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import { useMuteAlertStore } from "@/store/non-persisted/alert/useMuteAlertStore";
@@ -12,7 +13,6 @@ import {
   useMuteMutation,
   useUnmuteMutation
 } from "@hey/indexer";
-import { Alert } from "@hey/ui";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 

@@ -1,8 +1,8 @@
+import { Modal, Tooltip } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import { usePostAttachmentStore } from "@/store/non-persisted/post/usePostAttachmentStore";
 import { GifIcon } from "@heroicons/react/24/outline";
 import type { IGif } from "@hey/types/giphy";
-import { Modal, Tooltip } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import { useState } from "react";
 import GifSelector from "./GifSelector";
 

@@ -1,8 +1,8 @@
+import { Card, H5 } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { MinusCircleIcon } from "@heroicons/react/24/outline";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { APP_NAME } from "@hey/data/constants";
-import { Card, H5 } from "@hey/ui";
 import Link from "next/link";
 
 interface StatusProps {

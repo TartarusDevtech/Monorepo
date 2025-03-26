@@ -1,4 +1,4 @@
-import { Card } from "@hey/ui";
+import { Card } from "@/components/Shared/UI";
 import PostShimmer from "./PostShimmer";
 
 const PostsShimmer = () => {

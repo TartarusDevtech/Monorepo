@@ -1,3 +1,5 @@
+import { Image } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
   BellIcon,
@@ -11,8 +13,6 @@ import {
 } from "@heroicons/react/24/solid";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
-import { Image } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import Link from "next/link";
 import { useRouter } from "next/router";
 

@@ -1,5 +1,5 @@
-import { H6 } from "@hey/ui";
-import cn from "@hey/ui/cn";
+import { H6 } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import type { ReactNode } from "react";
 import { toast } from "react-hot-toast";
 

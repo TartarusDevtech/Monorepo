@@ -1,6 +1,6 @@
+import cn from "@/helpers/cn";
 import { useRouter } from "next/router";
 import type { ReactNode } from "react";
-import cn from "../cn";
 
 interface TabButtonProps {
   active: boolean;

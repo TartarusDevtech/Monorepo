@@ -1,5 +1,5 @@
+import cn from "@/helpers/cn";
 import { Cog6ToothIcon } from "@heroicons/react/24/outline";
-import cn from "@hey/ui/cn";
 
 interface SettingsProps {
   className?: string;

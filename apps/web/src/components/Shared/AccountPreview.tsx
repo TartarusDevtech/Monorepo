@@ -1,11 +1,11 @@
 import FollowersYouKnowOverview from "@/components/Account/FollowersYouKnowOverview";
+import { Card, Image } from "@/components/Shared/UI";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import getMentions from "@hey/helpers/getMentions";
 import nFormatter from "@hey/helpers/nFormatter";
 import truncateByWords from "@hey/helpers/truncateByWords";
 import { type AccountStats, useFullAccountLazyQuery } from "@hey/indexer";
-import { Card, Image } from "@hey/ui";
 import * as HoverCard from "@radix-ui/react-hover-card";
 import plur from "plur";
 import type { ReactNode } from "react";

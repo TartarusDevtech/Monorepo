@@ -1,3 +1,4 @@
+import { Alert } from "@/components/Shared/UI";
 import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
@@ -7,7 +8,6 @@ import { useApolloClient } from "@apollo/client";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
 import { useDeletePostMutation } from "@hey/indexer";
-import { Alert } from "@hey/ui";
 import { toast } from "react-hot-toast";
 
 const DeletePost = () => {

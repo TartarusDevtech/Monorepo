@@ -3,10 +3,14 @@ import WhoToFollow from "@/components/Home/Sidebar/WhoToFollow";
 import FeedFocusType from "@/components/Shared/FeedFocusType";
 import Footer from "@/components/Shared/Footer";
 import NotLoggedIn from "@/components/Shared/NotLoggedIn";
+import {
+  GridItemEight,
+  GridItemFour,
+  GridLayout
+} from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { APP_NAME } from "@hey/data/constants";
 import type { MainContentFocus } from "@hey/indexer";
-import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
 import { useState } from "react";
 import BookmarksFeed from "./BookmarksFeed";
 

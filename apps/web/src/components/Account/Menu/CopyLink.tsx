@@ -1,9 +1,9 @@
+import cn from "@/helpers/cn";
 import { MenuItem } from "@headlessui/react";
 import { LinkIcon } from "@heroicons/react/24/outline";
 import getAccount from "@hey/helpers/getAccount";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { AccountFragment } from "@hey/indexer";
-import cn from "@hey/ui/cn";
 import toast from "react-hot-toast";
 
 interface CopyLinkProps {

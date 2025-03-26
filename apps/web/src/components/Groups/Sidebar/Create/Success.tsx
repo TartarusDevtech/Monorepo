@@ -1,5 +1,5 @@
+import { H4 } from "@/components/Shared/UI";
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
-import { H4 } from "@hey/ui";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect } from "react";

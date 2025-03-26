@@ -1,5 +1,13 @@
 import AvatarUpload from "@/components/Shared/AvatarUpload";
 import CoverUpload from "@/components/Shared/CoverUpload";
+import {
+  Button,
+  Card,
+  Form,
+  Input,
+  TextArea,
+  useZodForm
+} from "@/components/Shared/UI";
 import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import uploadMetadata from "@/helpers/uploadMetadata";
@@ -13,7 +21,6 @@ import { Regex } from "@hey/data/regex";
 import getAccountAttribute from "@hey/helpers/getAccountAttribute";
 import trimify from "@hey/helpers/trimify";
 import { useMeLazyQuery, useSetAccountMetadataMutation } from "@hey/indexer";
-import { Button, Card, Form, Input, TextArea, useZodForm } from "@hey/ui";
 import type {
   AccountOptions,
   MetadataAttribute

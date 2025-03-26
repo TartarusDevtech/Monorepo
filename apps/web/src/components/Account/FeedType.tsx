@@ -1,3 +1,4 @@
+import { TabButton } from "@/components/Shared/UI";
 import {
   ChatBubbleLeftIcon,
   FilmIcon,
@@ -5,7 +6,6 @@ import {
   ShoppingBagIcon
 } from "@heroicons/react/24/outline";
 import { AccountFeedType } from "@hey/data/enums";
-import { TabButton } from "@hey/ui";
 import type { Dispatch, JSX, SetStateAction } from "react";
 import MediaFilter from "./Filters/MediaFilter";
 

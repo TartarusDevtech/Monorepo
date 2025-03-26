@@ -1,9 +1,3 @@
-import errorToast from "@/helpers/errorToast";
-import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
-import { CheckCircleIcon } from "@heroicons/react/24/solid";
-import { Errors } from "@hey/data/errors";
-import stopEventPropagation from "@hey/helpers/stopEventPropagation";
-import { type PostReportReason, useReportPostMutation } from "@hey/indexer";
 import {
   Button,
   EmptyState,
@@ -11,7 +5,13 @@ import {
   Form,
   TextArea,
   useZodForm
-} from "@hey/ui";
+} from "@/components/Shared/UI";
+import errorToast from "@/helpers/errorToast";
+import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
+import { CheckCircleIcon } from "@heroicons/react/24/solid";
+import { Errors } from "@hey/data/errors";
+import stopEventPropagation from "@hey/helpers/stopEventPropagation";
+import { type PostReportReason, useReportPostMutation } from "@hey/indexer";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { z } from "zod";

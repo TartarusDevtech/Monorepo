@@ -1,14 +1,14 @@
 import MetaTags from "@/components/Common/MetaTags";
 import NotLoggedIn from "@/components/Shared/NotLoggedIn";
-import { useAccountStore } from "@/store/persisted/useAccountStore";
-import { APP_NAME } from "@hey/data/constants";
 import {
   Card,
   CardHeader,
   GridItemEight,
   GridItemFour,
   GridLayout
-} from "@hey/ui";
+} from "@/components/Shared/UI";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
+import { APP_NAME } from "@hey/data/constants";
 import SettingsSidebar from "../Sidebar";
 import Balances from "./Balances";
 

@@ -1,12 +1,12 @@
 import SingleImagePost from "@/components/Post/SingleImagePost";
 import ImagePostsShimmer from "@/components/Shared/Shimmer/ImagePostsShimmer";
+import { EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import { ChatBubbleBottomCenterIcon } from "@heroicons/react/24/outline";
 import {
   type MlexplorePostsRequest,
   PageSize,
   useMlPostsExploreQuery
 } from "@hey/indexer";
-import { EmptyState, ErrorMessage } from "@hey/ui";
 
 interface ImageFeedProps {
   feedType: any;

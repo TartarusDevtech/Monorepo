@@ -1,4 +1,6 @@
 import MenuTransition from "@/components/Shared/MenuTransition";
+import { Spinner, Tooltip } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import useUploadAttachments from "@/hooks/useUploadAttachments";
 import { usePostAttachmentStore } from "@/store/non-persisted/post/usePostAttachmentStore";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
@@ -7,8 +9,6 @@ import {
   PhotoIcon,
   VideoCameraIcon
 } from "@heroicons/react/24/outline";
-import { Spinner, Tooltip } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import {
   MediaAudioMimeType,
   MediaImageMimeType

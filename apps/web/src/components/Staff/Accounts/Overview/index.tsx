@@ -1,5 +1,13 @@
 import MetaTags from "@/components/Common/MetaTags";
 import Loader from "@/components/Shared/Loader";
+import {
+  Card,
+  EmptyState,
+  ErrorMessage,
+  GridItemEight,
+  GridItemFour,
+  GridLayout
+} from "@/components/Shared/UI";
 import AccountStaffTool from "@/components/Staff/Accounts/Overview/Tool";
 import StaffSidebar from "@/components/Staff/Sidebar";
 import hasAccess from "@/helpers/hasAccess";
@@ -9,14 +17,6 @@ import { UserIcon } from "@heroicons/react/24/outline";
 import { APP_NAME } from "@hey/data/constants";
 import { Features } from "@hey/data/features";
 import { useAccountQuery } from "@hey/indexer";
-import {
-  Card,
-  EmptyState,
-  ErrorMessage,
-  GridItemEight,
-  GridItemFour,
-  GridLayout
-} from "@hey/ui";
 import { useRouter } from "next/router";
 
 const Overview = () => {

@@ -1,7 +1,7 @@
 import WrongWallet from "@/components/Shared/Settings/WrongWallet";
+import { Button, Card, Modal, TabButton } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
-import { Button, Card, Modal, TabButton } from "@hey/ui";
 import { useState } from "react";
 import { useAccount } from "wagmi";
 import AddAccountManager from "./AddAccountManager";

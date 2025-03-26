@@ -1,13 +1,13 @@
 import DismissRecommendedAccount from "@/components/Shared/DismissRecommendedAccount";
 import SingleAccountShimmer from "@/components/Shared/Shimmer/SingleAccountShimmer";
 import SingleAccount from "@/components/Shared/SingleAccount";
+import { Card, ErrorMessage, H5, Modal } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
   type AccountFragment,
   PageSize,
   useMlAccountRecommendationsQuery
 } from "@hey/indexer";
-import { Card, ErrorMessage, H5, Modal } from "@hey/ui";
 import { useState } from "react";
 import Suggested from "../Suggested";
 

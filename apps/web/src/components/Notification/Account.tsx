@@ -1,10 +1,10 @@
 import Verified from "@/components/Shared/Account/Icons/Verified";
 import AccountPreview from "@/components/Shared/AccountPreview";
+import { Image } from "@/components/Shared/UI";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { AccountFragment } from "@hey/indexer";
-import { Image } from "@hey/ui";
 import Link from "next/link";
 
 interface NotificationProfileProps {

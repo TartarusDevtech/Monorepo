@@ -1,5 +1,5 @@
+import { Tooltip } from "@/components/Shared/UI";
 import { BellIcon } from "@heroicons/react/24/outline";
-import { Tooltip } from "@hey/ui";
 import Link from "next/link";
 
 const NotificationIcon = () => {

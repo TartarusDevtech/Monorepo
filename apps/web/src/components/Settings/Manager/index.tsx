@@ -1,8 +1,12 @@
 import MetaTags from "@/components/Common/MetaTags";
 import NotLoggedIn from "@/components/Shared/NotLoggedIn";
+import {
+  GridItemEight,
+  GridItemFour,
+  GridLayout
+} from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { APP_NAME } from "@hey/data/constants";
-import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
 import SettingsSidebar from "../Sidebar";
 import AccountManager from "./AccountManager";
 import Signless from "./Signless";

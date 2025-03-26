@@ -1,7 +1,7 @@
+import { Card } from "@/components/Shared/UI";
 import hasAccess from "@/helpers/hasAccess";
 import { Features } from "@hey/data/features";
 import type { AccountFragment } from "@hey/indexer";
-import { Card } from "@hey/ui";
 import CreatorTool from "./CreatorTool";
 import StaffTool from "./StaffTool";
 

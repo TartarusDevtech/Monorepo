@@ -1,6 +1,6 @@
+import { Card } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { Card } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import type { SidebarProps } from ".";

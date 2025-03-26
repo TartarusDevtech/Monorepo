@@ -1,6 +1,6 @@
+import { H5 } from "@/components/Shared/UI";
 import { GIPHY_KEY } from "@hey/data/constants";
 import type { Category } from "@hey/types/giphy";
-import { H5 } from "@hey/ui";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import type { Dispatch, SetStateAction } from "react";

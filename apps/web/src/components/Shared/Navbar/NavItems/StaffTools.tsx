@@ -1,5 +1,5 @@
+import cn from "@/helpers/cn";
 import { ShieldCheckIcon } from "@heroicons/react/24/outline";
-import cn from "@hey/ui/cn";
 
 interface StaffToolsProps {
   className?: string;

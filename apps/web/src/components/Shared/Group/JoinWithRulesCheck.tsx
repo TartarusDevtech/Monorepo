@@ -1,10 +1,10 @@
+import { Button } from "@/components/Shared/UI";
 import {
   getMembershipApprovalDetails,
   getSimplePaymentDetails
 } from "@/helpers/rules";
 import { useSuperJoinModalStore } from "@/store/non-persisted/modal/useSuperJoinModalStore";
 import type { GroupFragment, GroupRules } from "@hey/indexer";
-import { Button } from "@hey/ui";
 import Join from "./Join";
 
 interface JoinWithRulesCheckProps {

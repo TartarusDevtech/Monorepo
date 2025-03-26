@@ -1,8 +1,8 @@
 import SingleAccountsShimmer from "@/components/Shared/Shimmer/SingleAccountsShimmer";
 import SingleAccount from "@/components/Shared/SingleAccount";
+import { Card, EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import { UsersIcon } from "@heroicons/react/24/outline";
 import { type AccountsRequest, PageSize, useAccountsQuery } from "@hey/indexer";
-import { Card, EmptyState, ErrorMessage } from "@hey/ui";
 import { Virtuoso } from "react-virtuoso";
 
 interface AccountsProps {

@@ -1,3 +1,5 @@
+import { Card, Tooltip } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import hasAccess from "@/helpers/hasAccess";
 import { trpc } from "@/helpers/trpc";
 import { QueueListIcon } from "@heroicons/react/24/outline";
@@ -5,8 +7,6 @@ import { Features } from "@hey/data/features";
 import formatDate from "@hey/helpers/datetime/formatDate";
 import { isRepost } from "@hey/helpers/postHelpers";
 import type { AnyPostFragment } from "@hey/indexer";
-import { Card, Tooltip } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import { useQuery } from "@tanstack/react-query";
 import { useHiddenCommentFeedStore } from ".";
 import PostActions from "./Actions";

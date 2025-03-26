@@ -1,6 +1,7 @@
 import { useHiddenCommentFeedStore } from "@/components/Post";
 import SinglePost from "@/components/Post/SinglePost";
 import PostsShimmer from "@/components/Shared/Shimmer/PostsShimmer";
+import { Card, EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import { ChatBubbleLeftIcon } from "@heroicons/react/24/outline";
 import {
   PageSize,
@@ -9,7 +10,6 @@ import {
   PostVisibilityFilter,
   usePostReferencesQuery
 } from "@hey/indexer";
-import { Card, EmptyState, ErrorMessage } from "@hey/ui";
 import { Virtuoso } from "react-virtuoso";
 
 interface CommentFeedProps {

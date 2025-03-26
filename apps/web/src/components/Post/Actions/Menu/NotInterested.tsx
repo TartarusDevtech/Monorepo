@@ -1,3 +1,4 @@
+import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
 import type { ApolloCache } from "@apollo/client";
 import { MenuItem } from "@headlessui/react";
@@ -10,7 +11,6 @@ import {
   useAddPostNotInterestedMutation,
   useUndoPostNotInterestedMutation
 } from "@hey/indexer";
-import cn from "@hey/ui/cn";
 import { toast } from "react-hot-toast";
 
 interface NotInterestedProps {

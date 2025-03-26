@@ -1,3 +1,4 @@
+import { Button, Form, Input, useZodForm } from "@/components/Shared/UI";
 import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import uploadMetadata from "@/helpers/uploadMetadata";
@@ -18,7 +19,6 @@ import {
   useChallengeMutation,
   useCreateAccountWithUsernameMutation
 } from "@hey/indexer";
-import { Button, Form, Input, useZodForm } from "@hey/ui";
 import { account as accountMetadata } from "@lens-protocol/metadata";
 import { useState } from "react";
 import toast from "react-hot-toast";

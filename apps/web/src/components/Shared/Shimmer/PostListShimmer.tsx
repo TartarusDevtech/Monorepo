@@ -1,5 +1,5 @@
+import { Card } from "@/components/Shared/UI";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
-import { Card } from "@hey/ui";
 import PostShimmer from "./PostShimmer";
 
 const PostListShimmer = () => {

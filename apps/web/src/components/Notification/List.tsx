@@ -1,3 +1,5 @@
+import { Card, EmptyState, ErrorMessage } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import { usePreferencesStore } from "@/store/persisted/usePreferencesStore";
 import { BellIcon } from "@heroicons/react/24/outline";
 import { NotificationFeedType } from "@hey/data/enums";
@@ -6,8 +8,6 @@ import {
   NotificationType,
   useNotificationsQuery
 } from "@hey/indexer";
-import { Card, EmptyState, ErrorMessage } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import { Virtuoso } from "react-virtuoso";
 import NotificationShimmer from "./Shimmer";
 import CommentNotification from "./Type/CommentNotification";

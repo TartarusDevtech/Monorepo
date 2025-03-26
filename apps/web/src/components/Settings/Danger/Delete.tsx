@@ -1,4 +1,13 @@
 import SingleAccount from "@/components/Shared/SingleAccount";
+import {
+  Button,
+  Card,
+  CardHeader,
+  H5,
+  Modal,
+  Spinner,
+  WarningMessage
+} from "@/components/Shared/UI";
 import useHandleWrongNetwork from "@/hooks/useHandleWrongNetwork";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { TrashIcon } from "@heroicons/react/24/outline";
@@ -9,15 +18,6 @@ import {
 } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import type { AccountFragment } from "@hey/indexer";
-import {
-  Button,
-  Card,
-  CardHeader,
-  H5,
-  Modal,
-  Spinner,
-  WarningMessage
-} from "@hey/ui";
 import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";

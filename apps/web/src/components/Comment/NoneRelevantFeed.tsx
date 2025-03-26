@@ -1,5 +1,6 @@
 import { useHiddenCommentFeedStore } from "@/components/Post";
 import SinglePost from "@/components/Post/SinglePost";
+import { Card, StackedAvatars } from "@/components/Shared/UI";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import getAvatar from "@hey/helpers/getAvatar";
 import {
@@ -9,7 +10,6 @@ import {
   PostVisibilityFilter,
   usePostReferencesQuery
 } from "@hey/indexer";
-import { Card, StackedAvatars } from "@hey/ui";
 import { useState } from "react";
 import { Virtuoso } from "react-virtuoso";
 

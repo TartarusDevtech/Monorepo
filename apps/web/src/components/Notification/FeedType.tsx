@@ -1,3 +1,4 @@
+import { TabButton } from "@/components/Shared/UI";
 import {
   AtSymbolIcon,
   BellIcon,
@@ -6,7 +7,6 @@ import {
   ShoppingBagIcon
 } from "@heroicons/react/24/outline";
 import { NotificationFeedType } from "@hey/data/enums";
-import { TabButton } from "@hey/ui";
 
 interface FeedTypeProps {
   feedType: NotificationFeedType;

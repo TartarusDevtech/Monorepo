@@ -1,7 +1,7 @@
 import SmallSingleAccount from "@/components/Shared/SmallSingleAccount";
+import { H5 } from "@/components/Shared/UI";
 import { UsersIcon } from "@heroicons/react/24/outline";
 import { useAccountsAvailableQuery } from "@hey/indexer";
-import { H5 } from "@hey/ui";
 import Link from "next/link";
 
 interface ManagedAccountsProps {

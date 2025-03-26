@@ -1,5 +1,6 @@
 import Loader from "@/components/Shared/Loader";
 import SingleAccount from "@/components/Shared/SingleAccount";
+import { Button, EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
 import { UsersIcon } from "@heroicons/react/24/outline";
 import {
@@ -10,7 +11,6 @@ import {
   useHideManagedAccountMutation,
   useUnhideManagedAccountMutation
 } from "@hey/indexer";
-import { Button, EmptyState, ErrorMessage } from "@hey/ui";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { Virtuoso } from "react-virtuoso";

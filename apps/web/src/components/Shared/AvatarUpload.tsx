@@ -1,13 +1,13 @@
 import ChooseFile from "@/components/Shared/ChooseFile";
+import { Button, Image, Modal } from "@/components/Shared/UI";
 import uploadCroppedImage, { readFile } from "@/helpers/accountPictureUtils";
+import cn from "@/helpers/cn";
 import getCroppedImg from "@/helpers/cropUtils";
 import errorToast from "@/helpers/errorToast";
 import { AVATAR, DEFAULT_AVATAR } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import imageKit from "@hey/helpers/imageKit";
 import sanitizeDStorageUrl from "@hey/helpers/sanitizeDStorageUrl";
-import { Button, Image, Modal } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import type { ChangeEvent } from "react";
 import { useState } from "react";
 import Cropper, { type Area } from "react-easy-crop";
@@ -84,8 +84,9 @@ const AvatarUpload = ({ src, setSrc, isSmall = false }: AvatarUploadProps) => {
           <Image
             alt="Account picture crop preview"
             className={cn("rounded-lg", isSmall ? "max-w-[200px]" : "max-w-sm")}
-            onError={({ currentTarget }) => {
-              currentTarget.src = sanitizeDStorageUrl(src);
+            onError={(event: React.SyntheticEvent<HTMLImageElement>) => {
+              const target = event.currentTarget;
+              target.src = sanitizeDStorageUrl(src);
             }}
             src={uploadedPicture || renderPictureUrl}
           />

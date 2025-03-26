@@ -1,10 +1,10 @@
 import Slug from "@/components/Shared/Slug";
+import { Image } from "@/components/Shared/UI";
 import { BLOCK_EXPLORER_URL } from "@hey/data/constants";
 import formatAddress from "@hey/helpers/formatAddress";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import { type RecipientPercent, useAccountsBulkQuery } from "@hey/indexer";
-import { Image } from "@hey/ui";
 import Link from "next/link";
 
 interface SplitsProps {

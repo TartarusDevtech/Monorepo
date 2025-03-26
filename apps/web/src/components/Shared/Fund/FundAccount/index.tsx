@@ -1,3 +1,4 @@
+import { Image } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
   DEFAULT_COLLECT_TOKEN,
@@ -6,7 +7,6 @@ import {
   STATIC_IMAGES_URL,
   WRAPPED_NATIVE_TOKEN_SYMBOL
 } from "@hey/data/constants";
-import { Image } from "@hey/ui";
 import { formatUnits } from "viem";
 import { useBalance } from "wagmi";
 import Loader from "../../Loader";

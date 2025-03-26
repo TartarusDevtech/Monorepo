@@ -1,6 +1,6 @@
+import cn from "@/helpers/cn";
 import type { DetailedHTMLProps, HTMLAttributes, ReactNode } from "react";
 import { forwardRef } from "react";
-import cn from "../cn";
 
 interface BadgeProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {

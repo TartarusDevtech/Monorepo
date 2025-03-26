@@ -1,7 +1,7 @@
 import MetaTags from "@/components/Common/MetaTags";
 import LoginButton from "@/components/Shared/LoginButton";
+import { H2 } from "@/components/Shared/UI";
 import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
-import { H2 } from "@hey/ui";
 import Image from "next/image";
 
 const NotLoggedIn = () => {

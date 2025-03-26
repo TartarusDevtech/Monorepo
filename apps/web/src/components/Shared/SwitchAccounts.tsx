@@ -1,4 +1,6 @@
+import { ErrorMessage, Image, Spinner } from "@/components/Shared/UI";
 import trackEvent from "@/helpers/analytics";
+import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { signIn, signOut } from "@/store/persisted/useAuthStore";
@@ -11,8 +13,6 @@ import {
   useAccountsAvailableQuery,
   useSwitchAccountMutation
 } from "@hey/indexer";
-import { ErrorMessage, Image, Spinner } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import toast from "react-hot-toast";

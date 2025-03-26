@@ -1,11 +1,11 @@
 import SingleAccountShimmer from "@/components/Shared/Shimmer/SingleAccountShimmer";
 import SingleAccount from "@/components/Shared/SingleAccount";
+import { Card, EmptyState, ErrorMessage, H5 } from "@/components/Shared/UI";
 import { trpc } from "@/helpers/trpc";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { CursorArrowRippleIcon as CursorArrowRippleIconOutline } from "@heroicons/react/24/outline";
 import type { StaffPicksRouterOutput } from "@hey/api/src/routers/staffPicks";
 import { useStaffPicksQuery } from "@hey/indexer";
-import { Card, EmptyState, ErrorMessage, H5 } from "@hey/ui";
 import { useQuery } from "@tanstack/react-query";
 
 interface BatchRange {

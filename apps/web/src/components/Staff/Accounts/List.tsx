@@ -1,5 +1,13 @@
 import Loader from "@/components/Shared/Loader";
 import SingleAccount from "@/components/Shared/SingleAccount";
+import {
+  Card,
+  EmptyState,
+  ErrorMessage,
+  Input,
+  Select
+} from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import { ArrowPathIcon, UsersIcon } from "@heroicons/react/24/outline";
 import {
   AccountsOrderBy,
@@ -8,8 +16,6 @@ import {
   useAccountsLazyQuery,
   useAccountsQuery
 } from "@hey/indexer";
-import { Card, EmptyState, ErrorMessage, Input, Select } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import { useDebounce } from "@uidotdev/usehooks";
 import { useEffect, useState } from "react";
 import { Virtuoso } from "react-virtuoso";

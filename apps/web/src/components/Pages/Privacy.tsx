@@ -1,6 +1,6 @@
 import Footer from "@/components/Shared/Footer";
+import { H2, H4 } from "@/components/Shared/UI";
 import { APP_NAME } from "@hey/data/constants";
-import { H2, H4 } from "@hey/ui";
 import Link from "next/link";
 
 const Privacy = () => {

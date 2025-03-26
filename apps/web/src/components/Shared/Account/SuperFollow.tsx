@@ -1,3 +1,4 @@
+import { H3, H5 } from "@/components/Shared/UI";
 import { getSimplePaymentDetails } from "@/helpers/rules";
 import { useSuperFollowModalStore } from "@/store/non-persisted/modal/useSuperFollowModalStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
@@ -7,7 +8,6 @@ import { tokens } from "@hey/data/tokens";
 import getAccount from "@hey/helpers/getAccount";
 import getTokenImage from "@hey/helpers/getTokenImage";
 import type { AccountFollowRules, AccountFragment } from "@hey/indexer";
-import { H3, H5 } from "@hey/ui";
 import type { Address } from "viem";
 import { useBalance } from "wagmi";
 import FundButton from "../Fund/FundButton";

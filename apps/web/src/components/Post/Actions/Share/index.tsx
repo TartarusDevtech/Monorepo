@@ -1,4 +1,6 @@
 import MenuTransition from "@/components/Shared/MenuTransition";
+import { Spinner, Tooltip } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import { Menu, MenuButton, MenuItems } from "@headlessui/react";
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 import humanize from "@hey/helpers/humanize";
@@ -6,8 +8,6 @@ import nFormatter from "@hey/helpers/nFormatter";
 import { isRepost } from "@hey/helpers/postHelpers";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { AnyPostFragment } from "@hey/indexer";
-import { Spinner, Tooltip } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import { useState } from "react";
 import Quote from "./Quote";
 import Repost from "./Repost";

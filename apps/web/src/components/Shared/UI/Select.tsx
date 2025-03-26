@@ -1,3 +1,4 @@
+import cn from "@/helpers/cn";
 import {
   Listbox,
   ListboxButton,
@@ -8,7 +9,6 @@ import {
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { CheckCircleIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
 import { Fragment, type ReactNode, forwardRef, useState } from "react";
-import cn from "../cn";
 import { Input } from "./Input";
 
 interface SelectProps {

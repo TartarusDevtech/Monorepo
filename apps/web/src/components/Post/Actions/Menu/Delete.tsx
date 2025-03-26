@@ -1,9 +1,9 @@
+import cn from "@/helpers/cn";
 import { useDeletePostAlertStore } from "@/store/non-persisted/alert/useDeletePostAlertStore";
 import { MenuItem } from "@headlessui/react";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { PostFragment } from "@hey/indexer";
-import cn from "@hey/ui/cn";
 
 interface DeleteProps {
   post: PostFragment;

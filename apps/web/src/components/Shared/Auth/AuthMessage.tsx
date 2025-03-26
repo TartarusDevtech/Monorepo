@@ -1,4 +1,4 @@
-import { H4 } from "@hey/ui";
+import { H4 } from "@/components/Shared/UI";
 
 interface AuthMessageProps {
   description: string;

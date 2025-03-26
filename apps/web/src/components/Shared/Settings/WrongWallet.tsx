@@ -1,4 +1,4 @@
-import { Card, H5 } from "@hey/ui";
+import { Card, H5 } from "@/components/Shared/UI";
 import WalletSelector from "../Auth/WalletSelector";
 
 const WrongWallet = () => {

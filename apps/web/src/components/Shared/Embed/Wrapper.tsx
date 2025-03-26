@@ -1,6 +1,6 @@
+import { Card } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
-import { Card } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import type { ReactNode } from "react";
 
 interface WrapperProps {

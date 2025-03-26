@@ -1,9 +1,9 @@
+import cn from "@/helpers/cn";
 import { useReportPostModalStore } from "@/store/non-persisted/modal/useReportPostModalStore";
 import { MenuItem } from "@headlessui/react";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { PostFragment } from "@hey/indexer";
-import cn from "@hey/ui/cn";
 
 interface ReportProps {
   post: PostFragment;

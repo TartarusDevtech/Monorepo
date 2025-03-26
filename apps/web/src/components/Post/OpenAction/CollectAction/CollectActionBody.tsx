@@ -3,6 +3,14 @@ import Loader from "@/components/Shared/Loader";
 import Collectors from "@/components/Shared/Modal/Collectors";
 import Slug from "@/components/Shared/Slug";
 import {
+  H3,
+  H4,
+  HelpTooltip,
+  Modal,
+  Tooltip,
+  WarningMessage
+} from "@/components/Shared/UI";
+import {
   CheckCircleIcon,
   ClockIcon,
   CurrencyDollarIcon,
@@ -24,7 +32,6 @@ import {
   type SimpleCollectActionFragment,
   useCollectActionQuery
 } from "@hey/indexer";
-import { H3, H4, HelpTooltip, Modal, Tooltip, WarningMessage } from "@hey/ui";
 import { useCounter } from "@uidotdev/usehooks";
 import Link from "next/link";
 import plur from "plur";

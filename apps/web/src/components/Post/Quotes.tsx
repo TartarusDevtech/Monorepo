@@ -1,4 +1,5 @@
 import PostListShimmer from "@/components/Shared/Shimmer/PostListShimmer";
+import { Card, EmptyState, ErrorMessage, H5 } from "@/components/Shared/UI";
 import {
   ArrowLeftIcon,
   ChatBubbleBottomCenterTextIcon
@@ -10,7 +11,6 @@ import {
   type PostReferencesRequest,
   usePostReferencesQuery
 } from "@hey/indexer";
-import { Card, EmptyState, ErrorMessage, H5 } from "@hey/ui";
 import Link from "next/link";
 import { Virtuoso } from "react-virtuoso";
 import SinglePost from "./SinglePost";

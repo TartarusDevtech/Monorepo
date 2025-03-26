@@ -1,8 +1,8 @@
+import cn from "@/helpers/cn";
 import type { EditorExtension } from "@/helpers/prosekit/extension";
 import useEmojis from "@/hooks/prosekit/useEmojis";
 import { EditorRegex } from "@hey/data/regex";
 import type { Emoji } from "@hey/types/misc";
-import cn from "@hey/ui/cn";
 import { useEditor } from "prosekit/react";
 import {
   AutocompleteItem,

@@ -1,5 +1,6 @@
 import SinglePost from "@/components/Post/SinglePost";
 import PostsShimmer from "@/components/Shared/Shimmer/PostsShimmer";
+import { Card, EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { LightBulbIcon } from "@heroicons/react/24/outline";
 import {
@@ -7,7 +8,6 @@ import {
   PageSize,
   useMlPostsForYouQuery
 } from "@hey/indexer";
-import { Card, EmptyState, ErrorMessage } from "@hey/ui";
 import { Virtuoso } from "react-virtuoso";
 
 const ForYou = () => {

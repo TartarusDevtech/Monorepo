@@ -1,3 +1,4 @@
+import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
@@ -7,7 +8,6 @@ import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 import { Errors } from "@hey/data/errors";
 import { isRepost } from "@hey/helpers/postHelpers";
 import { type AnyPostFragment, useDeletePostMutation } from "@hey/indexer";
-import cn from "@hey/ui/cn";
 import type { Dispatch, SetStateAction } from "react";
 import { toast } from "react-hot-toast";
 

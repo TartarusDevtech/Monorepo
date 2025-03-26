@@ -1,5 +1,5 @@
+import cn from "@/helpers/cn";
 import type { ElementType, MouseEvent, ReactNode } from "react";
-import cn from "../cn";
 
 interface CardProps {
   as?: ElementType;

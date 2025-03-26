@@ -1,5 +1,5 @@
+import cn from "@/helpers/cn";
 import * as Switch from "@radix-ui/react-switch";
-import cn from "../cn";
 
 interface ToggleProps {
   disabled?: boolean;

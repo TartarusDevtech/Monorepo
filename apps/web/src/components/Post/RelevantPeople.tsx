@@ -1,12 +1,12 @@
 import SingleAccountShimmer from "@/components/Shared/Shimmer/SingleAccountShimmer";
 import SingleAccount from "@/components/Shared/SingleAccount";
+import { Card, ErrorMessage, Modal } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
   type AccountFragment,
   type PostMentionFragment,
   useAccountsBulkQuery
 } from "@hey/indexer";
-import { Card, ErrorMessage, Modal } from "@hey/ui";
 import { useState } from "react";
 import MoreRelevantPeople from "./MoreRelevantPeople";
 

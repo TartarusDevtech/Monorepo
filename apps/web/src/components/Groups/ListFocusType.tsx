@@ -1,4 +1,4 @@
-import cn from "@hey/ui/cn";
+import cn from "@/helpers/cn";
 import type { Dispatch, SetStateAction } from "react";
 import { GroupsTabFocus } from ".";
 

@@ -1,5 +1,5 @@
 import Footer from "@/components/Shared/Footer";
-import { H2, H4 } from "@hey/ui";
+import { H2, H4 } from "@/components/Shared/UI";
 import Link from "next/link";
 
 const Terms = () => {

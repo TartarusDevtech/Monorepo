@@ -1,6 +1,11 @@
 import Loader from "@/components/Shared/Loader";
+import {
+  Card,
+  CardHeader,
+  ErrorMessage,
+  NumberedStat
+} from "@/components/Shared/UI";
 import { BLOCK_EXPLORER_URL, HEY_SPONSOR } from "@hey/data/constants";
-import { Card, CardHeader, ErrorMessage, NumberedStat } from "@hey/ui";
 import Link from "next/link";
 import { formatEther } from "viem";
 import { useBalance } from "wagmi";

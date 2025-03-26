@@ -1,5 +1,5 @@
+import { Card, H6 } from "@/components/Shared/UI";
 import { ChatBubbleLeftIcon } from "@heroicons/react/24/outline";
-import { Card, H6 } from "@hey/ui";
 
 const CommentWarning = () => {
   return (

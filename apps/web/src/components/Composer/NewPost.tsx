@@ -1,7 +1,7 @@
+import { Card, Image } from "@/components/Shared/UI";
 import { usePostStore } from "@/store/non-persisted/post/usePostStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import getAvatar from "@hey/helpers/getAvatar";
-import { Card, Image } from "@hey/ui";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import NewPublication from "./NewPublication";

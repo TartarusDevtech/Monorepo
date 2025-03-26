@@ -1,10 +1,10 @@
+import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
 import getCurrentSession from "@/helpers/getCurrentSession";
 import { signOut } from "@/store/persisted/useAuthStore";
 import { usePreferencesStore } from "@/store/persisted/usePreferencesStore";
 import { ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/outline";
 import { useRevokeAuthenticationMutation } from "@hey/indexer";
-import cn from "@hey/ui/cn";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import toast from "react-hot-toast";

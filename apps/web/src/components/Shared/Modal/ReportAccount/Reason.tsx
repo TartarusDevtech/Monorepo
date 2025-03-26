@@ -1,6 +1,6 @@
+import { Select } from "@/components/Shared/UI";
 import convertToTitleCase from "@hey/helpers/convertToTitleCase";
 import { AccountReportReason } from "@hey/indexer";
-import { Select } from "@hey/ui";
 import type { Dispatch, SetStateAction } from "react";
 
 interface ReasonProps {

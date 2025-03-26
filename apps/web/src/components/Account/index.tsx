@@ -1,6 +1,12 @@
 import MetaTags from "@/components/Common/MetaTags";
 import NewPost from "@/components/Composer/NewPost";
 import Cover from "@/components/Shared/Cover";
+import {
+  EmptyState,
+  GridItemEight,
+  GridItemFour,
+  GridLayout
+} from "@/components/Shared/UI";
 import hasAccess from "@/helpers/hasAccess";
 import { trpc } from "@/helpers/trpc";
 import Custom404 from "@/pages/404";
@@ -13,7 +19,6 @@ import { Features } from "@hey/data/features";
 import getAccount from "@hey/helpers/getAccount";
 import isAccountDeleted from "@hey/helpers/isAccountDeleted";
 import { useAccountQuery } from "@hey/indexer";
-import { EmptyState, GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import AccountFeed from "./AccountFeed";

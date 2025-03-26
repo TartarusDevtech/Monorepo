@@ -1,5 +1,5 @@
+import { H4, Spinner } from "@/components/Shared/UI";
 import { useGroupQuery } from "@hey/indexer";
-import { H4, Spinner } from "@hey/ui";
 import { useCreateGroupStore } from "./CreateGroup";
 
 const Minting = () => {

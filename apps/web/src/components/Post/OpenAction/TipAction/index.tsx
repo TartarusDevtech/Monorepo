@@ -1,11 +1,11 @@
 import MenuTransition from "@/components/Shared/MenuTransition";
 import { TipIcon } from "@/components/Shared/TipIcon";
+import { Tooltip } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import nFormatter from "@hey/helpers/nFormatter";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { PostFragment } from "@hey/indexer";
-import { Tooltip } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import Action from "./Action";
 
 interface TipActionProps {

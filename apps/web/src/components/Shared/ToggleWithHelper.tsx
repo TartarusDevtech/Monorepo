@@ -1,4 +1,4 @@
-import { H6, Toggle } from "@hey/ui";
+import { H6, Toggle } from "@/components/Shared/UI";
 import type { ReactNode } from "react";
 
 interface ToggleWithHelperProps {

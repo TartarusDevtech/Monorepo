@@ -1,3 +1,4 @@
+import cn from "@/helpers/cn";
 import {
   Dialog,
   DialogPanel,
@@ -8,7 +9,6 @@ import {
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import type { ReactNode, SyntheticEvent } from "react";
 import { Fragment } from "react";
-import cn from "../cn";
 
 interface ModalProps {
   children: ReactNode | ReactNode[];

@@ -1,3 +1,4 @@
+import { Spinner } from "@/components/Shared/UI";
 import { LockClosedIcon, NoSymbolIcon } from "@heroicons/react/24/outline";
 import {
   ArrowsPointingInIcon,
@@ -7,7 +8,6 @@ import {
   SpeakerWaveIcon,
   SpeakerXMarkIcon
 } from "@heroicons/react/24/solid";
-import { Spinner } from "@hey/ui";
 import type { Src } from "@livepeer/react";
 import * as Player from "@livepeer/react/player";
 import { type ReactNode, memo } from "react";

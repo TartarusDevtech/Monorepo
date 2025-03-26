@@ -1,5 +1,6 @@
 import FundButton from "@/components/Shared/Fund/FundButton";
 import LoginButton from "@/components/Shared/LoginButton";
+import { Button } from "@/components/Shared/UI";
 import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
@@ -16,7 +17,6 @@ import {
   type PostFragment,
   useExecutePostActionMutation
 } from "@hey/indexer";
-import { Button } from "@hey/ui";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { type Address, formatUnits } from "viem";

@@ -1,4 +1,4 @@
-import { Spinner } from "../src/Spinner";
+import { Spinner } from "./Spinner";
 
 interface PageLoadingProps {
   message?: string;

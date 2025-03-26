@@ -4,6 +4,13 @@ import MetaTags from "@/components/Common/MetaTags";
 import NewPublication from "@/components/Composer/NewPublication";
 import Footer from "@/components/Shared/Footer";
 import SingleAccount from "@/components/Shared/SingleAccount";
+import {
+  Card,
+  GridItemEight,
+  GridItemFour,
+  GridLayout,
+  WarningMessage
+} from "@/components/Shared/UI";
 import Custom404 from "@/pages/404";
 import Custom500 from "@/pages/500";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
@@ -19,13 +26,6 @@ import {
   usePostQuery,
   usePostReferencesQuery
 } from "@hey/indexer";
-import {
-  Card,
-  GridItemEight,
-  GridItemFour,
-  GridLayout,
-  WarningMessage
-} from "@hey/ui";
 import { useRouter } from "next/router";
 import { createTrackedSelector } from "react-tracked";
 import { create } from "zustand";

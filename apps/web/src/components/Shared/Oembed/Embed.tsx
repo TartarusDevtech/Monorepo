@@ -1,8 +1,8 @@
+import { Card, Image } from "@/components/Shared/UI";
 import type { OembedRouterOutput } from "@hey/api/src/routers/oembed";
 import { ATTACHMENT } from "@hey/data/constants";
 import imageKit from "@hey/helpers/imageKit";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
-import { Card, Image } from "@hey/ui";
 import Link from "next/link";
 
 interface EmbedProps {

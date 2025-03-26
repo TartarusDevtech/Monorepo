@@ -1,4 +1,5 @@
 import { useHiddenCommentFeedStore } from "@/components/Post";
+import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import type { ApolloCache } from "@apollo/client";
@@ -10,7 +11,6 @@ import {
   useHideReplyMutation,
   useUnhideReplyMutation
 } from "@hey/indexer";
-import cn from "@hey/ui/cn";
 import { toast } from "react-hot-toast";
 
 interface HideCommentProps {

@@ -1,5 +1,5 @@
+import cn from "@/helpers/cn";
 import type { ReactNode } from "react";
-import cn from "../cn";
 import { Card } from "./Card";
 
 interface EmptyStateProps {

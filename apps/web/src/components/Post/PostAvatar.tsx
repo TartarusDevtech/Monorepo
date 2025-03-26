@@ -1,10 +1,10 @@
+import { Image } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import { isRepost } from "@hey/helpers/postHelpers";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { AnyPostFragment, TimelineItemFragment } from "@hey/indexer";
-import { Image } from "@hey/ui";
-import cn from "@hey/ui/cn";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { memo } from "react";

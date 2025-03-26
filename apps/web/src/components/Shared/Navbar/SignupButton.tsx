@@ -1,5 +1,5 @@
+import { Button } from "@/components/Shared/UI";
 import { useAuthModalStore } from "@/store/non-persisted/modal/useAuthModalStore";
-import { Button } from "@hey/ui";
 import { useSignupStore } from "../Auth/Signup";
 
 const SignupButton = () => {

@@ -1,4 +1,5 @@
 import SwitchNetwork from "@/components/Shared/SwitchNetwork";
+import { Button, Card, ErrorMessage } from "@/components/Shared/UI";
 import { CHAIN } from "@/constants";
 import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
@@ -12,7 +13,6 @@ import {
   useAuthenticateMutation,
   useChallengeMutation
 } from "@hey/indexer";
-import { Button, Card, ErrorMessage } from "@hey/ui";
 import { useRouter } from "next/router";
 import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";

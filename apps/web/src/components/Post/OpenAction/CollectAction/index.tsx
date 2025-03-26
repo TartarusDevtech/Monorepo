@@ -1,8 +1,8 @@
+import { Modal, Tooltip } from "@/components/Shared/UI";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import humanize from "@hey/helpers/humanize";
 import nFormatter from "@hey/helpers/nFormatter";
 import type { PostFragment } from "@hey/indexer";
-import { Modal, Tooltip } from "@hey/ui";
 import plur from "plur";
 import { useState } from "react";
 import CollectActionBody from "./CollectActionBody";

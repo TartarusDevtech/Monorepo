@@ -1,5 +1,5 @@
+import { Button, Card, H5, Modal } from "@/components/Shared/UI";
 import { APP_NAME } from "@hey/data/constants";
-import { Button, Card, H5, Modal } from "@hey/ui";
 import { useState } from "react";
 import { createTrackedSelector } from "react-tracked";
 import { create } from "zustand";

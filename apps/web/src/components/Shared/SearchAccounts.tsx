@@ -1,10 +1,10 @@
+import { Card, Input } from "@/components/Shared/UI";
 import {
   type AccountFragment,
   type AccountsRequest,
   PageSize,
   useAccountsLazyQuery
 } from "@hey/indexer";
-import { Card, Input } from "@hey/ui";
 import type { ChangeEvent } from "react";
 import Loader from "./Loader";
 import SmallSingleAccount from "./SmallSingleAccount";
