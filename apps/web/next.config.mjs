@@ -38,6 +38,9 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    remotePatterns: [{ protocol: "https", hostname: "static.hey.xyz" }]
+  },
   headers() {
     return [
       {

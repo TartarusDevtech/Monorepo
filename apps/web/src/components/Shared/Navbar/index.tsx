@@ -5,6 +5,7 @@ import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import { H6 } from "@hey/ui";
 import cn from "@hey/ui/cn";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -78,11 +79,11 @@ const Navbar = () => {
               className="hidden rounded-full outline-offset-8 md:block"
               href="/"
             >
-              <img
+              <Image
                 alt="Logo"
                 className="size-8"
-                height={32}
                 src={`${STATIC_IMAGES_URL}/app-icon/${appIcon}.png`}
+                height={32}
                 width={32}
               />
             </Link>
