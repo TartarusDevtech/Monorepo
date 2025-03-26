@@ -10,7 +10,7 @@
     "start": "tsx watch src/index.ts"
   },
   "dependencies": {
-    "@aws-sdk/client-sts": "^3.774.0",
+    "@aws-sdk/client-sts": "^3.775.0",
     "@hey/data": "workspace:*",
     "@hey/db": "workspace:*",
     "@hey/helpers": "workspace:*",
