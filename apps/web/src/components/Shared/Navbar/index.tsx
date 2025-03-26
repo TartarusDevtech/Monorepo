@@ -100,7 +100,7 @@ const Navbar = () => {
             className={cn("md:hidden", !currentAccount?.address && "ml-[60px]")}
             href="/"
           >
-            <img
+            <Image
               alt="Logo"
               className="size-7"
               height={32}

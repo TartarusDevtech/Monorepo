@@ -1,6 +1,7 @@
 import { useAuthModalStore } from "@/store/non-persisted/modal/useAuthModalStore";
 import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Button, Card } from "@hey/ui";
+import Image from "next/image";
 import { useSignupStore } from "./Signup";
 
 const SignupCard = () => {
@@ -14,10 +15,12 @@ const SignupCard = () => {
 
   return (
     <Card as="aside" className="mb-4 space-y-4 p-5">
-      <img
+      <Image
         alt="Dizzy emoji"
         className="mx-auto size-14"
         src={`${STATIC_IMAGES_URL}/emojis/dizzy.png`}
+        height={56}
+        width={56}
       />
       <div className="space-y-3 text-center">
         <div className="font-bold">Get your {APP_NAME} account now!</div>

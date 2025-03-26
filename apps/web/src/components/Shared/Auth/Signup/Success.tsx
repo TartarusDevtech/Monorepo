@@ -3,6 +3,7 @@ import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import { useSwitchAccountMutation } from "@hey/indexer";
 import { H4 } from "@hey/ui";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
@@ -43,10 +44,12 @@ const Success = () => {
         Welcome to decentralised social where everything is sooooooooooooo much
         better! 🎉
       </div>
-      <img
+      <Image
         alt="Dizzy emoji"
         className="mx-auto mt-8 size-14"
         src={`${STATIC_IMAGES_URL}/emojis/dizzy.png`}
+        height={56}
+        width={56}
       />
       <i className="ld-text-gray-500 mt-8">
         We are taking you to {APP_NAME}...

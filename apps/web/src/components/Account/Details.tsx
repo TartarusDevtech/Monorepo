@@ -162,7 +162,7 @@ const Details = ({ isSuspended = false, account }: DetailsProps) => {
           )}
           {renderAccountAttribute(
             "x",
-            <img
+            <Image
               alt="X Logo"
               className="size-4"
               height={16}

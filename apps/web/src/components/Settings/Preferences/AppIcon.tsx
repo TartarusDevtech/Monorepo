@@ -8,6 +8,7 @@ import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Events } from "@hey/data/events";
 import { Card, CardHeader, Tooltip } from "@hey/ui";
 import { useMutation } from "@tanstack/react-query";
+import Image from "next/image";
 import toast from "react-hot-toast";
 
 const icons = [
@@ -49,10 +50,12 @@ const AppIcon = () => {
               onClick={() => mutate({ appIcon: icon.id })}
               type="button"
             >
-              <img
+              <Image
                 alt={icon.name}
                 className="size-10"
                 src={`${STATIC_IMAGES_URL}/app-icon/${icon.id}.png`}
+                height={40}
+                width={40}
               />
               {icon.id === appIcon ? (
                 <CheckCircleIconSolid className="size-5 text-green-500" />
