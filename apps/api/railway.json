@@ -3,7 +3,7 @@
   "build": {
     "builder": "RAILPACK",
     "buildCommand": "pnpm --filter @hey/api build",
-    "watchPatterns": ["packages/**/*"]
+    "watchPatterns": ["apps/api/**", "packages/**/*"]
   },
   "deploy": {
     "runtime": "V2",
