@@ -1,7 +1,6 @@
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import isPrideMonth from "@hey/helpers/isPrideMonth";
 import Image from "next/image";
-import PageMetatags from "./PageMetatags";
 
 const FullPageLoader = () => {
   const logoSrc = isPrideMonth()
@@ -10,7 +9,6 @@ const FullPageLoader = () => {
 
   return (
     <div className="grid h-screen place-items-center">
-      <PageMetatags />
       <Image
         className="size-28"
         src={logoSrc}

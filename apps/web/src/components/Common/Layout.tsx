@@ -2,7 +2,6 @@ import FullPageLoader from "@/components/Shared/FullPageLoader";
 import GlobalAlerts from "@/components/Shared/GlobalAlerts";
 import GlobalBanners from "@/components/Shared/GlobalBanners";
 import BottomNavigation from "@/components/Shared/Navbar/BottomNavigation";
-import PageMetatags from "@/components/Shared/PageMetatags";
 import getCurrentSession from "@/helpers/getCurrentSession";
 import getToastOptions from "@/helpers/getToastOptions";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
@@ -61,7 +60,6 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <main>
-      <PageMetatags />
       <Toaster
         containerStyle={{ wordBreak: "break-word" }}
         position="bottom-right"
