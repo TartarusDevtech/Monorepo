@@ -2,13 +2,12 @@ import MetaTags from "@components/Common/MetaTags";
 import NotLoggedIn from "@components/Shared/NotLoggedIn";
 import { APP_NAME } from "@hey/data/constants";
 import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
-import type { NextPage } from "next";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import SettingsSidebar from "../Sidebar";
 import LinkUsername from "./LinkUsername";
 import UnlinkUsername from "./UnlinkUsername";
 
-const UsernameSettings: NextPage = () => {
+const UsernameSettings = () => {
   const { currentAccount } = useAccountStore();
 
   if (!currentAccount) {

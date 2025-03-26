@@ -8,12 +8,11 @@ import {
   GridItemFour,
   GridLayout
 } from "@hey/ui";
-import type { NextPage } from "next";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import SettingsSidebar from "../Sidebar";
 import List from "./List";
 
-const SessionsSettings: NextPage = () => {
+const SessionsSettings = () => {
   const { currentAccount } = useAccountStore();
 
   if (!currentAccount) {

@@ -1,13 +1,12 @@
 import Sidebar from "@components/Shared/Sidebar";
 import { PencilSquareIcon, UsersIcon } from "@heroicons/react/24/outline";
 import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
-import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import Custom404 from "src/pages/404";
 import Accounts from "./Accounts";
 import Posts from "./Posts";
 
-const Search: NextPage = () => {
+const Search = () => {
   const { query } = useRouter();
   const searchText = Array.isArray(query.q)
     ? encodeURIComponent(query.q.join(" "))

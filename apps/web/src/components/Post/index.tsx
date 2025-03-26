@@ -22,7 +22,6 @@ import {
   GridLayout,
   WarningMessage
 } from "@hey/ui";
-import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { createTrackedSelector } from "react-tracked";
 import Custom404 from "src/pages/404";
@@ -47,7 +46,7 @@ const store = create<HiddenCommentFeedState>((set) => ({
 
 export const useHiddenCommentFeedStore = createTrackedSelector(store);
 
-const ViewPost: NextPage = () => {
+const ViewPost = () => {
   const {
     isReady,
     pathname,

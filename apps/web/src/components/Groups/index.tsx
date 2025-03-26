@@ -3,7 +3,6 @@ import Footer from "@components/Shared/Footer";
 import NotLoggedIn from "@components/Shared/NotLoggedIn";
 import { APP_NAME } from "@hey/data/constants";
 import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
-import type { NextPage } from "next";
 import { useState } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import List from "./List";
@@ -15,7 +14,7 @@ export enum GroupsTabFocus {
   Managed = "MANAGED"
 }
 
-const Groups: NextPage = () => {
+const Groups = () => {
   const { currentAccount } = useAccountStore();
   const [focus, setFocus] = useState<GroupsTabFocus>(GroupsTabFocus.Member);
 

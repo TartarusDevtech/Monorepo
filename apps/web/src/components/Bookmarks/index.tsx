@@ -6,12 +6,11 @@ import NotLoggedIn from "@components/Shared/NotLoggedIn";
 import { APP_NAME } from "@hey/data/constants";
 import type { MainContentFocus } from "@hey/indexer";
 import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
-import type { NextPage } from "next";
 import { useState } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import BookmarksFeed from "./BookmarksFeed";
 
-const Bookmarks: NextPage = () => {
+const Bookmarks = () => {
   const { currentAccount } = useAccountStore();
   const [focus, setFocus] = useState<MainContentFocus>();
 

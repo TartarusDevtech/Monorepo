@@ -1,10 +1,9 @@
 import Footer from "@components/Shared/Footer";
 import { APP_NAME } from "@hey/data/constants";
 import { H2, H4 } from "@hey/ui";
-import type { NextPage } from "next";
 import Link from "next/link";
 
-const Privacy: NextPage = () => {
+const Privacy = () => {
   const updatedAt = "October 30, 2023";
 
   return (

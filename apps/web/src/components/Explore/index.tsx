@@ -5,14 +5,13 @@ import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { MainContentFocus } from "@hey/indexer";
 import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
 import cn from "@hey/ui/cn";
-import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import ExploreFeed from "./ExploreFeed";
 import ImageFeed from "./ImageFeed";
 
-const Explore: NextPage = () => {
+const Explore = () => {
   const router = useRouter();
   const { currentAccount } = useAccountStore();
   const [focus, setFocus] = useState<MainContentFocus>();

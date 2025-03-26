@@ -8,12 +8,11 @@ import {
   GridItemFour,
   GridLayout
 } from "@hey/ui";
-import type { NextPage } from "next";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import SettingsSidebar from "../Sidebar";
 import Balances from "./Balances";
 
-const FundsSettings: NextPage = () => {
+const FundsSettings = () => {
   const { currentAccount } = useAccountStore();
 
   if (!currentAccount) {

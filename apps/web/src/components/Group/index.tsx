@@ -9,7 +9,6 @@ import {
   GridLayout,
   WarningMessage
 } from "@hey/ui";
-import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import Custom404 from "src/pages/404";
 import Custom500 from "src/pages/500";
@@ -18,7 +17,7 @@ import Details from "./Details";
 import GroupFeed from "./GroupFeed";
 import GroupPageShimmer from "./Shimmer";
 
-const ViewGroup: NextPage = () => {
+const ViewGroup = () => {
   const {
     isReady,
     query: { address }

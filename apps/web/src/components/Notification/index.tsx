@@ -2,14 +2,13 @@ import MetaTags from "@components/Common/MetaTags";
 import NotLoggedIn from "@components/Shared/NotLoggedIn";
 import { APP_NAME } from "@hey/data/constants";
 import { NotificationFeedType } from "@hey/data/enums";
-import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import FeedType from "./FeedType";
 import List from "./List";
 import Settings from "./Settings";
 
-const Notification: NextPage = () => {
+const Notification = () => {
   const {
     query: { type }
   } = useRouter();

@@ -12,7 +12,6 @@ import isAccountDeleted from "@hey/helpers/isAccountDeleted";
 import { useAccountQuery } from "@hey/indexer";
 import { EmptyState, GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
 import { useQuery } from "@tanstack/react-query";
-import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import Custom404 from "src/pages/404";
 import Custom500 from "src/pages/500";
@@ -24,7 +23,7 @@ import FeedType from "./FeedType";
 import AccountPageShimmer from "./Shimmer";
 import SuspendedDetails from "./SuspendedDetails";
 
-const ViewProfile: NextPage = () => {
+const ViewProfile = () => {
   const {
     isReady,
     query: { username, address, type }

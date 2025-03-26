@@ -3,7 +3,6 @@ import NotLoggedIn from "@components/Shared/NotLoggedIn";
 import { APP_NAME } from "@hey/data/constants";
 import { useGroupQuery } from "@hey/indexer";
 import { GridItemEight, GridItemFour, GridLayout, PageLoading } from "@hey/ui";
-import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import Custom404 from "src/pages/404";
 import Custom500 from "src/pages/500";
@@ -12,7 +11,7 @@ import SettingsSidebar from "../Sidebar";
 import ApprovalRule from "./ApprovalRule";
 import SuperJoin from "./SuperJoin";
 
-const RulesSettings: NextPage = () => {
+const RulesSettings = () => {
   const {
     isReady,
     query: { address }

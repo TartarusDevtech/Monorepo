@@ -8,13 +8,12 @@ import {
   GridItemFour,
   GridLayout
 } from "@hey/ui";
-import type { NextPage } from "next";
 import { useAccountStore } from "src/store/persisted/useAccountStore";
 import SettingsSidebar from "../Sidebar";
 import AppIcon from "./AppIcon";
 import IncludeLowScore from "./IncludeLowScore";
 
-const PreferencesSettings: NextPage = () => {
+const PreferencesSettings = () => {
   const { currentAccount } = useAccountStore();
 
   if (!currentAccount) {

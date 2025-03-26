@@ -1,10 +1,9 @@
 import Footer from "@components/Shared/Footer";
 import { APP_NAME } from "@hey/data/constants";
 import { H2, H4 } from "@hey/ui";
-import type { NextPage } from "next";
 import Link from "next/link";
 
-const Guidelines: NextPage = () => {
+const Guidelines = () => {
   return (
     <>
       <div className="flex h-48 w-full items-center justify-center bg-gray-400">
