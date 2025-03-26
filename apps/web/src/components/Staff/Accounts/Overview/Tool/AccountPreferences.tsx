@@ -8,6 +8,7 @@ import {
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import type { PreferencesRouterOutput } from "@hey/rpc/src/routers/preferences";
 import { H5 } from "@hey/ui";
+import Image from "next/image";
 
 interface AccountPreferencesProps {
   preferences: PreferencesRouterOutput["get"];
@@ -30,11 +31,11 @@ const AccountPreferences = ({ preferences }: AccountPreferencesProps) => {
           icon={<CursorArrowRaysIcon className="ld-text-gray-500 size-4" />}
           title="App Icon"
         >
-          <img
+          <Image
             className="size-4"
-            height={16}
-            alt="Logo"
             src={`${STATIC_IMAGES_URL}/app-icon/0.png`}
+            alt="Logo"
+            height={16}
             width={16}
           />
         </MetaDetails>
