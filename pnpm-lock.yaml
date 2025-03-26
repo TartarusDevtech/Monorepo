@@ -26,15 +26,15 @@ importers:
       '@hey/data':
         specifier: workspace:*
         version: link:../../packages/data
-      '@hey/db':
-        specifier: workspace:*
-        version: link:../../packages/db
       '@hey/helpers':
         specifier: workspace:*
         version: link:../../packages/helpers
       '@lens-protocol/metadata':
         specifier: next
         version: 2.0.0-next.7(typescript@5.8.2)(zod@3.24.2)
+      '@prisma/client':
+        specifier: ^6.5.0
+        version: 6.5.0(prisma@6.5.0(typescript@5.8.2))(typescript@5.8.2)
       '@trpc-limiter/memory':
         specifier: ^1.0.0
         version: 1.0.0(@trpc/server@11.0.0(typescript@5.8.2))
@@ -87,6 +87,9 @@ importers:
       '@types/node':
         specifier: ^22.13.13
         version: 22.13.13
+      prisma:
+        specifier: ^6.5.0
+        version: 6.5.0(typescript@5.8.2)
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@22.13.13)(typescript@5.8.2)
@@ -328,37 +331,6 @@ importers:
       '@types/node':
         specifier: ^22.13.13
         version: 22.13.13
-      typescript:
-        specifier: ^5.7.3
-        version: 5.8.2
-
-  packages/db:
-    dependencies:
-      '@hey/data':
-        specifier: workspace:*
-        version: link:../data
-      '@hey/helpers':
-        specifier: workspace:*
-        version: link:../helpers
-      '@prisma/client':
-        specifier: ^6.5.0
-        version: 6.5.0(prisma@6.5.0(typescript@5.8.2))(typescript@5.8.2)
-      dotenv:
-        specifier: ^16.4.7
-        version: 16.4.7
-    devDependencies:
-      '@hey/config':
-        specifier: workspace:*
-        version: link:../config
-      '@types/node':
-        specifier: ^22.13.13
-        version: 22.13.13
-      prisma:
-        specifier: ^6.5.0
-        version: 6.5.0(typescript@5.8.2)
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@22.13.13)(typescript@5.8.2)
       typescript:
         specifier: ^5.7.3
         version: 5.8.2

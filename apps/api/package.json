@@ -5,16 +5,21 @@
   "license": "AGPL-3.0",
   "scripts": {
     "build": "echo 'Not required'",
+    "codegen": "prisma generate --schema ./src/prisma/schema.prisma",
     "dev": "tsx watch src/index.ts",
-    "typecheck": "tsc --pretty",
-    "start": "tsx watch src/index.ts"
+    "postinstall": "pnpm codegen",
+    "prisma:clean": "prisma migrate reset --schema ./src/prisma/schema.prisma",
+    "prisma:format": "prisma format --schema ./src/prisma/schema.prisma",
+    "prisma:migrate": "prisma migrate dev --schema ./src/prisma/schema.prisma",
+    "start": "tsx watch src/index.ts",
+    "typecheck": "tsc --pretty"
   },
   "dependencies": {
     "@aws-sdk/client-sts": "^3.775.0",
     "@hey/data": "workspace:*",
-    "@hey/db": "workspace:*",
     "@hey/helpers": "workspace:*",
     "@lens-protocol/metadata": "next",
+    "@prisma/client": "^6.5.0",
     "@trpc-limiter/memory": "^1.0.0",
     "@trpc/server": "^11.0.0",
     "axios": "^1.8.4",
@@ -34,6 +39,7 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/node": "^22.13.13",
+    "prisma": "^6.5.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
   }

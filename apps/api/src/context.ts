@@ -1,6 +1,6 @@
-import prisma from "@hey/db/prisma/db/client";
 import parseJwt from "@hey/helpers/parseJwt";
 import type { CreateHTTPContextOptions } from "@trpc/server/adapters/standalone";
+import prisma from "./prisma/client";
 
 export const createContext = async ({ req, res }: CreateHTTPContextOptions) => {
   async function getFromHeader() {

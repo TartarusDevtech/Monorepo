@@ -1,11 +1,11 @@
 import { Errors } from "@hey/data/errors";
 import { PermissionId } from "@hey/data/permissions";
-import prisma from "@hey/db/prisma/db/client";
 import type { Request, Response } from "express";
 import {
   CACHE_AGE_1_DAY,
   VERIFICATION_ENDPOINT
 } from "../../helpers/constants";
+import prisma from "../../prisma/client";
 
 export const lensAuthorization = async (req: Request, res: Response) => {
   const { account } = req.body;
