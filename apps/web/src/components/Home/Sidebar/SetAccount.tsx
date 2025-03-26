@@ -1,9 +1,9 @@
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { MinusCircleIcon } from "@heroicons/react/24/outline";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { APP_NAME } from "@hey/data/constants";
 import { Card, H5 } from "@hey/ui";
 import Link from "next/link";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 interface StatusProps {
   finished: boolean;

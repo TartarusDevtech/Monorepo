@@ -1,5 +1,5 @@
-import MenuTransition from "@components/Shared/MenuTransition";
-import { TipIcon } from "@components/Shared/TipIcon";
+import MenuTransition from "@/components/Shared/MenuTransition";
+import { TipIcon } from "@/components/Shared/TipIcon";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import nFormatter from "@hey/helpers/nFormatter";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";

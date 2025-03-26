@@ -1,10 +1,10 @@
-import MetaTags from "@components/Common/MetaTags";
-import Footer from "@components/Shared/Footer";
-import NotLoggedIn from "@components/Shared/NotLoggedIn";
+import MetaTags from "@/components/Common/MetaTags";
+import Footer from "@/components/Shared/Footer";
+import NotLoggedIn from "@/components/Shared/NotLoggedIn";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { APP_NAME } from "@hey/data/constants";
 import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
 import { useState } from "react";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import List from "./List";
 import ListFocusType from "./ListFocusType";
 import CreateGroup from "./Sidebar/Create/CreateGroup";

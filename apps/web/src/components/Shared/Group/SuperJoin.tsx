@@ -1,15 +1,15 @@
 import {
   getMembershipApprovalDetails,
   getSimplePaymentDetails
-} from "@helpers/rules";
+} from "@/helpers/rules";
+import { useSuperJoinModalStore } from "@/store/non-persisted/modal/useSuperJoinModalStore";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { CurrencyDollarIcon } from "@heroicons/react/24/outline";
 import { APP_NAME } from "@hey/data/constants";
 import { tokens } from "@hey/data/tokens";
 import getTokenImage from "@hey/helpers/getTokenImage";
 import type { Group, GroupRules } from "@hey/indexer";
 import { H3, H5 } from "@hey/ui";
-import { useSuperJoinModalStore } from "src/store/non-persisted/modal/useSuperJoinModalStore";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import type { Address } from "viem";
 import { useBalance } from "wagmi";
 import FundButton from "../Fund/FundButton";

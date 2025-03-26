@@ -1,6 +1,6 @@
+import errorToast from "@/helpers/errorToast";
 import type { ApolloCache } from "@apollo/client";
 import { MenuItem } from "@headlessui/react";
-import errorToast from "@helpers/errorToast";
 import { BookmarkIcon as BookmarkIconOutline } from "@heroicons/react/24/outline";
 import { BookmarkIcon as BookmarkIconSolid } from "@heroicons/react/24/solid";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";

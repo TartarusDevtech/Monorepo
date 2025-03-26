@@ -1,5 +1,6 @@
-import SingleAccount from "@components/Shared/SingleAccount";
-import errorToast from "@helpers/errorToast";
+import SingleAccount from "@/components/Shared/SingleAccount";
+import errorToast from "@/helpers/errorToast";
+import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { Errors } from "@hey/data/errors";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
@@ -16,7 +17,6 @@ import {
 } from "@hey/ui";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 import { z } from "zod";
 import Reason from "./Reason";
 

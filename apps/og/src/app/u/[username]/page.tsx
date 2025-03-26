@@ -1,10 +1,10 @@
+import defaultMetadata from "@/defaultMetadata";
 import { APP_NAME, APP_URL } from "@hey/data/constants";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import { AccountDocument } from "@hey/indexer";
 import apolloClient from "@hey/indexer/apollo/client";
 import type { Metadata } from "next";
-import defaultMetadata from "src/defaultMetadata";
 
 interface Props {
   params: Promise<{ username: string }>;

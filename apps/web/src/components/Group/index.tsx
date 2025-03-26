@@ -1,6 +1,9 @@
-import MetaTags from "@components/Common/MetaTags";
-import NewPost from "@components/Composer/NewPost";
-import Cover from "@components/Shared/Cover";
+import MetaTags from "@/components/Common/MetaTags";
+import NewPost from "@/components/Composer/NewPost";
+import Cover from "@/components/Shared/Cover";
+import Custom404 from "@/pages/404";
+import Custom500 from "@/pages/500";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { useGroupQuery } from "@hey/indexer";
 import {
@@ -10,9 +13,6 @@ import {
   WarningMessage
 } from "@hey/ui";
 import { useRouter } from "next/router";
-import Custom404 from "src/pages/404";
-import Custom500 from "src/pages/500";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import Details from "./Details";
 import GroupFeed from "./GroupFeed";
 import GroupPageShimmer from "./Shimmer";

@@ -1,3 +1,4 @@
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
   BellIcon,
   HomeIcon,
@@ -14,7 +15,6 @@ import { Image } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 const BottomNavigation = () => {
   const { currentAccount } = useAccountStore();

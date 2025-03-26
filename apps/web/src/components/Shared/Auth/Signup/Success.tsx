@@ -1,3 +1,4 @@
+import { signIn } from "@/store/persisted/useAuthStore";
 import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import { useSwitchAccountMutation } from "@hey/indexer";
@@ -5,7 +6,6 @@ import { H4 } from "@hey/ui";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
-import { signIn } from "src/store/persisted/useAuthStore";
 import { useSignupStore } from ".";
 
 const Success = () => {

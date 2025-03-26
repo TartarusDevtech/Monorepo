@@ -1,7 +1,9 @@
-import AvatarUpload from "@components/Shared/AvatarUpload";
-import trackEvent from "@helpers/analytics";
-import errorToast from "@helpers/errorToast";
-import uploadMetadata from "@helpers/uploadMetadata";
+import AvatarUpload from "@/components/Shared/AvatarUpload";
+import trackEvent from "@/helpers/analytics";
+import errorToast from "@/helpers/errorToast";
+import uploadMetadata from "@/helpers/uploadMetadata";
+import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
+import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
 import { Regex } from "@hey/data/regex";
@@ -10,8 +12,6 @@ import { Button, Form, Input, TextArea, useZodForm } from "@hey/ui";
 import { group } from "@lens-protocol/metadata";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
-import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 import { z } from "zod";
 import { useCreateGroupStore } from "./CreateGroup";
 

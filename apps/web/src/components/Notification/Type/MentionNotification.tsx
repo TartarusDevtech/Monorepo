@@ -1,4 +1,4 @@
-import Markup from "@components/Shared/Markup";
+import Markup from "@/components/Shared/Markup";
 import { AtSymbolIcon } from "@heroicons/react/24/outline";
 import getPostData from "@hey/helpers/getPostData";
 import type { MentionNotificationFragment } from "@hey/indexer";

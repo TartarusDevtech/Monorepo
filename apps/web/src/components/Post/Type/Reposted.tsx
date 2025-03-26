@@ -1,4 +1,4 @@
-import Accounts from "@components/Shared/Accounts";
+import Accounts from "@/components/Shared/Accounts";
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 import type { AccountFragment } from "@hey/indexer";
 

@@ -1,13 +1,13 @@
+import { useNewPostModalStore } from "@/store/non-persisted/modal/useNewPostModalStore";
+import { usePostStore } from "@/store/non-persisted/post/usePostStore";
+import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { MenuItem } from "@headlessui/react";
 import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
 import { Errors } from "@hey/data/errors";
 import type { PostFragment } from "@hey/indexer";
 import cn from "@hey/ui/cn";
 import toast from "react-hot-toast";
-import { useNewPostModalStore } from "src/store/non-persisted/modal/useNewPostModalStore";
-import { usePostStore } from "src/store/non-persisted/post/usePostStore";
-import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 interface QuoteProps {
   post: PostFragment;

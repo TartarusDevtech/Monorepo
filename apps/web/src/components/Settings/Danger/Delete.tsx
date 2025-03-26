@@ -1,4 +1,6 @@
-import SingleAccount from "@components/Shared/SingleAccount";
+import SingleAccount from "@/components/Shared/SingleAccount";
+import useHandleWrongNetwork from "@/hooks/useHandleWrongNetwork";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import {
   APP_NAME,
@@ -19,8 +21,6 @@ import {
 import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import useHandleWrongNetwork from "src/hooks/useHandleWrongNetwork";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 const DeleteSettings = () => {
   const { currentAccount } = useAccountStore();

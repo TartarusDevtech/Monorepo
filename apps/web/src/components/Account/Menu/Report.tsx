@@ -1,8 +1,8 @@
+import { useReportAccountModalStore } from "@/store/non-persisted/modal/useReportAccountModalStore";
 import { MenuItem } from "@headlessui/react";
 import { FlagIcon } from "@heroicons/react/24/outline";
 import type { AccountFragment } from "@hey/indexer";
 import cn from "@hey/ui/cn";
-import { useReportAccountModalStore } from "src/store/non-persisted/modal/useReportAccountModalStore";
 
 interface ReportProps {
   account: AccountFragment;

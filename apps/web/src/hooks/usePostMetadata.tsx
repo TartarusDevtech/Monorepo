@@ -1,3 +1,7 @@
+import { usePostAttachmentStore } from "@/store/non-persisted/post/usePostAttachmentStore";
+import { usePostLicenseStore } from "@/store/non-persisted/post/usePostLicenseStore";
+import { usePostLiveStore } from "@/store/non-persisted/post/usePostLiveStore";
+import { usePostVideoStore } from "@/store/non-persisted/post/usePostVideoStore";
 import {
   audio,
   image,
@@ -6,10 +10,6 @@ import {
   video
 } from "@lens-protocol/metadata";
 import { useCallback } from "react";
-import { usePostAttachmentStore } from "src/store/non-persisted/post/usePostAttachmentStore";
-import { usePostLicenseStore } from "src/store/non-persisted/post/usePostLicenseStore";
-import { usePostLiveStore } from "src/store/non-persisted/post/usePostLiveStore";
-import { usePostVideoStore } from "src/store/non-persisted/post/usePostVideoStore";
 import { usePostAudioStore } from "../store/non-persisted/post/usePostAudioStore";
 
 interface UsePostMetadataProps {

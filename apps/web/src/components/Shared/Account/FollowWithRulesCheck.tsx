@@ -1,7 +1,7 @@
-import { getSimplePaymentDetails } from "@helpers/rules";
+import { getSimplePaymentDetails } from "@/helpers/rules";
+import { useSuperFollowModalStore } from "@/store/non-persisted/modal/useSuperFollowModalStore";
 import type { AccountFollowRules, AccountFragment } from "@hey/indexer";
 import { Button } from "@hey/ui";
-import { useSuperFollowModalStore } from "src/store/non-persisted/modal/useSuperFollowModalStore";
 import Follow from "./Follow";
 
 interface FollowWithRulesCheckProps {

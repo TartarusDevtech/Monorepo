@@ -1,5 +1,6 @@
-import SinglePost from "@components/Post/SinglePost";
-import PostsShimmer from "@components/Shared/Shimmer/PostsShimmer";
+import SinglePost from "@/components/Post/SinglePost";
+import PostsShimmer from "@/components/Shared/Shimmer/PostsShimmer";
+import { useAccountFeedStore } from "@/store/non-persisted/useAccountFeedStore";
 import { ChatBubbleBottomCenterIcon } from "@heroicons/react/24/outline";
 import { AccountFeedType } from "@hey/data/enums";
 import {
@@ -13,7 +14,6 @@ import { Card, EmptyState, ErrorMessage } from "@hey/ui";
 import { useEffect, useRef } from "react";
 import type { StateSnapshot, VirtuosoHandle } from "react-virtuoso";
 import { Virtuoso } from "react-virtuoso";
-import { useAccountFeedStore } from "src/store/non-persisted/useAccountFeedStore";
 
 let virtuosoState: any = { ranges: [], screenTop: 0 };
 

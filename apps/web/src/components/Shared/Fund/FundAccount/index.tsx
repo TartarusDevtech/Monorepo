@@ -1,3 +1,4 @@
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
   DEFAULT_COLLECT_TOKEN,
   IS_MAINNET,
@@ -6,7 +7,6 @@ import {
   WRAPPED_NATIVE_TOKEN_SYMBOL
 } from "@hey/data/constants";
 import { Image } from "@hey/ui";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import { formatUnits } from "viem";
 import { useBalance } from "wagmi";
 import Loader from "../../Loader";

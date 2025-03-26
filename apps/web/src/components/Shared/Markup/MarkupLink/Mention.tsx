@@ -1,5 +1,5 @@
-import AccountPreview from "@components/Shared/AccountPreview";
-import Slug from "@components/Shared/Slug";
+import AccountPreview from "@/components/Shared/AccountPreview";
+import Slug from "@/components/Shared/Slug";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { MarkupLinkProps } from "@hey/types/misc";
 import Link from "next/link";

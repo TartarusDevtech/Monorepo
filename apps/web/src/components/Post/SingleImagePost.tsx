@@ -1,4 +1,4 @@
-import SmallSingleAccount from "@components/Shared/SmallSingleAccount";
+import SmallSingleAccount from "@/components/Shared/SmallSingleAccount";
 import getPostData from "@hey/helpers/getPostData";
 import { isRepost } from "@hey/helpers/postHelpers";
 import type { AnyPostFragment } from "@hey/indexer";

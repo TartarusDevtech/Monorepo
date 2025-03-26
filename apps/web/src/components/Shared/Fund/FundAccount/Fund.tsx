@@ -1,5 +1,9 @@
-import trackEvent from "@helpers/analytics";
-import errorToast from "@helpers/errorToast";
+import trackEvent from "@/helpers/analytics";
+import errorToast from "@/helpers/errorToast";
+import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";
+import usePreventScrollOnNumberInput from "@/hooks/usePreventScrollOnNumberInput";
+import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
+import { useFundModalStore } from "@/store/non-persisted/modal/useFundModalStore";
 import {
   DEFAULT_COLLECT_TOKEN,
   NATIVE_TOKEN_SYMBOL,
@@ -10,10 +14,6 @@ import { useDepositMutation } from "@hey/indexer";
 import { Button, Card, Input, Spinner } from "@hey/ui";
 import { type ChangeEvent, type RefObject, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import usePollTransactionStatus from "src/hooks/usePollTransactionStatus";
-import usePreventScrollOnNumberInput from "src/hooks/usePreventScrollOnNumberInput";
-import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
-import { useFundModalStore } from "src/store/non-persisted/modal/useFundModalStore";
 import { formatUnits } from "viem";
 import { useAccount, useBalance } from "wagmi";
 

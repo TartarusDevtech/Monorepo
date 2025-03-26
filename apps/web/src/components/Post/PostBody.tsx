@@ -1,8 +1,8 @@
-import Attachments from "@components/Shared/Attachments";
-import Quote from "@components/Shared/Embed/Quote";
-import Markup from "@components/Shared/Markup";
-import Oembed from "@components/Shared/Oembed";
-import Video from "@components/Shared/Video";
+import Attachments from "@/components/Shared/Attachments";
+import Quote from "@/components/Shared/Embed/Quote";
+import Markup from "@/components/Shared/Markup";
+import Oembed from "@/components/Shared/Oembed";
+import Video from "@/components/Shared/Video";
 import { EyeIcon } from "@heroicons/react/24/outline";
 import getPostData from "@hey/helpers/getPostData";
 import getURLs from "@hey/helpers/getURLs";

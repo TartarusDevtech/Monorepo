@@ -1,6 +1,7 @@
-import Video from "@components/Shared/Video";
-import errorToast from "@helpers/errorToast";
-import { trpc } from "@helpers/trpc";
+import Video from "@/components/Shared/Video";
+import errorToast from "@/helpers/errorToast";
+import { trpc } from "@/helpers/trpc";
+import { usePostLiveStore } from "@/store/non-persisted/post/usePostLiveStore";
 import {
   ClipboardDocumentIcon,
   SignalIcon,
@@ -14,7 +15,6 @@ import { useMutation } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { usePostLiveStore } from "src/store/non-persisted/post/usePostLiveStore";
 
 interface WrapperProps {
   children: ReactNode;

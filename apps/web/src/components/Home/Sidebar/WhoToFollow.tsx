@@ -1,6 +1,7 @@
-import DismissRecommendedAccount from "@components/Shared/DismissRecommendedAccount";
-import SingleAccountShimmer from "@components/Shared/Shimmer/SingleAccountShimmer";
-import SingleAccount from "@components/Shared/SingleAccount";
+import DismissRecommendedAccount from "@/components/Shared/DismissRecommendedAccount";
+import SingleAccountShimmer from "@/components/Shared/Shimmer/SingleAccountShimmer";
+import SingleAccount from "@/components/Shared/SingleAccount";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
   type AccountFragment,
   PageSize,
@@ -8,7 +9,6 @@ import {
 } from "@hey/indexer";
 import { Card, ErrorMessage, H5, Modal } from "@hey/ui";
 import { useState } from "react";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import Suggested from "../Suggested";
 
 const Title = () => <H5>Who to Follow</H5>;

@@ -1,5 +1,5 @@
-import Loader from "@components/Shared/Loader";
-import SingleAccount from "@components/Shared/SingleAccount";
+import Loader from "@/components/Shared/Loader";
+import SingleAccount from "@/components/Shared/SingleAccount";
 import { ArrowPathIcon, UsersIcon } from "@heroicons/react/24/outline";
 import {
   AccountsOrderBy,

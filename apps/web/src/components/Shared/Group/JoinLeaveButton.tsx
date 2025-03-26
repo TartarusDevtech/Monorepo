@@ -1,7 +1,7 @@
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { GroupFragment } from "@hey/indexer";
 import { useEffect, useState } from "react";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import JoinWithRulesCheck from "./JoinWithRulesCheck";
 import Leave from "./Leave";
 

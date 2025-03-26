@@ -1,6 +1,6 @@
+import { CHAIN } from "@/constants";
 import { Errors } from "@hey/data/errors";
 import { immutable } from "@lens-chain/storage-client";
-import { CHAIN } from "src/constants";
 import { storageClient } from "./storageClient";
 
 const uploadMetadata = async (data: any): Promise<string> => {

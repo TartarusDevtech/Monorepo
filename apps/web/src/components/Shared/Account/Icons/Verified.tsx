@@ -1,4 +1,4 @@
-import isVerified from "@helpers/isVerified";
+import isVerified from "@/helpers/isVerified";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import { Tooltip } from "@hey/ui";
 import cn from "@hey/ui/cn";

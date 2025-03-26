@@ -1,10 +1,10 @@
 import {
   getMembershipApprovalDetails,
   getSimplePaymentDetails
-} from "@helpers/rules";
+} from "@/helpers/rules";
+import { useSuperJoinModalStore } from "@/store/non-persisted/modal/useSuperJoinModalStore";
 import type { GroupFragment, GroupRules } from "@hey/indexer";
 import { Button } from "@hey/ui";
-import { useSuperJoinModalStore } from "src/store/non-persisted/modal/useSuperJoinModalStore";
 import Join from "./Join";
 
 interface JoinWithRulesCheckProps {

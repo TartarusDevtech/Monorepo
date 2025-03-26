@@ -1,10 +1,10 @@
-import type { EditorExtension } from "@helpers/prosekit/extension";
-import { getMarkdownContent } from "@helpers/prosekit/markdownContent";
+import type { EditorExtension } from "@/helpers/prosekit/extension";
+import { getMarkdownContent } from "@/helpers/prosekit/markdownContent";
+import useDebouncedCallback from "@/hooks/prosekit/useDebouncedCallback";
+import { usePostStore } from "@/store/non-persisted/post/usePostStore";
 import type { Editor } from "prosekit/core";
 import { useDocChange } from "prosekit/react";
 import { useCallback, useState } from "react";
-import useDebouncedCallback from "src/hooks/prosekit/useDebouncedCallback";
-import { usePostStore } from "src/store/non-persisted/post/usePostStore";
 
 const DEBOUNCE_CHARS_THRESHOLD = 3000;
 const DEBOUNCE_DELAY = 500;

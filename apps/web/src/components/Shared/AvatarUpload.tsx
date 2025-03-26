@@ -1,7 +1,7 @@
-import ChooseFile from "@components/Shared/ChooseFile";
-import ImageCropperController from "@components/Shared/ImageCropperController";
-import uploadCroppedImage, { readFile } from "@helpers/accountPictureUtils";
-import errorToast from "@helpers/errorToast";
+import ChooseFile from "@/components/Shared/ChooseFile";
+import ImageCropperController from "@/components/Shared/ImageCropperController";
+import uploadCroppedImage, { readFile } from "@/helpers/accountPictureUtils";
+import errorToast from "@/helpers/errorToast";
 import { AVATAR, DEFAULT_AVATAR } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import imageKit from "@hey/helpers/imageKit";

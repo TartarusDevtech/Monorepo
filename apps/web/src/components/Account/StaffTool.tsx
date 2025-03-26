@@ -1,4 +1,4 @@
-import Suspend from "@components/Shared/Account/Suspend";
+import Suspend from "@/components/Shared/Account/Suspend";
 import type { AccountFragment } from "@hey/indexer";
 
 interface StaffToolProps {

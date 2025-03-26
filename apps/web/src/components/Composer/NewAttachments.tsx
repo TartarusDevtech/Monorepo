@@ -1,12 +1,12 @@
-import ChooseThumbnail from "@components/Composer/ChooseThumbnail";
+import ChooseThumbnail from "@/components/Composer/ChooseThumbnail";
+import { usePostAttachmentStore } from "@/store/non-persisted/post/usePostAttachmentStore";
+import { usePostVideoStore } from "@/store/non-persisted/post/usePostVideoStore";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { NewAttachment } from "@hey/types/misc";
 import { Image } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import { useEffect, useRef } from "react";
-import { usePostAttachmentStore } from "src/store/non-persisted/post/usePostAttachmentStore";
-import { usePostVideoStore } from "src/store/non-persisted/post/usePostVideoStore";
 import Audio from "../Shared/Audio";
 
 const getClass = (attachments: number) => {

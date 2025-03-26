@@ -1,3 +1,4 @@
+import { usePostStore } from "@/store/non-persisted/post/usePostStore";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { isRepost } from "@hey/helpers/postHelpers";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
@@ -6,7 +7,6 @@ import type {
   PostGroupInfoFragment,
   TimelineItemFragment
 } from "@hey/indexer";
-import { usePostStore } from "src/store/non-persisted/post/usePostStore";
 import PostMenu from "./Actions/Menu";
 import PostAccount from "./PostAccount";
 

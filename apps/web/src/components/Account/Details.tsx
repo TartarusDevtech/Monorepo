@@ -1,8 +1,9 @@
-import FollowUnfollowButton from "@components/Shared/Account/FollowUnfollowButton";
-import Verified from "@components/Shared/Account/Icons/Verified";
-import Markup from "@components/Shared/Markup";
-import Slug from "@components/Shared/Slug";
-import hasAccess from "@helpers/hasAccess";
+import FollowUnfollowButton from "@/components/Shared/Account/FollowUnfollowButton";
+import Verified from "@/components/Shared/Account/Icons/Verified";
+import Markup from "@/components/Shared/Markup";
+import Slug from "@/components/Shared/Slug";
+import hasAccess from "@/helpers/hasAccess";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
   Cog6ToothIcon,
   MapPinIcon,
@@ -23,7 +24,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import type { ReactNode } from "react";
 import { useState } from "react";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import Followerings from "./Followerings";
 import FollowersYouKnowOverview from "./FollowersYouKnowOverview";
 import InternalTools from "./InternalTools";

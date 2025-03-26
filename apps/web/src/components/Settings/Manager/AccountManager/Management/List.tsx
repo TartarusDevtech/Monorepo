@@ -1,6 +1,6 @@
-import Loader from "@components/Shared/Loader";
-import SingleAccount from "@components/Shared/SingleAccount";
-import errorToast from "@helpers/errorToast";
+import Loader from "@/components/Shared/Loader";
+import SingleAccount from "@/components/Shared/SingleAccount";
+import errorToast from "@/helpers/errorToast";
 import { UsersIcon } from "@heroicons/react/24/outline";
 import {
   type AccountsAvailableRequest,

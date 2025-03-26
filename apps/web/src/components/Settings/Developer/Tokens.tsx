@@ -1,11 +1,11 @@
-import errorToast from "@helpers/errorToast";
+import errorToast from "@/helpers/errorToast";
+import useHandleWrongNetwork from "@/hooks/useHandleWrongNetwork";
+import { hydrateAuthTokens } from "@/store/persisted/useAuthStore";
 import { Errors } from "@hey/data/errors";
 import { useAuthenticateMutation, useChallengeMutation } from "@hey/indexer";
 import { Button, Card, CardHeader, H6 } from "@hey/ui";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import useHandleWrongNetwork from "src/hooks/useHandleWrongNetwork";
-import { hydrateAuthTokens } from "src/store/persisted/useAuthStore";
 import { useAccount, useSignMessage } from "wagmi";
 
 const Tokens = () => {

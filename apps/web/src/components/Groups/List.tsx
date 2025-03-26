@@ -1,5 +1,6 @@
-import GroupListShimmer from "@components/Shared/Shimmer/GroupListShimmer";
-import SingleGroup from "@components/Shared/SingleGroup";
+import GroupListShimmer from "@/components/Shared/Shimmer/GroupListShimmer";
+import SingleGroup from "@/components/Shared/SingleGroup";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { UserGroupIcon } from "@heroicons/react/24/outline";
 import {
   GroupsOrderBy,
@@ -9,7 +10,6 @@ import {
 } from "@hey/indexer";
 import { Card, EmptyState, ErrorMessage } from "@hey/ui";
 import { Virtuoso } from "react-virtuoso";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import { GroupsTabFocus } from ".";
 
 interface ListProps {

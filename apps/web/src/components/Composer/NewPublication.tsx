@@ -1,11 +1,29 @@
-import NewAttachments from "@components/Composer/NewAttachments";
-import QuotedPost from "@components/Post/QuotedPost";
-import { AudioPostSchema } from "@components/Shared/Audio";
-import Wrapper from "@components/Shared/Embed/Wrapper";
-import EmojiPicker from "@components/Shared/EmojiPicker";
-import trackEvent from "@helpers/analytics";
-import errorToast from "@helpers/errorToast";
-import uploadMetadata from "@helpers/uploadMetadata";
+import NewAttachments from "@/components/Composer/NewAttachments";
+import QuotedPost from "@/components/Post/QuotedPost";
+import { AudioPostSchema } from "@/components/Shared/Audio";
+import Wrapper from "@/components/Shared/Embed/Wrapper";
+import EmojiPicker from "@/components/Shared/EmojiPicker";
+import trackEvent from "@/helpers/analytics";
+import errorToast from "@/helpers/errorToast";
+import uploadMetadata from "@/helpers/uploadMetadata";
+import useCreatePost from "@/hooks/useCreatePost";
+import usePostMetadata from "@/hooks/usePostMetadata";
+import { useNewPostModalStore } from "@/store/non-persisted/modal/useNewPostModalStore";
+import { useCollectActionStore } from "@/store/non-persisted/post/useCollectActionStore";
+import { usePostAttachmentStore } from "@/store/non-persisted/post/usePostAttachmentStore";
+import {
+  DEFAULT_AUDIO_POST,
+  usePostAudioStore
+} from "@/store/non-persisted/post/usePostAudioStore";
+import { usePostLicenseStore } from "@/store/non-persisted/post/usePostLicenseStore";
+import { usePostLiveStore } from "@/store/non-persisted/post/usePostLiveStore";
+import { usePostStore } from "@/store/non-persisted/post/usePostStore";
+import {
+  DEFAULT_VIDEO_THUMBNAIL,
+  usePostVideoStore
+} from "@/store/non-persisted/post/usePostVideoStore";
+import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { APP_URL, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
@@ -18,24 +36,6 @@ import type { NewAttachment } from "@hey/types/misc";
 import { Button, Card, H6 } from "@hey/ui";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import useCreatePost from "src/hooks/useCreatePost";
-import usePostMetadata from "src/hooks/usePostMetadata";
-import { useNewPostModalStore } from "src/store/non-persisted/modal/useNewPostModalStore";
-import { useCollectActionStore } from "src/store/non-persisted/post/useCollectActionStore";
-import { usePostAttachmentStore } from "src/store/non-persisted/post/usePostAttachmentStore";
-import {
-  DEFAULT_AUDIO_POST,
-  usePostAudioStore
-} from "src/store/non-persisted/post/usePostAudioStore";
-import { usePostLicenseStore } from "src/store/non-persisted/post/usePostLicenseStore";
-import { usePostLiveStore } from "src/store/non-persisted/post/usePostLiveStore";
-import { usePostStore } from "src/store/non-persisted/post/usePostStore";
-import {
-  DEFAULT_VIDEO_THUMBNAIL,
-  usePostVideoStore
-} from "src/store/non-persisted/post/usePostVideoStore";
-import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import Attachment from "./Actions/Attachment";
 import CollectSettings from "./Actions/CollectSettings";
 import Gif from "./Actions/Gif";

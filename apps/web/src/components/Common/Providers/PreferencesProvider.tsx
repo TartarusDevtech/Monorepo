@@ -1,11 +1,11 @@
-import getCurrentSession from "@helpers/getCurrentSession";
-import { trpc } from "@helpers/trpc";
+import getCurrentSession from "@/helpers/getCurrentSession";
+import { trpc } from "@/helpers/trpc";
+import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
+import { usePreferencesStore } from "@/store/persisted/usePreferencesStore";
+import { useVerifiedMembersStore } from "@/store/persisted/useVerifiedMembersStore";
 import { Permission } from "@hey/data/permissions";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
-import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
-import { usePreferencesStore } from "src/store/persisted/usePreferencesStore";
-import { useVerifiedMembersStore } from "src/store/persisted/useVerifiedMembersStore";
 
 const PreferencesProvider = () => {
   const { address: sessionAccountAddress } = getCurrentSession();

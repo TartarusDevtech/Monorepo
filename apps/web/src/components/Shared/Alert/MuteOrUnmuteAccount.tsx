@@ -1,6 +1,9 @@
+import trackEvent from "@/helpers/analytics";
+import errorToast from "@/helpers/errorToast";
+import { useMuteAlertStore } from "@/store/non-persisted/alert/useMuteAlertStore";
+import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useApolloClient } from "@apollo/client";
-import trackEvent from "@helpers/analytics";
-import errorToast from "@helpers/errorToast";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
 import getAccount from "@hey/helpers/getAccount";
@@ -12,9 +15,6 @@ import {
 import { Alert } from "@hey/ui";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-import { useMuteAlertStore } from "src/store/non-persisted/alert/useMuteAlertStore";
-import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 const MuteOrUnmuteAccount = () => {
   const { currentAccount } = useAccountStore();

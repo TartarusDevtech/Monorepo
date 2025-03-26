@@ -1,5 +1,5 @@
-import hasAccess from "@helpers/hasAccess";
-import { trpc } from "@helpers/trpc";
+import hasAccess from "@/helpers/hasAccess";
+import { trpc } from "@/helpers/trpc";
 import { QueueListIcon } from "@heroicons/react/24/outline";
 import { Features } from "@hey/data/features";
 import formatDate from "@hey/helpers/datetime/formatDate";

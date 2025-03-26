@@ -4,8 +4,7 @@
     "baseUrl": ".",
     "lib": ["DOM", "DOM.Iterable", "ESNext", "webworker"],
     "paths": {
-      "@components*": ["src/components*"],
-      "@helpers*": ["src/helpers*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]

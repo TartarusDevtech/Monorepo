@@ -1,8 +1,8 @@
+import { useCollectActionStore } from "@/store/non-persisted/post/useCollectActionStore";
+import { usePostLicenseStore } from "@/store/non-persisted/post/usePostLicenseStore";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import { Modal, Tooltip } from "@hey/ui";
 import { useState } from "react";
-import { useCollectActionStore } from "src/store/non-persisted/post/useCollectActionStore";
-import { usePostLicenseStore } from "src/store/non-persisted/post/usePostLicenseStore";
 import CollectForm from "./CollectForm";
 
 const CollectSettings = () => {

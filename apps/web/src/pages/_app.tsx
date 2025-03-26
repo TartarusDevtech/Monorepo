@@ -1,5 +1,5 @@
-import Providers from "@components/Common/Providers";
-import { heyFont } from "@helpers/fonts";
+import Providers from "@/components/Common/Providers";
+import { heyFont } from "@/helpers/fonts";
 import type { AppProps } from "next/app";
 import "../styles.css";
 

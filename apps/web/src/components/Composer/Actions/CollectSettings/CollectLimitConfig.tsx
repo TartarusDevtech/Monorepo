@@ -1,8 +1,8 @@
-import ToggleWithHelper from "@components/Shared/ToggleWithHelper";
+import ToggleWithHelper from "@/components/Shared/ToggleWithHelper";
+import { useCollectActionStore } from "@/store/non-persisted/post/useCollectActionStore";
 import { StarIcon } from "@heroicons/react/24/outline";
 import type { CollectActionType } from "@hey/types/hey";
 import { Input } from "@hey/ui";
-import { useCollectActionStore } from "src/store/non-persisted/post/useCollectActionStore";
 
 interface CollectLimitConfigProps {
   setCollectType: (data: CollectActionType) => void;

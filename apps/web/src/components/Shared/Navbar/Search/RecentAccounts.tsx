@@ -1,12 +1,12 @@
-import Loader from "@components/Shared/Loader";
-import SingleAccount from "@components/Shared/SingleAccount";
+import Loader from "@/components/Shared/Loader";
+import SingleAccount from "@/components/Shared/SingleAccount";
+import { useSearchStore } from "@/store/persisted/useSearchStore";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import getAccount from "@hey/helpers/getAccount";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import { useAccountsBulkQuery } from "@hey/indexer";
 import { H6 } from "@hey/ui";
 import { useRouter } from "next/router";
-import { useSearchStore } from "src/store/persisted/useSearchStore";
 
 interface RecentAccountsProps {
   onAccountClick: () => void;

@@ -1,5 +1,7 @@
-import trackEvent from "@helpers/analytics";
-import errorToast from "@helpers/errorToast";
+import trackEvent from "@/helpers/analytics";
+import errorToast from "@/helpers/errorToast";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
+import { signIn, signOut } from "@/store/persisted/useAuthStore";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
@@ -14,8 +16,6 @@ import cn from "@hey/ui/cn";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
-import { signIn, signOut } from "src/store/persisted/useAuthStore";
 import Loader from "./Loader";
 
 const SwitchAccounts = () => {

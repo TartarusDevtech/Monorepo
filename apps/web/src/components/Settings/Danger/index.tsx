@@ -1,9 +1,9 @@
-import MetaTags from "@components/Common/MetaTags";
-import NotLoggedIn from "@components/Shared/NotLoggedIn";
-import WrongWallet from "@components/Shared/Settings/WrongWallet";
+import MetaTags from "@/components/Common/MetaTags";
+import NotLoggedIn from "@/components/Shared/NotLoggedIn";
+import WrongWallet from "@/components/Shared/Settings/WrongWallet";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { APP_NAME } from "@hey/data/constants";
 import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import { useAccount } from "wagmi";
 import SettingsSidebar from "../Sidebar";
 import DeleteSettings from "./Delete";

@@ -1,12 +1,12 @@
-import trackEvent from "@helpers/analytics";
-import errorToast from "@helpers/errorToast";
+import trackEvent from "@/helpers/analytics";
+import errorToast from "@/helpers/errorToast";
+import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";
+import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { Events } from "@hey/data/events";
 import { useWithdrawMutation } from "@hey/indexer";
 import { Button, Input, Modal } from "@hey/ui";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import usePollTransactionStatus from "src/hooks/usePollTransactionStatus";
-import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
 import type { Address } from "viem";
 
 interface WithdrawProps {

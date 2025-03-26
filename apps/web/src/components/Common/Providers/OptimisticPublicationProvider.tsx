@@ -1,3 +1,4 @@
+import { useOptimisticPublicationStore } from "@/store/persisted/useOptimisticPublicationStore";
 import { useApolloClient } from "@apollo/client";
 import {
   PostDocument,
@@ -5,7 +6,6 @@ import {
   useTransactionStatusQuery
 } from "@hey/indexer";
 import type { OptimisticPublication } from "@hey/types/misc";
-import { useOptimisticPublicationStore } from "src/store/persisted/useOptimisticPublicationStore";
 
 interface TransactionProps {
   transaction: OptimisticPublication;

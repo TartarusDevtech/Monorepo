@@ -1,10 +1,10 @@
+import { useBlockAlertStore } from "@/store/non-persisted/alert/useBlockAlertStore";
 import { MenuItem } from "@headlessui/react";
 import { NoSymbolIcon } from "@heroicons/react/24/outline";
 import getAccount from "@hey/helpers/getAccount";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { AccountFragment } from "@hey/indexer";
 import cn from "@hey/ui/cn";
-import { useBlockAlertStore } from "src/store/non-persisted/alert/useBlockAlertStore";
 
 interface BlockProps {
   account: AccountFragment;

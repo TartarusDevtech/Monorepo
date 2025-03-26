@@ -1,5 +1,7 @@
-import trackEvent from "@helpers/analytics";
-import errorToast from "@helpers/errorToast";
+import trackEvent from "@/helpers/analytics";
+import errorToast from "@/helpers/errorToast";
+import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
+import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { APP_NAME } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
@@ -7,8 +9,6 @@ import { useEnableSignlessMutation } from "@hey/indexer";
 import { Button, Card, CardHeader } from "@hey/ui";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
-import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 
 const Signless = () => {
   const { isSuspended } = useAccountStatus();

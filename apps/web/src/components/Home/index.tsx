@@ -1,9 +1,9 @@
-import NewPost from "@components/Composer/NewPost";
-import ExploreFeed from "@components/Explore/ExploreFeed";
+import NewPost from "@/components/Composer/NewPost";
+import ExploreFeed from "@/components/Explore/ExploreFeed";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
+import { useHomeTabStore } from "@/store/persisted/useHomeTabStore";
 import { HomeFeedType } from "@hey/data/enums";
 import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
-import { useHomeTabStore } from "src/store/persisted/useHomeTabStore";
 import FeedType from "./FeedType";
 import ForYou from "./ForYou";
 import Hero from "./Hero";

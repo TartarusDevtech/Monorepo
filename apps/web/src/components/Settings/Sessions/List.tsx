@@ -1,6 +1,8 @@
-import Loader from "@components/Shared/Loader";
-import trackEvent from "@helpers/analytics";
-import errorToast from "@helpers/errorToast";
+import Loader from "@/components/Shared/Loader";
+import trackEvent from "@/helpers/analytics";
+import errorToast from "@/helpers/errorToast";
+import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { ComputerDesktopIcon, GlobeAltIcon } from "@heroicons/react/24/outline";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
@@ -15,8 +17,6 @@ import { Button, EmptyState, ErrorMessage } from "@hey/ui";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Virtuoso } from "react-virtuoso";
-import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 const List = () => {
   const { currentAccount } = useAccountStore();

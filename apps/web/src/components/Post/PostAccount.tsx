@@ -1,4 +1,4 @@
-import Verified from "@components/Shared/Account/Icons/Verified";
+import Verified from "@/components/Shared/Account/Icons/Verified";
 import formatRelativeOrAbsolute from "@hey/helpers/datetime/formatRelativeOrAbsolute";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";

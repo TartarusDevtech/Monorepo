@@ -1,4 +1,4 @@
-import Markup from "@components/Shared/Markup";
+import Markup from "@/components/Shared/Markup";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import getPostData from "@hey/helpers/getPostData";
 import type { ReactionNotificationFragment } from "@hey/indexer";

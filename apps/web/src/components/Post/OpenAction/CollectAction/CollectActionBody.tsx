@@ -1,7 +1,7 @@
-import CountdownTimer from "@components/Shared/CountdownTimer";
-import Loader from "@components/Shared/Loader";
-import Collectors from "@components/Shared/Modal/Collectors";
-import Slug from "@components/Shared/Slug";
+import CountdownTimer from "@/components/Shared/CountdownTimer";
+import Loader from "@/components/Shared/Loader";
+import Collectors from "@/components/Shared/Modal/Collectors";
+import Slug from "@/components/Shared/Slug";
 import {
   CheckCircleIcon,
   ClockIcon,

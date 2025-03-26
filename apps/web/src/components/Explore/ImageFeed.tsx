@@ -1,5 +1,5 @@
-import SingleImagePost from "@components/Post/SingleImagePost";
-import ImagePostsShimmer from "@components/Shared/Shimmer/ImagePostsShimmer";
+import SingleImagePost from "@/components/Post/SingleImagePost";
+import ImagePostsShimmer from "@/components/Shared/Shimmer/ImagePostsShimmer";
 import { ChatBubbleBottomCenterIcon } from "@heroicons/react/24/outline";
 import {
   type MlexplorePostsRequest,

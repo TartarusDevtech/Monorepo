@@ -1,3 +1,3 @@
-import Guidelines from "@components/Pages/Guidelines";
+import Guidelines from "@/components/Pages/Guidelines";
 
 export default Guidelines;

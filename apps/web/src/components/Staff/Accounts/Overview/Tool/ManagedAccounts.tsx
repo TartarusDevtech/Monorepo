@@ -1,4 +1,4 @@
-import SmallSingleAccount from "@components/Shared/SmallSingleAccount";
+import SmallSingleAccount from "@/components/Shared/SmallSingleAccount";
 import { UsersIcon } from "@heroicons/react/24/outline";
 import { useAccountsAvailableQuery } from "@hey/indexer";
 import { H5 } from "@hey/ui";

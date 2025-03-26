@@ -1,4 +1,4 @@
-import Markup from "@components/Shared/Markup";
+import Markup from "@/components/Shared/Markup";
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/solid";
 import getPostData from "@hey/helpers/getPostData";
 import type { RepostNotificationFragment } from "@hey/indexer";

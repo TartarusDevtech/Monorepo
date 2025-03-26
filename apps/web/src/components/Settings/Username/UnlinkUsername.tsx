@@ -1,14 +1,14 @@
-import Slug from "@components/Shared/Slug";
-import errorToast from "@helpers/errorToast";
+import Slug from "@/components/Shared/Slug";
+import errorToast from "@/helpers/errorToast";
+import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
+import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { Errors } from "@hey/data/errors";
 import getAccount from "@hey/helpers/getAccount";
 import { useUnassignUsernameFromAccountMutation } from "@hey/indexer";
 import { Button, Card, CardHeader } from "@hey/ui";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
-import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 const UnlinkUsername = () => {
   const { currentAccount } = useAccountStore();

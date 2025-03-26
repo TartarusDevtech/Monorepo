@@ -1,5 +1,5 @@
-import ActionType from "@components/Home/Timeline/EventType";
-import PostWrapper from "@components/Shared/PostWrapper";
+import ActionType from "@/components/Home/Timeline/EventType";
+import PostWrapper from "@/components/Shared/PostWrapper";
 import type { AnyPostFragment, TimelineItemFragment } from "@hey/indexer";
 import cn from "@hey/ui/cn";
 import { memo } from "react";

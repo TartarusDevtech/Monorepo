@@ -1,5 +1,7 @@
-import Loader from "@components/Shared/Loader";
-import SingleAccount from "@components/Shared/SingleAccount";
+import Loader from "@/components/Shared/Loader";
+import SingleAccount from "@/components/Shared/SingleAccount";
+import { useBlockAlertStore } from "@/store/non-persisted/alert/useBlockAlertStore";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { NoSymbolIcon } from "@heroicons/react/24/outline";
 import {
   type AccountsBlockedRequest,
@@ -8,8 +10,6 @@ import {
 } from "@hey/indexer";
 import { Button, EmptyState, ErrorMessage } from "@hey/ui";
 import { Virtuoso } from "react-virtuoso";
-import { useBlockAlertStore } from "src/store/non-persisted/alert/useBlockAlertStore";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 const List = () => {
   const { currentAccount } = useAccountStore();

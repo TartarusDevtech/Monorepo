@@ -1,4 +1,4 @@
-import { remarkLinkProtocol } from "@helpers/prosekit/remarkLinkProtocol";
+import { remarkLinkProtocol } from "@/helpers/prosekit/remarkLinkProtocol";
 import rehypeParse from "rehype-parse";
 import rehypeRemark from "rehype-remark";
 import remarkHtml from "remark-html";

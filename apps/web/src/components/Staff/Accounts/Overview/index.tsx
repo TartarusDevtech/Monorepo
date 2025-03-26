@@ -1,8 +1,10 @@
-import MetaTags from "@components/Common/MetaTags";
-import Loader from "@components/Shared/Loader";
-import AccountStaffTool from "@components/Staff/Accounts/Overview/Tool";
-import StaffSidebar from "@components/Staff/Sidebar";
-import hasAccess from "@helpers/hasAccess";
+import MetaTags from "@/components/Common/MetaTags";
+import Loader from "@/components/Shared/Loader";
+import AccountStaffTool from "@/components/Staff/Accounts/Overview/Tool";
+import StaffSidebar from "@/components/Staff/Sidebar";
+import hasAccess from "@/helpers/hasAccess";
+import Custom404 from "@/pages/404";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { UserIcon } from "@heroicons/react/24/outline";
 import { APP_NAME } from "@hey/data/constants";
 import { Features } from "@hey/data/features";
@@ -16,8 +18,6 @@ import {
   GridLayout
 } from "@hey/ui";
 import { useRouter } from "next/router";
-import Custom404 from "src/pages/404";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 const Overview = () => {
   const {

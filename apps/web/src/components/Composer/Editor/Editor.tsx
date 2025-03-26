@@ -1,16 +1,16 @@
-import { defineEditorExtension } from "@helpers/prosekit/extension";
-import { htmlFromMarkdown } from "@helpers/prosekit/markdown";
+import { defineEditorExtension } from "@/helpers/prosekit/extension";
+import { htmlFromMarkdown } from "@/helpers/prosekit/markdown";
+import useContentChange from "@/hooks/prosekit/useContentChange";
+import useFocus from "@/hooks/prosekit/useFocus";
+import { usePaste } from "@/hooks/prosekit/usePaste";
+import { usePostStore } from "@/store/non-persisted/post/usePostStore";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import getAvatar from "@hey/helpers/getAvatar";
 import { Image } from "@hey/ui";
 import "prosekit/basic/style.css";
 import { createEditor } from "prosekit/core";
 import { ProseKit } from "prosekit/react";
 import { useMemo, useRef } from "react";
-import useContentChange from "src/hooks/prosekit/useContentChange";
-import useFocus from "src/hooks/prosekit/useFocus";
-import { usePaste } from "src/hooks/prosekit/usePaste";
-import { usePostStore } from "src/store/non-persisted/post/usePostStore";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import { useEditorHandle } from "./EditorHandle";
 import EditorMenus from "./EditorMenus";
 

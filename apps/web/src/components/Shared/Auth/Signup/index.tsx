@@ -1,6 +1,6 @@
-import SwitchNetwork from "@components/Shared/SwitchNetwork";
+import SwitchNetwork from "@/components/Shared/SwitchNetwork";
+import { CHAIN } from "@/constants";
 import { createTrackedSelector } from "react-tracked";
-import { CHAIN } from "src/constants";
 import { useAccount, useChainId } from "wagmi";
 import { create } from "zustand";
 import WalletSelector from "../WalletSelector";

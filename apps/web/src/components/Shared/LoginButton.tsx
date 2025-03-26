@@ -1,8 +1,8 @@
+import { useAuthModalStore } from "@/store/non-persisted/modal/useAuthModalStore";
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Button } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import type { MouseEvent } from "react";
-import { useAuthModalStore } from "src/store/non-persisted/modal/useAuthModalStore";
 
 interface LoginButtonProps {
   className?: string;

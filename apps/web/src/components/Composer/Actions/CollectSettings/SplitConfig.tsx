@@ -1,5 +1,7 @@
-import SearchAccounts from "@components/Shared/SearchAccounts";
-import ToggleWithHelper from "@components/Shared/ToggleWithHelper";
+import SearchAccounts from "@/components/Shared/SearchAccounts";
+import ToggleWithHelper from "@/components/Shared/ToggleWithHelper";
+import { useCollectActionStore } from "@/store/non-persisted/post/useCollectActionStore";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
   ArrowsRightLeftIcon,
   PlusIcon,
@@ -11,8 +13,6 @@ import splitNumber from "@hey/helpers/splitNumber";
 import type { CollectActionType } from "@hey/types/hey";
 import { Button, H6, Input } from "@hey/ui";
 import { useState } from "react";
-import { useCollectActionStore } from "src/store/non-persisted/post/useCollectActionStore";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import { isAddress } from "viem";
 
 interface SplitConfigProps {

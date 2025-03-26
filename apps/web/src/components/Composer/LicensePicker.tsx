@@ -1,8 +1,8 @@
-import getAssetLicense from "@helpers/getAssetLicense";
+import getAssetLicense from "@/helpers/getAssetLicense";
+import { usePostLicenseStore } from "@/store/non-persisted/post/usePostLicenseStore";
 import { MetadataLicenseType } from "@hey/indexer";
 import { Select, Tooltip } from "@hey/ui";
 import Link from "next/link";
-import { usePostLicenseStore } from "src/store/non-persisted/post/usePostLicenseStore";
 
 const LicensePicker = () => {
   const { license, setLicense } = usePostLicenseStore();

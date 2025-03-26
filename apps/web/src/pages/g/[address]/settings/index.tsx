@@ -1,3 +1,3 @@
-import GroupSettings from "@components/Group/Settings/Overview";
+import GroupSettings from "@/components/Group/Settings/Overview";
 
 export default GroupSettings;

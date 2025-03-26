@@ -1,8 +1,8 @@
-import Footer from "@components/Shared/Footer";
-import PostListShimmer from "@components/Shared/Shimmer/PostListShimmer";
-import PostShimmer from "@components/Shared/Shimmer/PostShimmer";
-import PostsShimmer from "@components/Shared/Shimmer/PostsShimmer";
-import SingleAccountShimmer from "@components/Shared/Shimmer/SingleAccountShimmer";
+import Footer from "@/components/Shared/Footer";
+import PostListShimmer from "@/components/Shared/Shimmer/PostListShimmer";
+import PostShimmer from "@/components/Shared/Shimmer/PostShimmer";
+import PostsShimmer from "@/components/Shared/Shimmer/PostsShimmer";
+import SingleAccountShimmer from "@/components/Shared/Shimmer/SingleAccountShimmer";
 import { Card, GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
 
 interface PublicationPageShimmerProps {

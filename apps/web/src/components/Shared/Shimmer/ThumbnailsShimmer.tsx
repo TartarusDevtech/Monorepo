@@ -1,4 +1,4 @@
-import { THUMBNAIL_GENERATE_COUNT } from "@components/Composer/ChooseThumbnail";
+import { THUMBNAIL_GENERATE_COUNT } from "@/components/Composer/ChooseThumbnail";
 import { useMemo } from "react";
 
 const ThumbnailsShimmer = () => {

@@ -1,6 +1,6 @@
-import Loader from "@components/Shared/Loader";
-import errorToast from "@helpers/errorToast";
-import { trpc } from "@helpers/trpc";
+import Loader from "@/components/Shared/Loader";
+import errorToast from "@/helpers/errorToast";
+import { trpc } from "@/helpers/trpc";
 import { Toggle } from "@hey/ui";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import type { Dispatch, SetStateAction } from "react";

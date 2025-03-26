@@ -1,5 +1,5 @@
-import errorToast from "@helpers/errorToast";
-import { uploadFileToIPFS } from "@helpers/uploadToIPFS";
+import errorToast from "@/helpers/errorToast";
+import { uploadFileToIPFS } from "@/helpers/uploadToIPFS";
 import { PhotoIcon } from "@heroicons/react/24/outline";
 import { ATTACHMENT } from "@hey/data/constants";
 import imageKit from "@hey/helpers/imageKit";

@@ -1,4 +1,4 @@
-import IncludeLowScore from "@components/Settings/Preferences/IncludeLowScore";
+import IncludeLowScore from "@/components/Settings/Preferences/IncludeLowScore";
 import { Cog6ToothIcon } from "@heroicons/react/24/outline";
 import { Modal, Tooltip } from "@hey/ui";
 import { useState } from "react";

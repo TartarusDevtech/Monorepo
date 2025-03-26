@@ -1,3 +1,4 @@
+import { hydrateAuthTokens } from "@/store/persisted/useAuthStore";
 import { HEY_TRPC_URL } from "@hey/data/constants";
 import type { AppRouter } from "@hey/rpc/src";
 import { QueryClient } from "@tanstack/react-query";
@@ -6,7 +7,6 @@ import {
   createTRPCContext,
   createTRPCOptionsProxy
 } from "@trpc/tanstack-react-query";
-import { hydrateAuthTokens } from "src/store/persisted/useAuthStore";
 
 export const queryClient = new QueryClient({
   defaultOptions: { queries: { refetchOnWindowFocus: false } }

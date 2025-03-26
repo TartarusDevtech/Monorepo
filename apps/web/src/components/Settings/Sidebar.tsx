@@ -1,5 +1,6 @@
-import Sidebar from "@components/Shared/Sidebar";
-import SingleAccount from "@components/Shared/SingleAccount";
+import Sidebar from "@/components/Shared/Sidebar";
+import SingleAccount from "@/components/Shared/SingleAccount";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
   AdjustmentsVerticalIcon,
   AtSymbolIcon,
@@ -13,7 +14,6 @@ import {
   UserIcon
 } from "@heroicons/react/24/outline";
 import type { AccountFragment } from "@hey/indexer";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 const SettingsSidebar = () => {
   const { currentAccount } = useAccountStore();

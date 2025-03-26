@@ -1,6 +1,8 @@
-import ToggleWithHelper from "@components/Shared/ToggleWithHelper";
-import trackEvent from "@helpers/analytics";
-import errorToast from "@helpers/errorToast";
+import ToggleWithHelper from "@/components/Shared/ToggleWithHelper";
+import trackEvent from "@/helpers/analytics";
+import errorToast from "@/helpers/errorToast";
+import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
+import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
@@ -12,8 +14,6 @@ import {
 import { Card, CardHeader } from "@hey/ui";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
-import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 
 interface ApprovalRuleProps {
   group: GroupFragment;

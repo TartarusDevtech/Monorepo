@@ -1,4 +1,4 @@
-import FollowersYouKnowOverview from "@components/Account/FollowersYouKnowOverview";
+import FollowersYouKnowOverview from "@/components/Account/FollowersYouKnowOverview";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import getMentions from "@hey/helpers/getMentions";

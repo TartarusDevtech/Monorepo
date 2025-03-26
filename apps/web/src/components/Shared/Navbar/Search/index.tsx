@@ -1,5 +1,6 @@
-import Loader from "@components/Shared/Loader";
-import SingleAccount from "@components/Shared/SingleAccount";
+import Loader from "@/components/Shared/Loader";
+import SingleAccount from "@/components/Shared/SingleAccount";
+import { useSearchStore } from "@/store/persisted/useSearchStore";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import getAccount from "@hey/helpers/getAccount";
 import {
@@ -14,7 +15,6 @@ import { useClickAway, useDebounce } from "@uidotdev/usehooks";
 import { useRouter } from "next/router";
 import type { ChangeEvent, MutableRefObject } from "react";
 import { useEffect, useState } from "react";
-import { useSearchStore } from "src/store/persisted/useSearchStore";
 import RecentAccounts from "./RecentAccounts";
 
 interface SearchProps {

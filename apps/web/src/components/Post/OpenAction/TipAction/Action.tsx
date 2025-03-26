@@ -1,8 +1,12 @@
+import FundButton from "@/components/Shared/Fund/FundButton";
+import LoginButton from "@/components/Shared/LoginButton";
+import trackEvent from "@/helpers/analytics";
+import errorToast from "@/helpers/errorToast";
+import usePreventScrollOnNumberInput from "@/hooks/usePreventScrollOnNumberInput";
+import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
+import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useApolloClient } from "@apollo/client";
-import FundButton from "@components/Shared/Fund/FundButton";
-import LoginButton from "@components/Shared/LoginButton";
-import trackEvent from "@helpers/analytics";
-import errorToast from "@helpers/errorToast";
 import {
   DEFAULT_COLLECT_TOKEN,
   WRAPPED_NATIVE_TOKEN_SYMBOL
@@ -19,10 +23,6 @@ import cn from "@hey/ui/cn";
 import type { ChangeEvent, RefObject } from "react";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
-import usePreventScrollOnNumberInput from "src/hooks/usePreventScrollOnNumberInput";
-import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
-import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import { formatUnits } from "viem";
 import { useBalance } from "wagmi";
 

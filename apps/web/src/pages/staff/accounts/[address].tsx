@@ -1,3 +1,3 @@
-import Overview from "@components/Staff/Accounts/Overview";
+import Overview from "@/components/Staff/Accounts/Overview";
 
 export default Overview;

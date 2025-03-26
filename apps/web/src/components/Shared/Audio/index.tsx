@@ -1,9 +1,9 @@
+import { usePostAudioStore } from "@/store/non-persisted/post/usePostAudioStore";
 import { PauseIcon, PlayIcon } from "@heroicons/react/24/solid";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { APITypes } from "plyr-react";
 import type { ChangeEvent } from "react";
 import { useRef, useState } from "react";
-import { usePostAudioStore } from "src/store/non-persisted/post/usePostAudioStore";
 import { z } from "zod";
 import CoverImage from "./CoverImage";
 import Player from "./Player";

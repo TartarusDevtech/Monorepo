@@ -1,4 +1,6 @@
-import NotificationIcon from "@components/Notification/NotificationIcon";
+import NotificationIcon from "@/components/Notification/NotificationIcon";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
+import { usePreferencesStore } from "@/store/persisted/usePreferencesStore";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import { H6 } from "@hey/ui";
@@ -6,8 +8,6 @@ import cn from "@hey/ui/cn";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
-import { usePreferencesStore } from "src/store/persisted/usePreferencesStore";
 import MenuItems from "./MenuItems";
 import MoreNavItems from "./MoreNavItems";
 import Search from "./Search";

@@ -1,4 +1,4 @@
-import hasAccess from "@helpers/hasAccess";
+import hasAccess from "@/helpers/hasAccess";
 import { Features } from "@hey/data/features";
 import type { AccountFragment } from "@hey/indexer";
 import { Card } from "@hey/ui";

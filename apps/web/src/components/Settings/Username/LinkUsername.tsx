@@ -1,7 +1,10 @@
-import LazySmallSingleAccount from "@components/Shared/LazySmallSingleAccount";
-import Loader from "@components/Shared/Loader";
-import Slug from "@components/Shared/Slug";
-import errorToast from "@helpers/errorToast";
+import LazySmallSingleAccount from "@/components/Shared/LazySmallSingleAccount";
+import Loader from "@/components/Shared/Loader";
+import Slug from "@/components/Shared/Slug";
+import errorToast from "@/helpers/errorToast";
+import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
+import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { AtSymbolIcon } from "@heroicons/react/24/outline";
 import { Errors } from "@hey/data/errors";
 import {
@@ -11,9 +14,6 @@ import {
 import { Button, Card, CardHeader, EmptyState } from "@hey/ui";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
-import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 const LinkUsername = () => {
   const { currentAccount } = useAccountStore();

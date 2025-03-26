@@ -1,4 +1,4 @@
-import Slug from "@components/Shared/Slug";
+import Slug from "@/components/Shared/Slug";
 import { BLOCK_EXPLORER_URL } from "@hey/data/constants";
 import formatAddress from "@hey/helpers/formatAddress";
 import getAccount from "@hey/helpers/getAccount";

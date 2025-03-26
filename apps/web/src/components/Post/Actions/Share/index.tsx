@@ -1,4 +1,4 @@
-import MenuTransition from "@components/Shared/MenuTransition";
+import MenuTransition from "@/components/Shared/MenuTransition";
 import { Menu, MenuButton, MenuItems } from "@headlessui/react";
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 import humanize from "@hey/helpers/humanize";

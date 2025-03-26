@@ -1,3 +1,3 @@
-import UsernameSettings from "@components/Settings/Username";
+import UsernameSettings from "@/components/Settings/Username";
 
 export default UsernameSettings;

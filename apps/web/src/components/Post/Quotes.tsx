@@ -1,4 +1,4 @@
-import PostListShimmer from "@components/Shared/Shimmer/PostListShimmer";
+import PostListShimmer from "@/components/Shared/Shimmer/PostListShimmer";
 import {
   ArrowLeftIcon,
   ChatBubbleBottomCenterTextIcon

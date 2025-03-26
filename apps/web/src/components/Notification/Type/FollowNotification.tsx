@@ -1,8 +1,8 @@
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { UserPlusIcon } from "@heroicons/react/24/outline";
 import getAccount from "@hey/helpers/getAccount";
 import type { FollowNotificationFragment } from "@hey/indexer";
 import plur from "plur";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import { NotificationAccountAvatar } from "../Account";
 import AggregatedNotificationTitle from "../AggregatedNotificationTitle";
 

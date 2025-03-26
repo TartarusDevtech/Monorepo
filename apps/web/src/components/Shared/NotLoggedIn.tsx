@@ -1,5 +1,5 @@
-import MetaTags from "@components/Common/MetaTags";
-import LoginButton from "@components/Shared/LoginButton";
+import MetaTags from "@/components/Common/MetaTags";
+import LoginButton from "@/components/Shared/LoginButton";
 import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { H2 } from "@hey/ui";
 

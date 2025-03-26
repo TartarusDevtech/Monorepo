@@ -1,6 +1,6 @@
+import { useSwitchAccountModalStore } from "@/store/non-persisted/modal/useSwitchAccountModalStore";
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 import cn from "@hey/ui/cn";
-import { useSwitchAccountModalStore } from "src/store/non-persisted/modal/useSwitchAccountModalStore";
 
 interface SwitchAccountProps {
   className?: string;

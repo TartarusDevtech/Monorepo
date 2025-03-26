@@ -1,13 +1,13 @@
-import WhoToFollow from "@components/Home/Sidebar/WhoToFollow";
-import FeedFocusType from "@components/Shared/FeedFocusType";
-import Footer from "@components/Shared/Footer";
+import WhoToFollow from "@/components/Home/Sidebar/WhoToFollow";
+import FeedFocusType from "@/components/Shared/FeedFocusType";
+import Footer from "@/components/Shared/Footer";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { MainContentFocus } from "@hey/indexer";
 import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import ExploreFeed from "./ExploreFeed";
 import ImageFeed from "./ImageFeed";
 

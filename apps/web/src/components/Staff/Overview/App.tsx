@@ -1,4 +1,4 @@
-import Loader from "@components/Shared/Loader";
+import Loader from "@/components/Shared/Loader";
 import { BLOCK_EXPLORER_URL, HEY_APP, HEY_TREASURY } from "@hey/data/constants";
 import { Card, CardHeader, ErrorMessage, NumberedStat } from "@hey/ui";
 import Link from "next/link";

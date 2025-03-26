@@ -1,5 +1,6 @@
-import AccountListShimmer from "@components/Shared/Shimmer/AccountListShimmer";
-import SingleAccount from "@components/Shared/SingleAccount";
+import AccountListShimmer from "@/components/Shared/Shimmer/AccountListShimmer";
+import SingleAccount from "@/components/Shared/SingleAccount";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 import {
   PageSize,
@@ -9,7 +10,6 @@ import {
 } from "@hey/indexer";
 import { EmptyState, ErrorMessage } from "@hey/ui";
 import { Virtuoso } from "react-virtuoso";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 interface RepostsProps {
   postId: string;

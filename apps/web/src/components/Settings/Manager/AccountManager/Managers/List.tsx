@@ -1,7 +1,10 @@
+import LazySingleAccount from "@/components/Shared/LazySingleAccount";
+import Loader from "@/components/Shared/Loader";
+import errorToast from "@/helpers/errorToast";
+import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
+import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useApolloClient } from "@apollo/client";
-import LazySingleAccount from "@components/Shared/LazySingleAccount";
-import Loader from "@components/Shared/Loader";
-import errorToast from "@helpers/errorToast";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 import { Errors } from "@hey/data/errors";
 import {
@@ -15,9 +18,6 @@ import { Button, EmptyState, ErrorMessage } from "@hey/ui";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Virtuoso } from "react-virtuoso";
-import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
-import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 const List = () => {
   const { currentAccount } = useAccountStore();

@@ -1,6 +1,8 @@
+import trackEvent from "@/helpers/analytics";
+import errorToast from "@/helpers/errorToast";
+import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import type { ApolloCache } from "@apollo/client";
-import trackEvent from "@helpers/analytics";
-import errorToast from "@helpers/errorToast";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { HeartIcon as HeartIconSolid } from "@heroicons/react/24/solid";
 import { Errors } from "@hey/data/errors";
@@ -17,8 +19,6 @@ import { Tooltip } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import { useCounter, useToggle } from "@uidotdev/usehooks";
 import toast from "react-hot-toast";
-import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 interface LikeProps {
   post: PostFragment;

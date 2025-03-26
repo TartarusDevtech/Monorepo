@@ -1,8 +1,8 @@
-import Sidebar from "@components/Shared/Sidebar";
+import Sidebar from "@/components/Shared/Sidebar";
+import Custom404 from "@/pages/404";
 import { PencilSquareIcon, UsersIcon } from "@heroicons/react/24/outline";
 import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
 import { useRouter } from "next/router";
-import Custom404 from "src/pages/404";
 import Accounts from "./Accounts";
 import Posts from "./Posts";
 

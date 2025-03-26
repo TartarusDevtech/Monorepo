@@ -1,5 +1,5 @@
-import { useHiddenCommentFeedStore } from "@components/Post";
-import SinglePost from "@components/Post/SinglePost";
+import { useHiddenCommentFeedStore } from "@/components/Post";
+import SinglePost from "@/components/Post/SinglePost";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import getAvatar from "@hey/helpers/getAvatar";
 import {

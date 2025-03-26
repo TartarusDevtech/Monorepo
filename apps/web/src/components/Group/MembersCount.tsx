@@ -1,5 +1,5 @@
-import Members from "@components/Shared/Modal/Members";
-import GraphStatsShimmer from "@components/Shared/Shimmer/GraphStatsShimmer";
+import Members from "@/components/Shared/Modal/Members";
+import GraphStatsShimmer from "@/components/Shared/Shimmer/GraphStatsShimmer";
 import humanize from "@hey/helpers/humanize";
 import { type GroupFragment, useGroupStatsQuery } from "@hey/indexer";
 import { H4, Modal } from "@hey/ui";

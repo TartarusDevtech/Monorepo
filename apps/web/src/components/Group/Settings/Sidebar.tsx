@@ -1,5 +1,5 @@
-import Sidebar from "@components/Shared/Sidebar";
-import SingleGroup from "@components/Shared/SingleGroup";
+import Sidebar from "@/components/Shared/Sidebar";
+import SingleGroup from "@/components/Shared/SingleGroup";
 import { LockClosedIcon, UserGroupIcon } from "@heroicons/react/24/outline";
 import type { GroupFragment } from "@hey/indexer";
 import { useRouter } from "next/router";

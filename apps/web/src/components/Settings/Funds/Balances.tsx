@@ -1,5 +1,5 @@
-import FundButton from "@components/Shared/Fund/FundButton";
-import Loader from "@components/Shared/Loader";
+import FundButton from "@/components/Shared/Fund/FundButton";
+import Loader from "@/components/Shared/Loader";
 import {
   DEFAULT_COLLECT_TOKEN,
   NATIVE_TOKEN_SYMBOL

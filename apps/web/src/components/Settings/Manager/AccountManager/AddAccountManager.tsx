@@ -1,6 +1,9 @@
-import SearchAccounts from "@components/Shared/SearchAccounts";
-import trackEvent from "@helpers/analytics";
-import errorToast from "@helpers/errorToast";
+import SearchAccounts from "@/components/Shared/SearchAccounts";
+import trackEvent from "@/helpers/analytics";
+import errorToast from "@/helpers/errorToast";
+import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
+import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { ADDRESS_PLACEHOLDER } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
@@ -9,9 +12,6 @@ import { Button } from "@hey/ui";
 import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
-import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import { isAddress } from "viem";
 
 interface AddAccountManagerProps {

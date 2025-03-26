@@ -1,5 +1,5 @@
+import { addOptimisticPublication } from "@/store/persisted/useOptimisticPublicationStore";
 import { type PostFragment, useCreatePostMutation } from "@hey/indexer";
-import { addOptimisticPublication } from "src/store/persisted/useOptimisticPublicationStore";
 import useTransactionLifecycle from "./useTransactionLifecycle";
 
 interface CreatePostProps {

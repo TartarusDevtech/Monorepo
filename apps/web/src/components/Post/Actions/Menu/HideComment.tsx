@@ -1,7 +1,8 @@
+import { useHiddenCommentFeedStore } from "@/components/Post";
+import errorToast from "@/helpers/errorToast";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import type { ApolloCache } from "@apollo/client";
-import { useHiddenCommentFeedStore } from "@components/Post";
 import { MenuItem } from "@headlessui/react";
-import errorToast from "@helpers/errorToast";
 import { CheckCircleIcon, NoSymbolIcon } from "@heroicons/react/24/outline";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import {
@@ -11,7 +12,6 @@ import {
 } from "@hey/indexer";
 import cn from "@hey/ui/cn";
 import { toast } from "react-hot-toast";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 interface HideCommentProps {
   post: PostFragment;

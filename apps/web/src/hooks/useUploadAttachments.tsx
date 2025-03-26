@@ -1,10 +1,10 @@
-import uploadToIPFS from "@helpers/uploadToIPFS";
+import uploadToIPFS from "@/helpers/uploadToIPFS";
+import { usePostAttachmentStore } from "@/store/non-persisted/post/usePostAttachmentStore";
 import generateUUID from "@hey/helpers/generateUUID";
 import type { NewAttachment } from "@hey/types/misc";
 import imageCompression from "browser-image-compression";
 import { useCallback } from "react";
 import { toast } from "react-hot-toast";
-import { usePostAttachmentStore } from "src/store/non-persisted/post/usePostAttachmentStore";
 
 const useUploadAttachments = () => {
   const {

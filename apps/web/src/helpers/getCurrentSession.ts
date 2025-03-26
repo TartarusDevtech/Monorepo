@@ -1,5 +1,5 @@
+import { hydrateAuthTokens } from "@/store/persisted/useAuthStore";
 import parseJwt from "@hey/helpers/parseJwt";
-import { hydrateAuthTokens } from "src/store/persisted/useAuthStore";
 
 const getCurrentSession = (): {
   authenticationId: string;

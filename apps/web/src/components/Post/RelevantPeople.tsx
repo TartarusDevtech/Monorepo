@@ -1,5 +1,6 @@
-import SingleAccountShimmer from "@components/Shared/Shimmer/SingleAccountShimmer";
-import SingleAccount from "@components/Shared/SingleAccount";
+import SingleAccountShimmer from "@/components/Shared/Shimmer/SingleAccountShimmer";
+import SingleAccount from "@/components/Shared/SingleAccount";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
   type AccountFragment,
   type PostMentionFragment,
@@ -7,7 +8,6 @@ import {
 } from "@hey/indexer";
 import { Card, ErrorMessage, Modal } from "@hey/ui";
 import { useState } from "react";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import MoreRelevantPeople from "./MoreRelevantPeople";
 
 interface RelevantPeopleProps {

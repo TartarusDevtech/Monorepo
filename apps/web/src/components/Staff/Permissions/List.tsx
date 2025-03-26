@@ -1,5 +1,5 @@
-import Loader from "@components/Shared/Loader";
-import { trpc } from "@helpers/trpc";
+import Loader from "@/components/Shared/Loader";
+import { trpc } from "@/helpers/trpc";
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
 import { Permission } from "@hey/data/permissions";
 import formatDate from "@hey/helpers/datetime/formatDate";

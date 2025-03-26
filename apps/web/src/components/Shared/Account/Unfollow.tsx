@@ -1,6 +1,10 @@
+import trackEvent from "@/helpers/analytics";
+import errorToast from "@/helpers/errorToast";
+import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
+import { useAuthModalStore } from "@/store/non-persisted/modal/useAuthModalStore";
+import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useApolloClient } from "@apollo/client";
-import trackEvent from "@helpers/analytics";
-import errorToast from "@helpers/errorToast";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
 import {
@@ -11,10 +15,6 @@ import {
 import { Button } from "@hey/ui";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
-import { useAuthModalStore } from "src/store/non-persisted/modal/useAuthModalStore";
-import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 interface UnfollowProps {
   buttonClassName: string;

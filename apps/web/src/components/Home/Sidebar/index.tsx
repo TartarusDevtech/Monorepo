@@ -1,7 +1,7 @@
-import SignupCard from "@components/Shared/Auth/SignupCard";
-import Footer from "@components/Shared/Footer";
+import SignupCard from "@/components/Shared/Auth/SignupCard";
+import Footer from "@/components/Shared/Footer";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { memo } from "react";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import SetAccount from "./SetAccount";
 import StaffPicks from "./StaffPicks";
 import WhoToFollow from "./WhoToFollow";

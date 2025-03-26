@@ -1,7 +1,7 @@
-import Oembed from "@components/Shared/Oembed";
+import Oembed from "@/components/Shared/Oembed";
+import { usePostAttachmentStore } from "@/store/non-persisted/post/usePostAttachmentStore";
+import { usePostStore } from "@/store/non-persisted/post/usePostStore";
 import getURLs from "@hey/helpers/getURLs";
-import { usePostAttachmentStore } from "src/store/non-persisted/post/usePostAttachmentStore";
-import { usePostStore } from "src/store/non-persisted/post/usePostStore";
 
 const LinkPreviews = () => {
   const { postContent, quotedPost } = usePostStore();

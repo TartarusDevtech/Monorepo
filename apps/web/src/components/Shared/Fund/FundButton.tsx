@@ -1,5 +1,5 @@
+import { useFundModalStore } from "@/store/non-persisted/modal/useFundModalStore";
 import { Button } from "@hey/ui";
-import { useFundModalStore } from "src/store/non-persisted/modal/useFundModalStore";
 
 interface FundButtonProps {
   label?: string;

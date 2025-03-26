@@ -1,6 +1,6 @@
+import { useAuthModalStore } from "@/store/non-persisted/modal/useAuthModalStore";
 import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Button, Card } from "@hey/ui";
-import { useAuthModalStore } from "src/store/non-persisted/modal/useAuthModalStore";
 import { useSignupStore } from "./Signup";
 
 const SignupCard = () => {

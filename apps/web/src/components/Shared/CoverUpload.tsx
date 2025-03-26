@@ -1,7 +1,7 @@
-import ChooseFile from "@components/Shared/ChooseFile";
-import ImageCropperController from "@components/Shared/ImageCropperController";
-import uploadCroppedImage, { readFile } from "@helpers/accountPictureUtils";
-import errorToast from "@helpers/errorToast";
+import ChooseFile from "@/components/Shared/ChooseFile";
+import ImageCropperController from "@/components/Shared/ImageCropperController";
+import uploadCroppedImage, { readFile } from "@/helpers/accountPictureUtils";
+import errorToast from "@/helpers/errorToast";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import { COVER, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";

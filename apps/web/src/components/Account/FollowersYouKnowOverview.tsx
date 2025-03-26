@@ -1,11 +1,11 @@
-import FollowersYouKnow from "@components/Shared/Modal/FollowersYouKnow";
+import FollowersYouKnow from "@/components/Shared/Modal/FollowersYouKnow";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import { type Follower, useFollowersYouKnowQuery } from "@hey/indexer";
 import { Modal, StackedAvatars } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import { type ReactNode, useState } from "react";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 interface FollowersYouKnowOverviewProps {
   username: string;

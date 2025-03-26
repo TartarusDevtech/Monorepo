@@ -1,9 +1,9 @@
-import MetaTags from "@components/Common/MetaTags";
-import NotLoggedIn from "@components/Shared/NotLoggedIn";
+import MetaTags from "@/components/Common/MetaTags";
+import NotLoggedIn from "@/components/Shared/NotLoggedIn";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { APP_NAME } from "@hey/data/constants";
 import { NotificationFeedType } from "@hey/data/enums";
 import { useRouter } from "next/router";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import FeedType from "./FeedType";
 import List from "./List";
 import Settings from "./Settings";

@@ -1,5 +1,5 @@
-import Verified from "@components/Shared/Account/Icons/Verified";
-import AccountPreview from "@components/Shared/AccountPreview";
+import Verified from "@/components/Shared/Account/Icons/Verified";
+import AccountPreview from "@/components/Shared/AccountPreview";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";

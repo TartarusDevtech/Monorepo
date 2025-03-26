@@ -1,6 +1,6 @@
-import ToggleWrapper from "@components/Staff/Accounts/Overview/Tool/ToggleWrapper";
-import errorToast from "@helpers/errorToast";
-import { trpc } from "@helpers/trpc";
+import ToggleWrapper from "@/components/Staff/Accounts/Overview/Tool/ToggleWrapper";
+import errorToast from "@/helpers/errorToast";
+import { trpc } from "@/helpers/trpc";
 import { Permission, PermissionId } from "@hey/data/permissions";
 import type { AccountFragment } from "@hey/indexer";
 import { Toggle } from "@hey/ui";

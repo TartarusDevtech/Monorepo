@@ -1,6 +1,6 @@
-import Collectors from "@components/Shared/Modal/Collectors";
-import Likes from "@components/Shared/Modal/Likes";
-import Reposts from "@components/Shared/Modal/Reposts";
+import Collectors from "@/components/Shared/Modal/Collectors";
+import Likes from "@/components/Shared/Modal/Likes";
+import Reposts from "@/components/Shared/Modal/Reposts";
 import nFormatter from "@hey/helpers/nFormatter";
 import type { PostFragment } from "@hey/indexer";
 import { Modal } from "@hey/ui";

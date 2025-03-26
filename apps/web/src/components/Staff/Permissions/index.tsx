@@ -1,10 +1,10 @@
-import MetaTags from "@components/Common/MetaTags";
-import hasAccess from "@helpers/hasAccess";
+import MetaTags from "@/components/Common/MetaTags";
+import hasAccess from "@/helpers/hasAccess";
+import Custom404 from "@/pages/404";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { APP_NAME } from "@hey/data/constants";
 import { Features } from "@hey/data/features";
 import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
-import Custom404 from "src/pages/404";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import StaffSidebar from "../Sidebar";
 import List from "./List";
 

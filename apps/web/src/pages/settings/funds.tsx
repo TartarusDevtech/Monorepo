@@ -1,3 +1,3 @@
-import FundsSettings from "@components/Settings/Funds";
+import FundsSettings from "@/components/Settings/Funds";
 
 export default FundsSettings;

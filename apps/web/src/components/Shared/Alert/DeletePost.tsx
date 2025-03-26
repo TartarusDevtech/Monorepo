@@ -1,14 +1,14 @@
+import trackEvent from "@/helpers/analytics";
+import errorToast from "@/helpers/errorToast";
+import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
+import { useDeletePostAlertStore } from "@/store/non-persisted/alert/useDeletePostAlertStore";
+import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { useApolloClient } from "@apollo/client";
-import trackEvent from "@helpers/analytics";
-import errorToast from "@helpers/errorToast";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
 import { useDeletePostMutation } from "@hey/indexer";
 import { Alert } from "@hey/ui";
 import { toast } from "react-hot-toast";
-import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
-import { useDeletePostAlertStore } from "src/store/non-persisted/alert/useDeletePostAlertStore";
-import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 
 const DeletePost = () => {
   const { deletingPost, setShowPostDeleteAlert, showPostDeleteAlert } =

@@ -1,4 +1,4 @@
-import QuotedPost from "@components/Post/QuotedPost";
+import QuotedPost from "@/components/Post/QuotedPost";
 import type { PostFragment } from "@hey/indexer";
 import Wrapper from "./Wrapper";
 

@@ -1,4 +1,4 @@
-import isVerified from "@helpers/isVerified";
+import isVerified from "@/helpers/isVerified";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import { useAccountsLazyQuery } from "@hey/indexer";

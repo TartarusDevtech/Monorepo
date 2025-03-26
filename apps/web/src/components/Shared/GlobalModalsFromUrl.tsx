@@ -1,7 +1,7 @@
+import { useAuthModalStore } from "@/store/non-persisted/modal/useAuthModalStore";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { useAuthModalStore } from "src/store/non-persisted/modal/useAuthModalStore";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import { useSignupStore } from "./Auth/Signup";
 
 const GlobalModalsFromUrl = () => {

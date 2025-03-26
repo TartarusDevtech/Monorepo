@@ -1,4 +1,4 @@
-import getAssetLicense from "@helpers/getAssetLicense";
+import getAssetLicense from "@/helpers/getAssetLicense";
 import { ScaleIcon } from "@heroicons/react/24/outline";
 import getPostData from "@hey/helpers/getPostData";
 import type { PostMetadataFragment } from "@hey/indexer";

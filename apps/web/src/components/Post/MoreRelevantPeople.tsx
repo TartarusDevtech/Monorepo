@@ -1,7 +1,7 @@
-import SingleAccount from "@components/Shared/SingleAccount";
+import SingleAccount from "@/components/Shared/SingleAccount";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import type { AccountFragment } from "@hey/indexer";
 import { Virtuoso } from "react-virtuoso";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 interface MoreRelevantPeopleProps {
   accounts: AccountFragment[];

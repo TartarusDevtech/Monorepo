@@ -1,4 +1,4 @@
-import Slug from "@components/Shared/Slug";
+import Slug from "@/components/Shared/Slug";
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import getAccount from "@hey/helpers/getAccount";
 import type { AccountFragment } from "@hey/indexer";

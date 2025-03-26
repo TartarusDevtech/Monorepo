@@ -1,5 +1,5 @@
-import SidebarMenu from "@components/Shared/Sidebar/SidebarMenu";
-import SidebarTabs from "@components/Shared/Sidebar/SidebarTabs";
+import SidebarMenu from "@/components/Shared/Sidebar/SidebarMenu";
+import SidebarTabs from "@/components/Shared/Sidebar/SidebarTabs";
 
 export interface SidebarProps {
   items: {

@@ -1,8 +1,8 @@
-import isVerified from "@helpers/isVerified";
+import isVerified from "@/helpers/isVerified";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import { Button, Card, H5, Modal } from "@hey/ui";
 import { useState } from "react";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 const Verification = () => {
   const { currentAccount } = useAccountStore();

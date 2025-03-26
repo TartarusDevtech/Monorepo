@@ -1,4 +1,6 @@
-import MenuTransition from "@components/Shared/MenuTransition";
+import MenuTransition from "@/components/Shared/MenuTransition";
+import useUploadAttachments from "@/hooks/useUploadAttachments";
+import { usePostAttachmentStore } from "@/store/non-persisted/post/usePostAttachmentStore";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import {
   MusicalNoteIcon,
@@ -15,8 +17,6 @@ import { useClickAway } from "@uidotdev/usehooks";
 import type { ChangeEvent, JSX, MutableRefObject } from "react";
 import { useId, useState } from "react";
 import toast from "react-hot-toast";
-import useUploadAttachments from "src/hooks/useUploadAttachments";
-import { usePostAttachmentStore } from "src/store/non-persisted/post/usePostAttachmentStore";
 
 const ImageMimeType = Object.values(MediaImageMimeType);
 const AudioMimeType = Object.values(MediaAudioMimeType);

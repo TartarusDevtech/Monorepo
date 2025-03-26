@@ -1,5 +1,5 @@
-import GraphStatsShimmer from "@components/Shared/Shimmer/GraphStatsShimmer";
-import PostsShimmer from "@components/Shared/Shimmer/PostsShimmer";
+import GraphStatsShimmer from "@/components/Shared/Shimmer/GraphStatsShimmer";
+import PostsShimmer from "@/components/Shared/Shimmer/PostsShimmer";
 import { GridItemEight, GridItemFour, GridLayout } from "@hey/ui";
 
 const AccountPageShimmer = () => {

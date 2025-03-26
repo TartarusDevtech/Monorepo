@@ -1,4 +1,5 @@
-import type { EditorExtension } from "@helpers/prosekit/extension";
+import type { EditorExtension } from "@/helpers/prosekit/extension";
+import useEmojis from "@/hooks/prosekit/useEmojis";
 import { EditorRegex } from "@hey/data/regex";
 import type { Emoji } from "@hey/types/misc";
 import cn from "@hey/ui/cn";
@@ -9,7 +10,6 @@ import {
   AutocompletePopover
 } from "prosekit/react/autocomplete";
 import { useState } from "react";
-import useEmojis from "src/hooks/prosekit/useEmojis";
 
 interface EmojiItemProps {
   emoji: Emoji;

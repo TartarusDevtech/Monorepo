@@ -1,5 +1,5 @@
-import SingleAccountsShimmer from "@components/Shared/Shimmer/SingleAccountsShimmer";
-import SingleAccount from "@components/Shared/SingleAccount";
+import SingleAccountsShimmer from "@/components/Shared/Shimmer/SingleAccountsShimmer";
+import SingleAccount from "@/components/Shared/SingleAccount";
 import { UsersIcon } from "@heroicons/react/24/outline";
 import { type AccountsRequest, PageSize, useAccountsQuery } from "@hey/indexer";
 import { Card, EmptyState, ErrorMessage } from "@hey/ui";

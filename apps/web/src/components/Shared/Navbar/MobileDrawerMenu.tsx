@@ -1,4 +1,6 @@
-import hasAccess from "@helpers/hasAccess";
+import hasAccess from "@/helpers/hasAccess";
+import { useMobileDrawerModalStore } from "@/store/non-persisted/modal/useMobileDrawerModalStore";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Features } from "@hey/data/features";
 import getAccount from "@hey/helpers/getAccount";
@@ -6,8 +8,6 @@ import getAvatar from "@hey/helpers/getAvatar";
 import { Image } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import Link from "next/link";
-import { useMobileDrawerModalStore } from "src/store/non-persisted/modal/useMobileDrawerModalStore";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import Slug from "../Slug";
 import Bookmarks from "./NavItems/Bookmarks";
 import Groups from "./NavItems/Groups";

@@ -1,6 +1,6 @@
-import { useHiddenCommentFeedStore } from "@components/Post";
-import SinglePost from "@components/Post/SinglePost";
-import PostsShimmer from "@components/Shared/Shimmer/PostsShimmer";
+import { useHiddenCommentFeedStore } from "@/components/Post";
+import SinglePost from "@/components/Post/SinglePost";
+import PostsShimmer from "@/components/Shared/Shimmer/PostsShimmer";
 import { ChatBubbleLeftIcon } from "@heroicons/react/24/outline";
 import {
   PageSize,

@@ -1,9 +1,9 @@
+import { usePostAttachmentStore } from "@/store/non-persisted/post/usePostAttachmentStore";
 import { GifIcon } from "@heroicons/react/24/outline";
 import type { IGif } from "@hey/types/giphy";
 import { Modal, Tooltip } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import { useState } from "react";
-import { usePostAttachmentStore } from "src/store/non-persisted/post/usePostAttachmentStore";
 import GifSelector from "./GifSelector";
 
 interface GifProps {

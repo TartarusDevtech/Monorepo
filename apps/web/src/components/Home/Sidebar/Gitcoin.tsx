@@ -1,5 +1,5 @@
-import CountdownTimer from "@components/Shared/CountdownTimer";
-import { rubikMonoOneFont } from "@helpers/fonts";
+import CountdownTimer from "@/components/Shared/CountdownTimer";
+import { rubikMonoOneFont } from "@/helpers/fonts";
 import { APP_NAME, APP_URL, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Button, Card } from "@hey/ui";
 import Link from "next/link";

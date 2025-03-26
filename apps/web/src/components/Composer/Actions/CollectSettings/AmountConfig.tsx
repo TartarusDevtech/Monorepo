@@ -1,11 +1,11 @@
-import ToggleWithHelper from "@components/Shared/ToggleWithHelper";
+import ToggleWithHelper from "@/components/Shared/ToggleWithHelper";
+import { useCollectActionStore } from "@/store/non-persisted/post/useCollectActionStore";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { CurrencyDollarIcon } from "@heroicons/react/24/outline";
 import { DEFAULT_COLLECT_TOKEN, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { tokens } from "@hey/data/tokens";
 import type { CollectActionType } from "@hey/types/hey";
 import { Input, Select } from "@hey/ui";
-import { useCollectActionStore } from "src/store/non-persisted/post/useCollectActionStore";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 interface AmountConfigProps {
   setCollectType: (data: CollectActionType) => void;

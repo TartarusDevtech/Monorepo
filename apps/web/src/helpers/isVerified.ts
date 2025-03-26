@@ -1,4 +1,4 @@
-import { hydrateVerifiedMembers } from "src/store/persisted/useVerifiedMembersStore";
+import { hydrateVerifiedMembers } from "@/store/persisted/useVerifiedMembersStore";
 
 const isVerified = (id: string): boolean => {
   const { verifiedMembers } = hydrateVerifiedMembers();

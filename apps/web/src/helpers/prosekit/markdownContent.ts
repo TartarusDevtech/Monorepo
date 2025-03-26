@@ -1,5 +1,8 @@
-import type { EditorExtension } from "@helpers/prosekit/extension";
-import { htmlFromMarkdown, markdownFromHTML } from "@helpers/prosekit/markdown";
+import type { EditorExtension } from "@/helpers/prosekit/extension";
+import {
+  htmlFromMarkdown,
+  markdownFromHTML
+} from "@/helpers/prosekit/markdown";
 import type { Editor } from "prosekit/core";
 import { htmlFromNode, nodeFromHTML } from "prosekit/core";
 import { ListDOMSerializer } from "prosekit/extensions/list";

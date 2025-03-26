@@ -1,12 +1,12 @@
-import MetaTags from "@components/Common/MetaTags";
-import NotLoggedIn from "@components/Shared/NotLoggedIn";
+import MetaTags from "@/components/Common/MetaTags";
+import NotLoggedIn from "@/components/Shared/NotLoggedIn";
+import Custom404 from "@/pages/404";
+import Custom500 from "@/pages/500";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { APP_NAME } from "@hey/data/constants";
 import { useGroupQuery } from "@hey/indexer";
 import { GridItemEight, GridItemFour, GridLayout, PageLoading } from "@hey/ui";
 import { useRouter } from "next/router";
-import Custom404 from "src/pages/404";
-import Custom500 from "src/pages/500";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import SettingsSidebar from "../Sidebar";
 import ApprovalRule from "./ApprovalRule";
 import SuperJoin from "./SuperJoin";

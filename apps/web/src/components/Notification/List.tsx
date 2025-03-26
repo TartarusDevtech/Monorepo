@@ -1,3 +1,4 @@
+import { usePreferencesStore } from "@/store/persisted/usePreferencesStore";
 import { BellIcon } from "@heroicons/react/24/outline";
 import { NotificationFeedType } from "@hey/data/enums";
 import {
@@ -8,7 +9,6 @@ import {
 import { Card, EmptyState, ErrorMessage } from "@hey/ui";
 import cn from "@hey/ui/cn";
 import { Virtuoso } from "react-virtuoso";
-import { usePreferencesStore } from "src/store/persisted/usePreferencesStore";
 import NotificationShimmer from "./Shimmer";
 import CommentNotification from "./Type/CommentNotification";
 import FollowNotification from "./Type/FollowNotification";

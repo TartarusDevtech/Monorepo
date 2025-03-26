@@ -1,4 +1,4 @@
-import PostWrapper from "@components/Shared/PostWrapper";
+import PostWrapper from "@/components/Shared/PostWrapper";
 import type { PostFragment } from "@hey/indexer";
 import HiddenPost from "./HiddenPost";
 import PostAvatar from "./PostAvatar";

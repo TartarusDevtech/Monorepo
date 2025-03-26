@@ -1,4 +1,4 @@
-import MetaDetails from "@components/Shared/MetaDetails";
+import MetaDetails from "@/components/Shared/MetaDetails";
 import { BellIcon, CursorArrowRaysIcon } from "@heroicons/react/24/outline";
 import {
   CheckCircleIcon,

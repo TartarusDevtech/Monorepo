@@ -1,3 +1,3 @@
-import DeveloperSettings from "@components/Settings/Developer";
+import DeveloperSettings from "@/components/Settings/Developer";
 
 export default DeveloperSettings;

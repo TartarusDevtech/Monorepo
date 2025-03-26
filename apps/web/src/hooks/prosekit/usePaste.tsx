@@ -1,10 +1,10 @@
-import type { EditorExtension } from "@helpers/prosekit/extension";
+import type { EditorExtension } from "@/helpers/prosekit/extension";
+import useUploadAttachments from "@/hooks/useUploadAttachments";
+import { usePostAttachmentStore } from "@/store/non-persisted/post/usePostAttachmentStore";
 import { type Editor, defineDOMEventHandler, union } from "prosekit/core";
 import { useExtension } from "prosekit/react";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import toast from "react-hot-toast";
-import useUploadAttachments from "src/hooks/useUploadAttachments";
-import { usePostAttachmentStore } from "src/store/non-persisted/post/usePostAttachmentStore";
 
 const handleFiles = (
   event: Event,

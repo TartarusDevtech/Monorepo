@@ -1,4 +1,4 @@
-import { heyFont } from "@helpers/fonts";
+import { heyFont } from "@/helpers/fonts";
 import {
   APP_NAME,
   APP_URL,

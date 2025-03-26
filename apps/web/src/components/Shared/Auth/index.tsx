@@ -1,7 +1,7 @@
-import Login from "@components/Shared/Auth/Login";
+import Login from "@/components/Shared/Auth/Login";
+import { useAuthModalStore } from "@/store/non-persisted/modal/useAuthModalStore";
 import { APP_NAME } from "@hey/data/constants";
 import { useState } from "react";
-import { useAuthModalStore } from "src/store/non-persisted/modal/useAuthModalStore";
 import { useAccount } from "wagmi";
 import AuthMessage from "./AuthMessage";
 import Signup from "./Signup";

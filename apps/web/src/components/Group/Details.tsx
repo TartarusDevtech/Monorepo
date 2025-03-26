@@ -1,5 +1,6 @@
-import JoinLeaveButton from "@components/Shared/Group/JoinLeaveButton";
-import Markup from "@components/Shared/Markup";
+import JoinLeaveButton from "@/components/Shared/Group/JoinLeaveButton";
+import Markup from "@/components/Shared/Markup";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { Cog6ToothIcon } from "@heroicons/react/24/outline";
 import getAvatar from "@hey/helpers/getAvatar";
 import getMentions from "@hey/helpers/getMentions";
@@ -7,7 +8,6 @@ import type { GroupFragment } from "@hey/indexer";
 import { Button, H3, Image, LightBox } from "@hey/ui";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 import MembersCount from "./MembersCount";
 
 interface DetailsProps {

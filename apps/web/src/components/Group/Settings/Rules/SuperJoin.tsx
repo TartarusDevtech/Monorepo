@@ -1,6 +1,10 @@
-import trackEvent from "@helpers/analytics";
-import errorToast from "@helpers/errorToast";
-import { getSimplePaymentDetails } from "@helpers/rules";
+import trackEvent from "@/helpers/analytics";
+import errorToast from "@/helpers/errorToast";
+import { getSimplePaymentDetails } from "@/helpers/rules";
+import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";
+import usePreventScrollOnNumberInput from "@/hooks/usePreventScrollOnNumberInput";
+import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
+import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import {
   DEFAULT_COLLECT_TOKEN,
   IS_MAINNET,
@@ -19,10 +23,6 @@ import { Button, Card, CardHeader, Image, Input, Tooltip } from "@hey/ui";
 import { useRouter } from "next/router";
 import { type RefObject, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import usePollTransactionStatus from "src/hooks/usePollTransactionStatus";
-import usePreventScrollOnNumberInput from "src/hooks/usePreventScrollOnNumberInput";
-import useTransactionLifecycle from "src/hooks/useTransactionLifecycle";
-import { useAccountStatus } from "src/store/non-persisted/useAccountStatus";
 
 interface SuperJoinProps {
   group: GroupFragment;

@@ -1,10 +1,10 @@
-import DismissRecommendedAccount from "@components/Shared/DismissRecommendedAccount";
-import SingleAccount from "@components/Shared/SingleAccount";
+import DismissRecommendedAccount from "@/components/Shared/DismissRecommendedAccount";
+import SingleAccount from "@/components/Shared/SingleAccount";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { UsersIcon } from "@heroicons/react/24/outline";
 import type { AccountFragment } from "@hey/indexer";
 import { EmptyState } from "@hey/ui";
 import { Virtuoso } from "react-virtuoso";
-import { useAccountStore } from "src/store/persisted/useAccountStore";
 
 interface SuggestedProps {
   accounts: AccountFragment[];

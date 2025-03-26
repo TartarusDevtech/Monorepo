@@ -1,6 +1,7 @@
-import trackEvent from "@helpers/analytics";
-import errorToast from "@helpers/errorToast";
-import uploadMetadata from "@helpers/uploadMetadata";
+import trackEvent from "@/helpers/analytics";
+import errorToast from "@/helpers/errorToast";
+import uploadMetadata from "@/helpers/uploadMetadata";
+import useHandleWrongNetwork from "@/hooks/useHandleWrongNetwork";
 import {
   CheckIcon,
   ExclamationTriangleIcon,
@@ -21,7 +22,6 @@ import { Button, Form, Input, useZodForm } from "@hey/ui";
 import { account as accountMetadata } from "@lens-protocol/metadata";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import useHandleWrongNetwork from "src/hooks/useHandleWrongNetwork";
 import { useAccount, useSignMessage } from "wagmi";
 import { z } from "zod";
 import { useSignupStore } from ".";
