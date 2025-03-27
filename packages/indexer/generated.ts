@@ -88,10 +88,23 @@ export type AccountActionExecutedNotification = {
   id: Scalars['GeneratedNotificationId']['output'];
 };
 
+export type AccountActionExecutedNotificationAttributes = {
+  account?: InputMaybe<Scalars['EvmAddress']['input']>;
+  action?: InputMaybe<Scalars['EvmAddress']['input']>;
+  actionType?: InputMaybe<AccountActionType>;
+  app?: InputMaybe<Scalars['EvmAddress']['input']>;
+  executingAccount?: InputMaybe<Scalars['EvmAddress']['input']>;
+};
+
 export type AccountActionFilter = {
   address?: InputMaybe<Scalars['EvmAddress']['input']>;
   tipping?: InputMaybe<Scalars['AlwaysTrue']['input']>;
 };
+
+export enum AccountActionType {
+  Tipping = 'TIPPING',
+  Unknown = 'UNKNOWN'
+}
 
 export type AccountAvailable = AccountManaged | AccountOwned;
 
@@ -819,10 +832,6 @@ export type AuthenticationTokens = {
   refreshToken: Scalars['RefreshToken']['output'];
 };
 
-export type BanAccountGroupRuleConfig = {
-  enable?: InputMaybe<Scalars['AlwaysTrue']['input']>;
-};
-
 export type BanGroupAccountsRequest = {
   accounts: Array<Scalars['EvmAddress']['input']>;
   group: Scalars['EvmAddress']['input'];
@@ -960,6 +969,7 @@ export type CreateAccountWithUsernameRequest = {
   createUsernameRuleProcessingParams?: InputMaybe<Array<NamespaceRulesProcessingParams>>;
   enableSignless?: Scalars['Boolean']['input'];
   metadataUri: Scalars['URI']['input'];
+  owner?: InputMaybe<Scalars['EvmAddress']['input']>;
   username: UsernameInput;
 };
 
@@ -2047,7 +2057,6 @@ export type GroupRule = {
 };
 
 export type GroupRuleConfig = {
-  banAccountRule?: InputMaybe<BanAccountGroupRuleConfig>;
   membershipApprovalRule?: InputMaybe<MembershipApprovalGroupRuleConfig>;
   simplePaymentRule?: InputMaybe<SimplePaymentGroupRuleConfig>;
   tokenGatedRule?: InputMaybe<TokenGatedGroupRuleConfig>;
@@ -3370,7 +3379,6 @@ export type NamespaceRuleConfig = {
   usernameLengthRule?: InputMaybe<UsernameLengthNamespaceRuleConfig>;
   usernamePricePerLengthRule?: InputMaybe<UsernamePricePerLengthNamespaceRuleConfig>;
   usernameReservedRule?: InputMaybe<UsernameReservedNamespaceRuleConfig>;
-  usernameSimpleCharsetRule?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export enum NamespaceRuleExecuteOn {
@@ -3850,11 +3858,26 @@ export type PostActionExecutedNotification = {
   post: Post;
 };
 
+export type PostActionExecutedNotificationAttributes = {
+  action?: InputMaybe<Scalars['EvmAddress']['input']>;
+  actionType?: InputMaybe<PostActionType>;
+  app?: InputMaybe<Scalars['EvmAddress']['input']>;
+  executingAccount?: InputMaybe<Scalars['EvmAddress']['input']>;
+  postId?: InputMaybe<Scalars['PostId']['input']>;
+  receivingAccount?: InputMaybe<Scalars['EvmAddress']['input']>;
+};
+
 export type PostActionFilter = {
   address?: InputMaybe<Scalars['EvmAddress']['input']>;
   simpleCollect?: InputMaybe<Scalars['AlwaysTrue']['input']>;
   tipping?: InputMaybe<Scalars['AlwaysTrue']['input']>;
 };
+
+export enum PostActionType {
+  SimpleCollect = 'SIMPLE_COLLECT',
+  Tipping = 'TIPPING',
+  Unknown = 'UNKNOWN'
+}
 
 export type PostActionsParams = {
   includeDisabled: Scalars['Boolean']['input'];
@@ -3869,6 +3892,13 @@ export type PostBookmarksRequest = {
   cursor?: InputMaybe<Scalars['Cursor']['input']>;
   filter?: InputMaybe<PostBookmarksFilter>;
   pageSize?: PageSize;
+};
+
+export type PostCollectedNotificationAttributes = {
+  app?: InputMaybe<Scalars['EvmAddress']['input']>;
+  collector?: InputMaybe<Scalars['EvmAddress']['input']>;
+  postAuthor?: InputMaybe<Scalars['EvmAddress']['input']>;
+  postId?: InputMaybe<Scalars['PostId']['input']>;
 };
 
 export type PostContentUriRequest = {
@@ -5091,6 +5121,7 @@ export type SnsSubscription = {
 };
 
 export type SnsTopicInput = {
+  accountActionExecuted?: InputMaybe<AccountActionExecutedNotificationAttributes>;
   accountBlocked?: InputMaybe<AccountBlockedNotificationAttributes>;
   accountCreated?: InputMaybe<AccountCreatedNotificationAttributes>;
   accountFollowed?: InputMaybe<AccountFollowedNotificationAttributes>;
@@ -5109,6 +5140,8 @@ export type SnsTopicInput = {
   mediaSnapshotSuccess?: InputMaybe<MediaSnapshotNotificationAttributes>;
   metadataSnapshotError?: InputMaybe<MetadataSnapshotNotificationAttributes>;
   metadataSnapshotSuccess?: InputMaybe<MetadataSnapshotNotificationAttributes>;
+  postActionExecuted?: InputMaybe<PostActionExecutedNotificationAttributes>;
+  postCollected?: InputMaybe<PostCollectedNotificationAttributes>;
   postCreated?: InputMaybe<PostCreatedNotificationAttributes>;
   postDeleted?: InputMaybe<PostDeletedNotificationAttributes>;
   postEdited?: InputMaybe<PostEditedNotificationAttributes>;
@@ -6401,6 +6434,7 @@ export type UsernameLengthNamespaceRuleConfig = {
 export type UsernameNamespace = {
   __typename?: 'UsernameNamespace';
   address: Scalars['EvmAddress']['output'];
+  collectionMetadata?: Maybe<NftMetadata>;
   createdAt: Scalars['DateTime']['output'];
   metadata?: Maybe<UsernameNamespaceMetadata>;
   namespace: Scalars['String']['output'];
