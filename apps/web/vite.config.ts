@@ -3,12 +3,6 @@ import path from "node:path";
 import { defineConfig } from "vite";
 import EnvironmentPlugin from "vite-plugin-environment";
 
-const getUniqueChunkName = (facadeModuleId: string) => {
-  const modulePathParts = facadeModuleId.split("/");
-  const moduleName = modulePathParts[modulePathParts.length - 2] || "module";
-  return `assets/${moduleName}-[name].[hash].js`;
-};
-
 export default defineConfig({
   plugins: [
     react(),
@@ -16,30 +10,35 @@ export default defineConfig({
   ],
   build: {
     target: "esnext",
+    cssCodeSplit: true,
     rollupOptions: {
       output: {
-        entryFileNames: (chunkInfo) => {
-          if ("facadeModuleId" in chunkInfo && chunkInfo.facadeModuleId) {
-            return getUniqueChunkName(chunkInfo.facadeModuleId);
-          }
-          return "assets/[name].hash-[hash].js";
-        },
-        chunkFileNames: (chunkInfo) => {
-          if ("facadeModuleId" in chunkInfo && chunkInfo.facadeModuleId) {
-            return getUniqueChunkName(chunkInfo.facadeModuleId);
-          }
-          return "assets/[name].[hash].js";
-        },
-        assetFileNames: "assets/[name].[hash].[ext]",
         manualChunks: {
-          viem: ["viem"],
-          react: ["react"],
-          dom: ["react-dom"],
-          wagmi: ["wagmi"],
-          virtual: ["react-virtuoso"],
-          indexer: ["@hey/indexer"],
+          wevm: ["viem", "wagmi"],
           connectkit: ["connectkit"],
-          livepeer: ["@livepeer/react"]
+          indexer: ["@hey/indexer"],
+          react: [
+            "react",
+            "react-dom",
+            "react-virtuoso",
+            "react-device-detect",
+            "react-easy-crop",
+            "react-hook-form",
+            "react-hot-toast",
+            "react-markdown",
+            "react-router",
+            "react-scan",
+            "react-tracked"
+          ],
+          misc: [
+            "prosekit",
+            "@livepeer/react",
+            "@uidotdev/usehooks",
+            "@radix-ui/react-hover-card",
+            "@radix-ui/react-slider",
+            "@radix-ui/react-switch",
+            "@radix-ui/react-tooltip"
+          ]
         }
       }
     }
