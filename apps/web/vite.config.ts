@@ -13,6 +13,13 @@ export default defineConfig({
     cssCodeSplit: true,
     rollupOptions: {
       output: {
+        assetFileNames: (assetInfo) => {
+          if (/\.woff2$/.test(assetInfo.name ?? "")) {
+            return "assets/fonts/[name][extname]";
+          }
+
+          return "assets/[name]-[hash][extname]";
+        },
         manualChunks: {
           wevm: ["viem", "wagmi"],
           connectkit: ["connectkit"],
