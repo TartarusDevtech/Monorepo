@@ -4,7 +4,6 @@
 
 :root {
   font-family: "Sofia Pro", "Sofia Pro Fallback", sans-serif;
-  @apply antialiased;
 }
 
 html {
