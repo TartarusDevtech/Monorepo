@@ -17,7 +17,7 @@ const Hero = () => {
             Welcome to {APP_NAME},
           </div>
           <div className="ld-text-gray-500 font-extrabold text-2xl sm:text-5xl">
-            a social network built on Lens Protocol
+            a social networkk built on Lens Protocol
           </div>
         </div>
       </div>
