@@ -1,4 +1,4 @@
-import { Card, CardHeader, Tooltip } from "@/components/Shared/UI";
+import { Card, CardHeader, Image, Tooltip } from "@/components/Shared/UI";
 import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import { trpc } from "@/helpers/trpc";
@@ -8,7 +8,6 @@ import { CheckCircleIcon as CheckCircleIconSolid } from "@heroicons/react/24/sol
 import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Events } from "@hey/data/events";
 import { useMutation } from "@tanstack/react-query";
-import Image from "next/image";
 import toast from "react-hot-toast";
 
 const icons = [

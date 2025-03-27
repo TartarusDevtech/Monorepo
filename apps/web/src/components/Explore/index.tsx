@@ -10,13 +10,17 @@ import cn from "@/helpers/cn";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { MainContentFocus } from "@hey/indexer";
-import { useRouter } from "next/router";
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router";
 import ExploreFeed from "./ExploreFeed";
 import ImageFeed from "./ImageFeed";
 
 const Explore = () => {
-  const router = useRouter();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const tab = Number(searchParams.get("tab")) || 0;
+
   const { currentAccount } = useAccountStore();
   const [focus, setFocus] = useState<MainContentFocus>();
 
@@ -34,13 +38,13 @@ const Explore = () => {
     <GridLayout>
       <GridItemEight className="space-y-5">
         <TabGroup
-          defaultIndex={Number(router.query.tab)}
+          defaultIndex={Number(tab)}
           onChange={(index) => {
-            router.replace(
-              { query: { ...router.query, tab: index } },
-              undefined,
-              { shallow: true }
-            );
+            const params = new URLSearchParams(location.search);
+            params.set("tab", index.toString());
+            navigate(`${location.pathname}?${params.toString()}`, {
+              replace: true
+            });
           }}
         >
           <TabList className="divider space-x-8">

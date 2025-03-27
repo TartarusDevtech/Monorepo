@@ -57,7 +57,7 @@ const SignedAccount = () => {
             <MenuItem
               as={NextLink}
               className="m-2 flex items-center rounded-lg px-4 py-2 text-gray-700 text-sm hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800"
-              href={getAccount(currentAccount).link}
+              to={getAccount(currentAccount).link}
             >
               <div className="flex w-full flex-col">
                 <div>Logged in as</div>
@@ -87,7 +87,7 @@ const SignedAccount = () => {
               className={({ focus }: { focus: boolean }) =>
                 cn({ "dropdown-active": focus }, "menu-item")
               }
-              href={getAccount(currentAccount).link}
+              to={getAccount(currentAccount).link}
             >
               <YourAccount />
             </MenuItem>
@@ -96,7 +96,7 @@ const SignedAccount = () => {
               className={({ focus }: { focus: boolean }) =>
                 cn({ "dropdown-active": focus }, "menu-item")
               }
-              href="/settings"
+              to="/settings"
             >
               <Settings />
             </MenuItem>
@@ -106,7 +106,7 @@ const SignedAccount = () => {
                 className={({ focus }: { focus: boolean }) =>
                   cn({ "dropdown-active": focus }, "menu-item")
                 }
-                href="/staff"
+                to="/staff"
               >
                 <StaffTools />
               </MenuItem>

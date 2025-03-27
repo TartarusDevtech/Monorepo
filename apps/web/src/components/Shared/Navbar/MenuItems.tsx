@@ -1,11 +1,11 @@
 import { useAccountStore } from "@/store/persisted/useAccountStore";
-import Link from "next/link";
+import { Link } from "react-router";
 import LoginButton from "../LoginButton";
 import SignedAccount from "./SignedAccount";
 import SignupButton from "./SignupButton";
 
-export const NextLink = ({ children, href, ...rest }: Record<string, any>) => (
-  <Link href={href} {...rest}>
+export const NextLink = ({ children, to, ...rest }: Record<string, any>) => (
+  <Link to={to} {...rest}>
     {children}
   </Link>
 );

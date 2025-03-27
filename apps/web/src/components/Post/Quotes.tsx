@@ -11,7 +11,7 @@ import {
   type PostReferencesRequest,
   usePostReferencesQuery
 } from "@hey/indexer";
-import Link from "next/link";
+import { Link } from "react-router";
 import { Virtuoso } from "react-virtuoso";
 import SinglePost from "./SinglePost";
 
@@ -63,7 +63,7 @@ const Quotes = ({ post }: QuotesProps) => {
   return (
     <Card>
       <div className="flex items-center space-x-3 p-5">
-        <Link href={`/posts/${post.id}`}>
+        <Link to={`/posts/${post.id}`}>
           <ArrowLeftIcon className="size-5" />
         </Link>
         <H5>Quotes</H5>

@@ -4,8 +4,8 @@ import formatRelativeOrAbsolute from "@hey/helpers/datetime/formatRelativeOrAbso
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import type { AccountFragment } from "@hey/indexer";
-import Link from "next/link";
 import { memo } from "react";
+import { Link } from "react-router";
 import Verified from "./Account/Icons/Verified";
 import Slug from "./Slug";
 
@@ -67,7 +67,7 @@ const SmallSingleAccount = ({
   );
 
   return linkToAccount ? (
-    <Link href={getAccount(account).link}>
+    <Link to={getAccount(account).link}>
       <AccountInfo />
     </Link>
   ) : (

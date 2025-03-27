@@ -6,8 +6,8 @@ import { Cog6ToothIcon } from "@heroicons/react/24/outline";
 import getAvatar from "@hey/helpers/getAvatar";
 import getMentions from "@hey/helpers/getMentions";
 import type { GroupFragment } from "@hey/indexer";
-import { useRouter } from "next/router";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import MembersCount from "./MembersCount";
 
 interface DetailsProps {
@@ -15,7 +15,7 @@ interface DetailsProps {
 }
 
 const Details = ({ group }: DetailsProps) => {
-  const { push } = useRouter();
+  const navigate = useNavigate();
   const { currentAccount } = useAccountStore();
   const [expandedImage, setExpandedImage] = useState<null | string>(null);
 
@@ -47,7 +47,7 @@ const Details = ({ group }: DetailsProps) => {
             <>
               <Button
                 icon={<Cog6ToothIcon className="size-5" />}
-                onClick={() => push(`/g/${group.address}/settings`)}
+                onClick={() => navigate(`/g/${group.address}/settings`)}
                 outline
               >
                 Edit Group

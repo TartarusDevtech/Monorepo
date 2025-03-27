@@ -86,14 +86,7 @@ const CreateGroupModal = () => {
       })
     );
 
-    return await createGroup({
-      variables: {
-        request: {
-          metadataUri,
-          rules: { required: [{ banAccountRule: { enable: true } }] }
-        }
-      }
-    });
+    return await createGroup({ variables: { request: { metadataUri } } });
   };
 
   return (

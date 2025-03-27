@@ -1,6 +1,6 @@
 import cn from "@/helpers/cn";
 import { BookmarkIcon } from "@heroicons/react/24/outline";
-import Link from "next/link";
+import { Link } from "react-router";
 
 interface BookmarksProps {
   className?: string;
@@ -14,7 +14,7 @@ const Bookmarks = ({ className = "", onClick }: BookmarksProps) => {
         "flex w-full items-center space-x-1.5 px-2 py-1.5 text-gray-700 text-sm dark:text-gray-200",
         className
       )}
-      href="/bookmarks"
+      to="/bookmarks"
       onClick={onClick}
     >
       <BookmarkIcon className="size-4" />

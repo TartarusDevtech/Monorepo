@@ -29,12 +29,10 @@ import {
   useMeLazyQuery,
   useUpdateAccountFollowRulesMutation
 } from "@hey/indexer";
-import { useRouter } from "next/router";
 import { type RefObject, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 
 const SuperFollow = () => {
-  const { reload } = useRouter();
   const { currentAccount, setCurrentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -65,7 +63,7 @@ const SuperFollow = () => {
     pollTransactionStatus(hash, async () => {
       const accountData = await getCurrentAccountDetails();
       setCurrentAccount(accountData?.data?.me.loggedInAs.account);
-      reload();
+      location.reload();
     });
   };
 

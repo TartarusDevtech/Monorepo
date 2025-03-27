@@ -1,6 +1,6 @@
 import cn from "@/helpers/cn";
-import { useRouter } from "next/router";
 import type { ReactNode } from "react";
+import { useLocation, useNavigate } from "react-router";
 
 interface TabButtonProps {
   active: boolean;
@@ -23,7 +23,17 @@ const TabButton = ({
   showOnSm = false,
   type
 }: TabButtonProps) => {
-  const router = useRouter();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const updateQuery = (type: string) => {
+    const params = new URLSearchParams(location.search);
+    params.set("type", type);
+
+    navigate(`${location.pathname}?${params.toString()}`, {
+      replace: true
+    });
+  };
 
   return (
     <button
@@ -37,11 +47,7 @@ const TabButton = ({
         className
       )}
       onClick={() => {
-        if (type) {
-          router.replace({ query: { ...router.query, type } }, undefined, {
-            shallow: true
-          });
-        }
+        updateQuery(type || "");
         onClick?.();
       }}
       type="button"

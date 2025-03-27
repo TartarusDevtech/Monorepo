@@ -5,7 +5,7 @@ import formatAddress from "@hey/helpers/formatAddress";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import { type RecipientPercent, useAccountsBulkQuery } from "@hey/indexer";
-import Link from "next/link";
+import { Link } from "react-router";
 
 interface SplitsProps {
   recipients: RecipientPercent[];
@@ -56,12 +56,12 @@ const Splits = ({ recipients }: SplitsProps) => {
                     src={getAvatar(account)}
                   />
                   {account ? (
-                    <Link href={getAccount(account).link}>
+                    <Link to={getAccount(account).link}>
                       <Slug slug={getAccount(account).usernameWithPrefix} />
                     </Link>
                   ) : (
                     <Link
-                      href={`${BLOCK_EXPLORER_URL}/address/${address}`}
+                      to={`${BLOCK_EXPLORER_URL}/address/${address}`}
                       rel="noreferrer noopener"
                       target="_blank"
                     >

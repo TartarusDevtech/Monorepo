@@ -1,4 +1,6 @@
 import MetaTags from "@/components/Common/MetaTags";
+import Custom404 from "@/components/Shared/404";
+import Custom500 from "@/components/Shared/500";
 import NotLoggedIn from "@/components/Shared/NotLoggedIn";
 import {
   GridItemEight,
@@ -6,21 +8,16 @@ import {
   GridLayout,
   PageLoading
 } from "@/components/Shared/UI";
-import Custom404 from "@/pages/404";
-import Custom500 from "@/pages/500";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { APP_NAME } from "@hey/data/constants";
 import { useGroupQuery } from "@hey/indexer";
-import { useRouter } from "next/router";
+import { useParams } from "react-router";
 import SettingsSidebar from "../Sidebar";
 import ApprovalRule from "./ApprovalRule";
 import SuperJoin from "./SuperJoin";
 
 const RulesSettings = () => {
-  const {
-    isReady,
-    query: { address }
-  } = useRouter();
+  const { address } = useParams<{ address: string }>();
   const { currentAccount } = useAccountStore();
 
   const { data, loading, error } = useGroupQuery({
@@ -28,7 +25,7 @@ const RulesSettings = () => {
     skip: !address
   });
 
-  if (!isReady || loading) {
+  if (!address || loading) {
     return <PageLoading />;
   }
 

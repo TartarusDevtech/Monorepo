@@ -2,6 +2,8 @@ import CommentFeed from "@/components/Comment/CommentFeed";
 import NoneRelevantFeed from "@/components/Comment/NoneRelevantFeed";
 import MetaTags from "@/components/Common/MetaTags";
 import NewPublication from "@/components/Composer/NewPublication";
+import Custom404 from "@/components/Shared/404";
+import Custom500 from "@/components/Shared/500";
 import Footer from "@/components/Shared/Footer";
 import SingleAccount from "@/components/Shared/SingleAccount";
 import {
@@ -11,8 +13,6 @@ import {
   GridLayout,
   WarningMessage
 } from "@/components/Shared/UI";
-import Custom404 from "@/pages/404";
-import Custom500 from "@/pages/500";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { APP_NAME } from "@hey/data/constants";
@@ -26,7 +26,7 @@ import {
   usePostQuery,
   usePostReferencesQuery
 } from "@hey/indexer";
-import { useRouter } from "next/router";
+import { useLocation, useParams } from "react-router";
 import { createTrackedSelector } from "react-tracked";
 import { create } from "zustand";
 import FullPost from "./FullPost";
@@ -47,11 +47,8 @@ const store = create<HiddenCommentFeedState>((set) => ({
 export const useHiddenCommentFeedStore = createTrackedSelector(store);
 
 const ViewPost = () => {
-  const {
-    isReady,
-    pathname,
-    query: { id }
-  } = useRouter();
+  const { pathname } = useLocation();
+  const { id } = useParams<{ id: string }>();
 
   const { currentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
@@ -77,7 +74,7 @@ const ViewPost = () => {
 
   const hasHiddenComments = (comments?.postReferences.items.length || 0) > 0;
 
-  if (!isReady || loading) {
+  if (!id || loading) {
     return <PublicationPageShimmer publicationList={showQuotes} />;
   }
 

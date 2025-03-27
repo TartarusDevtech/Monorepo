@@ -1,14 +1,12 @@
 import NotificationIcon from "@/components/Notification/NotificationIcon";
-import { H6 } from "@/components/Shared/UI";
+import { H6, Image } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { usePreferencesStore } from "@/store/persisted/usePreferencesStore";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import { useState } from "react";
+import { Link, useLocation } from "react-router";
 import MenuItems from "./MenuItems";
 import MoreNavItems from "./MoreNavItems";
 import Search from "./Search";
@@ -35,7 +33,7 @@ const Navbar = () => {
               !current
           }
         )}
-        href={url}
+        to={url}
       >
         <H6>{name}</H6>
       </Link>
@@ -43,7 +41,7 @@ const Navbar = () => {
   };
 
   const NavItems = () => {
-    const { pathname } = useRouter();
+    const { pathname } = useLocation();
 
     return (
       <>
@@ -77,7 +75,7 @@ const Navbar = () => {
             </button>
             <Link
               className="hidden rounded-full outline-offset-8 md:block"
-              href="/"
+              to="/"
             >
               <Image
                 alt="Logo"
@@ -98,7 +96,7 @@ const Navbar = () => {
           </div>
           <Link
             className={cn("md:hidden", !currentAccount?.address && "ml-[60px]")}
-            href="/"
+            to="/"
           >
             <Image
               alt="Logo"

@@ -1,9 +1,7 @@
 import CountdownTimer from "@/components/Shared/CountdownTimer";
-import { Button, Card } from "@/components/Shared/UI";
-import { rubikMonoOneFont } from "@/helpers/fonts";
+import { Button, Card, Image } from "@/components/Shared/UI";
 import { APP_NAME, APP_URL, STATIC_IMAGES_URL } from "@hey/data/constants";
-import Image from "next/image";
-import Link from "next/link";
+import { Link } from "react-router";
 
 const Gitcoin = () => {
   return (
@@ -20,13 +18,11 @@ const Gitcoin = () => {
       />
       <div className="space-y-3 text-center">
         <b>Support {APP_NAME} on Gitcoin Grants Round 22</b>
-        <div className={rubikMonoOneFont.className}>
-          <CountdownTimer targetDate="2024-11-07T00:59:00+00:00" />
-        </div>
+        <CountdownTimer targetDate="2024-11-07T00:59:00+00:00" />
         <div>
           <Link
             className="font-bold underline"
-            href={`${APP_URL}/gitcoin`}
+            to={`${APP_URL}/gitcoin`}
             target="_blank"
           >
             <Button size="lg">Contribute now</Button>

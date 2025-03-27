@@ -1,7 +1,7 @@
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import truncateUrl from "@hey/helpers/truncateUrl";
 import type { MarkupLinkProps } from "@hey/types/misc";
-import Link from "next/link";
+import { Link } from "react-router";
 
 const ExternalLink = ({ title }: MarkupLinkProps) => {
   let href = title;
@@ -16,7 +16,7 @@ const ExternalLink = ({ title }: MarkupLinkProps) => {
 
   return (
     <Link
-      href={href}
+      to={href}
       onClick={stopEventPropagation}
       rel="noopener"
       target={href.includes(location.host) ? "_self" : "_blank"}

@@ -1,6 +1,6 @@
 import Footer from "@/components/Shared/Footer";
 import { H2, H4 } from "@/components/Shared/UI";
-import Link from "next/link";
+import { Link } from "react-router";
 
 const Terms = () => {
   const updatedAt = "March 21, 2025";
@@ -186,7 +186,7 @@ const Terms = () => {
               <H4 className="mt-8 mb-5">7. Personal Information</H4>
               <p className="linkify leading-7">
                 Your submission of personal information through the Site is
-                governed by our <Link href="/privacy">Privacy Policy</Link>.
+                governed by our <Link to="/privacy">Privacy Policy</Link>.
               </p>
               {/* 7. Personal Information ends */}
               {/* 8. Prohibited Usage begins */}
@@ -264,7 +264,7 @@ const Terms = () => {
                   <b>Refunds for Failed Minting:</b> In the event that account
                   minting fails, customers are eligible to request a refund. To
                   request a refund, please visit our{" "}
-                  <Link href="/support">support center</Link>.
+                  <Link to="/support">support center</Link>.
                 </p>
                 <p className="leading-7">
                   This policy is concise and designed to be clear and

@@ -1,4 +1,3 @@
-import { heyFont } from "@/helpers/fonts";
 import {
   APP_NAME,
   APP_URL,
@@ -39,7 +38,7 @@ const Web3Provider = ({ children }: Web3ProviderProps) => {
         theme="soft"
         options={{ hideNoWalletCTA: true, hideQuestionMarkCTA: true }}
         customTheme={{
-          "--ck-font-family": heyFont.style.fontFamily,
+          "--ck-font-family": "SofiaPro",
           "--ck-border-radius": "12px",
           "--ck-body-background": "#ffffff",
           "--ck-focus-color": BRAND_COLOR

@@ -1,11 +1,4 @@
-import {
-  APP_NAME,
-  APP_URL,
-  DEFAULT_OG,
-  DESCRIPTION
-} from "@hey/data/constants";
-import Head from "next/head";
-import { useRouter } from "next/router";
+import { APP_NAME, DEFAULT_OG, DESCRIPTION } from "@hey/data/constants";
 
 interface MetaTagsProps {
   creator?: string;
@@ -18,20 +11,15 @@ const MetaTags = ({
   description = DESCRIPTION,
   title = APP_NAME
 }: MetaTagsProps) => {
-  const { asPath } = useRouter();
-  const url = `${APP_URL}${asPath}`;
-
   return (
-    <Head>
+    <head>
       <title>{title}</title>
       <meta content={description} name="description" />
       <meta
         content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover"
         name="viewport"
       />
-      <link href={url} rel="canonical" />
 
-      <meta content={url} property="og:url" />
       <meta content={APP_NAME} property="og:site_name" />
       <meta content={title} property="og:title" />
       <meta content={description} property="og:description" />
@@ -52,7 +40,7 @@ const MetaTags = ({
           <meta content={creator} property="publisher" />
         </>
       )}
-    </Head>
+    </head>
   );
 };
 

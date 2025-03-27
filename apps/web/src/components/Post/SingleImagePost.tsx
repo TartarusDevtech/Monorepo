@@ -2,8 +2,8 @@ import SmallSingleAccount from "@/components/Shared/SmallSingleAccount";
 import getPostData from "@hey/helpers/getPostData";
 import { isRepost } from "@hey/helpers/postHelpers";
 import type { AnyPostFragment } from "@hey/indexer";
-import Link from "next/link";
 import { memo } from "react";
+import { Link } from "react-router";
 
 interface SingleImagePostProps {
   post: AnyPostFragment;
@@ -18,7 +18,7 @@ const SingleImagePost = ({ post }: SingleImagePostProps) => {
 
   return (
     <Link
-      href={`/posts/${post.id}`}
+      to={`/posts/${post.id}`}
       key={post.id}
       className="relative h-80 overflow-hidden rounded-xl bg-center bg-cover"
       style={{

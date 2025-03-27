@@ -2,7 +2,7 @@ import { GridItemEight, GridLayout } from "@/components/Shared/UI";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { NoSymbolIcon } from "@heroicons/react/24/outline";
 import { APP_NAME } from "@hey/data/constants";
-import Link from "next/link";
+import { Link } from "react-router";
 
 const Suspended = () => {
   const { isSuspended } = useAccountStatus();
@@ -24,7 +24,7 @@ const Suspended = () => {
           <div className="text-gray-500 text-sm">
             Because of that, your account may limit your ability to interact
             with {APP_NAME} and other users.{" "}
-            <Link href="/support">Contact us</Link> if you think this is a
+            <Link to="/support">Contact us</Link> if you think this is a
             mistake.
           </div>
         </GridItemEight>

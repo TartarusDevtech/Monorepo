@@ -1,7 +1,7 @@
 import { KeyIcon } from "@heroicons/react/24/outline";
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import { useModal } from "connectkit";
-import Link from "next/link";
+import { Link } from "react-router";
 import { useAccount, useDisconnect } from "wagmi";
 
 const WalletSelector = () => {
@@ -36,11 +36,11 @@ const WalletSelector = () => {
       </button>
       <div className="linkify text-gray-500 text-sm">
         By connecting wallet, you agree to our{" "}
-        <Link href="/terms" target="_blank">
+        <Link to="/terms" target="_blank">
           Terms
         </Link>{" "}
         and{" "}
-        <Link href="/privacy" target="_blank">
+        <Link to="/privacy" target="_blank">
           Policy
         </Link>
         .

@@ -7,7 +7,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Features } from "@hey/data/features";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
-import Link from "next/link";
+import { Link } from "react-router";
 import Slug from "../Slug";
 import Bookmarks from "./NavItems/Bookmarks";
 import Groups from "./NavItems/Groups";
@@ -38,7 +38,7 @@ const MobileDrawerMenu = () => {
       <div className="w-full space-y-2">
         <Link
           className="mt-2 flex items-center space-x-2 px-5 py-3 hover:bg-gray-200 dark:hover:bg-gray-800"
-          href={getAccount(currentAccount).link}
+          to={getAccount(currentAccount).link}
           onClick={handleCloseDrawer}
         >
           <div className="flex w-full space-x-1.5">
@@ -67,16 +67,16 @@ const MobileDrawerMenu = () => {
           <div className="divider" />
           <div>
             <Link
-              href={getAccount(currentAccount).link}
+              to={getAccount(currentAccount).link}
               onClick={handleCloseDrawer}
             >
               <YourAccount className={cn(itemClass, "px-4")} />
             </Link>
-            <Link href="/settings" onClick={handleCloseDrawer}>
+            <Link to="/settings" onClick={handleCloseDrawer}>
               <Settings className={cn(itemClass, "px-4")} />
             </Link>
             {isStaff ? (
-              <Link href="/staff" onClick={handleCloseDrawer}>
+              <Link to="/staff" onClick={handleCloseDrawer}>
                 <StaffTools className={cn(itemClass, "px-4")} />
               </Link>
             ) : null}

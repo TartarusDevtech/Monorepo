@@ -1,34 +1,38 @@
+import Custom404 from "@/components/Shared/404";
 import Sidebar from "@/components/Shared/Sidebar";
 import {
   GridItemEight,
   GridItemFour,
   GridLayout
 } from "@/components/Shared/UI";
-import Custom404 from "@/pages/404";
 import { PencilSquareIcon, UsersIcon } from "@heroicons/react/24/outline";
-import { useRouter } from "next/router";
+import { useLocation } from "react-router";
 import Accounts from "./Accounts";
 import Posts from "./Posts";
 
 const Search = () => {
-  const { query } = useRouter();
-  const searchText = Array.isArray(query.q)
-    ? encodeURIComponent(query.q.join(" "))
-    : encodeURIComponent(query.q || "");
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const q = searchParams.get("q");
+  const type = searchParams.get("type");
 
-  if (!query.q || !["accounts", "posts"].includes(query.type as string)) {
+  const searchText = Array.isArray(q)
+    ? encodeURIComponent(q.join(" "))
+    : encodeURIComponent(q || "");
+
+  if (!q || !["accounts", "posts"].includes(type as string)) {
     return <Custom404 />;
   }
 
   const settingsSidebarItems = [
     {
-      active: query.type === "posts",
+      active: type === "posts",
       icon: <PencilSquareIcon className="size-4" />,
       title: "Publications",
       url: `/search?q=${searchText}&type=posts`
     },
     {
-      active: query.type === "accounts",
+      active: type === "accounts",
       icon: <UsersIcon className="size-4" />,
       title: "Accounts",
       url: `/search?q=${searchText}&type=accounts`
@@ -41,10 +45,8 @@ const Search = () => {
         <Sidebar items={settingsSidebarItems} />
       </GridItemFour>
       <GridItemEight>
-        {query.type === "accounts" ? (
-          <Accounts query={query.q as string} />
-        ) : null}
-        {query.type === "posts" ? <Posts query={query.q as string} /> : null}
+        {type === "accounts" ? <Accounts query={q as string} /> : null}
+        {type === "posts" ? <Posts query={q as string} /> : null}
       </GridItemEight>
     </GridLayout>
   );

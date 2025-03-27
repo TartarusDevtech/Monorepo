@@ -12,9 +12,9 @@ import {
   useAccountsLazyQuery
 } from "@hey/indexer";
 import { useClickAway, useDebounce } from "@uidotdev/usehooks";
-import { useRouter } from "next/router";
 import type { ChangeEvent, MutableRefObject } from "react";
 import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router";
 import RecentAccounts from "./RecentAccounts";
 
 interface SearchProps {
@@ -22,7 +22,12 @@ interface SearchProps {
 }
 
 const Search = ({ placeholder = "Search…" }: SearchProps) => {
-  const { pathname, push, query } = useRouter();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const type = searchParams.get("type");
+
   const { addAccount } = useSearchStore();
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchText, setSearchText] = useState("");
@@ -48,9 +53,9 @@ const Search = ({ placeholder = "Search…" }: SearchProps) => {
   const handleKeyDown = (evt: ChangeEvent<HTMLFormElement>) => {
     evt.preventDefault();
     if (pathname === "/search") {
-      push(`/search?q=${encodeURIComponent(searchText)}&type=${query.type}`);
+      navigate(`/search?q=${encodeURIComponent(searchText)}&type=${type}`);
     } else {
-      push(`/search?q=${encodeURIComponent(searchText)}&type=accounts`);
+      navigate(`/search?q=${encodeURIComponent(searchText)}&type=accounts`);
     }
     handleReset();
   };
@@ -111,7 +116,7 @@ const Search = ({ placeholder = "Search…" }: SearchProps) => {
                     key={account.address}
                     onClick={() => {
                       addAccount(account.address);
-                      push(getAccount(account).link);
+                      navigate(getAccount(account).link);
                       handleReset();
                     }}
                   >

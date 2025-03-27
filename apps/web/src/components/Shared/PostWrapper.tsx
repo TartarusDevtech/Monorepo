@@ -1,6 +1,6 @@
 import type { AnyPostFragment } from "@hey/indexer";
-import { useRouter } from "next/router";
 import type { ReactNode } from "react";
+import { useNavigate } from "react-router";
 
 interface PostWrapperProps {
   children: ReactNode | ReactNode[];
@@ -9,12 +9,12 @@ interface PostWrapperProps {
 }
 
 const PostWrapper = ({ children, className = "", post }: PostWrapperProps) => {
-  const { push } = useRouter();
+  const navigate = useNavigate();
 
   const handleClick = () => {
     const selection = window.getSelection();
     if (!selection || selection.toString().length === 0) {
-      push(`/posts/${post.id}`);
+      navigate(`/posts/${post.id}`);
     }
   };
 

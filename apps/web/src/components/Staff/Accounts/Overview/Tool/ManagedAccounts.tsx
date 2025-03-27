@@ -2,7 +2,7 @@ import SmallSingleAccount from "@/components/Shared/SmallSingleAccount";
 import { H5 } from "@/components/Shared/UI";
 import { UsersIcon } from "@heroicons/react/24/outline";
 import { useAccountsAvailableQuery } from "@hey/indexer";
-import Link from "next/link";
+import { Link } from "react-router";
 
 interface ManagedAccountsProps {
   address: string;
@@ -30,7 +30,7 @@ const ManagedAccounts = ({ address }: ManagedAccountsProps) => {
             {data?.lastLoggedInAccount ? (
               <div>
                 <Link
-                  href={`/staff/accounts/${data?.lastLoggedInAccount?.address}`}
+                  to={`/staff/accounts/${data?.lastLoggedInAccount?.address}`}
                 >
                   <SmallSingleAccount account={data?.lastLoggedInAccount} />
                 </Link>
@@ -40,7 +40,7 @@ const ManagedAccounts = ({ address }: ManagedAccountsProps) => {
             {data?.accountsAvailable.items.map((accountAvailable) => (
               <div key={accountAvailable.account.address}>
                 <Link
-                  href={`/staff/accounts/${accountAvailable.account.address}`}
+                  to={`/staff/accounts/${accountAvailable.account.address}`}
                 >
                   <SmallSingleAccount account={accountAvailable.account} />
                 </Link>

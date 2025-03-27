@@ -20,10 +20,9 @@ import getFavicon from "@hey/helpers/getFavicon";
 import getMentions from "@hey/helpers/getMentions";
 import type { AccountFragment } from "@hey/indexer";
 import { useTheme } from "next-themes";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import type { ReactNode } from "react";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router";
 import Followerings from "./Followerings";
 import FollowersYouKnowOverview from "./FollowersYouKnowOverview";
 import InternalTools from "./InternalTools";
@@ -36,7 +35,7 @@ interface DetailsProps {
 }
 
 const Details = ({ isSuspended = false, account }: DetailsProps) => {
-  const { push } = useRouter();
+  const navigate = useNavigate();
   const { currentAccount } = useAccountStore();
   const [expandedImage, setExpandedImage] = useState<null | string>(null);
   const isStaff = hasAccess(Features.Staff);
@@ -52,7 +51,7 @@ const Details = ({ isSuspended = false, account }: DetailsProps) => {
     return (
       <MetaDetails icon={icon}>
         <Link
-          href={
+          to={
             attribute === "website"
               ? `https://${value.replace(/https?:\/\//, "")}`
               : `https://x.com/${value.replace("https://x.com/", "")}`
@@ -114,7 +113,7 @@ const Details = ({ isSuspended = false, account }: DetailsProps) => {
           {currentAccount?.address === account.address ? (
             <Button
               icon={<Cog6ToothIcon className="size-5" />}
-              onClick={() => push("/settings")}
+              onClick={() => navigate("/settings")}
               outline
             >
               Edit Account
@@ -138,7 +137,7 @@ const Details = ({ isSuspended = false, account }: DetailsProps) => {
             >
               <Link
                 className="text-yellow-600"
-                href={`/staff/accounts/${account.address}`}
+                to={`/staff/accounts/${account.address}`}
               >
                 Open in Staff Tools
               </Link>

@@ -1,14 +1,14 @@
 import { Card } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { useRouter } from "next/router";
 import { useState } from "react";
+import { useLocation } from "react-router";
 import type { SidebarProps } from ".";
 import MenuTransition from "../MenuTransition";
 import { NextLink } from "../Navbar/MenuItems";
 
 const SidebarMenu = ({ items }: SidebarProps) => {
-  const { pathname } = useRouter();
+  const { pathname } = useLocation();
   const menuItems = items.filter((item) => item?.enabled !== false);
   const [selectedItem, setSelectedItem] = useState(
     menuItems.find((item) => item.url === pathname) || menuItems[0]
@@ -47,7 +47,7 @@ const SidebarMenu = ({ items }: SidebarProps) => {
                           "m-2 flex items-center space-x-2 rounded-lg p-2"
                         )
                       }
-                      href={item.url}
+                      to={item.url}
                       key={item.url}
                       onClick={() => setSelectedItem(item)}
                     >

@@ -6,7 +6,6 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider } from "next-themes";
 import type { ReactNode } from "react";
 import ErrorBoundary from "../ErrorBoundary";
-import Layout from "../Layout";
 import OptimisticPublicationProvider from "./OptimisticPublicationProvider";
 import PreferencesProvider from "./PreferencesProvider";
 import Web3Provider from "./Web3Provider";
@@ -27,7 +26,7 @@ const Providers = ({ children }: ProvidersProps) => {
               <OptimisticPublicationProvider />
               <PreferencesProvider />
               <ThemeProvider attribute="class" defaultTheme="light">
-                <Layout>{children}</Layout>
+                {children}
               </ThemeProvider>
             </ApolloProvider>
           </Web3Provider>

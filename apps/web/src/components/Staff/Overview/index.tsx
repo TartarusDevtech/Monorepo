@@ -1,11 +1,11 @@
 import MetaTags from "@/components/Common/MetaTags";
+import Custom404 from "@/components/Shared/404";
 import {
   GridItemEight,
   GridItemFour,
   GridLayout
 } from "@/components/Shared/UI";
 import hasAccess from "@/helpers/hasAccess";
-import Custom404 from "@/pages/404";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { APP_NAME } from "@hey/data/constants";
 import { Features } from "@hey/data/features";
@@ -13,7 +13,7 @@ import StaffSidebar from "../Sidebar";
 import App from "./App";
 import Sponsorship from "./Sponsorship";
 
-const Overview = () => {
+const StaffOverview = () => {
   const { currentAccount } = useAccountStore();
   const isStaff = hasAccess(Features.Staff);
 
@@ -35,4 +35,4 @@ const Overview = () => {
   );
 };
 
-export default Overview;
+export default StaffOverview;

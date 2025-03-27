@@ -5,7 +5,6 @@ import { signOut } from "@/store/persisted/useAuthStore";
 import { usePreferencesStore } from "@/store/persisted/usePreferencesStore";
 import { ArrowRightStartOnRectangleIcon } from "@heroicons/react/24/outline";
 import { useRevokeAuthenticationMutation } from "@hey/indexer";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -15,7 +14,6 @@ interface LogoutProps {
 }
 
 const Logout = ({ className = "", onClick }: LogoutProps) => {
-  const { reload } = useRouter();
   const { resetPreferences } = usePreferencesStore();
   const [revoking, setRevoking] = useState(false);
   const { authenticationId } = getCurrentSession();
@@ -36,7 +34,7 @@ const Logout = ({ className = "", onClick }: LogoutProps) => {
           onCompleted: () => {
             resetPreferences();
             signOut();
-            reload();
+            location.reload();
           }
         }),
         {

@@ -6,7 +6,7 @@ import {
   NumberedStat
 } from "@/components/Shared/UI";
 import { BLOCK_EXPLORER_URL, HEY_SPONSOR } from "@hey/data/constants";
-import Link from "next/link";
+import { Link } from "react-router";
 import { formatEther } from "viem";
 import { useBalance } from "wagmi";
 
@@ -28,7 +28,7 @@ const Sponsorship = () => {
           <div className="space-y-5">
             <div className="linkify font-bold">
               <Link
-                href={`${BLOCK_EXPLORER_URL}/address/${HEY_SPONSOR}`}
+                to={`${BLOCK_EXPLORER_URL}/address/${HEY_SPONSOR}`}
                 target="_blank"
               >
                 Open Sponsorship Contract in Explorer

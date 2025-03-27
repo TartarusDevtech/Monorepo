@@ -6,7 +6,7 @@ import {
   NumberedStat
 } from "@/components/Shared/UI";
 import { BLOCK_EXPLORER_URL, HEY_APP, HEY_TREASURY } from "@hey/data/constants";
-import Link from "next/link";
+import { Link } from "react-router";
 import { formatEther } from "viem";
 import { useBalance } from "wagmi";
 
@@ -28,7 +28,7 @@ const App = () => {
           <div className="space-y-5">
             <div className="linkify font-bold">
               <Link
-                href={`${BLOCK_EXPLORER_URL}/address/${HEY_APP}`}
+                to={`${BLOCK_EXPLORER_URL}/address/${HEY_APP}`}
                 target="_blank"
               >
                 Open App Contract in Explorer

@@ -1,6 +1,6 @@
+import { Image } from "@/components/Shared/UI";
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import isPrideMonth from "@hey/helpers/isPrideMonth";
-import Image from "next/image";
 
 const FullPageLoader = () => {
   const logoSrc = isPrideMonth()

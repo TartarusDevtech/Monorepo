@@ -27,7 +27,6 @@ import {
   type GroupRules,
   useUpdateGroupRulesMutation
 } from "@hey/indexer";
-import { useRouter } from "next/router";
 import { type RefObject, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -36,7 +35,6 @@ interface SuperJoinProps {
 }
 
 const SuperJoin = ({ group }: SuperJoinProps) => {
-  const { reload } = useRouter();
   const { isSuspended } = useAccountStatus();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [amount, setAmount] = useState(0);
@@ -60,7 +58,7 @@ const SuperJoin = ({ group }: SuperJoinProps) => {
   const onCompleted = (hash: string) => {
     trackEvent(Events.Group.UpdateSettings, { type: "simple_payment_rule" });
     pollTransactionStatus(hash, () => {
-      reload();
+      location.reload();
     });
   };
 

@@ -2,7 +2,7 @@ import { Image } from "@/components/Shared/UI";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { BLOCK_EXPLORER_URL, DEFAULT_AVATAR } from "@hey/data/constants";
 import formatAddress from "@hey/helpers/formatAddress";
-import Link from "next/link";
+import { Link } from "react-router";
 import type { Address } from "viem";
 import { useEnsName } from "wagmi";
 import Slug from "./Slug";
@@ -22,7 +22,7 @@ const WalletAccount = ({ address }: WalletAccountProps) => {
     <div className="flex items-center justify-between">
       <Link
         className="flex items-center space-x-3"
-        href={`${BLOCK_EXPLORER_URL}/address/${address}`}
+        to={`${BLOCK_EXPLORER_URL}/address/${address}`}
         rel="noreferrer noopener"
         target="_blank"
       >

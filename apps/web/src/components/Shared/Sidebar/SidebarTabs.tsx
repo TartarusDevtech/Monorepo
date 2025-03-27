@@ -1,7 +1,6 @@
 import cn from "@/helpers/cn";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import type { ReactNode } from "react";
+import { Link, useLocation } from "react-router";
 
 interface MenuProps {
   children: ReactNode;
@@ -30,14 +29,14 @@ const Menu = ({ children, current, url }: MenuProps) => (
       "hover:text-black hover:dark:text-white",
       "flex items-center space-x-2 rounded-lg px-3 py-2"
     )}
-    href={url}
+    to={url}
   >
     {children}
   </Link>
 );
 
 const SidebarTabs = ({ items }: SidebarProps) => {
-  const { pathname } = useRouter();
+  const { pathname } = useLocation();
   const menuItems = items.filter((item) => item.enabled !== false);
 
   return (

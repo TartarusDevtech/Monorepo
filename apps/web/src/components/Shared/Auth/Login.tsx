@@ -13,7 +13,6 @@ import {
   useAuthenticateMutation,
   useChallengeMutation
 } from "@hey/indexer";
-import { useRouter } from "next/router";
 import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -28,7 +27,6 @@ interface LoginProps {
 }
 
 const Login = ({ setHasAccounts }: LoginProps) => {
-  const { reload } = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [loggingInAccountId, setLoggingInAccountId] = useState<null | string>(
     null
@@ -88,7 +86,7 @@ const Login = ({ setHasAccounts }: LoginProps) => {
         const idToken = auth.data?.authenticate.idToken;
         signIn({ accessToken, idToken, refreshToken });
         trackEvent(Events.Account.Login);
-        return reload();
+        return location.reload();
       }
 
       return toast.error(Errors.SomethingWentWrong);

@@ -33,9 +33,9 @@ import {
   useCollectActionQuery
 } from "@hey/indexer";
 import { useCounter } from "@uidotdev/usehooks";
-import Link from "next/link";
 import plur from "plur";
 import { type Dispatch, type SetStateAction, useState } from "react";
+import { Link } from "react-router";
 import CollectActionButton from "./CollectActionButton";
 import Splits from "./Splits";
 
@@ -205,7 +205,7 @@ const CollectActionBody = ({
                 <span>Token:</span>
                 <Link
                   className="font-bold text-gray-600"
-                  href={`${BLOCK_EXPLORER_URL}/address/${collectAction.address}`}
+                  to={`${BLOCK_EXPLORER_URL}/address/${collectAction.address}`}
                   rel="noreferrer noopener"
                   target="_blank"
                 >

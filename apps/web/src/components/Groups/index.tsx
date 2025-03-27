@@ -2,6 +2,7 @@ import MetaTags from "@/components/Common/MetaTags";
 import Footer from "@/components/Shared/Footer";
 import NotLoggedIn from "@/components/Shared/NotLoggedIn";
 import {
+  Card,
   GridItemEight,
   GridItemFour,
   GridLayout
@@ -31,7 +32,9 @@ const Groups = () => {
       <MetaTags title={`Groups • ${APP_NAME}`} />
       <GridItemEight className="space-y-5">
         <ListFocusType focus={focus} setFocus={setFocus} />
-        <List focus={focus} />
+        <Card>
+          <List focus={focus} />
+        </Card>
       </GridItemEight>
       <GridItemFour>
         <CreateGroup />

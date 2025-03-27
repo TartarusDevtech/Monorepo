@@ -1,5 +1,7 @@
 import MetaTags from "@/components/Common/MetaTags";
 import NewPost from "@/components/Composer/NewPost";
+import Custom404 from "@/components/Shared/404";
+import Custom500 from "@/components/Shared/500";
 import Cover from "@/components/Shared/Cover";
 import {
   EmptyState,
@@ -9,8 +11,6 @@ import {
 } from "@/components/Shared/UI";
 import hasAccess from "@/helpers/hasAccess";
 import { trpc } from "@/helpers/trpc";
-import Custom404 from "@/pages/404";
-import Custom500 from "@/pages/500";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { NoSymbolIcon } from "@heroicons/react/24/outline";
 import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
@@ -20,7 +20,7 @@ import getAccount from "@hey/helpers/getAccount";
 import isAccountDeleted from "@hey/helpers/isAccountDeleted";
 import { useAccountQuery } from "@hey/indexer";
 import { useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/router";
+import { useParams } from "react-router";
 import AccountFeed from "./AccountFeed";
 import DeletedDetails from "./DeletedDetails";
 import Details from "./Details";
@@ -29,10 +29,12 @@ import AccountPageShimmer from "./Shimmer";
 import SuspendedDetails from "./SuspendedDetails";
 
 const ViewProfile = () => {
-  const {
-    isReady,
-    query: { username, address, type }
-  } = useRouter();
+  const { address, username, type } = useParams<{
+    address: string;
+    username: string;
+    type: string;
+  }>();
+
   const { currentAccount } = useAccountStore();
   const isStaff = hasAccess(Features.Staff);
 
@@ -71,7 +73,7 @@ const ViewProfile = () => {
     )
   );
 
-  if (!isReady || loading) {
+  if ((!username && !address) || loading) {
     return <AccountPageShimmer />;
   }
 

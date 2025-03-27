@@ -2,8 +2,8 @@ import Markup from "@/components/Shared/Markup";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import getPostData from "@hey/helpers/getPostData";
 import { isRepost } from "@hey/helpers/postHelpers";
-import Link from "next/link";
 import plur from "plur";
+import { Link } from "react-router";
 import { NotificationAccountAvatar } from "../Account";
 import AggregatedNotificationTitle from "../AggregatedNotificationTitle";
 
@@ -47,7 +47,7 @@ const ActedNotification = ({ notification }: ActedNotificationProps) => {
         />
         <Link
           className="ld-text-gray-500 linkify mt-2 line-clamp-2"
-          href={`/posts/${notification.post.id}`}
+          to={`/posts/${notification.post.id}`}
         >
           <Markup mentions={targetPost.mentions}>{filteredContent}</Markup>
         </Link>

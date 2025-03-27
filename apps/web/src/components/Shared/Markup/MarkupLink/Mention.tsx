@@ -2,7 +2,7 @@ import AccountPreview from "@/components/Shared/AccountPreview";
 import Slug from "@/components/Shared/Slug";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { MarkupLinkProps } from "@hey/types/misc";
-import Link from "next/link";
+import { Link } from "react-router";
 
 const Mention = ({ mentions, title }: MarkupLinkProps) => {
   const username = title;
@@ -46,7 +46,7 @@ const Mention = ({ mentions, title }: MarkupLinkProps) => {
   return canShowUserPreview(username) ? (
     <Link
       className="outline-none focus:underline"
-      href={`/u/${getNameFromMention(username)}`}
+      to={`/u/${getNameFromMention(username)}`}
       onClick={stopEventPropagation}
     >
       <AccountPreview

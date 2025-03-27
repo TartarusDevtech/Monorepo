@@ -1,8 +1,8 @@
 import cn from "@/helpers/cn";
 import getAccount from "@hey/helpers/getAccount";
 import type { AccountFragment } from "@hey/indexer";
-import Link from "next/link";
 import type { ReactNode } from "react";
+import { Link } from "react-router";
 import Slug from "./Slug";
 
 interface FallbackAccountNameProps {
@@ -33,7 +33,7 @@ const FallbackAccountName = ({
           "max-w-sm truncate outline-none hover:underline focus:underline",
           className
         )}
-        href={link}
+        to={link}
       >
         <b className="whitespace-nowrap">{accountName}</b>
       </Link>

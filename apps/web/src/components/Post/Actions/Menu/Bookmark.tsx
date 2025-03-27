@@ -11,15 +11,15 @@ import {
   useBookmarkPostMutation,
   useUndoBookmarkPostMutation
 } from "@hey/indexer";
-import { useRouter } from "next/router";
 import { toast } from "react-hot-toast";
+import { useLocation } from "react-router";
 
 interface BookmarkProps {
   post: PostFragment;
 }
 
 const Bookmark = ({ post }: BookmarkProps) => {
-  const { pathname } = useRouter();
+  const { pathname } = useLocation();
   const hasBookmarked = post.operations?.hasBookmarked;
 
   const updateCache = (cache: ApolloCache<any>, hasBookmarked: boolean) => {

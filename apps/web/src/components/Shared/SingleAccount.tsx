@@ -4,8 +4,8 @@ import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import getMentions from "@hey/helpers/getMentions";
 import type { AccountFragment } from "@hey/indexer";
-import Link from "next/link";
 import { memo } from "react";
+import { Link } from "react-router";
 import FollowUnfollowButton from "./Account/FollowUnfollowButton";
 import Verified from "./Account/Icons/Verified";
 import AccountPreview from "./AccountPreview";
@@ -91,7 +91,7 @@ const SingleAccount = ({
   return (
     <div className="flex items-center justify-between">
       {linkToAccount && account.address ? (
-        <Link href={getAccount(account).link}>
+        <Link to={getAccount(account).link}>
           <AccountInfo />
         </Link>
       ) : (

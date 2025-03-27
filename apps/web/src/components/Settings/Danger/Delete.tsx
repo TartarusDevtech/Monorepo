@@ -18,9 +18,9 @@ import {
 } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import type { AccountFragment } from "@hey/indexer";
-import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { Link } from "react-router";
 
 const DeleteSettings = () => {
   const { currentAccount } = useAccountStore();
@@ -72,7 +72,7 @@ const DeleteSettings = () => {
           </p>
           <p className="linkify py-3">
             Your account will be transferred to a{" "}
-            <Link href={`${BLOCK_EXPLORER_URL}/address/${NULL_ADDRESS}`}>
+            <Link to={`${BLOCK_EXPLORER_URL}/address/${NULL_ADDRESS}`}>
               null address
             </Link>{" "}
             after deletion.

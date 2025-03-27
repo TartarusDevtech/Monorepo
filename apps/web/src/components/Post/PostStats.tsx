@@ -4,9 +4,9 @@ import Reposts from "@/components/Shared/Modal/Reposts";
 import { Modal } from "@/components/Shared/UI";
 import nFormatter from "@hey/helpers/nFormatter";
 import type { PostFragment } from "@hey/indexer";
-import Link from "next/link";
 import plur from "plur";
 import { memo, useState } from "react";
+import { Link } from "react-router";
 
 interface PostStatsProps {
   post: PostFragment;
@@ -54,7 +54,7 @@ const PostStats = ({ post }: PostStatsProps) => {
           </button>
         ) : null}
         {quotes > 0 ? (
-          <Link className="outline-offset-2" href={`/posts/${post.id}/quotes`}>
+          <Link className="outline-offset-2" to={`/posts/${post.id}/quotes`}>
             <b className="text-black dark:text-white">{nFormatter(quotes)}</b>{" "}
             {plur("Quote", quotes)}
           </Link>

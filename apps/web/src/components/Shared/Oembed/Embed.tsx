@@ -3,7 +3,7 @@ import type { OembedRouterOutput } from "@hey/api/src/routers/oembed";
 import { ATTACHMENT } from "@hey/data/constants";
 import imageKit from "@hey/helpers/imageKit";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
-import Link from "next/link";
+import { Link } from "react-router";
 
 interface EmbedProps {
   og: OembedRouterOutput["get"];
@@ -17,7 +17,7 @@ const Embed = ({ og }: EmbedProps) => {
   return (
     <div className="mt-4 w-full text-sm md:w-4/6">
       <Link
-        href={og.url}
+        to={og.url}
         onClick={stopEventPropagation}
         rel="noreferrer noopener"
         target={og.url.includes(location.host) ? "_self" : "_blank"}

@@ -1,4 +1,5 @@
 import MetaTags from "@/components/Common/MetaTags";
+import Custom404 from "@/components/Shared/404";
 import Loader from "@/components/Shared/Loader";
 import {
   Card,
@@ -11,24 +12,20 @@ import {
 import AccountStaffTool from "@/components/Staff/Accounts/Overview/Tool";
 import StaffSidebar from "@/components/Staff/Sidebar";
 import hasAccess from "@/helpers/hasAccess";
-import Custom404 from "@/pages/404";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { UserIcon } from "@heroicons/react/24/outline";
 import { APP_NAME } from "@hey/data/constants";
 import { Features } from "@hey/data/features";
 import { useAccountQuery } from "@hey/indexer";
-import { useRouter } from "next/router";
+import { useParams } from "react-router";
 
-const Overview = () => {
-  const {
-    isReady,
-    query: { address }
-  } = useRouter();
+const StaffAccountOverview = () => {
+  const { address } = useParams<{ address: string }>();
   const { currentAccount } = useAccountStore();
   const isStaff = hasAccess(Features.Staff);
 
   const { data, error, loading } = useAccountQuery({
-    skip: !address || !isReady,
+    skip: !address,
     variables: { request: { address: address } }
   });
 
@@ -67,4 +64,4 @@ const Overview = () => {
   );
 };
 
-export default Overview;
+export default StaffAccountOverview;

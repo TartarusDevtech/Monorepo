@@ -1,7 +1,7 @@
 import Footer from "@/components/Shared/Footer";
 import { H2, H4 } from "@/components/Shared/UI";
 import { APP_NAME } from "@hey/data/constants";
-import Link from "next/link";
+import { Link } from "react-router";
 
 const Copyright = () => {
   const updatedAt = "October 22, 2024";
@@ -40,7 +40,7 @@ const Copyright = () => {
                   1998, the text of which may be found on the U.S. Copyright
                   Office website at{" "}
                   <Link
-                    href="http://www.copyright.gov/legislation/dmca.pdf"
+                    to="http://www.copyright.gov/legislation/dmca.pdf"
                     target="_blank"
                   >
                     http://www.copyright.gov/legislation/dmca.pdf
@@ -122,7 +122,7 @@ const Copyright = () => {
                 </p>
                 <p className="linkify leading-7">
                   Email:{" "}
-                  <Link href="mailto:copyright@hey.xyz">copyright@hey.xyz</Link>
+                  <Link to="mailto:copyright@hey.xyz">copyright@hey.xyz</Link>
                 </p>
               </div>
               {/* DMCA Notice of Alleged Infringement ("Notice") ends */}

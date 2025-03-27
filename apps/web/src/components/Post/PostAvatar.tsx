@@ -5,9 +5,8 @@ import getAvatar from "@hey/helpers/getAvatar";
 import { isRepost } from "@hey/helpers/postHelpers";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { AnyPostFragment, TimelineItemFragment } from "@hey/indexer";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import { memo } from "react";
+import { Link, useNavigate } from "react-router";
 
 interface PostAvatarProps {
   timelineItem?: TimelineItemFragment;
@@ -20,7 +19,7 @@ const PostAvatar = ({
   post,
   quoted = false
 }: PostAvatarProps) => {
-  const { push } = useRouter();
+  const navigate = useNavigate();
   const targetPost = isRepost(post) ? post?.repostOf : post;
   const rootPost = timelineItem ? timelineItem?.primary : targetPost;
   const account = timelineItem ? rootPost.author : targetPost.author;
@@ -28,7 +27,7 @@ const PostAvatar = ({
   return (
     <Link
       className="contents"
-      href={getAccount(account).link}
+      to={getAccount(account).link}
       onClick={stopEventPropagation}
     >
       <Image
@@ -39,7 +38,7 @@ const PostAvatar = ({
         )}
         height={quoted ? 25 : 44}
         loading="lazy"
-        onClick={() => push(getAccount(account).link)}
+        onClick={() => navigate(getAccount(account).link)}
         src={getAvatar(account)}
         width={quoted ? 25 : 44}
       />

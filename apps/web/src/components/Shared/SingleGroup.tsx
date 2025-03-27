@@ -3,8 +3,8 @@ import cn from "@/helpers/cn";
 import getAvatar from "@hey/helpers/getAvatar";
 import getMentions from "@hey/helpers/getMentions";
 import type { GroupFragment } from "@hey/indexer";
-import Link from "next/link";
 import { memo } from "react";
+import { Link } from "react-router";
 import JoinLeaveButton from "./Group/JoinLeaveButton";
 import Markup from "./Markup";
 
@@ -61,7 +61,7 @@ const SingleGroup = ({
   return (
     <div className="flex items-center justify-between">
       {linkToGroup ? (
-        <Link href={`/g/${group.address}`}>
+        <Link to={`/g/${group.address}`}>
           <GroupInfo />
         </Link>
       ) : (

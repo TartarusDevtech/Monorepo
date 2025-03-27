@@ -11,9 +11,9 @@ import getURLs from "@hey/helpers/getURLs";
 import { isRepost } from "@hey/helpers/postHelpers";
 import type { AnyPostFragment } from "@hey/indexer";
 import { getSrc } from "@livepeer/react/external";
-import Link from "next/link";
 import { memo } from "react";
 import { isIOS, isMobile } from "react-device-detect";
+import { Link } from "react-router";
 import Metadata from "./Metadata";
 
 interface PostBodyProps {
@@ -78,7 +78,7 @@ const PostBody = ({
       {canShowMore ? (
         <H6 className="ld-text-gray-500 mt-4 flex items-center space-x-1">
           <EyeIcon className="size-4" />
-          <Link href={`/posts/${id}`}>Show more</Link>
+          <Link to={`/posts/${id}`}>Show more</Link>
         </H6>
       ) : null}
       {/* Attachments and Quotes */}

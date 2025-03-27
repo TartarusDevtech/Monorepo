@@ -3,7 +3,7 @@ import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { MinusCircleIcon } from "@heroicons/react/24/outline";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { APP_NAME } from "@hey/data/constants";
-import Link from "next/link";
+import { Link } from "react-router";
 
 interface StatusProps {
   finished: boolean;
@@ -51,7 +51,7 @@ const SetAccount = () => {
         />
       </div>
       <div className="font-bold">
-        <Link href="/settings">Update account now</Link>
+        <Link to="/settings">Update account now</Link>
       </div>
     </Card>
   );

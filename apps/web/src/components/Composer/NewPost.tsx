@@ -2,8 +2,8 @@ import { Card, Image } from "@/components/Shared/UI";
 import { usePostStore } from "@/store/non-persisted/post/usePostStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import getAvatar from "@hey/helpers/getAvatar";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 import NewPublication from "./NewPublication";
 
 interface NewPostProps {
@@ -11,7 +11,14 @@ interface NewPostProps {
 }
 
 const NewPost = ({ feed }: NewPostProps) => {
-  const { isReady, query } = useRouter();
+  const location = useLocation();
+
+  const searchParams = new URLSearchParams(location.search);
+  const text = searchParams.get("text");
+  const hashtags = searchParams.get("hashtags");
+  const url = searchParams.get("url");
+  const via = searchParams.get("via");
+
   const { currentAccount } = useAccountStore();
   const { setPostContent } = usePostStore();
   const [showComposer, setShowComposer] = useState(false);
@@ -21,8 +28,7 @@ const NewPost = ({ feed }: NewPostProps) => {
   };
 
   useEffect(() => {
-    if (isReady && query.text) {
-      const { hashtags, text, url, via } = query;
+    if (text) {
       let processedHashtags: string | undefined;
 
       if (hashtags) {
@@ -39,7 +45,7 @@ const NewPost = ({ feed }: NewPostProps) => {
       handleOpenModal();
       setPostContent(content);
     }
-  }, [query]);
+  }, [text, hashtags, url, via]);
 
   if (showComposer) {
     return <NewPublication feed={feed} />;

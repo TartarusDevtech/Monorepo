@@ -2,7 +2,7 @@ import Markup from "@/components/Shared/Markup";
 import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
 import getPostData from "@hey/helpers/getPostData";
 import type { QuoteNotificationFragment } from "@hey/indexer";
-import Link from "next/link";
+import { Link } from "react-router";
 import { NotificationAccountAvatar } from "../Account";
 import AggregatedNotificationTitle from "../AggregatedNotificationTitle";
 
@@ -35,7 +35,7 @@ const QuoteNotification = ({ notification }: QuoteNotificationProps) => {
         />
         <Link
           className="ld-text-gray-500 linkify mt-2 line-clamp-2"
-          href={`/posts/${notification.quote.id}`}
+          to={`/posts/${notification.quote.id}`}
         >
           <Markup mentions={notification.quote.mentions}>
             {filteredContent}

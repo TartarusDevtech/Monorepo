@@ -1,5 +1,7 @@
 import MetaTags from "@/components/Common/MetaTags";
 import NewPost from "@/components/Composer/NewPost";
+import Custom404 from "@/components/Shared/404";
+import Custom500 from "@/components/Shared/500";
 import Cover from "@/components/Shared/Cover";
 import {
   GridItemEight,
@@ -7,21 +9,16 @@ import {
   GridLayout,
   WarningMessage
 } from "@/components/Shared/UI";
-import Custom404 from "@/pages/404";
-import Custom500 from "@/pages/500";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { useGroupQuery } from "@hey/indexer";
-import { useRouter } from "next/router";
+import { useParams } from "react-router";
 import Details from "./Details";
 import GroupFeed from "./GroupFeed";
 import GroupPageShimmer from "./Shimmer";
 
 const ViewGroup = () => {
-  const {
-    isReady,
-    query: { address }
-  } = useRouter();
+  const { address } = useParams<{ address: string }>();
   const { currentAccount } = useAccountStore();
 
   const { data, loading, error } = useGroupQuery({
@@ -29,7 +26,7 @@ const ViewGroup = () => {
     skip: !address
   });
 
-  if (!isReady || loading) {
+  if (!address || loading) {
     return <GroupPageShimmer />;
   }
 

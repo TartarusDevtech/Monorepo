@@ -6,14 +6,14 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import getAccount from "@hey/helpers/getAccount";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import { useAccountsBulkQuery } from "@hey/indexer";
-import { useRouter } from "next/router";
+import { useNavigate } from "react-router";
 
 interface RecentAccountsProps {
   onAccountClick: () => void;
 }
 
 const RecentAccounts = ({ onAccountClick }: RecentAccountsProps) => {
-  const { push } = useRouter();
+  const navigate = useNavigate();
   const {
     addAccount,
     clearAccount,
@@ -50,7 +50,7 @@ const RecentAccounts = ({ onAccountClick }: RecentAccountsProps) => {
               key={account.address}
               onClick={() => {
                 addAccount(account.address);
-                push(getAccount(account).link);
+                navigate(getAccount(account).link);
                 onAccountClick();
               }}
             >

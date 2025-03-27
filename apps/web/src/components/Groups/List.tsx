@@ -79,19 +79,17 @@ const List = ({ focus }: ListProps) => {
   }
 
   return (
-    <Card>
-      <Virtuoso
-        className="virtual-divider-list-window"
-        data={groups}
-        endReached={onEndReached}
-        itemContent={(_, group) => (
-          <div className="p-5">
-            <SingleGroup group={group} showDescription isBig />
-          </div>
-        )}
-        useWindowScroll
-      />
-    </Card>
+    <Virtuoso
+      className="virtual-divider-list-window"
+      data={groups}
+      endReached={onEndReached}
+      itemContent={(_, group) => (
+        <div className="p-5">
+          <SingleGroup group={group} showDescription isBig />
+        </div>
+      )}
+      useWindowScroll
+    />
   );
 };
 

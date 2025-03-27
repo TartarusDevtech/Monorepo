@@ -11,19 +11,13 @@ import { usePreferencesStore } from "@/store/persisted/usePreferencesStore";
 import { useMeQuery } from "@hey/indexer";
 import { useIsClient } from "@uidotdev/usehooks";
 import { useTheme } from "next-themes";
-import { useRouter } from "next/router";
-import type { ReactNode } from "react";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
+import { Outlet } from "react-router";
 import GlobalModals from "../Shared/GlobalModals";
 import Navbar from "../Shared/Navbar";
 
-interface LayoutProps {
-  children: ReactNode;
-}
-
-const Layout = ({ children }: LayoutProps) => {
-  const { reload } = useRouter();
+const Layout = () => {
   const { resolvedTheme } = useTheme();
   const { currentAccount, setCurrentAccount } = useAccountStore();
   const { resetPreferences } = usePreferencesStore();
@@ -36,7 +30,7 @@ const Layout = ({ children }: LayoutProps) => {
     resetStatus();
     signOut();
     if (shouldReload) {
-      reload();
+      location.reload();
     }
   };
 
@@ -71,7 +65,7 @@ const Layout = ({ children }: LayoutProps) => {
         <Navbar />
         <GlobalBanners />
         <BottomNavigation />
-        {children}
+        <Outlet />
       </div>
     </main>
   );

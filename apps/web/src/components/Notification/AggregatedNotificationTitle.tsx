@@ -1,6 +1,6 @@
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { AccountFragment } from "@hey/indexer";
-import Link from "next/link";
+import { Link } from "react-router";
 import { NotificationAccountName } from "./Account";
 
 interface AggregatedNotificationTitleProps {
@@ -23,7 +23,7 @@ const AggregatedNotificationTitle = ({
       {type && (
         <Link
           className="outline-none hover:underline focus:underline"
-          href={linkToType}
+          to={linkToType}
           onClick={stopEventPropagation}
         >
           {type.toLowerCase()}

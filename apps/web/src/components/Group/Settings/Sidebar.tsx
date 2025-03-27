@@ -2,17 +2,15 @@ import Sidebar from "@/components/Shared/Sidebar";
 import SingleGroup from "@/components/Shared/SingleGroup";
 import { LockClosedIcon, UserGroupIcon } from "@heroicons/react/24/outline";
 import type { GroupFragment } from "@hey/indexer";
-import { useRouter } from "next/router";
+import { useLocation, useParams } from "react-router";
 
 interface SettingsSidebarProps {
   group: GroupFragment;
 }
 
 const SettingsSidebar = ({ group }: SettingsSidebarProps) => {
-  const {
-    pathname,
-    query: { address }
-  } = useRouter();
+  const { pathname } = useLocation();
+  const { address } = useParams<{ address: string }>();
 
   const sidebarItems = [
     {

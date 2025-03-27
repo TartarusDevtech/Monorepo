@@ -1,5 +1,5 @@
+import { Image } from "@/components/Shared/UI";
 import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
-import Image from "next/image";
 
 const Hero = () => {
   return (

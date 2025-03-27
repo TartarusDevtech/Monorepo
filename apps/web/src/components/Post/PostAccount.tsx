@@ -4,10 +4,9 @@ import formatRelativeOrAbsolute from "@hey/helpers/datetime/formatRelativeOrAbso
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import type { AccountFragment, PostGroupInfoFragment } from "@hey/indexer";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import type { ReactNode } from "react";
 import { memo } from "react";
+import { Link, useLocation } from "react-router";
 import AccountPreview from "../Shared/AccountPreview";
 import Slug from "../Shared/Slug";
 
@@ -24,12 +23,12 @@ const PostAccount = ({
   postSlug,
   timestamp
 }: PostAccountProps) => {
-  const { pathname } = useRouter();
+  const { pathname } = useLocation();
 
   const CustomLink = ({ children }: { children: ReactNode }) => (
     <Link
       className="outline-none hover:underline focus:underline"
-      href={getAccount(account).link}
+      to={getAccount(account).link}
     >
       <AccountPreview
         username={account.username?.localName}
@@ -57,10 +56,7 @@ const PostAccount = ({
         {timestamp ? (
           <span className="ld-text-gray-500">
             <span className="mr-1">·</span>
-            <Link
-              className="text-xs hover:underline"
-              href={`/posts/${postSlug}`}
-            >
+            <Link className="text-xs hover:underline" to={`/posts/${postSlug}`}>
               {formatRelativeOrAbsolute(timestamp)}
             </Link>
           </span>
@@ -69,7 +65,7 @@ const PostAccount = ({
       {group?.metadata && pathname !== "/g/[address]" ? (
         <Link
           className="mt-0.5 mb-2 flex w-fit max-w-sm items-center gap-x-1 text-xs hover:underline focus:underline"
-          href={`/g/${group.address}`}
+          to={`/g/${group.address}`}
         >
           <Image
             src={getAvatar(group)}

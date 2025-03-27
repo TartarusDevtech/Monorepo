@@ -1,7 +1,7 @@
 import MetaTags from "@/components/Common/MetaTags";
 import { Card, GridItemTwelve, GridLayout, H3 } from "@/components/Shared/UI";
 import { APP_NAME } from "@hey/data/constants";
-import Link from "next/link";
+import { Link } from "react-router";
 
 const Support = () => {
   return (
@@ -13,34 +13,34 @@ const Support = () => {
             <H3>Support</H3>
             <p className="mt-3">
               For assistance, please email us at{" "}
-              <Link href="mailto:support@hey.xyz">support@hey.xyz</Link> with a
+              <Link to="mailto:support@hey.xyz">support@hey.xyz</Link> with a
               detailed description of your issue and how we can assist you.
             </p>
             <ul className="my-5 space-y-2">
               <li>
-                <Link href="/guidelines">Community Guidelines</Link>
+                <Link to="/guidelines">Community Guidelines</Link>
               </li>
               <li>
-                <Link href="/terms">Terms of Service</Link>
+                <Link to="/terms">Terms of Service</Link>
               </li>
               <li>
-                <Link href="/privacy">Hey Privacy Policy</Link>
+                <Link to="/privacy">Hey Privacy Policy</Link>
               </li>
               <li>
                 <Link
-                  href="https://www.lens.xyz/legal/lens.xyz-privacy-policy.pdf"
+                  to="https://www.lens.xyz/legal/lens.xyz-privacy-policy.pdf"
                   target="_blank"
                 >
                   Lens Protocol Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/copyright">Copyright Policy</Link>
+                <Link to="/copyright">Copyright Policy</Link>
               </li>
             </ul>
             <p className="mt-3 text-gray-500 text-sm">
               Send any legal requests to{" "}
-              <Link href="mailto:legal@hey.xyz">legal@hey.xyz</Link>
+              <Link to="mailto:legal@hey.xyz">legal@hey.xyz</Link>
             </p>
           </div>
         </Card>

@@ -1,5 +1,5 @@
 import { APP_NAME, APP_URL } from "@hey/data/constants";
-import Link from "next/link";
+import { Link } from "react-router";
 const currentYear = new Date().getFullYear();
 
 const links = [
@@ -22,7 +22,7 @@ const Footer = () => {
       {links.map((link) => (
         <Link
           className="outline-offset-4"
-          href={link.href}
+          to={link.href}
           key={link.href}
           rel="noreferrer noopener"
           target={link.href.startsWith("http") ? "_blank" : undefined}

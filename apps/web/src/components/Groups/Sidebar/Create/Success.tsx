@@ -1,20 +1,18 @@
-import { H4 } from "@/components/Shared/UI";
+import { H4, Image } from "@/components/Shared/UI";
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
-import Image from "next/image";
-import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
 import { useCreateGroupStore } from "./CreateGroup";
 
 const Success = () => {
-  const { push } = useRouter();
+  const navigate = useNavigate();
   const { groupAddress, setScreen } = useCreateGroupStore();
 
   useEffect(() => {
     setTimeout(() => {
       if (groupAddress) {
-        push(`/g/${groupAddress}`).then(() => {
-          setScreen("details");
-        });
+        navigate(`/g/${groupAddress}`);
+        setScreen("details");
       }
     }, 3000);
   }, [groupAddress]);

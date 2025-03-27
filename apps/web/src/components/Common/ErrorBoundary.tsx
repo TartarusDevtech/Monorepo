@@ -1,4 +1,4 @@
-import Custom500 from "@/pages/500";
+import Custom500 from "@/components/Shared/500";
 import type { ErrorInfo, ReactNode } from "react";
 import { Component } from "react";
 

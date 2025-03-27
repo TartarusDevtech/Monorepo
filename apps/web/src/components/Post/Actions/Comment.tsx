@@ -3,7 +3,7 @@ import { ChatBubbleLeftIcon } from "@heroicons/react/24/outline";
 import humanize from "@hey/helpers/humanize";
 import nFormatter from "@hey/helpers/nFormatter";
 import type { PostFragment } from "@hey/indexer";
-import { useRouter } from "next/router";
+import { useNavigate } from "react-router";
 
 interface CommentProps {
   post: PostFragment;
@@ -11,7 +11,7 @@ interface CommentProps {
 }
 
 const Comment = ({ post, showCount }: CommentProps) => {
-  const { push } = useRouter();
+  const navigate = useNavigate();
   const count = post.stats.comments;
   const iconClassName = showCount
     ? "w-[17px] sm:w-[20px]"
@@ -22,9 +22,7 @@ const Comment = ({ post, showCount }: CommentProps) => {
       <button
         aria-label="Comment"
         className="rounded-full p-1.5 outline-offset-2 hover:bg-gray-300/20"
-        onClick={() => {
-          push(`/posts/${post.id}`);
-        }}
+        onClick={() => navigate(`/posts/${post.id}`)}
         type="button"
       >
         <Tooltip

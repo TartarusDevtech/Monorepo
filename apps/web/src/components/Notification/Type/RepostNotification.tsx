@@ -2,8 +2,8 @@ import Markup from "@/components/Shared/Markup";
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/solid";
 import getPostData from "@hey/helpers/getPostData";
 import type { RepostNotificationFragment } from "@hey/indexer";
-import Link from "next/link";
 import plur from "plur";
+import { Link } from "react-router";
 import { NotificationAccountAvatar } from "../Account";
 import AggregatedNotificationTitle from "../AggregatedNotificationTitle";
 
@@ -45,7 +45,7 @@ const RepostNotification = ({ notification }: RepostNotificationProps) => {
         />
         <Link
           className="ld-text-gray-500 linkify mt-2 line-clamp-2"
-          href={`/posts/${notification.post.id}`}
+          to={`/posts/${notification.post.id}`}
         >
           <Markup mentions={notification.post.mentions}>
             {filteredContent}
