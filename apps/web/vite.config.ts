@@ -25,13 +25,24 @@ export default defineConfig({
             "react-easy-crop",
             "react-hook-form",
             "react-hot-toast",
-            "react-markdown",
             "react-router",
             "react-scan",
             "react-tracked"
           ],
-          misc: [
+          editor: [
+            "react-markdown",
+            "strip-markdown",
+            "unified",
             "prosekit",
+            "rehype-parse",
+            "rehype-remark",
+            "remark-breaks",
+            "remark-html",
+            "remark-linkify-regex",
+            "remark-stringify"
+          ],
+          misc: [
+            "plyr-react",
             "@livepeer/react",
             "@uidotdev/usehooks",
             "@radix-ui/react-hover-card",
