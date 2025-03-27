@@ -6,9 +6,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite dev --port 4783",
-    "start": "vite start --port 4783",
-    "typecheck": "tsc --pretty",
-    "preview": "vite preview --port 4783"
+    "start": "vite preview --port 4783",
+    "typecheck": "tsc --pretty"
   },
   "dependencies": {
     "@apollo/client": "^3.13.5",
