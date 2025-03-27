@@ -2,9 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  font-family: "SofiaPro", sans-serif;
+:root {
+  font-family: "Sofia Pro", "Sofia Pro Fallback", sans-serif;
   @apply antialiased;
+}
+
+html {
   @apply overflow-y-scroll;
 }
 

@@ -38,7 +38,7 @@ const Web3Provider = ({ children }: Web3ProviderProps) => {
         theme="soft"
         options={{ hideNoWalletCTA: true, hideQuestionMarkCTA: true }}
         customTheme={{
-          "--ck-font-family": "SofiaPro",
+          "--ck-font-family": "Sofia Pro",
           "--ck-border-radius": "12px",
           "--ck-body-background": "#ffffff",
           "--ck-focus-color": BRAND_COLOR
