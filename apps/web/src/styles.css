@@ -3,11 +3,12 @@
 @tailwind utilities;
 
 html {
+  font-family: "SofiaPro", sans-serif;
+  @apply antialiased;
   @apply overflow-y-scroll;
 }
 
 body {
-  font-family: "SofiaPro", system-ui, sans-serif;
   @apply bg-gray-50;
   @apply dark:bg-black;
 }
