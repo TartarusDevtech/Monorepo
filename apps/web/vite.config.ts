@@ -52,10 +52,21 @@ export default defineConfig({
             "@radix-ui/react-hover-card",
             "@radix-ui/react-slider",
             "@radix-ui/react-switch",
-            "@radix-ui/react-tooltip"
+            "@radix-ui/react-tooltip",
+            "@uidotdev/usehooks",
+            "next-themes"
           ],
           aws: ["@aws-sdk/client-s3", "@aws-sdk/lib-storage"],
-          misc: ["plyr-react", "@livepeer/react", "@uidotdev/usehooks"]
+          misc: [
+            "plyr-react",
+            "@livepeer/react",
+            "@lens-chain/storage-client",
+            "@lens-protocol/metadata",
+            "@apollo/client",
+            "browser-image-compression",
+            "zustand",
+            "zod"
+          ]
         }
       }
     }
