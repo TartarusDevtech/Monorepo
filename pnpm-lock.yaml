@@ -21,8 +21,8 @@ importers:
   apps/api:
     dependencies:
       '@aws-sdk/client-sts':
-        specifier: ^3.775.0
-        version: 3.775.0
+        specifier: ^3.777.0
+        version: 3.777.0
       '@hey/data':
         specifier: workspace:*
         version: link:../../packages/data
@@ -134,11 +134,11 @@ importers:
         specifier: ^3.13.5
         version: 3.13.5(@types/react@19.0.12)(graphql-ws@6.0.4(graphql@16.10.0)(ws@8.18.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)))(graphql@16.10.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@aws-sdk/client-s3':
-        specifier: ^3.775.0
-        version: 3.775.0
+        specifier: ^3.777.0
+        version: 3.777.0
       '@aws-sdk/lib-storage':
-        specifier: ^3.775.0
-        version: 3.775.0(@aws-sdk/client-s3@3.775.0)
+        specifier: ^3.777.0
+        version: 3.777.0(@aws-sdk/client-s3@3.777.0)
       '@headlessui/react':
         specifier: 2.2.0
         version: 2.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -413,7 +413,7 @@ importers:
     devDependencies:
       '@graphql-codegen/cli':
         specifier: ^5.0.5
-        version: 5.0.5(@types/node@22.13.14)(bufferutil@4.0.9)(graphql-sock@1.0.0(graphql@16.10.0))(graphql@16.10.0)(typescript@5.8.2)(utf-8-validate@5.0.10)
+        version: 5.0.5(@types/node@22.13.14)(bufferutil@4.0.9)(graphql-sock@1.0.1(graphql@16.10.0))(graphql@16.10.0)(typescript@5.8.2)(utf-8-validate@5.0.10)
       '@graphql-codegen/fragment-matcher':
         specifier: ^5.1.0
         version: 5.1.0(graphql@16.10.0)
@@ -422,7 +422,7 @@ importers:
         version: 4.1.6(graphql@16.10.0)
       '@graphql-codegen/typescript-operations':
         specifier: ^4.6.0
-        version: 4.6.0(graphql-sock@1.0.0(graphql@16.10.0))(graphql@16.10.0)
+        version: 4.6.0(graphql-sock@1.0.1(graphql@16.10.0))(graphql@16.10.0)
       '@graphql-codegen/typescript-react-apollo':
         specifier: ^4.3.2
         version: 4.3.2(graphql@16.10.0)
@@ -584,16 +584,16 @@ packages:
   '@aws-crypto/util@5.2.0':
     resolution: {integrity: sha512-4RkU9EsI6ZpBve5fseQlGNUWKMa1RLPQ1dnjnQoe07ldfIzcsGb5hC5W0Dm7u423KWzawlrpbjXBrXCEv9zazQ==}
 
-  '@aws-sdk/client-s3@3.775.0':
-    resolution: {integrity: sha512-Z/BeVmYc3nj4FNE46MtvBYeCVvBZwlujMEvr5UOChP14899QWkBfOvf74RwQY9qy5/DvhVFkHlA8en1L6+0NrA==}
+  '@aws-sdk/client-s3@3.777.0':
+    resolution: {integrity: sha512-KVX2QD6lLczZxtzIRCpmztgNnGq+spiMIDYqkum/rCBjCX1YJoDHwMYXaMf2EtAH8tFkJmBiA/CiT/J36iN7Xg==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/client-sso@3.775.0':
-    resolution: {integrity: sha512-vqG1S2ap77WP4D5qt4bEPE0duQ4myN+cDr1NeP8QpSTajetbkDGVo7h1VViYMcUoFUVWBj6Qf1X1VfOq+uaxbA==}
+  '@aws-sdk/client-sso@3.777.0':
+    resolution: {integrity: sha512-0+z6CiAYIQa7s6FJ+dpBYPi9zr9yY5jBg/4/FGcwYbmqWPXwL9Thdtr0FearYRZgKl7bhL3m3dILCCfWqr3teQ==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/client-sts@3.775.0':
-    resolution: {integrity: sha512-6p1dZ7bvwJfWQ/UJM+JD1iv0HDsEN6AbBZWtwRq402Pdm/5cQEYKf7ERLKGGY84YpEpXqiFgiLBrKXjClqjnQg==}
+  '@aws-sdk/client-sts@3.777.0':
+    resolution: {integrity: sha512-W4w35V56zh7Mf/DlmZqb75jlJplljtSP0o9EdqOoDJVzlbVNmc4dJ6RKS1OQFNHlyrWPOHBOegV+mgrtMp0mxA==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/core@3.775.0':
@@ -608,31 +608,31 @@ packages:
     resolution: {integrity: sha512-PjDQeDH/J1S0yWV32wCj2k5liRo0ssXMseCBEkCsD3SqsU8o5cU82b0hMX4sAib/RkglCSZqGO0xMiN0/7ndww==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/credential-provider-ini@3.775.0':
-    resolution: {integrity: sha512-0gJc6cALsgrjeC5U3qDjbz4myIC/j49+gPz9nkvY+C0OYWt1KH1tyfiZUuCRGfuFHhQ+3KMMDSL229TkBP3E7g==}
+  '@aws-sdk/credential-provider-ini@3.777.0':
+    resolution: {integrity: sha512-1X9mCuM9JSQPmQ+D2TODt4THy6aJWCNiURkmKmTIPRdno7EIKgAqrr/LLN++K5mBf54DZVKpqcJutXU2jwo01A==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/credential-provider-node@3.775.0':
-    resolution: {integrity: sha512-D8Zre5W2sXC/ANPqCWPqwYpU1cKY9DF6ckFZyDrqlcBC0gANgpY6fLrBtYo2fwJsbj+1A24iIpBINV7erdprgA==}
+  '@aws-sdk/credential-provider-node@3.777.0':
+    resolution: {integrity: sha512-ZD66ywx1Q0KyUSuBXZIQzBe3Q7MzX8lNwsrCU43H3Fww+Y+HB3Ncws9grhSdNhKQNeGmZ+MgKybuZYaaeLwJEQ==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/credential-provider-process@3.775.0':
     resolution: {integrity: sha512-A6k68H9rQp+2+7P7SGO90Csw6nrUEm0Qfjpn9Etc4EboZhhCLs9b66umUsTsSBHus4FDIe5JQxfCUyt1wgNogg==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/credential-provider-sso@3.775.0':
-    resolution: {integrity: sha512-du06V7u9HDmRuwZnRjf85shO3dffeKOkQplV5/2vf3LgTPNEI9caNomi/cCGyxKGOeSUHAKrQ1HvpPfOaI6t5Q==}
+  '@aws-sdk/credential-provider-sso@3.777.0':
+    resolution: {integrity: sha512-9mPz7vk9uE4PBVprfINv4tlTkyq1OonNevx2DiXC1LY4mCUCNN3RdBwAY0BTLzj0uyc3k5KxFFNbn3/8ZDQP7w==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/credential-provider-web-identity@3.775.0':
-    resolution: {integrity: sha512-z4XLYui5aHsr78mbd5BtZfm55OM5V55qK/X17OPrEqjYDDk3GlI8Oe2ZjTmOVrKwMpmzXKhsakeFHKfDyOvv1A==}
+  '@aws-sdk/credential-provider-web-identity@3.777.0':
+    resolution: {integrity: sha512-uGCqr47fnthkqwq5luNl2dksgcpHHjSXz2jUra7TXtFOpqvnhOW8qXjoa1ivlkq8qhqlaZwCzPdbcN0lXpmLzQ==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/lib-storage@3.775.0':
-    resolution: {integrity: sha512-sT8HFYOAIQoOZ/VeLUmnljd45eD/JRT1LSrHWUoOqLownm0h5F02Y+g6Y37jLRDTl9UNs+QK61kP+gwu2Vmb6g==}
+  '@aws-sdk/lib-storage@3.777.0':
+    resolution: {integrity: sha512-mX9LcdJe9QeQwo9WPejpEglHobpTYb2kHT4q2k4JMKu9npNF0HlF0hrW3rNNEfHH/4mlj1NrA216LgXYp1+YmA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      '@aws-sdk/client-s3': ^3.775.0
+      '@aws-sdk/client-s3': ^3.777.0
 
   '@aws-sdk/middleware-bucket-endpoint@3.775.0':
     resolution: {integrity: sha512-qogMIpVChDYr4xiUNC19/RDSw/sKoHkAhouS6Skxiy6s27HBhow1L3Z1qVYXuBmOZGSWPU0xiyZCvOyWrv9s+Q==}
@@ -674,8 +674,8 @@ packages:
     resolution: {integrity: sha512-7Lffpr1ptOEDE1ZYH1T78pheEY1YmeXWBfFt/amZ6AGsKSLG+JPXvof3ltporTGR2bhH/eJPo7UHCglIuXfzYg==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/nested-clients@3.775.0':
-    resolution: {integrity: sha512-f37jmAzkuIhKyhtA6s0LGpqQvm218vq+RNMUDkGm1Zz2fxJ5pBIUTDtygiI3vXTcmt9DTIB8S6JQhjrgtboktw==}
+  '@aws-sdk/nested-clients@3.777.0':
+    resolution: {integrity: sha512-bmmVRsCjuYlStYPt06hr+f8iEyWg7+AklKCA8ZLDEJujXhXIowgUIqXmqpTkXwkVvDQ9tzU7hxaONjyaQCGybA==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/region-config-resolver@3.775.0':
@@ -686,8 +686,8 @@ packages:
     resolution: {integrity: sha512-cnGk8GDfTMJ8p7+qSk92QlIk2bmTmFJqhYxcXZ9PysjZtx0xmfCMxnG3Hjy1oU2mt5boPCVSOptqtWixayM17g==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/token-providers@3.775.0':
-    resolution: {integrity: sha512-Q6MtbEhkOggVSz/dN89rIY/ry80U3v89o0Lrrc+Rpvaiaaz8pEN0DsfEcg0IjpzBQ8Owoa6lNWyglHbzPhaJpA==}
+  '@aws-sdk/token-providers@3.777.0':
+    resolution: {integrity: sha512-Yc2cDONsHOa4dTSGOev6Ng2QgTKQUEjaUnsyKd13pc/nLLz/WLqHiQ/o7PcnKERJxXGs1g1C6l3sNXiX+kbnFQ==}
     engines: {node: '>=18.0.0'}
 
   '@aws-sdk/types@3.775.0':
@@ -3545,20 +3545,20 @@ packages:
     resolution: {integrity: sha512-FNoYzHawTMk/6KMQoEG5O4PuioX19UbwdQKF44yw0nLfOypfQdjtfZzo/UIJWAJ23sNIFbD1Ug9lbaDGMwbqQA==}
     engines: {node: '>=8'}
 
-  '@zag-js/dismissable@1.6.1':
-    resolution: {integrity: sha512-gLH3DRqrGD8zDG6s2ZZLusjfFgQozIq2l+//2mZpvJgByZyPr/UftpYf2nLwGu7sPFVIYE6LYk9C22PQ9HrXzw==}
+  '@zag-js/dismissable@1.6.2':
+    resolution: {integrity: sha512-rLCcSykP9ABwkcDZO7sTKRFyD2qozrVVZEl0N7xnBK4Q3/ynGTy+YPr6Nw+vdIMXESrKNcf0w+UGkZVpCD3Qrw==}
 
-  '@zag-js/dom-query@1.6.1':
-    resolution: {integrity: sha512-sMM828xS/KGLsua8mcJUnIS4YV7vq6d+G3T+lM55gzjIcLHdO0U+1Gm+w7Lit04Xu1Bo6ATaauBy2LDQ17/hFQ==}
+  '@zag-js/dom-query@1.6.2':
+    resolution: {integrity: sha512-DJQrjF2kBjN2/pX+2W4NIfhE7j/tNjuUVl6Jvv4ceujH08CDvLMPJTrcjNJmTyCqEnyjfMXba/vWqzQ+Mn+jlg==}
 
-  '@zag-js/interact-outside@1.6.1':
-    resolution: {integrity: sha512-h3spwZulBXK7ftqPhVOM8uTotlkUXkgAFZ4mvRpH7DaU+itWbLrXu8fS92+GLsigLABnFtQ/brtmmkk7XvS7Hg==}
+  '@zag-js/interact-outside@1.6.2':
+    resolution: {integrity: sha512-gZmf5PnrrQKLNCAy79FcgkSJ5X3ZDNxEP3zMGuLFBVV3O7ppMRoh3XTqNzVY1NthqPQTuolEIOgTP6hA8wOsEg==}
 
-  '@zag-js/types@1.6.1':
-    resolution: {integrity: sha512-e6E45m0AbETaf9KBM3ULbAoE5jpnxHeBP5LTya/fthWu5JD+fn2Weg6jESmzsowKy6NIUpvvI+0LTC9mHxYcAw==}
+  '@zag-js/types@1.6.2':
+    resolution: {integrity: sha512-ww5/heC3xWdJLGBFJLpACuoWQWPG0Mfzvqzmp+ObNyxEW4YN4jxN2l+fTSPD8uhaETzKAmD341qnTe5SDKDvWg==}
 
-  '@zag-js/utils@1.6.1':
-    resolution: {integrity: sha512-UGQey8JEd8eZCh0yKqdhZ96MB+zgpsOAKOkpXNY3KhnzT1qIv+sEEpU2oaIXCBFgB7ZqH35mW/QRxXjcFewzuQ==}
+  '@zag-js/utils@1.6.2':
+    resolution: {integrity: sha512-gaEXBVMC3wWEIDXDZUi7/akYrjqFFYSN7omjVaTkVniLxH6uOlz912fVx/yZA9GOF54ddFChYlOAICScSsNp6Q==}
 
   abitype@1.0.8:
     resolution: {integrity: sha512-ZeiI6h3GnW06uYDLx0etQtX/p8E24UaHHBj57RSjK7YBFe7iuVn07EDpOeP451D06sF27VOz9JJPlIKJmXgkEg==}
@@ -4274,8 +4274,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  electron-to-chromium@1.5.126:
-    resolution: {integrity: sha512-AtH1uLcTC72LA4vfYcEJJkrMk/MY/X0ub8Hv7QGAePW2JkeUFHEL/QfS4J77R6M87Sss8O0OcqReSaN1bpyA+Q==}
+  electron-to-chromium@1.5.128:
+    resolution: {integrity: sha512-bo1A4HH/NS522Ws0QNFIzyPcyUUNV/yyy70Ho1xqfGYzPUme2F/xr4tlEOuM6/A538U1vDA7a4XfCd1CKRegKQ==}
 
   elliptic@6.6.1:
     resolution: {integrity: sha512-RaddvvMatK2LJHqFJ+YA4WysVN5Ita9E35botqIYspQ4TkRAlCicdzKOjlyv/1Za5RyTNn7di//eEV0uTAfe3g==}
@@ -4647,11 +4647,11 @@ packages:
     peerDependencies:
       graphql: 14 - 16
 
-  graphql-sock@1.0.0:
-    resolution: {integrity: sha512-pvODB7YaQ/K80pBOG7AnQC65R0UgE4hZv67VtwVjyQ0u2N+KMKVy8HEcAnYTK27BfVyTQCunSfX114u0xHOBMQ==}
+  graphql-sock@1.0.1:
+    resolution: {integrity: sha512-gSA0CXdNMvNlpEnH2GY1//SUY7laDsAn51sDm4yh6TTH5UkfbNINydyUAoMHHkAaCaOLNXELQmu3GVcSOw4twg==}
     hasBin: true
     peerDependencies:
-      graphql: 15.x | 16.x | 17.x
+      graphql: 15.x || 16.x || 17.x
 
   graphql-tag@2.12.6:
     resolution: {integrity: sha512-FdSNcu2QQcWnM2VNvSCCDCVS5PpPqpzgFT8+GXzqJuoDd0CBncxCY278u4mhRO7tMgo2JjgJA5aZ+nWSQ/Z+xg==}
@@ -4770,8 +4770,8 @@ packages:
   hey-listen@1.0.8:
     resolution: {integrity: sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==}
 
-  hls.js@1.5.20:
-    resolution: {integrity: sha512-uu0VXUK52JhihhnN/MVVo1lvqNNuhoxkonqgO3IpjvQiGpJBdIXMGkofjQb/j9zvV7a1SW8U9g1FslWx/1HOiQ==}
+  hls.js@1.6.0:
+    resolution: {integrity: sha512-AlW8ymcDKZuKtzXCUmEy4nOcHRkebnShH6t6hC2+QJQP0WXlTUSSO9Kp22uSEYdCgpwkXEJsfOhqxrgO2tDctQ==}
 
   hmac-drbg@1.0.1:
     resolution: {integrity: sha512-Tti3gMqLdZfhOQY1Mzf/AanLiqh1WTiJgEj26ZuYQ9fbkLomzGchCws4FyrSd4VkpBfiNhaE1On+lOz894jvXg==}
@@ -7452,7 +7452,7 @@ snapshots:
       '@ariatype/aria-attributes': 1.0.1
       '@ariatype/aria-roles': 1.0.1
       '@preact/signals-core': 1.8.0
-      '@zag-js/dom-query': 1.6.1
+      '@zag-js/dom-query': 1.6.2
       just-kebab-case: 4.2.0
       just-map-values: 3.2.0
       server-dom-shim: 1.0.2
@@ -7478,20 +7478,20 @@ snapshots:
       '@aria-ui/core': 0.0.21
       '@floating-ui/dom': 1.6.13
       '@floating-ui/utils': 0.2.9
-      '@zag-js/dom-query': 1.6.1
+      '@zag-js/dom-query': 1.6.2
 
   '@aria-ui/popover@0.0.27':
     dependencies:
       '@aria-ui/core': 0.0.21
       '@aria-ui/overlay': 0.0.24
       '@aria-ui/presence': 0.0.19
-      '@zag-js/dismissable': 1.6.1
-      '@zag-js/dom-query': 1.6.1
+      '@zag-js/dismissable': 1.6.2
+      '@zag-js/dom-query': 1.6.2
 
   '@aria-ui/presence@0.0.19':
     dependencies:
       '@aria-ui/core': 0.0.21
-      '@zag-js/dom-query': 1.6.1
+      '@zag-js/dom-query': 1.6.2
 
   '@aria-ui/tooltip@0.0.29':
     dependencies:
@@ -7601,13 +7601,13 @@ snapshots:
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
 
-  '@aws-sdk/client-s3@3.775.0':
+  '@aws-sdk/client-s3@3.777.0':
     dependencies:
       '@aws-crypto/sha1-browser': 5.2.0
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
       '@aws-sdk/core': 3.775.0
-      '@aws-sdk/credential-provider-node': 3.775.0
+      '@aws-sdk/credential-provider-node': 3.777.0
       '@aws-sdk/middleware-bucket-endpoint': 3.775.0
       '@aws-sdk/middleware-expect-continue': 3.775.0
       '@aws-sdk/middleware-flexible-checksums': 3.775.0
@@ -7662,7 +7662,7 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@aws-sdk/client-sso@3.775.0':
+  '@aws-sdk/client-sso@3.777.0':
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
@@ -7705,12 +7705,12 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@aws-sdk/client-sts@3.775.0':
+  '@aws-sdk/client-sts@3.777.0':
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
       '@aws-sdk/core': 3.775.0
-      '@aws-sdk/credential-provider-node': 3.775.0
+      '@aws-sdk/credential-provider-node': 3.777.0
       '@aws-sdk/middleware-host-header': 3.775.0
       '@aws-sdk/middleware-logger': 3.775.0
       '@aws-sdk/middleware-recursion-detection': 3.775.0
@@ -7784,15 +7784,15 @@ snapshots:
       '@smithy/util-stream': 4.2.0
       tslib: 2.8.1
 
-  '@aws-sdk/credential-provider-ini@3.775.0':
+  '@aws-sdk/credential-provider-ini@3.777.0':
     dependencies:
       '@aws-sdk/core': 3.775.0
       '@aws-sdk/credential-provider-env': 3.775.0
       '@aws-sdk/credential-provider-http': 3.775.0
       '@aws-sdk/credential-provider-process': 3.775.0
-      '@aws-sdk/credential-provider-sso': 3.775.0
-      '@aws-sdk/credential-provider-web-identity': 3.775.0
-      '@aws-sdk/nested-clients': 3.775.0
+      '@aws-sdk/credential-provider-sso': 3.777.0
+      '@aws-sdk/credential-provider-web-identity': 3.777.0
+      '@aws-sdk/nested-clients': 3.777.0
       '@aws-sdk/types': 3.775.0
       '@smithy/credential-provider-imds': 4.0.2
       '@smithy/property-provider': 4.0.2
@@ -7802,14 +7802,14 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@aws-sdk/credential-provider-node@3.775.0':
+  '@aws-sdk/credential-provider-node@3.777.0':
     dependencies:
       '@aws-sdk/credential-provider-env': 3.775.0
       '@aws-sdk/credential-provider-http': 3.775.0
-      '@aws-sdk/credential-provider-ini': 3.775.0
+      '@aws-sdk/credential-provider-ini': 3.777.0
       '@aws-sdk/credential-provider-process': 3.775.0
-      '@aws-sdk/credential-provider-sso': 3.775.0
-      '@aws-sdk/credential-provider-web-identity': 3.775.0
+      '@aws-sdk/credential-provider-sso': 3.777.0
+      '@aws-sdk/credential-provider-web-identity': 3.777.0
       '@aws-sdk/types': 3.775.0
       '@smithy/credential-provider-imds': 4.0.2
       '@smithy/property-provider': 4.0.2
@@ -7828,11 +7828,11 @@ snapshots:
       '@smithy/types': 4.2.0
       tslib: 2.8.1
 
-  '@aws-sdk/credential-provider-sso@3.775.0':
+  '@aws-sdk/credential-provider-sso@3.777.0':
     dependencies:
-      '@aws-sdk/client-sso': 3.775.0
+      '@aws-sdk/client-sso': 3.777.0
       '@aws-sdk/core': 3.775.0
-      '@aws-sdk/token-providers': 3.775.0
+      '@aws-sdk/token-providers': 3.777.0
       '@aws-sdk/types': 3.775.0
       '@smithy/property-provider': 4.0.2
       '@smithy/shared-ini-file-loader': 4.0.2
@@ -7841,10 +7841,10 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@aws-sdk/credential-provider-web-identity@3.775.0':
+  '@aws-sdk/credential-provider-web-identity@3.777.0':
     dependencies:
       '@aws-sdk/core': 3.775.0
-      '@aws-sdk/nested-clients': 3.775.0
+      '@aws-sdk/nested-clients': 3.777.0
       '@aws-sdk/types': 3.775.0
       '@smithy/property-provider': 4.0.2
       '@smithy/types': 4.2.0
@@ -7852,9 +7852,9 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@aws-sdk/lib-storage@3.775.0(@aws-sdk/client-s3@3.775.0)':
+  '@aws-sdk/lib-storage@3.777.0(@aws-sdk/client-s3@3.777.0)':
     dependencies:
-      '@aws-sdk/client-s3': 3.775.0
+      '@aws-sdk/client-s3': 3.777.0
       '@smithy/abort-controller': 4.0.2
       '@smithy/middleware-endpoint': 4.1.0
       '@smithy/smithy-client': 4.2.0
@@ -7955,7 +7955,7 @@ snapshots:
       '@smithy/types': 4.2.0
       tslib: 2.8.1
 
-  '@aws-sdk/nested-clients@3.775.0':
+  '@aws-sdk/nested-clients@3.777.0':
     dependencies:
       '@aws-crypto/sha256-browser': 5.2.0
       '@aws-crypto/sha256-js': 5.2.0
@@ -8016,9 +8016,9 @@ snapshots:
       '@smithy/types': 4.2.0
       tslib: 2.8.1
 
-  '@aws-sdk/token-providers@3.775.0':
+  '@aws-sdk/token-providers@3.777.0':
     dependencies:
-      '@aws-sdk/nested-clients': 3.775.0
+      '@aws-sdk/nested-clients': 3.777.0
       '@aws-sdk/types': 3.775.0
       '@smithy/property-provider': 4.0.2
       '@smithy/shared-ini-file-loader': 4.0.2
@@ -8727,12 +8727,12 @@ snapshots:
       graphql: 16.10.0
       tslib: 2.6.3
 
-  '@graphql-codegen/cli@5.0.5(@types/node@22.13.14)(bufferutil@4.0.9)(graphql-sock@1.0.0(graphql@16.10.0))(graphql@16.10.0)(typescript@5.8.2)(utf-8-validate@5.0.10)':
+  '@graphql-codegen/cli@5.0.5(@types/node@22.13.14)(bufferutil@4.0.9)(graphql-sock@1.0.1(graphql@16.10.0))(graphql@16.10.0)(typescript@5.8.2)(utf-8-validate@5.0.10)':
     dependencies:
       '@babel/generator': 7.27.0
       '@babel/template': 7.27.0
       '@babel/types': 7.27.0
-      '@graphql-codegen/client-preset': 4.8.0(graphql-sock@1.0.0(graphql@16.10.0))(graphql@16.10.0)
+      '@graphql-codegen/client-preset': 4.8.0(graphql-sock@1.0.1(graphql@16.10.0))(graphql@16.10.0)
       '@graphql-codegen/core': 4.0.2(graphql@16.10.0)
       '@graphql-codegen/plugin-helpers': 5.1.0(graphql@16.10.0)
       '@graphql-tools/apollo-engine-loader': 8.0.20(graphql@16.10.0)
@@ -8778,7 +8778,7 @@ snapshots:
       - uWebSockets.js
       - utf-8-validate
 
-  '@graphql-codegen/client-preset@4.8.0(graphql-sock@1.0.0(graphql@16.10.0))(graphql@16.10.0)':
+  '@graphql-codegen/client-preset@4.8.0(graphql-sock@1.0.1(graphql@16.10.0))(graphql@16.10.0)':
     dependencies:
       '@babel/helper-plugin-utils': 7.26.5
       '@babel/template': 7.27.0
@@ -8787,13 +8787,13 @@ snapshots:
       '@graphql-codegen/plugin-helpers': 5.1.0(graphql@16.10.0)
       '@graphql-codegen/typed-document-node': 5.1.1(graphql@16.10.0)
       '@graphql-codegen/typescript': 4.1.6(graphql@16.10.0)
-      '@graphql-codegen/typescript-operations': 4.6.0(graphql-sock@1.0.0(graphql@16.10.0))(graphql@16.10.0)
+      '@graphql-codegen/typescript-operations': 4.6.0(graphql-sock@1.0.1(graphql@16.10.0))(graphql@16.10.0)
       '@graphql-codegen/visitor-plugin-common': 5.8.0(graphql@16.10.0)
       '@graphql-tools/documents': 1.0.1(graphql@16.10.0)
       '@graphql-tools/utils': 10.8.6(graphql@16.10.0)
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.10.0)
       graphql: 16.10.0
-      graphql-sock: 1.0.0(graphql@16.10.0)
+      graphql-sock: 1.0.1(graphql@16.10.0)
       tslib: 2.6.3
     transitivePeerDependencies:
       - encoding
@@ -8871,14 +8871,14 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@graphql-codegen/typescript-operations@4.6.0(graphql-sock@1.0.0(graphql@16.10.0))(graphql@16.10.0)':
+  '@graphql-codegen/typescript-operations@4.6.0(graphql-sock@1.0.1(graphql@16.10.0))(graphql@16.10.0)':
     dependencies:
       '@graphql-codegen/plugin-helpers': 5.1.0(graphql@16.10.0)
       '@graphql-codegen/typescript': 4.1.6(graphql@16.10.0)
       '@graphql-codegen/visitor-plugin-common': 5.8.0(graphql@16.10.0)
       auto-bind: 4.0.0
       graphql: 16.10.0
-      graphql-sock: 1.0.0(graphql@16.10.0)
+      graphql-sock: 1.0.1(graphql@16.10.0)
       tslib: 2.6.3
     transitivePeerDependencies:
       - encoding
@@ -9126,12 +9126,12 @@ snapshots:
   '@graphql-tools/optimize@1.4.0(graphql@16.10.0)':
     dependencies:
       graphql: 16.10.0
-      tslib: 2.8.1
+      tslib: 2.6.3
 
   '@graphql-tools/optimize@2.0.0(graphql@16.10.0)':
     dependencies:
       graphql: 16.10.0
-      tslib: 2.8.1
+      tslib: 2.6.3
 
   '@graphql-tools/prisma-loader@8.0.17(@types/node@22.13.14)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)':
     dependencies:
@@ -9166,7 +9166,7 @@ snapshots:
       '@ardatan/relay-compiler': 12.0.0(graphql@16.10.0)
       '@graphql-tools/utils': 9.2.1(graphql@16.10.0)
       graphql: 16.10.0
-      tslib: 2.8.1
+      tslib: 2.6.3
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -9176,7 +9176,7 @@ snapshots:
       '@ardatan/relay-compiler': 12.0.3(graphql@16.10.0)
       '@graphql-tools/utils': 10.8.6(graphql@16.10.0)
       graphql: 16.10.0
-      tslib: 2.8.1
+      tslib: 2.6.3
     transitivePeerDependencies:
       - encoding
 
@@ -9221,13 +9221,13 @@ snapshots:
   '@graphql-tools/utils@8.13.1(graphql@16.10.0)':
     dependencies:
       graphql: 16.10.0
-      tslib: 2.8.1
+      tslib: 2.6.3
 
   '@graphql-tools/utils@9.2.1(graphql@16.10.0)':
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.10.0)
       graphql: 16.10.0
-      tslib: 2.8.1
+      tslib: 2.6.3
 
   '@graphql-tools/wrap@10.0.34(graphql@16.10.0)':
     dependencies:
@@ -9408,7 +9408,7 @@ snapshots:
   '@livepeer/core-web@5.2.0(@types/react@19.0.12)(immer@10.1.1)(react@19.0.0)':
     dependencies:
       '@livepeer/core': 3.3.0(@types/react@19.0.12)(immer@10.1.1)(react@19.0.0)
-      hls.js: 1.5.20
+      hls.js: 1.6.0
       zustand: 4.5.6(@types/react@19.0.12)(immer@10.1.1)(react@19.0.0)
     transitivePeerDependencies:
       - '@types/react'
@@ -10159,7 +10159,7 @@ snapshots:
       '@prosekit/core': 0.8.0(prosemirror-model@1.25.0)(prosemirror-state@1.4.3)(prosemirror-transform@1.10.3)
       '@prosekit/extensions': 0.8.0(@shikijs/types@3.2.1)(@types/hast@3.0.4)(prosemirror-model@1.25.0)(prosemirror-state@1.4.3)(prosemirror-transform@1.10.3)(prosemirror-view@1.38.1)
       '@prosekit/pm': 0.1.9
-      '@zag-js/dom-query': 1.6.1
+      '@zag-js/dom-query': 1.6.2
       just-map-values: 3.2.0
       just-omit: 2.2.0
       prosemirror-tables: 1.6.4
@@ -11808,26 +11808,26 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@zag-js/dismissable@1.6.1':
+  '@zag-js/dismissable@1.6.2':
     dependencies:
-      '@zag-js/dom-query': 1.6.1
-      '@zag-js/interact-outside': 1.6.1
-      '@zag-js/utils': 1.6.1
+      '@zag-js/dom-query': 1.6.2
+      '@zag-js/interact-outside': 1.6.2
+      '@zag-js/utils': 1.6.2
 
-  '@zag-js/dom-query@1.6.1':
+  '@zag-js/dom-query@1.6.2':
     dependencies:
-      '@zag-js/types': 1.6.1
+      '@zag-js/types': 1.6.2
 
-  '@zag-js/interact-outside@1.6.1':
+  '@zag-js/interact-outside@1.6.2':
     dependencies:
-      '@zag-js/dom-query': 1.6.1
-      '@zag-js/utils': 1.6.1
+      '@zag-js/dom-query': 1.6.2
+      '@zag-js/utils': 1.6.2
 
-  '@zag-js/types@1.6.1':
+  '@zag-js/types@1.6.2':
     dependencies:
       csstype: 3.1.3
 
-  '@zag-js/utils@1.6.1': {}
+  '@zag-js/utils@1.6.2': {}
 
   abitype@1.0.8(typescript@5.8.2)(zod@3.24.2):
     optionalDependencies:
@@ -12058,7 +12058,7 @@ snapshots:
   browserslist@4.24.4:
     dependencies:
       caniuse-lite: 1.0.30001707
-      electron-to-chromium: 1.5.126
+      electron-to-chromium: 1.5.128
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.24.4)
 
@@ -12578,7 +12578,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  electron-to-chromium@1.5.126: {}
+  electron-to-chromium@1.5.128: {}
 
   elliptic@6.6.1:
     dependencies:
@@ -13095,7 +13095,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  graphql-sock@1.0.0(graphql@16.10.0):
+  graphql-sock@1.0.1(graphql@16.10.0):
     dependencies:
       graphql: 16.10.0
 
@@ -13302,7 +13302,7 @@ snapshots:
 
   hey-listen@1.0.8: {}
 
-  hls.js@1.5.20: {}
+  hls.js@1.6.0: {}
 
   hmac-drbg@1.0.1:
     dependencies:
@@ -13486,7 +13486,7 @@ snapshots:
 
   is-lower-case@2.0.2:
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.6.3
 
   is-number@7.0.0: {}
 
@@ -13525,7 +13525,7 @@ snapshots:
 
   is-upper-case@2.0.2:
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.6.3
 
   is-windows@1.0.2: {}
 
@@ -13748,11 +13748,11 @@ snapshots:
 
   lower-case-first@2.0.2:
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.6.3
 
   lower-case@2.0.2:
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.6.3
 
   lru-cache@10.4.3: {}
 
@@ -15327,7 +15327,7 @@ snapshots:
 
   sponge-case@1.0.1:
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.6.3
 
   stack-trace@0.0.10: {}
 
@@ -15461,7 +15461,7 @@ snapshots:
 
   swap-case@2.0.2:
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.6.3
 
   symbol-observable@4.0.0: {}
 
@@ -15522,7 +15522,7 @@ snapshots:
 
   title-case@3.0.3:
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.6.3
 
   titleize@3.0.0: {}
 
@@ -15713,11 +15713,11 @@ snapshots:
 
   upper-case-first@2.0.2:
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.6.3
 
   upper-case@2.0.2:
     dependencies:
-      tslib: 2.8.1
+      tslib: 2.6.3
 
   url-polyfill@1.1.13: {}
 
