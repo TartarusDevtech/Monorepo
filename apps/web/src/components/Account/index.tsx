@@ -20,7 +20,7 @@ import getAccount from "@hey/helpers/getAccount";
 import isAccountDeleted from "@hey/helpers/isAccountDeleted";
 import { useAccountQuery } from "@hey/indexer";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
 import AccountFeed from "./AccountFeed";
 import DeletedDetails from "./DeletedDetails";
 import Details from "./Details";
@@ -29,11 +29,13 @@ import AccountPageShimmer from "./Shimmer";
 import SuspendedDetails from "./SuspendedDetails";
 
 const ViewProfile = () => {
-  const { address, username, type } = useParams<{
+  const { address, username } = useParams<{
     address: string;
     username: string;
-    type: string;
   }>();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const type = searchParams.get("type") || AccountFeedType.Feed;
 
   const { currentAccount } = useAccountStore();
   const isStaff = hasAccess(Features.Staff);

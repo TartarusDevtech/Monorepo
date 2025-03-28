@@ -6,19 +6,14 @@ import {
   ShoppingBagIcon
 } from "@heroicons/react/24/outline";
 import { AccountFeedType } from "@hey/data/enums";
-import type { Dispatch, JSX, SetStateAction } from "react";
+import type { JSX } from "react";
 import MediaFilter from "./Filters/MediaFilter";
 
 interface FeedTypeProps {
   feedType: AccountFeedType;
-  setFeedType?: Dispatch<SetStateAction<AccountFeedType>>;
 }
 
-const FeedType = ({ feedType, setFeedType }: FeedTypeProps) => {
-  const switchFeedType = (type: AccountFeedType) => {
-    setFeedType?.(type);
-  };
-
+const FeedType = ({ feedType }: FeedTypeProps) => {
   const tabs = [
     {
       icon: <PencilSquareIcon className="size-4" />,
@@ -54,7 +49,6 @@ const FeedType = ({ feedType, setFeedType }: FeedTypeProps) => {
             icon={tab.icon}
             key={tab.type}
             name={tab.name}
-            onClick={() => switchFeedType(tab.type)}
             type={tab.type.toLowerCase()}
           />
         ))}
