@@ -26,7 +26,11 @@ const TabButton = ({
   const navigate = useNavigate();
   const location = useLocation();
 
-  const updateQuery = (type: string) => {
+  const updateQuery = (type?: string) => {
+    if (!type) {
+      return;
+    }
+
     const params = new URLSearchParams(location.search);
     params.set("type", type);
 
@@ -47,7 +51,7 @@ const TabButton = ({
         className
       )}
       onClick={() => {
-        updateQuery(type || "");
+        updateQuery(type);
         onClick?.();
       }}
       type="button"
