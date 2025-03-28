@@ -28,7 +28,6 @@ export default defineConfig({
             "react",
             "react-dom",
             "react-virtuoso",
-            "react-device-detect",
             "react-easy-crop",
             "react-hook-form",
             "react-hot-toast",
