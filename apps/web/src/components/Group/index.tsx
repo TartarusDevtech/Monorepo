@@ -63,9 +63,9 @@ const ViewGroup = () => {
             />
           )}
           {currentAccount && isMember && !isBanned && (
-            <NewPost feed={group.feed} />
+            <NewPost feed={group.feed?.address} />
           )}
-          <GroupFeed feed={group.feed} />
+          <GroupFeed feed={group.feed?.address} />
         </GridItemEight>
       </GridLayout>
     </>

@@ -1,7 +1,9 @@
 fragment Group on Group {
   address
-  feed
   owner
+  feed {
+    address
+  }
   rules {
     anyOf {
       ...GroupRule
