@@ -33,7 +33,6 @@ export default defineConfig({
             "react-hook-form",
             "react-hot-toast",
             "react-router",
-            "react-scan",
             "react-tracked"
           ],
           editor: [
