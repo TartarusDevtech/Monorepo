@@ -12,7 +12,6 @@ import { isRepost } from "@hey/helpers/postHelpers";
 import type { AnyPostFragment } from "@hey/indexer";
 import { getSrc } from "@livepeer/react/external";
 import { memo } from "react";
-import { isIOS, isMobile } from "react-device-detect";
 import { Link } from "react-router";
 import Metadata from "./Metadata";
 
@@ -42,7 +41,7 @@ const PostBody = ({
 
   let content = filteredContent;
 
-  if (isIOS && isMobile && canShowMore) {
+  if (canShowMore) {
     const truncatedContent = content?.split("\n")?.[0];
     if (truncatedContent) {
       content = truncatedContent;
