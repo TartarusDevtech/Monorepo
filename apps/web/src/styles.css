@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: "Sofia Pro", "Sofia Pro Fallback", sans-serif;
+  font-family: "Sofia Pro", sans-serif;
 }
 
 html {
