@@ -19,6 +19,9 @@ query Notifications($request: NotificationRequest!) {
       ... on RepostNotification {
         ...RepostNotification
       }
+      ... on PostActionExecutedNotification {
+        ...PostActionExecutedNotification
+      }
     }
     pageInfo {
       ...PaginatedResultInfo

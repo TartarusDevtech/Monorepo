@@ -1,0 +1,10 @@
+fragment PayToCollectConfig on PayToCollectConfig {
+  referralShare
+  recipients {
+    address
+    percent
+  }
+  amount {
+    ...Erc20Amount
+  }
+}

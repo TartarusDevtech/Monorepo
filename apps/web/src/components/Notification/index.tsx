@@ -19,7 +19,7 @@ const Notification = () => {
     NotificationFeedType.Mentions.toLowerCase(),
     NotificationFeedType.Comments.toLowerCase(),
     NotificationFeedType.Likes.toLowerCase(),
-    NotificationFeedType.Actions.toLowerCase()
+    NotificationFeedType.PostActions.toLowerCase()
   ];
 
   const feedType = type

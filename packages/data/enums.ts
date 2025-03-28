@@ -13,7 +13,7 @@ export enum AccountFeedType {
 
 export enum NotificationFeedType {
   All = "ALL",
-  Actions = "ACTIONS",
+  PostActions = "POST_ACTIONS",
   Comments = "COMMENTS",
   Likes = "LIKES",
   Mentions = "MENTIONS"

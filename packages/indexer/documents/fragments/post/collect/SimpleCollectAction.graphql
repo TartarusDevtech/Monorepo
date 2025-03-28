@@ -3,13 +3,6 @@ fragment SimpleCollectAction on SimpleCollectAction {
   collectLimit
   endsAt
   payToCollect {
-    referralShare
-    recipients {
-      address
-      percent
-    }
-    amount {
-      ...Erc20Amount
-    }
+    ...PayToCollectConfig
   }
 }

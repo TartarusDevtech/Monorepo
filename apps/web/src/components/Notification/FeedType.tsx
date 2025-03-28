@@ -37,7 +37,7 @@ const FeedType = ({ feedType }: FeedTypeProps) => {
     {
       icon: <ShoppingBagIcon className="size-4" />,
       name: "Collects",
-      type: NotificationFeedType.Actions
+      type: NotificationFeedType.PostActions
     }
   ];
 

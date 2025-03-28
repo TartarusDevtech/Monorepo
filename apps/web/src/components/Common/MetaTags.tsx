@@ -12,7 +12,7 @@ const MetaTags = ({
   title = APP_NAME
 }: MetaTagsProps) => {
   return (
-    <head>
+    <>
       <title>{title}</title>
       <meta content={description} name="description" />
       <meta
@@ -40,7 +40,7 @@ const MetaTags = ({
           <meta content={creator} property="publisher" />
         </>
       )}
-    </head>
+    </>
   );
 };
 

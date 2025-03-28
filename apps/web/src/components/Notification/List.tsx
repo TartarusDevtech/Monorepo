@@ -13,6 +13,7 @@ import NotificationShimmer from "./Shimmer";
 import CommentNotification from "./Type/CommentNotification";
 import FollowNotification from "./Type/FollowNotification";
 import MentionNotification from "./Type/MentionNotification";
+import PostActionExecutedNotification from "./Type/PostActionExecutedNotification";
 import QuoteNotification from "./Type/QuoteNotification";
 import ReactionNotification from "./Type/ReactionNotification";
 import RepostNotification from "./Type/RepostNotification";
@@ -34,6 +35,8 @@ const List = ({ feedType }: ListProps) => {
         return [NotificationType.Commented];
       case NotificationFeedType.Likes:
         return [NotificationType.Reacted];
+      case NotificationFeedType.PostActions:
+        return [NotificationType.ExecutedPostAction];
       default:
         return;
     }
@@ -115,6 +118,9 @@ const List = ({ feedType }: ListProps) => {
             )}
             {notification.__typename === "QuoteNotification" && (
               <QuoteNotification notification={notification} />
+            )}
+            {notification.__typename === "PostActionExecutedNotification" && (
+              <PostActionExecutedNotification notification={notification} />
             )}
           </div>
         )}
