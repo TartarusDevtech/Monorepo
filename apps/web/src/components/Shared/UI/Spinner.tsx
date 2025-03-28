@@ -1,31 +1,31 @@
 import cn from "@/helpers/cn";
+import { type VariantProps, cva } from "class-variance-authority";
+import { memo } from "react";
 
-interface SpinnerProps {
+const spinnerVariants = cva("animate-spin rounded-full", {
+  variants: {
+    variant: {
+      primary: "border-gray-200 border-t-gray-600",
+      danger: "border-red-200 border-t-red-600",
+      warning: "border-yellow-200 border-t-yellow-600"
+    },
+    size: {
+      xs: "size-4 border-[2px]",
+      sm: "size-5 border-2",
+      md: "size-8 border-[3px]",
+      lg: "size-10 border-4"
+    }
+  },
+  defaultVariants: {
+    variant: "primary",
+    size: "md"
+  }
+});
+
+interface SpinnerProps extends VariantProps<typeof spinnerVariants> {
   className?: string;
-  size?: "lg" | "md" | "sm" | "xs";
-  variant?: "danger" | "primary" | "warning";
 }
 
-export const Spinner = ({
-  className = "",
-  size = "md",
-  variant = "primary"
-}: SpinnerProps) => {
-  return (
-    <div
-      className={cn(
-        {
-          "border-gray-200 border-t-gray-600": variant === "primary",
-          "border-red-200 border-t-red-600": variant === "danger",
-          "border-yellow-200 border-t-yellow-600": variant === "warning",
-          "size-10 border-4": size === "lg",
-          "size-4 border-[2px]": size === "xs",
-          "size-5 border-2": size === "sm",
-          "size-8 border-[3px]": size === "md"
-        },
-        "animate-spin rounded-full",
-        className
-      )}
-    />
-  );
-};
+export const Spinner = memo(({ className, size, variant }: SpinnerProps) => {
+  return <div className={cn(spinnerVariants({ variant, size }), className)} />;
+});

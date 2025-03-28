@@ -31,5 +31,5 @@
   "editor.lineHeight": 2.3,
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
-  "editor.fontFamily": "Monolisa, Menlo, Monaco, 'Courier New', monospace"
+  "editor.fontFamily": "MonoLisa, Menlo, Monaco, 'Courier New', monospace"
 }
