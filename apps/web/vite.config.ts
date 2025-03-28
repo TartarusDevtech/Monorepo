@@ -46,15 +46,16 @@ export default defineConfig({
             "remark-linkify-regex",
             "remark-stringify"
           ],
-          misc: [
-            "plyr-react",
-            "@livepeer/react",
-            "@uidotdev/usehooks",
+          ui: [
+            "@heroicons/react",
+            "@headlessui/react",
             "@radix-ui/react-hover-card",
             "@radix-ui/react-slider",
             "@radix-ui/react-switch",
             "@radix-ui/react-tooltip"
-          ]
+          ],
+          aws: ["@aws-sdk/client-s3", "@aws-sdk/lib-storage"],
+          misc: ["plyr-react", "@livepeer/react", "@uidotdev/usehooks"]
         }
       }
     }
