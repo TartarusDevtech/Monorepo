@@ -21,7 +21,7 @@
     "@lens-protocol/metadata": "next",
     "@prisma/client": "^6.5.0",
     "@trpc-limiter/memory": "^1.0.0",
-    "@trpc/server": "^11.0.0",
+    "@trpc/server": "^11.0.1",
     "axios": "^1.8.4",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
@@ -30,7 +30,7 @@
     "jose": "^6.0.10",
     "linkedom": "^0.18.9",
     "tsx": "^4.19.3",
-    "viem": "^2.24.1",
+    "viem": "^2.24.2",
     "zod": "^3.24.2"
   },
   "devDependencies": {
