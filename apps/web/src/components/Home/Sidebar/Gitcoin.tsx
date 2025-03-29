@@ -18,14 +18,16 @@ const Gitcoin = () => {
       />
       <div className="space-y-3 text-center">
         <b>Support {APP_NAME} on Gitcoin Grants Round 22</b>
-        <CountdownTimer targetDate="2024-11-07T00:59:00+00:00" />
+        <div className="font-bold font-mono text-lg">
+          <CountdownTimer targetDate="2024-11-07T00:59:00+00:00" />
+        </div>
         <div>
           <Link
             className="font-bold underline"
             to={`${APP_URL}/gitcoin`}
             target="_blank"
           >
-            <Button size="lg">Contribute now</Button>
+            <Button>Contribute now</Button>
           </Link>
         </div>
       </div>

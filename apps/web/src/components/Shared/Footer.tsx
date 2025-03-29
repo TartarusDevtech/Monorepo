@@ -1,4 +1,4 @@
-import { APP_NAME, APP_URL } from "@hey/data/constants";
+import { APP_NAME } from "@hey/data/constants";
 import { Link } from "react-router";
 const currentYear = new Date().getFullYear();
 
@@ -6,7 +6,7 @@ const links = [
   { href: "/terms", label: "Terms" },
   { href: "/privacy", label: "Privacy" },
   { href: "/guidelines", label: "Guidelines" },
-  { href: `${APP_URL}/discord`, label: "Discord" },
+  { href: "https://discord.gg/PaewZGkkBr", label: "Discord" },
   { href: "/u/hey", label: APP_NAME },
   { href: "https://status.hey.xyz", label: "Status" },
   { href: "https://github.com/heyverse/hey", label: "GitHub" },
