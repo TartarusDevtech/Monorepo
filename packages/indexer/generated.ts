@@ -6434,7 +6434,7 @@ export type UsernameLengthNamespaceRuleConfig = {
 export type UsernameNamespace = {
   __typename?: 'UsernameNamespace';
   address: Scalars['EvmAddress']['output'];
-  collectionMetadata?: Maybe<NftMetadata>;
+  collectionMetadata?: Maybe<UsernameNamespaceMetadataStandard>;
   createdAt: Scalars['DateTime']['output'];
   metadata?: Maybe<UsernameNamespaceMetadata>;
   namespace: Scalars['String']['output'];
@@ -6454,6 +6454,19 @@ export type UsernameNamespaceMetadata = {
   __typename?: 'UsernameNamespaceMetadata';
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['String']['output'];
+};
+
+export type UsernameNamespaceMetadataStandard = {
+  __typename?: 'UsernameNamespaceMetadataStandard';
+  bannerImage?: Maybe<Scalars['URI']['output']>;
+  collaborators: Array<Scalars['EvmAddress']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  externalLink?: Maybe<Scalars['URI']['output']>;
+  featuredImage?: Maybe<Scalars['URI']['output']>;
+  image?: Maybe<Scalars['URI']['output']>;
+  name: Scalars['String']['output'];
+  schema: Scalars['String']['output'];
+  symbol?: Maybe<Scalars['String']['output']>;
 };
 
 export type UsernameNamespaceStats = {
