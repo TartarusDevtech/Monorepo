@@ -1,6 +1,6 @@
 import GroupListShimmer from "@/components/Shared/Shimmer/GroupListShimmer";
 import SingleGroup from "@/components/Shared/SingleGroup";
-import { Card, EmptyState, ErrorMessage } from "@/components/Shared/UI";
+import { EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { UserGroupIcon } from "@heroicons/react/24/outline";
 import {
@@ -49,11 +49,7 @@ const List = ({ focus }: ListProps) => {
   };
 
   if (loading) {
-    return (
-      <Card>
-        <GroupListShimmer />
-      </Card>
-    );
+    return <GroupListShimmer />;
   }
 
   if (groups?.length === 0) {

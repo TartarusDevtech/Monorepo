@@ -45,7 +45,7 @@ export const Routes = () => {
           <Route path="bookmarks" element={<Bookmarks />} />
           <Route path="notifications" element={<Notification />} />
           <Route path="u/:username" element={<ViewProfile />} />
-          <Route path="g/:username">
+          <Route path="g/:address">
             <Route index element={<ViewGroup />} />
             <Route path="settings">
               <Route index element={<GroupSettings />} />
