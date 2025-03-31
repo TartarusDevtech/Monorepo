@@ -70,7 +70,7 @@ const ApprovalRule = ({ group }: ApprovalRuleProps) => {
         request: {
           group: group.address,
           ...(isApprovalRuleEnabled
-            ? { toRemove: [approvalRule.id] }
+            ? { toRemove: [approvalRule?.id] }
             : {
                 toAdd: {
                   required: [{ membershipApprovalRule: { enable: true } }]

@@ -103,7 +103,7 @@ const SuperJoin = ({ group }: SuperJoinProps) => {
                       simplePaymentRule: {
                         cost: {
                           currency: DEFAULT_COLLECT_TOKEN,
-                          value: amount
+                          value: amount.toString()
                         },
                         recipient: group.owner
                       }
