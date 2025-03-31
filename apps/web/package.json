@@ -62,7 +62,7 @@
     "unified": "^11.0.5",
     "unist-util-visit-parents": "^6.0.1",
     "viem": "^2.24.2",
-    "vite": "^6.2.3",
+    "vite": "^6.2.4",
     "wagmi": "^2.14.15",
     "zod": "^3.24.2",
     "zustand": "5.0.3"
