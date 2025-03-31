@@ -63,33 +63,31 @@ const CommentFeed = ({ postId }: CommentFeedProps) => {
   }
 
   return (
-    <>
-      <Card>
-        <Virtuoso
-          className="virtual-divider-list-window"
-          data={comments}
-          endReached={onEndReached}
-          itemContent={(index, comment) => {
-            if (comment.isDeleted) {
-              return null;
-            }
+    <Card>
+      <Virtuoso
+        className="virtual-divider-list-window"
+        data={comments}
+        endReached={onEndReached}
+        itemContent={(index, comment) => {
+          if (comment.isDeleted) {
+            return null;
+          }
 
-            const isFirst = index === 0;
-            const isLast = index === comments.length - 1;
+          const isFirst = index === 0;
+          const isLast = index === comments.length - 1;
 
-            return (
-              <SinglePost
-                isFirst={isFirst}
-                isLast={isLast}
-                post={comment}
-                showType={false}
-              />
-            );
-          }}
-          useWindowScroll
-        />
-      </Card>
-    </>
+          return (
+            <SinglePost
+              isFirst={isFirst}
+              isLast={isLast}
+              post={comment}
+              showType={false}
+            />
+          );
+        }}
+        useWindowScroll
+      />
+    </Card>
   );
 };
 
