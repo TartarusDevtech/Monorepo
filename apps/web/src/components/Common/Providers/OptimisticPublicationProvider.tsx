@@ -6,6 +6,10 @@ import {
   useTransactionStatusQuery
 } from "@hey/indexer";
 import type { OptimisticPublication } from "@hey/types/misc";
+import { useEffect, useState } from "react";
+
+const POLL_INTERVAL = 1500;
+const MAX_CHECK_COUNT = 10;
 
 interface TransactionProps {
   transaction: OptimisticPublication;
@@ -15,13 +19,16 @@ const Transaction = ({ transaction }: TransactionProps) => {
   const { removePublication } = useOptimisticPublicationStore();
   const { cache } = useApolloClient();
   const [getPost] = usePostLazyQuery();
+  const [checkCount, setCheckCount] = useState(0);
 
-  useTransactionStatusQuery({
+  const { stopPolling } = useTransactionStatusQuery({
     fetchPolicy: "cache-and-network",
     notifyOnNetworkStatusChange: true,
-    pollInterval: 1000,
+    pollInterval: POLL_INTERVAL,
     variables: { request: { txHash: transaction.txHash } },
     onCompleted: async ({ transactionStatus }) => {
+      setCheckCount((prev) => prev + 1);
+
       if (
         transactionStatus?.__typename === "FailedTransactionStatus" ||
         transactionStatus?.__typename === "FinishedTransactionStatus"
@@ -70,6 +77,13 @@ const Transaction = ({ transaction }: TransactionProps) => {
       }
     }
   });
+
+  useEffect(() => {
+    if (checkCount >= MAX_CHECK_COUNT) {
+      stopPolling();
+      removePublication(transaction.txHash as string);
+    }
+  }, [checkCount, stopPolling, removePublication, transaction.txHash]);
 
   return null;
 };
