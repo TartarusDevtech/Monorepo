@@ -435,6 +435,7 @@ const result: PossibleTypesResultData = {
     ],
     SetGroupMetadataResult: [
       "SelfFundedTransactionRequest",
+      "SetGroupMetadataResponse",
       "SponsoredTransactionRequest",
       "TransactionWillFail"
     ],
@@ -521,7 +522,8 @@ const result: PossibleTypesResultData = {
     UpdateGroupRulesResult: [
       "SelfFundedTransactionRequest",
       "SponsoredTransactionRequest",
-      "TransactionWillFail"
+      "TransactionWillFail",
+      "UpdateGroupRulesResponse"
     ],
     UpdateNamespaceRulesResult: [
       "SelfFundedTransactionRequest",

@@ -1,5 +1,8 @@
 mutation SetGroupMetadata($request: SetGroupMetadataRequest!) {
   setGroupMetadata(request: $request) {
+    ... on SetGroupMetadataResponse {
+      hash
+    }
     ... on SelfFundedTransactionRequest {
       ...SelfFundedTransactionRequest
     }

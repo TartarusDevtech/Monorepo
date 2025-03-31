@@ -1,5 +1,8 @@
 mutation UpdateGroupRules($request: UpdateGroupRulesRequest!) {
   updateGroupRules(request: $request) {
+    ... on UpdateGroupRulesResponse {
+      hash
+    }
     ... on SelfFundedTransactionRequest {
       ...SelfFundedTransactionRequest
     }
