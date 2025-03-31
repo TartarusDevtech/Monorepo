@@ -2,14 +2,12 @@ import { Button } from "@/components/Shared/UI";
 import { useFundModalStore } from "@/store/non-persisted/modal/useFundModalStore";
 
 interface FundButtonProps {
-  label?: string;
   size?: "sm" | "md";
   outline?: boolean;
   className?: string;
 }
 
 const FundButton = ({
-  label = "Fund account",
   size = "md",
   outline = false,
   className = ""
@@ -24,7 +22,7 @@ const FundButton = ({
       size={size}
       outline={outline}
     >
-      {label}
+      Fund account
     </Button>
   );
 };
