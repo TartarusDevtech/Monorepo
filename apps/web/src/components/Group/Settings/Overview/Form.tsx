@@ -64,9 +64,9 @@ const GroupSettingsForm = ({ group }: GroupSettingsFormProps) => {
 
   const [setGroupMetadata] = useSetGroupMetadataMutation({
     onCompleted: async ({ setGroupMetadata }) => {
-      // if (setGroupMetadata.__typename === "SetGroupMetadataResponse") {
-      //   return onCompleted(setGroupMetadata.hash);
-      // }
+      if (setGroupMetadata.__typename === "SetGroupMetadataResponse") {
+        return onCompleted();
+      }
 
       return await handleTransactionLifecycle({
         transactionData: setGroupMetadata,
@@ -85,7 +85,11 @@ const GroupSettingsForm = ({ group }: GroupSettingsFormProps) => {
     schema: ValidationSchema
   });
 
-  const updateGroup = async (data: z.infer<typeof ValidationSchema>) => {
+  const updateGroup = async (
+    data: z.infer<typeof ValidationSchema>,
+    pfpUrl: string | undefined,
+    coverUrl: string | undefined
+  ) => {
     if (!currentAccount) {
       return toast.error(Errors.SignWallet);
     }
@@ -110,9 +114,23 @@ const GroupSettingsForm = ({ group }: GroupSettingsFormProps) => {
     });
   };
 
+  const onSetAvatar = async (src: string | undefined) => {
+    setPfpUrl(src);
+    return await updateGroup({ ...form.getValues() }, src, coverUrl);
+  };
+
+  const onSetCover = async (src: string | undefined) => {
+    setCoverUrl(src);
+    return await updateGroup({ ...form.getValues() }, pfpUrl, src);
+  };
+
   return (
     <Card className="p-5">
-      <Form className="space-y-4" form={form} onSubmit={updateGroup}>
+      <Form
+        className="space-y-4"
+        form={form}
+        onSubmit={(data) => updateGroup(data, pfpUrl, coverUrl)}
+      >
         <Input disabled label="Group Id" type="text" value={group.address} />
         <Input
           label="Name"
@@ -125,8 +143,8 @@ const GroupSettingsForm = ({ group }: GroupSettingsFormProps) => {
           placeholder="Tell us something about your group!"
           {...form.register("description")}
         />
-        <AvatarUpload src={pfpUrl || ""} setSrc={(src) => setPfpUrl(src)} />
-        <CoverUpload src={coverUrl || ""} setSrc={(src) => setCoverUrl(src)} />
+        <AvatarUpload src={pfpUrl || ""} setSrc={onSetAvatar} />
+        <CoverUpload src={coverUrl || ""} setSrc={onSetCover} />
         <Button
           className="ml-auto"
           disabled={

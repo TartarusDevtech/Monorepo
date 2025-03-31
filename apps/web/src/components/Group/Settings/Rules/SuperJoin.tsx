@@ -69,6 +69,10 @@ const SuperJoin = ({ group }: SuperJoinProps) => {
 
   const [updateGroupRules] = useUpdateGroupRulesMutation({
     onCompleted: async ({ updateGroupRules }) => {
+      if (updateGroupRules.__typename === "UpdateGroupRulesResponse") {
+        return onCompleted(updateGroupRules.hash);
+      }
+
       return await handleTransactionLifecycle({
         transactionData: updateGroupRules,
         onCompleted,

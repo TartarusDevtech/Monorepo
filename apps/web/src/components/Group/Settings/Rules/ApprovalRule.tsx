@@ -27,10 +27,13 @@ const ApprovalRule = ({ group }: ApprovalRuleProps) => {
   const approvalRule = [...group.rules.required, ...group.rules.anyOf].find(
     (rule) => rule.type === GroupRuleType.MembershipApproval
   );
-  const isApprovalRuleEnabled = approvalRule !== undefined;
+  const [isApprovalRuleEnabled, setIsApprovalRuleEnabled] = useState(
+    approvalRule !== undefined
+  );
 
   const onCompleted = () => {
     setIsSubmitting(false);
+    setIsApprovalRuleEnabled(!isApprovalRuleEnabled);
     trackEvent(Events.Group.UpdateSettings, { type: "approval_rule" });
     toast.success("Approval rule updated");
   };
@@ -42,6 +45,10 @@ const ApprovalRule = ({ group }: ApprovalRuleProps) => {
 
   const [updateGroupRules] = useUpdateGroupRulesMutation({
     onCompleted: async ({ updateGroupRules }) => {
+      if (updateGroupRules.__typename === "UpdateGroupRulesResponse") {
+        return onCompleted();
+      }
+
       return await handleTransactionLifecycle({
         transactionData: updateGroupRules,
         onCompleted,
