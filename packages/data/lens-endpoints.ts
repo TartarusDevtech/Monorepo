@@ -1,5 +1,5 @@
 enum LensEndpoint {
-  Mainnet = "https://api-v2.lens.dev",
+  Mainnet = "https://api.lens.matterhosted.dev/graphql",
   Testnet = "https://api.testnet.lens.xyz/graphql"
 }
 

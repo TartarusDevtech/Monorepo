@@ -14,9 +14,9 @@ import { WagmiProvider, createConfig } from "wagmi";
 
 const config = createConfig(
   getDefaultConfig({
-    chains: [chains.testnet, chains.testnet],
+    chains: [chains.mainnet, chains.testnet],
     transports: {
-      [chains.testnet.id]: getRpc({ mainnet: false }),
+      [chains.mainnet.id]: getRpc({ mainnet: true }),
       [chains.testnet.id]: getRpc({ mainnet: false })
     },
     walletConnectProjectId: WALLETCONNECT_PROJECT_ID,
