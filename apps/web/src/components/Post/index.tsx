@@ -113,7 +113,7 @@ const ViewPost = () => {
                 post={post}
               />
             </Card>
-            {!canComment && (
+            {currentAccount && !canComment && (
               <WarningMessage
                 title="You cannot comment on this post"
                 message="You don't have permission to comment on this post."
