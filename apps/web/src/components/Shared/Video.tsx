@@ -18,13 +18,13 @@ const PlayerLoading = () => (
   </div>
 );
 
-interface ErrorProps {
+interface PlayerErrorProps {
   matcher: Player.ErrorIndicatorProps["matcher"];
   icon: ReactNode;
   title: string;
 }
 
-const PlayerError = ({ matcher, icon, title }: ErrorProps) => {
+const PlayerError = ({ matcher, icon, title }: PlayerErrorProps) => {
   return (
     <Player.ErrorIndicator
       matcher={matcher}
