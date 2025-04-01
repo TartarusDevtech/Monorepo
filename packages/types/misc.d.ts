@@ -21,11 +21,6 @@ export interface Emoji {
   tags: string[];
 }
 
-export interface OptimisticPublication {
-  commentOn?: string;
-  txHash: string;
-}
-
 export interface MarkupLinkProps {
   mentions?: PostMentionFragment[];
   title?: string;

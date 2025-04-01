@@ -1,5 +1,12 @@
-import { addOptimisticPublication } from "@/store/persisted/useOptimisticPublicationStore";
-import { type PostFragment, useCreatePostMutation } from "@hey/indexer";
+import { useApolloClient } from "@apollo/client";
+import {
+  PostDocument,
+  type PostFragment,
+  useCreatePostMutation,
+  usePostLazyQuery
+} from "@hey/indexer";
+import toast from "react-hot-toast";
+import usePollTransactionStatus from "./usePollTransactionStatus";
 import useTransactionLifecycle from "./useTransactionLifecycle";
 
 interface CreatePostProps {
@@ -14,14 +21,29 @@ const useCreatePost = ({
   onError
 }: CreatePostProps) => {
   const handleTransactionLifecycle = useTransactionLifecycle();
+  const pollTransactionStatus = usePollTransactionStatus();
+  const [getPost] = usePostLazyQuery();
+  const { cache } = useApolloClient();
   const isComment = Boolean(commentOn);
 
-  const onCompletedWithTransaction = (hash: string) => {
-    addOptimisticPublication({
-      ...(isComment && { commentOn: commentOn?.id }),
-      txHash: hash
-    });
+  const updateCache = async (txHash: string) => {
+    const { data } = await getPost({ variables: { request: { txHash } } });
+    if (!data?.post) {
+      return;
+    }
 
+    toast.success(`${isComment ? "Comment" : "Post"} created successfully!`);
+    cache.modify({
+      fields: {
+        [isComment ? "postReferences" : "posts"]: () => {
+          cache.writeQuery({ data: data.post, query: PostDocument });
+        }
+      }
+    });
+  };
+
+  const onCompletedWithTransaction = (hash: string) => {
+    pollTransactionStatus(hash, () => updateCache(hash));
     return onCompleted();
   };
 
