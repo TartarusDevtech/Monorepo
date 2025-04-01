@@ -3,6 +3,7 @@ import cn from "@/helpers/cn";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import MenuTransition from "../MenuTransition";
+import { NextLink } from "./MenuItems";
 import Bookmarks from "./NavItems/Bookmarks";
 import Groups from "./NavItems/Groups";
 import Support from "./NavItems/Support";
@@ -34,18 +35,20 @@ const MoreNavItems = () => {
               {currentAccount ? (
                 <>
                   <MenuItem
-                    as="div"
+                    as={NextLink}
                     className={({ focus }: { focus: boolean }) =>
-                      cn({ "dropdown-active": focus }, "m-2 rounded-lg")
+                      cn({ "dropdown-active": focus }, "menu-item")
                     }
+                    to="/groups"
                   >
                     <Groups />
                   </MenuItem>
                   <MenuItem
-                    as="div"
+                    as={NextLink}
                     className={({ focus }: { focus: boolean }) =>
-                      cn({ "dropdown-active": focus }, "m-2 rounded-lg")
+                      cn({ "dropdown-active": focus }, "menu-item")
                     }
+                    to="/bookmarks"
                   >
                     <Bookmarks />
                   </MenuItem>
@@ -53,10 +56,11 @@ const MoreNavItems = () => {
                 </>
               ) : null}
               <MenuItem
-                as="div"
+                as={NextLink}
                 className={({ focus }: { focus: boolean }) =>
-                  cn({ "dropdown-active": focus }, "m-2 rounded-lg")
+                  cn({ "dropdown-active": focus }, "menu-item")
                 }
+                to="/support"
               >
                 <Support />
               </MenuItem>

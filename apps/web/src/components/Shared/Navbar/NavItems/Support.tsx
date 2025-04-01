@@ -1,6 +1,5 @@
 import cn from "@/helpers/cn";
 import { HandRaisedIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router";
 
 interface SupportProps {
   className?: string;
@@ -8,16 +7,15 @@ interface SupportProps {
 
 const Support = ({ className = "" }: SupportProps) => {
   return (
-    <Link
+    <div
       className={cn(
-        "flex w-full items-center space-x-1.5 px-2 py-1.5 text-gray-700 text-sm dark:text-gray-200",
+        "flex w-full items-center space-x-1.5 text-gray-700 text-sm dark:text-gray-200",
         className
       )}
-      to="/support"
     >
       <HandRaisedIcon className="size-4" />
       <div>Support</div>
-    </Link>
+    </div>
   );
 };
 

@@ -80,14 +80,12 @@ const MobileDrawerMenu = () => {
                 <StaffTools className={cn(itemClass, "px-4")} />
               </Link>
             ) : null}
-            <Groups
-              className={cn(itemClass, "px-4")}
-              onClick={handleCloseDrawer}
-            />
-            <Bookmarks
-              className={cn(itemClass, "px-4")}
-              onClick={handleCloseDrawer}
-            />
+            <Link to="/groups" onClick={handleCloseDrawer}>
+              <Groups className={cn(itemClass, "px-4")} />
+            </Link>
+            <Link to="/bookmarks" onClick={handleCloseDrawer}>
+              <Bookmarks className={cn(itemClass, "px-4")} />
+            </Link>
             <ThemeSwitch
               className={cn(itemClass, "px-4")}
               onClick={handleCloseDrawer}
@@ -97,7 +95,9 @@ const MobileDrawerMenu = () => {
         </div>
         <div className="bg-white dark:bg-gray-900">
           <div className="divider" />
-          <Support className={cn(itemClass, "px-4")} />
+          <Link to="/support" onClick={handleCloseDrawer}>
+            <Support className={cn(itemClass, "px-4")} />
+          </Link>
           <div className="divider" />
         </div>
         <div className="bg-white dark:bg-gray-900">
