@@ -57,9 +57,7 @@ const SuperJoin = ({ group }: SuperJoinProps) => {
 
   const onCompleted = (hash: string) => {
     trackEvent(Events.Group.UpdateSettings, { type: "simple_payment_rule" });
-    pollTransactionStatus(hash, () => {
-      location.reload();
-    });
+    pollTransactionStatus(hash, () => location.reload());
   };
 
   const onError = (error: any) => {

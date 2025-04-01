@@ -8,8 +8,8 @@ import {
 import type { OptimisticPublication } from "@hey/types/misc";
 import { useEffect, useState } from "react";
 
-const POLL_INTERVAL = 1500;
-const MAX_CHECK_COUNT = 10;
+const POLL_INTERVAL = 1000;
+const MAX_CHECK_COUNT = 5;
 
 interface TransactionProps {
   transaction: OptimisticPublication;
