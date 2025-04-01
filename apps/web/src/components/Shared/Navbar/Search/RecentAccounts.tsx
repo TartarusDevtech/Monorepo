@@ -22,11 +22,11 @@ const RecentAccounts = ({ onAccountClick }: RecentAccountsProps) => {
   } = useSearchStore();
 
   const { data, loading } = useAccountsBulkQuery({
-    skip: recentAccounts.length === 0,
+    skip: !recentAccounts.length,
     variables: { request: { addresses: recentAccounts } }
   });
 
-  if (recentAccounts.length === 0) {
+  if (!recentAccounts.length) {
     return null;
   }
 

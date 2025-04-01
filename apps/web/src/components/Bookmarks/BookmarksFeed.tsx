@@ -54,7 +54,7 @@ const BookmarksFeed = ({ focus }: BookmarksFeedProps) => {
     return <PostsShimmer />;
   }
 
-  if (posts?.length === 0) {
+  if (!posts?.length) {
     return (
       <EmptyState
         icon={<BookmarkIcon className="size-8" />}
@@ -83,9 +83,9 @@ const BookmarksFeed = ({ focus }: BookmarksFeedProps) => {
         )}
         ref={virtuoso}
         restoreStateFrom={
-          virtuosoState.ranges.length === 0
-            ? virtuosoState?.current?.getState((state: StateSnapshot) => state)
-            : virtuosoState
+          virtuosoState.ranges.length
+            ? virtuosoState
+            : virtuosoState?.current?.getState((state: StateSnapshot) => state)
         }
         useWindowScroll
       />

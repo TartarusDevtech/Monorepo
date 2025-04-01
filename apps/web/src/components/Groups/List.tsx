@@ -52,7 +52,7 @@ const List = ({ focus }: ListProps) => {
     return <GroupListShimmer />;
   }
 
-  if (groups?.length === 0) {
+  if (!groups?.length) {
     return (
       <div className="p-5">
         <EmptyState

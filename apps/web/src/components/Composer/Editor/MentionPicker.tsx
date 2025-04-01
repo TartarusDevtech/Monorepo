@@ -62,7 +62,7 @@ const MentionPicker = () => {
     <AutocompletePopover
       className={cn(
         "z-10 block w-52 rounded-xl border bg-white p-0 shadow-sm dark:border-gray-700 dark:bg-gray-900",
-        results.length === 0 && "hidden"
+        !results.length && "hidden"
       )}
       offset={10}
       onQueryChange={setQueryString}

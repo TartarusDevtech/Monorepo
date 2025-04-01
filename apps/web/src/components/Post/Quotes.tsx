@@ -51,7 +51,7 @@ const Quotes = ({ post }: QuotesProps) => {
     return <ErrorMessage error={error} title="Failed to load comment feed" />;
   }
 
-  if (quotes.length === 0) {
+  if (!quotes.length) {
     return (
       <EmptyState
         icon={<ChatBubbleBottomCenterTextIcon className="size-8" />}

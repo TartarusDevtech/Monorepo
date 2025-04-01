@@ -187,7 +187,7 @@ const NewPublication = ({ className, post, feed }: NewPublicationProps) => {
         }
       }
 
-      if (postContent.length === 0 && attachments.length === 0) {
+      if (!postContent.length && !attachments.length) {
         setIsSubmitting(false);
         return setPostContentError(
           `${

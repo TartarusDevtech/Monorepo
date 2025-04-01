@@ -112,7 +112,7 @@ const List = () => {
     );
   }
 
-  if (accountManagers?.length === 0) {
+  if (!accountManagers?.length) {
     return (
       <EmptyState
         hideCard

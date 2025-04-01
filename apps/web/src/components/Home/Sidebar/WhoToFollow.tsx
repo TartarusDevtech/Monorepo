@@ -43,7 +43,7 @@ const WhoToFollow = () => {
     );
   }
 
-  if (data?.mlAccountRecommendations.items.length === 0) {
+  if (!data?.mlAccountRecommendations.items.length) {
     return null;
   }
 
@@ -52,7 +52,7 @@ const WhoToFollow = () => {
       !account.operations?.isBlockedByMe && !account.operations?.isFollowedByMe
   ) as AccountFragment[];
 
-  if (recommendedAccounts?.length === 0) {
+  if (!recommendedAccounts?.length) {
     return null;
   }
 

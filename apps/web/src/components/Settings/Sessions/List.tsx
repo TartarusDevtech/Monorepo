@@ -92,7 +92,7 @@ const List = () => {
     );
   }
 
-  if (authenticatedSessions?.length === 0) {
+  if (!authenticatedSessions?.length) {
     return (
       <EmptyState
         hideCard

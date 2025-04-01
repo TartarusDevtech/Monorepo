@@ -43,7 +43,7 @@ const List = () => {
     );
   }
 
-  if (accountsBlocked?.length === 0) {
+  if (!accountsBlocked?.length) {
     return (
       <EmptyState
         hideCard

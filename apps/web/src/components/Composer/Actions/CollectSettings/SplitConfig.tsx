@@ -84,7 +84,15 @@ const SplitConfig = ({
 
   const handleRemoveRecipient = (index: number) => {
     const updatedRecipients = recipients.filter((_, i) => i !== index);
-    if (updatedRecipients.length === 0) {
+    if (updatedRecipients.length) {
+      if (!collectAction.payToCollect) return;
+      setCollectType({
+        payToCollect: {
+          ...collectAction.payToCollect,
+          recipients: updatedRecipients
+        }
+      });
+    } else {
       if (!collectAction.payToCollect) return;
       setCollectType({
         payToCollect: {
@@ -93,14 +101,6 @@ const SplitConfig = ({
         }
       });
       setIsToggleOn(false);
-    } else {
-      if (!collectAction.payToCollect) return;
-      setCollectType({
-        payToCollect: {
-          ...collectAction.payToCollect,
-          recipients: updatedRecipients
-        }
-      });
     }
   };
 

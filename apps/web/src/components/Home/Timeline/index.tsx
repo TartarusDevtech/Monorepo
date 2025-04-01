@@ -47,7 +47,7 @@ const Timeline = () => {
     return <PostsShimmer />;
   }
 
-  if (feed?.length === 0) {
+  if (!feed?.length) {
     return (
       <EmptyState
         icon={<UserGroupIcon className="size-8" />}
@@ -77,9 +77,9 @@ const Timeline = () => {
         )}
         ref={virtuoso}
         restoreStateFrom={
-          virtuosoState.ranges.length === 0
-            ? virtuosoState?.current?.getState((state: StateSnapshot) => state)
-            : virtuosoState
+          virtuosoState.ranges.length
+            ? virtuosoState
+            : virtuosoState?.current?.getState((state: StateSnapshot) => state)
         }
         useWindowScroll
       />

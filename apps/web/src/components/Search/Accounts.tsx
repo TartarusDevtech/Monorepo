@@ -36,7 +36,7 @@ const Accounts = ({ query }: AccountsProps) => {
     return <SingleAccountsShimmer isBig />;
   }
 
-  if (accounts?.length === 0) {
+  if (!accounts?.length) {
     return (
       <EmptyState
         icon={<UsersIcon className="size-8" />}

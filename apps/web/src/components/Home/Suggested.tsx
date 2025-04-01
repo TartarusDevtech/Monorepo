@@ -13,7 +13,7 @@ interface SuggestedProps {
 const Suggested = ({ accounts }: SuggestedProps) => {
   const { currentAccount } = useAccountStore();
 
-  if (accounts.length === 0) {
+  if (!accounts.length) {
     return (
       <EmptyState
         hideCard

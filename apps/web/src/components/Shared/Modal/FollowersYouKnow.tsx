@@ -43,7 +43,7 @@ const FollowersYouKnow = ({ username, address }: FollowersYouKnowProps) => {
     return <AccountListShimmer />;
   }
 
-  if (followersYouKnow?.length === 0) {
+  if (!followersYouKnow?.length) {
     return (
       <EmptyState
         icon={<UsersIcon className="size-8" />}

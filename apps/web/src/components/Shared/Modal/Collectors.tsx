@@ -42,7 +42,7 @@ const Collectors = ({ postId }: CollectorsProps) => {
     return <AccountListShimmer />;
   }
 
-  if (accounts?.length === 0) {
+  if (!accounts?.length) {
     return (
       <div className="p-5">
         <EmptyState

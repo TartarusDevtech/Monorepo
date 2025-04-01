@@ -19,7 +19,7 @@ const Splits = ({ recipients }: SplitsProps) => {
     }
   });
 
-  if (recipients.length === 0) {
+  if (!recipients.length) {
     return null;
   }
 

@@ -44,7 +44,7 @@ const Members = ({ group }: MembersProps) => {
     return <AccountListShimmer />;
   }
 
-  if (groupMembers?.length === 0) {
+  if (!groupMembers?.length) {
     return (
       <EmptyState
         icon={<UsersIcon className="size-8" />}

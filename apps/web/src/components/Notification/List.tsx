@@ -80,7 +80,7 @@ const List = ({ feedType }: ListProps) => {
     return <ErrorMessage error={error} title="Failed to load notifications" />;
   }
 
-  if (notifications?.length === 0) {
+  if (!notifications?.length) {
     return (
       <EmptyState
         icon={<BellIcon className="size-8" />}

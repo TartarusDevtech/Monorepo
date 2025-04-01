@@ -39,7 +39,7 @@ const FollowersYouKnowOverview = ({
     const names = accounts.map((account) => getAccount(account.follower).name);
     const count = names.length - 3;
 
-    if (names.length === 0) return null;
+    if (!names.length) return null;
     if (names.length === 1) return names[0];
     if (names.length === 2) return `${names[0]} and ${names[1]}`;
     if (names.length === 3)
@@ -76,7 +76,7 @@ const FollowersYouKnowOverview = ({
     </button>
   );
 
-  if (accounts.length === 0 || loading || error) {
+  if (!accounts.length || loading || error) {
     return null;
   }
 

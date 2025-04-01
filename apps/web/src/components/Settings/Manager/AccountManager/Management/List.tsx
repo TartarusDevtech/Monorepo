@@ -83,7 +83,7 @@ const List = ({ managed = false }: ListProps) => {
     );
   }
 
-  if (accountsAvailable?.length === 0) {
+  if (!accountsAvailable?.length) {
     return (
       <EmptyState
         hideCard

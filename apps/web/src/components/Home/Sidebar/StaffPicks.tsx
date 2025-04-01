@@ -68,7 +68,7 @@ const StaffPicks = () => {
     );
   }
 
-  if (picks?.length === 0) {
+  if (!picks?.length) {
     return (
       <Card as="aside" className="mb-4 p-5">
         <Title />
@@ -96,7 +96,7 @@ const StaffPicks = () => {
     )
     .slice(0, 5);
 
-  if (filteredAccounts.length === 0) {
+  if (!filteredAccounts.length) {
     return null;
   }
 

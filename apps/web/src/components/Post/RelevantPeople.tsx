@@ -48,7 +48,7 @@ const RelevantPeople = ({ mentions }: RelevantPeopleProps) => {
     );
   }
 
-  if (data?.accountsBulk?.length === 0) {
+  if (!data?.accountsBulk?.length) {
     return null;
   }
 

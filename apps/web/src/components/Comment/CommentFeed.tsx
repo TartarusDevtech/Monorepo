@@ -53,7 +53,7 @@ const CommentFeed = ({ postId }: CommentFeedProps) => {
     return <ErrorMessage error={error} title="Failed to load comment feed" />;
   }
 
-  if (comments?.length === 0) {
+  if (!comments?.length) {
     return (
       <EmptyState
         icon={<ChatBubbleLeftIcon className="size-8" />}

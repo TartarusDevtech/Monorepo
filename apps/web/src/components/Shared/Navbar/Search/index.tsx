@@ -129,11 +129,11 @@ const Search = ({ placeholder = "Search…" }: SearchProps) => {
                     />
                   </div>
                 ))}
-                {accounts.length === 0 ? (
+                {accounts.length ? null : (
                   <div className="px-4 py-2">
                     Try searching for people or keywords
                   </div>
-                ) : null}
+                )}
               </>
             )}
           </Card>

@@ -39,7 +39,7 @@ const ForYou = () => {
     return <PostsShimmer />;
   }
 
-  if (posts?.length === 0) {
+  if (!posts?.length) {
     return (
       <EmptyState
         icon={<LightBulbIcon className="size-8" />}

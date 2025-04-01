@@ -33,7 +33,7 @@ const ImageFeed = ({ feedType = "" }: ImageFeedProps) => {
     return <ImagePostsShimmer />;
   }
 
-  if (posts?.length === 0) {
+  if (!posts?.length) {
     return (
       <EmptyState
         icon={<ChatBubbleBottomCenterIcon className="size-8" />}
