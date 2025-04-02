@@ -1089,7 +1089,7 @@ export type CreateGroupResponse = {
   hash: Scalars['TxHash']['output'];
 };
 
-export type CreateGroupResult = CreateGroupResponse | SelfFundedTransactionRequest | TransactionWillFail;
+export type CreateGroupResult = CreateGroupResponse | SelfFundedTransactionRequest | SponsoredTransactionRequest | TransactionWillFail;
 
 export type CreateNamespaceResponse = {
   __typename?: 'CreateNamespaceResponse';
@@ -1932,11 +1932,13 @@ export type GroupBannedAccountsRequest = {
 
 export type GroupFeedParams = {
   metadataUri?: InputMaybe<Scalars['URI']['input']>;
+  repliesRestricted?: Scalars['Boolean']['input'];
   rules?: InputMaybe<FeedRulesConfigInput>;
 };
 
 export type GroupGatedFeedRuleConfig = {
   group: Scalars['EvmAddress']['input'];
+  repliesRestricted?: Scalars['Boolean']['input'];
 };
 
 export type GroupGatedGraphRuleConfig = {
@@ -5119,6 +5121,7 @@ export enum SnsNotificationType {
   MetadataSnapshotError = 'METADATA_SNAPSHOT_ERROR',
   MetadataSnapshotSuccess = 'METADATA_SNAPSHOT_SUCCESS',
   MlAccountSignal = 'ML_ACCOUNT_SIGNAL',
+  MlRecommendedAccountDismissed = 'ML_RECOMMENDED_ACCOUNT_DISMISSED',
   PostActionExecuted = 'POST_ACTION_EXECUTED',
   PostCollected = 'POST_COLLECTED',
   PostCreated = 'POST_CREATED',
@@ -7667,6 +7670,9 @@ export type CreateGroupMutation = { __typename?: 'Mutation', createGroup: { __ty
     { __typename?: 'SelfFundedTransactionRequest' }
     & SelfFundedTransactionRequestFragment
   ) | (
+    { __typename?: 'SponsoredTransactionRequest' }
+    & SponsoredTransactionRequestFragment
+  ) | (
     { __typename?: 'TransactionWillFail' }
     & TransactionWillFailFragment
   ) };
@@ -8564,7 +8570,7 @@ export function useSwitchAccountMutation(baseOptions?: Apollo.MutationHookOption
         return Apollo.useMutation<SwitchAccountMutation, SwitchAccountMutationVariables>(SwitchAccountDocument, options);
       }
 export type SwitchAccountMutationHookResult = ReturnType<typeof useSwitchAccountMutation>;
-export const CreateGroupDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateGroup"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"request"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"CreateGroupRequest"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createGroup"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"request"},"value":{"kind":"Variable","name":{"kind":"Name","value":"request"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CreateGroupResponse"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hash"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SelfFundedTransactionRequest"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SelfFundedTransactionRequest"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"TransactionWillFail"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"TransactionWillFail"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SelfFundedTransactionRequest"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SelfFundedTransactionRequest"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"reason"}},{"kind":"Field","name":{"kind":"Name","value":"raw"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"chainId"}},{"kind":"Field","name":{"kind":"Name","value":"data"}},{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"gasLimit"}},{"kind":"Field","name":{"kind":"Name","value":"maxFeePerGas"}},{"kind":"Field","name":{"kind":"Name","value":"maxPriorityFeePerGas"}},{"kind":"Field","name":{"kind":"Name","value":"nonce"}},{"kind":"Field","name":{"kind":"Name","value":"to"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"TransactionWillFail"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"TransactionWillFail"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"reason"}}]}}]} as unknown as DocumentNode;
+export const CreateGroupDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreateGroup"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"request"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"CreateGroupRequest"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createGroup"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"request"},"value":{"kind":"Variable","name":{"kind":"Name","value":"request"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"CreateGroupResponse"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hash"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SponsoredTransactionRequest"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SponsoredTransactionRequest"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SelfFundedTransactionRequest"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"SelfFundedTransactionRequest"}}]}},{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"TransactionWillFail"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"TransactionWillFail"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SelfFundedTransactionRequest"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SelfFundedTransactionRequest"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"reason"}},{"kind":"Field","name":{"kind":"Name","value":"raw"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"chainId"}},{"kind":"Field","name":{"kind":"Name","value":"data"}},{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"gasLimit"}},{"kind":"Field","name":{"kind":"Name","value":"maxFeePerGas"}},{"kind":"Field","name":{"kind":"Name","value":"maxPriorityFeePerGas"}},{"kind":"Field","name":{"kind":"Name","value":"nonce"}},{"kind":"Field","name":{"kind":"Name","value":"to"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"SponsoredTransactionRequest"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"SponsoredTransactionRequest"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"reason"}},{"kind":"Field","name":{"kind":"Name","value":"raw"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"chainId"}},{"kind":"Field","name":{"kind":"Name","value":"data"}},{"kind":"Field","name":{"kind":"Name","value":"from"}},{"kind":"Field","name":{"kind":"Name","value":"gasLimit"}},{"kind":"Field","name":{"kind":"Name","value":"maxFeePerGas"}},{"kind":"Field","name":{"kind":"Name","value":"maxPriorityFeePerGas"}},{"kind":"Field","name":{"kind":"Name","value":"nonce"}},{"kind":"Field","name":{"kind":"Name","value":"to"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"value"}},{"kind":"Field","name":{"kind":"Name","value":"customData"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"customSignature"}},{"kind":"Field","name":{"kind":"Name","value":"factoryDeps"}},{"kind":"Field","name":{"kind":"Name","value":"gasPerPubdata"}},{"kind":"Field","name":{"kind":"Name","value":"paymasterParams"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"paymaster"}},{"kind":"Field","name":{"kind":"Name","value":"paymasterInput"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"TransactionWillFail"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"TransactionWillFail"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"reason"}}]}}]} as unknown as DocumentNode;
 export function useCreateGroupMutation(baseOptions?: Apollo.MutationHookOptions<CreateGroupMutation, CreateGroupMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useMutation<CreateGroupMutation, CreateGroupMutationVariables>(CreateGroupDocument, options);

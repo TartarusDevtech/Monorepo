@@ -154,6 +154,7 @@ const result: PossibleTypesResultData = {
     CreateGroupResult: [
       "CreateGroupResponse",
       "SelfFundedTransactionRequest",
+      "SponsoredTransactionRequest",
       "TransactionWillFail"
     ],
     CreateSponsorshipResult: [

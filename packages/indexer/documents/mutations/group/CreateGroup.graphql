@@ -3,6 +3,9 @@ mutation CreateGroup($request: CreateGroupRequest!) {
     ... on CreateGroupResponse {
       hash
     }
+    ... on SponsoredTransactionRequest {
+      ...SponsoredTransactionRequest
+    }
     ... on SelfFundedTransactionRequest {
       ...SelfFundedTransactionRequest
     }
