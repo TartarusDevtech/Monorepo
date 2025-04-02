@@ -100,7 +100,7 @@ const Fund = ({ isHeyTip }: FundProps) => {
   };
 
   return (
-    <Card className="mt-5">
+    <Card className="mt-5" forceRounded>
       <div className="mx-5 my-3 flex items-center justify-between">
         <b>{isHeyTip ? "Tip" : "Purchase"}</b>
         {balanceLoading ? (
