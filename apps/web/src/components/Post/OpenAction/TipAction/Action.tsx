@@ -18,13 +18,12 @@ import { Events } from "@hey/data/events";
 import {
   type LoggedInPostOperationsFragment,
   type PostFragment,
+  useAccountBalancesQuery,
   useExecutePostActionMutation
 } from "@hey/indexer";
 import type { ChangeEvent, RefObject } from "react";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
-import { formatUnits } from "viem";
-import { useBalance } from "wagmi";
 
 const submitButtonClassName = "w-full py-1.5 text-sm font-semibold";
 
@@ -44,10 +43,11 @@ const Action = ({ closePopover, post }: ActionProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   usePreventScrollOnNumberInput(inputRef as RefObject<HTMLInputElement>);
 
-  const { data: balanceData, isLoading: balanceLoading } = useBalance({
-    address: currentAccount?.address,
-    query: { refetchInterval: 2000 },
-    token: DEFAULT_COLLECT_TOKEN
+  const { data: balance, loading: balanceLoading } = useAccountBalancesQuery({
+    variables: { request: { tokens: [DEFAULT_COLLECT_TOKEN] } },
+    pollInterval: 3000,
+    skip: !currentAccount?.address,
+    fetchPolicy: "no-cache"
   });
 
   const updateCache = () => {
@@ -81,10 +81,12 @@ const Action = ({ closePopover, post }: ActionProps) => {
 
   const cryptoRate = Number(amount);
 
-  const balance = balanceData
-    ? Number.parseFloat(formatUnits(balanceData.value, 18)).toFixed(3)
-    : 0;
-  const canTip = Number(balance) >= cryptoRate;
+  const erc20Balance =
+    balance?.accountBalances[0].__typename === "Erc20Amount"
+      ? balance.accountBalances[0].value
+      : 0;
+
+  const canTip = Number(erc20Balance) >= cryptoRate;
 
   const [executePostAction] = useExecutePostActionMutation({
     onCompleted: async ({ executePostAction }) => {
@@ -145,8 +147,8 @@ const Action = ({ closePopover, post }: ActionProps) => {
         <div className="flex items-center space-x-1 text-neutral-500 text-xs dark:text-neutral-200">
           <span>Balance:</span>
           <span>
-            {balanceData ? (
-              `${balance} ${WRAPPED_NATIVE_TOKEN_SYMBOL}`
+            {erc20Balance ? (
+              `${erc20Balance} ${WRAPPED_NATIVE_TOKEN_SYMBOL}`
             ) : (
               <div className="shimmer h-2.5 w-14 rounded-full" />
             )}
