@@ -140,7 +140,7 @@ importers:
         specifier: ^3.779.0
         version: 3.779.0(@aws-sdk/client-s3@3.779.0)
       '@headlessui/react':
-        specifier: 2.2.0
+        specifier: ^2.2.0
         version: 2.2.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@heroicons/react':
         specifier: ^2.2.0
@@ -275,7 +275,7 @@ importers:
         specifier: ^6.0.0
         version: 6.0.0
       tailwind-merge:
-        specifier: 3.1.0
+        specifier: ^3.1.0
         version: 3.1.0
       tailwindcss:
         specifier: ^4.1.0
@@ -299,7 +299,7 @@ importers:
         specifier: ^3.24.2
         version: 3.24.2
       zustand:
-        specifier: 5.0.3
+        specifier: ^5.0.3
         version: 5.0.3(@types/react@19.0.12)(immer@10.1.1)(react@19.1.0)(use-sync-external-store@1.4.0(react@19.1.0))
     devDependencies:
       '@hey/config':
