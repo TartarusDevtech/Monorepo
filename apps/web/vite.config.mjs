@@ -53,7 +53,6 @@ export default defineConfig({
             "@headlessui/react",
             "@radix-ui/react-hover-card",
             "@radix-ui/react-slider",
-            "@radix-ui/react-switch",
             "@radix-ui/react-tooltip",
             "@uidotdev/usehooks"
           ],
