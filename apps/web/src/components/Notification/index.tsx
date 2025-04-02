@@ -3,14 +3,13 @@ import NotLoggedIn from "@/components/Shared/NotLoggedIn";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { APP_NAME } from "@hey/data/constants";
 import { NotificationFeedType } from "@hey/data/enums";
-import { useLocation } from "react-router";
+import { useSearchParams } from "react-router";
 import FeedType from "./FeedType";
 import List from "./List";
 import Settings from "./Settings";
 
 const Notification = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+  const [searchParams] = useSearchParams();
   const type = searchParams.get("type") || NotificationFeedType.All;
   const { currentAccount } = useAccountStore();
 

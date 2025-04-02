@@ -3,7 +3,7 @@ import { usePostStore } from "@/store/non-persisted/post/usePostStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import getAvatar from "@hey/helpers/getAvatar";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { useSearchParams } from "react-router";
 import NewPublication from "./NewPublication";
 
 interface NewPostProps {
@@ -11,9 +11,7 @@ interface NewPostProps {
 }
 
 const NewPost = ({ feed }: NewPostProps) => {
-  const location = useLocation();
-
-  const searchParams = new URLSearchParams(location.search);
+  const [searchParams] = useSearchParams();
   const text = searchParams.get("text");
   const hashtags = searchParams.get("hashtags");
   const url = searchParams.get("url");

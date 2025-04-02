@@ -11,14 +11,12 @@ import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { MainContentFocus } from "@hey/indexer";
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router";
+import { useSearchParams } from "react-router";
 import ExploreFeed from "./ExploreFeed";
 import ImageFeed from "./ImageFeed";
 
 const Explore = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+  const [searchParams, setSearchParams] = useSearchParams();
   const tab = Number(searchParams.get("tab")) || 0;
 
   const { currentAccount } = useAccountStore();
@@ -39,13 +37,7 @@ const Explore = () => {
       <GridItemEight className="space-y-5">
         <TabGroup
           defaultIndex={Number(tab)}
-          onChange={(index) => {
-            const params = new URLSearchParams(location.search);
-            params.set("tab", index.toString());
-            navigate(`${location.pathname}?${params.toString()}`, {
-              replace: true
-            });
-          }}
+          onChange={(index) => setSearchParams({ tab: index.toString() })}
         >
           <TabList className="divider space-x-8">
             {tabs.map((tab, index) => (

@@ -20,7 +20,7 @@ import getAccount from "@hey/helpers/getAccount";
 import isAccountDeleted from "@hey/helpers/isAccountDeleted";
 import { useAccountQuery } from "@hey/indexer";
 import { useQuery } from "@tanstack/react-query";
-import { useLocation, useParams } from "react-router";
+import { useParams, useSearchParams } from "react-router";
 import AccountFeed from "./AccountFeed";
 import DeletedDetails from "./DeletedDetails";
 import Details from "./Details";
@@ -33,8 +33,7 @@ const ViewProfile = () => {
     address: string;
     username: string;
   }>();
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+  const [searchParams] = useSearchParams();
   const type = searchParams.get("type") || AccountFeedType.Feed;
 
   const { currentAccount } = useAccountStore();

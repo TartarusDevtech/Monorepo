@@ -1,6 +1,6 @@
 import cn from "@/helpers/cn";
 import type { ReactNode } from "react";
-import { useLocation, useNavigate } from "react-router";
+import { useSearchParams } from "react-router";
 
 interface TabButtonProps {
   active: boolean;
@@ -23,20 +23,15 @@ const TabButton = ({
   showOnSm = false,
   type
 }: TabButtonProps) => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const updateQuery = (type?: string) => {
     if (!type) {
       return;
     }
 
-    const params = new URLSearchParams(location.search);
-    params.set("type", type);
-
-    navigate(`${location.pathname}?${params.toString()}`, {
-      replace: true
-    });
+    searchParams.set("type", type);
+    setSearchParams(searchParams);
   };
 
   return (

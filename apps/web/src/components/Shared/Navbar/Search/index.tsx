@@ -14,7 +14,7 @@ import {
 import { useClickAway, useDebounce } from "@uidotdev/usehooks";
 import type { ChangeEvent, MutableRefObject } from "react";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate, useSearchParams } from "react-router";
 import RecentAccounts from "./RecentAccounts";
 
 interface SearchProps {
@@ -24,8 +24,7 @@ interface SearchProps {
 const Search = ({ placeholder = "Search…" }: SearchProps) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+  const [searchParams] = useSearchParams();
   const type = searchParams.get("type");
 
   const { addAccount } = useSearchStore();

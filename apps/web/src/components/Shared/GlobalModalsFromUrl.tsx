@@ -1,13 +1,12 @@
 import { useAuthModalStore } from "@/store/non-persisted/modal/useAuthModalStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 import { useSignupStore } from "./Auth/Signup";
 
 const GlobalModalsFromUrl = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+  const [searchParams] = useSearchParams();
   const signup = searchParams.get("signup");
 
   const { currentAccount } = useAccountStore();

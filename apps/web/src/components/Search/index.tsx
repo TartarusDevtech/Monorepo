@@ -6,13 +6,12 @@ import {
   GridLayout
 } from "@/components/Shared/UI";
 import { PencilSquareIcon, UsersIcon } from "@heroicons/react/24/outline";
-import { useLocation } from "react-router";
+import { useSearchParams } from "react-router";
 import Accounts from "./Accounts";
 import Posts from "./Posts";
 
 const Search = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+  const [searchParams] = useSearchParams();
   const q = searchParams.get("q");
   const type = searchParams.get("type");
 
