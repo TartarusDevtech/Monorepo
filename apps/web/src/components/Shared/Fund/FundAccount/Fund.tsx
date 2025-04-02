@@ -7,23 +7,21 @@ import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useFundModalStore } from "@/store/non-persisted/modal/useFundModalStore";
 import {
   DEFAULT_COLLECT_TOKEN,
-  NATIVE_TOKEN_SYMBOL,
   WRAPPED_NATIVE_TOKEN_SYMBOL
 } from "@hey/data/constants";
 import { Events } from "@hey/data/events";
 import { useDepositMutation } from "@hey/indexer";
 import { type ChangeEvent, type RefObject, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import { formatUnits } from "viem";
-import { useAccount, useBalance } from "wagmi";
+import { erc20Abi, formatUnits } from "viem";
+import { useAccount, useReadContract } from "wagmi";
 
 interface FundProps {
   isHeyTip?: boolean;
-  useNativeToken?: boolean;
   onSuccess?: () => void;
 }
 
-const Fund = ({ isHeyTip, useNativeToken, onSuccess }: FundProps) => {
+const Fund = ({ isHeyTip, onSuccess }: FundProps) => {
   const { setShowFundModal } = useFundModalStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [amount, setAmount] = useState(2);
@@ -33,13 +31,12 @@ const Fund = ({ isHeyTip, useNativeToken, onSuccess }: FundProps) => {
   const { address } = useAccount();
   const handleTransactionLifecycle = useTransactionLifecycle();
   const pollTransactionStatus = usePollTransactionStatus();
-  const symbol = useNativeToken
-    ? NATIVE_TOKEN_SYMBOL
-    : WRAPPED_NATIVE_TOKEN_SYMBOL;
 
-  const { data, isLoading } = useBalance({
+  const { data: balance, isLoading: balanceLoading } = useReadContract({
     address,
-    token: useNativeToken ? undefined : DEFAULT_COLLECT_TOKEN,
+    abi: erc20Abi,
+    functionName: "balanceOf",
+    args: [DEFAULT_COLLECT_TOKEN],
     query: { refetchInterval: 2000 }
   });
 
@@ -78,8 +75,8 @@ const Fund = ({ isHeyTip, useNativeToken, onSuccess }: FundProps) => {
     onError
   });
 
-  const walletBalance = data
-    ? Number.parseFloat(formatUnits(data.value, 18)).toFixed(2)
+  const walletBalance = balance
+    ? Number.parseFloat(formatUnits(balance, 18)).toFixed(2)
     : 0;
 
   const onOtherAmount = (event: ChangeEvent<HTMLInputElement>) => {
@@ -95,14 +92,6 @@ const Fund = ({ isHeyTip, useNativeToken, onSuccess }: FundProps) => {
   const handleDeposit = async () => {
     setIsSubmitting(true);
 
-    if (useNativeToken) {
-      return await deposit({
-        variables: {
-          request: { native: amount.toString() }
-        }
-      });
-    }
-
     return await deposit({
       variables: {
         request: {
@@ -116,11 +105,11 @@ const Fund = ({ isHeyTip, useNativeToken, onSuccess }: FundProps) => {
     <Card className="mt-5">
       <div className="mx-5 my-3 flex items-center justify-between">
         <b>{isHeyTip ? "Tip" : "Purchase"}</b>
-        {isLoading ? (
+        {balanceLoading ? (
           <span className="shimmer h-2.5 w-20 rounded-full" />
         ) : (
           <span className="text-neutral-500 text-sm dark:text-neutral-200">
-            Balance: {walletBalance} {symbol}
+            Balance: {walletBalance} {WRAPPED_NATIVE_TOKEN_SYMBOL}
           </span>
         )}
       </div>
@@ -165,7 +154,7 @@ const Fund = ({ isHeyTip, useNativeToken, onSuccess }: FundProps) => {
               className="no-spinner"
               max={1000}
               onChange={onOtherAmount}
-              prefix={symbol}
+              prefix={WRAPPED_NATIVE_TOKEN_SYMBOL}
               placeholder="300"
               ref={inputRef}
               type="number"
@@ -173,7 +162,7 @@ const Fund = ({ isHeyTip, useNativeToken, onSuccess }: FundProps) => {
             />
           </div>
         ) : null}
-        {isLoading || isSubmitting ? (
+        {balanceLoading || isSubmitting ? (
           <Button
             className="flex w-full justify-center"
             disabled
@@ -189,7 +178,8 @@ const Fund = ({ isHeyTip, useNativeToken, onSuccess }: FundProps) => {
             className="w-full"
             onClick={handleDeposit}
           >
-            {isHeyTip ? "Tip" : "Purchase"} {amount} {symbol}
+            {isHeyTip ? "Tip" : "Purchase"} {amount}{" "}
+            {WRAPPED_NATIVE_TOKEN_SYMBOL}
           </Button>
         )}
       </div>
