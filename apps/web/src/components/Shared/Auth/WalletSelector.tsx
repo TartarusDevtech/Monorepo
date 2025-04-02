@@ -23,7 +23,7 @@ const WalletSelector = () => {
   ) : (
     <div className="inline-block w-full space-y-3 overflow-hidden text-left align-middle">
       <button
-        className="flex w-full items-center justify-between space-x-2.5 overflow-hidden rounded-xl border px-4 py-3 outline-hidden hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-700"
+        className="flex w-full items-center justify-between space-x-2.5 overflow-hidden rounded-xl border border-neutral-200 px-4 py-3 outline-hidden hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-700"
         onClick={() => setOpen(true)}
         type="button"
       >

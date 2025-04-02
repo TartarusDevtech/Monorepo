@@ -3,6 +3,7 @@ import {
   APP_URL,
   BRAND_COLOR,
   DESCRIPTION,
+  IS_MAINNET,
   STATIC_IMAGES_URL,
   WALLETCONNECT_PROJECT_ID
 } from "@hey/data/constants";
@@ -14,10 +15,11 @@ import { WagmiProvider, createConfig } from "wagmi";
 
 const config = createConfig(
   getDefaultConfig({
-    chains: [chains.mainnet, chains.testnet],
+    chains: [IS_MAINNET ? chains.mainnet : chains.testnet],
     transports: {
-      [chains.mainnet.id]: getRpc({ mainnet: true }),
-      [chains.testnet.id]: getRpc({ mainnet: false })
+      [IS_MAINNET ? chains.mainnet.id : chains.testnet.id]: getRpc({
+        mainnet: IS_MAINNET
+      })
     },
     walletConnectProjectId: WALLETCONNECT_PROJECT_ID,
     appName: APP_NAME,
