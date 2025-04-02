@@ -57,14 +57,13 @@ export default defineConfig({
             "@uidotdev/usehooks"
           ],
           aws: ["@aws-sdk/client-s3", "@aws-sdk/lib-storage"],
+          media: ["plyr-react", "@livepeer/react", "browser-image-compression"],
           misc: [
-            "plyr-react",
-            "@livepeer/react",
             "@lens-chain/storage-client",
             "@lens-protocol/metadata",
             "@apollo/client",
-            "browser-image-compression",
             "zustand",
+            "tailwind-merge",
             "zod"
           ]
         }
