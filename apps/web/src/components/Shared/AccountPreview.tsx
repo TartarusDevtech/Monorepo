@@ -105,47 +105,45 @@ const AccountPreview = ({
     );
 
     return (
-      <>
-        <div className="space-y-3 p-4">
-          <div className="flex items-center justify-between">
-            <UserAvatar />
-            <FollowUnfollowButton account={account} small />
+      <div className="space-y-3 p-4">
+        <div className="flex items-center justify-between">
+          <UserAvatar />
+          <FollowUnfollowButton account={account} small />
+        </div>
+        <UserName />
+        {account.metadata?.bio && (
+          <div className="linkify mt-2 break-words text-sm leading-6">
+            <Markup mentions={getMentions(account.metadata.bio)}>
+              {truncateByWords(account.metadata.bio, 20)}
+            </Markup>
           </div>
-          <UserName />
-          {account.metadata?.bio && (
-            <div className="linkify mt-2 break-words text-sm leading-6">
-              <Markup mentions={getMentions(account.metadata.bio)}>
-                {truncateByWords(account.metadata.bio, 20)}
-              </Markup>
+        )}
+        <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-1">
+            <div className="text-base">
+              {nFormatter(stats.graphFollowStats?.following)}
             </div>
-          )}
-          <div className="flex items-center space-x-3">
-            <div className="flex items-center space-x-1">
-              <div className="text-base">
-                {nFormatter(stats.graphFollowStats?.following)}
-              </div>
-              <div className="text-neutral-500 text-sm dark:text-neutral-200">
-                Following
-              </div>
-            </div>
-            <div className="flex items-center space-x-1 text-md">
-              <div className="text-base">
-                {nFormatter(stats.graphFollowStats?.followers)}
-              </div>
-              <div className="text-neutral-500 text-sm dark:text-neutral-200">
-                {plur("Follower", stats.graphFollowStats?.followers)}
-              </div>
+            <div className="text-neutral-500 text-sm dark:text-neutral-200">
+              Following
             </div>
           </div>
-          <div className="!text-xs">
-            <FollowersYouKnowOverview
-              username={getAccount(account).username}
-              address={account.address}
-              viaPopover
-            />
+          <div className="flex items-center space-x-1 text-md">
+            <div className="text-base">
+              {nFormatter(stats.graphFollowStats?.followers)}
+            </div>
+            <div className="text-neutral-500 text-sm dark:text-neutral-200">
+              {plur("Follower", stats.graphFollowStats?.followers)}
+            </div>
           </div>
         </div>
-      </>
+        <div className="!text-xs">
+          <FollowersYouKnowOverview
+            username={getAccount(account).username}
+            address={account.address}
+            viaPopover
+          />
+        </div>
+      </div>
     );
   };
 
