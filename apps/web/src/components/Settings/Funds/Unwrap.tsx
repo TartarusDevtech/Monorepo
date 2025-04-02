@@ -66,7 +66,7 @@ const Unwrap = ({ value, refetch }: UnwrapProps) => {
         size="sm"
         outline
         onClick={() => setShowModal(true)}
-        disabled={isSubmitting}
+        disabled={isSubmitting || valueToUnwrap === "0"}
       >
         Unwrap to {NATIVE_TOKEN_SYMBOL}
       </Button>
