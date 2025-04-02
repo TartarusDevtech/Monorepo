@@ -16,7 +16,7 @@ importers:
         version: 9.1.7
       pierre:
         specifier: ^2.1.14
-        version: 2.1.14(@types/node@22.13.14)(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)
+        version: 2.1.14(@types/node@22.13.17)(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)
 
   apps/api:
     dependencies:
@@ -30,8 +30,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/helpers
       '@lens-protocol/metadata':
-        specifier: next
-        version: 2.0.0-next.7(typescript@5.8.2)(zod@3.24.2)
+        specifier: ^2.0.0
+        version: 2.0.0(typescript@5.8.2)(zod@3.24.2)
       '@prisma/client':
         specifier: ^6.5.0
         version: 6.5.0(prisma@6.5.0(typescript@5.8.2))(typescript@5.8.2)
@@ -85,14 +85,14 @@ importers:
         specifier: ^5.0.1
         version: 5.0.1
       '@types/node':
-        specifier: ^22.13.14
-        version: 22.13.14
+        specifier: ^22.13.17
+        version: 22.13.17
       prisma:
         specifier: ^6.5.0
         version: 6.5.0(typescript@5.8.2)
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@22.13.14)(typescript@5.8.2)
+        version: 10.9.2(@types/node@22.13.17)(typescript@5.8.2)
       typescript:
         specifier: ^5.7.3
         version: 5.8.2
@@ -119,8 +119,8 @@ importers:
         version: 19.1.0
     devDependencies:
       '@types/node':
-        specifier: ^22.13.14
-        version: 22.13.14
+        specifier: ^22.13.17
+        version: 22.13.17
       '@types/react':
         specifier: ^19.0.12
         version: 19.0.12
@@ -158,20 +158,20 @@ importers:
         specifier: workspace:*
         version: link:../../packages/indexer
       '@hookform/resolvers':
-        specifier: ^4.1.3
-        version: 4.1.3(react-hook-form@7.55.0(react@19.1.0))
+        specifier: ^5.0.0
+        version: 5.0.0(react-hook-form@7.55.0(react@19.1.0))
       '@lens-chain/sdk':
-        specifier: canary
-        version: 0.0.0-canary-20250304124140(viem@2.24.3(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))
+        specifier: ^1.0.0
+        version: 1.0.0(viem@2.24.3(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))
       '@lens-chain/storage-client':
         specifier: ^1.0.3
         version: 1.0.3
       '@lens-protocol/metadata':
-        specifier: next
-        version: 2.0.0-next.7(typescript@5.8.2)(zod@3.24.2)
+        specifier: ^2.0.0
+        version: 2.0.0(typescript@5.8.2)(zod@3.24.2)
       '@livepeer/react':
         specifier: ^4.3.0
-        version: 4.3.0(@types/react-dom@19.0.4(@types/react@19.0.12))(@types/react@19.0.12)(immer@10.1.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 4.3.1(@types/react-dom@19.0.4(@types/react@19.0.12))(@types/react@19.0.12)(immer@10.1.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@radix-ui/react-hover-card':
         specifier: ^1.1.6
         version: 1.1.6(@types/react-dom@19.0.4(@types/react@19.0.12))(@types/react@19.0.12)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -288,7 +288,7 @@ importers:
         version: 2.24.3(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2)
       vite:
         specifier: ^6.2.4
-        version: 6.2.4(@types/node@22.13.14)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1)
+        version: 6.2.4(@types/node@22.13.17)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1)
       wagmi:
         specifier: ^2.14.16
         version: 2.14.16(@tanstack/query-core@5.71.1)(@tanstack/react-query@5.71.1(react@19.1.0))(@types/react@19.0.12)(bufferutil@4.0.9)(immer@10.1.1)(react@19.1.0)(typescript@5.8.2)(utf-8-validate@5.0.10)(viem@2.24.3(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))(zod@3.24.2)
@@ -307,13 +307,13 @@ importers:
         version: link:../../packages/types
       '@tailwindcss/aspect-ratio':
         specifier: ^0.4.2
-        version: 0.4.2(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.13.14)(typescript@5.8.2)))
+        version: 0.4.2(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.13.17)(typescript@5.8.2)))
       '@tailwindcss/forms':
         specifier: ^0.5.10
-        version: 0.5.10(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.13.14)(typescript@5.8.2)))
+        version: 0.5.10(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.13.17)(typescript@5.8.2)))
       '@types/node':
-        specifier: ^22.13.14
-        version: 22.13.14
+        specifier: ^22.13.17
+        version: 22.13.17
       '@types/react':
         specifier: ^19.0.12
         version: 19.0.12
@@ -322,7 +322,7 @@ importers:
         version: 19.0.4(@types/react@19.0.12)
       '@vitejs/plugin-react':
         specifier: ^4.3.4
-        version: 4.3.4(vite@6.2.4(@types/node@22.13.14)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))
+        version: 4.3.4(vite@6.2.4(@types/node@22.13.17)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))
       autoprefixer:
         specifier: ^10.4.21
         version: 10.4.21(postcss@8.5.3)
@@ -331,13 +331,13 @@ importers:
         version: 8.5.3
       tailwindcss:
         specifier: 3.4.17
-        version: 3.4.17(ts-node@10.9.2(@types/node@22.13.14)(typescript@5.8.2))
+        version: 3.4.17(ts-node@10.9.2(@types/node@22.13.17)(typescript@5.8.2))
       typescript:
         specifier: ^5.7.3
         version: 5.8.2
       vite-plugin-environment:
         specifier: ^1.1.3
-        version: 1.1.3(vite@6.2.4(@types/node@22.13.14)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))
+        version: 1.1.3(vite@6.2.4(@types/node@22.13.17)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))
 
   packages/config: {}
 
@@ -347,8 +347,8 @@ importers:
         specifier: workspace:*
         version: link:../config
       '@types/node':
-        specifier: ^22.13.14
-        version: 22.13.14
+        specifier: ^22.13.17
+        version: 22.13.17
       typescript:
         specifier: ^5.7.3
         version: 5.8.2
@@ -404,7 +404,7 @@ importers:
     devDependencies:
       '@graphql-codegen/cli':
         specifier: ^5.0.5
-        version: 5.0.5(@types/node@22.13.14)(bufferutil@4.0.9)(graphql-sock@1.0.1(graphql@16.10.0))(graphql@16.10.0)(typescript@5.8.2)(utf-8-validate@5.0.10)
+        version: 5.0.5(@types/node@22.13.17)(bufferutil@4.0.9)(graphql-sock@1.0.1(graphql@16.10.0))(graphql@16.10.0)(typescript@5.8.2)(utf-8-validate@5.0.10)
       '@graphql-codegen/fragment-matcher':
         specifier: ^5.1.0
         version: 5.1.0(graphql@16.10.0)
@@ -421,8 +421,8 @@ importers:
         specifier: workspace:*
         version: link:../config
       '@types/node':
-        specifier: ^22.13.14
-        version: 22.13.14
+        specifier: ^22.13.17
+        version: 22.13.17
       typescript:
         specifier: ^5.7.3
         version: 5.8.2
@@ -433,8 +433,8 @@ importers:
         specifier: workspace:*
         version: link:../indexer
       '@lens-protocol/metadata':
-        specifier: next
-        version: 2.0.0-next.7(typescript@5.8.2)(zod@3.24.2)
+        specifier: ^2.0.0
+        version: 2.0.0(typescript@5.8.2)(zod@3.24.2)
     devDependencies:
       '@hey/config':
         specifier: workspace:*
@@ -1574,10 +1574,10 @@ packages:
     peerDependencies:
       react: '>= 16 || ^19.0.0-rc'
 
-  '@hookform/resolvers@4.1.3':
-    resolution: {integrity: sha512-Jsv6UOWYTrEFJ/01ZrnwVXs7KDvP8XIo115i++5PWvNkNvkrsTfGiLS6w+eJ57CYtUtDQalUWovCZDHFJ8u1VQ==}
+  '@hookform/resolvers@5.0.0':
+    resolution: {integrity: sha512-3w/nL/GcafcBnehyvOGzrhFACAQoLAEVzJjRJrBpedEiD+dPvu/K+UL51wVOB4toZq8p6UkTfkd4aoAW+LOpRQ==}
     peerDependencies:
-      react-hook-form: ^7.0.0
+      react-hook-form: 7.55.0
 
   '@img/sharp-darwin-arm64@0.33.5':
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -1715,8 +1715,8 @@ packages:
   '@kwsites/promise-deferred@1.1.1':
     resolution: {integrity: sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==}
 
-  '@lens-chain/sdk@0.0.0-canary-20250304124140':
-    resolution: {integrity: sha512-qVhqFSgW6hxXnOLzg93dhgmvNSlqGJqtg3ltQEhq/zvegpkgAKx1zNNeLZtXEy03ioOMaxJ7YQtVdtuZ2ksCRw==}
+  '@lens-chain/sdk@1.0.0':
+    resolution: {integrity: sha512-hbCV3LGoX0rNkjSzKYRrEw6QHfsuEOHMsEc0FEvVk3we5C+5kGN74HRRfDTEfhiC9Qx9k7lDfsUeDIXGymqDqg==}
     engines: {node: '>=18', pnpm: '>=9.1.2'}
     peerDependencies:
       ethers: ^6.12.1
@@ -1733,8 +1733,8 @@ packages:
   '@lens-chain/storage-client@1.0.3':
     resolution: {integrity: sha512-ZyyTUITuj4lbTB2t118CSA8fSgpzRI4pwSJWNpnKX3crHJtwqBMsdwYcR4ZSnW+guwrqDdKDLcQMAhpTLU81Vg==}
 
-  '@lens-protocol/metadata@2.0.0-next.7':
-    resolution: {integrity: sha512-N3d/ISxJUV82Zlo+aJmcsfDu3oCerSmmyPpHKecthy2lcl9xADgG5oxFOdKaerRcEVz16u+AbC4/txGo6rXwyA==}
+  '@lens-protocol/metadata@2.0.0':
+    resolution: {integrity: sha512-KLm9hQvPw8zCYOxnZFA02Cnzfrphbt6i1YIzAK5fBki1ZTMqAnlSoKxCesEXVjDd6m9MM6dd3neRxmvDGwer4Q==}
     engines: {node: '>=20'}
     peerDependencies:
       zod: ^3.22.3
@@ -1753,14 +1753,14 @@ packages:
     peerDependencies:
       react: '>=17.0.0'
 
-  '@livepeer/core-web@5.2.0':
-    resolution: {integrity: sha512-1wpYbNNAxYEEkWKnqOevN3ss+cEPi9r4iY+NAVbB1YCPiDSoYuP6mAcO0c0z2EfYeu6yoUSUNLEcZykGvb1lhg==}
+  '@livepeer/core-web@5.2.1':
+    resolution: {integrity: sha512-LUxtslsJKY3MtbAhoWD1f6BR5yFoWPwIiqWlRdWiNxsGOKF0uPNDR4oDhCVjxhGISJX5GGIYsK0R1HSn4h4XWg==}
 
   '@livepeer/core@3.3.0':
     resolution: {integrity: sha512-T3O2MBhQokTaEHoGurrjEZl5bXCW0QgSmcatq8gKMsbo9RDvRitGnILzJTmOT/u+Cllu4VVpOY3mI997YcTeqQ==}
 
-  '@livepeer/react@4.3.0':
-    resolution: {integrity: sha512-4dcx3ZmjqXcD1YzLd2CItltx1kD+aI8/dx4EyfLkexVab5SBE4h4xFfbhhbBuHg2d6DQ6tQ1xSO0LQzQFZTmMA==}
+  '@livepeer/react@4.3.1':
+    resolution: {integrity: sha512-6zBZOMV4DkVgGRRcmE4H/HbNocNucdmo4QN8n3N5/OOMPWUdD+6/TohU8FNc90vHwLQl2OnS49GHptA/DkVG7A==}
     peerDependencies:
       react: '>=17.0.0'
       react-dom: '>=17.0.0'
@@ -3150,8 +3150,8 @@ packages:
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
 
-  '@types/node@22.13.14':
-    resolution: {integrity: sha512-Zs/Ollc1SJ8nKUAgc7ivOEdIBM8JAKgrqqUYi2J997JuKO7/tpQC+WCetQ1sypiKCQWHdvdg9wBNpUPEWZae7w==}
+  '@types/node@22.13.17':
+    resolution: {integrity: sha512-nAJuQXoyPj04uLgu+obZcSmsfOenUg6DxPKogeUy6yNCFwWaj5sBF8/G/pNo8EtBJjAfSVgfIlugR/BCOleO+g==}
 
   '@types/phoenix@1.6.6':
     resolution: {integrity: sha512-PIzZZlEppgrpoT2QgbnDU+MMzuR6BbCjllj0bM70lWoejMeNJAxCchxnv7J3XFkI8MpygtRpzXrIlmWUBclP5A==}
@@ -6470,8 +6470,8 @@ packages:
     resolution: {integrity: sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==}
     engines: {node: '>=10'}
 
-  type-fest@4.38.0:
-    resolution: {integrity: sha512-2dBz5D5ycHIoliLYLi0Q2V7KRaDlH0uWIvmk7TYlAg5slqwiPv1ezJdZm1QEM0xgk29oYWMCbIG7E6gHpvChlg==}
+  type-fest@4.39.0:
+    resolution: {integrity: sha512-w2IGJU1tIgcrepg9ZJ82d8UmItNQtOFJG0HCUE3SzMokKkTsruVDALl2fAdiEzJlfduoU+VyXJWIIUZ+6jV+nw==}
     engines: {node: '>=16'}
 
   type-is@2.0.1:
@@ -8312,7 +8312,7 @@ snapshots:
       graphql: 16.10.0
       tslib: 2.6.3
 
-  '@graphql-codegen/cli@5.0.5(@types/node@22.13.14)(bufferutil@4.0.9)(graphql-sock@1.0.1(graphql@16.10.0))(graphql@16.10.0)(typescript@5.8.2)(utf-8-validate@5.0.10)':
+  '@graphql-codegen/cli@5.0.5(@types/node@22.13.17)(bufferutil@4.0.9)(graphql-sock@1.0.1(graphql@16.10.0))(graphql@16.10.0)(typescript@5.8.2)(utf-8-validate@5.0.10)':
     dependencies:
       '@babel/generator': 7.27.0
       '@babel/template': 7.27.0
@@ -8323,12 +8323,12 @@ snapshots:
       '@graphql-tools/apollo-engine-loader': 8.0.20(graphql@16.10.0)
       '@graphql-tools/code-file-loader': 8.1.20(graphql@16.10.0)
       '@graphql-tools/git-loader': 8.0.24(graphql@16.10.0)
-      '@graphql-tools/github-loader': 8.0.20(@types/node@22.13.14)(graphql@16.10.0)
+      '@graphql-tools/github-loader': 8.0.20(@types/node@22.13.17)(graphql@16.10.0)
       '@graphql-tools/graphql-file-loader': 8.0.19(graphql@16.10.0)
       '@graphql-tools/json-file-loader': 8.0.18(graphql@16.10.0)
       '@graphql-tools/load': 8.0.19(graphql@16.10.0)
-      '@graphql-tools/prisma-loader': 8.0.17(@types/node@22.13.14)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
-      '@graphql-tools/url-loader': 8.0.31(@types/node@22.13.14)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
+      '@graphql-tools/prisma-loader': 8.0.17(@types/node@22.13.17)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
+      '@graphql-tools/url-loader': 8.0.31(@types/node@22.13.17)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
       '@graphql-tools/utils': 10.8.6(graphql@16.10.0)
       '@whatwg-node/fetch': 0.10.5
       chalk: 4.1.2
@@ -8336,7 +8336,7 @@ snapshots:
       debounce: 1.2.1
       detect-indent: 6.1.0
       graphql: 16.10.0
-      graphql-config: 5.1.3(@types/node@22.13.14)(bufferutil@4.0.9)(graphql@16.10.0)(typescript@5.8.2)(utf-8-validate@5.0.10)
+      graphql-config: 5.1.3(@types/node@22.13.17)(bufferutil@4.0.9)(graphql@16.10.0)(typescript@5.8.2)(utf-8-validate@5.0.10)
       inquirer: 8.2.6
       is-glob: 4.0.3
       jiti: 1.21.7
@@ -8594,7 +8594,7 @@ snapshots:
       - uWebSockets.js
       - utf-8-validate
 
-  '@graphql-tools/executor-http@1.3.2(@types/node@22.13.14)(graphql@16.10.0)':
+  '@graphql-tools/executor-http@1.3.2(@types/node@22.13.17)(graphql@16.10.0)':
     dependencies:
       '@graphql-hive/signal': 1.0.0
       '@graphql-tools/executor-common': 0.0.4(graphql@16.10.0)
@@ -8604,7 +8604,7 @@ snapshots:
       '@whatwg-node/fetch': 0.10.5
       '@whatwg-node/promise-helpers': 1.3.0
       graphql: 16.10.0
-      meros: 1.3.0(@types/node@22.13.14)
+      meros: 1.3.0(@types/node@22.13.17)
       tslib: 2.8.1
     transitivePeerDependencies:
       - '@types/node'
@@ -8643,9 +8643,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@graphql-tools/github-loader@8.0.20(@types/node@22.13.14)(graphql@16.10.0)':
+  '@graphql-tools/github-loader@8.0.20(@types/node@22.13.17)(graphql@16.10.0)':
     dependencies:
-      '@graphql-tools/executor-http': 1.3.2(@types/node@22.13.14)(graphql@16.10.0)
+      '@graphql-tools/executor-http': 1.3.2(@types/node@22.13.17)(graphql@16.10.0)
       '@graphql-tools/graphql-tag-pluck': 8.3.19(graphql@16.10.0)
       '@graphql-tools/utils': 10.8.6(graphql@16.10.0)
       '@whatwg-node/fetch': 0.10.5
@@ -8718,9 +8718,9 @@ snapshots:
       graphql: 16.10.0
       tslib: 2.6.3
 
-  '@graphql-tools/prisma-loader@8.0.17(@types/node@22.13.14)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)':
+  '@graphql-tools/prisma-loader@8.0.17(@types/node@22.13.17)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)':
     dependencies:
-      '@graphql-tools/url-loader': 8.0.31(@types/node@22.13.14)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
+      '@graphql-tools/url-loader': 8.0.31(@types/node@22.13.17)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
       '@graphql-tools/utils': 10.8.6(graphql@16.10.0)
       '@types/js-yaml': 4.0.9
       '@whatwg-node/fetch': 0.10.5
@@ -8772,10 +8772,10 @@ snapshots:
       graphql: 16.10.0
       tslib: 2.8.1
 
-  '@graphql-tools/url-loader@8.0.31(@types/node@22.13.14)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)':
+  '@graphql-tools/url-loader@8.0.31(@types/node@22.13.17)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)':
     dependencies:
       '@graphql-tools/executor-graphql-ws': 2.0.5(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
-      '@graphql-tools/executor-http': 1.3.2(@types/node@22.13.14)(graphql@16.10.0)
+      '@graphql-tools/executor-http': 1.3.2(@types/node@22.13.17)(graphql@16.10.0)
       '@graphql-tools/executor-legacy-ws': 1.1.17(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
       '@graphql-tools/utils': 10.8.6(graphql@16.10.0)
       '@graphql-tools/wrap': 10.0.34(graphql@16.10.0)
@@ -8840,7 +8840,7 @@ snapshots:
     dependencies:
       react: 19.1.0
 
-  '@hookform/resolvers@4.1.3(react-hook-form@7.55.0(react@19.1.0))':
+  '@hookform/resolvers@5.0.0(react-hook-form@7.55.0(react@19.1.0))':
     dependencies:
       '@standard-schema/utils': 0.3.0
       react-hook-form: 7.55.0(react@19.1.0)
@@ -8959,13 +8959,13 @@ snapshots:
 
   '@kwsites/promise-deferred@1.1.1': {}
 
-  '@lens-chain/sdk@0.0.0-canary-20250304124140(viem@2.24.3(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))':
+  '@lens-chain/sdk@1.0.0(viem@2.24.3(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))':
     optionalDependencies:
       viem: 2.24.3(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2)
 
   '@lens-chain/storage-client@1.0.3': {}
 
-  '@lens-protocol/metadata@2.0.0-next.7(typescript@5.8.2)(zod@3.24.2)':
+  '@lens-protocol/metadata@2.0.0(typescript@5.8.2)(zod@3.24.2)':
     dependencies:
       abitype: 1.0.8(typescript@5.8.2)(zod@3.24.2)
       json-stable-stringify: 1.2.1
@@ -8990,7 +8990,7 @@ snapshots:
       - '@types/react'
       - immer
 
-  '@livepeer/core-web@5.2.0(@types/react@19.0.12)(immer@10.1.1)(react@19.1.0)':
+  '@livepeer/core-web@5.2.1(@types/react@19.0.12)(immer@10.1.1)(react@19.1.0)':
     dependencies:
       '@livepeer/core': 3.3.0(@types/react@19.0.12)(immer@10.1.1)(react@19.1.0)
       hls.js: 1.6.0
@@ -9010,11 +9010,11 @@ snapshots:
       - immer
       - react
 
-  '@livepeer/react@4.3.0(@types/react-dom@19.0.4(@types/react@19.0.12))(@types/react@19.0.12)(immer@10.1.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@livepeer/react@4.3.1(@types/react-dom@19.0.4(@types/react@19.0.12))(@types/react@19.0.12)(immer@10.1.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@livepeer/core': 3.3.0(@types/react@19.0.12)(immer@10.1.1)(react@19.1.0)
       '@livepeer/core-react': 3.2.9(@types/react@19.0.12)(immer@10.1.1)(react@19.1.0)
-      '@livepeer/core-web': 5.2.0(@types/react@19.0.12)(immer@10.1.1)(react@19.1.0)
+      '@livepeer/core-web': 5.2.1(@types/react@19.0.12)(immer@10.1.1)(react@19.1.0)
       '@radix-ui/primitive': 1.1.1
       '@radix-ui/react-aspect-ratio': 1.1.2(@types/react-dom@19.0.4(@types/react@19.0.12))(@types/react@19.0.12)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@radix-ui/react-compose-refs': 1.1.1(@types/react@19.0.12)(react@19.1.0)
@@ -9540,7 +9540,7 @@ snapshots:
       just-map-values: 3.2.0
       orderedmap: 2.1.1
       prosemirror-splittable: 0.1.1(prosemirror-model@1.25.0)(prosemirror-state@1.4.3)(prosemirror-transform@1.10.3)
-      type-fest: 4.38.0
+      type-fest: 4.39.0
     transitivePeerDependencies:
       - prosemirror-model
       - prosemirror-state
@@ -10705,14 +10705,14 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@tailwindcss/aspect-ratio@0.4.2(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.13.14)(typescript@5.8.2)))':
+  '@tailwindcss/aspect-ratio@0.4.2(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.13.17)(typescript@5.8.2)))':
     dependencies:
-      tailwindcss: 3.4.17(ts-node@10.9.2(@types/node@22.13.14)(typescript@5.8.2))
+      tailwindcss: 3.4.17(ts-node@10.9.2(@types/node@22.13.17)(typescript@5.8.2))
 
-  '@tailwindcss/forms@0.5.10(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.13.14)(typescript@5.8.2)))':
+  '@tailwindcss/forms@0.5.10(tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.13.17)(typescript@5.8.2)))':
     dependencies:
       mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.4.17(ts-node@10.9.2(@types/node@22.13.14)(typescript@5.8.2))
+      tailwindcss: 3.4.17(ts-node@10.9.2(@types/node@22.13.17)(typescript@5.8.2))
 
   '@tanstack/query-core@5.71.1': {}
 
@@ -10790,19 +10790,19 @@ snapshots:
   '@types/body-parser@1.19.5':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 22.13.14
+      '@types/node': 22.13.17
 
   '@types/btoa-lite@1.0.2': {}
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 22.13.14
+      '@types/node': 22.13.17
 
   '@types/cookie@0.6.0': {}
 
   '@types/cors@2.8.17':
     dependencies:
-      '@types/node': 22.13.14
+      '@types/node': 22.13.17
 
   '@types/debug@4.1.12':
     dependencies:
@@ -10816,7 +10816,7 @@ snapshots:
 
   '@types/express-serve-static-core@5.0.6':
     dependencies:
-      '@types/node': 22.13.14
+      '@types/node': 22.13.17
       '@types/qs': 6.9.18
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -10838,7 +10838,7 @@ snapshots:
   '@types/jsonwebtoken@9.0.9':
     dependencies:
       '@types/ms': 2.1.0
-      '@types/node': 22.13.14
+      '@types/node': 22.13.17
 
   '@types/mdast@4.0.4':
     dependencies:
@@ -10848,7 +10848,7 @@ snapshots:
 
   '@types/ms@2.1.0': {}
 
-  '@types/node@22.13.14':
+  '@types/node@22.13.17':
     dependencies:
       undici-types: 6.20.0
 
@@ -10869,12 +10869,12 @@ snapshots:
   '@types/send@0.17.4':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 22.13.14
+      '@types/node': 22.13.17
 
   '@types/serve-static@1.15.7':
     dependencies:
       '@types/http-errors': 2.0.4
-      '@types/node': 22.13.14
+      '@types/node': 22.13.17
       '@types/send': 0.17.4
 
   '@types/triple-beam@1.3.5': {}
@@ -10887,7 +10887,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 22.13.14
+      '@types/node': 22.13.17
 
   '@uidotdev/usehooks@2.4.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
@@ -10896,14 +10896,14 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@vitejs/plugin-react@4.3.4(vite@6.2.4(@types/node@22.13.14)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))':
+  '@vitejs/plugin-react@4.3.4(vite@6.2.4(@types/node@22.13.17)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1))':
     dependencies:
       '@babel/core': 7.26.10
       '@babel/plugin-transform-react-jsx-self': 7.25.9(@babel/core@7.26.10)
       '@babel/plugin-transform-react-jsx-source': 7.25.9(@babel/core@7.26.10)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
-      vite: 6.2.4(@types/node@22.13.14)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1)
+      vite: 6.2.4(@types/node@22.13.17)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -12541,13 +12541,13 @@ snapshots:
 
   gopd@1.2.0: {}
 
-  graphql-config@5.1.3(@types/node@22.13.14)(bufferutil@4.0.9)(graphql@16.10.0)(typescript@5.8.2)(utf-8-validate@5.0.10):
+  graphql-config@5.1.3(@types/node@22.13.17)(bufferutil@4.0.9)(graphql@16.10.0)(typescript@5.8.2)(utf-8-validate@5.0.10):
     dependencies:
       '@graphql-tools/graphql-file-loader': 8.0.19(graphql@16.10.0)
       '@graphql-tools/json-file-loader': 8.0.18(graphql@16.10.0)
       '@graphql-tools/load': 8.0.19(graphql@16.10.0)
       '@graphql-tools/merge': 9.0.24(graphql@16.10.0)
-      '@graphql-tools/url-loader': 8.0.31(@types/node@22.13.14)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
+      '@graphql-tools/url-loader': 8.0.31(@types/node@22.13.17)(bufferutil@4.0.9)(graphql@16.10.0)(utf-8-validate@5.0.10)
       '@graphql-tools/utils': 10.8.6(graphql@16.10.0)
       cosmiconfig: 8.3.6(typescript@5.8.2)
       graphql: 16.10.0
@@ -13328,9 +13328,9 @@ snapshots:
 
   merge2@1.4.1: {}
 
-  meros@1.3.0(@types/node@22.13.14):
+  meros@1.3.0(@types/node@22.13.17):
     optionalDependencies:
-      '@types/node': 22.13.14
+      '@types/node': 22.13.17
 
   micro-ftch@0.3.1: {}
 
@@ -13847,7 +13847,7 @@ snapshots:
 
   picomatch@2.3.1: {}
 
-  pierre@2.1.14(@types/node@22.13.14)(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10):
+  pierre@2.1.14(@types/node@22.13.17)(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10):
     dependencies:
       '@fat/prompts': 0.0.3
       '@supabase/supabase-js': 2.49.4(bufferutil@4.0.9)(utf-8-validate@5.0.10)
@@ -13860,7 +13860,7 @@ snapshots:
       open: 9.1.0
       ora: 7.0.1
       simple-git: 3.27.0
-      ts-node: 10.9.2(@types/node@22.13.14)(typescript@5.8.2)
+      ts-node: 10.9.2(@types/node@22.13.17)(typescript@5.8.2)
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -13943,13 +13943,13 @@ snapshots:
       camelcase-css: 2.0.1
       postcss: 8.5.3
 
-  postcss-load-config@4.0.2(postcss@8.5.3)(ts-node@10.9.2(@types/node@22.13.14)(typescript@5.8.2)):
+  postcss-load-config@4.0.2(postcss@8.5.3)(ts-node@10.9.2(@types/node@22.13.17)(typescript@5.8.2)):
     dependencies:
       lilconfig: 3.1.3
       yaml: 2.7.1
     optionalDependencies:
       postcss: 8.5.3
-      ts-node: 10.9.2(@types/node@22.13.14)(typescript@5.8.2)
+      ts-node: 10.9.2(@types/node@22.13.17)(typescript@5.8.2)
 
   postcss-nested@6.2.0(postcss@8.5.3):
     dependencies:
@@ -14883,7 +14883,7 @@ snapshots:
 
   tailwind-merge@3.1.0: {}
 
-  tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.13.14)(typescript@5.8.2)):
+  tailwindcss@3.4.17(ts-node@10.9.2(@types/node@22.13.17)(typescript@5.8.2)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -14902,7 +14902,7 @@ snapshots:
       postcss: 8.5.3
       postcss-import: 15.1.0(postcss@8.5.3)
       postcss-js: 4.0.1(postcss@8.5.3)
-      postcss-load-config: 4.0.2(postcss@8.5.3)(ts-node@10.9.2(@types/node@22.13.14)(typescript@5.8.2))
+      postcss-load-config: 4.0.2(postcss@8.5.3)(ts-node@10.9.2(@types/node@22.13.17)(typescript@5.8.2))
       postcss-nested: 6.2.0(postcss@8.5.3)
       postcss-selector-parser: 6.1.2
       resolve: 1.22.10
@@ -14962,14 +14962,14 @@ snapshots:
 
   ts-log@2.2.7: {}
 
-  ts-node@10.9.2(@types/node@22.13.14)(typescript@5.8.2):
+  ts-node@10.9.2(@types/node@22.13.17)(typescript@5.8.2):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 22.13.14
+      '@types/node': 22.13.17
       acorn: 8.14.1
       acorn-walk: 8.3.4
       arg: 4.1.3
@@ -14999,7 +14999,7 @@ snapshots:
 
   type-fest@0.21.3: {}
 
-  type-fest@4.38.0: {}
+  type-fest@4.39.0: {}
 
   type-is@2.0.1:
     dependencies:
@@ -15232,17 +15232,17 @@ snapshots:
       - utf-8-validate
       - zod
 
-  vite-plugin-environment@1.1.3(vite@6.2.4(@types/node@22.13.14)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1)):
+  vite-plugin-environment@1.1.3(vite@6.2.4(@types/node@22.13.17)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1)):
     dependencies:
-      vite: 6.2.4(@types/node@22.13.14)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1)
+      vite: 6.2.4(@types/node@22.13.17)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1)
 
-  vite@6.2.4(@types/node@22.13.14)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1):
+  vite@6.2.4(@types/node@22.13.17)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.1):
     dependencies:
       esbuild: 0.25.2
       postcss: 8.5.3
       rollup: 4.38.0
     optionalDependencies:
-      '@types/node': 22.13.14
+      '@types/node': 22.13.17
       fsevents: 2.3.3
       jiti: 2.4.2
       tsx: 4.19.3

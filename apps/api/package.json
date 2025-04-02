@@ -18,7 +18,7 @@
     "@aws-sdk/client-sts": "^3.777.0",
     "@hey/data": "workspace:*",
     "@hey/helpers": "workspace:*",
-    "@lens-protocol/metadata": "next",
+    "@lens-protocol/metadata": "^2.0.0",
     "@prisma/client": "^6.5.0",
     "@trpc-limiter/memory": "^1.0.0",
     "@trpc/server": "^11.0.1",
@@ -38,7 +38,7 @@
     "@hey/types": "workspace:*",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
-    "@types/node": "^22.13.14",
+    "@types/node": "^22.13.17",
     "prisma": "^6.5.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
