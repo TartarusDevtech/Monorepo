@@ -7,27 +7,28 @@ import {
   STATIC_IMAGES_URL,
   WRAPPED_NATIVE_TOKEN_SYMBOL
 } from "@hey/data/constants";
-import { formatUnits } from "viem";
-import { useBalance } from "wagmi";
+import { useAccountBalancesQuery } from "@hey/indexer";
 import Loader from "../../Loader";
 import Fund from "./Fund";
 
 const FundAccount = () => {
   const { currentAccount } = useAccountStore();
 
-  const { data, isLoading } = useBalance({
-    address: currentAccount?.address,
-    token: DEFAULT_COLLECT_TOKEN,
-    query: { refetchInterval: 2000 }
+  const { data: balance, loading } = useAccountBalancesQuery({
+    variables: { request: { tokens: [DEFAULT_COLLECT_TOKEN] } },
+    pollInterval: 3000,
+    skip: !currentAccount?.address,
+    fetchPolicy: "no-cache"
   });
 
-  if (isLoading) {
+  if (loading) {
     return <Loader message="Loading balance..." className="my-10" />;
   }
 
-  const accountBalance = data
-    ? Number.parseFloat(formatUnits(data.value, 18)).toFixed(2)
-    : 0;
+  const erc20Balance =
+    balance?.accountBalances[0].__typename === "Erc20Amount"
+      ? balance.accountBalances[0].value
+      : 0;
 
   return (
     <div className="m-5">
@@ -40,7 +41,7 @@ const FundAccount = () => {
           alt={WRAPPED_NATIVE_TOKEN_SYMBOL}
         />
         <div className="font-bold text-2xl">
-          {accountBalance} {WRAPPED_NATIVE_TOKEN_SYMBOL}
+          {erc20Balance} {WRAPPED_NATIVE_TOKEN_SYMBOL}
         </div>
         <div className="text-neutral-500 text-sm dark:text-neutral-200">
           Wrapped {NATIVE_TOKEN_SYMBOL} enables various Hey-specific actions.
