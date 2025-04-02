@@ -34,7 +34,7 @@ const Categories = ({ setSearchText }: CategoriesProps) => {
     <div className="grid w-full grid-cols-2 gap-1 overflow-y-auto">
       {categories?.map((category: Category) => (
         <button
-          className="relative flex outline-none"
+          className="relative flex outline-hidden"
           key={category.name_encoded}
           onClick={() => setSearchText(category.name)}
           type="button"
@@ -46,7 +46,7 @@ const Categories = ({ setSearchText }: CategoriesProps) => {
             height={128}
             src={category.gif?.images?.original_still?.url}
           />
-          <div className="absolute right-0 bottom-0 w-full bg-gradient-to-b from-transparent to-gray-800 px-2 py-1 text-right">
+          <div className="absolute right-0 bottom-0 w-full bg-gradient-to-b from-transparent to-neutral-800 px-2 py-1 text-right">
             <H5 className="text-white capitalize">{category.name}</H5>
           </div>
         </button>

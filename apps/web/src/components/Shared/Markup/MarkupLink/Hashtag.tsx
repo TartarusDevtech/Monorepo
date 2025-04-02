@@ -11,7 +11,7 @@ const Hashtag = ({ title }: MarkupLinkProps) => {
     <span className="inline-flex items-center space-x-1">
       <span>
         <Link
-          className="outline-none focus:underline"
+          className="outline-hidden focus:underline"
           to={`/search?q=${title}&src=link_click&type=posts`}
           onClick={stopEventPropagation}
         >

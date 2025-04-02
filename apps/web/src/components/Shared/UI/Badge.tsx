@@ -3,12 +3,12 @@ import { type VariantProps, cva } from "class-variance-authority";
 import type { HTMLAttributes, ReactNode } from "react";
 import { forwardRef, memo } from "react";
 
-const badgeVariants = cva("rounded-md border text-white text-xs shadow-sm", {
+const badgeVariants = cva("rounded-md border text-white text-xs shadow-xs", {
   variants: {
     variant: {
       primary: "border-black bg-black",
       brand: "border-brand-600 bg-brand-500",
-      secondary: "border-gray-600 bg-gray-500",
+      secondary: "border-neutral-600 bg-neutral-500",
       danger: "border-red-600 bg-red-500",
       warning: "border-yellow-600 bg-yellow-500"
     },

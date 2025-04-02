@@ -61,7 +61,7 @@ const DeleteSettings = () => {
           </p>
         </div>
         <H5>What else you should know</H5>
-        <div className="ld-text-gray-500 divide-y text-sm dark:divide-gray-700">
+        <div className="divide-y divide-neutral-200 text-neutral-500 text-sm dark:divide-neutral-700 dark:text-neutral-200">
           <p className="pb-3">
             You cannot restore your Lens account if it was accidentally or
             wrongfully deleted.

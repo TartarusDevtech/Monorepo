@@ -4,6 +4,7 @@ import Markup from "@/components/Shared/Markup";
 import Slug from "@/components/Shared/Slug";
 import { Button, H3, Image, LightBox, Tooltip } from "@/components/Shared/UI";
 import hasAccess from "@/helpers/hasAccess";
+import { useTheme } from "@/hooks/useTheme";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
   Cog6ToothIcon,
@@ -19,7 +20,6 @@ import getAvatar from "@hey/helpers/getAvatar";
 import getFavicon from "@hey/helpers/getFavicon";
 import getMentions from "@hey/helpers/getMentions";
 import type { AccountFragment } from "@hey/indexer";
-import { useTheme } from "next-themes";
 import type { ReactNode } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
@@ -39,7 +39,7 @@ const Details = ({ isSuspended = false, account }: DetailsProps) => {
   const { currentAccount } = useAccountStore();
   const [expandedImage, setExpandedImage] = useState<null | string>(null);
   const isStaff = hasAccess(Features.Staff);
-  const { resolvedTheme } = useTheme();
+  const { theme } = useTheme();
 
   const renderAccountAttribute = (
     attribute: "location" | "website" | "x",
@@ -70,7 +70,7 @@ const Details = ({ isSuspended = false, account }: DetailsProps) => {
       <div className="-mt-24 sm:-mt-32 relative size-32 sm:size-52">
         <Image
           alt={account.address}
-          className="size-32 cursor-pointer rounded-full bg-gray-200 ring-8 ring-gray-50 sm:size-52 dark:bg-gray-700 dark:ring-black"
+          className="size-32 cursor-pointer rounded-full bg-neutral-200 ring-8 ring-neutral-50 sm:size-52 dark:bg-neutral-700 dark:ring-black"
           height={128}
           onClick={() => setExpandedImage(getAvatar(account, EXPANDED_AVATAR))}
           src={getAvatar(account)}
@@ -94,7 +94,7 @@ const Details = ({ isSuspended = false, account }: DetailsProps) => {
             slug={getAccount(account).usernameWithPrefix}
           />
           {account.operations?.isFollowingMe ? (
-            <div className="rounded-full bg-gray-200 px-2 py-0.5 text-xs dark:bg-gray-700">
+            <div className="rounded-full bg-neutral-200 px-2 py-0.5 text-xs dark:bg-neutral-700">
               Follows you
             </div>
           ) : null}
@@ -165,7 +165,7 @@ const Details = ({ isSuspended = false, account }: DetailsProps) => {
               alt="X Logo"
               className="size-4"
               height={16}
-              src={`${STATIC_IMAGES_URL}/brands/${resolvedTheme === "dark" ? "x-dark.png" : "x-light.png"}`}
+              src={`${STATIC_IMAGES_URL}/brands/${theme === "dark" ? "x-dark.png" : "x-light.png"}`}
               width={16}
             />
           )}

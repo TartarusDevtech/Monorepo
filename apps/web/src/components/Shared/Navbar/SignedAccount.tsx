@@ -26,7 +26,7 @@ const SignedAccount = () => {
   const Avatar = () => (
     <Image
       alt={currentAccount?.address}
-      className="size-8 cursor-pointer rounded-full border dark:border-gray-700"
+      className="size-8 cursor-pointer rounded-full border border-neutral-200 dark:border-neutral-700"
       src={getAvatar(currentAccount)}
     />
   );
@@ -39,7 +39,7 @@ const SignedAccount = () => {
     <>
       {showMobileDrawer ? <MobileDrawerMenu /> : null}
       <button
-        className="focus:outline-none md:hidden"
+        className="focus:outline-hidden md:hidden"
         onClick={handleOpenMobileMenuDrawer}
         type="button"
       >
@@ -51,12 +51,12 @@ const SignedAccount = () => {
         </MenuButton>
         <MenuTransition>
           <MenuItems
-            className="absolute right-0 mt-2 w-48 rounded-xl border bg-white py-1 shadow-sm focus:outline-none dark:border-gray-700 dark:bg-black"
+            className="absolute right-0 mt-2 w-48 rounded-xl border border-neutral-200 bg-white py-1 shadow-xs focus:outline-hidden dark:border-neutral-700 dark:bg-black"
             static
           >
             <MenuItem
               as={NextLink}
-              className="m-2 flex items-center rounded-lg px-4 py-2 text-gray-700 text-sm hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800"
+              className="m-2 flex items-center rounded-lg px-4 py-2 text-neutral-700 text-sm hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800"
               to={getAccount(currentAccount).link}
             >
               <div className="flex w-full flex-col">
@@ -75,7 +75,7 @@ const SignedAccount = () => {
               className={({ focus }: { focus: boolean }) =>
                 cn(
                   { "dropdown-active": focus },
-                  "m-2 rounded-lg border dark:border-gray-700"
+                  "m-2 rounded-lg border border-neutral-200 dark:border-neutral-700"
                 )
               }
             >

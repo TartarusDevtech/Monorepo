@@ -19,14 +19,18 @@ const AccountOverview = ({ account }: AccountOverviewProps) => {
       </div>
       <div className="mt-3 space-y-2">
         <MetaDetails
-          icon={<HashtagIcon className="ld-text-gray-500 size-4" />}
+          icon={
+            <HashtagIcon className="size-4 text-neutral-500 dark:text-neutral-200" />
+          }
           title="Account ID"
           value={account.address}
         >
           {account.address}
         </MetaDetails>
         <MetaDetails
-          icon={<BanknotesIcon className="ld-text-gray-500 size-4" />}
+          icon={
+            <BanknotesIcon className="size-4 text-neutral-500 dark:text-neutral-200" />
+          }
           title="Address"
           value={account.owner}
         >

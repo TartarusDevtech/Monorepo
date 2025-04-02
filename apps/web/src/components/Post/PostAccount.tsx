@@ -27,7 +27,7 @@ const PostAccount = ({
 
   const CustomLink = ({ children }: { children: ReactNode }) => (
     <Link
-      className="outline-none hover:underline focus:underline"
+      className="outline-hidden hover:underline focus:underline"
       to={getAccount(account).link}
     >
       <AccountPreview
@@ -54,7 +54,7 @@ const PostAccount = ({
         </CustomLink>
         <Verified address={account.address} iconClassName="size-4" />
         {timestamp ? (
-          <span className="ld-text-gray-500">
+          <span className="text-neutral-500 dark:text-neutral-200">
             <span className="mr-1">·</span>
             <Link className="text-xs hover:underline" to={`/posts/${postSlug}`}>
               {formatRelativeOrAbsolute(timestamp)}
@@ -72,7 +72,7 @@ const PostAccount = ({
             alt={group.metadata.name}
             className="size-4 rounded"
           />
-          <span className="ld-text-gray-500 truncate">
+          <span className="truncate text-neutral-500 dark:text-neutral-200">
             {group.metadata.name}
           </span>
         </Link>

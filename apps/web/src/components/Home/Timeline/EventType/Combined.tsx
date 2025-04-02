@@ -27,7 +27,7 @@ const Combined = ({ timelineItem }: CombinedProps) => {
   }
 
   return (
-    <div className="ld-text-gray-500 flex flex-wrap items-center space-x-1 pb-4 text-[13px] leading-6">
+    <div className="flex flex-wrap items-center space-x-1 pb-4 text-[13px] text-neutral-500 leading-6 dark:text-neutral-200">
       <SparklesIcon className="size-4" />
       <Accounts accounts={getAllAccounts()} />
       <div className="flex items-center space-x-1">

@@ -13,10 +13,10 @@ interface QuotedPostProps {
 const QuotedPost = ({ isNew = false, post }: QuotedPostProps) => {
   return (
     <PostWrapper
-      className="cursor-pointer p-4 transition-colors first:rounded-t-xl last:rounded-b-xl hover:bg-gray-100 dark:hover:bg-gray-900"
+      className="cursor-pointer p-4 transition-colors first:rounded-t-xl last:rounded-b-xl hover:bg-neutral-100 dark:hover:bg-neutral-900"
       post={post}
     >
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center gap-x-2">
         <PostAvatar post={post} quoted />
         <PostHeader isNew={isNew} post={post} quoted />
       </div>

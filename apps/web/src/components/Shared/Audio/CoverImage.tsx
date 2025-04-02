@@ -55,7 +55,7 @@ const CoverImage = ({
   return (
     <div className="group relative flex-none overflow-hidden">
       <button
-        className="flex focus:outline-none"
+        className="flex focus:outline-hidden"
         onClick={handleExpandCover}
         type="button"
       >
@@ -74,13 +74,13 @@ const CoverImage = ({
         <label
           className={cn(
             { invisible: cover, visible: isSubmitting && !cover },
-            "absolute top-0 grid size-24 cursor-pointer place-items-center bg-gray-100 backdrop-blur-lg group-hover:visible md:size-40 dark:bg-gray-900"
+            "absolute top-0 grid size-24 cursor-pointer place-items-center bg-neutral-100 backdrop-blur-lg group-hover:visible md:size-40 dark:bg-neutral-900"
           )}
         >
           {isSubmitting && !cover ? (
             <Spinner size="sm" />
           ) : (
-            <div className="flex flex-col items-center text-black text-sm opacity-60 dark:text-white">
+            <div className="flex flex-col items-center text-sm opacity-60">
               <PhotoIcon className="size-5" />
               <span>Add cover</span>
             </div>

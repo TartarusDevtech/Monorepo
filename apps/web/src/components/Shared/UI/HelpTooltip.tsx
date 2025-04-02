@@ -14,7 +14,7 @@ const HelpTooltip = ({ children }: HelpTooltipProps) => {
   return (
     <span className="cursor-pointer">
       <Tooltip content={<span>{children}</span>} placement="top">
-        <InformationCircleIcon className="ld-text-gray-500 size-[15px]" />
+        <InformationCircleIcon className="size-[15px] text-neutral-500 dark:text-neutral-200" />
       </Tooltip>
     </span>
   );

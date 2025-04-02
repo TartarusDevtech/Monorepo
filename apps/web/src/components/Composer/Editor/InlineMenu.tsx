@@ -8,7 +8,7 @@ const InlineMenu = () => {
   const editor = useEditor<EditorExtension>({ update: true });
 
   return (
-    <InlinePopover className="z-10 flex space-x-1 rounded-xl border bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
+    <InlinePopover className="z-10 flex space-x-1 rounded-xl border bg-white shadow-xs dark:border-neutral-800 dark:bg-neutral-900">
       <Toggle
         disabled={!editor.commands.toggleBold.canApply()}
         onClick={() => editor.commands.toggleBold()}

@@ -7,7 +7,7 @@ const Support = () => {
   return (
     <GridLayout>
       <MetaTags title={`Support • ${APP_NAME}`} />
-      <GridItemTwelve className="space-y-5">
+      <GridItemTwelve>
         <Card className="flex flex-col items-center p-8">
           <div className="linkify max-w-xl text-center">
             <H3>Support</H3>
@@ -38,7 +38,7 @@ const Support = () => {
                 <Link to="/copyright">Copyright Policy</Link>
               </li>
             </ul>
-            <p className="mt-3 text-gray-500 text-sm">
+            <p className="text-neutral-500 text-sm">
               Send any legal requests to{" "}
               <Link to="mailto:legal@hey.xyz">legal@hey.xyz</Link>
             </p>

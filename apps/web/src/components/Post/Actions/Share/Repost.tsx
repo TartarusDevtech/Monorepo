@@ -104,7 +104,7 @@ const Repost = ({ isSubmitting, post, setIsSubmitting }: RepostProps) => {
       className={({ focus }) =>
         cn(
           { "dropdown-active": focus },
-          hasReposted ? "text-green-500" : "",
+          hasReposted ? "text-emerald-500" : "",
           "m-2 block cursor-pointer rounded-lg px-4 py-1.5 text-sm"
         )
       }

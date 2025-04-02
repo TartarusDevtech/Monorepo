@@ -62,7 +62,7 @@ const List = () => {
                       </Badge>
                     )}
                   </div>
-                  <div className="text-gray-500 text-sm">
+                  <div className="text-neutral-500 text-sm">
                     Created on {formatDate(permission.createdAt)}
                   </div>
                 </div>

@@ -30,7 +30,7 @@ const FallbackAccountName = ({
       <Link
         aria-label={`Account of ${name || usernameWithPrefix}`}
         className={cn(
-          "max-w-sm truncate outline-none hover:underline focus:underline",
+          "max-w-sm truncate outline-hidden hover:underline focus:underline",
           className
         )}
         to={link}

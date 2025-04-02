@@ -174,7 +174,7 @@ const ChooseUsername = () => {
                 <b>Username not available!</b>
               </div>
             ) : isAvailable === true ? (
-              <div className="mt-2 flex items-center space-x-1 text-green-500 text-sm">
+              <div className="mt-2 flex items-center space-x-1 text-emerald-500 text-sm">
                 <CheckIcon className="size-4" />
                 <b>You're in luck - it's available!</b>
               </div>
@@ -185,7 +185,7 @@ const ChooseUsername = () => {
               <b>{form.formState.errors.username?.message?.toString()}</b>
             </div>
           ) : (
-            <div className="ld-text-gray-500 mt-2 flex items-center space-x-1 text-sm">
+            <div className="mt-2 flex items-center space-x-1 text-neutral-500 text-sm dark:text-neutral-200">
               <FaceSmileIcon className="size-4" />
               <b>Hope you will get a good one!</b>
             </div>

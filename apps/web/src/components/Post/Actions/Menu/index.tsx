@@ -27,18 +27,21 @@ const PostMenu = ({ post }: PostMenuProps) => {
       <MenuButton as={Fragment}>
         <button
           aria-label="More"
-          className="rounded-full p-1.5 hover:bg-gray-300/20"
+          className="rounded-full p-1.5 hover:bg-neutral-300/20"
           onClick={stopEventPropagation}
           type="button"
         >
           <EllipsisHorizontalIcon
-            className={cn("ld-text-gray-500", iconClassName)}
+            className={cn(
+              "text-neutral-500 dark:text-neutral-200",
+              iconClassName
+            )}
           />
         </button>
       </MenuButton>
       <MenuTransition>
         <MenuItems
-          className="absolute right-0 z-[5] mt-1 w-max rounded-xl border bg-white shadow-sm focus:outline-none dark:border-gray-700 dark:bg-gray-900"
+          className="absolute right-0 z-[5] mt-1 w-max rounded-xl border border-neutral-200 bg-white shadow-xs focus:outline-hidden dark:border-neutral-700 dark:bg-neutral-900"
           static
         >
           {currentAccount ? (

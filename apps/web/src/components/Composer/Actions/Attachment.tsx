@@ -121,7 +121,7 @@ const Attachment = () => {
         </MenuButton>
         <MenuTransition show={showMenu}>
           <MenuItems
-            className="absolute z-[5] mt-2 rounded-xl border bg-white py-1 shadow-sm focus:outline-none dark:border-gray-700 dark:bg-gray-900"
+            className="absolute z-[5] mt-2 rounded-xl border border-neutral-200 bg-white py-1 shadow-xs focus:outline-hidden dark:border-neutral-700 dark:bg-neutral-900"
             ref={dropdownRef}
             static
           >

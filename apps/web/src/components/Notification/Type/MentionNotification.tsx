@@ -34,7 +34,7 @@ const MentionNotification = ({ notification }: MentionNotificationProps) => {
           type={type}
         />
         <Link
-          className="ld-text-gray-500 linkify mt-2 line-clamp-2"
+          className="linkify mt-2 line-clamp-2 text-neutral-500 dark:text-neutral-200"
           to={`/posts/${notification.post.id}`}
         >
           <Markup mentions={notification.post.mentions}>

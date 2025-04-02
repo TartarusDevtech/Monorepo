@@ -19,7 +19,7 @@ interface EmojiItemProps {
 const EmojiItem = ({ emoji, onSelect }: EmojiItemProps) => {
   return (
     <AutocompleteItem
-      className="focusable-dropdown-item m-1 block cursor-pointer rounded-lg p-2 outline-none"
+      className="focusable-dropdown-item m-1 block cursor-pointer rounded-lg p-2 outline-hidden"
       onSelect={onSelect}
     >
       <div className="flex items-center space-x-2">
@@ -44,7 +44,7 @@ const EmojiPicker = () => {
   return (
     <AutocompletePopover
       className={cn(
-        "z-10 w-52 select-none rounded-xl border bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900",
+        "z-10 w-52 select-none rounded-xl border border-neutral-200 bg-white shadow-xs dark:border-neutral-700 dark:bg-neutral-900",
         !emojis.length && "hidden"
       )}
       offset={10}

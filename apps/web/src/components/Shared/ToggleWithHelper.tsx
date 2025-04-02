@@ -24,7 +24,9 @@ const ToggleWithHelper = ({
         {icon && <span className="mt-1">{icon}</span>}
         <div>
           {heading && <b>{heading}</b>}
-          <H6 className="ld-text-gray-500 font-normal">{description}</H6>
+          <H6 className="font-normal text-neutral-500 dark:text-neutral-200">
+            {description}
+          </H6>
         </div>
       </div>
       <Toggle disabled={disabled} on={on} setOn={setOn} />

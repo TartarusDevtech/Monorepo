@@ -53,7 +53,7 @@ const Explore = () => {
                 className={({ selected }) =>
                   cn(
                     { "border-black border-b-2 dark:border-white": selected },
-                    "px-4 pb-2 font-medium text-xs outline-none sm:text-sm"
+                    "px-4 pb-2 font-medium text-xs outline-hidden sm:text-sm"
                   )
                 }
                 defaultChecked={index === 1}

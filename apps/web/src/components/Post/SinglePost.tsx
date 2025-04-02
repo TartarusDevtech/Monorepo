@@ -38,7 +38,7 @@ const SinglePost = ({
       className={cn(
         isFirst && "rounded-t-xl",
         isLast && "rounded-b-xl",
-        "cursor-pointer px-5 pt-4 pb-3 transition-colors hover:bg-gray-100 dark:hover:bg-gray-900"
+        "cursor-pointer px-5 pt-4 pb-3 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-900"
       )}
       post={rootPost}
     >
@@ -47,7 +47,7 @@ const SinglePost = ({
       ) : (
         <PostType post={post} showThread={showThread} showType={showType} />
       )}
-      <div className="flex items-start space-x-3">
+      <div className="flex items-start gap-x-3">
         <PostAvatar timelineItem={timelineItem} post={rootPost} />
         <div className="w-[calc(100%-55px)]">
           <PostHeader timelineItem={timelineItem} post={rootPost} />

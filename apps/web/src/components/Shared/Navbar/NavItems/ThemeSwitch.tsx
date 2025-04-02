@@ -1,6 +1,6 @@
 import cn from "@/helpers/cn";
+import { useTheme } from "@/hooks/useTheme";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
-import { useTheme } from "next-themes";
 
 interface ThemeSwitchProps {
   className?: string;
@@ -8,16 +8,16 @@ interface ThemeSwitchProps {
 }
 
 const ThemeSwitch = ({ className = "", onClick }: ThemeSwitchProps) => {
-  const { setTheme, theme } = useTheme();
+  const { toggleTheme, theme } = useTheme();
 
   return (
     <button
       className={cn(
-        "flex w-full items-center space-x-1.5 px-2 py-1.5 text-left text-gray-700 text-sm dark:text-gray-200",
+        "flex w-full items-center space-x-1.5 px-2 py-1.5 text-left text-neutral-700 text-sm dark:text-neutral-200",
         className
       )}
       onClick={() => {
-        setTheme(theme === "light" ? "dark" : "light");
+        toggleTheme();
         onClick?.();
       }}
       type="button"

@@ -48,7 +48,7 @@ const SuperFollow = () => {
           Pay to follow{" "}
           <Slug slug={getAccount(superFollowingAccount).usernameWithPrefix} />
         </H5>
-        <div className="ld-text-gray-500">
+        <div className="text-neutral-500 dark:text-neutral-200">
           Support your favorite people on {APP_NAME}.
         </div>
       </div>

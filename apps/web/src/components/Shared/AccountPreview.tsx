@@ -9,13 +9,10 @@ import { type AccountStats, useFullAccountLazyQuery } from "@hey/indexer";
 import * as HoverCard from "@radix-ui/react-hover-card";
 import plur from "plur";
 import type { ReactNode } from "react";
-import { useState } from "react";
 import FollowUnfollowButton from "./Account/FollowUnfollowButton";
 import Verified from "./Account/Icons/Verified";
 import Markup from "./Markup";
 import Slug from "./Slug";
-
-const MINIMUM_LOADING_ANIMATION_MS = 800;
 
 interface AccountPreviewProps {
   children: ReactNode;
@@ -30,10 +27,7 @@ const AccountPreview = ({
   address,
   showUserPreview = true
 }: AccountPreviewProps) => {
-  const [loadAccount, { data, loading }] = useFullAccountLazyQuery({
-    fetchPolicy: "cache-and-network"
-  });
-  const [syntheticLoading, setSyntheticLoading] = useState<boolean>(loading);
+  const [loadAccount, { data, loading }] = useFullAccountLazyQuery();
   const account = data?.account;
   const stats = data?.accountStats as AccountStats;
 
@@ -42,7 +36,6 @@ const AccountPreview = ({
       return;
     }
 
-    setSyntheticLoading(true);
     await loadAccount({
       variables: {
         accountRequest: {
@@ -53,7 +46,6 @@ const AccountPreview = ({
         accountStatsRequest: { account: address }
       }
     });
-    setTimeout(() => setSyntheticLoading(false), MINIMUM_LOADING_ANIMATION_MS);
   };
 
   if (!address && !username) {
@@ -65,12 +57,9 @@ const AccountPreview = ({
   }
 
   const Preview = () => {
-    if (loading || syntheticLoading) {
+    if (loading) {
       return (
         <div className="flex flex-col">
-          <div className="horizontal-loader w-full">
-            <div />
-          </div>
           <div className="flex p-3">
             <div>{username || `#${address}`}</div>
           </div>
@@ -87,7 +76,7 @@ const AccountPreview = ({
     const UserAvatar = () => (
       <Image
         alt={account.address}
-        className="size-12 rounded-full border bg-gray-200 dark:border-gray-700"
+        className="size-12 rounded-full border border-neutral-200 bg-neutral-200 dark:border-neutral-700"
         height={48}
         loading="lazy"
         src={getAvatar(account)}
@@ -96,7 +85,7 @@ const AccountPreview = ({
     );
 
     const UserName = () => (
-      <>
+      <div>
         <div className="flex max-w-sm items-center gap-1 truncate">
           <div className="text-md">{getAccount(account).name}</div>
           <Verified address={account.address} iconClassName="size-4" />
@@ -107,12 +96,12 @@ const AccountPreview = ({
             slug={getAccount(account).usernameWithPrefix}
           />
           {account.operations?.isFollowingMe && (
-            <span className="ml-2 rounded-full bg-gray-200 px-2 py-0.5 text-xs dark:bg-gray-700">
+            <span className="ml-2 rounded-full bg-neutral-200 px-2 py-0.5 text-xs dark:bg-neutral-700">
               Follows you
             </span>
           )}
         </span>
-      </>
+      </div>
     );
 
     return (
@@ -135,13 +124,15 @@ const AccountPreview = ({
               <div className="text-base">
                 {nFormatter(stats.graphFollowStats?.following)}
               </div>
-              <div className="ld-text-gray-500 text-sm">Following</div>
+              <div className="text-neutral-500 text-sm dark:text-neutral-200">
+                Following
+              </div>
             </div>
             <div className="flex items-center space-x-1 text-md">
               <div className="text-base">
                 {nFormatter(stats.graphFollowStats?.followers)}
               </div>
-              <div className="ld-text-gray-500 text-sm">
+              <div className="text-neutral-500 text-sm dark:text-neutral-200">
                 {plur("Follower", stats.graphFollowStats?.followers)}
               </div>
             </div>

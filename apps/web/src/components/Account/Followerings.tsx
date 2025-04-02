@@ -57,7 +57,7 @@ const Followerings = ({ account }: FolloweringsProps) => {
         type="button"
       >
         <H4>{humanize(stats?.following)}</H4>
-        <div className="ld-text-gray-500">Following</div>
+        <div className="text-neutral-500 dark:text-neutral-200">Following</div>
       </button>
       <button
         className="text-left outline-offset-4"
@@ -65,7 +65,7 @@ const Followerings = ({ account }: FolloweringsProps) => {
         type="button"
       >
         <H4>{humanize(stats?.followers)}</H4>
-        <div className="ld-text-gray-500">
+        <div className="text-neutral-500 dark:text-neutral-200">
           {plur("Follower", stats?.followers)}
         </div>
       </button>

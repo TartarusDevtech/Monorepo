@@ -28,8 +28,8 @@ const Navbar = () => {
         className={cn(
           "cursor-pointer rounded-md px-2 py-1 text-left tracking-wide md:px-3",
           {
-            "bg-gray-200 text-black dark:bg-gray-800 dark:text-white": current,
-            "text-gray-700 hover:bg-gray-200 hover:text-black dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white":
+            "bg-neutral-200 dark:bg-neutral-800": current,
+            "text-neutral-700 hover:bg-neutral-200 hover:text-black dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-white":
               !current
           }
         )}
@@ -63,7 +63,7 @@ const Navbar = () => {
           <div className="flex items-center justify-start">
             <button
               aria-label="Search"
-              className="inline-flex items-center justify-center rounded-md text-gray-500 focus:outline-none md:hidden"
+              className="inline-flex items-center justify-center rounded-md text-neutral-500 focus:outline-hidden md:hidden"
               onClick={() => setShowSearch(!showSearch)}
               type="button"
             >

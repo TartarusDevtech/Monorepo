@@ -10,7 +10,7 @@ const Custom500 = () => {
       <MetaTags title={`500 • ${APP_NAME}`} />
       <div className="py-10 text-center">
         <H2 className="mb-4">Looks like something went wrong!</H2>
-        <div className="ld-text-gray-500 mb-4">
+        <div className="mb-4 text-neutral-500 dark:text-neutral-200">
           We track these errors automatically, but if the problem persists feel
           free to contact us. In the meantime, try refreshing.
         </div>

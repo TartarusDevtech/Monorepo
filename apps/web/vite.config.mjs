@@ -1,3 +1,4 @@
+import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import path from "node:path";
 import { defineConfig } from "vite";
@@ -6,6 +7,7 @@ import EnvironmentPlugin from "vite-plugin-environment";
 export default defineConfig({
   plugins: [
     react(),
+    tailwindcss(),
     EnvironmentPlugin(["VITE_IS_PRODUCTION", "NEXT_PUBLIC_LENS_NETWORK"])
   ],
   build: {
@@ -53,8 +55,7 @@ export default defineConfig({
             "@radix-ui/react-slider",
             "@radix-ui/react-switch",
             "@radix-ui/react-tooltip",
-            "@uidotdev/usehooks",
-            "next-themes"
+            "@uidotdev/usehooks"
           ],
           aws: ["@aws-sdk/client-s3", "@aws-sdk/lib-storage"],
           misc: [

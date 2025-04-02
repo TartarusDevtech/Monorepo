@@ -16,7 +16,7 @@ const Hero = () => {
           <div className="font-extrabold text-2xl sm:text-5xl">
             Welcome to {APP_NAME},
           </div>
-          <div className="ld-text-gray-500 font-extrabold text-2xl sm:text-5xl">
+          <div className="font-extrabold text-2xl text-neutral-500 sm:text-5xl dark:text-neutral-200">
             a social network built on Lens Protocol
           </div>
         </div>

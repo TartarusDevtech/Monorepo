@@ -119,7 +119,7 @@ const Fund = ({ isHeyTip, useNativeToken, onSuccess }: FundProps) => {
         {isLoading ? (
           <span className="shimmer h-2.5 w-20 rounded-full" />
         ) : (
-          <span className="ld-text-gray-500 text-sm">
+          <span className="text-neutral-500 text-sm dark:text-neutral-200">
             Balance: {walletBalance} {symbol}
           </span>
         )}

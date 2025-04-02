@@ -8,7 +8,9 @@ interface AuthMessageProps {
 const AuthMessage = ({ description, title }: AuthMessageProps) => (
   <div className="space-y-2">
     <H4>{title}</H4>
-    <div className="ld-text-gray-500 text-sm">{description}</div>
+    <div className="text-neutral-500 text-sm dark:text-neutral-200">
+      {description}
+    </div>
   </div>
 );
 

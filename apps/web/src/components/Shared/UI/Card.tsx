@@ -22,7 +22,8 @@ export const Card = ({
         forceRounded
           ? "rounded-xl"
           : "rounded-none border-x-0 sm:rounded-xl sm:border-x",
-        "border bg-white dark:border-gray-700 dark:bg-black",
+        "border border-neutral-200 dark:border-neutral-700",
+        "bg-white dark:bg-black",
         className
       )}
       onClick={onClick}

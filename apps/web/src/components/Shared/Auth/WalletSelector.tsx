@@ -23,7 +23,7 @@ const WalletSelector = () => {
   ) : (
     <div className="inline-block w-full space-y-3 overflow-hidden text-left align-middle">
       <button
-        className="flex w-full items-center justify-between space-x-2.5 overflow-hidden rounded-xl border px-4 py-3 outline-none hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-700"
+        className="flex w-full items-center justify-between space-x-2.5 overflow-hidden rounded-xl border px-4 py-3 outline-hidden hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-700"
         onClick={() => setOpen(true)}
         type="button"
       >
@@ -34,7 +34,7 @@ const WalletSelector = () => {
           src={`${STATIC_IMAGES_URL}/brands/family.png`}
         />
       </button>
-      <div className="linkify text-gray-500 text-sm">
+      <div className="linkify text-neutral-500 text-sm">
         By connecting wallet, you agree to our{" "}
         <Link to="/terms" target="_blank">
           Terms

@@ -70,7 +70,7 @@ const RelevantPeople = ({ mentions }: RelevantPeopleProps) => {
         ))}
         {(data?.accountsBulk?.length || 0) > 5 && (
           <button
-            className="ld-text-gray-500 font-bold"
+            className="font-bold text-neutral-500 dark:text-neutral-200"
             onClick={() => setShowMore(true)}
             type="button"
           >

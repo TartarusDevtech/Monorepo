@@ -19,8 +19,8 @@ const MoreNavItems = () => {
             className={cn(
               "w-full cursor-pointer rounded-md px-2 py-1 text-left tracking-wide md:px-3",
               {
-                "bg-gray-200 text-black dark:bg-gray-800 dark:text-white": open,
-                "text-gray-700 hover:bg-gray-200 hover:text-black dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white":
+                "bg-neutral-200 dark:bg-neutral-800": open,
+                "text-neutral-700 hover:bg-neutral-200 hover:text-black dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-white":
                   !open
               }
             )}
@@ -29,7 +29,7 @@ const MoreNavItems = () => {
           </MenuButton>
           <MenuTransition>
             <MenuItems
-              className="absolute mt-2 rounded-xl border bg-white shadow-sm focus:outline-none dark:border-gray-700 dark:bg-gray-900"
+              className="absolute mt-2 rounded-xl border border-neutral-200 bg-white shadow-xs focus:outline-hidden dark:border-neutral-700 dark:bg-neutral-900"
               static
             >
               {currentAccount ? (

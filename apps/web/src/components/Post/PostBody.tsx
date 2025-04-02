@@ -75,7 +75,7 @@ const PostBody = ({
         {content}
       </Markup>
       {canShowMore ? (
-        <H6 className="ld-text-gray-500 mt-4 flex items-center space-x-1">
+        <H6 className="mt-4 flex items-center space-x-1 text-neutral-500 dark:text-neutral-200">
           <EyeIcon className="size-4" />
           <Link to={`/posts/${id}`}>Show more</Link>
         </H6>

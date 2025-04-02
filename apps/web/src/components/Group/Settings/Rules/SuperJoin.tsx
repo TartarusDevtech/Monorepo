@@ -120,7 +120,7 @@ const SuperJoin = ({ group }: SuperJoinProps) => {
         body="You can set a payment rule to super join groups."
         title="Super Join"
       />
-      <div className="m-5 space-y-4">
+      <div className="m-5 flex flex-col gap-y-4">
         <Input
           label="Amount"
           placeholder="1"

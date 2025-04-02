@@ -28,23 +28,23 @@ const MobileDrawerMenu = () => {
     setShowMobileDrawer(false);
   };
 
-  const itemClass = "py-3 hover:bg-gray-100 dark:hover:bg-gray-800";
+  const itemClass = "py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800";
 
   return (
-    <div className="no-scrollbar fixed inset-0 z-10 h-full w-full overflow-y-auto bg-gray-100 py-4 md:hidden dark:bg-black">
+    <div className="no-scrollbar fixed inset-0 z-10 h-full w-full overflow-y-auto bg-neutral-100 py-4 md:hidden dark:bg-black">
       <button className="px-5" onClick={handleCloseDrawer} type="button">
         <XMarkIcon className="size-6" />
       </button>
       <div className="w-full space-y-2">
         <Link
-          className="mt-2 flex items-center space-x-2 px-5 py-3 hover:bg-gray-200 dark:hover:bg-gray-800"
+          className="mt-2 flex items-center space-x-2 px-5 py-3 hover:bg-neutral-200 dark:hover:bg-neutral-800"
           to={getAccount(currentAccount).link}
           onClick={handleCloseDrawer}
         >
           <div className="flex w-full space-x-1.5">
             <Image
               alt={currentAccount?.address}
-              className="size-12 cursor-pointer rounded-full border dark:border-gray-700"
+              className="size-12 cursor-pointer rounded-full border border-neutral-200 dark:border-neutral-700"
               src={getAvatar(currentAccount)}
             />
             <div>
@@ -58,12 +58,12 @@ const MobileDrawerMenu = () => {
             </div>
           </div>
         </Link>
-        <div className="bg-white dark:bg-gray-900">
+        <div className="bg-white dark:bg-neutral-900">
           <div className="divider" />
           <SwitchAccount className={cn(itemClass, "px-4")} />
           <div className="divider" />
         </div>
-        <div className="bg-white dark:bg-gray-900">
+        <div className="bg-white dark:bg-neutral-900">
           <div className="divider" />
           <div>
             <Link
@@ -93,16 +93,16 @@ const MobileDrawerMenu = () => {
           </div>
           <div className="divider" />
         </div>
-        <div className="bg-white dark:bg-gray-900">
+        <div className="bg-white dark:bg-neutral-900">
           <div className="divider" />
           <Link to="/support" onClick={handleCloseDrawer}>
             <Support className={cn(itemClass, "px-4")} />
           </Link>
           <div className="divider" />
         </div>
-        <div className="bg-white dark:bg-gray-900">
+        <div className="bg-white dark:bg-neutral-900">
           <div className="divider" />
-          <div className="hover:bg-gray-100 dark:hover:bg-gray-800">
+          <div className="hover:bg-neutral-100 dark:hover:bg-neutral-800">
             <Logout
               className={cn(itemClass, "px-4 py-3")}
               onClick={handleCloseDrawer}

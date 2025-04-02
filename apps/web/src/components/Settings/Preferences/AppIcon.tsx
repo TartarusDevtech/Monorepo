@@ -57,9 +57,9 @@ const AppIcon = () => {
                 width={40}
               />
               {icon.id === appIcon ? (
-                <CheckCircleIconSolid className="size-5 text-green-500" />
+                <CheckCircleIconSolid className="size-5 text-emerald-500" />
               ) : (
-                <CheckCircleIconOutline className="ld-text-gray-500 size-5" />
+                <CheckCircleIconOutline className="size-5 text-neutral-500 dark:text-neutral-200" />
               )}
             </button>
           </Tooltip>

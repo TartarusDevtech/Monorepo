@@ -6,7 +6,7 @@ const NotificationIcon = () => {
   return (
     <Tooltip content="Notifications" placement="bottom">
       <Link
-        className="hidden rounded-md px-2 py-1 hover:bg-gray-300/20 md:flex"
+        className="hidden rounded-md px-2 py-1 hover:bg-neutral-300/20 md:flex"
         to="/notifications"
       >
         <BellIcon className="size-5 sm:size-6" />

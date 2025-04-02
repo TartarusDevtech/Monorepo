@@ -13,7 +13,7 @@ export const Toggle = ({ disabled = false, on, setOn }: ToggleProps) => {
       aria-label="Toggle"
       checked={on}
       className={cn(
-        on ? "bg-black dark:bg-white" : "bg-gray-200 dark:bg-gray-500",
+        on ? "bg-black dark:bg-white" : "bg-neutral-200 dark:bg-neutral-500",
         disabled && "cursor-not-allowed opacity-50",
         "inline-flex h-[22px] w-[42.5px] min-w-[42.5px] rounded-full border-2 border-transparent outline-offset-4 transition-colors duration-200 ease-in-out"
       )}

@@ -1,9 +1,9 @@
 import authLink from "@/helpers/authLink";
 import { TRPCProvider, queryClient, trpcClient } from "@/helpers/trpc";
+import { ThemeProvider } from "@/hooks/useTheme";
 import { ApolloProvider } from "@apollo/client";
 import apolloClient from "@hey/indexer/apollo/client";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { ThemeProvider } from "next-themes";
 import type { ReactNode } from "react";
 import ErrorBoundary from "../ErrorBoundary";
 import PreferencesProvider from "./PreferencesProvider";
@@ -23,9 +23,7 @@ const Providers = ({ children }: ProvidersProps) => {
           <Web3Provider>
             <ApolloProvider client={lensApolloClient}>
               <PreferencesProvider />
-              <ThemeProvider attribute="class" defaultTheme="light">
-                {children}
-              </ThemeProvider>
+              <ThemeProvider>{children}</ThemeProvider>
             </ApolloProvider>
           </Web3Provider>
         </TRPCProvider>

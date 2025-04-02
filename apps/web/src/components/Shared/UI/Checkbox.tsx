@@ -15,7 +15,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       <div className="flex items-center">
         <input
           className={cn(
-            "mr-2 cursor-pointer rounded border-gray-300 text-black transition duration-200 focus:ring-gray-500 dark:text-gray-500",
+            "mr-2 cursor-pointer rounded border-neutral-300 transition duration-200 focus:ring-neutral-500 dark:text-neutral-500",
             className
           )}
           id={id}

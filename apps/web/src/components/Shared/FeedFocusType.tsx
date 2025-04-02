@@ -13,9 +13,11 @@ const FeedLink = ({ focus, name, setFocus, type }: FeedLinkProps) => (
   <button
     aria-label={name}
     className={cn(
-      focus === type ? "bg-black text-white" : "bg-gray-100 dark:bg-gray-800",
+      focus === type
+        ? "bg-black text-white"
+        : "bg-neutral-100 dark:bg-neutral-800",
       "rounded-full px-3 py-1.5 text-xs sm:px-4",
-      "border border-gray-300 dark:border-gray-500"
+      "border border-neutral-300 dark:border-neutral-500"
     )}
     onClick={() => setFocus(type)}
     type="button"

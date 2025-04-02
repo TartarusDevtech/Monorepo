@@ -12,16 +12,16 @@ const Suspended = () => {
   }
 
   return (
-    <div className="border-gray-300 border-b bg-gray-500/20">
+    <div className="border-neutral-300 border-b bg-neutral-500/20">
       <GridLayout>
         <GridItemEight className="space-y-1">
-          <div className="flex items-center space-x-2 text-gray-700">
+          <div className="flex items-center space-x-2 text-neutral-700">
             <NoSymbolIcon className="size-5" />
             <div className="font-bold text-base sm:text-lg">
               Your account has been suspended by {APP_NAME}.
             </div>
           </div>
-          <div className="text-gray-500 text-sm">
+          <div className="text-neutral-500 text-sm">
             Because of that, your account may limit your ability to interact
             with {APP_NAME} and other users.{" "}
             <Link to="/support">Contact us</Link> if you think this is a

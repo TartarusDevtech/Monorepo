@@ -34,7 +34,7 @@ const QuoteNotification = ({ notification }: QuoteNotificationProps) => {
           type={type}
         />
         <Link
-          className="ld-text-gray-500 linkify mt-2 line-clamp-2"
+          className="linkify mt-2 line-clamp-2 text-neutral-500 dark:text-neutral-200"
           to={`/posts/${notification.quote.id}`}
         >
           <Markup mentions={notification.quote.mentions}>

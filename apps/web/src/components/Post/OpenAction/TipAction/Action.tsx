@@ -142,7 +142,7 @@ const Action = ({ closePopover, post }: ActionProps) => {
   return (
     <div className="m-5 space-y-3">
       <div className="space-y-2">
-        <div className="ld-text-gray-500 flex items-center space-x-1 text-xs">
+        <div className="flex items-center space-x-1 text-neutral-500 text-xs dark:text-neutral-200">
           <span>Balance:</span>
           <span>
             {balanceData ? (

@@ -34,7 +34,7 @@ const CommentNotification = ({ notification }: CommentNotificationProps) => {
           type={type}
         />
         <Link
-          className="ld-text-gray-500 linkify mt-2 line-clamp-2"
+          className="linkify mt-2 line-clamp-2 text-neutral-500 dark:text-neutral-200"
           to={`/posts/${notification.comment.id}`}
         >
           <Markup mentions={notification.comment.mentions}>

@@ -52,7 +52,7 @@ const FollowersYouKnowOverview = ({
     <button
       className={cn(
         viaPopover ? "text-xs" : "text-sm",
-        "ld-text-gray-500 flex cursor-pointer items-center space-x-2"
+        "flex cursor-pointer items-center space-x-2 text-neutral-500 dark:text-neutral-200"
       )}
       onClick={() => setShowMutualFollowersModal(true)}
       type="button"

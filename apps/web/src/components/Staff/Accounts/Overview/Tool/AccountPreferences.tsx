@@ -27,7 +27,9 @@ const AccountPreferences = ({ preferences }: AccountPreferencesProps) => {
       </div>
       <div className="mt-3 space-y-2">
         <MetaDetails
-          icon={<CursorArrowRaysIcon className="ld-text-gray-500 size-4" />}
+          icon={
+            <CursorArrowRaysIcon className="size-4 text-neutral-500 dark:text-neutral-200" />
+          }
           title="App Icon"
         >
           <Image
@@ -39,11 +41,13 @@ const AccountPreferences = ({ preferences }: AccountPreferencesProps) => {
           />
         </MetaDetails>
         <MetaDetails
-          icon={<BellIcon className="ld-text-gray-500 size-4" />}
+          icon={
+            <BellIcon className="size-4 text-neutral-500 dark:text-neutral-200" />
+          }
           title="High signal notification filter"
         >
           {preferences.includeLowScore ? (
-            <CheckCircleIcon className="size-4 text-green-500" />
+            <CheckCircleIcon className="size-4 text-emerald-500" />
           ) : (
             <XCircleIcon className="size-4 text-red-500" />
           )}

@@ -42,7 +42,7 @@ const FundAccount = () => {
         <div className="font-bold text-2xl">
           {accountBalance} {WRAPPED_NATIVE_TOKEN_SYMBOL}
         </div>
-        <div className="ld-text-gray-500 text-sm">
+        <div className="text-neutral-500 text-sm dark:text-neutral-200">
           Wrapped {NATIVE_TOKEN_SYMBOL} enables various Hey-specific actions.
         </div>
       </div>

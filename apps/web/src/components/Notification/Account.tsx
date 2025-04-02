@@ -26,7 +26,7 @@ export const NotificationAccountAvatar = ({
       >
         <Image
           alt={account.address}
-          className="size-7 rounded-full border bg-gray-200 sm:size-8 dark:border-gray-700"
+          className="size-7 rounded-full border border-neutral-200 bg-neutral-200 sm:size-8 dark:border-neutral-700"
           height={32}
           src={getAvatar(account)}
           width={32}
@@ -47,7 +47,7 @@ export const NotificationAccountName = ({
       address={account.address}
     >
       <Link
-        className="inline-flex items-center space-x-1 font-bold outline-none hover:underline focus:underline"
+        className="inline-flex items-center space-x-1 font-bold outline-hidden hover:underline focus:underline"
         to={profileLink}
         onClick={stopEventPropagation}
       >
