@@ -1,6 +1,5 @@
 import FollowersYouKnow from "@/components/Shared/Modal/FollowersYouKnow";
 import { Modal, StackedAvatars } from "@/components/Shared/UI";
-import cn from "@/helpers/cn";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
@@ -10,13 +9,11 @@ import { type ReactNode, useState } from "react";
 interface FollowersYouKnowOverviewProps {
   username: string;
   address: string;
-  viaPopover?: boolean;
 }
 
 const FollowersYouKnowOverview = ({
   username,
-  address,
-  viaPopover = false
+  address
 }: FollowersYouKnowOverviewProps) => {
   const { currentAccount } = useAccountStore();
   const [showMutualFollowersModal, setShowMutualFollowersModal] =
@@ -50,10 +47,7 @@ const FollowersYouKnowOverview = ({
 
   const Wrapper = ({ children }: { children: ReactNode }) => (
     <button
-      className={cn(
-        viaPopover ? "text-xs" : "text-sm",
-        "flex cursor-pointer items-center space-x-2 text-neutral-500 dark:text-neutral-200"
-      )}
+      className="flex cursor-pointer items-center gap-x-2 text-neutral-500 text-sm dark:text-neutral-200"
       onClick={() => setShowMutualFollowersModal(true)}
       type="button"
     >

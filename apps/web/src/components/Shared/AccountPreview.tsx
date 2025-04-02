@@ -1,4 +1,3 @@
-import FollowersYouKnowOverview from "@/components/Account/FollowersYouKnowOverview";
 import { Card, Image } from "@/components/Shared/UI";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
@@ -135,13 +134,6 @@ const AccountPreview = ({
               {plur("Follower", stats.graphFollowStats?.followers)}
             </div>
           </div>
-        </div>
-        <div className="!text-xs">
-          <FollowersYouKnowOverview
-            username={getAccount(account).username}
-            address={account.address}
-            viaPopover
-          />
         </div>
       </div>
     );
