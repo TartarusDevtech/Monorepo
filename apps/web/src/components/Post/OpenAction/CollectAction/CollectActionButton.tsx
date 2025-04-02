@@ -1,6 +1,6 @@
 import FundButton from "@/components/Shared/Fund/FundButton";
 import LoginButton from "@/components/Shared/LoginButton";
-import { Button } from "@/components/Shared/UI";
+import { Button, Spinner } from "@/components/Shared/UI";
 import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
@@ -15,12 +15,12 @@ import {
   type LoggedInPostOperationsFragment,
   type PostActionFragment,
   type PostFragment,
+  useAccountBalancesQuery,
   useExecutePostActionMutation
 } from "@hey/indexer";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { type Address, formatUnits } from "viem";
-import { useBalance } from "wagmi";
+import {} from "viem";
 
 interface CollectActionButtonProps {
   collects: number;
@@ -49,7 +49,6 @@ const CollectActionButton = ({
   const collectLimit = collectAction?.collectLimit;
   const amount = collectAction?.amount as number;
   const assetAddress = collectAction?.assetAddress as any;
-  const assetDecimals = collectAction?.assetDecimals as number;
   const isAllCollected = collectLimit ? collects >= collectLimit : false;
   const isSaleEnded = endTimestamp
     ? new Date(endTimestamp).getTime() / 1000 < new Date().getTime() / 1000
@@ -90,17 +89,20 @@ const CollectActionButton = ({
     errorToast(error);
   };
 
-  const { data: balanceData } = useBalance({
-    address: currentAccount?.address as Address,
-    query: { refetchInterval: 2000 },
-    token: assetAddress
+  const { data: balance, loading: balanceLoading } = useAccountBalancesQuery({
+    variables: { request: { tokens: [assetAddress] } },
+    pollInterval: 3000,
+    skip: !assetAddress || !currentAccount?.address,
+    fetchPolicy: "no-cache"
   });
 
+  const erc20Balance =
+    balance?.accountBalances[0].__typename === "Erc20Amount"
+      ? balance.accountBalances[0].value
+      : 0;
+
   let hasAmount = false;
-  if (
-    balanceData &&
-    Number.parseFloat(formatUnits(balanceData.value, assetDecimals)) < amount
-  ) {
+  if (Number.parseFloat(erc20Balance) < amount) {
     hasAmount = false;
   } else {
     hasAmount = true;
@@ -148,6 +150,16 @@ const CollectActionButton = ({
       <LoginButton
         className="mt-5 w-full justify-center"
         title="Login to Collect"
+      />
+    );
+  }
+
+  if (balanceLoading) {
+    return (
+      <Button
+        className="mt-5 w-full"
+        disabled
+        icon={<Spinner className="my-1" size="xs" />}
       />
     );
   }

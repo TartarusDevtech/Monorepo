@@ -8,7 +8,6 @@ const getCollectActionData = (
 ): {
   amount?: number;
   assetAddress?: string;
-  assetDecimals?: number;
   assetSymbol?: string;
   collectLimit?: number;
   endsAt?: string;
@@ -22,7 +21,6 @@ const getCollectActionData = (
         ),
         assetAddress:
           collectAction.payToCollect?.amount?.asset?.contract?.address,
-        assetDecimals: collectAction.payToCollect?.amount?.asset?.decimals,
         assetSymbol: collectAction.payToCollect?.amount?.asset?.symbol,
         collectLimit: Number(collectAction.collectLimit),
         endsAt: collectAction.endsAt,

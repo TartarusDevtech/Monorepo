@@ -33,7 +33,7 @@ const SuperJoin = () => {
 
   const { data: balance, loading: balanceLoading } = useAccountBalancesQuery({
     variables: { request: { tokens: [assetContract] } },
-    pollInterval: 2000,
+    pollInterval: 3000,
     skip: !assetContract || !currentAccount?.address,
     fetchPolicy: "no-cache"
   });
