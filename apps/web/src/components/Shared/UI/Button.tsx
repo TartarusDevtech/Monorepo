@@ -86,7 +86,7 @@ export const Button = memo(
       return (
         <button
           className={cn(buttonVariants({ variant, size, outline, className }), {
-            "inline-flex items-center gap-x-1.5": icon
+            "inline-flex items-center justify-center gap-x-1.5": icon
           })}
           disabled={disabled}
           ref={ref}

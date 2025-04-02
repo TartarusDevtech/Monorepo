@@ -1,5 +1,4 @@
 import { Button } from "@/components/Shared/UI";
-import cn from "@/helpers/cn";
 import { useAuthModalStore } from "@/store/non-persisted/modal/useAuthModalStore";
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import type { MouseEvent } from "react";
@@ -7,14 +6,12 @@ import type { MouseEvent } from "react";
 interface LoginButtonProps {
   className?: string;
   isBig?: boolean;
-  isFullWidth?: boolean;
   title?: string;
 }
 
 const LoginButton = ({
   className = "",
   isBig = false,
-  isFullWidth = false,
   title = "Login"
 }: LoginButtonProps) => {
   const { setShowAuthModal } = useAuthModalStore();
@@ -26,10 +23,7 @@ const LoginButton = ({
 
   return (
     <Button
-      className={cn(
-        isFullWidth ? "flex w-full items-center justify-center" : "",
-        className
-      )}
+      className={className}
       icon={
         <img
           alt="Lens Logo"

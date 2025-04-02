@@ -9,11 +9,14 @@ import { CurrencyDollarIcon } from "@heroicons/react/24/outline";
 import { APP_NAME } from "@hey/data/constants";
 import { tokens } from "@hey/data/tokens";
 import getTokenImage from "@hey/helpers/getTokenImage";
-import type { Group, GroupRules } from "@hey/indexer";
-import type { Address } from "viem";
-import { useBalance } from "wagmi";
+import {
+  type Group,
+  type GroupRules,
+  useAccountBalancesQuery
+} from "@hey/indexer";
 import FundButton from "../Fund/FundButton";
 import Loader from "../Loader";
+import LoginButton from "../LoginButton";
 import Join from "./Join";
 
 const SuperJoin = () => {
@@ -28,10 +31,11 @@ const SuperJoin = () => {
   const enabledTokens = tokens.map((t) => t.symbol);
   const isTokenEnabled = enabledTokens?.includes(assetSymbol || "");
 
-  const { data: balance, isLoading: balanceLoading } = useBalance({
-    address: currentAccount?.address as Address,
-    token: assetContract as Address,
-    query: { enabled: !!assetContract, refetchInterval: 2000 }
+  const { data: balance, loading: balanceLoading } = useAccountBalancesQuery({
+    variables: { request: { tokens: [assetContract] } },
+    pollInterval: 2000,
+    skip: !assetContract || !currentAccount?.address,
+    fetchPolicy: "no-cache"
   });
 
   if (!assetContract || !assetSymbol || !amount) {
@@ -42,7 +46,12 @@ const SuperJoin = () => {
     return <Loader message="Loading Super join" className="my-10" />;
   }
 
-  const hasEnoughBalance = balance?.value && balance.value >= (amount || 0);
+  const erc20Balance =
+    balance?.accountBalances[0].__typename === "Erc20Amount"
+      ? balance.accountBalances[0].value
+      : 0;
+
+  const hasEnoughBalance = Number(erc20Balance) >= Number(amount || 0);
 
   return (
     <div className="p-5">
@@ -71,18 +80,22 @@ const SuperJoin = () => {
         </span>
       </div>
       <div className="mt-5">
-        {hasEnoughBalance ? (
-          <Join
-            className="w-full"
-            group={superJoiningGroup as Group}
-            setJoined={() => setShowSuperJoinModal(false, superJoiningGroup)}
-            small={false}
-            title={
-              requiresMembershipApproval ? "Request to join" : "Super Join"
-            }
-          />
+        {currentAccount?.address ? (
+          hasEnoughBalance ? (
+            <Join
+              className="w-full"
+              group={superJoiningGroup as Group}
+              setJoined={() => setShowSuperJoinModal(false, superJoiningGroup)}
+              small={false}
+              title={
+                requiresMembershipApproval ? "Request to join" : "Super Join"
+              }
+            />
+          ) : (
+            <FundButton className="w-full" />
+          )
         ) : (
-          <FundButton className="w-full" />
+          <LoginButton className="w-full" />
         )}
       </div>
     </div>
