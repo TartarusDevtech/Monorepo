@@ -18,10 +18,9 @@ import { useAccount, useReadContract } from "wagmi";
 
 interface FundProps {
   isHeyTip?: boolean;
-  onSuccess?: () => void;
 }
 
-const Fund = ({ isHeyTip, onSuccess }: FundProps) => {
+const Fund = ({ isHeyTip }: FundProps) => {
   const { setShowFundModal } = useFundModalStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [amount, setAmount] = useState(2);
@@ -43,7 +42,6 @@ const Fund = ({ isHeyTip, onSuccess }: FundProps) => {
   const onCompleted = (hash: string) => {
     setAmount(2);
     setOther(false);
-    onSuccess?.();
     setIsSubmitting(false);
     trackEvent(Events.Account.DepositFunds);
     toast.success("Deposit initiated");
