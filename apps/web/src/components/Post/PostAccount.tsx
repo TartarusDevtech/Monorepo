@@ -1,4 +1,3 @@
-import Verified from "@/components/Shared/Account/Icons/Verified";
 import { Image } from "@/components/Shared/UI";
 import formatRelativeOrAbsolute from "@hey/helpers/datetime/formatRelativeOrAbsolute";
 import getAccount from "@hey/helpers/getAccount";
@@ -52,7 +51,6 @@ const PostAccount = ({
             slug={getAccount(account).usernameWithPrefix}
           />
         </CustomLink>
-        <Verified address={account.address} iconClassName="size-4" />
         {timestamp ? (
           <span className="text-neutral-500 dark:text-neutral-200">
             <span className="mr-1">·</span>

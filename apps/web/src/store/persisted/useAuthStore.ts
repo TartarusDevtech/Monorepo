@@ -36,9 +36,7 @@ const store = create(
       signOut: async () => {
         // Clear Localstorage
         const allLocalstorageStores = Object.values(Localstorage).filter(
-          (value) =>
-            value !== Localstorage.VerifiedMembersStore &&
-            value !== Localstorage.SearchStore
+          (value) => value !== Localstorage.SearchStore
         );
         for (const store of allLocalstorageStores) {
           localStorage.removeItem(store);

@@ -1,4 +1,3 @@
-import Verified from "@/components/Shared/Account/Icons/Verified";
 import AccountPreview from "@/components/Shared/AccountPreview";
 import { Image } from "@/components/Shared/UI";
 import getAccount from "@hey/helpers/getAccount";
@@ -47,12 +46,11 @@ export const NotificationAccountName = ({
       address={account.address}
     >
       <Link
-        className="inline-flex items-center space-x-1 font-bold outline-hidden hover:underline focus:underline"
+        className="font-bold outline-hidden hover:underline focus:underline"
         to={profileLink}
         onClick={stopEventPropagation}
       >
-        <span>{getAccount(account).name}</span>
-        <Verified address={account.address} iconClassName="size-4" />
+        {getAccount(account).name}
       </Link>
     </AccountPreview>
   );

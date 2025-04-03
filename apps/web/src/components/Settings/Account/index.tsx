@@ -9,7 +9,6 @@ import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { APP_NAME } from "@hey/data/constants";
 import SettingsSidebar from "../Sidebar";
 import SuperFollow from "./SuperFollow";
-import Verification from "./Verification";
 
 const AccountSettings = () => {
   const { currentAccount } = useAccountStore();
@@ -24,9 +23,8 @@ const AccountSettings = () => {
       <GridItemFour>
         <SettingsSidebar />
       </GridItemFour>
-      <GridItemEight className="space-y-5">
+      <GridItemEight>
         <SuperFollow />
-        <Verification />
       </GridItemEight>
     </GridLayout>
   );

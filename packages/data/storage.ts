@@ -3,6 +3,5 @@ export const Localstorage = {
   PreferencesStore: "preferences.store",
   AccountStore: "account.store",
   SearchStore: "search.store",
-  VerifiedMembersStore: "verified-members.store",
   HomeTabStore: "home-tab.store"
 };

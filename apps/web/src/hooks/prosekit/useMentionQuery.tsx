@@ -1,4 +1,3 @@
-import isVerified from "@/helpers/isVerified";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import { useAccountsLazyQuery } from "@hey/indexer";
@@ -42,13 +41,7 @@ const useMentionQuery = (query: string): MentionAccount[] => {
         })
       );
 
-      setResults(
-        accountsResults.slice(0, SUGGESTION_LIST_LENGTH_LIMIT).sort((a, b) => {
-          const verifiedA = isVerified(a.address) ? 1 : 0;
-          const verifiedB = isVerified(b.address) ? 1 : 0;
-          return verifiedB - verifiedA;
-        })
-      );
+      setResults(accountsResults.slice(0, SUGGESTION_LIST_LENGTH_LIMIT));
     });
   }, [query, searchAccounts]);
 

@@ -6,7 +6,6 @@ import getAvatar from "@hey/helpers/getAvatar";
 import type { AccountFragment } from "@hey/indexer";
 import { memo } from "react";
 import { Link } from "react-router";
-import Verified from "./Account/Icons/Verified";
 import Slug from "./Slug";
 
 interface SmallSingleAccountProps {
@@ -43,7 +42,6 @@ const SmallSingleAccount = ({
       <div className={cn(!hideSlug && "max-w-[75%]", "mr-1 truncate")}>
         {getAccount(account).name}
       </div>
-      <Verified address={account.address} iconClassName="mr-1 size-4" />
       {!hideSlug && (
         <Slug
           className="text-sm"

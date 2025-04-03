@@ -48,7 +48,6 @@ const CreatorTool = ({ account }: CreatorToolProps) => {
   };
 
   const allowedPermissions = [
-    { id: PermissionId.Verified, key: Permission.Verified },
     { id: PermissionId.StaffPick, key: Permission.StaffPick }
   ];
 

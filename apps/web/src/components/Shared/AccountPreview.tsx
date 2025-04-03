@@ -9,7 +9,6 @@ import * as HoverCard from "@radix-ui/react-hover-card";
 import plur from "plur";
 import type { ReactNode } from "react";
 import FollowUnfollowButton from "./Account/FollowUnfollowButton";
-import Verified from "./Account/Icons/Verified";
 import Markup from "./Markup";
 import Slug from "./Slug";
 
@@ -85,9 +84,8 @@ const AccountPreview = ({
 
     const UserName = () => (
       <div>
-        <div className="flex max-w-sm items-center gap-1 truncate">
+        <div className="max-w-sm truncate">
           <div className="text-md">{getAccount(account).name}</div>
-          <Verified address={account.address} iconClassName="size-4" />
         </div>
         <span>
           <Slug

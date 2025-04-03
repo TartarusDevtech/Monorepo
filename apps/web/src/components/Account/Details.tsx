@@ -1,5 +1,4 @@
 import FollowUnfollowButton from "@/components/Shared/Account/FollowUnfollowButton";
-import Verified from "@/components/Shared/Account/Icons/Verified";
 import Markup from "@/components/Shared/Markup";
 import Slug from "@/components/Shared/Slug";
 import { Button, H3, Image, LightBox, Tooltip } from "@/components/Shared/UI";
@@ -81,7 +80,6 @@ const Details = ({ isSuspended = false, account }: DetailsProps) => {
       <div className="space-y-1 py-2">
         <div className="flex items-center gap-1.5">
           <H3 className="truncate">{getAccount(account).name}</H3>
-          <Verified address={account.address} showTooltip />
           {isSuspended ? (
             <Tooltip content="Suspended">
               <EyeSlashIcon className="size-6 text-brand-500" />

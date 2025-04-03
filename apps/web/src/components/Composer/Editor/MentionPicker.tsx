@@ -1,4 +1,3 @@
-import Verified from "@/components/Shared/Account/Icons/Verified";
 import { Image } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
 import type { EditorExtension } from "@/helpers/prosekit/extension";
@@ -33,10 +32,7 @@ const MentionItem = ({ onSelect, account }: MentionItemProps) => {
           width="28"
         />
         <div className="flex flex-col truncate">
-          <div className="flex items-center space-x-1 text-sm">
-            <span>{account.name}</span>
-            <Verified address={account.address} iconClassName="size-4" />
-          </div>
+          <div>{account.name}</div>
           <span className="text-xs">{account.displayUsername}</span>
         </div>
       </AutocompleteItem>

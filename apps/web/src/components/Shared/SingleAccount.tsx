@@ -7,7 +7,6 @@ import type { AccountFragment } from "@hey/indexer";
 import { memo } from "react";
 import { Link } from "react-router";
 import FollowUnfollowButton from "./Account/FollowUnfollowButton";
-import Verified from "./Account/Icons/Verified";
 import AccountPreview from "./AccountPreview";
 import Markup from "./Markup";
 import Slug from "./Slug";
@@ -47,13 +46,8 @@ const SingleAccount = ({
 
   const UserName = () => (
     <>
-      <div className="flex max-w-sm items-center">
-        <div className={cn(isBig ? "font-bold" : "text-md", "grid")}>
-          <div className="truncate font-semibold">
-            {getAccount(account).name}
-          </div>
-        </div>
-        <Verified address={account.address} iconClassName="ml-1 size-4" />
+      <div className={cn(isBig ? "font-bold" : "text-md", "grid", "max-w-sm")}>
+        <div className="truncate font-semibold">{getAccount(account).name}</div>
       </div>
       <Slug className="text-sm" slug={getAccount(account).usernameWithPrefix} />
     </>
