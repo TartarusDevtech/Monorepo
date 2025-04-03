@@ -1,5 +1,29 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" },
+    {
+      "source": "/u/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(bot|telegram|baidu|bing|yandex|iframely|whatsapp|facebook).*"
+        }
+      ],
+      "destination": "https://og.hey.xyz/u/:path*"
+    },
+    {
+      "source": "/posts/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(bot|telegram|baidu|bing|yandex|iframely|whatsapp|facebook).*"
+        }
+      ],
+      "destination": "https://og.hey.xyz/posts/:path*"
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
