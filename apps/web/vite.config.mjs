@@ -10,6 +10,11 @@ export default defineConfig({
     tailwindcss(),
     EnvironmentPlugin(["VITE_IS_PRODUCTION", "NEXT_PUBLIC_LENS_NETWORK"])
   ],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src")
+    }
+  },
   build: {
     target: "esnext",
     cssMinify: "lightningcss",
@@ -68,11 +73,6 @@ export default defineConfig({
           ]
         }
       }
-    }
-  },
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src")
     }
   }
 });
