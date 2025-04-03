@@ -20,7 +20,7 @@
     "@hey/helpers": "workspace:*",
     "@hey/indexer": "workspace:*",
     "@hookform/resolvers": "^5.0.1",
-    "@lens-chain/sdk": "^1.0.1",
+    "@lens-chain/sdk": "^1.0.2",
     "@lens-chain/storage-client": "^1.0.4",
     "@lens-protocol/metadata": "^2.0.0",
     "@livepeer/react": "^4.3.0",
@@ -62,7 +62,7 @@
     "unified": "^11.0.5",
     "unist-util-visit-parents": "^6.0.1",
     "viem": "^2.25.0",
-    "vite": "^6.2.4",
+    "vite": "^6.2.5",
     "wagmi": "^2.14.16",
     "zod": "^3.24.2",
     "zustand": "^5.0.3"
