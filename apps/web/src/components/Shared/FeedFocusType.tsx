@@ -32,7 +32,7 @@ interface FeedFocusTypeProps {
 }
 
 const FeedFocusType = ({ focus, setFocus }: FeedFocusTypeProps) => (
-  <div className="mx-5 my-5 flex flex-wrap gap-3 sm:mx-0">
+  <div className="mx-5 flex flex-wrap gap-3 sm:mx-0">
     <FeedLink focus={focus} name="All posts" setFocus={setFocus} />
     <FeedLink
       focus={focus}

@@ -1,4 +1,4 @@
-query MlPostsForYou($request: MlpostsForYouRequest!) {
+query PostsForYou($request: PostsForYouRequest!) {
   mlPostsForYou(request: $request) {
     items {
       post {

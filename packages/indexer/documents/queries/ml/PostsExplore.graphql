@@ -1,4 +1,4 @@
-query MlPostsExplore($request: MlexplorePostsRequest!) {
+query PostsExplore($request: PostsExploreRequest!) {
   mlPostsExplore(request: $request) {
     items {
       ...Post

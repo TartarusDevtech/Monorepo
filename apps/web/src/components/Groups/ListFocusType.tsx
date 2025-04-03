@@ -32,7 +32,7 @@ interface ListFocusTypeProps {
 }
 
 const ListFocusType = ({ focus, setFocus }: ListFocusTypeProps) => (
-  <div className="mx-5 my-5 flex flex-wrap gap-3 sm:mx-0">
+  <div className="mx-5 flex flex-wrap gap-3 sm:mx-0">
     <ListLink
       focus={focus}
       name="Your groups"

@@ -4,22 +4,22 @@ import { Card, EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { LightBulbIcon } from "@heroicons/react/24/outline";
 import {
-  type MlpostsForYouRequest,
   PageSize,
-  useMlPostsForYouQuery
+  type PostsForYouRequest,
+  usePostsForYouQuery
 } from "@hey/indexer";
 import { Virtuoso } from "react-virtuoso";
 
 const ForYou = () => {
   const { currentAccount } = useAccountStore();
 
-  const request: MlpostsForYouRequest = {
+  const request: PostsForYouRequest = {
     pageSize: PageSize.Fifty,
     account: currentAccount?.address,
     shuffle: true
   };
 
-  const { data, error, fetchMore, loading } = useMlPostsForYouQuery({
+  const { data, error, fetchMore, loading } = usePostsForYouQuery({
     variables: { request }
   });
 

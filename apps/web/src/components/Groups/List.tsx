@@ -54,13 +54,11 @@ const List = ({ focus }: ListProps) => {
 
   if (!groups?.length) {
     return (
-      <div className="p-5">
-        <EmptyState
-          icon={<UserGroupIcon className="size-8" />}
-          message="No groups."
-          hideCard
-        />
-      </div>
+      <EmptyState
+        icon={<UserGroupIcon className="size-8" />}
+        message="No groups."
+        hideCard
+      />
     );
   }
 

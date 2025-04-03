@@ -6,7 +6,7 @@ import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
   type AccountFragment,
   PageSize,
-  useMlAccountRecommendationsQuery
+  useAccountRecommendationsQuery
 } from "@hey/indexer";
 import { useState } from "react";
 import Suggested from "../Suggested";
@@ -17,7 +17,7 @@ const WhoToFollow = () => {
   const { currentAccount } = useAccountStore();
   const [showMore, setShowMore] = useState(false);
 
-  const { data, error, loading } = useMlAccountRecommendationsQuery({
+  const { data, error, loading } = useAccountRecommendationsQuery({
     variables: {
       request: {
         pageSize: PageSize.Fifty,

@@ -1,4 +1,4 @@
-query MlAccountRecommendations($request: MlaccountRecommendationsRequest!) {
+query AccountRecommendations($request: AccountRecommendationsRequest!) {
   mlAccountRecommendations(request: $request) {
     items {
       ...Account

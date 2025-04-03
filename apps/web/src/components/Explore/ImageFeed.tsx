@@ -3,27 +3,19 @@ import ImagePostsShimmer from "@/components/Shared/Shimmer/ImagePostsShimmer";
 import { EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import { ChatBubbleBottomCenterIcon } from "@heroicons/react/24/outline";
 import {
-  type MlexplorePostsRequest,
+  MainContentFocus,
   PageSize,
-  useMlPostsExploreQuery
+  type PostsExploreRequest,
+  usePostsExploreQuery
 } from "@hey/indexer";
 
-interface ImageFeedProps {
-  feedType: any;
-}
-
-const ImageFeed = ({ feedType = "" }: ImageFeedProps) => {
-  const request: MlexplorePostsRequest = {
-    pageSize: PageSize.Fifty
-    // orderBy: feedType,
-    // where: {
-    //   metadata: {
-    //     mainContentFocus: [MainContentFocus.Image]
-    //   }
-    // }
+const ImageFeed = () => {
+  const request: PostsExploreRequest = {
+    pageSize: PageSize.Fifty,
+    filter: { metadata: { mainContentFocus: [MainContentFocus.Image] } }
   };
 
-  const { data, error, loading } = useMlPostsExploreQuery({
+  const { data, error, loading } = usePostsExploreQuery({
     variables: { request }
   });
 

@@ -3,9 +3,9 @@ import PostsShimmer from "@/components/Shared/Shimmer/PostsShimmer";
 import { Card, EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import { ChatBubbleBottomCenterIcon } from "@heroicons/react/24/outline";
 import {
-  type MlexplorePostsRequest,
   PageSize,
-  useMlPostsExploreQuery
+  type PostsExploreRequest,
+  usePostsExploreQuery
 } from "@hey/indexer";
 import { useRef } from "react";
 import type { StateSnapshot, VirtuosoHandle } from "react-virtuoso";
@@ -14,22 +14,20 @@ import { Virtuoso } from "react-virtuoso";
 let virtuosoState: any = { ranges: [], screenTop: 0 };
 
 interface ExploreFeedProps {
-  feedType?: any;
   focus?: any;
 }
 
-const ExploreFeed = ({ feedType = "", focus }: ExploreFeedProps) => {
+const ExploreFeed = ({ focus }: ExploreFeedProps) => {
   const virtuoso = useRef<VirtuosoHandle>(null);
 
-  const request: MlexplorePostsRequest = {
-    pageSize: PageSize.Fifty
-    // orderBy: feedType,
-    // where: {
-    //   metadata: { ...(focus && { mainContentFocus: [focus] }) }
-    // }
+  const request: PostsExploreRequest = {
+    pageSize: PageSize.Fifty,
+    filter: {
+      metadata: { ...(focus && { mainContentFocus: [focus] }) }
+    }
   };
 
-  const { data, error, fetchMore, loading } = useMlPostsExploreQuery({
+  const { data, error, fetchMore, loading } = usePostsExploreQuery({
     variables: { request }
   });
 
