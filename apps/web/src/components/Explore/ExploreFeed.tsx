@@ -3,6 +3,7 @@ import PostsShimmer from "@/components/Shared/Shimmer/PostsShimmer";
 import { Card, EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import { ChatBubbleBottomCenterIcon } from "@heroicons/react/24/outline";
 import {
+  type MainContentFocus,
   PageSize,
   type PostsExploreRequest,
   usePostsExploreQuery
@@ -14,7 +15,7 @@ import { Virtuoso } from "react-virtuoso";
 let virtuosoState: any = { ranges: [], screenTop: 0 };
 
 interface ExploreFeedProps {
-  focus?: any;
+  focus?: MainContentFocus;
 }
 
 const ExploreFeed = ({ focus }: ExploreFeedProps) => {
