@@ -1,6 +1,5 @@
 export const HEY_USER_AGENT = "HeyBot/0.1 (like TwitterBot)";
-export const VERIFICATION_ENDPOINT =
-  "https://hey-api.up.railway.app/lens/verification";
+export const VERIFICATION_ENDPOINT = "https://api.hey.xyz/lens/verification";
 
 // Cache Settings
 // Cache settings for different durations
