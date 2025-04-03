@@ -3,4 +3,7 @@ export const LENS_TESTNET_RPCS = [
   "https://rpc.testnet.lens.dev"
 ];
 
-export const LENS_MAINNET_RPCS = ["https://rpc.lens.xyz"];
+export const LENS_MAINNET_RPCS = [
+  "https://lens-mainnet.g.alchemy.com/v2/N_HuqeYE3mr_enxw-BGFI2rOm1U7bhGy",
+  "https://rpc.lens.xyz"
+];
