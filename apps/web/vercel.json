@@ -1,6 +1,5 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" },
     {
       "source": "/u/:path*",
       "has": [
@@ -22,7 +21,8 @@
         }
       ],
       "destination": "https://og.hey.xyz/posts/:path*"
-    }
+    },
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
     {
