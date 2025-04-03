@@ -30,7 +30,7 @@
     "jose": "^6.0.10",
     "linkedom": "^0.18.9",
     "tsx": "^4.19.3",
-    "viem": "^2.24.3",
+    "viem": "^2.25.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {
@@ -38,7 +38,7 @@
     "@hey/types": "workspace:*",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
-    "@types/node": "^22.13.17",
+    "@types/node": "^22.14.0",
     "prisma": "^6.5.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
