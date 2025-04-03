@@ -26,7 +26,7 @@ const List = () => {
     null
   );
 
-  const onError = (error: any) => {
+  const onError = (error: Error) => {
     setRevoking(false);
     setRevokeingSessionId(null);
     errorToast(error);

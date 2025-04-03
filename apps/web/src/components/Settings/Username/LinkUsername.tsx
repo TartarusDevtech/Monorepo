@@ -26,7 +26,7 @@ const LinkUsername = () => {
     toast.success("Linked");
   };
 
-  const onError = (error: any) => {
+  const onError = (error: Error) => {
     setLinkingUsername(null);
     errorToast(error);
   };

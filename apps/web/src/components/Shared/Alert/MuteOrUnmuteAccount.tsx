@@ -49,7 +49,7 @@ const MuteOrUnmuteAccount = () => {
     toast.success(hasMuted ? "Unmuted successfully" : "Muted successfully");
   };
 
-  const onError = (error: any) => {
+  const onError = (error: Error) => {
     setIsSubmitting(false);
     errorToast(error);
   };

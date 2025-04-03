@@ -12,7 +12,7 @@ import useTransactionLifecycle from "./useTransactionLifecycle";
 interface CreatePostProps {
   commentOn?: PostFragment;
   onCompleted: () => void;
-  onError: (error: any) => void;
+  onError: (error: Error) => void;
 }
 
 const useCreatePost = ({

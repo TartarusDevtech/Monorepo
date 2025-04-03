@@ -30,7 +30,7 @@ const DeletePost = () => {
     toast.success("Post deleted");
   };
 
-  const onError = (error: any) => {
+  const onError = (error: Error) => {
     errorToast(error);
   };
 

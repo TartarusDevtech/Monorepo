@@ -21,7 +21,7 @@ const UnlinkUsername = () => {
     toast.success("Unlinked");
   };
 
-  const onError = (error: any) => {
+  const onError = (error: Error) => {
     setUnlinking(false);
     errorToast(error);
   };

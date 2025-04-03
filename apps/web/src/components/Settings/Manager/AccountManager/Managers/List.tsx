@@ -51,7 +51,7 @@ const List = () => {
     toast.success("Manager removed successfully");
   };
 
-  const onError = (error: any) => {
+  const onError = (error: Error) => {
     errorToast(error);
     setRemovingAddress(null);
   };

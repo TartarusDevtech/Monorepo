@@ -34,7 +34,7 @@ const AddAccountManager = ({
     toast.success("Account manager added");
   };
 
-  const onError = (error: any) => {
+  const onError = (error: Error) => {
     setIsSubmitting(false);
     errorToast(error);
   };

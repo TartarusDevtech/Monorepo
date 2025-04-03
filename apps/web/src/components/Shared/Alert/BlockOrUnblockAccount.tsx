@@ -57,7 +57,7 @@ const BlockOrUnblockAccount = () => {
     );
   };
 
-  const onError = (error: any) => {
+  const onError = (error: Error) => {
     setIsSubmitting(false);
     errorToast(error);
   };
