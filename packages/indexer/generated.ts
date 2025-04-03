@@ -4984,7 +4984,12 @@ export type SetFeedMetadataRequest = {
   metadataUri: Scalars['String']['input'];
 };
 
-export type SetFeedMetadataResult = SelfFundedTransactionRequest | SponsoredTransactionRequest | TransactionWillFail;
+export type SetFeedMetadataResponse = {
+  __typename?: 'SetFeedMetadataResponse';
+  hash: Scalars['TxHash']['output'];
+};
+
+export type SetFeedMetadataResult = SelfFundedTransactionRequest | SetFeedMetadataResponse | SponsoredTransactionRequest | TransactionWillFail;
 
 export type SetGraphMetadataRequest = {
   graph: Scalars['EvmAddress']['input'];
@@ -6362,7 +6367,12 @@ export type UpdateFeedRulesRequest = {
   toRemove?: Array<Scalars['RuleId']['input']>;
 };
 
-export type UpdateFeedRulesResult = SelfFundedTransactionRequest | SponsoredTransactionRequest | TransactionWillFail;
+export type UpdateFeedRulesResponse = {
+  __typename?: 'UpdateFeedRulesResponse';
+  hash: Scalars['TxHash']['output'];
+};
+
+export type UpdateFeedRulesResult = SelfFundedTransactionRequest | SponsoredTransactionRequest | TransactionWillFail | UpdateFeedRulesResponse;
 
 export type UpdateGraphRulesRequest = {
   graph: Scalars['EvmAddress']['input'];

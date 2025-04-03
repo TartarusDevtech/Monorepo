@@ -426,6 +426,7 @@ const result: PossibleTypesResultData = {
     ],
     SetFeedMetadataResult: [
       "SelfFundedTransactionRequest",
+      "SetFeedMetadataResponse",
       "SponsoredTransactionRequest",
       "TransactionWillFail"
     ],
@@ -513,7 +514,8 @@ const result: PossibleTypesResultData = {
     UpdateFeedRulesResult: [
       "SelfFundedTransactionRequest",
       "SponsoredTransactionRequest",
-      "TransactionWillFail"
+      "TransactionWillFail",
+      "UpdateFeedRulesResponse"
     ],
     UpdateGraphRulesResult: [
       "SelfFundedTransactionRequest",
