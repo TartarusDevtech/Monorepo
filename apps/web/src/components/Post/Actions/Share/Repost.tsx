@@ -64,7 +64,7 @@ const Repost = ({ isSubmitting, post, setIsSubmitting }: RepostProps) => {
     toast.success("Post has been reposted!");
   };
 
-  const onError = (error: any) => {
+  const onError = (error: Error) => {
     setIsSubmitting(false);
     errorToast(error);
   };

@@ -25,7 +25,7 @@ const HideComment = ({ post }: HideCommentProps) => {
     cache.evict({ id: cache.identify(post) });
   };
 
-  const onError = (error: any) => {
+  const onError = (error: Error) => {
     errorToast(error);
   };
 

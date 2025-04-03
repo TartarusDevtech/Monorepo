@@ -46,7 +46,7 @@ const Bookmark = ({ post }: BookmarkProps) => {
     }
   };
 
-  const onError = (error: any) => {
+  const onError = (error: Error) => {
     errorToast(error);
   };
 

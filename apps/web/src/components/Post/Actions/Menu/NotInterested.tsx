@@ -31,7 +31,7 @@ const NotInterested = ({ post }: NotInterestedProps) => {
     });
   };
 
-  const onError = (error: any) => {
+  const onError = (error: Error) => {
     errorToast(error);
   };
 

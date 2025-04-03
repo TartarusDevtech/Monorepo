@@ -50,7 +50,7 @@ const Like = ({ post, showCount }: LikeProps) => {
     });
   };
 
-  const onError = (error: any) => {
+  const onError = (error: Error) => {
     errorToast(error);
   };
 

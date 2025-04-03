@@ -84,7 +84,7 @@ const CollectActionButton = ({
     toast.success("Collected successfully");
   };
 
-  const onError = (error: any) => {
+  const onError = (error: Error) => {
     setIsSubmitting(false);
     errorToast(error);
   };
