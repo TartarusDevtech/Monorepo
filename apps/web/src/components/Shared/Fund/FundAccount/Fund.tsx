@@ -7,6 +7,7 @@ import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useFundModalStore } from "@/store/non-persisted/modal/useFundModalStore";
 import {
   DEFAULT_COLLECT_TOKEN,
+  NATIVE_TOKEN_SYMBOL,
   WRAPPED_NATIVE_TOKEN_SYMBOL
 } from "@hey/data/constants";
 import { Events } from "@hey/data/events";
@@ -17,10 +18,10 @@ import { formatUnits } from "viem";
 import { useAccount, useBalance } from "wagmi";
 
 interface FundProps {
-  isHeyTip?: boolean;
+  useNativeToken?: boolean;
 }
 
-const Fund = ({ isHeyTip }: FundProps) => {
+const Fund = ({ useNativeToken = false }: FundProps) => {
   const { setShowFundModal } = useFundModalStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [amount, setAmount] = useState(2);
@@ -30,10 +31,13 @@ const Fund = ({ isHeyTip }: FundProps) => {
   const { address } = useAccount();
   const handleTransactionLifecycle = useTransactionLifecycle();
   const pollTransactionStatus = usePollTransactionStatus();
+  const symbol = useNativeToken
+    ? NATIVE_TOKEN_SYMBOL
+    : WRAPPED_NATIVE_TOKEN_SYMBOL;
 
   const { data: balance, isLoading: balanceLoading } = useBalance({
     address,
-    token: DEFAULT_COLLECT_TOKEN,
+    token: useNativeToken ? undefined : DEFAULT_COLLECT_TOKEN,
     query: { refetchInterval: 2000 }
   });
 
@@ -44,10 +48,8 @@ const Fund = ({ isHeyTip }: FundProps) => {
     trackEvent(Events.Account.DepositFunds);
     toast.success("Deposit initiated");
     pollTransactionStatus(hash, () => {
-      setShowFundModal(false);
-      toast.success(
-        isHeyTip ? "Thank you for your support!" : "Funded account successfully"
-      );
+      setShowFundModal(false, false);
+      toast.success("Funded account successfully");
     });
   };
 
@@ -88,6 +90,14 @@ const Fund = ({ isHeyTip }: FundProps) => {
   const handleDeposit = async () => {
     setIsSubmitting(true);
 
+    if (useNativeToken) {
+      return await deposit({
+        variables: {
+          request: { native: amount.toString() }
+        }
+      });
+    }
+
     return await deposit({
       variables: {
         request: {
@@ -100,12 +110,12 @@ const Fund = ({ isHeyTip }: FundProps) => {
   return (
     <Card className="mt-5" forceRounded>
       <div className="mx-5 my-3 flex items-center justify-between">
-        <b>{isHeyTip ? "Tip" : "Purchase"}</b>
+        <b>Purchase</b>
         {balanceLoading ? (
           <span className="shimmer h-2.5 w-20 rounded-full" />
         ) : (
           <span className="text-neutral-500 text-sm dark:text-neutral-200">
-            Balance: {walletBalance} {WRAPPED_NATIVE_TOKEN_SYMBOL}
+            Balance: {walletBalance} {symbol}
           </span>
         )}
       </div>
@@ -150,7 +160,7 @@ const Fund = ({ isHeyTip }: FundProps) => {
               className="no-spinner"
               max={1000}
               onChange={onOtherAmount}
-              prefix={WRAPPED_NATIVE_TOKEN_SYMBOL}
+              prefix={symbol}
               placeholder="300"
               ref={inputRef}
               type="number"
@@ -174,8 +184,7 @@ const Fund = ({ isHeyTip }: FundProps) => {
             className="w-full"
             onClick={handleDeposit}
           >
-            {isHeyTip ? "Tip" : "Purchase"} {amount}{" "}
-            {WRAPPED_NATIVE_TOKEN_SYMBOL}
+            Purchase {amount} {symbol}
           </Button>
         )}
       </div>

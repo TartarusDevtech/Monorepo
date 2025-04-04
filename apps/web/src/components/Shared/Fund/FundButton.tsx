@@ -5,12 +5,14 @@ interface FundButtonProps {
   size?: "sm" | "md";
   outline?: boolean;
   className?: string;
+  useNativeToken?: boolean;
 }
 
 const FundButton = ({
   size = "md",
   outline = false,
-  className = ""
+  className = "",
+  useNativeToken = false
 }: FundButtonProps) => {
   const { setShowFundModal } = useFundModalStore();
 
@@ -18,7 +20,7 @@ const FundButton = ({
     <Button
       aria-label="Fund account"
       className={className}
-      onClick={() => setShowFundModal(true)}
+      onClick={() => setShowFundModal(true, useNativeToken)}
       size={size}
       outline={outline}
     >

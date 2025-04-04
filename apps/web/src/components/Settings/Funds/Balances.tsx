@@ -40,7 +40,12 @@ const Balances = () => {
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <Withdraw currency={currency} value={value} refetch={refetch} />
-          {!currency && <Wrap value={value} refetch={refetch} />}
+          {!currency && (
+            <>
+              <Wrap value={value} refetch={refetch} />
+              <FundButton size="sm" outline useNativeToken />
+            </>
+          )}
           {currency === DEFAULT_COLLECT_TOKEN && (
             <>
               <Unwrap value={value} refetch={refetch} />

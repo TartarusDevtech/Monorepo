@@ -3,12 +3,15 @@ import { create } from "zustand";
 
 interface State {
   showFundModal: boolean;
-  setShowFundModal: (showFundModal: boolean) => void;
+  useNativeToken: boolean;
+  setShowFundModal: (showFundModal: boolean, useNativeToken?: boolean) => void;
 }
 
 const store = create<State>((set) => ({
   showFundModal: false,
-  setShowFundModal: (showFundModal) => set(() => ({ showFundModal }))
+  useNativeToken: false,
+  setShowFundModal: (showFundModal, useNativeToken) =>
+    set(() => ({ showFundModal, useNativeToken }))
 }));
 
 export const useFundModalStore = createTrackedSelector(store);

@@ -90,7 +90,7 @@ const GlobalModals = () => {
         <NewPublication className="!rounded-b-xl !rounded-t-none border-none" />
       </Modal>
       <Modal
-        onClose={() => setShowFundModal(false)}
+        onClose={() => setShowFundModal(false, false)}
         show={showFundModal}
         title="Fund account"
       >
