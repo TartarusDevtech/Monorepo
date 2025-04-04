@@ -157,7 +157,6 @@ const Login = ({ setHasAccounts }: LoginProps) => {
                     account={account}
                     showUserPreview={false}
                   />
-                  {JSON.stringify(loggingInAccountId === account.address)}
                   <Button
                     disabled={
                       isSubmitting && loggingInAccountId === account.address
