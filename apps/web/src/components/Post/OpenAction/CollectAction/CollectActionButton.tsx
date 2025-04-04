@@ -49,6 +49,7 @@ const CollectActionButton = ({
   const collectLimit = collectAction?.collectLimit;
   const amount = collectAction?.amount as number;
   const assetAddress = collectAction?.assetAddress as any;
+  const assetSymbol = collectAction?.assetSymbol as string;
   const isAllCollected = collectLimit ? collects >= collectLimit : false;
   const isSaleEnded = endTimestamp
     ? new Date(endTimestamp).getTime() / 1000 < new Date().getTime() / 1000
@@ -79,7 +80,7 @@ const CollectActionButton = ({
     updateCache();
     trackEvent(Events.Post.Collect, {
       amount: amount,
-      currency: collectAction?.assetSymbol
+      currency: assetSymbol
     });
     toast.success("Collected successfully");
   };
@@ -173,7 +174,12 @@ const CollectActionButton = ({
   }
 
   if (!hasAmount) {
-    return <FundButton className="mt-5 w-full" />;
+    return (
+      <FundButton
+        className="mt-5 w-full"
+        token={{ contractAddress: assetAddress, symbol: assetSymbol }}
+      />
+    );
   }
 
   return (
