@@ -1,38 +1,34 @@
 import cn from "@/helpers/cn";
+import getWalletDetails from "@/helpers/getWalletDetails";
 import { KeyIcon } from "@heroicons/react/24/outline";
-import { STATIC_IMAGES_URL } from "@hey/data/constants";
-import { Errors } from "@hey/data/errors";
-import { useModal } from "connectkit";
-import toast from "react-hot-toast";
+import type { FC } from "react";
 import { Link } from "react-router";
-import { useAccount, useConnect, useConnectors, useDisconnect } from "wagmi";
+import type { Connector } from "wagmi";
+import { useAccount, useConnect, useDisconnect } from "wagmi";
 
-const WalletSelector = () => {
-  const { setOpen } = useModal();
+const WalletSelector: FC = () => {
+  const { connectAsync, connectors, isPending } = useConnect();
   const { disconnect } = useDisconnect();
   const { connector: activeConnector } = useAccount();
-  const connectors = useConnectors();
-  const { connectAsync, isPending } = useConnect();
 
-  const connectWithFamily = async () => {
+  const allowedConnectors = [
+    "familyAccountsProvider",
+    "injected",
+    "walletConnect"
+  ];
+
+  const filteredConnectors = connectors
+    .filter((connector: any) => allowedConnectors.includes(connector.id))
+    .sort(
+      (a: Connector, b: Connector) =>
+        allowedConnectors.indexOf(a.id) - allowedConnectors.indexOf(b.id)
+    );
+
+  const handleConnect = async (connector: Connector) => {
     try {
-      const connector = connectors.find(
-        (c) => c.id === "familyAccountsProvider"
-      );
-
-      if (!connector) {
-        return;
-      }
-
-      return await connectAsync({ connector });
-    } catch {
-      return toast.error(Errors.SomethingWentWrong);
-    }
+      await connectAsync({ connector });
+    } catch {}
   };
-
-  const buttonClass = cn(
-    "flex w-full items-center justify-between space-x-2.5 overflow-hidden rounded-xl border border-neutral-200 px-4 py-3 outline-hidden hover:bg-neutral-100 disabled:opacity-50 dark:border-neutral-700 dark:hover:bg-neutral-700"
-  );
 
   return activeConnector?.id ? (
     <div className="space-y-2.5">
@@ -47,32 +43,33 @@ const WalletSelector = () => {
     </div>
   ) : (
     <div className="inline-block w-full space-y-3 overflow-hidden text-left align-middle">
-      <button
-        className={buttonClass}
-        onClick={connectWithFamily}
-        type="button"
-        disabled={isPending}
-      >
-        Continue with Family
-        <img
-          alt="Family"
-          className="size-6"
-          src={`${STATIC_IMAGES_URL}/brands/family.png`}
-        />
-      </button>
-      <button
-        className={buttonClass}
-        onClick={() => setOpen(true)}
-        type="button"
-        disabled={isPending}
-      >
-        Use other wallet
-        <img
-          alt="Family"
-          className="size-6"
-          src={`${STATIC_IMAGES_URL}/brands/wallet.svg`}
-        />
-      </button>
+      {filteredConnectors.map((connector: any) => {
+        return (
+          <button
+            className={cn(
+              {
+                "hover:bg-gray-100 dark:hover:bg-gray-700":
+                  connector.id !== activeConnector?.id
+              },
+              "flex w-full items-center justify-between space-x-2.5 overflow-hidden rounded-xl border border-neutral-200 px-4 py-3 outline-none dark:border-neutral-700"
+            )}
+            disabled={connector.id === activeConnector?.id || isPending}
+            key={connector.id}
+            onClick={() => handleConnect(connector)}
+            type="button"
+          >
+            <span>{getWalletDetails(connector.id).name}</span>
+            <img
+              alt={connector.id}
+              className="size-6"
+              draggable={false}
+              height={24}
+              src={getWalletDetails(connector.id).logo}
+              width={24}
+            />
+          </button>
+        );
+      })}
       <div className="linkify text-neutral-500 text-sm">
         By connecting wallet, you agree to our{" "}
         <Link to="/terms" target="_blank">

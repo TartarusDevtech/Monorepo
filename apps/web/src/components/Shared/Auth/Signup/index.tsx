@@ -1,7 +1,5 @@
-import SwitchNetwork from "@/components/Shared/SwitchNetwork";
-import { CHAIN } from "@/constants";
 import { createTrackedSelector } from "react-tracked";
-import { useAccount, useChainId } from "wagmi";
+import { useAccount } from "wagmi";
 import { create } from "zustand";
 import WalletSelector from "../WalletSelector";
 import ChooseUsername from "./ChooseUsername";
@@ -38,21 +36,16 @@ export const useSignupStore = createTrackedSelector(store);
 
 const Signup = () => {
   const { screen } = useSignupStore();
-  const chain = useChainId();
   const { connector: activeConnector } = useAccount();
 
   return activeConnector?.id ? (
     <div className="space-y-2.5">
-      {chain === CHAIN.id ? (
-        screen === "choose" ? (
-          <ChooseUsername />
-        ) : screen === "minting" ? (
-          <Minting />
-        ) : (
-          <Success />
-        )
+      {screen === "choose" ? (
+        <ChooseUsername />
+      ) : screen === "minting" ? (
+        <Minting />
       ) : (
-        <SwitchNetwork toChainId={CHAIN.id} />
+        <Success />
       )}
     </div>
   ) : (

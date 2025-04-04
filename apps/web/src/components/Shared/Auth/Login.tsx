@@ -1,6 +1,4 @@
-import SwitchNetwork from "@/components/Shared/SwitchNetwork";
 import { Button, Card, ErrorMessage } from "@/components/Shared/UI";
-import { CHAIN } from "@/constants";
 import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import { signIn } from "@/store/persisted/useAuthStore";
@@ -16,7 +14,7 @@ import {
 import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useAccount, useChainId, useDisconnect, useSignMessage } from "wagmi";
+import { useAccount, useDisconnect, useSignMessage } from "wagmi";
 import Loader from "../Loader";
 import SingleAccount from "../SingleAccount";
 import SignupCard from "./SignupCard";
@@ -38,7 +36,6 @@ const Login = ({ setHasAccounts }: LoginProps) => {
     errorToast(error);
   };
 
-  const chain = useChainId();
   const { disconnect } = useDisconnect();
   const { address, connector: activeConnector } = useAccount();
   const { signMessageAsync } = useSignMessage({ mutation: { onError } });
@@ -131,49 +128,45 @@ const Login = ({ setHasAccounts }: LoginProps) => {
             error={errorChallenge || errorAuthenticate}
           />
         ) : null}
-        {chain === CHAIN.id ? (
-          loading ? (
-            <Card className="w-full dark:divide-neutral-700" forceRounded>
-              <Loader
-                className="my-4"
-                message="Loading accounts managed by you..."
-                small
-              />
-            </Card>
-          ) : accounts.length > 0 ? (
-            <Card
-              className="max-h-[50vh] w-full overflow-y-auto dark:divide-neutral-700"
-              forceRounded
-            >
-              {accounts.map((account) => (
-                <div
-                  className="flex items-center justify-between p-3"
-                  key={account.address}
+        {loading ? (
+          <Card className="w-full dark:divide-neutral-700" forceRounded>
+            <Loader
+              className="my-4"
+              message="Loading accounts managed by you..."
+              small
+            />
+          </Card>
+        ) : accounts.length > 0 ? (
+          <Card
+            className="max-h-[50vh] w-full overflow-y-auto dark:divide-neutral-700"
+            forceRounded
+          >
+            {accounts.map((account) => (
+              <div
+                className="flex items-center justify-between p-3"
+                key={account.address}
+              >
+                <SingleAccount
+                  hideFollowButton
+                  hideUnfollowButton
+                  linkToAccount={false}
+                  account={account}
+                  showUserPreview={false}
+                />
+                <Button
+                  disabled={
+                    isSubmitting && loggingInAccountId === account.address
+                  }
+                  onClick={() => handleSign(account.address)}
+                  outline
                 >
-                  <SingleAccount
-                    hideFollowButton
-                    hideUnfollowButton
-                    linkToAccount={false}
-                    account={account}
-                    showUserPreview={false}
-                  />
-                  <Button
-                    disabled={
-                      isSubmitting && loggingInAccountId === account.address
-                    }
-                    onClick={() => handleSign(account.address)}
-                    outline
-                  >
-                    Login
-                  </Button>
-                </div>
-              ))}
-            </Card>
-          ) : (
-            <SignupCard />
-          )
+                  Login
+                </Button>
+              </div>
+            ))}
+          </Card>
         ) : (
-          <SwitchNetwork toChainId={CHAIN.id} />
+          <SignupCard />
         )}
         <button
           className="flex items-center space-x-1 text-sm underline"

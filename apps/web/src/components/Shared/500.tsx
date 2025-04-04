@@ -1,10 +1,14 @@
 import MetaTags from "@/components/Common/MetaTags";
 import { Button, H2 } from "@/components/Shared/UI";
-import { HomeIcon } from "@heroicons/react/24/outline";
+import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { APP_NAME } from "@hey/data/constants";
-import { Link } from "react-router";
 
 const Custom500 = () => {
+  const clearLocalData = () => {
+    localStorage.clear();
+    setTimeout(() => location.reload(), 200);
+  };
+
   return (
     <div className="page-center flex-col">
       <MetaTags title={`500 • ${APP_NAME}`} />
@@ -14,15 +18,14 @@ const Custom500 = () => {
           We track these errors automatically, but if the problem persists feel
           free to contact us. In the meantime, try refreshing.
         </div>
-        <Link to="/">
-          <Button
-            className="mx-auto flex items-center"
-            icon={<HomeIcon className="size-4" />}
-            size="lg"
-          >
-            Go to home
-          </Button>
-        </Link>
+        <Button
+          className="mx-auto flex items-center"
+          icon={<ArrowPathIcon className="size-4" />}
+          onClick={() => clearLocalData()}
+          size="lg"
+        >
+          Clear cache and refresh
+        </Button>
       </div>
     </div>
   );

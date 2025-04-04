@@ -28,7 +28,7 @@ export default defineConfig({
           return "assets/[name]-[hash][extname]";
         },
         manualChunks: {
-          wevm: ["viem", "wagmi"],
+          wevm: ["viem", "wagmi", "family"],
           connectkit: ["connectkit"],
           indexer: ["@hey/indexer"],
           react: [
