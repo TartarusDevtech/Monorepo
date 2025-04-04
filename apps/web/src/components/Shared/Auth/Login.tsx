@@ -5,7 +5,6 @@ import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import { signIn } from "@/store/persisted/useAuthStore";
 import { KeyIcon } from "@heroicons/react/24/outline";
-import { HEY_APP } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
 import {
@@ -75,7 +74,8 @@ const Login = ({ setHasAccounts }: LoginProps) => {
         __typename === "AccountManaged" && a.address === account
     );
 
-    const meta = { app: HEY_APP, account };
+    // const meta = { app: HEY_APP, account };
+    const meta = { account };
     const request: ChallengeRequest = isManager
       ? { accountManager: { manager: address, ...meta } }
       : { accountOwner: { owner: address, ...meta } };
