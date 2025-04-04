@@ -1,18 +1,21 @@
 import { Button } from "@/components/Shared/UI";
-import { useFundModalStore } from "@/store/non-persisted/modal/useFundModalStore";
+import {
+  type FundingToken,
+  useFundModalStore
+} from "@/store/non-persisted/modal/useFundModalStore";
 
 interface FundButtonProps {
   size?: "sm" | "md";
   outline?: boolean;
   className?: string;
-  useNativeToken?: boolean;
+  token?: FundingToken;
 }
 
 const FundButton = ({
   size = "md",
   outline = false,
   className = "",
-  useNativeToken = false
+  token
 }: FundButtonProps) => {
   const { setShowFundModal } = useFundModalStore();
 
@@ -20,7 +23,7 @@ const FundButton = ({
     <Button
       aria-label="Fund account"
       className={className}
-      onClick={() => setShowFundModal(true, useNativeToken)}
+      onClick={() => setShowFundModal(true, token)}
       size={size}
       outline={outline}
     >

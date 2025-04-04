@@ -14,7 +14,7 @@ import Fund from "./Fund";
 
 const FundAccount = () => {
   const { currentAccount } = useAccountStore();
-  const { useNativeToken } = useFundModalStore();
+  const { token } = useFundModalStore();
   const { data: balance, loading } = useAccountBalancesQuery({
     variables: { request: { tokens: [DEFAULT_COLLECT_TOKEN] } },
     pollInterval: 3000,
@@ -48,7 +48,7 @@ const FundAccount = () => {
           Wrapped {NATIVE_TOKEN_SYMBOL} enables various Hey-specific actions.
         </div>
       </div>
-      <Fund useNativeToken={useNativeToken} />
+      <Fund token={token} />
     </div>
   );
 };

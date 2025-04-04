@@ -4,12 +4,11 @@ import errorToast from "@/helpers/errorToast";
 import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";
 import usePreventScrollOnNumberInput from "@/hooks/usePreventScrollOnNumberInput";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
-import { useFundModalStore } from "@/store/non-persisted/modal/useFundModalStore";
 import {
-  DEFAULT_COLLECT_TOKEN,
-  NATIVE_TOKEN_SYMBOL,
-  WRAPPED_NATIVE_TOKEN_SYMBOL
-} from "@hey/data/constants";
+  type FundingToken,
+  useFundModalStore
+} from "@/store/non-persisted/modal/useFundModalStore";
+import { NATIVE_TOKEN_SYMBOL } from "@hey/data/constants";
 import { Events } from "@hey/data/events";
 import { useDepositMutation } from "@hey/indexer";
 import { type ChangeEvent, type RefObject, useRef, useState } from "react";
@@ -18,10 +17,10 @@ import { formatUnits } from "viem";
 import { useAccount, useBalance } from "wagmi";
 
 interface FundProps {
-  useNativeToken?: boolean;
+  token?: FundingToken;
 }
 
-const Fund = ({ useNativeToken = false }: FundProps) => {
+const Fund = ({ token }: FundProps) => {
   const { setShowFundModal } = useFundModalStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [amount, setAmount] = useState(2);
@@ -31,13 +30,11 @@ const Fund = ({ useNativeToken = false }: FundProps) => {
   const { address } = useAccount();
   const handleTransactionLifecycle = useTransactionLifecycle();
   const pollTransactionStatus = usePollTransactionStatus();
-  const symbol = useNativeToken
-    ? NATIVE_TOKEN_SYMBOL
-    : WRAPPED_NATIVE_TOKEN_SYMBOL;
+  const symbol = token?.symbol ?? NATIVE_TOKEN_SYMBOL;
 
   const { data: balance, isLoading: balanceLoading } = useBalance({
     address,
-    token: useNativeToken ? undefined : DEFAULT_COLLECT_TOKEN,
+    token: token?.contractAddress,
     query: { refetchInterval: 2000 }
   });
 
@@ -48,7 +45,7 @@ const Fund = ({ useNativeToken = false }: FundProps) => {
     trackEvent(Events.Account.DepositFunds);
     toast.success("Deposit initiated");
     pollTransactionStatus(hash, () => {
-      setShowFundModal(false, false);
+      setShowFundModal(false);
       toast.success("Funded account successfully");
     });
   };
@@ -90,7 +87,7 @@ const Fund = ({ useNativeToken = false }: FundProps) => {
   const handleDeposit = async () => {
     setIsSubmitting(true);
 
-    if (useNativeToken) {
+    if (!token) {
       return await deposit({
         variables: {
           request: { native: amount.toString() }
@@ -101,7 +98,7 @@ const Fund = ({ useNativeToken = false }: FundProps) => {
     return await deposit({
       variables: {
         request: {
-          erc20: { currency: DEFAULT_COLLECT_TOKEN, value: amount.toString() }
+          erc20: { currency: token.contractAddress, value: amount.toString() }
         }
       }
     });

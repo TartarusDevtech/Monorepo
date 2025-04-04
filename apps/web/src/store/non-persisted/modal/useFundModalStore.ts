@@ -1,17 +1,23 @@
 import { createTrackedSelector } from "react-tracked";
+import type { Address } from "viem";
 import { create } from "zustand";
+
+export interface FundingToken {
+  contractAddress: Address;
+  symbol: string;
+}
 
 interface State {
   showFundModal: boolean;
-  useNativeToken: boolean;
-  setShowFundModal: (showFundModal: boolean, useNativeToken?: boolean) => void;
+  token?: FundingToken;
+  setShowFundModal: (showFundModal: boolean, token?: FundingToken) => void;
 }
 
 const store = create<State>((set) => ({
   showFundModal: false,
-  useNativeToken: false,
-  setShowFundModal: (showFundModal, useNativeToken) =>
-    set(() => ({ showFundModal, useNativeToken }))
+  token: undefined,
+  setShowFundModal: (showFundModal, token) =>
+    set(() => ({ showFundModal, token }))
 }));
 
 export const useFundModalStore = createTrackedSelector(store);
