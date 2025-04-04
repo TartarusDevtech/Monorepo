@@ -78,10 +78,14 @@ const PostStats = ({ post }: PostStatsProps) => {
           </span>
         ) : null}
         {collects > 0 ? (
-          <span>
+          <button
+            className="outline-offset-2"
+            onClick={() => setShowCollectorsModal(true)}
+            type="button"
+          >
             <b className="text-black dark:text-white">{nFormatter(collects)}</b>{" "}
             {plur("Collect", collects)}
-          </span>
+          </button>
         ) : null}
         {bookmarks > 0 ? (
           <span>
