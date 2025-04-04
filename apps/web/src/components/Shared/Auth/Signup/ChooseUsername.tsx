@@ -71,7 +71,6 @@ const ChooseUsername = () => {
   });
 
   const username = form.watch("username");
-
   const canCheck = Boolean(username && username.length > 2);
   const isInvalid = !form.formState.isValid;
 
