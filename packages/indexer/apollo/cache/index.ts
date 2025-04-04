@@ -26,6 +26,8 @@ const cache = new InMemoryCache({
         authenticatedSessions: createBasicFieldPolicy(),
         usernames: createBasicFieldPolicy(),
         notifications: createBasicFieldPolicy(),
+        mlPostsExplore: createBasicFieldPolicy(),
+        mlPostsForYou: createBasicFieldPolicy(),
       }
     }
   }
