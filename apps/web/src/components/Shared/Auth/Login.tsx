@@ -70,12 +70,14 @@ const Login = ({ setHasAccounts }: LoginProps) => {
     : remainingProfiles;
 
   const handleSign = async (account: string) => {
-    const isManager = ({ account: a, __typename }: any) =>
-      __typename === "AccountManaged" && a.address === account;
-    const manager = allProfiles.find(isManager);
+    const isManager = allProfiles.some(
+      ({ account: a, __typename }) =>
+        __typename === "AccountManaged" && a.address === account
+    );
+
     const meta = { app: HEY_APP, account };
-    const request: ChallengeRequest = manager
-      ? { accountManager: { manager: manager.account.owner, ...meta } }
+    const request: ChallengeRequest = isManager
+      ? { accountManager: { manager: address, ...meta } }
       : { accountOwner: { owner: address, ...meta } };
 
     try {
