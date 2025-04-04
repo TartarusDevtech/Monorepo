@@ -3374,7 +3374,6 @@ export type NamespaceRuleConfig = {
   unknownRule?: InputMaybe<UnknownNamespaceRuleConfig>;
   usernameLengthRule?: InputMaybe<UsernameLengthNamespaceRuleConfig>;
   usernamePricePerLengthRule?: InputMaybe<UsernamePricePerLengthNamespaceRuleConfig>;
-  usernameReservedRule?: InputMaybe<UsernameReservedNamespaceRuleConfig>;
 };
 
 export enum NamespaceRuleExecuteOn {
@@ -6532,10 +6531,6 @@ export type UsernameReserved = {
   localName: Scalars['String']['output'];
   namespace: Scalars['EvmAddress']['output'];
   ruleId: Scalars['RuleId']['output'];
-};
-
-export type UsernameReservedNamespaceRuleConfig = {
-  reserved?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 
 export type UsernameSearchInput = {
