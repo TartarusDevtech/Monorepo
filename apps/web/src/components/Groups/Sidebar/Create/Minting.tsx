@@ -13,7 +13,7 @@ const Minting = () => {
         setScreen("success");
       }
     },
-    pollInterval: 3000,
+    pollInterval: 1500,
     skip: !transactionHash,
     variables: { request: { txHash: transactionHash } }
   });
