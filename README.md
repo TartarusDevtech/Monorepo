@@ -106,23 +106,6 @@ script/clean-branches
 script/update-lock-file
 ```
 
-### Bundle Analyzer
-
-In `apps/web`, we've got a bundle analyzer that spills the beans on the size and contents of our production bundles. It's like having X-ray vision for your code!
-
-To generate this output, run:
-
-```bash
-cd apps/web
-ANALYZE=true pnpm build
-```
-
-Fire up this command to build the `apps/web` project and watch as three browser windows magically pop open, each showcasing bundle details for node, edge, and client bundles. The client bundle is the superhero for page performance, while all bundles play a vital role in development and build performance.
-
-## Code of Conduct
-
-We kindly ask all contributors and team members to follow our [Code of Conduct](./CODE_OF_CONDUCT.md). Think of it as our community's golden rulebook - play nice and keep the good vibes flowing!
-
 ## License
 
 This project is open-sourced under the **AGPL-3.0** license. For all the nitty-gritty details, check out the [LICENSE](./LICENSE) file. It's a real page-turner!
