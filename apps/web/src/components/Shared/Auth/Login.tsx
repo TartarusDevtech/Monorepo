@@ -5,9 +5,11 @@ import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import { signIn } from "@/store/persisted/useAuthStore";
 import { KeyIcon } from "@heroicons/react/24/outline";
+import { HEY_APP } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
 import {
+  type ChallengeRequest,
   useAccountsAvailableQuery,
   useAuthenticateMutation,
   useChallengeMutation
@@ -54,21 +56,34 @@ const Login = ({ setHasAccounts }: LoginProps) => {
     }
   });
 
+  const allProfiles = data?.accountsAvailable.items || [];
+  const lastLogin = data?.lastLoggedInAccount;
+
+  const remainingProfiles = lastLogin
+    ? allProfiles
+        .filter(({ account }) => account.address !== lastLogin.address)
+        .map(({ account }) => account)
+    : allProfiles.map(({ account }) => account);
+
+  const accounts = lastLogin
+    ? [lastLogin, ...remainingProfiles]
+    : remainingProfiles;
+
   const handleSign = async (account: string) => {
+    const isManager = ({ account: a, __typename }: any) =>
+      __typename === "AccountManaged" && a.address === account;
+    const manager = allProfiles.find(isManager);
+    const meta = { app: HEY_APP, account };
+    const request: ChallengeRequest = manager
+      ? { accountManager: { manager: manager.account.owner, ...meta } }
+      : { accountOwner: { owner: address, ...meta } };
+
     try {
       setLoggingInAccountId(account || null);
       setIsSubmitting(true);
       // Get challenge
       const challenge = await loadChallenge({
-        variables: {
-          request: {
-            accountOwner: {
-              // app: HEY_APP,
-              owner: address,
-              account
-            }
-          }
-        }
+        variables: { request }
       });
 
       if (!challenge?.data?.challenge?.text) {
@@ -99,19 +114,6 @@ const Login = ({ setHasAccounts }: LoginProps) => {
       setIsSubmitting(false);
     }
   };
-
-  const allProfiles = data?.accountsAvailable.items || [];
-  const lastLogin = data?.lastLoggedInAccount;
-
-  const remainingProfiles = lastLogin
-    ? allProfiles
-        .filter(({ account }) => account.address !== lastLogin.address)
-        .map(({ account }) => account)
-    : allProfiles.map(({ account }) => account);
-
-  const accounts = lastLogin
-    ? [lastLogin, ...remainingProfiles]
-    : remainingProfiles;
 
   return activeConnector?.id ? (
     <div className="space-y-3">
