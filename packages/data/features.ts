@@ -3,5 +3,5 @@ export const Features = {
 };
 
 export const Access = {
-  [Features.Staff]: ["0x253DEB93B71D08442ab6736c8aEee982Ff9481BF"]
+  [Features.Staff]: ["0x51F9cb3CDd9434B1d56ed4d3291AF2CA0464feB0"]
 };
