@@ -220,7 +220,13 @@ const Action = ({ closePopover, post }: ActionProps) => {
           <b>Tip ${amount}</b>
         </Button>
       ) : (
-        <FundButton className="w-full" />
+        <FundButton
+          className="w-full"
+          token={{
+            contractAddress: DEFAULT_COLLECT_TOKEN,
+            symbol: WRAPPED_NATIVE_TOKEN_SYMBOL
+          }}
+        />
       )}
     </div>
   );
