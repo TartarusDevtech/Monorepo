@@ -95,7 +95,7 @@ const SuperJoin = () => {
             <FundButton className="w-full" />
           )
         ) : (
-          <LoginButton className="w-full" />
+          <LoginButton className="w-full" title="Login to Join" />
         )}
       </div>
     </div>

@@ -95,7 +95,7 @@ const SuperFollow = () => {
             <FundButton className="w-full" />
           )
         ) : (
-          <LoginButton className="w-full" />
+          <LoginButton className="w-full" title="Login to Follow" />
         )}
       </div>
     </div>
