@@ -30,7 +30,7 @@ const AmountConfig = ({ setCollectType }: AmountConfigProps) => {
               ? undefined
               : {
                   amount: { currency: DEFAULT_COLLECT_TOKEN, value: "1" },
-                  referralShare: 5, // 5% for the Hey platform fees
+                  referralShare: 2.5, // 2.5% for the Hey platform fees
                   recipients: [
                     { address: currentAccount?.address, percent: 100 }
                   ]
