@@ -13,8 +13,8 @@ import { Events } from "@hey/data/events";
 import { useDepositMutation } from "@hey/indexer";
 import { type ChangeEvent, type RefObject, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import { erc20Abi, formatUnits } from "viem";
-import { useAccount, useReadContract } from "wagmi";
+import { formatUnits } from "viem";
+import { useAccount, useBalance } from "wagmi";
 
 interface FundProps {
   isHeyTip?: boolean;
@@ -31,11 +31,9 @@ const Fund = ({ isHeyTip }: FundProps) => {
   const handleTransactionLifecycle = useTransactionLifecycle();
   const pollTransactionStatus = usePollTransactionStatus();
 
-  const { data: balance, isLoading: balanceLoading } = useReadContract({
+  const { data: balance, isLoading: balanceLoading } = useBalance({
     address,
-    abi: erc20Abi,
-    functionName: "balanceOf",
-    args: [DEFAULT_COLLECT_TOKEN],
+    token: DEFAULT_COLLECT_TOKEN,
     query: { refetchInterval: 2000 }
   });
 
@@ -74,7 +72,7 @@ const Fund = ({ isHeyTip }: FundProps) => {
   });
 
   const walletBalance = balance
-    ? Number.parseFloat(formatUnits(balance, 18)).toFixed(2)
+    ? Number.parseFloat(formatUnits(balance.value, balance.decimals)).toFixed(2)
     : 0;
 
   const onOtherAmount = (event: ChangeEvent<HTMLInputElement>) => {
