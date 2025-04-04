@@ -1,6 +1,6 @@
-import path from "node:path";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
+import path from "node:path";
 import { defineConfig } from "vite";
 import EnvironmentPlugin from "vite-plugin-environment";
 import { VitePWA } from "vite-plugin-pwa";
@@ -9,7 +9,10 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    VitePWA(),
+    VitePWA({
+      registerType: "autoUpdate",
+      workbox: { clientsClaim: true, skipWaiting: true }
+    }),
     EnvironmentPlugin(["VITE_IS_PRODUCTION", "NEXT_PUBLIC_LENS_NETWORK"])
   ],
   resolve: {
