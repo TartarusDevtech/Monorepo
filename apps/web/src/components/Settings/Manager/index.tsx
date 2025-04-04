@@ -1,5 +1,6 @@
 import MetaTags from "@/components/Common/MetaTags";
 import NotLoggedIn from "@/components/Shared/NotLoggedIn";
+import WrongWallet from "@/components/Shared/Settings/WrongWallet";
 import {
   GridItemEight,
   GridItemFour,
@@ -7,12 +8,15 @@ import {
 } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { APP_NAME } from "@hey/data/constants";
+import { useAccount } from "wagmi";
 import SettingsSidebar from "../Sidebar";
 import AccountManager from "./AccountManager";
 import Signless from "./Signless";
 
 const ManagerSettings = () => {
   const { currentAccount } = useAccountStore();
+  const { address } = useAccount();
+  const disabled = currentAccount?.owner !== address;
 
   if (!currentAccount) {
     return <NotLoggedIn />;
@@ -25,8 +29,14 @@ const ManagerSettings = () => {
         <SettingsSidebar />
       </GridItemFour>
       <GridItemEight className="space-y-5">
-        <Signless />
-        <AccountManager />
+        {disabled ? (
+          <WrongWallet />
+        ) : (
+          <>
+            <Signless />
+            <AccountManager />
+          </>
+        )}
       </GridItemEight>
     </GridLayout>
   );

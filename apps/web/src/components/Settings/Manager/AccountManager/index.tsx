@@ -1,9 +1,6 @@
-import WrongWallet from "@/components/Shared/Settings/WrongWallet";
 import { Button, Card, Modal, TabButton } from "@/components/Shared/UI";
-import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
-import { useAccount } from "wagmi";
 import AddAccountManager from "./AddAccountManager";
 import Managed from "./Management/Managed";
 import Unmanaged from "./Management/Unmanaged";
@@ -16,15 +13,8 @@ enum Type {
 }
 
 const AccountManager = () => {
-  const { currentAccount } = useAccountStore();
   const [type, setType] = useState<Type>(Type.MANAGERS);
   const [showAddManagerModal, setShowAddManagerModal] = useState(false);
-  const { address } = useAccount();
-  const disabled = currentAccount?.owner !== address;
-
-  if (disabled) {
-    return <WrongWallet />;
-  }
 
   return (
     <Card className="linkify space-y-2">
