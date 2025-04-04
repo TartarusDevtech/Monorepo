@@ -1,4 +1,5 @@
 import type { AnyKeyValueFragment } from "@hey/indexer";
+import type { Address } from "viem";
 
 const isAddressKeyValue = (
   kv: AnyKeyValueFragment
@@ -21,7 +22,7 @@ const isStringKeyValue = (
 const getAnyKeyValue = (
   anyKeyValue: AnyKeyValueFragment[],
   key: string
-): { address?: string; bigDecimal?: string; string?: string } | null => {
+): { address?: Address; bigDecimal?: string; string?: string } | null => {
   for (const item of anyKeyValue) {
     if (
       (item.__typename === "AddressKeyValue" ||
@@ -29,7 +30,7 @@ const getAnyKeyValue = (
         item.__typename === "StringKeyValue") &&
       item.key === key
     ) {
-      if (isAddressKeyValue(item)) return { address: item.address };
+      if (isAddressKeyValue(item)) return { address: item.address as Address };
       if (isBigDecimalKeyValue(item)) return { bigDecimal: item.bigDecimal };
       if (isStringKeyValue(item)) return { string: item.string };
     }

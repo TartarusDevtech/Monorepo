@@ -11,6 +11,7 @@ import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useApolloClient } from "@apollo/client";
 import {
   DEFAULT_COLLECT_TOKEN,
+  DEFAULT_TOKEN,
   WRAPPED_NATIVE_TOKEN_SYMBOL
 } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
@@ -220,13 +221,7 @@ const Action = ({ closePopover, post }: ActionProps) => {
           <b>Tip ${amount}</b>
         </Button>
       ) : (
-        <FundButton
-          className="w-full"
-          token={{
-            contractAddress: DEFAULT_COLLECT_TOKEN,
-            symbol: WRAPPED_NATIVE_TOKEN_SYMBOL
-          }}
-        />
+        <FundButton className="w-full" token={DEFAULT_TOKEN} />
       )}
     </div>
   );

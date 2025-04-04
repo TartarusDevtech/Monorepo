@@ -3,8 +3,8 @@ import Loader from "@/components/Shared/Loader";
 import { ErrorMessage, Image } from "@/components/Shared/UI";
 import {
   DEFAULT_COLLECT_TOKEN,
-  NATIVE_TOKEN_SYMBOL,
-  WRAPPED_NATIVE_TOKEN_SYMBOL
+  DEFAULT_TOKEN,
+  NATIVE_TOKEN_SYMBOL
 } from "@hey/data/constants";
 import { tokens } from "@hey/data/tokens";
 import getTokenImage from "@hey/helpers/getTokenImage";
@@ -50,14 +50,7 @@ const Balances = () => {
           {currency === DEFAULT_COLLECT_TOKEN && (
             <>
               <Unwrap value={value} refetch={refetch} />
-              <FundButton
-                size="sm"
-                outline
-                token={{
-                  contractAddress: DEFAULT_COLLECT_TOKEN,
-                  symbol: WRAPPED_NATIVE_TOKEN_SYMBOL
-                }}
-              />
+              <FundButton size="sm" outline token={DEFAULT_TOKEN} />
             </>
           )}
         </div>

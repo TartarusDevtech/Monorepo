@@ -92,7 +92,10 @@ const SuperFollow = () => {
               }
             />
           ) : (
-            <FundButton className="w-full" />
+            <FundButton
+              className="w-full"
+              token={{ contractAddress: assetContract, symbol: assetSymbol }}
+            />
           )
         ) : (
           <LoginButton className="w-full" title="Login to Follow" />

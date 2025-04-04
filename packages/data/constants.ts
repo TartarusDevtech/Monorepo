@@ -60,3 +60,8 @@ export const ATTACHMENT = "tr:w-1000";
 export const LENS_NAMESPACE = "lens/";
 export const NATIVE_TOKEN_SYMBOL = IS_MAINNET ? "GHO" : "GRASS";
 export const WRAPPED_NATIVE_TOKEN_SYMBOL = IS_MAINNET ? "WGHO" : "WGRASS";
+
+export const DEFAULT_TOKEN = {
+  contractAddress: DEFAULT_COLLECT_TOKEN,
+  symbol: WRAPPED_NATIVE_TOKEN_SYMBOL
+};

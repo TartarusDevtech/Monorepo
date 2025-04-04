@@ -4,6 +4,7 @@ import type {
   GroupRuleFragment,
   GroupRules
 } from "@hey/indexer";
+import type { Address } from "viem";
 import getAnyKeyValue from "./getAnyKeyValue";
 
 const extractMembershipApproval = (rules: GroupRuleFragment[]): boolean => {
@@ -21,7 +22,7 @@ export const getMembershipApprovalDetails = (rules: GroupRules): boolean =>
   extractMembershipApproval(rules.anyOf);
 
 interface AssetDetails {
-  assetContract: string | null;
+  assetContract: Address | null;
   assetSymbol: string | null;
   amount: number | null;
 }
