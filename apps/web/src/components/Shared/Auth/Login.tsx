@@ -32,8 +32,9 @@ const Login = ({ setHasAccounts }: LoginProps) => {
     null
   );
 
-  const onError = (error: any) => {
+  const onError = (error?: any) => {
     setIsSubmitting(false);
+    setLoggingInAccountId(null);
     errorToast(error);
   };
 
@@ -41,9 +42,12 @@ const Login = ({ setHasAccounts }: LoginProps) => {
   const { disconnect } = useDisconnect();
   const { address, connector: activeConnector } = useAccount();
   const { signMessageAsync } = useSignMessage({ mutation: { onError } });
-  const [loadChallenge, { error: errorChallenge }] = useChallengeMutation();
-  const [authenticate, { error: errorAuthenticate }] =
-    useAuthenticateMutation();
+  const [loadChallenge, { error: errorChallenge }] = useChallengeMutation({
+    onError
+  });
+  const [authenticate, { error: errorAuthenticate }] = useAuthenticateMutation({
+    onError
+  });
 
   const { data, loading } = useAccountsAvailableQuery({
     onCompleted: (data) =>
@@ -111,9 +115,9 @@ const Login = ({ setHasAccounts }: LoginProps) => {
         return location.reload();
       }
 
-      return toast.error(Errors.SomethingWentWrong);
+      return onError({ message: Errors.SomethingWentWrong });
     } catch {
-      setIsSubmitting(false);
+      onError();
     }
   };
 
@@ -153,6 +157,7 @@ const Login = ({ setHasAccounts }: LoginProps) => {
                     account={account}
                     showUserPreview={false}
                   />
+                  {JSON.stringify(loggingInAccountId === account.address)}
                   <Button
                     disabled={
                       isSubmitting && loggingInAccountId === account.address

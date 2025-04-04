@@ -14,7 +14,6 @@ import {
   useSwitchAccountMutation
 } from "@hey/indexer";
 import { useState } from "react";
-import toast from "react-hot-toast";
 import Loader from "./Loader";
 
 const SwitchAccounts = () => {
@@ -24,8 +23,9 @@ const SwitchAccounts = () => {
     null
   );
 
-  const onError = (error: any) => {
+  const onError = (error?: any) => {
     setIsSubmitting(false);
+    setLoggingInAccountId(null);
     errorToast(error);
   };
 
@@ -60,9 +60,9 @@ const SwitchAccounts = () => {
         return location.reload();
       }
 
-      return toast.error(Errors.SomethingWentWrong);
-    } catch (error) {
-      onError(error);
+      return onError({ message: Errors.SomethingWentWrong });
+    } catch {
+      onError();
     }
   };
 

@@ -58,15 +58,17 @@ const ChooseUsername = () => {
   const handleWrongNetwork = useHandleWrongNetwork();
   const form = useZodForm({ mode: "onChange", schema: ValidationSchema });
 
-  const onError = (error: Error) => {
+  const onError = (error?: any) => {
     setIsSubmitting(false);
     errorToast(error);
   };
 
   const { signMessageAsync } = useSignMessage({ mutation: { onError } });
-  const [loadChallenge] = useChallengeMutation();
-  const [authenticate] = useAuthenticateMutation();
-  const [createAccountWithUsername] = useCreateAccountWithUsernameMutation();
+  const [loadChallenge] = useChallengeMutation({ onError });
+  const [authenticate] = useAuthenticateMutation({ onError });
+  const [createAccountWithUsername] = useCreateAccountWithUsernameMutation({
+    onError
+  });
 
   const username = form.watch("username");
 
@@ -141,8 +143,10 @@ const ChooseUsername = () => {
           }
         });
       }
-    } catch (error) {
-      errorToast(error);
+
+      return onError({ message: Errors.SomethingWentWrong });
+    } catch {
+      onError();
     } finally {
       setIsSubmitting(false);
     }

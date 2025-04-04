@@ -1,15 +1,20 @@
 import { H4, Image } from "@/components/Shared/UI";
+import errorToast from "@/helpers/errorToast";
 import { signIn } from "@/store/persisted/useAuthStore";
 import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import { useSwitchAccountMutation } from "@hey/indexer";
 import { useEffect } from "react";
-import toast from "react-hot-toast";
 import { useSignupStore } from ".";
 
 const Success = () => {
   const { accountAddress, onboardingToken } = useSignupStore();
-  const [switchAccount] = useSwitchAccountMutation();
+
+  const onError = (error: any) => {
+    errorToast(error);
+  };
+
+  const [switchAccount] = useSwitchAccountMutation({ onError });
 
   const handleAuth = async () => {
     try {
@@ -26,8 +31,10 @@ const Success = () => {
         return location.reload();
       }
 
-      return toast.error(Errors.SomethingWentWrong);
-    } catch {}
+      return onError({ message: Errors.SomethingWentWrong });
+    } catch {
+      onError({ message: Errors.SomethingWentWrong });
+    }
   };
 
   useEffect(() => {

@@ -4,8 +4,8 @@ import { toast } from "react-hot-toast";
 const FORBIDDEN_ERROR =
   "Forbidden - Failed to generate source stamp: App rejected verification request:";
 
-const errorToast = (error: any) => {
-  if (error?.message.includes("viem")) {
+const errorToast = (error?: any) => {
+  if (!error || error?.message?.includes("viem")) {
     return;
   }
 

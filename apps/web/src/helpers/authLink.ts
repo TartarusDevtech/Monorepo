@@ -65,6 +65,7 @@ const executeTokenRefresh = async (
         idToken: newIdToken,
         refreshToken: newRefreshToken
       });
+
       return newAccessToken;
     }
 
