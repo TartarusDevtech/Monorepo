@@ -211,6 +211,9 @@ importers:
       connectkit:
         specifier: ^1.9.0
         version: 1.9.0(@babel/core@7.26.10)(@tanstack/react-query@5.71.5(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react-is@16.13.1)(react@19.1.0)(viem@2.25.0(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))(wagmi@2.14.16(@tanstack/query-core@5.71.5)(@tanstack/react-query@5.71.5(react@19.1.0))(@types/react@19.1.0)(bufferutil@4.0.9)(immer@10.1.1)(react@19.1.0)(typescript@5.8.2)(utf-8-validate@5.0.10)(viem@2.25.0(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))(zod@3.24.2))
+      family:
+        specifier: ^0.1.1
+        version: 0.1.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(viem@2.25.0(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))(wagmi@2.14.16(@tanstack/query-core@5.71.5)(@tanstack/react-query@5.71.5(react@19.1.0))(@types/react@19.1.0)(bufferutil@4.0.9)(immer@10.1.1)(react@19.1.0)(typescript@5.8.2)(utf-8-validate@5.0.10)(viem@2.25.0(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))(zod@3.24.2))
       plur:
         specifier: ^5.1.0
         version: 5.1.0
