@@ -18,7 +18,7 @@ const SingleImagePost = ({ post }: SingleImagePostProps) => {
 
   return (
     <Link
-      to={`/posts/${post.id}`}
+      to={`/posts/${post.slug}`}
       key={post.id}
       className="relative h-80 overflow-hidden rounded-xl bg-center bg-cover"
       style={{

@@ -54,7 +54,7 @@ const PostStats = ({ post }: PostStatsProps) => {
           </button>
         ) : null}
         {quotes > 0 ? (
-          <Link className="outline-offset-2" to={`/posts/${post.id}/quotes`}>
+          <Link className="outline-offset-2" to={`/posts/${post.slug}/quotes`}>
             <b className="text-black dark:text-white">{nFormatter(quotes)}</b>{" "}
             {plur("Quote", quotes)}
           </Link>

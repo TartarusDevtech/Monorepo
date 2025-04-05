@@ -48,24 +48,23 @@ export const useHiddenCommentFeedStore = createTrackedSelector(store);
 
 const ViewPost = () => {
   const { pathname } = useLocation();
-  const { id } = useParams<{ id: string }>();
-
+  const { slug } = useParams<{ slug: string }>();
   const { currentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
 
-  const showQuotes = pathname === "/posts/[id]/quotes";
+  const showQuotes = pathname === `/posts/${slug}/quotes`;
 
   const { data, error, loading } = usePostQuery({
-    skip: !id,
-    variables: { request: { post: id } }
+    skip: !slug,
+    variables: { request: { post: slug } }
   });
 
   const { data: comments } = usePostReferencesQuery({
-    skip: !id,
+    skip: !slug,
     variables: {
       request: {
         pageSize: PageSize.Fifty,
-        referencedPost: id,
+        referencedPost: slug,
         visibilityFilter: PostVisibilityFilter.Hidden,
         referenceTypes: [PostReferenceType.CommentOn]
       }
@@ -74,7 +73,7 @@ const ViewPost = () => {
 
   const hasHiddenComments = (comments?.postReferences.items.length || 0) > 0;
 
-  if (!id || loading) {
+  if (!slug || loading) {
     return <PublicationPageShimmer publicationList={showQuotes} />;
   }
 

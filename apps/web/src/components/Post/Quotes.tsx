@@ -63,7 +63,7 @@ const Quotes = ({ post }: QuotesProps) => {
   return (
     <Card>
       <div className="flex items-center space-x-3 p-5">
-        <Link to={`/posts/${post.id}`}>
+        <Link to={`/posts/${post.slug}`}>
           <ArrowLeftIcon className="size-5" />
         </Link>
         <H5>Quotes</H5>

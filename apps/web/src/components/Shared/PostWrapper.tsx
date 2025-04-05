@@ -14,7 +14,7 @@ const PostWrapper = ({ children, className = "", post }: PostWrapperProps) => {
   const handleClick = () => {
     const selection = window.getSelection();
     if (!selection || !selection.toString().length) {
-      navigate(`/posts/${post.id}`);
+      navigate(`/posts/${post.slug}`);
     }
   };
 

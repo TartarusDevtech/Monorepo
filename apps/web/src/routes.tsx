@@ -52,7 +52,7 @@ export const Routes = () => {
               <Route path="rules" element={<RulesSettings />} />
             </Route>
           </Route>
-          <Route path="posts/:id">
+          <Route path="posts/:slug">
             <Route index element={<ViewPost />} />
             <Route path="quotes" element={<ViewPost />} />
           </Route>

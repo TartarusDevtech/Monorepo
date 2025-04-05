@@ -22,7 +22,7 @@ const Comment = ({ post, showCount }: CommentProps) => {
       <button
         aria-label="Comment"
         className="rounded-full p-1.5 outline-offset-2 hover:bg-neutral-300/20"
-        onClick={() => navigate(`/posts/${post.id}`)}
+        onClick={() => navigate(`/posts/${post.slug}`)}
         type="button"
       >
         <Tooltip

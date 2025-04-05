@@ -66,14 +66,14 @@ const PostActionExecutedNotification = ({
         {firstAccount && (
           <AggregatedNotificationTitle
             firstAccount={firstAccount}
-            linkToType={`/posts/${notification.post.id}`}
+            linkToType={`/posts/${notification.post.slug}`}
             text={text}
             type="Post"
           />
         )}
         <Link
           className="linkify mt-2 line-clamp-2 text-neutral-500 dark:text-neutral-200"
-          to={`/posts/${notification.post.id}`}
+          to={`/posts/${notification.post.slug}`}
         >
           <Markup mentions={post.mentions}>{filteredContent}</Markup>
         </Link>
