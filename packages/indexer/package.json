@@ -9,7 +9,7 @@
     "typecheck": "tsc --pretty"
   },
   "dependencies": {
-    "@apollo/client": "^3.13.5",
+    "@apollo/client": "^3.13.6",
     "@hey/data": "workspace:*",
     "axios": "^1.8.4",
     "graphql": "^16.10.0"
@@ -22,6 +22,6 @@
     "@graphql-codegen/typescript-react-apollo": "^4.3.2",
     "@hey/config": "workspace:*",
     "@types/node": "^22.14.0",
-    "typescript": "^5.7.3"
+    "typescript": "^5.8.3"
   }
 }
