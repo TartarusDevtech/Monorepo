@@ -1,5 +1,6 @@
 @import "tailwindcss";
-
+@plugin "@tailwindcss/aspect-ratio";
+@plugin "@tailwindcss/forms";
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
