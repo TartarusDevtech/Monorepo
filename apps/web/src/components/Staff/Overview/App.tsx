@@ -5,7 +5,11 @@ import {
   ErrorMessage,
   NumberedStat
 } from "@/components/Shared/UI";
-import { BLOCK_EXPLORER_URL, HEY_APP, HEY_TREASURY } from "@hey/data/constants";
+import {
+  DEVELOPER_PORTAL_URL,
+  HEY_APP,
+  HEY_TREASURY
+} from "@hey/data/constants";
 import { Link } from "react-router";
 import { formatEther } from "viem";
 import { useBalance } from "wagmi";
@@ -28,10 +32,10 @@ const App = () => {
           <div className="space-y-5">
             <div className="linkify font-bold">
               <Link
-                to={`${BLOCK_EXPLORER_URL}/address/${HEY_APP}`}
+                to={`${DEVELOPER_PORTAL_URL}/apps/${HEY_APP}`}
                 target="_blank"
               >
-                Open App Contract in Explorer
+                Open App Contract in Portal
               </Link>
             </div>
             <NumberedStat

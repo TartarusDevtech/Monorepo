@@ -5,7 +5,7 @@ import {
   ErrorMessage,
   NumberedStat
 } from "@/components/Shared/UI";
-import { BLOCK_EXPLORER_URL, HEY_SPONSOR } from "@hey/data/constants";
+import { DEVELOPER_PORTAL_URL, HEY_SPONSOR } from "@hey/data/constants";
 import { Link } from "react-router";
 import { formatEther } from "viem";
 import { useBalance } from "wagmi";
@@ -28,10 +28,10 @@ const Sponsorship = () => {
           <div className="space-y-5">
             <div className="linkify font-bold">
               <Link
-                to={`${BLOCK_EXPLORER_URL}/address/${HEY_SPONSOR}`}
+                to={`${DEVELOPER_PORTAL_URL}/sponsorship/${HEY_SPONSOR}`}
                 target="_blank"
               >
-                Open Sponsorship Contract in Explorer
+                Open Sponsorship Contract in Portal
               </Link>
             </div>
             <NumberedStat

@@ -38,6 +38,7 @@ export const PLACEHOLDER_IMAGE = `${STATIC_IMAGES_URL}/placeholder.webp`;
 export const BLOCK_EXPLORER_URL = IS_MAINNET
   ? "https://block-explorer.lens.dev"
   : "https://block-explorer.testnet.lens.dev";
+export const DEVELOPER_PORTAL_URL = "https://developer.lens.xyz/sponsorship";
 
 // Storage
 export const STORAGE_NODE_URL = "https://api.grove.storage";
