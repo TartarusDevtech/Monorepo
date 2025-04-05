@@ -15,15 +15,6 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src")
     }
   },
-  server: {
-    proxy: {
-      "/og": {
-        target: "https://og.hey.xyz",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/og/, "")
-      }
-    }
-  },
   build: {
     target: "esnext",
     cssMinify: "lightningcss",
