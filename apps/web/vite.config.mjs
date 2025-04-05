@@ -1,6 +1,6 @@
-import path from "node:path";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
+import path from "node:path";
 import { defineConfig } from "vite";
 import EnvironmentPlugin from "vite-plugin-environment";
 
@@ -13,6 +13,15 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src")
+    }
+  },
+  server: {
+    proxy: {
+      "/og": {
+        target: "https://og.hey.xyz",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/og/, "")
+      }
     }
   },
   build: {
