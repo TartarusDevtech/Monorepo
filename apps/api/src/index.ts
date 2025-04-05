@@ -14,7 +14,6 @@ import { liveRouter } from "./routers/live";
 import { miscRouter } from "./routers/misc";
 import { oembedRouter } from "./routers/oembed";
 import { preferencesRouter } from "./routers/preferences";
-import { staffPicksRouter } from "./routers/staffPicks";
 import { router } from "./trpc";
 
 export const appRouter = router({
@@ -24,8 +23,7 @@ export const appRouter = router({
   live: liveRouter,
   misc: miscRouter,
   oembed: oembedRouter,
-  preferences: preferencesRouter,
-  staffPicks: staffPicksRouter
+  preferences: preferencesRouter
 });
 
 export type AppRouter = typeof appRouter;

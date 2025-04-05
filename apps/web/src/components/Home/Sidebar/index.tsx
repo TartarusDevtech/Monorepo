@@ -3,7 +3,6 @@ import Footer from "@/components/Shared/Footer";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { memo } from "react";
 import SetAccount from "./SetAccount";
-import StaffPicks from "./StaffPicks";
 import WhoToFollow from "./WhoToFollow";
 
 const Sidebar = () => {
@@ -16,8 +15,6 @@ const Sidebar = () => {
       {/* <Gitcoin /> */}
       {loggedOut && <SignupCard />} {/* Onboarding steps */}
       {loggedInWithProfile && <SetAccount />}
-      {/* Recommendations */}
-      <StaffPicks />
       {loggedInWithProfile && <WhoToFollow />}
       <Footer />
     </>
