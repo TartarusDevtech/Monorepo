@@ -28,7 +28,6 @@ import Custom404 from "@/components/Shared/404";
 import Accounts from "@/components/Staff/Accounts";
 import StaffAccountOverview from "@/components/Staff/Accounts/Overview";
 import StaffOverview from "@/components/Staff/Overview";
-import Permissions from "@/components/Staff/Permissions";
 import Support from "@/components/Support";
 import { BrowserRouter, Route, Routes as RouterRoutes } from "react-router";
 
@@ -70,7 +69,6 @@ export const Routes = () => {
           </Route>
           <Route path="staff">
             <Route index element={<StaffOverview />} />
-            <Route path="permissions" element={<Permissions />} />
             <Route path="accounts">
               <Route index element={<Accounts />} />
               <Route path=":address" element={<StaffAccountOverview />} />

@@ -2,7 +2,7 @@ import { H6, Toggle } from "@/components/Shared/UI";
 import type { ReactNode } from "react";
 
 interface ToggleWithHelperProps {
-  description: ReactNode;
+  description?: ReactNode;
   disabled?: boolean;
   heading?: ReactNode;
   icon?: ReactNode;
@@ -24,9 +24,11 @@ const ToggleWithHelper = ({
         {icon && <span className="mt-1">{icon}</span>}
         <div>
           {heading && <b>{heading}</b>}
-          <H6 className="font-normal text-neutral-500 dark:text-neutral-200">
-            {description}
-          </H6>
+          {description && (
+            <H6 className="font-normal text-neutral-500 dark:text-neutral-200">
+              {description}
+            </H6>
+          )}
         </div>
       </div>
       <Toggle disabled={disabled} on={on} setOn={setOn} />

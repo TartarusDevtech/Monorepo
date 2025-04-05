@@ -1,10 +1,9 @@
-import { Toggle } from "@/components/Shared/UI";
-import ToggleWrapper from "@/components/Staff/Accounts/Overview/Tool/ToggleWrapper";
 import errorToast from "@/helpers/errorToast";
 import { trpc } from "@/helpers/trpc";
 import { Permission, PermissionId } from "@hey/data/permissions";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import ToggleWithHelper from "../ToggleWithHelper";
 
 interface SuspendProps {
   address: string;
@@ -27,19 +26,18 @@ const Suspend = ({ address }: SuspendProps) => {
 
   return (
     <div className="text-red-500">
-      <ToggleWrapper title="Suspend Account">
-        <Toggle
-          disabled={isLoading}
-          on={isSuspended}
-          setOn={() =>
-            mutate({
-              account: address,
-              enabled: true,
-              permission: PermissionId.Suspended
-            })
-          }
-        />
-      </ToggleWrapper>
+      <ToggleWithHelper
+        heading="Suspend Account"
+        disabled={isLoading}
+        on={isSuspended}
+        setOn={() =>
+          mutate({
+            account: address,
+            enabled: true,
+            permission: PermissionId.Suspended
+          })
+        }
+      />
     </div>
   );
 };

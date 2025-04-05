@@ -2,17 +2,11 @@ import FollowUnfollowButton from "@/components/Shared/Account/FollowUnfollowButt
 import Markup from "@/components/Shared/Markup";
 import Slug from "@/components/Shared/Slug";
 import { Button, H3, Image, LightBox, Tooltip } from "@/components/Shared/UI";
-import hasAccess from "@/helpers/hasAccess";
 import { useTheme } from "@/hooks/useTheme";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
-import {
-  Cog6ToothIcon,
-  MapPinIcon,
-  ShieldCheckIcon
-} from "@heroicons/react/24/outline";
+import { Cog6ToothIcon, MapPinIcon } from "@heroicons/react/24/outline";
 import { EyeSlashIcon } from "@heroicons/react/24/solid";
 import { EXPANDED_AVATAR, STATIC_IMAGES_URL } from "@hey/data/constants";
-import { Features } from "@hey/data/features";
 import getAccount from "@hey/helpers/getAccount";
 import getAccountAttribute from "@hey/helpers/getAccountAttribute";
 import getAvatar from "@hey/helpers/getAvatar";
@@ -37,7 +31,6 @@ const Details = ({ isSuspended = false, account }: DetailsProps) => {
   const navigate = useNavigate();
   const { currentAccount } = useAccountStore();
   const [expandedImage, setExpandedImage] = useState<null | string>(null);
-  const isStaff = hasAccess(Features.Staff);
   const { theme } = useTheme();
 
   const renderAccountAttribute = (
@@ -129,18 +122,6 @@ const Details = ({ isSuspended = false, account }: DetailsProps) => {
         ) : null}
         <div className="divider w-full" />
         <div className="space-y-2">
-          {isStaff && (
-            <MetaDetails
-              icon={<ShieldCheckIcon className="size-4 text-yellow-600" />}
-            >
-              <Link
-                className="text-yellow-600"
-                to={`/staff/accounts/${account.address}`}
-              >
-                Open in Staff Tools
-              </Link>
-            </MetaDetails>
-          )}
           {renderAccountAttribute(
             "location",
             <MapPinIcon className="size-4" />

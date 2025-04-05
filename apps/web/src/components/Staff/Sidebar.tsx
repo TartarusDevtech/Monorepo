@@ -1,9 +1,5 @@
 import Sidebar from "@/components/Shared/Sidebar";
-import {
-  AdjustmentsHorizontalIcon,
-  ClipboardIcon,
-  UserIcon
-} from "@heroicons/react/24/outline";
+import { ClipboardIcon, UserIcon } from "@heroicons/react/24/outline";
 
 const sidebarItems = [
   {
@@ -15,11 +11,6 @@ const sidebarItems = [
     icon: <UserIcon className="size-4" />,
     title: "Accounts",
     url: "/staff/accounts"
-  },
-  {
-    icon: <AdjustmentsHorizontalIcon className="size-4" />,
-    title: "Permissions",
-    url: "/staff/permissions"
   }
 ];
 
