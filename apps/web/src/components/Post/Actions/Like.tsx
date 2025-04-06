@@ -42,6 +42,7 @@ const Like = ({ post, showCount }: LikeProps) => {
       fields: { hasReacted: () => !hasReacted },
       id: cache.identify(post.operations)
     });
+
     cache.modify({
       fields: {
         stats: (existingData) => ({
