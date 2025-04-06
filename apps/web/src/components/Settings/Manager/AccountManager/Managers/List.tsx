@@ -133,26 +133,15 @@ const List = () => {
         <div className="flex flex-wrap items-center justify-between p-5">
           <div className="flex flex-col gap-y-3">
             <WalletAccount address={accountManager.manager} />
-            <div className="flex flex-col gap-y-1">
-              <Permission
-                title="Can execute transactions"
-                type="canExecuteTransactions"
-                enabled={accountManager.permissions.canExecuteTransactions}
-                manager={accountManager}
-              />
-              <Permission
-                title="Can transfer native"
-                type="canTransferNative"
-                enabled={accountManager.permissions.canTransferNative}
-                manager={accountManager}
-              />
-              <Permission
-                title="Can transfer tokens"
-                type="canTransferTokens"
-                enabled={accountManager.permissions.canTransferTokens}
-                manager={accountManager}
-              />
-            </div>
+            <Permission
+              title="Can spend funds"
+              enabled={
+                accountManager.permissions.canExecuteTransactions &&
+                accountManager.permissions.canTransferNative &&
+                accountManager.permissions.canTransferTokens
+              }
+              manager={accountManager}
+            />
           </div>
           <Button
             disabled={removingAddress === accountManager.manager}

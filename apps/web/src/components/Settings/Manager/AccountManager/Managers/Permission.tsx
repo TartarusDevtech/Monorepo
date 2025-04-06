@@ -18,12 +18,11 @@ import toast from "react-hot-toast";
 
 interface PermissionsProps {
   title: string;
-  type: string;
   enabled: boolean;
   manager: AccountManagerFragment;
 }
 
-const Permission = ({ title, type, enabled, manager }: PermissionsProps) => {
+const Permission = ({ title, enabled, manager }: PermissionsProps) => {
   const { currentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
   const { setShowAuthModal } = useAuthModalStore();
@@ -35,12 +34,11 @@ const Permission = ({ title, type, enabled, manager }: PermissionsProps) => {
     cache.modify({
       id: cache.identify(manager),
       fields: {
-        permissions: (existingData) => {
-          return {
-            ...existingData,
-            [type]: !enabled
-          };
-        }
+        permissions: (existingData) => ({
+          ...existingData,
+          canTransferNative: !enabled,
+          canTransferTokens: !enabled
+        })
       }
     });
   };
@@ -83,18 +81,9 @@ const Permission = ({ title, type, enabled, manager }: PermissionsProps) => {
         request: {
           manager: manager.manager,
           permissions: {
-            canExecuteTransactions:
-              type === "canExecuteTransactions"
-                ? !enabled
-                : manager.permissions.canExecuteTransactions,
-            canTransferNative:
-              type === "canTransferNative"
-                ? !enabled
-                : manager.permissions.canTransferNative,
-            canTransferTokens:
-              type === "canTransferTokens"
-                ? !enabled
-                : manager.permissions.canTransferTokens,
+            canTransferNative: !enabled,
+            canTransferTokens: !enabled,
+            canExecuteTransactions: true,
             canSetMetadataUri: true
           }
         }
