@@ -7,9 +7,7 @@ const Managers = () => {
         Accounts with control over your account can act on your behalf.
       </div>
       <div className="divider" />
-      <div className="mx-5 my-3">
-        <List />
-      </div>
+      <List />
     </div>
   );
 };

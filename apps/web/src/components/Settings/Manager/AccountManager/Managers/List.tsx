@@ -1,12 +1,13 @@
-import LazySingleAccount from "@/components/Shared/LazySingleAccount";
 import Loader from "@/components/Shared/Loader";
 import { Button, EmptyState, ErrorMessage } from "@/components/Shared/UI";
+import WalletAccount from "@/components/Shared/WalletAccount";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useApolloClient } from "@apollo/client";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
+import {} from "@heroicons/react/24/solid";
 import { Errors } from "@hey/data/errors";
 import {
   AccountManagersDocument,
@@ -18,6 +19,7 @@ import {
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Virtuoso } from "react-virtuoso";
+import Permissions from "./Permissions";
 
 const List = () => {
   const { currentAccount } = useAccountStore();
@@ -126,9 +128,13 @@ const List = () => {
     <Virtuoso
       data={accountManagers}
       endReached={onEndReached}
+      className="virtual-divider-list-window"
       itemContent={(_, accountManager) => (
-        <div className="flex items-center justify-between py-2">
-          <LazySingleAccount address={accountManager.manager} />
+        <div className="flex flex-wrap items-center justify-between p-5">
+          <div className="flex flex-col gap-y-3">
+            <WalletAccount address={accountManager.manager} />
+            <Permissions manager={accountManager} />
+          </div>
           <Button
             disabled={removingAddress === accountManager.manager}
             onClick={() => handleRemoveManager(accountManager.manager)}

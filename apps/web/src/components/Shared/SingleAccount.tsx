@@ -59,7 +59,7 @@ const SingleAccount = ({
       address={account.address}
       showUserPreview={showUserPreview}
     >
-      <div className="mr-8 flex items-center space-x-3">
+      <div className="mr-8 flex items-center gap-x-3">
         <UserAvatar />
         <div>
           <UserName />
