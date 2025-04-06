@@ -3,6 +3,11 @@ query AccountManagers($request: AccountManagersRequest!) {
     items {
       manager
       isLensManager
+      permissions {
+        canExecuteTransactions
+        canTransferNative
+        canTransferTokens
+      }
     }
     pageInfo {
       ...PaginatedResultInfo
