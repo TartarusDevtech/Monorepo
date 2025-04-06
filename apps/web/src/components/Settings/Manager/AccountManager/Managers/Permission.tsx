@@ -1,11 +1,11 @@
 import { Checkbox } from "@/components/Shared/UI";
 import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
-import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAuthModalStore } from "@/store/non-persisted/modal/useAuthModalStore";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
+import { useApolloClient } from "@apollo/client";
 import {} from "@heroicons/react/24/solid";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
@@ -17,21 +17,38 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 interface PermissionsProps {
+  title: string;
+  type: string;
+  enabled: boolean;
   manager: AccountManagerFragment;
 }
 
-const Permissions = ({ manager }: PermissionsProps) => {
+const Permission = ({ title, type, enabled, manager }: PermissionsProps) => {
   const { currentAccount } = useAccountStore();
   const { isSuspended } = useAccountStatus();
   const { setShowAuthModal } = useAuthModalStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { cache } = useApolloClient();
   const handleTransactionLifecycle = useTransactionLifecycle();
-  const pollTransactionStatus = usePollTransactionStatus();
 
-  const onCompleted = (hash: string) => {
+  const updateCache = () => {
+    cache.modify({
+      id: cache.identify(manager),
+      fields: {
+        permissions: (existingData) => {
+          return {
+            ...existingData,
+            [type]: !enabled
+          };
+        }
+      }
+    });
+  };
+
+  const onCompleted = () => {
+    updateCache();
     setIsSubmitting(false);
     trackEvent(Events.Group.UpdateSettings, { type: "update_manager" });
-    pollTransactionStatus(hash, () => location.reload());
   };
 
   const onError = (error: any) => {
@@ -50,7 +67,7 @@ const Permissions = ({ manager }: PermissionsProps) => {
     onError
   });
 
-  const handleUpdateManager = async (enabled: boolean, type: string) => {
+  const handleUpdateManager = async () => {
     if (!currentAccount) {
       return setShowAuthModal(true);
     }
@@ -68,15 +85,15 @@ const Permissions = ({ manager }: PermissionsProps) => {
           permissions: {
             canExecuteTransactions:
               type === "canExecuteTransactions"
-                ? enabled
+                ? !enabled
                 : manager.permissions.canExecuteTransactions,
             canTransferNative:
               type === "canTransferNative"
-                ? enabled
+                ? !enabled
                 : manager.permissions.canTransferNative,
             canTransferTokens:
               type === "canTransferTokens"
-                ? enabled
+                ? !enabled
                 : manager.permissions.canTransferTokens,
             canSetMetadataUri: true
           }
@@ -85,44 +102,16 @@ const Permissions = ({ manager }: PermissionsProps) => {
     });
   };
 
-  interface PermissionProps {
-    title: string;
-    type: string;
-    enabled: boolean;
-  }
-
-  const Permission = ({ title, type, enabled }: PermissionProps) => {
-    return (
-      <div className="text-gray-500 text-sm">
-        <Checkbox
-          label={title}
-          checked={enabled}
-          onChange={() => handleUpdateManager(!enabled, type)}
-          disabled={isSubmitting}
-        />
-      </div>
-    );
-  };
-
   return (
-    <div className="flex flex-col gap-y-1">
-      <Permission
-        title="Can execute transactions"
-        type="canExecuteTransactions"
-        enabled={manager.permissions.canExecuteTransactions}
-      />
-      <Permission
-        title="Can transfer native"
-        type="canTransferNative"
-        enabled={manager.permissions.canTransferNative}
-      />
-      <Permission
-        title="Can transfer tokens"
-        type="canTransferTokens"
-        enabled={manager.permissions.canTransferTokens}
+    <div className="text-gray-500 text-sm">
+      <Checkbox
+        label={title}
+        checked={enabled}
+        onChange={handleUpdateManager}
+        disabled={isSubmitting}
       />
     </div>
   );
 };
 
-export default Permissions;
+export default Permission;

@@ -10,6 +10,7 @@ import createWhoReferencedPostFieldPolicy from './createWhoReferencedPostFieldPo
 const cache = new InMemoryCache({
   possibleTypes: result.possibleTypes,
   typePolicies: {
+    AccountManager: { keyFields: ["manager"] },
     Query: {
       fields: {
         timeline: createTimelineFieldPolicy(),
