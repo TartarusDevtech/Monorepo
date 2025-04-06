@@ -6,7 +6,6 @@ import { BookmarkIcon as BookmarkIconOutline } from "@heroicons/react/24/outline
 import { BookmarkIcon as BookmarkIconSolid } from "@heroicons/react/24/solid";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import {
-  type LoggedInPostOperationsFragment,
   type PostFragment,
   useBookmarkPostMutation,
   useUndoBookmarkPostMutation
@@ -23,9 +22,13 @@ const Bookmark = ({ post }: BookmarkProps) => {
   const hasBookmarked = post.operations?.hasBookmarked;
 
   const updateCache = (cache: ApolloCache<any>, hasBookmarked: boolean) => {
+    if (!post.operations) {
+      return;
+    }
+
     cache.modify({
       fields: { hasBookmarked: () => hasBookmarked },
-      id: cache.identify(post.operations as LoggedInPostOperationsFragment)
+      id: cache.identify(post.operations)
     });
 
     cache.modify({

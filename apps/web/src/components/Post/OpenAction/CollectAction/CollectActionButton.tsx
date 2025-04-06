@@ -12,7 +12,6 @@ import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
 import getCollectActionData from "@hey/helpers/getCollectActionData";
 import {
-  type LoggedInPostOperationsFragment,
   type PostActionFragment,
   type PostFragment,
   useAccountBalancesQuery,
@@ -57,9 +56,13 @@ const CollectActionButton = ({
   const canCollect = !hasSimpleCollected;
 
   const updateCache = () => {
+    if (!post.operations) {
+      return;
+    }
+
     cache.modify({
       fields: { hasSimpleCollected: () => true },
-      id: cache.identify(post.operations as LoggedInPostOperationsFragment)
+      id: cache.identify(post.operations)
     });
     cache.modify({
       fields: {

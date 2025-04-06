@@ -9,12 +9,7 @@ import { useApolloClient } from "@apollo/client";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
 import getAccount from "@hey/helpers/getAccount";
-import {
-  type AccountFragment,
-  type LoggedInAccountOperationsFragment,
-  useBlockMutation,
-  useUnblockMutation
-} from "@hey/indexer";
+import { useBlockMutation, useUnblockMutation } from "@hey/indexer";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 
@@ -35,15 +30,15 @@ const BlockOrUnblockAccount = () => {
   const handleTransactionLifecycle = useTransactionLifecycle();
 
   const updateCache = () => {
+    if (!blockingorUnblockingAccount?.operations) {
+      return;
+    }
+
     cache.modify({
       fields: { isBlockedByMe: () => !hasBlocked },
-      id: cache.identify(
-        blockingorUnblockingAccount?.operations as LoggedInAccountOperationsFragment
-      )
+      id: cache.identify(blockingorUnblockingAccount?.operations)
     });
-    cache.evict({
-      id: cache.identify(blockingorUnblockingAccount as AccountFragment)
-    });
+    cache.evict({ id: cache.identify(blockingorUnblockingAccount) });
   };
 
   const onCompleted = () => {

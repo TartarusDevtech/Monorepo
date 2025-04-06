@@ -17,7 +17,6 @@ import {
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
 import {
-  type LoggedInPostOperationsFragment,
   type PostFragment,
   useAccountBalancesQuery,
   useExecutePostActionMutation
@@ -52,9 +51,13 @@ const Action = ({ closePopover, post }: ActionProps) => {
   });
 
   const updateCache = () => {
+    if (!post.operations) {
+      return;
+    }
+
     cache.modify({
       fields: { hasTipped: () => true },
-      id: cache.identify(post.operations as LoggedInPostOperationsFragment)
+      id: cache.identify(post.operations)
     });
     cache.modify({
       fields: {

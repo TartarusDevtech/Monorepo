@@ -8,11 +8,7 @@ import { useApolloClient } from "@apollo/client";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
 import getAccount from "@hey/helpers/getAccount";
-import {
-  type LoggedInAccountOperationsFragment,
-  useMuteMutation,
-  useUnmuteMutation
-} from "@hey/indexer";
+import { useMuteMutation, useUnmuteMutation } from "@hey/indexer";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 
@@ -32,11 +28,13 @@ const MuteOrUnmuteAccount = () => {
   const { cache } = useApolloClient();
 
   const updateCache = () => {
+    if (!mutingOrUnmutingAccount?.operations) {
+      return;
+    }
+
     cache.modify({
       fields: { isMutedByMe: () => !hasMuted },
-      id: cache.identify(
-        mutingOrUnmutingAccount?.operations as LoggedInAccountOperationsFragment
-      )
+      id: cache.identify(mutingOrUnmutingAccount?.operations)
     });
   };
 

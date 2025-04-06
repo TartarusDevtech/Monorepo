@@ -8,11 +8,7 @@ import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useApolloClient } from "@apollo/client";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
-import {
-  type AccountFragment,
-  type LoggedInAccountOperationsFragment,
-  useFollowMutation
-} from "@hey/indexer";
+import { type AccountFragment, useFollowMutation } from "@hey/indexer";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -39,11 +35,13 @@ const Follow = ({
   const handleTransactionLifecycle = useTransactionLifecycle();
 
   const updateCache = () => {
+    if (!account.operations) {
+      return;
+    }
+
     cache.modify({
       fields: { isFollowedByMe: () => true },
-      id: cache.identify(
-        account.operations as LoggedInAccountOperationsFragment
-      )
+      id: cache.identify(account.operations)
     });
   };
 

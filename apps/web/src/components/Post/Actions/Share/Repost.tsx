@@ -9,11 +9,7 @@ import { MenuItem } from "@headlessui/react";
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
-import {
-  type LoggedInPostOperationsFragment,
-  type PostFragment,
-  useRepostMutation
-} from "@hey/indexer";
+import { type PostFragment, useRepostMutation } from "@hey/indexer";
 import { useCounter } from "@uidotdev/usehooks";
 import type { Dispatch, SetStateAction } from "react";
 import { toast } from "react-hot-toast";
@@ -37,13 +33,17 @@ const Repost = ({ isSubmitting, post, setIsSubmitting }: RepostProps) => {
   const handleTransactionLifecycle = useTransactionLifecycle();
 
   const updateCache = () => {
+    if (!post.operations) {
+      return;
+    }
+
     cache.modify({
       fields: {
         hasReposted: (existingValue) => {
           return { ...existingValue, optimistic: true };
         }
       },
-      id: cache.identify(post.operations as LoggedInPostOperationsFragment)
+      id: cache.identify(post.operations)
     });
     cache.modify({
       fields: {

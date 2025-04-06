@@ -5,7 +5,6 @@ import { MenuItem } from "@headlessui/react";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import {
-  type LoggedInPostOperationsFragment,
   type PostFragment,
   type PostNotInterestedRequest,
   useAddPostNotInterestedMutation,
@@ -25,9 +24,13 @@ const NotInterested = ({ post }: NotInterestedProps) => {
   };
 
   const updateCache = (cache: ApolloCache<any>, notInterested: boolean) => {
+    if (!post.operations) {
+      return;
+    }
+
     cache.modify({
       fields: { isNotInterested: () => notInterested },
-      id: cache.identify(post.operations as LoggedInPostOperationsFragment)
+      id: cache.identify(post.operations)
     });
   };
 

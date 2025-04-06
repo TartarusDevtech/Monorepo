@@ -6,11 +6,7 @@ import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { useApolloClient } from "@apollo/client";
 import { Errors } from "@hey/data/errors";
 import { Events } from "@hey/data/events";
-import {
-  type GroupFragment,
-  type LoggedInGroupOperationsFragment,
-  useLeaveGroupMutation
-} from "@hey/indexer";
+import { type GroupFragment, useLeaveGroupMutation } from "@hey/indexer";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -27,9 +23,13 @@ const Leave = ({ group, setJoined, small }: LeaveProps) => {
   const handleTransactionLifecycle = useTransactionLifecycle();
 
   const updateCache = () => {
+    if (!group.operations) {
+      return;
+    }
+
     cache.modify({
       fields: { isMember: () => false },
-      id: cache.identify(group.operations as LoggedInGroupOperationsFragment)
+      id: cache.identify(group.operations)
     });
   };
 
