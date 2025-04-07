@@ -1,4 +1,5 @@
-export const onRequest: PagesFunction = async ({ request }) => {
+export const onRequest: PagesFunction = async (context) => {
+  const { request } = context;
   const userAgent = request.headers.get("user-agent")?.toLowerCase() || "";
   const url = new URL(request.url);
   const path = url.pathname;
@@ -9,14 +10,16 @@ export const onRequest: PagesFunction = async ({ request }) => {
     );
 
   if (isBot) {
-    if (path.startsWith("/u/")) {
-      return Response.redirect(`https://og.hey.xyz${path}`, 302);
-    }
-
-    if (path.startsWith("/posts/")) {
-      return Response.redirect(`https://og.hey.xyz${path}`, 302);
+    if (path.startsWith("/u/") || path.startsWith("/posts/")) {
+      const target = `https://og.hey.xyz${path}`;
+      return fetch(target, {
+        headers: request.headers,
+        method: request.method,
+        body: request.body,
+        redirect: "follow"
+      });
     }
   }
 
-  return await fetch(request);
+  return context.next();
 };
