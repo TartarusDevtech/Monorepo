@@ -10,7 +10,6 @@ import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { APP_NAME } from "@hey/data/constants";
 import { Features } from "@hey/data/features";
 import StaffSidebar from "../Sidebar";
-import App from "./App";
 import Sponsorship from "./Sponsorship";
 
 const StaffOverview = () => {
@@ -28,7 +27,6 @@ const StaffOverview = () => {
         <StaffSidebar />
       </GridItemFour>
       <GridItemEight className="space-y-5">
-        <App />
         <Sponsorship />
       </GridItemEight>
     </GridLayout>
