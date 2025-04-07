@@ -1,12 +1,10 @@
 import { Card, CardHeader, Image, Tooltip } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import { trpc } from "@/helpers/trpc";
 import { usePreferencesStore } from "@/store/persisted/usePreferencesStore";
 import { CheckCircleIcon as CheckCircleIconOutline } from "@heroicons/react/24/outline";
 import { CheckCircleIcon as CheckCircleIconSolid } from "@heroicons/react/24/solid";
 import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
-import { Events } from "@hey/data/events";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
@@ -24,10 +22,6 @@ const AppIcon = () => {
     trpc.preferences.update.mutationOptions({
       onSuccess: (data) => {
         setAppIcon(data.appIcon ?? 0);
-        trackEvent(Events.Account.UpdateSettings, {
-          type: "set_app_icon",
-          id: data.appIcon
-        });
         toast.success("App icon updated");
       },
       onError: errorToast

@@ -8,14 +8,12 @@ import {
   TextArea,
   useZodForm
 } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import uploadMetadata from "@/helpers/uploadMetadata";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { Errors } from "@hey/data/errors";
-import { Events } from "@hey/data/events";
 import { Regex } from "@hey/data/regex";
 import { type GroupFragment, useSetGroupMetadataMutation } from "@hey/indexer";
 import { group as groupMetadata } from "@lens-protocol/metadata";
@@ -53,7 +51,6 @@ const GroupSettingsForm = ({ group }: GroupSettingsFormProps) => {
 
   const onCompleted = () => {
     setIsSubmitting(false);
-    trackEvent(Events.Group.UpdateSettings, { type: "set_metadata" });
     toast.success("Group updated");
   };
 

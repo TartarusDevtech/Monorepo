@@ -1,10 +1,8 @@
 import { Button, Input, Modal } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { WRAPPED_NATIVE_TOKEN_SYMBOL } from "@hey/data/constants";
-import { Events } from "@hey/data/events";
 import { useWrapTokensMutation } from "@hey/indexer";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -23,7 +21,6 @@ const Wrap = ({ value, refetch }: WrapProps) => {
 
   const onCompleted = (hash: string) => {
     setIsSubmitting(false);
-    trackEvent(Events.Account.WrapTokens);
     setShowModal(false);
     toast.success("Wrap Initiated");
     pollTransactionStatus(hash, () => {

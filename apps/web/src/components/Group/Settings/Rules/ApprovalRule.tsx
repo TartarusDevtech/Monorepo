@@ -1,12 +1,10 @@
 import ToggleWithHelper from "@/components/Shared/ToggleWithHelper";
 import { Card, CardHeader } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { Errors } from "@hey/data/errors";
-import { Events } from "@hey/data/events";
 import {
   type GroupFragment,
   GroupRuleType,
@@ -34,7 +32,6 @@ const ApprovalRule = ({ group }: ApprovalRuleProps) => {
   const onCompleted = () => {
     setIsSubmitting(false);
     setIsApprovalRuleEnabled(!isApprovalRuleEnabled);
-    trackEvent(Events.Group.UpdateSettings, { type: "approval_rule" });
     toast.success("Approval rule updated");
   };
 

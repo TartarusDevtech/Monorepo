@@ -1,12 +1,10 @@
 import { Alert } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import { useMuteAlertStore } from "@/store/non-persisted/alert/useMuteAlertStore";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useApolloClient } from "@apollo/client";
 import { Errors } from "@hey/data/errors";
-import { Events } from "@hey/data/events";
 import getAccount from "@hey/helpers/getAccount";
 import { useMuteMutation, useUnmuteMutation } from "@hey/indexer";
 import { useState } from "react";
@@ -43,7 +41,6 @@ const MuteOrUnmuteAccount = () => {
     setIsSubmitting(false);
     setHasMuted(!hasMuted);
     setShowMuteOrUnmuteAlert(false);
-    trackEvent(hasMuted ? Events.Account.Unmute : Events.Account.Mute);
     toast.success(hasMuted ? "Unmuted successfully" : "Muted successfully");
   };
 

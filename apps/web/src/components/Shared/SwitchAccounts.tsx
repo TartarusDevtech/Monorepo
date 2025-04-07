@@ -1,12 +1,10 @@
 import { ErrorMessage, Image, Spinner } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { signIn, signOut } from "@/store/persisted/useAuthStore";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { Errors } from "@hey/data/errors";
-import { Events } from "@hey/data/events";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import {
@@ -56,7 +54,6 @@ const SwitchAccounts = () => {
         const idToken = auth.data?.switchAccount.idToken;
         signOut();
         signIn({ accessToken, idToken, refreshToken });
-        trackEvent(Events.Account.Switch);
         return location.reload();
       }
 

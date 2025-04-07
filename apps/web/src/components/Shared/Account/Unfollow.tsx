@@ -1,5 +1,4 @@
 import { Button } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAuthModalStore } from "@/store/non-persisted/modal/useAuthModalStore";
@@ -7,7 +6,6 @@ import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useApolloClient } from "@apollo/client";
 import { Errors } from "@hey/data/errors";
-import { Events } from "@hey/data/events";
 import { type AccountFragment, useUnfollowMutation } from "@hey/indexer";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -46,7 +44,6 @@ const Unfollow = ({
   const onCompleted = () => {
     updateCache();
     setIsSubmitting(false);
-    trackEvent(Events.Account.Unfollow);
   };
 
   const onError = (error: any) => {

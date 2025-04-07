@@ -1,13 +1,11 @@
 import SearchAccounts from "@/components/Shared/SearchAccounts";
 import { Button } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { ADDRESS_PLACEHOLDER } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
-import { Events } from "@hey/data/events";
 import { useAddAccountManagerMutation } from "@hey/indexer";
 import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
@@ -30,7 +28,6 @@ const AddAccountManager = ({
   const onCompleted = () => {
     setIsSubmitting(false);
     setShowAddManagerModal(false);
-    trackEvent(Events.Account.UpdateSettings, { type: "add_manager" });
     toast.success("Account manager added");
   };
 

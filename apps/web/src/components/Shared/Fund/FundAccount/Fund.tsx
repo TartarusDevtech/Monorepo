@@ -1,5 +1,4 @@
 import { Button, Card, Input, Spinner } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";
 import usePreventScrollOnNumberInput from "@/hooks/usePreventScrollOnNumberInput";
@@ -9,7 +8,6 @@ import {
   useFundModalStore
 } from "@/store/non-persisted/modal/useFundModalStore";
 import { NATIVE_TOKEN_SYMBOL } from "@hey/data/constants";
-import { Events } from "@hey/data/events";
 import { useDepositMutation } from "@hey/indexer";
 import { type ChangeEvent, type RefObject, useRef, useState } from "react";
 import toast from "react-hot-toast";
@@ -42,7 +40,6 @@ const Fund = ({ token }: FundProps) => {
     setAmount(2);
     setOther(false);
     setIsSubmitting(false);
-    trackEvent(Events.Account.DepositFunds);
     toast.success("Deposit initiated");
     pollTransactionStatus(hash, () => {
       setShowFundModal(false);

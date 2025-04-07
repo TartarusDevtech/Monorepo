@@ -6,7 +6,6 @@ import {
   Input,
   Tooltip
 } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import { getSimplePaymentDetails } from "@/helpers/rules";
 import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";
@@ -21,7 +20,6 @@ import {
   WRAPPED_NATIVE_TOKEN_SYMBOL
 } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
-import { Events } from "@hey/data/events";
 import {
   AccountFollowRuleType,
   type AccountFollowRules,
@@ -59,7 +57,6 @@ const SuperFollow = () => {
   }, [simplePaymentAmount]);
 
   const onCompleted = (hash: string) => {
-    trackEvent(Events.Account.UpdateSettings, { type: "simple_payment_rule" });
     pollTransactionStatus(hash, async () => {
       const accountData = await getCurrentAccountDetails();
       setCurrentAccount(accountData?.data?.me.loggedInAs.account);

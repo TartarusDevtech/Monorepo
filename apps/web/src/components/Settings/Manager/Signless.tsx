@@ -1,11 +1,9 @@
 import { Button, Card, CardHeader } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { APP_NAME } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
-import { Events } from "@hey/data/events";
 import { useEnableSignlessMutation } from "@hey/indexer";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -17,7 +15,6 @@ const Signless = () => {
 
   const onCompleted = () => {
     setIsSubmitting(false);
-    trackEvent(Events.Account.UpdateSettings, { type: "enable_signless" });
     toast.success("Signless enabled");
   };
 

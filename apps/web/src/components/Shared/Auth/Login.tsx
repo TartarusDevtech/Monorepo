@@ -1,10 +1,8 @@
 import { Button, Card, ErrorMessage } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import { signIn } from "@/store/persisted/useAuthStore";
 import { KeyIcon } from "@heroicons/react/24/outline";
 import { Errors } from "@hey/data/errors";
-import { Events } from "@hey/data/events";
 import {
   type ChallengeRequest,
   useAccountsAvailableQuery,
@@ -108,7 +106,6 @@ const Login = ({ setHasAccounts }: LoginProps) => {
         const refreshToken = auth.data?.authenticate.refreshToken;
         const idToken = auth.data?.authenticate.idToken;
         signIn({ accessToken, idToken, refreshToken });
-        trackEvent(Events.Account.Login);
         return location.reload();
       }
 

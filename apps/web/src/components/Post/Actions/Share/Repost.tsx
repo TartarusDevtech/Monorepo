@@ -1,4 +1,3 @@
-import trackEvent from "@/helpers/analytics";
 import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
@@ -8,7 +7,6 @@ import { useApolloClient } from "@apollo/client";
 import { MenuItem } from "@headlessui/react";
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 import { Errors } from "@hey/data/errors";
-import { Events } from "@hey/data/events";
 import { type PostFragment, useRepostMutation } from "@hey/indexer";
 import { useCounter } from "@uidotdev/usehooks";
 import type { Dispatch, SetStateAction } from "react";
@@ -60,7 +58,6 @@ const Repost = ({ isSubmitting, post, setIsSubmitting }: RepostProps) => {
     setIsSubmitting(false);
     increment();
     updateCache();
-    trackEvent(Events.Post.Repost);
     toast.success("Post has been reposted!");
   };
 

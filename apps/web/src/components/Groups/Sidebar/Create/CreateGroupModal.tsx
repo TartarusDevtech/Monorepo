@@ -6,13 +6,11 @@ import {
   TextArea,
   useZodForm
 } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import uploadMetadata from "@/helpers/uploadMetadata";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { Errors } from "@hey/data/errors";
-import { Events } from "@hey/data/events";
 import { Regex } from "@hey/data/regex";
 import { useCreateGroupMutation } from "@hey/indexer";
 import { group } from "@lens-protocol/metadata";
@@ -48,7 +46,6 @@ const CreateGroupModal = () => {
     setIsSubmitting(false);
     setTransactionHash(hash);
     setScreen("minting");
-    trackEvent(Events.Group.Create);
   };
 
   const onError = (error: Error) => {

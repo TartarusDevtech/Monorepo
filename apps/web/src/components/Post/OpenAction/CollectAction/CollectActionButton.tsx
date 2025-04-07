@@ -1,7 +1,6 @@
 import FundButton from "@/components/Shared/Fund/FundButton";
 import LoginButton from "@/components/Shared/LoginButton";
 import { Button, Spinner } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
@@ -9,7 +8,6 @@ import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useApolloClient } from "@apollo/client";
 import { HEY_TREASURY } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
-import { Events } from "@hey/data/events";
 import getCollectActionData from "@hey/helpers/getCollectActionData";
 import {
   type PostActionFragment,
@@ -81,10 +79,6 @@ const CollectActionButton = ({
     setIsSubmitting(false);
     onCollectSuccess?.();
     updateCache();
-    trackEvent(Events.Post.Collect, {
-      amount: amount,
-      currency: assetSymbol
-    });
     toast.success("Collected successfully");
   };
 

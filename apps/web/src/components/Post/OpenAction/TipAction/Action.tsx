@@ -1,7 +1,6 @@
 import FundButton from "@/components/Shared/Fund/FundButton";
 import LoginButton from "@/components/Shared/LoginButton";
 import { Button, Input, Spinner } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
 import usePreventScrollOnNumberInput from "@/hooks/usePreventScrollOnNumberInput";
@@ -15,7 +14,6 @@ import {
   WRAPPED_NATIVE_TOKEN_SYMBOL
 } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
-import { Events } from "@hey/data/events";
 import {
   type PostFragment,
   useAccountBalancesQuery,
@@ -74,7 +72,6 @@ const Action = ({ closePopover, post }: ActionProps) => {
     setIsSubmitting(false);
     closePopover();
     updateCache();
-    trackEvent(Events.Post.Tip, { amount: amount });
     toast.success(`Tipped ${amount} ${WRAPPED_NATIVE_TOKEN_SYMBOL}`);
   };
 

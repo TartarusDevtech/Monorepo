@@ -1,11 +1,9 @@
 import { Button } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { useApolloClient } from "@apollo/client";
 import { Errors } from "@hey/data/errors";
-import { Events } from "@hey/data/events";
 import { type GroupFragment, useLeaveGroupMutation } from "@hey/indexer";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -37,7 +35,6 @@ const Leave = ({ group, setJoined, small }: LeaveProps) => {
     updateCache();
     setIsSubmitting(false);
     setJoined(false);
-    trackEvent(Events.Group.Leave);
     toast.success("Left group");
   };
 

@@ -4,7 +4,6 @@ import { AudioPostSchema } from "@/components/Shared/Audio";
 import Wrapper from "@/components/Shared/Embed/Wrapper";
 import EmojiPicker from "@/components/Shared/EmojiPicker";
 import { Button, Card, H6 } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import uploadMetadata from "@/helpers/uploadMetadata";
 import useCreatePost from "@/hooks/useCreatePost";
@@ -27,7 +26,6 @@ import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { APP_URL, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
-import { Events } from "@hey/data/events";
 import collectActionParams from "@hey/helpers/collectActionParams";
 import getAccount from "@hey/helpers/getAccount";
 import getMentions from "@hey/helpers/getMentions";
@@ -114,13 +112,6 @@ const NewPublication = ({ className, post, feed }: NewPublicationProps) => {
 
   const onCompleted = () => {
     reset();
-    trackEvent(
-      isComment
-        ? Events.Post.Comment
-        : isQuote
-          ? Events.Post.Quote
-          : Events.Post.Post
-    );
   };
 
   const onError = (error?: any) => {

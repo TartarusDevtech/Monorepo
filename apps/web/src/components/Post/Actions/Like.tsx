@@ -1,5 +1,4 @@
 import { Tooltip } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
@@ -8,7 +7,6 @@ import type { ApolloCache } from "@apollo/client";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { HeartIcon as HeartIconSolid } from "@heroicons/react/24/solid";
 import { Errors } from "@hey/data/errors";
-import { Events } from "@hey/data/events";
 import nFormatter from "@hey/helpers/nFormatter";
 import {
   type PostFragment,
@@ -59,7 +57,6 @@ const Like = ({ post, showCount }: LikeProps) => {
   };
 
   const [addReaction] = useAddReactionMutation({
-    onCompleted: () => trackEvent(Events.Post.Like),
     onError: (error) => {
       toggleReact();
       decrement();
@@ -69,7 +66,6 @@ const Like = ({ post, showCount }: LikeProps) => {
   });
 
   const [undoReaction] = useUndoReactionMutation({
-    onCompleted: () => trackEvent(Events.Post.UndoLike),
     onError: (error) => {
       toggleReact();
       increment();

@@ -1,12 +1,10 @@
 import { Alert } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useDeletePostAlertStore } from "@/store/non-persisted/alert/useDeletePostAlertStore";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { useApolloClient } from "@apollo/client";
 import { Errors } from "@hey/data/errors";
-import { Events } from "@hey/data/events";
 import { useDeletePostMutation } from "@hey/indexer";
 import { toast } from "react-hot-toast";
 
@@ -26,7 +24,6 @@ const DeletePost = () => {
   const onCompleted = () => {
     setShowPostDeleteAlert(false);
     updateCache();
-    trackEvent(Events.Post.Delete);
     toast.success("Post deleted");
   };
 

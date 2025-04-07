@@ -1,5 +1,4 @@
 import { Checkbox } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAuthModalStore } from "@/store/non-persisted/modal/useAuthModalStore";
@@ -8,7 +7,6 @@ import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useApolloClient } from "@apollo/client";
 import {} from "@heroicons/react/24/solid";
 import { Errors } from "@hey/data/errors";
-import { Events } from "@hey/data/events";
 import {
   type AccountManagerFragment,
   useUpdateAccountManagerMutation
@@ -46,7 +44,6 @@ const Permission = ({ title, enabled, manager }: PermissionsProps) => {
   const onCompleted = () => {
     updateCache();
     setIsSubmitting(false);
-    trackEvent(Events.Group.UpdateSettings, { type: "update_manager" });
   };
 
   const onError = (error: any) => {

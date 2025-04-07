@@ -8,7 +8,6 @@ import {
   TextArea,
   useZodForm
 } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/analytics";
 import errorToast from "@/helpers/errorToast";
 import uploadMetadata from "@/helpers/uploadMetadata";
 import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";
@@ -16,7 +15,6 @@ import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { Errors } from "@hey/data/errors";
-import { Events } from "@hey/data/events";
 import { Regex } from "@hey/data/regex";
 import getAccountAttribute from "@hey/helpers/getAccountAttribute";
 import trimify from "@hey/helpers/trimify";
@@ -72,7 +70,6 @@ const AccountSettingsForm = () => {
       const accountData = await getCurrentAccountDetails();
       setCurrentAccount(accountData?.data?.me.loggedInAs.account);
       setIsSubmitting(false);
-      trackEvent(Events.Account.UpdateSettings, { type: "set_metadata" });
       toast.success("Account updated");
     });
   };
