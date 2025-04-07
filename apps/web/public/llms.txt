@@ -1,0 +1,9 @@
+# Hey.xyz llms.txt Integration File
+
+Hey is a decentralized, permissionless social media platform built on top of the Lens Protocol. It enables users to own their content, social graph, and identity on-chain—completely free from the control of centralized platforms.
+
+# Content Types
+
+- User account: https://hey.xyz/u/{username}
+- Post: https://hey.xyz/posts/{postSlug}
+- Group: https://hey.xyz/g/{groupAddress}
