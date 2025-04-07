@@ -1,5 +1,4 @@
-const decoded = (str: string): string =>
-  Buffer.from(str, "base64").toString("binary");
+const decoded = (str: string): string => atob(str);
 
 const parseJwt = (
   token: string

@@ -1,7 +1,6 @@
 import { IS_MAINNET, WALLETCONNECT_PROJECT_ID } from "@hey/data/constants";
 import getRpc from "@hey/helpers/getRpc";
 import { chains } from "@lens-chain/sdk/viem";
-import { ConnectKitProvider } from "connectkit";
 import { familyAccountsConnector } from "family";
 import type { ReactNode } from "react";
 import { WagmiProvider, createConfig } from "wagmi";
@@ -28,11 +27,7 @@ interface Web3ProviderProps {
 }
 
 const Web3Provider = ({ children }: Web3ProviderProps) => {
-  return (
-    <WagmiProvider config={config}>
-      <ConnectKitProvider>{children}</ConnectKitProvider>
-    </WagmiProvider>
-  );
+  return <WagmiProvider config={config}>{children}</WagmiProvider>;
 };
 
 export default Web3Provider;
