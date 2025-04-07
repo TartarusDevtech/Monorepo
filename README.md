@@ -70,14 +70,6 @@ Ready to build the application? Just run this command:
 pnpm build
 ```
 
-### Test the application
-
-Want to run tests while you're developing? Here's how you do it:
-
-```bash
-pnpm test
-```
-
 ## Periodic Tasks
 
 ### Remove unused exports and helpers
