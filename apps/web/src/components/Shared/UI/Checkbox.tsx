@@ -25,7 +25,10 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           type="checkbox"
           {...props}
         />
-        <label className="inline-block whitespace-nowrap" htmlFor={id}>
+        <label
+          className="inline-block cursor-pointer whitespace-nowrap"
+          htmlFor={id}
+        >
           {label}
         </label>
       </div>
