@@ -8,7 +8,7 @@ import { storageClient } from "./storageClient";
 import { queryClient, trpc } from "./trpc";
 
 const FALLBACK_TYPE = "image/jpeg";
-const FILE_SIZE_LIMIT_MB = 5 * 1024 * 1024; // 5MB in bytes
+const FILE_SIZE_LIMIT_MB = 8 * 1024 * 1024; // 8MB in bytes
 
 const getS3Client = async (): Promise<S3> => {
   const data = await queryClient.fetchQuery(trpc.misc.sts.queryOptions());
