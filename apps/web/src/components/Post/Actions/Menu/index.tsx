@@ -49,9 +49,9 @@ const PostMenu = ({ post }: PostMenuProps) => {
               <NotInterested post={post} />
               <HideComment post={post} />
               <Bookmark post={post} />
+              <div className="divider" />
             </>
           ) : null}
-          <div className="divider" />
           <Share post={post} />
           <CopyPostText post={post} />
           <div className="divider" />
