@@ -26,13 +26,15 @@ const useCreatePost = ({
   const { cache } = useApolloClient();
   const isComment = Boolean(commentOn);
 
-  const updateCache = async (txHash: string) => {
+  const updateCache = async (txHash: string, toastId: string) => {
     const { data } = await getPost({ variables: { request: { txHash } } });
     if (!data?.post) {
       return;
     }
 
+    toast.dismiss(toastId);
     toast.success(`${isComment ? "Comment" : "Post"} created successfully!`);
+
     cache.modify({
       fields: {
         [isComment ? "postReferences" : "posts"]: () => {
@@ -43,7 +45,8 @@ const useCreatePost = ({
   };
 
   const onCompletedWithTransaction = (hash: string) => {
-    pollTransactionStatus(hash, () => updateCache(hash));
+    const toastId = toast.loading("Processing...");
+    pollTransactionStatus(hash, () => updateCache(hash, toastId));
     return onCompleted();
   };
 
