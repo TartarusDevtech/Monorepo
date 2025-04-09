@@ -3,6 +3,7 @@ import {
   EmptyState,
   ErrorMessage,
   Form,
+  Select,
   TextArea,
   useZodForm
 } from "@/components/Shared/UI";
@@ -10,12 +11,12 @@ import errorToast from "@/helpers/errorToast";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { Errors } from "@hey/data/errors";
+import convertToTitleCase from "@hey/helpers/convertToTitleCase";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
-import { type PostReportReason, useReportPostMutation } from "@hey/indexer";
+import { PostReportReason, useReportPostMutation } from "@hey/indexer";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { z } from "zod";
-import Reason from "./Reason";
 
 const ValidationSchema = z.object({
   additionalComment: z.string().max(260, {
@@ -71,7 +72,24 @@ const ReportPost = ({ postId }: ReportPostProps) => {
             {error ? (
               <ErrorMessage error={error} title="Failed to report" />
             ) : null}
-            <Reason setReason={setReason} reason={reason} />
+            <div>
+              <div className="label">Type</div>
+              <Select
+                onChange={(value) => setReason(value)}
+                options={[
+                  {
+                    disabled: true,
+                    label: "Select type",
+                    value: "Select type"
+                  },
+                  ...Object.entries(PostReportReason).map(([key, value]) => ({
+                    label: convertToTitleCase(key),
+                    value,
+                    selected: reason === value
+                  }))
+                ]}
+              />
+            </div>
             {reason ? (
               <>
                 <TextArea
