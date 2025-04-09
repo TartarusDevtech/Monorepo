@@ -22,10 +22,7 @@ const FollowersYouKnowOverview = ({
   const { data, error, loading } = useFollowersYouKnowQuery({
     skip: !address || !currentAccount?.address,
     variables: {
-      request: {
-        observer: currentAccount?.address,
-        target: address
-      }
+      request: { observer: currentAccount?.address, target: address }
     }
   });
 
@@ -52,7 +49,7 @@ const FollowersYouKnowOverview = ({
       type="button"
     >
       <StackedAvatars
-        avatars={accounts.map((account) => getAvatar(account))}
+        avatars={accounts.map((account) => getAvatar(account.follower))}
         limit={3}
       />
       <div className="text-left">
