@@ -1,19 +1,14 @@
-import MetaTags from "@/components/Common/MetaTags";
 import NewPost from "@/components/Composer/NewPost";
 import Custom404 from "@/components/Shared/404";
 import Custom500 from "@/components/Shared/500";
 import Cover from "@/components/Shared/Cover";
-import {
-  EmptyState,
-  GridItemEight,
-  GridItemFour,
-  GridLayout
-} from "@/components/Shared/UI";
+import { PageLayout } from "@/components/Shared/PageLayout";
+import { EmptyState } from "@/components/Shared/UI";
 import hasAccess from "@/helpers/hasAccess";
 import { trpc } from "@/helpers/trpc";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { NoSymbolIcon } from "@heroicons/react/24/outline";
-import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
+import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import { AccountFeedType } from "@hey/data/enums";
 import { Features } from "@hey/data/features";
 import getAccount from "@hey/helpers/getAccount";
@@ -39,7 +34,7 @@ const ViewProfile = () => {
   const { currentAccount } = useAccountStore();
   const isStaff = hasAccess(Features.Staff);
 
-  const lowerCaseAccountFeedType = [
+  const lowerCaseFeedType = [
     AccountFeedType.Feed.toLowerCase(),
     AccountFeedType.Replies.toLowerCase(),
     AccountFeedType.Media.toLowerCase(),
@@ -47,7 +42,7 @@ const ViewProfile = () => {
   ];
 
   const getFeedType = (type: string | undefined) => {
-    return type && lowerCaseAccountFeedType.includes(type.toLowerCase())
+    return type && lowerCaseFeedType.includes(type.toLowerCase())
       ? type.toUpperCase()
       : AccountFeedType.Feed;
   };
@@ -108,12 +103,10 @@ const ViewProfile = () => {
   );
 
   return (
-    <>
-      <MetaTags
-        creator={getAccount(account).name}
-        description={account.metadata?.bio || ""}
-        title={`${getAccount(account).name} (${getAccount(account).usernameWithPrefix}) • ${APP_NAME}`}
-      />
+    <PageLayout
+      title={`${getAccount(account).name} (${getAccount(account).usernameWithPrefix}) • Hey`}
+      zeroTopMargin
+    >
       <Cover
         cover={
           isSuspended
@@ -122,31 +115,27 @@ const ViewProfile = () => {
               `${STATIC_IMAGES_URL}/patterns/2.svg`
         }
       />
-      <GridLayout>
-        <GridItemFour>{renderAccountDetails()}</GridItemFour>
-        <GridItemEight className="space-y-5">
-          {isDeleted || isSuspended ? (
-            renderEmptyState()
-          ) : (
-            <>
-              <FeedType feedType={feedType as AccountFeedType} />
-              {currentAccount?.address === account?.address && <NewPost />}
-              {(feedType === AccountFeedType.Feed ||
-                feedType === AccountFeedType.Replies ||
-                feedType === AccountFeedType.Media ||
-                feedType === AccountFeedType.Collects) && (
-                <AccountFeed
-                  username={getAccount(account).usernameWithPrefix}
-                  accountDetailsLoading={accountDetailsLoading}
-                  address={account.address}
-                  type={feedType}
-                />
-              )}
-            </>
+      {renderAccountDetails()}
+      {isDeleted || isSuspended ? (
+        renderEmptyState()
+      ) : (
+        <>
+          <FeedType feedType={feedType as AccountFeedType} />
+          {currentAccount?.address === account?.address && <NewPost />}
+          {(feedType === AccountFeedType.Feed ||
+            feedType === AccountFeedType.Replies ||
+            feedType === AccountFeedType.Media ||
+            feedType === AccountFeedType.Collects) && (
+            <AccountFeed
+              username={getAccount(account).usernameWithPrefix}
+              accountDetailsLoading={accountDetailsLoading}
+              address={account.address}
+              type={feedType}
+            />
           )}
-        </GridItemEight>
-      </GridLayout>
-    </>
+        </>
+      )}
+    </PageLayout>
   );
 };
 

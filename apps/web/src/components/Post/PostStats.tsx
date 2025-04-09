@@ -36,7 +36,7 @@ const PostStats = ({ post }: PostStatsProps) => {
   return (
     <>
       <div className="divider" />
-      <div className="flex flex-wrap items-center gap-x-6 gap-y-3 py-3 text-neutral-500 text-sm dark:text-neutral-200">
+      <div className="flex flex-wrap items-center gap-x-6 gap-y-3 py-3 text-gray-500 text-sm dark:text-gray-200">
         {comments > 0 ? (
           <span>
             <b className="text-black dark:text-white">{nFormatter(comments)}</b>{" "}
@@ -100,7 +100,6 @@ const PostStats = ({ post }: PostStatsProps) => {
         onClose={() => setShowLikesModal(false)}
         show={showLikesModal}
         title="Likes"
-        size="md"
       >
         <Likes postId={post.id} />
       </Modal>
@@ -108,7 +107,6 @@ const PostStats = ({ post }: PostStatsProps) => {
         onClose={() => setShowRepostsModal(false)}
         show={showRepostsModal}
         title="Reposts"
-        size="md"
       >
         <Reposts postId={post.id} />
       </Modal>
@@ -116,7 +114,6 @@ const PostStats = ({ post }: PostStatsProps) => {
         onClose={() => setShowCollectorsModal(false)}
         show={showCollectorsModal}
         title="Collectors"
-        size="md"
       >
         <Collectors postId={post.id} />
       </Modal>

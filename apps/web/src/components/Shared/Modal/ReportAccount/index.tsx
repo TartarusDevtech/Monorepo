@@ -1,4 +1,4 @@
-import SingleAccount from "@/components/Shared/SingleAccount";
+import SingleAccount from "@/components/Shared/Account/SingleAccount";
 import {
   Button,
   Card,

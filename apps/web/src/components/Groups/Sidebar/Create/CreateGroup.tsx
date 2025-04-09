@@ -1,5 +1,4 @@
 import { Button, Card, H5, Modal } from "@/components/Shared/UI";
-import { APP_NAME } from "@hey/data/constants";
 import { useState } from "react";
 import { createTrackedSelector } from "react-tracked";
 import { create } from "zustand";
@@ -36,7 +35,7 @@ const CreateGroup = () => {
       <Card as="aside" className="space-y-4 p-5">
         <div className="space-y-1">
           <H5>Create a group</H5>
-          <div>Create a new group on {APP_NAME}</div>
+          <div>Create a new group on Hey</div>
         </div>
         <Button onClick={() => setShowModal(true)}>Create group</Button>
       </Card>

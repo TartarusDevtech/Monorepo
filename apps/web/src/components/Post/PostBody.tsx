@@ -1,9 +1,9 @@
-import Attachments from "@/components/Shared/Attachments";
 import Quote from "@/components/Shared/Embed/Quote";
 import Markup from "@/components/Shared/Markup";
-import Oembed from "@/components/Shared/Oembed";
+import Attachments from "@/components/Shared/Post/Attachments";
+import Oembed from "@/components/Shared/Post/Oembed";
+import Video from "@/components/Shared/Post/Video";
 import { H6 } from "@/components/Shared/UI";
-import Video from "@/components/Shared/Video";
 import cn from "@/helpers/cn";
 import { EyeIcon } from "@heroicons/react/24/outline";
 import getPostData from "@hey/helpers/getPostData";
@@ -67,7 +67,7 @@ const PostBody = ({
       <Markup
         className={cn(
           { "line-clamp-5": canShowMore },
-          "markup linkify break-words text-md",
+          "markup linkify break-words",
           contentClassName
         )}
         mentions={targetPost.mentions}
@@ -75,7 +75,7 @@ const PostBody = ({
         {content}
       </Markup>
       {canShowMore ? (
-        <H6 className="mt-4 flex items-center space-x-1 text-neutral-500 dark:text-neutral-200">
+        <H6 className="mt-4 flex items-center space-x-1 text-gray-500 dark:text-gray-200">
           <EyeIcon className="size-4" />
           <Link to={`/posts/${slug}`}>Show more</Link>
         </H6>

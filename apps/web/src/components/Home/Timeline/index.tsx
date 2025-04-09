@@ -19,7 +19,6 @@ const Timeline = () => {
   };
 
   const { data, error, fetchMore, loading } = useTimelineQuery({
-    fetchPolicy: "cache-and-network",
     variables: { request }
   });
 

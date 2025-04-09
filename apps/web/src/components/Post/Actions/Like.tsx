@@ -109,16 +109,14 @@ const Like = ({ post, showCount }: LikeProps) => {
   return (
     <div
       className={cn(
-        hasReacted
-          ? "text-brand-500"
-          : "text-neutral-500 dark:text-neutral-200",
+        hasReacted ? "text-brand-500" : "text-gray-500 dark:text-gray-200",
         "flex items-center space-x-1"
       )}
     >
       <button
         aria-label="Like"
         className={cn(
-          hasReacted ? "hover:bg-brand-300/20" : "hover:bg-neutral-300/20",
+          hasReacted ? "hover:bg-brand-300/20" : "hover:bg-gray-300/20",
           "rounded-full p-1.5 outline-offset-2"
         )}
         onClick={handleCreateLike}
@@ -137,7 +135,9 @@ const Like = ({ post, showCount }: LikeProps) => {
         </Tooltip>
       </button>
       {reactions > 0 && !showCount ? (
-        <span className="text-[11px] sm:text-xs">{nFormatter(reactions)}</span>
+        <span className="w-3 text-[11px] sm:text-xs">
+          {nFormatter(reactions)}
+        </span>
       ) : null}
     </div>
   );

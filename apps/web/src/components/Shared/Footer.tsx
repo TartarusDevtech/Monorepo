@@ -1,4 +1,3 @@
-import { APP_NAME } from "@hey/data/constants";
 import { Link } from "react-router";
 const currentYear = new Date().getFullYear();
 
@@ -7,7 +6,7 @@ const links = [
   { href: "/privacy", label: "Privacy" },
   { href: "/guidelines", label: "Guidelines" },
   { href: "https://discord.gg/PaewZGkkBr", label: "Discord" },
-  { href: "/u/hey", label: APP_NAME },
+  { href: "/u/hey", label: "Hey" },
   { href: "https://status.hey.xyz", label: "Status" },
   { href: "https://github.com/heyverse/hey", label: "GitHub" },
   { href: "/support", label: "Support" }
@@ -15,9 +14,9 @@ const links = [
 
 const Footer = () => {
   return (
-    <footer className="sticky top-20 mt-4 flex flex-wrap gap-x-[12px] gap-y-2 px-3 text-sm lg:px-0">
-      <span className="font-bold text-neutral-500 dark:text-neutral-200">
-        &copy; {currentYear} {APP_NAME}.xyz
+    <footer className="flex flex-wrap gap-x-[12px] gap-y-2 px-3 text-sm lg:px-0">
+      <span className="font-bold text-gray-500 dark:text-gray-200">
+        &copy; {currentYear} Hey.xyz
       </span>
       {links.map((link) => (
         <Link

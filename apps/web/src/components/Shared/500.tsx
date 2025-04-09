@@ -1,7 +1,6 @@
-import MetaTags from "@/components/Common/MetaTags";
-import { Button, H2 } from "@/components/Shared/UI";
+import { Button, H3 } from "@/components/Shared/UI";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
-import { APP_NAME } from "@hey/data/constants";
+import { PageLayout } from "./PageLayout";
 
 const Custom500 = () => {
   const clearLocalData = () => {
@@ -10,11 +9,10 @@ const Custom500 = () => {
   };
 
   return (
-    <div className="page-center flex-col">
-      <MetaTags title={`500 • ${APP_NAME}`} />
-      <div className="py-10 text-center">
-        <H2 className="mb-4">Looks like something went wrong!</H2>
-        <div className="mb-4 text-neutral-500 dark:text-neutral-200">
+    <PageLayout title="500">
+      <div className="p-10 text-center">
+        <H3 className="mb-4">Looks like something went wrong!</H3>
+        <div className="mb-4 text-gray-500 dark:text-gray-200">
           We track these errors automatically, but if the problem persists feel
           free to contact us. In the meantime, try refreshing.
         </div>
@@ -22,12 +20,11 @@ const Custom500 = () => {
           className="mx-auto flex items-center"
           icon={<ArrowPathIcon className="size-4" />}
           onClick={() => clearLocalData()}
-          size="lg"
         >
           Clear cache and refresh
         </Button>
       </div>
-    </div>
+    </PageLayout>
   );
 };
 

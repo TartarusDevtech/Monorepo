@@ -1,4 +1,4 @@
-import Accounts from "@/components/Shared/Accounts";
+import Accounts from "@/components/Shared/Account/Accounts";
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 import type { RepostFragment } from "@hey/indexer";
 
@@ -17,7 +17,7 @@ const Reposted = ({ reposts }: RepostedProps) => {
   };
 
   return (
-    <div className="mb-3 flex items-center space-x-1 text-[13px] text-neutral-500 dark:text-neutral-200">
+    <div className="mb-3 flex items-center space-x-1 text-[13px] text-gray-500 dark:text-gray-200">
       <ArrowsRightLeftIcon className="size-4" />
       <Accounts context="reposted" accounts={getRepostedAccounts()} />
     </div>

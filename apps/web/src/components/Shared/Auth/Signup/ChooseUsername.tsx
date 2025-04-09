@@ -8,7 +8,7 @@ import {
   FaceFrownIcon,
   FaceSmileIcon
 } from "@heroicons/react/24/outline";
-import { APP_NAME, HEY_APP } from "@hey/data/constants";
+import { HEY_APP } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import { Regex } from "@hey/data/regex";
 import {
@@ -28,7 +28,7 @@ import AuthMessage from "../AuthMessage";
 export const SignupMessage = () => (
   <AuthMessage
     description="Let's start by buying your username for you. Buying you say? Yep - usernames cost a little bit of money to support the network and keep bots away"
-    title={`Welcome to ${APP_NAME}!`}
+    title="Welcome to Hey!"
   />
 );
 
@@ -182,7 +182,7 @@ const ChooseUsername = () => {
               <b>{form.formState.errors.username?.message?.toString()}</b>
             </div>
           ) : (
-            <div className="mt-2 flex items-center space-x-1 text-neutral-500 text-sm dark:text-neutral-200">
+            <div className="mt-2 flex items-center space-x-1 text-gray-500 text-sm dark:text-gray-200">
               <FaceSmileIcon className="size-4" />
               <b>Hope you will get a good one!</b>
             </div>

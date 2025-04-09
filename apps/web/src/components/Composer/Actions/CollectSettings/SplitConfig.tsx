@@ -1,4 +1,4 @@
-import SearchAccounts from "@/components/Shared/SearchAccounts";
+import SearchAccounts from "@/components/Shared/Account/SearchAccounts";
 import ToggleWithHelper from "@/components/Shared/ToggleWithHelper";
 import { Button, H6, Input } from "@/components/Shared/UI";
 import { useCollectActionStore } from "@/store/non-persisted/post/useCollectActionStore";

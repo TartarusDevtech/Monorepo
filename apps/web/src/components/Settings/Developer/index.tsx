@@ -1,13 +1,6 @@
-import MetaTags from "@/components/Common/MetaTags";
 import NotLoggedIn from "@/components/Shared/NotLoggedIn";
-import {
-  GridItemEight,
-  GridItemFour,
-  GridLayout
-} from "@/components/Shared/UI";
+import { PageLayout } from "@/components/Shared/PageLayout";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
-import { APP_NAME } from "@hey/data/constants";
-import SettingsSidebar from "../Sidebar";
 import Tokens from "./Tokens";
 
 const DeveloperSettings = () => {
@@ -18,15 +11,9 @@ const DeveloperSettings = () => {
   }
 
   return (
-    <GridLayout>
-      <MetaTags title={`Developer settings • ${APP_NAME}`} />
-      <GridItemFour>
-        <SettingsSidebar />
-      </GridItemFour>
-      <GridItemEight className="space-y-5">
-        <Tokens />
-      </GridItemEight>
-    </GridLayout>
+    <PageLayout title="Developer settings">
+      <Tokens />
+    </PageLayout>
   );
 };
 

@@ -1,15 +1,10 @@
-import MetaTags from "@/components/Common/MetaTags";
+import BackButton from "@/components/Shared/BackButton";
 import NotLoggedIn from "@/components/Shared/NotLoggedIn";
+import { PageLayout } from "@/components/Shared/PageLayout";
 import WrongWallet from "@/components/Shared/Settings/WrongWallet";
-import {
-  GridItemEight,
-  GridItemFour,
-  GridLayout
-} from "@/components/Shared/UI";
+import { Card, CardHeader } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
-import { APP_NAME } from "@hey/data/constants";
 import { useAccount } from "wagmi";
-import SettingsSidebar from "../Sidebar";
 import DeleteSettings from "./Delete";
 
 const DangerSettings = () => {
@@ -22,15 +17,15 @@ const DangerSettings = () => {
   }
 
   return (
-    <GridLayout>
-      <MetaTags title={`Delete Account • ${APP_NAME}`} />
-      <GridItemFour>
-        <SettingsSidebar />
-      </GridItemFour>
-      <GridItemEight className="space-y-5">
+    <PageLayout title="Delete account">
+      <Card>
+        <CardHeader
+          icon={<BackButton path="/settings" />}
+          title="Delete account"
+        />
         {disabled ? <WrongWallet /> : <DeleteSettings />}
-      </GridItemEight>
-    </GridLayout>
+      </Card>
+    </PageLayout>
   );
 };
 

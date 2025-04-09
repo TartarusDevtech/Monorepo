@@ -1,4 +1,4 @@
-import FundButton from "@/components/Shared/Fund/FundButton";
+import FundButton from "@/components/Shared/Account/Fund/FundButton";
 import Loader from "@/components/Shared/Loader";
 import { ErrorMessage, Image } from "@/components/Shared/UI";
 import {

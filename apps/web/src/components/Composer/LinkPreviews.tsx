@@ -1,4 +1,4 @@
-import Oembed from "@/components/Shared/Oembed";
+import Oembed from "@/components/Shared/Post/Oembed";
 import { usePostAttachmentStore } from "@/store/non-persisted/post/usePostAttachmentStore";
 import { usePostStore } from "@/store/non-persisted/post/usePostStore";
 import getURLs from "@hey/helpers/getURLs";

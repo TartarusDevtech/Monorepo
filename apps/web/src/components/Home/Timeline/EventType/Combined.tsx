@@ -1,4 +1,4 @@
-import Accounts from "@/components/Shared/Accounts";
+import Accounts from "@/components/Shared/Account/Accounts";
 import { SparklesIcon } from "@heroicons/react/24/outline";
 import type { TimelineItemFragment } from "@hey/indexer";
 import { Fragment } from "react";
@@ -27,7 +27,7 @@ const Combined = ({ timelineItem }: CombinedProps) => {
   }
 
   return (
-    <div className="flex flex-wrap items-center space-x-1 pb-4 text-[13px] text-neutral-500 leading-6 dark:text-neutral-200">
+    <div className="flex flex-wrap items-center space-x-1 pb-4 text-[13px] text-gray-500 leading-6 dark:text-gray-200">
       <SparklesIcon className="size-4" />
       <Accounts accounts={getAllAccounts()} />
       <div className="flex items-center space-x-1">

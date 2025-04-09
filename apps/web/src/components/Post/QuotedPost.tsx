@@ -1,4 +1,4 @@
-import PostWrapper from "@/components/Shared/PostWrapper";
+import PostWrapper from "@/components/Shared/Post/PostWrapper";
 import type { PostFragment } from "@hey/indexer";
 import HiddenPost from "./HiddenPost";
 import PostAvatar from "./PostAvatar";
@@ -13,7 +13,7 @@ interface QuotedPostProps {
 const QuotedPost = ({ isNew = false, post }: QuotedPostProps) => {
   return (
     <PostWrapper
-      className="cursor-pointer p-4 transition-colors first:rounded-t-xl last:rounded-b-xl hover:bg-neutral-100 dark:hover:bg-neutral-900"
+      className="cursor-pointer p-4 first:rounded-t-xl last:rounded-b-xl hover:bg-gray-100 dark:hover:bg-gray-900"
       post={post}
     >
       <div className="flex items-center gap-x-2">

@@ -47,7 +47,7 @@ const FollowersYouKnowOverview = ({
 
   const Wrapper = ({ children }: { children: ReactNode }) => (
     <button
-      className="flex cursor-pointer items-center gap-x-2 text-neutral-500 text-sm dark:text-neutral-200"
+      className="flex cursor-pointer items-center gap-x-2 text-gray-500 text-sm dark:text-gray-200"
       onClick={() => setShowMutualFollowersModal(true)}
       type="button"
     >
@@ -63,7 +63,6 @@ const FollowersYouKnowOverview = ({
         onClose={() => setShowMutualFollowersModal(false)}
         show={showMutualFollowersModal}
         title="Mutual Followers"
-        size="md"
       >
         <FollowersYouKnow username={username} address={address} />
       </Modal>

@@ -1,5 +1,5 @@
+import SingleAccount from "@/components/Shared/Account/SingleAccount";
 import Loader from "@/components/Shared/Loader";
-import SingleAccount from "@/components/Shared/SingleAccount";
 import { Button, EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import { useBlockAlertStore } from "@/store/non-persisted/alert/useBlockAlertStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";

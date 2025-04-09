@@ -1,5 +1,5 @@
 import ToggleWithHelper from "@/components/Shared/ToggleWithHelper";
-import { Card, CardHeader } from "@/components/Shared/UI";
+import {} from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
@@ -79,22 +79,16 @@ const ApprovalRule = ({ group }: ApprovalRuleProps) => {
   };
 
   return (
-    <Card>
-      <CardHeader
-        body="Approval is required for members to join the group"
-        title="Membership Approval"
+    <div className="m-5">
+      <ToggleWithHelper
+        heading="Enable Membership Approval"
+        description="Toggle to require approval for new members"
+        disabled={isSubmitting}
+        icon={<PlusCircleIcon className="size-5" />}
+        on={isApprovalRuleEnabled}
+        setOn={handleUpdateRule}
       />
-      <div className="m-5">
-        <ToggleWithHelper
-          heading="Enable Membership Approval"
-          description="Toggle to require approval for new members"
-          disabled={isSubmitting}
-          icon={<PlusCircleIcon className="size-5" />}
-          on={isApprovalRuleEnabled}
-          setOn={handleUpdateRule}
-        />
-      </div>
-    </Card>
+    </div>
   );
 };
 

@@ -1,6 +1,5 @@
 import defaultMetadata from "@/defaultMetadata";
 import getPostOGImages from "@/helpers/getPostOGImages";
-import { APP_NAME, APP_URL } from "@hey/data/constants";
 import getAccount from "@hey/helpers/getAccount";
 import getPostData from "@hey/helpers/getPostData";
 import { PostDocument, type PostFragment } from "@hey/indexer";
@@ -32,22 +31,22 @@ export const generateMetadata = async ({
   const assetIsAudio = filteredAsset?.type === "Audio";
 
   const { name, link, usernameWithPrefix } = getAccount(author);
-  const title = `${post.__typename} by ${usernameWithPrefix} • ${APP_NAME}`;
+  const title = `${post.__typename} by ${usernameWithPrefix} • Hey`;
   const description = (filteredContent || title).slice(0, 155);
 
   return {
-    alternates: { canonical: `${APP_URL}/posts/${post.slug}` },
-    applicationName: APP_NAME,
-    authors: { name, url: `${APP_URL}${link}` },
+    alternates: { canonical: `https://hey.xyz/posts/${post.slug}` },
+    applicationName: "Hey",
+    authors: { name, url: `https://hey.xyz${link}` },
     creator: name,
     description: description,
-    metadataBase: new URL(`${APP_URL}/posts/${post.slug}`),
+    metadataBase: new URL(`https://hey.xyz/posts/${post.slug}`),
     openGraph: {
       description: description,
       images: getPostOGImages(metadata) as any,
       siteName: "Hey",
       type: "article",
-      url: `${APP_URL}/posts/${post.slug}`
+      url: `https://hey.xyz/posts/${post.slug}`
     },
     other: {
       "count:collects": post.stats.collects,
@@ -75,7 +74,7 @@ const Page = async ({ params }: Props) => {
     return <h1>{slug}</h1>;
   }
 
-  const postUrl = `${APP_URL}/posts/${metadata.other?.["lens:slug"]}`;
+  const postUrl = `https://hey.xyz/posts/${metadata.other?.["lens:slug"]}`;
 
   return (
     <>

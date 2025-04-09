@@ -1,5 +1,4 @@
-import Slug from "@/components/Shared/Slug";
-import { Button, Card, CardHeader } from "@/components/Shared/UI";
+import { Button, H6 } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
@@ -60,22 +59,21 @@ const UnlinkUsername = () => {
   };
 
   return (
-    <Card>
-      <CardHeader
-        body="Unlinking your current username will remove it from your account, preventing others from easily identifying and connecting with you based on your unique online identity."
-        title={
-          <span>
-            Unlink <Slug slug={getAccount(currentAccount).usernameWithPrefix} />{" "}
-            from your account
-          </span>
-        }
-      />
-      <div className="m-5">
-        <Button disabled={unlinking} onClick={handleUnlink} outline>
-          Un-link now
-        </Button>
+    <div className="m-5 flex flex-col gap-y-5">
+      <div className="flex flex-col gap-y-1.5">
+        <b>Unlink default username</b>
+        <div className="flex flex-col gap-y-1.5">
+          <H6 className="font-normal text-gray-500 dark:text-gray-200">
+            Unlinking your default username will remove it from your account,
+            preventing others from easily identifying and connecting with you
+            based on your unique online identity.
+          </H6>
+        </div>
       </div>
-    </Card>
+      <Button disabled={unlinking} onClick={handleUnlink} outline>
+        Un-link {getAccount(currentAccount).usernameWithPrefix}
+      </Button>
+    </div>
   );
 };
 

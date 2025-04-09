@@ -1,6 +1,7 @@
 import FullPageLoader from "@/components/Shared/FullPageLoader";
 import GlobalAlerts from "@/components/Shared/GlobalAlerts";
-import GlobalBanners from "@/components/Shared/GlobalBanners";
+import GlobalModals from "@/components/Shared/GlobalModals";
+import Navbar from "@/components/Shared/Navbar";
 import BottomNavigation from "@/components/Shared/Navbar/BottomNavigation";
 import getCurrentSession from "@/helpers/getCurrentSession";
 import getToastOptions from "@/helpers/getToastOptions";
@@ -13,17 +14,21 @@ import { useMeQuery } from "@hey/indexer";
 import { useIsClient } from "@uidotdev/usehooks";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
-import { Outlet } from "react-router";
-import GlobalModals from "../Shared/GlobalModals";
-import Navbar from "../Shared/Navbar";
+import { Outlet, useLocation } from "react-router";
 
 const Layout = () => {
+  const { pathname } = useLocation();
   const { theme } = useTheme();
   const { currentAccount, setCurrentAccount } = useAccountStore();
   const { resetPreferences } = usePreferencesStore();
   const { resetStatus } = useAccountStatus();
   const isMounted = useIsClient();
   const { address: sessionAccountAddress } = getCurrentSession();
+
+  // Disable scroll restoration on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   const logout = (shouldReload = false) => {
     resetPreferences();
@@ -61,11 +66,10 @@ const Layout = () => {
       />
       <GlobalModals />
       <GlobalAlerts />
-      <div className="flex min-h-screen flex-col pb-14 md:pb-0">
+      <div className="mx-auto flex w-full max-w-6xl items-start gap-x-8 px-0 md:px-5">
         <Navbar />
-        <GlobalBanners />
-        <BottomNavigation />
         <Outlet />
+        <BottomNavigation />
       </div>
     </main>
   );

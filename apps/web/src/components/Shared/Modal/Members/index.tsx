@@ -1,7 +1,9 @@
+import SingleAccount from "@/components/Shared/Account/SingleAccount";
 import AccountListShimmer from "@/components/Shared/Shimmer/AccountListShimmer";
-import SingleAccount from "@/components/Shared/SingleAccount";
 import { EmptyState, ErrorMessage } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
+import { accountsList } from "@/variants";
 import { UsersIcon } from "@heroicons/react/24/outline";
 import {
   type GroupFragment,
@@ -9,6 +11,8 @@ import {
   PageSize,
   useGroupMembersQuery
 } from "@hey/indexer";
+import { LazyMotion, domAnimation } from "motion/react";
+import * as m from "motion/react-m";
 import { Virtuoso } from "react-virtuoso";
 
 interface MembersProps {
@@ -66,23 +70,33 @@ const Members = ({ group }: MembersProps) => {
 
   return (
     <Virtuoso
-      className="virtual-account-list"
+      className="!h-[80vh]"
       data={groupMembers}
       endReached={onEndReached}
-      itemContent={(_, member) => (
-        <div className="p-5">
-          <SingleAccount
-            hideFollowButton={
-              currentAccount?.address === member.account.address
-            }
-            hideUnfollowButton={
-              currentAccount?.address === member.account.address
-            }
-            account={member.account}
-            showBio
-            showUserPreview={false}
-          />
-        </div>
+      itemContent={(index, member) => (
+        <LazyMotion features={domAnimation}>
+          <m.div
+            className={cn(
+              "divider p-5",
+              index === groupMembers.slice(5).length - 1 && "border-b-0"
+            )}
+            variants={accountsList}
+            initial="hidden"
+            animate="visible"
+          >
+            <SingleAccount
+              hideFollowButton={
+                currentAccount?.address === member.account.address
+              }
+              hideUnfollowButton={
+                currentAccount?.address === member.account.address
+              }
+              account={member.account}
+              showBio
+              showUserPreview={false}
+            />
+          </m.div>
+        </LazyMotion>
       )}
     />
   );

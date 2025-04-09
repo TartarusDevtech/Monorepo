@@ -1,9 +1,12 @@
+import BackButton from "@/components/Shared/BackButton";
 import PostListShimmer from "@/components/Shared/Shimmer/PostListShimmer";
-import { Card, EmptyState, ErrorMessage, H5 } from "@/components/Shared/UI";
 import {
-  ArrowLeftIcon,
-  ChatBubbleBottomCenterTextIcon
-} from "@heroicons/react/24/outline";
+  Card,
+  CardHeader,
+  EmptyState,
+  ErrorMessage
+} from "@/components/Shared/UI";
+import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
 import {
   PageSize,
   type PostFragment,
@@ -11,7 +14,6 @@ import {
   type PostReferencesRequest,
   usePostReferencesQuery
 } from "@hey/indexer";
-import { Link } from "react-router";
 import { Virtuoso } from "react-virtuoso";
 import SinglePost from "./SinglePost";
 
@@ -44,7 +46,7 @@ const Quotes = ({ post }: QuotesProps) => {
   };
 
   if (loading) {
-    return <PostListShimmer />;
+    return <PostListShimmer title="Quote" />;
   }
 
   if (error) {
@@ -62,13 +64,7 @@ const Quotes = ({ post }: QuotesProps) => {
 
   return (
     <Card>
-      <div className="flex items-center space-x-3 p-5">
-        <Link to={`/posts/${post.slug}`}>
-          <ArrowLeftIcon className="size-5" />
-        </Link>
-        <H5>Quotes</H5>
-      </div>
-      <div className="divider" />
+      <CardHeader icon={<BackButton />} title="Quotes" />
       <Virtuoso
         className="virtual-divider-list-window"
         data={quotes}

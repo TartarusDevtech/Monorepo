@@ -5,7 +5,6 @@ import { useAuthModalStore } from "@/store/non-persisted/modal/useAuthModalStore
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useApolloClient } from "@apollo/client";
-import {} from "@heroicons/react/24/solid";
 import { Errors } from "@hey/data/errors";
 import {
   type AccountManagerFragment,

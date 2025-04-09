@@ -1,6 +1,6 @@
 import { Button, Card, Image } from "@/components/Shared/UI";
 import { useAuthModalStore } from "@/store/non-persisted/modal/useAuthModalStore";
-import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
+import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import { useSignupStore } from "./Signup";
 
 const SignupCard = () => {
@@ -13,7 +13,7 @@ const SignupCard = () => {
   };
 
   return (
-    <Card as="aside" className="mb-4 space-y-4 p-5">
+    <Card className="space-y-4 p-5">
       <Image
         alt="Dizzy emoji"
         className="mx-auto size-14"
@@ -22,11 +22,9 @@ const SignupCard = () => {
         width={56}
       />
       <div className="space-y-3 text-center">
-        <div className="font-bold">Get your {APP_NAME} account now!</div>
+        <div className="font-bold">Get your Hey account now!</div>
         <div>
-          <Button onClick={handleSignupClick} size="lg">
-            Signup now
-          </Button>
+          <Button onClick={handleSignupClick}>Signup now</Button>
         </div>
       </div>
     </Card>

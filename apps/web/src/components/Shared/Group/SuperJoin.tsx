@@ -6,7 +6,6 @@ import {
 import { useSuperJoinModalStore } from "@/store/non-persisted/modal/useSuperJoinModalStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { CurrencyDollarIcon } from "@heroicons/react/24/outline";
-import { APP_NAME } from "@hey/data/constants";
 import { tokens } from "@hey/data/tokens";
 import getTokenImage from "@hey/helpers/getTokenImage";
 import {
@@ -14,7 +13,7 @@ import {
   type GroupRules,
   useAccountBalancesQuery
 } from "@hey/indexer";
-import FundButton from "../Fund/FundButton";
+import FundButton from "../Account/Fund/FundButton";
 import Loader from "../Loader";
 import LoginButton from "../LoginButton";
 import Join from "./Join";
@@ -57,8 +56,8 @@ const SuperJoin = () => {
     <div className="p-5">
       <div className="space-y-1.5 pb-2">
         <H5>Super Join</H5>
-        <div className="text-neutral-500 dark:text-neutral-200">
-          Support your favorite group on {APP_NAME}.
+        <div className="text-gray-500 dark:text-gray-200">
+          Support your favorite group on Hey.
         </div>
       </div>
       <div className="flex items-center space-x-1.5 py-2">

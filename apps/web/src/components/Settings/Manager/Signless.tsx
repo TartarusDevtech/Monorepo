@@ -1,8 +1,7 @@
-import { Button, Card, CardHeader } from "@/components/Shared/UI";
+import { Button, H6 } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
-import { APP_NAME } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import { useEnableSignlessMutation } from "@hey/indexer";
 import { useState } from "react";
@@ -45,22 +44,23 @@ const Signless = () => {
   };
 
   return (
-    <Card>
-      <CardHeader
-        body={`You can enable Signless to interact with ${APP_NAME} without signing any of your transactions.`}
-        title="Enable signless transactions"
-      />
-      <div className="m-5">
-        <Button
-          className="mr-auto"
-          disabled={isSubmitting}
-          onClick={handleToggleSignless}
-          variant="primary"
-        >
-          Enable
-        </Button>
+    <div className="m-5 flex flex-col gap-y-5">
+      <div className="flex flex-col gap-y-1.5">
+        <b>Enable signless transactions</b>
+        <H6 className="font-normal text-gray-500 dark:text-gray-200">
+          You can enable Signless to interact with Hey without signing any of
+          your transactions.
+        </H6>
       </div>
-    </Card>
+      <Button
+        className="mr-auto"
+        disabled={isSubmitting}
+        onClick={handleToggleSignless}
+        variant="primary"
+      >
+        Enable
+      </Button>
+    </div>
   );
 };
 

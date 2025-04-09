@@ -1,71 +1,105 @@
 import { Image } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
+import { useMobileDrawerModalStore } from "@/store/non-persisted/modal/useMobileDrawerModalStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
   BellIcon,
-  HomeIcon,
-  Squares2X2Icon
+  GlobeAltIcon as GlobeOutline,
+  HomeIcon
 } from "@heroicons/react/24/outline";
 import {
   BellIcon as BellIconSolid,
-  HomeIcon as HomeIconSolid,
-  Squares2X2Icon as Squares2X2IconSolid
+  GlobeAltIcon as GlobeSolid,
+  HomeIcon as HomeIconSolid
 } from "@heroicons/react/24/solid";
-import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
+import type { ReactNode } from "react";
 import { Link, useLocation } from "react-router";
+import MobileDrawerMenu from "./MobileDrawerMenu";
+
+interface NavigationItemProps {
+  path: string;
+  label: string;
+  outline: ReactNode;
+  solid: ReactNode;
+  isActive: boolean;
+}
+
+const NavigationItem = ({
+  path,
+  label,
+  outline,
+  solid,
+  isActive
+}: NavigationItemProps) => (
+  <Link aria-label={label} className="mx-auto my-3" to={path}>
+    {isActive ? solid : outline}
+  </Link>
+);
+
+const navigationItems = [
+  {
+    path: "/",
+    label: "Home",
+    outline: <HomeIcon className="size-6" />,
+    solid: <HomeIconSolid className="size-6" />
+  },
+  {
+    path: "/explore",
+    label: "Explore",
+    outline: <GlobeOutline className="size-6" />,
+    solid: <GlobeSolid className="size-6" />
+  },
+  {
+    path: "/notifications",
+    label: "Notifications",
+    outline: <BellIcon className="size-6" />,
+    solid: <BellIconSolid className="size-6" />
+  }
+];
 
 const BottomNavigation = () => {
-  const { currentAccount } = useAccountStore();
   const { pathname } = useLocation();
+  const { currentAccount } = useAccountStore();
+  const { showMobileDrawer, setShowMobileDrawer } = useMobileDrawerModalStore();
 
-  const isActivePath = (path: string) => pathname === path;
+  const handleProfileClick = () => setShowMobileDrawer(true);
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-[5] border-neutral-200 border-t bg-white pb-safe md:hidden dark:border-neutral-800 dark:bg-black">
+    <nav
+      className="fixed inset-x-0 bottom-0 z-[5] border-gray-200 border-t bg-white pb-safe md:hidden dark:border-gray-800 dark:bg-black"
+      aria-label="Bottom navigation"
+    >
+      {showMobileDrawer && <MobileDrawerMenu />}
       <div
         className={cn("grid", currentAccount ? "grid-cols-4" : "grid-cols-3")}
       >
-        <Link aria-label="Home" className="mx-auto my-3" to="/">
-          {isActivePath("/") ? (
-            <HomeIconSolid className="size-6" />
-          ) : (
-            <HomeIcon className="size-6" />
-          )}
-        </Link>
-        <Link aria-label="Explore" className="mx-auto my-3" to="/explore">
-          {isActivePath("/explore") ? (
-            <Squares2X2IconSolid className="size-6" />
-          ) : (
-            <Squares2X2Icon className="size-6" />
-          )}
-        </Link>
-        <Link
-          aria-label="Notifications"
-          className="mx-auto my-3"
-          to="/notifications"
-        >
-          {isActivePath("/notifications") ? (
-            <BellIconSolid className="size-6" />
-          ) : (
-            <BellIcon className="size-6" />
-          )}
-        </Link>
+        {navigationItems.map(({ path, label, outline, solid }) => (
+          <NavigationItem
+            key={path}
+            path={path}
+            label={label}
+            outline={outline}
+            solid={solid}
+            isActive={pathname === path}
+          />
+        ))}
         {currentAccount && (
-          <Link
+          <button
             aria-label="Your account"
-            className="mx-auto my-3"
-            to={getAccount(currentAccount).link}
+            className="m-auto h-fit"
+            onClick={handleProfileClick}
+            type="button"
           >
             <Image
               alt={currentAccount.address}
-              className="size-6 rounded-full border border-neutral-200 dark:border-neutral-700"
+              className="m-0.5 size-6 rounded-full border border-gray-200 dark:border-gray-700"
               src={getAvatar(currentAccount)}
             />
-          </Link>
+          </button>
         )}
       </div>
-    </div>
+    </nav>
   );
 };
 

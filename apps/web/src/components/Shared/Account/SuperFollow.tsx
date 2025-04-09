@@ -3,7 +3,6 @@ import { getSimplePaymentDetails } from "@/helpers/rules";
 import { useSuperFollowModalStore } from "@/store/non-persisted/modal/useSuperFollowModalStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { CurrencyDollarIcon } from "@heroicons/react/24/outline";
-import { APP_NAME } from "@hey/data/constants";
 import { tokens } from "@hey/data/tokens";
 import getAccount from "@hey/helpers/getAccount";
 import getTokenImage from "@hey/helpers/getTokenImage";
@@ -12,7 +11,7 @@ import {
   type AccountFragment,
   useAccountBalancesQuery
 } from "@hey/indexer";
-import FundButton from "../Fund/FundButton";
+import FundButton from "../Account/Fund/FundButton";
 import Loader from "../Loader";
 import LoginButton from "../LoginButton";
 import Slug from "../Slug";
@@ -57,8 +56,8 @@ const SuperFollow = () => {
           Pay to follow{" "}
           <Slug slug={getAccount(superFollowingAccount).usernameWithPrefix} />
         </H5>
-        <div className="text-neutral-500 dark:text-neutral-200">
-          Support your favorite people on {APP_NAME}.
+        <div className="text-gray-500 dark:text-gray-200">
+          Support your favorite people on Hey.
         </div>
       </div>
       <div className="flex items-center space-x-1.5 py-2">

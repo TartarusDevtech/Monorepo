@@ -1,5 +1,5 @@
+import SingleAccount from "@/components/Shared/Account/SingleAccount";
 import SingleAccountShimmer from "@/components/Shared/Shimmer/SingleAccountShimmer";
-import SingleAccount from "@/components/Shared/SingleAccount";
 import { Card, ErrorMessage, Modal } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
@@ -70,7 +70,7 @@ const RelevantPeople = ({ mentions }: RelevantPeopleProps) => {
         ))}
         {(data?.accountsBulk?.length || 0) > 5 && (
           <button
-            className="font-bold text-neutral-500 dark:text-neutral-200"
+            className="font-bold text-gray-500 dark:text-gray-200"
             onClick={() => setShowMore(true)}
             type="button"
           >

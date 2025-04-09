@@ -18,4 +18,5 @@ fragment Account on Account {
   username(request: { autoResolve: true }) {
     ...Username
   }
+  createdAt
 }

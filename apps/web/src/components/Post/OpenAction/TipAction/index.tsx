@@ -1,5 +1,5 @@
+import { TipIcon } from "@/components/Shared/Icons/TipIcon";
 import MenuTransition from "@/components/Shared/MenuTransition";
-import { TipIcon } from "@/components/Shared/TipIcon";
 import { Tooltip } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
@@ -22,14 +22,14 @@ const TipAction = ({ post, showCount }: TipActionProps) => {
     : "w-[15px] sm:w-[18px]";
 
   return (
-    <div className="flex items-center space-x-1 text-neutral-500 dark:text-neutral-200">
+    <div className="flex items-center space-x-1 text-gray-500 dark:text-gray-200">
       <Menu as="div" className="relative">
         <MenuButton
           aria-label="Tip"
           className={cn(
             hasTipped
               ? "text-brand-500 hover:bg-brand-300/20"
-              : "text-neutral-500 hover:bg-neutral-300/20 dark:text-neutral-200",
+              : "text-gray-500 hover:bg-gray-300/20 dark:text-gray-200",
             "rounded-full p-1.5 outline-offset-2"
           )}
           onClick={stopEventPropagation}
@@ -42,7 +42,8 @@ const TipAction = ({ post, showCount }: TipActionProps) => {
         </MenuButton>
         <MenuTransition>
           <MenuItems
-            className="absolute z-[5] mt-1 w-max rounded-xl border border-neutral-200 bg-white shadow-xs focus:outline-hidden dark:border-neutral-700 dark:bg-neutral-900"
+            className="z-[5] mt-2 w-max origin-top-left rounded-xl border border-gray-200 bg-white shadow-xs focus:outline-hidden dark:border-gray-700 dark:bg-gray-900"
+            anchor="bottom start"
             static
           >
             <MenuItem>
@@ -54,10 +55,8 @@ const TipAction = ({ post, showCount }: TipActionProps) => {
       {(tips || 0) > 0 && !showCount && (
         <span
           className={cn(
-            hasTipped
-              ? "text-brand-500"
-              : "text-neutral-500 dark:text-neutral-200",
-            "text-[11px] sm:text-xs"
+            hasTipped ? "text-brand-500" : "text-gray-500 dark:text-gray-200",
+            "w-3 text-[11px] sm:text-xs"
           )}
         >
           {nFormatter(tips || 0)}

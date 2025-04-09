@@ -1,6 +1,6 @@
 import Slug from "@/components/Shared/Slug";
 import { Image } from "@/components/Shared/UI";
-import { BLOCK_EXPLORER_URL } from "@hey/data/constants";
+import { CHAIN } from "@/constants";
 import formatAddress from "@hey/helpers/formatAddress";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
@@ -52,7 +52,7 @@ const Splits = ({ recipients }: SplitsProps) => {
                 <>
                   <Image
                     alt="Avatar"
-                    className="size-5 rounded-full border border-neutral-200 bg-neutral-200 dark:border-neutral-700"
+                    className="size-5 rounded-full border border-gray-200 bg-gray-200 dark:border-gray-700"
                     src={getAvatar(account)}
                   />
                   {account ? (
@@ -61,7 +61,7 @@ const Splits = ({ recipients }: SplitsProps) => {
                     </Link>
                   ) : (
                     <Link
-                      to={`${BLOCK_EXPLORER_URL}/address/${address}`}
+                      to={`${CHAIN.blockExplorers?.default}/address/${address}`}
                       rel="noreferrer noopener"
                       target="_blank"
                     >

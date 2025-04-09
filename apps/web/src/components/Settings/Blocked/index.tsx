@@ -1,15 +1,8 @@
-import MetaTags from "@/components/Common/MetaTags";
+import BackButton from "@/components/Shared/BackButton";
 import NotLoggedIn from "@/components/Shared/NotLoggedIn";
-import {
-  Card,
-  CardHeader,
-  GridItemEight,
-  GridItemFour,
-  GridLayout
-} from "@/components/Shared/UI";
+import { PageLayout } from "@/components/Shared/PageLayout";
+import { Card, CardHeader } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
-import { APP_NAME } from "@hey/data/constants";
-import SettingsSidebar from "../Sidebar";
 import List from "./List";
 
 const BlockedSettings = () => {
@@ -20,21 +13,15 @@ const BlockedSettings = () => {
   }
 
   return (
-    <GridLayout>
-      <MetaTags title={`Blocked accounts • ${APP_NAME}`} />
-      <GridItemFour>
-        <SettingsSidebar />
-      </GridItemFour>
-      <GridItemEight>
-        <Card>
-          <CardHeader
-            body="This is a list of blocked accounts. You can unblock them at any time."
-            title="Blocked accounts"
-          />
-          <List />
-        </Card>
-      </GridItemEight>
-    </GridLayout>
+    <PageLayout title="Blocked accounts">
+      <Card>
+        <CardHeader
+          icon={<BackButton path="/settings" />}
+          title="Blocked accounts"
+        />
+        <List />
+      </Card>
+    </PageLayout>
   );
 };
 

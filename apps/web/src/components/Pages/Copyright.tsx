@@ -1,18 +1,17 @@
-import Footer from "@/components/Shared/Footer";
+import { PageLayout } from "@/components/Shared/PageLayout";
 import { H2, H4 } from "@/components/Shared/UI";
-import { APP_NAME } from "@hey/data/constants";
 import { Link } from "react-router";
 
 const Copyright = () => {
   const updatedAt = "October 22, 2024";
 
   return (
-    <>
-      <div className="flex h-48 w-full items-center justify-center bg-neutral-400">
+    <PageLayout title="Copyright Policy">
+      <div className="flex h-48 w-full items-center justify-center rounded-2xl bg-gray-400">
         <div className="relative text-center">
           <H2 className="text-white">Copyright Policy</H2>
           <div className="mt-4 flex justify-center">
-            <div className="rounded-md bg-neutral-800 px-2 py-0.5 text-white text-xs">
+            <div className="rounded-md bg-gray-800 px-2 py-0.5 text-white text-xs">
               Updated {updatedAt}
             </div>
           </div>
@@ -20,20 +19,19 @@ const Copyright = () => {
       </div>
       <div className="relative">
         <div className="flex justify-center">
-          <div className="relative mx-auto max-w-3/4 rounded-lg sm:w-2/4">
-            <div className="!p-8 max-w-none text-neutral-500 dark:text-neutral-200">
+          <div className="relative mx-auto rounded-lg">
+            <div className="!p-8 max-w-none text-gray-500 dark:text-gray-200">
               {/* Notification of Copyright Infringement beings */}
               <H4 className="mb-5">Notification of Copyright Infringement</H4>
               <div className="space-y-5">
                 <p className="leading-7">
-                  {APP_NAME}. ("{APP_NAME}.xyz") respects the intellectual
-                  property rights of others and expects its users to do the
-                  same.
+                  Hey. ("Hey.xyz") respects the intellectual property rights of
+                  others and expects its users to do the same.
                 </p>
                 <p className="leading-7">
-                  It is {APP_NAME}'s policy, in appropriate circumstances and at
-                  its discretion, to disable the accounts of users who
-                  repeatedly infringe the copyrights of others.
+                  It is Hey's policy, in appropriate circumstances and at its
+                  discretion, to disable the accounts of users who repeatedly
+                  infringe the copyrights of others.
                 </p>
                 <p className="linkify leading-7">
                   In accordance with the Digital Millennium Copyright Act of
@@ -45,12 +43,12 @@ const Copyright = () => {
                   >
                     http://www.copyright.gov/legislation/dmca.pdf
                   </Link>
-                  , {APP_NAME} will respond expeditiously to claims of copyright
-                  infringement committed using the {APP_NAME} website, app, or
-                  other {APP_NAME} owned or controlled online network services
-                  accessible through a mobile device or other type of device
-                  (the "Sites") that are reported to {APP_NAME}'s Designated
-                  Copyright Agent, identified in the sample notice below.
+                  , Hey will respond expeditiously to claims of copyright
+                  infringement committed using the Hey website, app, or other
+                  Hey owned or controlled online network services accessible
+                  through a mobile device or other type of device (the "Sites")
+                  that are reported to Hey's Designated Copyright Agent,
+                  identified in the sample notice below.
                 </p>
                 <p className="leading-7">
                   If you are a copyright owner, or are authorized to act on
@@ -58,10 +56,10 @@ const Copyright = () => {
                   under copyright, please report alleged copyright infringements
                   taking place on or through the Sites by completing the
                   following DMCA Notice of Alleged Infringement and delivering
-                  it to {APP_NAME}'s Designated Copyright Agent. Upon receipt of
-                  the Notice as described below, {APP_NAME} will take whatever
-                  action, in its sole discretion, it deems appropriate,
-                  including removal of the challenged material from the Sites.
+                  it to Hey's Designated Copyright Agent. Upon receipt of the
+                  Notice as described below, Hey will take whatever action, in
+                  its sole discretion, it deems appropriate, including removal
+                  of the challenged material from the Sites.
                 </p>
               </div>
               {/* Notification of Copyright Infringement ends */}
@@ -114,11 +112,11 @@ const Copyright = () => {
                   physical signature.
                 </p>
                 <p className="leading-7">
-                  Deliver this Notice, with all items completed, to {APP_NAME}'s
+                  Deliver this Notice, with all items completed, to Hey's
                   Designated Copyright Agent:
                 </p>
                 <p className="leading-7">
-                  {APP_NAME} Designated Copyright Agent: Yoginth
+                  Hey Designated Copyright Agent: Yoginth
                 </p>
                 <p className="linkify leading-7">
                   Email:{" "}
@@ -129,11 +127,8 @@ const Copyright = () => {
             </div>
           </div>
         </div>
-        <div className="mt-2 mb-6 flex justify-center">
-          <Footer />
-        </div>
       </div>
-    </>
+    </PageLayout>
   );
 };
 

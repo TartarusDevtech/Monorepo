@@ -1,7 +1,7 @@
-import LazySmallSingleAccount from "@/components/Shared/LazySmallSingleAccount";
+import LazySmallSingleAccount from "@/components/Shared/Account/LazySmallSingleAccount";
 import Loader from "@/components/Shared/Loader";
 import Slug from "@/components/Shared/Slug";
-import { Button, Card, CardHeader, EmptyState } from "@/components/Shared/UI";
+import { Button, EmptyState, H6 } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
@@ -93,40 +93,42 @@ const LinkUsername = () => {
   }
 
   return (
-    <Card>
-      <CardHeader
-        body="Linking your username to your account showcases it publicly, allowing others to easily identify and connect with you based on your unique online identity."
-        title="Link a username"
-      />
-      <div className="m-5 space-y-6">
-        {usernames?.map((username) => (
-          <div
-            className="flex flex-wrap items-center justify-between gap-3"
-            key={username.value}
-          >
-            <div className="flex items-center space-x-2">
-              <Slug className="font-bold" slug={username.value} />
-              {username.linkedTo ? (
-                <div className="flex items-center space-x-2">
-                  <span>·</span>
-                  <div>Linked to</div>
-                  <LazySmallSingleAccount address={username.linkedTo} />
-                </div>
-              ) : null}
-            </div>
-            {username.linkedTo ? null : (
-              <Button
-                disabled={linkingUsername === username.localName}
-                onClick={() => handleLink(username.localName)}
-                outline
-              >
-                Link
-              </Button>
-            )}
-          </div>
-        ))}
+    <div className="m-5 flex flex-col gap-y-5">
+      <div className="flex flex-col gap-y-1.5">
+        <b>Link a username</b>
+        <H6 className="font-normal text-gray-500 dark:text-gray-200">
+          Link a username to your account to showcase it publicly, allowing
+          others to easily identify and connect with you based on your unique
+          online identity.
+        </H6>
       </div>
-    </Card>
+      {usernames?.map((username) => (
+        <div
+          className="flex flex-wrap items-center justify-between gap-3"
+          key={username.value}
+        >
+          <div className="flex items-center space-x-2">
+            <Slug className="font-bold" slug={username.value} />
+            {username.linkedTo ? (
+              <div className="flex items-center space-x-2">
+                <span>·</span>
+                <div>Linked to</div>
+                <LazySmallSingleAccount address={username.linkedTo} />
+              </div>
+            ) : null}
+          </div>
+          {username.linkedTo ? null : (
+            <Button
+              disabled={linkingUsername === username.localName}
+              onClick={() => handleLink(username.localName)}
+              outline
+            >
+              Link
+            </Button>
+          )}
+        </div>
+      ))}
+    </div>
   );
 };
 

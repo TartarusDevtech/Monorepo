@@ -1,7 +1,7 @@
 import Followers from "@/components/Shared/Modal/Followers";
 import Following from "@/components/Shared/Modal/Following";
 import GraphStatsShimmer from "@/components/Shared/Shimmer/GraphStatsShimmer";
-import { H4, Modal } from "@/components/Shared/UI";
+import { Modal } from "@/components/Shared/UI";
 import getAccount from "@hey/helpers/getAccount";
 import humanize from "@hey/helpers/humanize";
 import { type AccountFragment, useAccountStatsQuery } from "@hey/indexer";
@@ -41,7 +41,7 @@ const Followerings = ({ account }: FolloweringsProps) => {
     title: string,
     Content: FC<ModalContentProps>
   ) => (
-    <Modal onClose={() => setShow(false)} show={show} title={title} size="md">
+    <Modal onClose={() => setShow(false)} show={show} title={title}>
       <Content
         username={getAccount(account).username}
         address={String(account.address)}
@@ -52,22 +52,22 @@ const Followerings = ({ account }: FolloweringsProps) => {
   return (
     <div className="flex gap-8">
       <button
-        className="text-left outline-offset-4"
+        className="flex gap-x-1"
         onClick={() => setShowFollowingModal(true)}
         type="button"
       >
-        <H4>{humanize(stats?.following)}</H4>
-        <div className="text-neutral-500 dark:text-neutral-200">Following</div>
+        <b>{humanize(stats?.following)}</b>
+        <span className="text-gray-500 dark:text-gray-200">Following</span>
       </button>
       <button
-        className="text-left outline-offset-4"
+        className="flex gap-x-1"
         onClick={() => setShowFollowersModal(true)}
         type="button"
       >
-        <H4>{humanize(stats?.followers)}</H4>
-        <div className="text-neutral-500 dark:text-neutral-200">
+        <b>{humanize(stats?.followers)}</b>
+        <span className="text-gray-500 dark:text-gray-200">
           {plur("Follower", stats?.followers)}
-        </div>
+        </span>
       </button>
       {renderModal(
         showFollowingModal,

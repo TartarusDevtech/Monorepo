@@ -1,53 +1,43 @@
 import Custom404 from "@/components/Shared/404";
+import { PageLayout } from "@/components/Shared/PageLayout";
 import Sidebar from "@/components/Shared/Sidebar";
-import {
-  GridItemEight,
-  GridItemFour,
-  GridLayout
-} from "@/components/Shared/UI";
-import { PencilSquareIcon, UsersIcon } from "@heroicons/react/24/outline";
+import {} from "@heroicons/react/24/outline";
 import { useSearchParams } from "react-router";
 import Accounts from "./Accounts";
+import FeedType, { SearchTabFocus } from "./FeedType";
 import Posts from "./Posts";
 
 const Search = () => {
   const [searchParams] = useSearchParams();
   const q = searchParams.get("q");
-  const type = searchParams.get("type");
+  const type =
+    searchParams.get("type") || SearchTabFocus.Accounts.toLowerCase();
 
-  const searchText = Array.isArray(q)
-    ? encodeURIComponent(q.join(" "))
-    : encodeURIComponent(q || "");
+  const lowerCaseFeedType = [
+    SearchTabFocus.Accounts.toLowerCase(),
+    SearchTabFocus.Posts.toLowerCase()
+  ];
+
+  const getFeedType = (type: string | undefined) => {
+    return type && lowerCaseFeedType.includes(type.toLowerCase())
+      ? type.toUpperCase()
+      : SearchTabFocus.Accounts;
+  };
+
+  const feedType = getFeedType(Array.isArray(type) ? type[0] : type);
 
   if (!q || !["accounts", "posts"].includes(type as string)) {
     return <Custom404 />;
   }
 
-  const settingsSidebarItems = [
-    {
-      active: type === "posts",
-      icon: <PencilSquareIcon className="size-4" />,
-      title: "Publications",
-      url: `/search?q=${searchText}&type=posts`
-    },
-    {
-      active: type === "accounts",
-      icon: <UsersIcon className="size-4" />,
-      title: "Accounts",
-      url: `/search?q=${searchText}&type=accounts`
-    }
-  ];
-
   return (
-    <GridLayout>
-      <GridItemFour>
-        <Sidebar items={settingsSidebarItems} />
-      </GridItemFour>
-      <GridItemEight>
-        {type === "accounts" ? <Accounts query={q as string} /> : null}
-        {type === "posts" ? <Posts query={q as string} /> : null}
-      </GridItemEight>
-    </GridLayout>
+    <PageLayout title="Search" sidebar={<Sidebar />}>
+      <FeedType feedType={feedType as SearchTabFocus} />
+      {feedType === SearchTabFocus.Accounts ? (
+        <Accounts query={q as string} />
+      ) : null}
+      {feedType === SearchTabFocus.Posts ? <Posts query={q as string} /> : null}
+    </PageLayout>
   );
 };
 

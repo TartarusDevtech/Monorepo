@@ -12,11 +12,11 @@ const DeletedDetails = ({ account }: DeletedDetailsProps) => {
   const { name, usernameWithPrefix } = getAccount(account);
 
   return (
-    <div className="space-y-5 px-5 sm:px-0">
+    <div className="space-y-5 px-5 md:px-0">
       <div className="-mt-24 sm:-mt-32 relative size-32 sm:size-52">
         <Image
           alt={account.address}
-          className="size-32 rounded-xl bg-neutral-200 ring-8 ring-neutral-50 sm:size-52 dark:bg-neutral-700 dark:ring-black"
+          className="size-32 rounded-xl bg-gray-200 ring-8 ring-gray-50 sm:size-52 dark:bg-gray-700 dark:ring-black"
           height={128}
           src={`${STATIC_IMAGES_URL}/suspended.png`}
           width={128}

@@ -1,18 +1,17 @@
-import Footer from "@/components/Shared/Footer";
+import { PageLayout } from "@/components/Shared/PageLayout";
 import { H2, H4 } from "@/components/Shared/UI";
-import { APP_NAME } from "@hey/data/constants";
 import { Link } from "react-router";
 
 const Privacy = () => {
   const updatedAt = "October 30, 2023";
 
   return (
-    <>
-      <div className="flex h-48 w-full items-center justify-center bg-neutral-400">
+    <PageLayout title="Privacy Policy">
+      <div className="flex h-48 w-full items-center justify-center rounded-2xl bg-gray-400">
         <div className="relative text-center">
           <H2 className="text-white">Privacy Policy</H2>
           <div className="mt-4 flex justify-center">
-            <div className="rounded-md bg-neutral-800 px-2 py-0.5 text-white text-xs">
+            <div className="rounded-md bg-gray-800 px-2 py-0.5 text-white text-xs">
               Updated {updatedAt}
             </div>
           </div>
@@ -20,8 +19,8 @@ const Privacy = () => {
       </div>
       <div className="relative">
         <div className="flex justify-center">
-          <div className="relative mx-auto max-w-3/4 rounded-lg sm:w-2/4">
-            <div className="!p-8 max-w-none text-neutral-500 dark:text-neutral-200">
+          <div className="relative mx-auto rounded-lg">
+            <div className="!p-8 max-w-none text-gray-500 dark:text-gray-200">
               {/* 1. Overview beings */}
               <H4 className="mb-5">1. Overview</H4>
               <div className="space-y-5">
@@ -34,10 +33,10 @@ const Privacy = () => {
                 </p>
                 <p className="leading-7">
                   This Privacy Policy (the “Privacy Policy”) provides a
-                  comprehensive description of how {APP_NAME} (“we,” “our,” or
-                  “us”) collects, uses, and shares information about you in
-                  connection with the website at hey.xyz”, as well as your
-                  rights and choices regarding such information.
+                  comprehensive description of how Hey (“we,” “our,” or “us”)
+                  collects, uses, and shares information about you in connection
+                  with the website at hey.xyz”, as well as your rights and
+                  choices regarding such information.
                 </p>
                 <p className="leading-7">
                   By accessing or using the Site, you accept and assume certain
@@ -209,11 +208,8 @@ const Privacy = () => {
             </div>
           </div>
         </div>
-        <div className="mt-2 mb-6 flex justify-center">
-          <Footer />
-        </div>
       </div>
-    </>
+    </PageLayout>
   );
 };
 

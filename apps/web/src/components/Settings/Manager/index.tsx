@@ -1,15 +1,10 @@
-import MetaTags from "@/components/Common/MetaTags";
+import BackButton from "@/components/Shared/BackButton";
 import NotLoggedIn from "@/components/Shared/NotLoggedIn";
+import { PageLayout } from "@/components/Shared/PageLayout";
 import WrongWallet from "@/components/Shared/Settings/WrongWallet";
-import {
-  GridItemEight,
-  GridItemFour,
-  GridLayout
-} from "@/components/Shared/UI";
+import { Card, CardHeader } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
-import { APP_NAME } from "@hey/data/constants";
 import { useAccount } from "wagmi";
-import SettingsSidebar from "../Sidebar";
 import AccountManager from "./AccountManager";
 import Signless from "./Signless";
 
@@ -23,22 +18,23 @@ const ManagerSettings = () => {
   }
 
   return (
-    <GridLayout>
-      <MetaTags title={`Manager • ${APP_NAME}`} />
-      <GridItemFour>
-        <SettingsSidebar />
-      </GridItemFour>
-      <GridItemEight className="space-y-5">
+    <PageLayout title="Manager settings">
+      <Card>
+        <CardHeader
+          icon={<BackButton path="/settings" />}
+          title="Manager settings"
+        />
         {disabled ? (
           <WrongWallet />
         ) : (
           <>
             <Signless />
+            <div className="divider" />
             <AccountManager />
           </>
         )}
-      </GridItemEight>
-    </GridLayout>
+      </Card>
+    </PageLayout>
   );
 };
 

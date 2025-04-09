@@ -1,4 +1,4 @@
-import SearchAccounts from "@/components/Shared/SearchAccounts";
+import SearchAccounts from "@/components/Shared/Account/SearchAccounts";
 import { Button } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
@@ -79,7 +79,7 @@ const AddAccountManager = ({
         error={manager.length > 0 && !isAddress(manager)}
         hideDropdown={isAddress(manager)}
         onChange={(event) => setManager(event.target.value)}
-        onAccountSelected={(account) => setManager(account.address)}
+        onAccountSelected={(account) => setManager(account.owner)}
         placeholder={`${ADDRESS_PLACEHOLDER} or wagmi`}
         value={manager}
       />

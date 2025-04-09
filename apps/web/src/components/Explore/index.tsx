@@ -1,13 +1,8 @@
-import WhoToFollow from "@/components/Home/Sidebar/WhoToFollow";
-import FeedFocusType from "@/components/Shared/FeedFocusType";
 import Footer from "@/components/Shared/Footer";
-import {
-  GridItemEight,
-  GridItemFour,
-  GridLayout
-} from "@/components/Shared/UI";
+import { PageLayout } from "@/components/Shared/PageLayout";
+import ContentFeedType from "@/components/Shared/Post/ContentFeedType";
+import WhoToFollow from "@/components/Shared/Sidebar/WhoToFollow";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
-import {} from "@headlessui/react";
 import { MainContentFocus } from "@hey/indexer";
 import { useState } from "react";
 import ExploreFeed from "./ExploreFeed";
@@ -18,21 +13,27 @@ const Explore = () => {
   const [focus, setFocus] = useState<MainContentFocus>();
 
   return (
-    <GridLayout>
-      <GridItemEight className="space-y-5">
-        <FeedFocusType focus={focus} setFocus={setFocus} />
-        {focus === MainContentFocus.Image ? (
-          <ImageFeed />
-        ) : (
-          <ExploreFeed focus={focus} />
-        )}
-      </GridItemEight>
-      <GridItemFour>
-        {/* <Gitcoin /> */}
-        {currentAccount ? <WhoToFollow /> : null}
-        <Footer />
-      </GridItemFour>
-    </GridLayout>
+    <PageLayout
+      title="Explore"
+      sidebar={
+        <>
+          {/* <Gitcoin /> */}
+          {currentAccount ? <WhoToFollow /> : null}
+          <Footer />
+        </>
+      }
+    >
+      <ContentFeedType
+        focus={focus}
+        setFocus={setFocus}
+        layoutId="explore-feed-tabs"
+      />
+      {focus === MainContentFocus.Image ? (
+        <ImageFeed />
+      ) : (
+        <ExploreFeed focus={focus} />
+      )}
+    </PageLayout>
   );
 };
 

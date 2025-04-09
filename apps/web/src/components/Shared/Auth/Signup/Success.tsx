@@ -1,7 +1,7 @@
 import { H4, Image } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
 import { signIn } from "@/store/persisted/useAuthStore";
-import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
+import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import { useSwitchAccountMutation } from "@hey/indexer";
 import { useEffect } from "react";
@@ -44,7 +44,7 @@ const Success = () => {
   return (
     <div className="m-8 flex flex-col items-center justify-center">
       <H4>Waaa-hey! You got your account!</H4>
-      <div className="mt-3 text-center font-semibold text-neutral-500 dark:text-neutral-200">
+      <div className="mt-3 text-center font-semibold text-gray-500 dark:text-gray-200">
         Welcome to decentralised social where everything is sooooooooooooo much
         better! 🎉
       </div>
@@ -55,8 +55,8 @@ const Success = () => {
         height={56}
         width={56}
       />
-      <i className="mt-8 text-neutral-500 dark:text-neutral-200">
-        We are taking you to {APP_NAME}...
+      <i className="mt-8 text-gray-500 dark:text-gray-200">
+        We are taking you to Hey...
       </i>
     </div>
   );

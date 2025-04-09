@@ -1,26 +1,25 @@
-import Footer from "@/components/Shared/Footer";
+import { PageLayout } from "@/components/Shared/PageLayout";
 import { H2, H4 } from "@/components/Shared/UI";
-import { APP_NAME } from "@hey/data/constants";
 import { Link } from "react-router";
 
 const Guidelines = () => {
   return (
-    <>
-      <div className="flex h-48 w-full items-center justify-center bg-neutral-400">
+    <PageLayout title="Community Guidelines">
+      <div className="flex h-48 w-full items-center justify-center rounded-2xl bg-gray-400">
         <div className="relative text-center">
           <H2 className="text-white">Community Guidelines</H2>
         </div>
       </div>
       <div className="relative">
         <div className="flex justify-center">
-          <div className="relative mx-auto max-w-3/4 rounded-lg sm:w-2/4">
-            <div className="!p-8 max-w-none text-neutral-500 dark:text-neutral-200">
+          <div className="relative mx-auto rounded-lg">
+            <div className="!p-8 max-w-none text-gray-500 dark:text-gray-200">
               <div className="space-y-5">
                 <p className="leading-7">
-                  To protect all users on {APP_NAME} and to prevent spam, we put
-                  some rules in place. Please read them carefully and remember
-                  them whenever you are posting something on {APP_NAME} or you
-                  are changing your Account.
+                  To protect all users on Hey and to prevent spam, we put some
+                  rules in place. Please read them carefully and remember them
+                  whenever you are posting something on Hey or you are changing
+                  your Account.
                 </p>
               </div>
               {/* Safety beings */}
@@ -45,16 +44,16 @@ const Guidelines = () => {
               <H4 className="mt-8 mb-5">Nudity</H4>
               <div className="space-y-5">
                 <p className="leading-7">
-                  {APP_NAME} is not a place to display, share or promote any
-                  form of the following types of content:
+                  Hey is not a place to display, share or promote any form of
+                  the following types of content:
                 </p>
                 <ul className="list-inside list-disc space-y-2">
                   <li>Nudity</li>
                   <li>Sexual content</li>
                 </ul>
                 <p className="leading-7">
-                  Please try to keep {APP_NAME} family-friendly (especially
-                  considering all Images, Videos, Audios and Links).
+                  Please try to keep Hey family-friendly (especially considering
+                  all Images, Videos, Audios and Links).
                 </p>
               </div>
               {/* Nudity ends */}
@@ -62,7 +61,7 @@ const Guidelines = () => {
               <H4 className="mt-8 mb-5">Spam</H4>
               <div className="space-y-5">
                 <p className="leading-7">
-                  You are not allowed to use {APP_NAME} as a platform to
+                  You are not allowed to use Hey as a platform to
                 </p>
                 <ul className="list-inside list-disc space-y-2">
                   <li>Manipulate other users</li>
@@ -82,7 +81,7 @@ const Guidelines = () => {
               <H4 className="mt-8 mb-5">Impersonation</H4>
               <div className="space-y-5">
                 <p className="leading-7">
-                  You are not allowed to impersonate other people on {APP_NAME}.
+                  You are not allowed to impersonate other people on Hey.
                 </p>
                 <p className="leading-7">
                   We understand that some of you like to create Accounts with
@@ -94,13 +93,12 @@ const Guidelines = () => {
                 </p>
                 <H4 className="mt-8 mb-5">Suspension</H4>
                 <p className="leading-7">
-                  Account suspension only apply to {APP_NAME} and not on Lens
-                  Protocol, decisions on suspension an account will be made by
-                  the
-                  {APP_NAME} team and its not automated.
+                  Account suspension only apply to Hey and not on Lens Protocol,
+                  decisions on suspension an account will be made by the Hey
+                  team and its not automated.
                 </p>
                 <p className="font-bold leading-7">
-                  This is a {APP_NAME}-specific decision / feature and not a
+                  This is a Hey-specific decision / feature and not a
                   protocol-level decision / feature.
                 </p>
               </div>
@@ -122,11 +120,8 @@ const Guidelines = () => {
             </div>
           </div>
         </div>
-        <div className="mt-2 mb-6 flex justify-center">
-          <Footer />
-        </div>
       </div>
-    </>
+    </PageLayout>
   );
 };
 

@@ -1,13 +1,8 @@
-import MetaTags from "@/components/Common/MetaTags";
+import BackButton from "@/components/Shared/BackButton";
 import NotLoggedIn from "@/components/Shared/NotLoggedIn";
-import {
-  GridItemEight,
-  GridItemFour,
-  GridLayout
-} from "@/components/Shared/UI";
+import { PageLayout } from "@/components/Shared/PageLayout";
+import { Card, CardHeader } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
-import { APP_NAME } from "@hey/data/constants";
-import SettingsSidebar from "../Sidebar";
 import LinkUsername from "./LinkUsername";
 import UnlinkUsername from "./UnlinkUsername";
 
@@ -19,16 +14,14 @@ const UsernameSettings = () => {
   }
 
   return (
-    <GridLayout>
-      <MetaTags title={`Username settings • ${APP_NAME}`} />
-      <GridItemFour>
-        <SettingsSidebar />
-      </GridItemFour>
-      <GridItemEight className="space-y-5">
+    <PageLayout title="Username settings">
+      <Card>
+        <CardHeader icon={<BackButton path="/settings" />} title="Username" />
         <UnlinkUsername />
+        <div className="divider" />
         <LinkUsername />
-      </GridItemEight>
-    </GridLayout>
+      </Card>
+    </PageLayout>
   );
 };
 

@@ -20,44 +20,45 @@ const Details = ({ group }: DetailsProps) => {
   const [expandedImage, setExpandedImage] = useState<null | string>(null);
 
   return (
-    <div className="mb-4 space-y-5 px-5 sm:px-0">
-      <div className="-mt-24 sm:-mt-32 relative size-32 sm:size-52">
-        <Image
-          alt={group.address}
-          className="size-32 cursor-pointer rounded-xl bg-neutral-200 ring-8 ring-neutral-50 sm:size-52 dark:bg-neutral-700 dark:ring-black"
-          height={128}
-          onClick={() => setExpandedImage(getAvatar(group))}
-          src={getAvatar(group)}
-          width={128}
-        />
-        <LightBox onClose={() => setExpandedImage(null)} url={expandedImage} />
+    <div className="mb-4 space-y-3 px-5 md:px-0">
+      <div className="flex items-start justify-between">
+        <div className="-mt-24 sm:-mt-24 relative ml-5 size-32 sm:size-36">
+          <Image
+            alt={group.address}
+            className="size-32 cursor-pointer rounded-xl bg-gray-200 ring-3 ring-gray-50 sm:size-36 dark:bg-gray-700 dark:ring-black"
+            height={128}
+            onClick={() => setExpandedImage(getAvatar(group))}
+            src={getAvatar(group)}
+            width={128}
+          />
+          <LightBox
+            onClose={() => setExpandedImage(null)}
+            url={expandedImage}
+          />
+        </div>
+        {currentAccount?.address === group.owner ? (
+          <>
+            <Button
+              icon={<Cog6ToothIcon className="size-5" />}
+              onClick={() => navigate(`/g/${group.address}/settings`)}
+              outline
+            >
+              Edit Group
+            </Button>
+          </>
+        ) : (
+          <JoinLeaveButton group={group} />
+        )}
       </div>
       <H3 className="truncate py-2">{group.metadata?.name}</H3>
       {group.metadata?.description ? (
-        <div className="markup linkify mr-0 break-words text-md sm:mr-10">
+        <div className="markup linkify mr-0 break-words sm:mr-10">
           <Markup mentions={getMentions(group.metadata?.description)}>
             {group.metadata?.description}
           </Markup>
         </div>
       ) : null}
-      <div className="space-y-5">
-        <MembersCount group={group} />
-        <div>
-          {currentAccount?.address === group.owner ? (
-            <>
-              <Button
-                icon={<Cog6ToothIcon className="size-5" />}
-                onClick={() => navigate(`/g/${group.address}/settings`)}
-                outline
-              >
-                Edit Group
-              </Button>
-            </>
-          ) : (
-            <JoinLeaveButton group={group} />
-          )}
-        </div>
-      </div>
+      <MembersCount group={group} />
     </div>
   );
 };

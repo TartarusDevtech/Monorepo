@@ -18,10 +18,9 @@ export const EmptyState = ({
   return (
     <Card
       className={cn(
-        { "!bg-transparent !shadow-none border-0": hideCard },
+        { "!bg-transparent !shadow-none !border-0": hideCard },
         className
       )}
-      forceRounded
     >
       <div className="grid justify-items-center space-y-2 p-5">
         <div>{icon}</div>

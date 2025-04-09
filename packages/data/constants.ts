@@ -22,9 +22,6 @@ export const ADDRESS_PLACEHOLDER = "0x03Ba3...7EF";
 export const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 
 // Application
-export const APP_NAME = "Hey";
-export const APP_URL = "https://hey.xyz";
-export const DESCRIPTION = `${APP_NAME}.xyz is a decentralized, and permissionless social media app built with Lens Protocol 🌿`;
 export const BRAND_COLOR = "#FB3A5D";
 
 // URLs
@@ -34,9 +31,6 @@ export const LENS_MEDIA_SNAPSHOT_URL = "https://ik.imagekit.io/lens";
 export const DEFAULT_OG = `${STATIC_IMAGES_URL}/og/cover.png`;
 export const DEFAULT_AVATAR = `${STATIC_IMAGES_URL}/default.png`;
 export const PLACEHOLDER_IMAGE = `${STATIC_IMAGES_URL}/placeholder.webp`;
-export const BLOCK_EXPLORER_URL = IS_MAINNET
-  ? "https://block-explorer.lens.dev"
-  : "https://block-explorer.testnet.lens.dev";
 export const DEVELOPER_PORTAL_URL = "https://developer.lens.xyz/sponsorship";
 
 // Storage

@@ -1,15 +1,7 @@
-import MetaTags from "@/components/Common/MetaTags";
-import WhoToFollow from "@/components/Home/Sidebar/WhoToFollow";
-import FeedFocusType from "@/components/Shared/FeedFocusType";
-import Footer from "@/components/Shared/Footer";
 import NotLoggedIn from "@/components/Shared/NotLoggedIn";
-import {
-  GridItemEight,
-  GridItemFour,
-  GridLayout
-} from "@/components/Shared/UI";
+import { PageLayout } from "@/components/Shared/PageLayout";
+import ContentFeedType from "@/components/Shared/Post/ContentFeedType";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
-import { APP_NAME } from "@hey/data/constants";
 import type { MainContentFocus } from "@hey/indexer";
 import { useState } from "react";
 import BookmarksFeed from "./BookmarksFeed";
@@ -23,17 +15,14 @@ const Bookmarks = () => {
   }
 
   return (
-    <GridLayout>
-      <MetaTags title={`Bookmarks • ${APP_NAME}`} />
-      <GridItemEight className="space-y-5">
-        <FeedFocusType focus={focus} setFocus={setFocus} />
-        <BookmarksFeed focus={focus} />
-      </GridItemEight>
-      <GridItemFour>
-        <WhoToFollow />
-        <Footer />
-      </GridItemFour>
-    </GridLayout>
+    <PageLayout title="Bookmarks">
+      <ContentFeedType
+        focus={focus}
+        setFocus={setFocus}
+        layoutId="bookmarks-feed-tabs"
+      />
+      <BookmarksFeed focus={focus} />
+    </PageLayout>
   );
 };
 

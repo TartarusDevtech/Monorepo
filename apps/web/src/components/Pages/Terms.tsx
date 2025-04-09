@@ -1,4 +1,4 @@
-import Footer from "@/components/Shared/Footer";
+import { PageLayout } from "@/components/Shared/PageLayout";
 import { H2, H4 } from "@/components/Shared/UI";
 import { Link } from "react-router";
 
@@ -6,12 +6,12 @@ const Terms = () => {
   const updatedAt = "March 21, 2025";
 
   return (
-    <>
-      <div className="flex h-48 w-full items-center justify-center bg-neutral-400">
+    <PageLayout title="Terms & Conditions">
+      <div className="flex h-48 w-full items-center justify-center rounded-2xl bg-gray-400">
         <div className="relative text-center">
           <H2 className="text-white">Terms & Conditions</H2>
           <div className="mt-4 flex justify-center">
-            <div className="rounded-md bg-neutral-800 px-2 py-0.5 text-white text-xs">
+            <div className="rounded-md bg-gray-800 px-2 py-0.5 text-white text-xs">
               Updated {updatedAt}
             </div>
           </div>
@@ -19,8 +19,8 @@ const Terms = () => {
       </div>
       <div className="relative">
         <div className="flex justify-center">
-          <div className="relative mx-auto max-w-3/4 rounded-lg sm:w-2/4">
-            <div className="!p-8 max-w-none text-neutral-500 dark:text-neutral-200">
+          <div className="relative mx-auto rounded-lg">
+            <div className="!p-8 max-w-none text-gray-500 dark:text-gray-200">
               {/* 1. Overview beings */}
               <H4 className="mb-5">1. Overview</H4>
               <div className="space-y-5">
@@ -308,11 +308,8 @@ const Terms = () => {
             </div>
           </div>
         </div>
-        <div className="mt-2 mb-6 flex justify-center">
-          <Footer />
-        </div>
       </div>
-    </>
+    </PageLayout>
   );
 };
 

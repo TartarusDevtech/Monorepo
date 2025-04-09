@@ -1,15 +1,8 @@
-import MetaTags from "@/components/Common/MetaTags";
+import BackButton from "@/components/Shared/BackButton";
 import NotLoggedIn from "@/components/Shared/NotLoggedIn";
-import {
-  Card,
-  CardHeader,
-  GridItemEight,
-  GridItemFour,
-  GridLayout
-} from "@/components/Shared/UI";
+import { PageLayout } from "@/components/Shared/PageLayout";
+import { Card, CardHeader } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
-import { APP_NAME } from "@hey/data/constants";
-import SettingsSidebar from "../Sidebar";
 import AppIcon from "./AppIcon";
 import IncludeLowScore from "./IncludeLowScore";
 
@@ -21,25 +14,17 @@ const PreferencesSettings = () => {
   }
 
   return (
-    <GridLayout>
-      <MetaTags title={`Preferences settings • ${APP_NAME}`} />
-      <GridItemFour>
-        <SettingsSidebar />
-      </GridItemFour>
-      <GridItemEight className="space-y-5">
-        <Card>
-          <CardHeader
-            body={`Update your preferences to control how you can change your
-            experience on ${APP_NAME}.`}
-            title="Your Preferences"
-          />
-          <div className="m-5 space-y-5">
-            <IncludeLowScore />
-          </div>
-        </Card>
+    <PageLayout title="Preferences settings">
+      <Card>
+        <CardHeader
+          icon={<BackButton path="/settings" />}
+          title="Preferences"
+        />
+        <IncludeLowScore />
+        <div className="divider" />
         <AppIcon />
-      </GridItemEight>
-    </GridLayout>
+      </Card>
+    </PageLayout>
   );
 };
 

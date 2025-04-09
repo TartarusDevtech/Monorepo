@@ -19,14 +19,16 @@ const IncludeLowScore = () => {
   );
 
   return (
-    <ToggleWithHelper
-      description="Turn on low-signal notification filter"
-      disabled={isPending}
-      heading="Notification Signal filter"
-      icon={<SwatchIcon className="size-5" />}
-      on={includeLowScore}
-      setOn={() => mutate({ includeLowScore: !includeLowScore })}
-    />
+    <div className="m-5">
+      <ToggleWithHelper
+        description="Turn on low-signal notification filter"
+        disabled={isPending}
+        heading="Notification Signal filter"
+        icon={<SwatchIcon className="size-5" />}
+        on={includeLowScore}
+        setOn={() => mutate({ includeLowScore: !includeLowScore })}
+      />
+    </div>
   );
 };
 

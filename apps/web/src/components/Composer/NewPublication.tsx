@@ -24,7 +24,7 @@ import {
 } from "@/store/non-persisted/post/usePostVideoStore";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
-import { APP_URL, STATIC_IMAGES_URL } from "@hey/data/constants";
+import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import collectActionParams from "@hey/helpers/collectActionParams";
 import getAccount from "@hey/helpers/getAccount";
@@ -201,7 +201,7 @@ const NewPublication = ({ className, post, feed }: NewPublicationProps) => {
         marketplace: {
           animation_url: getAnimationUrl(),
           description: processedPostContent,
-          external_url: `${APP_URL}${getAccount(currentAccount).link}`,
+          external_url: `https://hey.xyz${getAccount(currentAccount).link}`,
           name: title
         }
       };

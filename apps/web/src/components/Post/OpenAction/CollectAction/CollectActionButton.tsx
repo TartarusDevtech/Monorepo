@@ -1,4 +1,4 @@
-import FundButton from "@/components/Shared/Fund/FundButton";
+import FundButton from "@/components/Shared/Account/Fund/FundButton";
 import LoginButton from "@/components/Shared/LoginButton";
 import { Button, Spinner } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
@@ -17,7 +17,6 @@ import {
 } from "@hey/indexer";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import {} from "viem";
 
 interface CollectActionButtonProps {
   collects: number;

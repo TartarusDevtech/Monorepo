@@ -1,4 +1,4 @@
-import FundButton from "@/components/Shared/Fund/FundButton";
+import FundButton from "@/components/Shared/Account/Fund/FundButton";
 import LoginButton from "@/components/Shared/LoginButton";
 import { Button, Input, Spinner } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
@@ -145,7 +145,7 @@ const Action = ({ closePopover, post }: ActionProps) => {
   return (
     <div className="m-5 space-y-3">
       <div className="space-y-2">
-        <div className="flex items-center space-x-1 text-neutral-500 text-xs dark:text-neutral-200">
+        <div className="flex items-center space-x-1 text-gray-500 text-xs dark:text-gray-200">
           <span>Balance:</span>
           <span>
             {erc20Balance ? (

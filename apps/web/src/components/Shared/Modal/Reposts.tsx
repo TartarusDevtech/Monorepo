@@ -1,7 +1,9 @@
+import SingleAccount from "@/components/Shared/Account/SingleAccount";
 import AccountListShimmer from "@/components/Shared/Shimmer/AccountListShimmer";
-import SingleAccount from "@/components/Shared/SingleAccount";
 import { EmptyState, ErrorMessage } from "@/components/Shared/UI";
+import cn from "@/helpers/cn";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
+import { accountsList } from "@/variants";
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 import {
   PageSize,
@@ -9,6 +11,8 @@ import {
   type WhoReferencedPostRequest,
   useWhoReferencedPostQuery
 } from "@hey/indexer";
+import { LazyMotion, domAnimation } from "motion/react";
+import * as m from "motion/react-m";
 import { Virtuoso } from "react-virtuoso";
 
 interface RepostsProps {
@@ -69,19 +73,29 @@ const Reposts = ({ postId }: RepostsProps) => {
 
   return (
     <Virtuoso
-      className="virtual-account-list"
+      className="!h-[80vh]"
       data={accounts}
       endReached={onEndReached}
-      itemContent={(_, account) => (
-        <div className="p-5">
-          <SingleAccount
-            hideFollowButton={currentAccount?.address === account.address}
-            hideUnfollowButton={currentAccount?.address === account.address}
-            account={account}
-            showBio
-            showUserPreview={false}
-          />
-        </div>
+      itemContent={(index, account) => (
+        <LazyMotion features={domAnimation}>
+          <m.div
+            className={cn(
+              "divider p-5",
+              index === accounts.slice(5).length - 1 && "border-b-0"
+            )}
+            variants={accountsList}
+            initial="hidden"
+            animate="visible"
+          >
+            <SingleAccount
+              hideFollowButton={currentAccount?.address === account.address}
+              hideUnfollowButton={currentAccount?.address === account.address}
+              account={account}
+              showBio
+              showUserPreview={false}
+            />
+          </m.div>
+        </LazyMotion>
       )}
     />
   );

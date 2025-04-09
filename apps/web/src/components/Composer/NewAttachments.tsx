@@ -1,4 +1,5 @@
 import ChooseThumbnail from "@/components/Composer/ChooseThumbnail";
+import Audio from "@/components/Shared/Audio";
 import { Image } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
 import { usePostAttachmentStore } from "@/store/non-persisted/post/usePostAttachmentStore";
@@ -7,7 +8,6 @@ import { XMarkIcon } from "@heroicons/react/24/solid";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { NewAttachment } from "@hey/types/misc";
 import { useEffect, useRef } from "react";
-import Audio from "../Shared/Audio";
 
 const getClass = (attachments: number) => {
   if (attachments === 1) {
@@ -123,7 +123,7 @@ const NewAttachments = ({
             ) : isImage ? (
               <Image
                 alt={attachment.previewUri}
-                className="cursor-pointer rounded-lg border border-neutral-200 bg-neutral-100 object-cover dark:border-neutral-700 dark:bg-neutral-800"
+                className="cursor-pointer rounded-lg border border-gray-200 bg-gray-100 object-cover dark:border-gray-700 dark:bg-gray-800"
                 height={1000}
                 loading="lazy"
                 onError={({ currentTarget }) => {
@@ -136,7 +136,7 @@ const NewAttachments = ({
             {!hideDelete && (
               <div className="absolute top-0 right-0 m-3">
                 <button
-                  className="rounded-full bg-neutral-900 p-1.5 opacity-75"
+                  className="rounded-full bg-gray-900 p-1.5 opacity-75"
                   onClick={() => handleRemoveAttachment(attachment)}
                   type="button"
                 >

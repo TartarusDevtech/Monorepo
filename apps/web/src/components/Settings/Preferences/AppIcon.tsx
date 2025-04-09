@@ -1,10 +1,10 @@
-import { Card, CardHeader, Image, Tooltip } from "@/components/Shared/UI";
+import { Image, Tooltip } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
 import { trpc } from "@/helpers/trpc";
 import { usePreferencesStore } from "@/store/persisted/usePreferencesStore";
 import { CheckCircleIcon as CheckCircleIconOutline } from "@heroicons/react/24/outline";
 import { CheckCircleIcon as CheckCircleIconSolid } from "@heroicons/react/24/solid";
-import { APP_NAME, STATIC_IMAGES_URL } from "@hey/data/constants";
+import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
@@ -29,12 +29,9 @@ const AppIcon = () => {
   );
 
   return (
-    <Card>
-      <CardHeader
-        body={`Choose a custom app icon for ${APP_NAME}, that will be used everywhere on the app.`}
-        title="Choose App Icon"
-      />
-      <div className="m-5 flex flex-wrap items-center gap-x-8">
+    <div className="m-5 flex flex-col gap-y-5">
+      <b>Choose App Icon</b>
+      <div className="flex flex-wrap items-center gap-x-8">
         {icons.map((icon) => (
           <Tooltip content={icon.name} key={icon.id} placement="top">
             <button
@@ -53,13 +50,13 @@ const AppIcon = () => {
               {icon.id === appIcon ? (
                 <CheckCircleIconSolid className="size-5 text-emerald-500" />
               ) : (
-                <CheckCircleIconOutline className="size-5 text-neutral-500 dark:text-neutral-200" />
+                <CheckCircleIconOutline className="size-5 text-gray-500 dark:text-gray-200" />
               )}
             </button>
           </Tooltip>
         ))}
       </div>
-    </Card>
+    </div>
   );
 };
 

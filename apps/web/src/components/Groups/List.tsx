@@ -1,5 +1,5 @@
+import SingleGroup from "@/components/Shared/Group/SingleGroup";
 import GroupListShimmer from "@/components/Shared/Shimmer/GroupListShimmer";
-import SingleGroup from "@/components/Shared/SingleGroup";
 import { EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { UserGroupIcon } from "@heroicons/react/24/outline";
@@ -10,21 +10,21 @@ import {
   useGroupsQuery
 } from "@hey/indexer";
 import { Virtuoso } from "react-virtuoso";
-import { GroupsTabFocus } from ".";
+import { GroupsTabFocus } from "./FeedType";
 
 interface ListProps {
-  focus: GroupsTabFocus;
+  feedType: GroupsTabFocus;
 }
 
-const List = ({ focus }: ListProps) => {
+const List = ({ feedType }: ListProps) => {
   const { currentAccount } = useAccountStore();
 
   const request: GroupsRequest = {
     filter: {
-      ...(focus === GroupsTabFocus.Member && {
+      ...(feedType === GroupsTabFocus.Member && {
         member: currentAccount?.address
       }),
-      ...(focus === GroupsTabFocus.Managed && {
+      ...(feedType === GroupsTabFocus.Managed && {
         managedBy: { address: currentAccount?.address }
       })
     },

@@ -1,6 +1,6 @@
 import Members from "@/components/Shared/Modal/Members";
 import GraphStatsShimmer from "@/components/Shared/Shimmer/GraphStatsShimmer";
-import { H4, Modal } from "@/components/Shared/UI";
+import { Modal } from "@/components/Shared/UI";
 import humanize from "@hey/helpers/humanize";
 import { type GroupFragment, useGroupStatsQuery } from "@hey/indexer";
 import { useState } from "react";
@@ -29,18 +29,17 @@ const MembersCount = ({ group }: MembersCountProps) => {
   return (
     <div className="flex gap-8">
       <button
-        className="text-left outline-offset-4"
+        className="flex gap-x-1"
         onClick={() => setShowMembersModal(true)}
         type="button"
       >
-        <H4>{humanize(stats?.totalMembers)}</H4>
-        <div className="text-neutral-500 dark:text-neutral-200">Members</div>
+        <b>{humanize(stats?.totalMembers)}</b>
+        <span className="text-gray-500 dark:text-gray-200">Members</span>
       </button>
       <Modal
         onClose={() => setShowMembersModal(false)}
         show={showMembersModal}
         title="Members"
-        size="md"
       >
         <Members group={group} />
       </Modal>

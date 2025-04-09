@@ -1,5 +1,5 @@
 import ActionType from "@/components/Home/Timeline/EventType";
-import PostWrapper from "@/components/Shared/PostWrapper";
+import PostWrapper from "@/components/Shared/Post/PostWrapper";
 import cn from "@/helpers/cn";
 import type { AnyPostFragment, TimelineItemFragment } from "@hey/indexer";
 import { memo } from "react";
@@ -38,7 +38,7 @@ const SinglePost = ({
       className={cn(
         isFirst && "rounded-t-xl",
         isLast && "rounded-b-xl",
-        "cursor-pointer px-5 pt-4 pb-3 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-900"
+        "cursor-pointer px-5 pt-4 pb-3 hover:bg-gray-100 dark:hover:bg-gray-900"
       )}
       post={rootPost}
     >

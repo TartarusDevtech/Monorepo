@@ -1,23 +1,16 @@
-import SingleAccount from "@/components/Shared/SingleAccount";
 import {
   Button,
-  Card,
-  CardHeader,
   H5,
   Modal,
   Spinner,
   WarningMessage
 } from "@/components/Shared/UI";
+import { CHAIN } from "@/constants";
 import useHandleWrongNetwork from "@/hooks/useHandleWrongNetwork";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { TrashIcon } from "@heroicons/react/24/outline";
-import {
-  APP_NAME,
-  BLOCK_EXPLORER_URL,
-  NULL_ADDRESS
-} from "@hey/data/constants";
+import { NULL_ADDRESS } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
-import type { AccountFragment } from "@hey/indexer";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router";
@@ -40,28 +33,19 @@ const DeleteSettings = () => {
   };
 
   return (
-    <Card>
-      <CardHeader
-        body={`This will permanently delete your Account on the Lens Protocol. You will not be able to use any apps built on Lens, including ${APP_NAME}. All your data will be wiped out immediately and you won't be able to get it back.`}
-        title={<div className="text-red-500">Delete Lens account</div>}
-      />
+    <>
       <div className="m-5 space-y-5">
-        <SingleAccount
-          hideFollowButton
-          hideUnfollowButton
-          account={currentAccount as AccountFragment}
-        />
         <div className="space-y-3">
           <H5 className="text-red-500">Delete Lens account</H5>
           <p>
             This will permanently delete your Account NFT on the Lens Protocol.
-            You will not be able to use any apps built on Lens, including{" "}
-            {APP_NAME}. All your data will be wiped out immediately and you
-            won't be able to get it back.
+            You will not be able to use any apps built on Lens, including Hey.
+            All your data will be wiped out immediately and you won't be able to
+            get it back.
           </p>
         </div>
         <H5>What else you should know</H5>
-        <div className="divide-y divide-neutral-200 text-neutral-500 text-sm dark:divide-neutral-700 dark:text-neutral-200">
+        <div className="divide-y divide-gray-200 text-gray-500 text-sm dark:divide-gray-700 dark:text-gray-200">
           <p className="pb-3">
             You cannot restore your Lens account if it was accidentally or
             wrongfully deleted.
@@ -72,7 +56,9 @@ const DeleteSettings = () => {
           </p>
           <p className="linkify py-3">
             Your account will be transferred to a{" "}
-            <Link to={`${BLOCK_EXPLORER_URL}/address/${NULL_ADDRESS}`}>
+            <Link
+              to={`${CHAIN.blockExplorers?.default}/address/${NULL_ADDRESS}`}
+            >
               null address
             </Link>{" "}
             after deletion.
@@ -123,7 +109,7 @@ const DeleteSettings = () => {
           </Button>
         </div>
       </Modal>
-    </Card>
+    </>
   );
 };
 

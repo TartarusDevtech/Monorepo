@@ -14,8 +14,8 @@ import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useAccount, useDisconnect, useSignMessage } from "wagmi";
+import SingleAccount from "../Account/SingleAccount";
 import Loader from "../Loader";
-import SingleAccount from "../SingleAccount";
 import SignupCard from "./SignupCard";
 import WalletSelector from "./WalletSelector";
 
@@ -126,7 +126,7 @@ const Login = ({ setHasAccounts }: LoginProps) => {
           />
         ) : null}
         {loading ? (
-          <Card className="w-full dark:divide-neutral-700" forceRounded>
+          <Card className="w-full dark:divide-gray-700" forceRounded>
             <Loader
               className="my-4"
               message="Loading accounts managed by you..."
@@ -135,7 +135,7 @@ const Login = ({ setHasAccounts }: LoginProps) => {
           </Card>
         ) : accounts.length > 0 ? (
           <Card
-            className="max-h-[50vh] w-full overflow-y-auto dark:divide-neutral-700"
+            className="max-h-[50vh] w-full overflow-y-auto dark:divide-gray-700"
             forceRounded
           >
             {accounts.map((account) => (

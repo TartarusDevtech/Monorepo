@@ -1,6 +1,5 @@
 import Login from "@/components/Shared/Auth/Login";
 import { useAuthModalStore } from "@/store/non-persisted/modal/useAuthModalStore";
-import { APP_NAME } from "@hey/data/constants";
 import { useState } from "react";
 import { useAccount } from "wagmi";
 import AuthMessage from "./AuthMessage";
@@ -10,7 +9,7 @@ import { SignupMessage } from "./Signup/ChooseUsername";
 const NotConnected = ({ isLogin }: { isLogin?: boolean }) => (
   <AuthMessage
     description="Connect with our wallet provider to access your account."
-    title={`${isLogin ? "Login" : "Signup"} to ${APP_NAME}.`}
+    title={`${isLogin ? "Login" : "Signup"} to Hey.`}
   />
 );
 
@@ -31,7 +30,7 @@ const Auth = () => {
           {isConnected ? (
             hasAccounts ? (
               <AuthMessage
-                description={`${APP_NAME} uses this signature to verify that you're the owner of this address.`}
+                description="Hey uses this signature to verify that you're the owner of this address."
                 title="Please sign the message."
               />
             ) : (

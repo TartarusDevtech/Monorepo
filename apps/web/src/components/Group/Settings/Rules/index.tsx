@@ -1,20 +1,13 @@
-import MetaTags from "@/components/Common/MetaTags";
 import Custom404 from "@/components/Shared/404";
 import Custom500 from "@/components/Shared/500";
+import BackButton from "@/components/Shared/BackButton";
 import NotLoggedIn from "@/components/Shared/NotLoggedIn";
-import {
-  GridItemEight,
-  GridItemFour,
-  GridLayout,
-  PageLoading
-} from "@/components/Shared/UI";
+import { PageLayout } from "@/components/Shared/PageLayout";
+import { Card, CardHeader } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
-import { APP_NAME } from "@hey/data/constants";
 import { useGroupQuery } from "@hey/indexer";
 import { useParams } from "react-router";
-import SettingsSidebar from "../Sidebar";
 import ApprovalRule from "./ApprovalRule";
-import SuperJoin from "./SuperJoin";
 
 const RulesSettings = () => {
   const { address } = useParams<{ address: string }>();
@@ -26,7 +19,7 @@ const RulesSettings = () => {
   });
 
   if (!address || loading) {
-    return <PageLoading />;
+    return null;
   }
 
   if (error) {
@@ -44,16 +37,15 @@ const RulesSettings = () => {
   }
 
   return (
-    <GridLayout>
-      <MetaTags title={`Rules settings • ${APP_NAME}`} />
-      <GridItemFour>
-        <SettingsSidebar group={group} />
-      </GridItemFour>
-      <GridItemEight className="space-y-5">
+    <PageLayout title="Rules settings">
+      <Card>
+        <CardHeader
+          icon={<BackButton path={`/g/${group.address}/settings`} />}
+          title="Rules"
+        />
         <ApprovalRule group={group} />
-        <SuperJoin group={group} />
-      </GridItemEight>
-    </GridLayout>
+      </Card>
+    </PageLayout>
   );
 };
 

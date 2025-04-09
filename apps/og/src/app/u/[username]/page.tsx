@@ -1,5 +1,4 @@
 import defaultMetadata from "@/defaultMetadata";
-import { APP_NAME, APP_URL } from "@hey/data/constants";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import { AccountDocument } from "@hey/indexer";
@@ -26,21 +25,21 @@ export const generateMetadata = async ({
 
   const account = data.account;
   const { name, link, usernameWithPrefix } = getAccount(account);
-  const title = `${name} (${usernameWithPrefix}) • ${APP_NAME}`;
+  const title = `${name} (${usernameWithPrefix}) • Hey`;
   const description = (account?.metadata?.bio || title).slice(0, 155);
 
   return {
-    alternates: { canonical: `${APP_URL}${link}` },
-    applicationName: APP_NAME,
+    alternates: { canonical: `https://hey.xyz${link}` },
+    applicationName: "Hey",
     creator: name,
     description: description,
-    metadataBase: new URL(`${APP_URL}${link}`),
+    metadataBase: new URL(`https://hey.xyz${link}`),
     openGraph: {
       description: description,
       images: [getAvatar(account)],
       siteName: "Hey",
       type: "profile",
-      url: `${APP_URL}${link}`
+      url: `https://hey.xyz${link}`
     },
     other: {
       "lens:username": username,

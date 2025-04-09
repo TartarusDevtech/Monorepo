@@ -1,3 +1,4 @@
+import BackButton from "@/components/Shared/BackButton";
 import { Button, Card, CardHeader, H6 } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
 import useHandleWrongNetwork from "@/hooks/useHandleWrongNetwork";
@@ -59,55 +60,59 @@ const Tokens = () => {
   };
 
   return (
-    <>
-      <Card>
-        <CardHeader title="Your temporary access token" />
-        <button
-          className="m-5 cursor-pointer break-all rounded-md bg-neutral-300 p-2 px-3 text-left dark:bg-neutral-600"
-          onClick={() => {
-            toast.success("Copied to clipboard");
-            navigator.clipboard.writeText(accessToken as string);
-          }}
-          type="button"
-        >
-          <H6>{accessToken}</H6>
-        </button>
-      </Card>
-      <Card>
-        <CardHeader title="Your temporary refresh token" />
-        <button
-          className="m-5 cursor-pointer break-all rounded-md bg-neutral-300 p-2 px-3 text-left dark:bg-neutral-600"
-          onClick={() => {
-            toast.success("Copied to clipboard");
-            navigator.clipboard.writeText(refreshToken as string);
-          }}
-          type="button"
-        >
-          <H6>{refreshToken}</H6>
-        </button>
-      </Card>
-      <Card>
-        <CardHeader title="Your temporary ID token" />
-        <button
-          className="m-5 cursor-pointer break-all rounded-md bg-neutral-300 p-2 px-3 text-left dark:bg-neutral-600"
-          type="button"
-          onClick={() => {
-            toast.success("Copied to clipboard");
-            navigator.clipboard.writeText(idToken as string);
-          }}
-        >
-          <H6>{idToken}</H6>
-        </button>
-      </Card>
-      <Card>
-        <CardHeader title="Your temporary builder token" />
-        <div className="m-5">
+    <Card>
+      <CardHeader
+        icon={<BackButton path="/settings" />}
+        title="Your temporary access token"
+      />
+      <div className="m-5 space-y-5">
+        <div className="flex flex-col gap-y-3">
+          <b>Your temporary access token</b>
+          <button
+            className="cursor-pointer break-all rounded-md bg-gray-300 p-2 px-3 text-left dark:bg-gray-600"
+            onClick={() => {
+              toast.success("Copied to clipboard");
+              navigator.clipboard.writeText(accessToken as string);
+            }}
+            type="button"
+          >
+            <H6>{accessToken}</H6>
+          </button>
+        </div>
+        <div className="flex flex-col gap-y-3">
+          <b>Your temporary refresh token</b>
+          <button
+            className="cursor-pointer break-all rounded-md bg-gray-300 p-2 px-3 text-left dark:bg-gray-600"
+            onClick={() => {
+              toast.success("Copied to clipboard");
+              navigator.clipboard.writeText(refreshToken as string);
+            }}
+            type="button"
+          >
+            <H6>{refreshToken}</H6>
+          </button>
+        </div>
+        <div className="flex flex-col gap-y-3">
+          <b>Your temporary ID token</b>
+          <button
+            className="cursor-pointer break-all rounded-md bg-gray-300 p-2 px-3 text-left dark:bg-gray-600"
+            type="button"
+            onClick={() => {
+              toast.success("Copied to clipboard");
+              navigator.clipboard.writeText(idToken as string);
+            }}
+          >
+            <H6>{idToken}</H6>
+          </button>
+        </div>
+        <div className="flex flex-col gap-y-3">
+          <b>Your temporary builder token</b>
           <Button onClick={handleGenerateBuilderToken} disabled={isSubmitting}>
             {isSubmitting ? "Generating..." : "Generate builder token"}
           </Button>
           {builderToken && (
             <button
-              className="mt-5 cursor-pointer break-all rounded-md bg-neutral-300 p-2 px-3 text-left dark:bg-neutral-600"
+              className="mt-5 cursor-pointer break-all rounded-md bg-gray-300 p-2 px-3 text-left dark:bg-gray-600"
               type="button"
               onClick={() => {
                 toast.success("Copied to clipboard");
@@ -118,8 +123,8 @@ const Tokens = () => {
             </button>
           )}
         </div>
-      </Card>
-    </>
+      </div>
+    </Card>
   );
 };
 
