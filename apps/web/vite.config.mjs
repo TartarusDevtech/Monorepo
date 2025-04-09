@@ -22,6 +22,51 @@ export default defineConfig({
           }
 
           return "assets/[name]-[hash][extname]";
+        },
+        manualChunks: {
+          wevm: ["viem", "wagmi", "family"],
+          indexer: ["@hey/indexer"],
+          react: [
+            "react",
+            "react-dom",
+            "react-virtuoso",
+            "react-easy-crop",
+            "react-hook-form",
+            "react-hot-toast",
+            "react-router",
+            "react-tracked"
+          ],
+          editor: [
+            "react-markdown",
+            "strip-markdown",
+            "unified",
+            "prosekit",
+            "rehype-parse",
+            "rehype-remark",
+            "remark-breaks",
+            "remark-html",
+            "remark-linkify-regex",
+            "remark-stringify"
+          ],
+          ui: [
+            "@heroicons/react",
+            "@headlessui/react",
+            "@radix-ui/react-hover-card",
+            "@radix-ui/react-slider",
+            "@radix-ui/react-tooltip",
+            "@uidotdev/usehooks",
+            "motion"
+          ],
+          aws: ["@aws-sdk/client-s3", "@aws-sdk/lib-storage"],
+          media: ["plyr-react", "@livepeer/react", "browser-image-compression"],
+          misc: [
+            "@lens-chain/storage-client",
+            "@lens-protocol/metadata",
+            "@apollo/client",
+            "zustand",
+            "tailwind-merge",
+            "zod"
+          ]
         }
       }
     }
