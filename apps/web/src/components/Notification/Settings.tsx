@@ -26,9 +26,7 @@ const Settings = () => {
         show={showNotificationSettings}
         title="Notification settings"
       >
-        <div className="p-5">
-          <IncludeLowScore />
-        </div>
+        <IncludeLowScore />
       </Modal>
     </>
   );
