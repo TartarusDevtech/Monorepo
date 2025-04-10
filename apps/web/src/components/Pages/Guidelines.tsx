@@ -5,7 +5,7 @@ import { Link } from "react-router";
 const Guidelines = () => {
   return (
     <PageLayout title="Community Guidelines">
-      <div className="flex h-48 w-full items-center justify-center rounded-2xl bg-gray-400">
+      <div className="flex h-48 w-full items-center justify-center rounded-none bg-gray-400 md:rounded-2xl">
         <div className="relative text-center">
           <H2 className="text-white">Community Guidelines</H2>
         </div>
