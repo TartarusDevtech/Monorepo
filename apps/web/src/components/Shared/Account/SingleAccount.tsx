@@ -63,40 +63,42 @@ const SingleAccount = ({
         <UserAvatar />
         <div>
           <UserName />
-          {showBio && account?.metadata?.bio && (
-            <div
-              className={cn(
-                isBig ? "text-base" : "text-sm",
-                "mt-2",
-                "linkify leading-6"
-              )}
-              style={{ wordBreak: "break-word" }}
-            >
-              <Markup mentions={getMentions(account.metadata.bio)}>
-                {account?.metadata.bio}
-              </Markup>
-            </div>
-          )}
         </div>
       </div>
     </AccountPreview>
   );
 
   return (
-    <div className="flex items-center justify-between">
-      {linkToAccount && account.address ? (
-        <Link to={getAccount(account).link}>
+    <div className="flex flex-col gap-y-2">
+      <div className="flex items-center justify-between">
+        {linkToAccount && account.address ? (
+          <Link to={getAccount(account).link}>
+            <AccountInfo />
+          </Link>
+        ) : (
           <AccountInfo />
-        </Link>
-      ) : (
-        <AccountInfo />
+        )}
+        <FollowUnfollowButton
+          hideFollowButton={hideFollowButton}
+          hideUnfollowButton={hideUnfollowButton}
+          account={account}
+          small
+        />
+      </div>
+      {showBio && account?.metadata?.bio && (
+        <div
+          className={cn(
+            isBig ? "text-base" : "text-sm",
+            "mt-2",
+            "linkify leading-6"
+          )}
+          style={{ wordBreak: "break-word" }}
+        >
+          <Markup mentions={getMentions(account.metadata.bio)}>
+            {account?.metadata.bio}
+          </Markup>
+        </div>
       )}
-      <FollowUnfollowButton
-        hideFollowButton={hideFollowButton}
-        hideUnfollowButton={hideUnfollowButton}
-        account={account}
-        small
-      />
     </div>
   );
 };
