@@ -8,6 +8,7 @@ import {
   PostReferenceType,
   type PostReferencesRequest,
   PostVisibilityFilter,
+  ReferenceRelevancyFilter,
   usePostReferencesQuery
 } from "@hey/indexer";
 import { useState } from "react";
@@ -25,6 +26,7 @@ const NoneRelevantFeed = ({ postId }: NoneRelevantFeedProps) => {
     pageSize: PageSize.Fifty,
     referencedPost: postId,
     referenceTypes: [PostReferenceType.CommentOn],
+    relevancyFilter: ReferenceRelevancyFilter.NotRelevant,
     visibilityFilter: showHiddenComments
       ? PostVisibilityFilter.Visible
       : PostVisibilityFilter.Hidden
