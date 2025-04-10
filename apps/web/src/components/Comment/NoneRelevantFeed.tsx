@@ -28,8 +28,8 @@ const NoneRelevantFeed = ({ postId }: NoneRelevantFeedProps) => {
     referenceTypes: [PostReferenceType.CommentOn],
     relevancyFilter: ReferenceRelevancyFilter.NotRelevant,
     visibilityFilter: showHiddenComments
-      ? PostVisibilityFilter.Visible
-      : PostVisibilityFilter.Hidden
+      ? PostVisibilityFilter.Hidden
+      : PostVisibilityFilter.Visible
   };
 
   const { data, fetchMore } = usePostReferencesQuery({
