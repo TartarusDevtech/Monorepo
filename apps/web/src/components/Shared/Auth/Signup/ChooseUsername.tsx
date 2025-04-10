@@ -8,7 +8,7 @@ import {
   FaceFrownIcon,
   FaceSmileIcon
 } from "@heroicons/react/24/outline";
-import { HEY_APP } from "@hey/data/constants";
+import { HEY_APP, IS_MAINNET } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import { Regex } from "@hey/data/regex";
 import {
@@ -91,7 +91,10 @@ const ChooseUsername = () => {
       const challenge = await loadChallenge({
         variables: {
           request: {
-            onboardingUser: { app: HEY_APP, wallet: address }
+            onboardingUser: {
+              app: IS_MAINNET ? HEY_APP : undefined,
+              wallet: address
+            }
           }
         }
       });
