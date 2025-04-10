@@ -23,6 +23,7 @@ interface NavigationItemProps {
   outline: ReactNode;
   solid: ReactNode;
   isActive: boolean;
+  onClick?: (e: React.MouseEvent) => void;
 }
 
 const NavigationItem = ({
@@ -30,39 +31,13 @@ const NavigationItem = ({
   label,
   outline,
   solid,
-  isActive
+  isActive,
+  onClick
 }: NavigationItemProps) => (
-  <Link aria-label={label} className="mx-auto my-3" to={path}>
+  <Link aria-label={label} className="mx-auto my-3" to={path} onClick={onClick}>
     {isActive ? solid : outline}
   </Link>
 );
-
-const navigationItems = [
-  {
-    path: "/",
-    label: "Home",
-    outline: <HomeIcon className="size-6" />,
-    solid: <HomeIconSolid className="size-6" />
-  },
-  {
-    path: "/search",
-    label: "Search",
-    outline: <MagnifyingGlassIcon className="size-6" />,
-    solid: <MagnifyingGlassIcon className="size-6" />
-  },
-  {
-    path: "/explore",
-    label: "Explore",
-    outline: <GlobeOutline className="size-6" />,
-    solid: <GlobeSolid className="size-6" />
-  },
-  {
-    path: "/notifications",
-    label: "Notifications",
-    outline: <BellIcon className="size-6" />,
-    solid: <BellIconSolid className="size-6" />
-  }
-];
 
 const BottomNavigation = () => {
   const { pathname } = useLocation();
@@ -70,6 +45,40 @@ const BottomNavigation = () => {
   const { showMobileDrawer, setShowMobileDrawer } = useMobileDrawerModalStore();
 
   const handleProfileClick = () => setShowMobileDrawer(true);
+
+  const handleHomClick = (path: string, e: React.MouseEvent) => {
+    if (path === "/" && pathname === "/") {
+      e.preventDefault();
+      window.scrollTo(0, 0);
+    }
+  };
+
+  const navigationItems = [
+    {
+      path: "/",
+      label: "Home",
+      outline: <HomeIcon className="size-6" />,
+      solid: <HomeIconSolid className="size-6" />
+    },
+    {
+      path: "/search",
+      label: "Search",
+      outline: <MagnifyingGlassIcon className="size-6" />,
+      solid: <MagnifyingGlassIcon className="size-6" />
+    },
+    {
+      path: "/explore",
+      label: "Explore",
+      outline: <GlobeOutline className="size-6" />,
+      solid: <GlobeSolid className="size-6" />
+    },
+    {
+      path: "/notifications",
+      label: "Notifications",
+      outline: <BellIcon className="size-6" />,
+      solid: <BellIconSolid className="size-6" />
+    }
+  ];
 
   return (
     <nav className="fixed inset-x-0 bottom-0 z-[5] border-gray-200 border-t bg-white pb-safe md:hidden dark:border-gray-800 dark:bg-black">
@@ -83,6 +92,7 @@ const BottomNavigation = () => {
             outline={outline}
             solid={solid}
             isActive={pathname === path}
+            onClick={(e) => handleHomClick(path, e)}
           />
         ))}
         {currentAccount && (

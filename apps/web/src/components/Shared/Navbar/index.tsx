@@ -18,7 +18,7 @@ import {
   UserGroupIcon as UserGroupSolid
 } from "@heroicons/react/24/solid";
 import { STATIC_IMAGES_URL } from "@hey/data/constants";
-import type { ReactNode } from "react";
+import type { MouseEvent, ReactNode } from "react";
 import { Link, useLocation } from "react-router";
 import SignedAccount from "./SignedAccount";
 
@@ -82,13 +82,21 @@ const NavItems = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 };
 
 const Navbar = () => {
+  const { pathname } = useLocation();
   const { currentAccount } = useAccountStore();
   const { appIcon } = usePreferencesStore();
   const { setShowAuthModal } = useAuthModalStore();
 
+  const handleLogoClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo(0, 0);
+    }
+  };
+
   return (
     <aside className="sticky top-5 mt-5 hidden w-10 shrink-0 flex-col items-center gap-y-5 md:flex">
-      <Link to="/">
+      <Link to="/" onClick={handleLogoClick}>
         <Image
           alt="Logo"
           className="size-8"
