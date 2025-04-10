@@ -14,7 +14,6 @@ import SuperFollow from "./Account/SuperFollow";
 import SwitchAccounts from "./Account/SwitchAccounts";
 import Auth from "./Auth";
 import { useSignupStore } from "./Auth/Signup";
-import GlobalModalsFromUrl from "./GlobalModalsFromUrl";
 import SuperJoin from "./Group/SuperJoin";
 import ReportAccount from "./Modal/ReportAccount";
 
@@ -51,7 +50,6 @@ const GlobalModals = () => {
 
   return (
     <>
-      <GlobalModalsFromUrl />
       <Modal
         onClose={() => setShowReportPostModal(false, reportingPostId)}
         show={showReportPostModal}
