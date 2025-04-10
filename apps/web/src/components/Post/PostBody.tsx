@@ -13,7 +13,6 @@ import type { AnyPostFragment } from "@hey/indexer";
 import { getSrc } from "@livepeer/react/external";
 import { memo } from "react";
 import { Link } from "react-router";
-import Metadata from "./Metadata";
 
 interface PostBodyProps {
   contentClassName?: string;
@@ -92,7 +91,6 @@ const PostBody = ({
       {showOembed ? <Oembed url={urls[0]} /> : null}
       {showSharingLink ? <Oembed url={metadata.sharingLink} /> : null}
       {targetPost.quoteOf ? <Quote post={targetPost.quoteOf} /> : null}
-      <Metadata metadata={targetPost.metadata} />
     </div>
   );
 };
