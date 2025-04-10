@@ -28,10 +28,6 @@ const PublicationPageShimmer = ({
             <SingleAccountShimmer showFollowUnfollowButton />
             <SingleAccountShimmer showFollowUnfollowButton />
           </Card>
-          <Card className="flex justify-between p-5">
-            <div className="shimmer h-3 w-1/2 rounded-lg" />
-            <div className="shimmer h-3 w-1/4 rounded-lg" />
-          </Card>
           <Footer />
         </div>
       }
