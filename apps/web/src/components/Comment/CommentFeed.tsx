@@ -8,7 +8,6 @@ import {
   PostReferenceType,
   type PostReferencesRequest,
   PostVisibilityFilter,
-  ReferenceRelevancyFilter,
   usePostReferencesQuery
 } from "@hey/indexer";
 import { Virtuoso } from "react-virtuoso";
@@ -24,7 +23,6 @@ const CommentFeed = ({ postId }: CommentFeedProps) => {
     pageSize: PageSize.Fifty,
     referencedPost: postId,
     referenceTypes: [PostReferenceType.CommentOn],
-    relevancyFilter: ReferenceRelevancyFilter.Relevant,
     visibilityFilter: showHiddenComments
       ? PostVisibilityFilter.Hidden
       : PostVisibilityFilter.Visible

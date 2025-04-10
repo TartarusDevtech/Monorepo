@@ -1,5 +1,4 @@
 import CommentFeed from "@/components/Comment/CommentFeed";
-import NoneRelevantFeed from "@/components/Comment/NoneRelevantFeed";
 import NewPublication from "@/components/Composer/NewPublication";
 import Custom404 from "@/components/Shared/404";
 import Custom500 from "@/components/Shared/500";
@@ -134,12 +133,7 @@ const ViewPost = () => {
                 feed={targetPost.feed.address}
               />
             ) : null}
-            {post.isDeleted ? null : (
-              <>
-                <CommentFeed postId={targetPost.id} />
-                <NoneRelevantFeed postId={targetPost.id} />
-              </>
-            )}
+            {post.isDeleted ? null : <CommentFeed postId={targetPost.id} />}
           </>
         )}
       </div>
