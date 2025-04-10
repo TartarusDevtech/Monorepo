@@ -131,7 +131,7 @@ const ViewPost = () => {
             {currentAccount && !post.isDeleted && !isSuspended && canComment ? (
               <NewPublication
                 post={targetPost}
-                feed={targetPost.feed.group?.address}
+                feed={targetPost.feed.address}
               />
             ) : null}
             {post.isDeleted ? null : (
