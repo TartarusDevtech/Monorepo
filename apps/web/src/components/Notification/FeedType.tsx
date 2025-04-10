@@ -1,33 +1,20 @@
 import { TabButton } from "@/components/Shared/UI";
 import { MotionTabIndicator } from "@/components/Shared/UI/TabButton";
 import { NotificationFeedType } from "@hey/data/enums";
+import type { Dispatch, SetStateAction } from "react";
 
 interface FeedTypeProps {
   feedType: NotificationFeedType;
+  setFeedType: Dispatch<SetStateAction<NotificationFeedType>>;
 }
 
-const FeedType = ({ feedType }: FeedTypeProps) => {
+const FeedType = ({ feedType, setFeedType }: FeedTypeProps) => {
   const tabs = [
-    {
-      name: "All",
-      type: NotificationFeedType.All
-    },
-    {
-      name: "Mentions",
-      type: NotificationFeedType.Mentions
-    },
-    {
-      name: "Comments",
-      type: NotificationFeedType.Comments
-    },
-    {
-      name: "Likes",
-      type: NotificationFeedType.Likes
-    },
-    {
-      name: "Actions",
-      type: NotificationFeedType.PostActions
-    }
+    { name: "All", type: NotificationFeedType.All },
+    { name: "Mentions", type: NotificationFeedType.Mentions },
+    { name: "Comments", type: NotificationFeedType.Comments },
+    { name: "Likes", type: NotificationFeedType.Likes },
+    { name: "Actions", type: NotificationFeedType.PostActions }
   ];
 
   return (
@@ -40,8 +27,8 @@ const FeedType = ({ feedType }: FeedTypeProps) => {
             <TabButton
               active={isSelected}
               name={tab.name}
-              type={tab.type.toLowerCase()}
               className="relative"
+              onClick={() => setFeedType(tab.type)}
             />
           </div>
         );

@@ -3,6 +3,7 @@ import GroupListShimmer from "@/components/Shared/Shimmer/GroupListShimmer";
 import { EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { UserGroupIcon } from "@heroicons/react/24/outline";
+import { GroupsFeedType } from "@hey/data/enums";
 import {
   GroupsOrderBy,
   type GroupsRequest,
@@ -10,10 +11,9 @@ import {
   useGroupsQuery
 } from "@hey/indexer";
 import { Virtuoso } from "react-virtuoso";
-import { GroupsTabFocus } from "./FeedType";
 
 interface ListProps {
-  feedType: GroupsTabFocus;
+  feedType: GroupsFeedType;
 }
 
 const List = ({ feedType }: ListProps) => {
@@ -21,10 +21,10 @@ const List = ({ feedType }: ListProps) => {
 
   const request: GroupsRequest = {
     filter: {
-      ...(feedType === GroupsTabFocus.Member && {
+      ...(feedType === GroupsFeedType.Member && {
         member: currentAccount?.address
       }),
-      ...(feedType === GroupsTabFocus.Managed && {
+      ...(feedType === GroupsFeedType.Managed && {
         managedBy: { address: currentAccount?.address }
       })
     },

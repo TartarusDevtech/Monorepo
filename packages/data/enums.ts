@@ -18,3 +18,8 @@ export enum NotificationFeedType {
   Likes = "LIKES",
   Mentions = "MENTIONS"
 }
+
+export enum GroupsFeedType {
+  Managed = "MANAGED",
+  Member = "MEMBER"
+}

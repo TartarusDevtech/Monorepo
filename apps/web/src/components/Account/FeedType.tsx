@@ -1,22 +1,22 @@
 import { TabButton } from "@/components/Shared/UI";
 import { MotionTabIndicator } from "@/components/Shared/UI/TabButton";
 import { AccountFeedType } from "@hey/data/enums";
-import type { ReactNode } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import MediaFilter from "./Filters/MediaFilter";
 
 interface FeedTypeProps {
   feedType: AccountFeedType;
+  setFeedType: Dispatch<SetStateAction<AccountFeedType>>;
 }
 
-const FeedType = ({ feedType }: FeedTypeProps) => {
+const FeedType = ({ feedType, setFeedType }: FeedTypeProps) => {
   const tabs = [
     { name: "Feed", type: AccountFeedType.Feed },
     { name: "Replies", type: AccountFeedType.Replies },
     { name: "Media", type: AccountFeedType.Media },
     { name: "Collected", type: AccountFeedType.Collects }
-  ].filter(
-    (tab): tab is { icon: ReactNode; name: string; type: AccountFeedType } =>
-      Boolean(tab)
+  ].filter((tab): tab is { name: string; type: AccountFeedType } =>
+    Boolean(tab)
   );
 
   return (
@@ -31,8 +31,8 @@ const FeedType = ({ feedType }: FeedTypeProps) => {
                 active={feedType === tab.type}
                 key={tab.type}
                 name={tab.name}
-                type={tab.type.toLowerCase()}
                 className="relative"
+                onClick={() => setFeedType(tab.type)}
               />
             </div>
           );

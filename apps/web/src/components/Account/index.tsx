@@ -15,7 +15,8 @@ import getAccount from "@hey/helpers/getAccount";
 import isAccountDeleted from "@hey/helpers/isAccountDeleted";
 import { useAccountQuery } from "@hey/indexer";
 import { useQuery } from "@tanstack/react-query";
-import { useParams, useSearchParams } from "react-router";
+import { useState } from "react";
+import { useParams } from "react-router";
 import AccountFeed from "./AccountFeed";
 import DeletedDetails from "./DeletedDetails";
 import Details from "./Details";
@@ -28,26 +29,12 @@ const ViewProfile = () => {
     address: string;
     username: string;
   }>();
-  const [searchParams] = useSearchParams();
-  const type = searchParams.get("type") || AccountFeedType.Feed;
+  const [feedType, setFeedType] = useState<AccountFeedType>(
+    AccountFeedType.Feed
+  );
 
   const { currentAccount } = useAccountStore();
   const isStaff = hasAccess(Features.Staff);
-
-  const lowerCaseFeedType = [
-    AccountFeedType.Feed.toLowerCase(),
-    AccountFeedType.Replies.toLowerCase(),
-    AccountFeedType.Media.toLowerCase(),
-    AccountFeedType.Collects.toLowerCase()
-  ];
-
-  const getFeedType = (type: string | undefined) => {
-    return type && lowerCaseFeedType.includes(type.toLowerCase())
-      ? type.toUpperCase()
-      : AccountFeedType.Feed;
-  };
-
-  const feedType = getFeedType(Array.isArray(type) ? type[0] : type);
 
   const { data, error, loading } = useAccountQuery({
     skip: address ? !address : !username,
@@ -120,7 +107,7 @@ const ViewProfile = () => {
         renderEmptyState()
       ) : (
         <>
-          <FeedType feedType={feedType as AccountFeedType} />
+          <FeedType feedType={feedType} setFeedType={setFeedType} />
           {currentAccount?.address === account?.address && <NewPost />}
           {(feedType === AccountFeedType.Feed ||
             feedType === AccountFeedType.Replies ||

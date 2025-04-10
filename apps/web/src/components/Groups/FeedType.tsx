@@ -1,21 +1,18 @@
 import { TabButton } from "@/components/Shared/UI";
 import { MotionTabIndicator } from "@/components/Shared/UI/TabButton";
-import type {} from "react";
-
-export enum GroupsTabFocus {
-  Member = "MEMBER",
-  Managed = "MANAGED"
-}
+import { GroupsFeedType } from "@hey/data/enums";
+import type { Dispatch, SetStateAction } from "react";
 
 interface FocusTypeProps {
-  feedType: GroupsTabFocus;
+  feedType: GroupsFeedType;
+  setFeedType: Dispatch<SetStateAction<GroupsFeedType>>;
 }
 
-const FeedType = ({ feedType }: FocusTypeProps) => {
+const FeedType = ({ feedType, setFeedType }: FocusTypeProps) => {
   const tabs = [
-    { name: "Your groups", type: GroupsTabFocus.Member },
-    { name: "Managed groups", type: GroupsTabFocus.Managed }
-  ].filter((tab): tab is { name: string; type: GroupsTabFocus } =>
+    { name: "Managed groups", type: GroupsFeedType.Managed },
+    { name: "Your groups", type: GroupsFeedType.Member }
+  ].filter((tab): tab is { name: string; type: GroupsFeedType } =>
     Boolean(tab)
   );
 
@@ -30,8 +27,8 @@ const FeedType = ({ feedType }: FocusTypeProps) => {
               active={isSelected}
               key={tab.type}
               name={tab.name}
-              type={tab.type.toLowerCase()}
               className="relative"
+              onClick={() => setFeedType(tab.type)}
             />
           </div>
         );
