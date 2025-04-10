@@ -22,7 +22,10 @@ interface WrapperProps {
 
 const Wrapper = ({ children }: WrapperProps) => {
   return (
-    <Card className="flex justify-center p-3 font-bold hover:bg-gray-50 dark:hover:bg-gray-900">
+    <Card
+      className="flex justify-center p-3 font-bold hover:bg-gray-50 dark:hover:bg-gray-900"
+      forceRounded
+    >
       <div className="flex items-center space-x-2">{children}</div>
     </Card>
   );
@@ -76,7 +79,7 @@ const LivestreamEditor = () => {
           </Wrapper>
         ) : liveVideoConfig.playbackId.length > 0 ? (
           <>
-            <Card className="space-y-2 p-3">
+            <Card className="space-y-2 p-3" forceRounded>
               <div className="flex items-center space-x-1">
                 <b>Stream URL:</b>
                 <div className="">rtmp://rtmp.hey.xyz/live</div>

@@ -20,9 +20,9 @@ export const Card = ({
     <Tag
       className={cn(
         forceRounded
-          ? "rounded-xl"
-          : "rounded-none border-x-0 md:rounded-xl md:border-x",
-        "border border-gray-200 dark:border-gray-700",
+          ? "rounded-xl border"
+          : "rounded-none border-y md:rounded-xl md:border",
+        "border-gray-200 dark:border-gray-700",
         "bg-white dark:bg-black",
         className
       )}
