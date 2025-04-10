@@ -56,7 +56,7 @@ const ViewPost = () => {
     skip: !slug,
     variables: {
       request: {
-        pageSize: PageSize.Fifty,
+        pageSize: PageSize.Ten,
         referencedPost: slug,
         visibilityFilter: PostVisibilityFilter.Hidden,
         referenceTypes: [PostReferenceType.CommentOn]
