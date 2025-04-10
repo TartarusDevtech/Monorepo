@@ -22,7 +22,7 @@ const Cover = ({ cover }: CoverProps) => {
 
   return (
     <div className="mx-auto">
-      <div className="h-52 sm:h-64 md:rounded-2xl" style={backgroundStyles} />
+      <div className="h-52 sm:h-64 md:rounded-xl" style={backgroundStyles} />
     </div>
   );
 };

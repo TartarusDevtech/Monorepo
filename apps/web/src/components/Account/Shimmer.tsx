@@ -6,7 +6,7 @@ const AccountPageShimmer = () => {
   return (
     <PageLayout zeroTopMargin>
       <div className="mx-auto">
-        <div className="shimmer h-52 sm:h-64 md:rounded-2xl" />
+        <div className="shimmer h-52 sm:h-64 md:rounded-xl" />
       </div>
       <div className="mb-4 space-y-8 px-5 md:px-0">
         <div className="flex items-start justify-between">

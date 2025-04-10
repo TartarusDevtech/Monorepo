@@ -7,7 +7,7 @@ const Copyright = () => {
 
   return (
     <PageLayout title="Copyright Policy">
-      <div className="flex h-48 w-full items-center justify-center rounded-none bg-gray-400 md:rounded-2xl">
+      <div className="flex h-48 w-full items-center justify-center rounded-none bg-gray-400 md:rounded-xl">
         <div className="relative text-center">
           <H2 className="text-white">Copyright Policy</H2>
           <div className="mt-4 flex justify-center">
