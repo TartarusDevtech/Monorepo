@@ -7,7 +7,7 @@ import getAvatar from "@hey/helpers/getAvatar";
 import type { AccountFragment, PostGroupInfoFragment } from "@hey/indexer";
 import type { ReactNode } from "react";
 import { memo } from "react";
-import { Link, useLocation } from "react-router";
+import { Link } from "react-router";
 
 interface PostAccountProps {
   account: AccountFragment;
@@ -22,8 +22,6 @@ const PostAccount = ({
   postSlug,
   timestamp
 }: PostAccountProps) => {
-  const { pathname } = useLocation();
-
   const CustomLink = ({ children }: { children: ReactNode }) => (
     <Link
       className="outline-hidden hover:underline focus:underline"
@@ -60,7 +58,7 @@ const PostAccount = ({
           </span>
         ) : null}
       </div>
-      {group?.metadata && pathname !== "/g/[address]" ? (
+      {group?.metadata ? (
         <Link
           className="mt-0.5 mb-2 flex w-fit max-w-sm items-center gap-x-1 text-xs hover:underline focus:underline"
           to={`/g/${group.address}`}
