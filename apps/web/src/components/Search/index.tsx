@@ -1,8 +1,9 @@
-import Custom404 from "@/components/Shared/404";
 import { PageLayout } from "@/components/Shared/PageLayout";
 import Sidebar from "@/components/Shared/Sidebar";
-import {} from "@heroicons/react/24/outline";
+import { default as SearchInput } from "@/components/Shared/Sidebar/Search";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useSearchParams } from "react-router";
+import { EmptyState } from "../Shared/UI";
 import Accounts from "./Accounts";
 import FeedType, { SearchTabFocus } from "./FeedType";
 import Posts from "./Posts";
@@ -26,17 +27,24 @@ const Search = () => {
 
   const feedType = getFeedType(Array.isArray(type) ? type[0] : type);
 
-  if (!q || !["accounts", "posts"].includes(type as string)) {
-    return <Custom404 />;
-  }
-
   return (
-    <PageLayout title="Search" sidebar={<Sidebar />}>
+    <PageLayout title="Search" sidebar={<Sidebar />} hideSearch>
+      <div className="px-5 md:px-0">
+        <SearchInput />
+      </div>
       <FeedType feedType={feedType as SearchTabFocus} />
-      {feedType === SearchTabFocus.Accounts ? (
+      {!q && (
+        <EmptyState
+          icon={<MagnifyingGlassIcon className="size-8" />}
+          message="Search for accounts or posts"
+        />
+      )}
+      {q && feedType === SearchTabFocus.Accounts ? (
         <Accounts query={q as string} />
       ) : null}
-      {feedType === SearchTabFocus.Posts ? <Posts query={q as string} /> : null}
+      {q && feedType === SearchTabFocus.Posts ? (
+        <Posts query={q as string} />
+      ) : null}
     </PageLayout>
   );
 };

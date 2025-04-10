@@ -1,11 +1,11 @@
 import { Image } from "@/components/Shared/UI";
-import cn from "@/helpers/cn";
 import { useMobileDrawerModalStore } from "@/store/non-persisted/modal/useMobileDrawerModalStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
   BellIcon,
   GlobeAltIcon as GlobeOutline,
-  HomeIcon
+  HomeIcon,
+  MagnifyingGlassIcon
 } from "@heroicons/react/24/outline";
 import {
   BellIcon as BellIconSolid,
@@ -45,6 +45,12 @@ const navigationItems = [
     solid: <HomeIconSolid className="size-6" />
   },
   {
+    path: "/search",
+    label: "Search",
+    outline: <MagnifyingGlassIcon className="size-6" />,
+    solid: <MagnifyingGlassIcon className="size-6" />
+  },
+  {
     path: "/explore",
     label: "Explore",
     outline: <GlobeOutline className="size-6" />,
@@ -66,14 +72,9 @@ const BottomNavigation = () => {
   const handleProfileClick = () => setShowMobileDrawer(true);
 
   return (
-    <nav
-      className="fixed inset-x-0 bottom-0 z-[5] border-gray-200 border-t bg-white pb-safe md:hidden dark:border-gray-800 dark:bg-black"
-      aria-label="Bottom navigation"
-    >
+    <nav className="fixed inset-x-0 bottom-0 z-[5] border-gray-200 border-t bg-white pb-safe md:hidden dark:border-gray-800 dark:bg-black">
       {showMobileDrawer && <MobileDrawerMenu />}
-      <div
-        className={cn("grid", currentAccount ? "grid-cols-4" : "grid-cols-3")}
-      >
+      <div className="flex justify-between">
         {navigationItems.map(({ path, label, outline, solid }) => (
           <NavigationItem
             key={path}

@@ -20,7 +20,7 @@ const FeedType = ({ feedType }: FeedTypeProps) => {
   );
 
   return (
-    <li className="mx-5 flex flex-wrap gap-3 sm:mx-0">
+    <li className="flex flex-wrap gap-3 px-5 md:px-0">
       {tabs.map((tab) => {
         const isSelected = feedType === tab.type;
         return (
