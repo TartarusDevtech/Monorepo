@@ -8,13 +8,22 @@ const getEnvConfig = (): {
   appAddress: `0x${string}`;
   sponsorAddress: `0x${string}`;
 } => {
+  const testnetContracts = {
+    defaultCollectToken: TestnetContracts.DefaultToken,
+    appAddress: TestnetContracts.App,
+    sponsorAddress: TestnetContracts.Sponsor
+  };
+
   switch (LENS_NETWORK) {
     case "testnet":
       return {
         lensApiEndpoint: LensEndpoint.Testnet,
-        defaultCollectToken: TestnetContracts.DefaultToken,
-        appAddress: TestnetContracts.App,
-        sponsorAddress: TestnetContracts.Sponsor
+        ...testnetContracts
+      };
+    case "staging":
+      return {
+        lensApiEndpoint: LensEndpoint.Staging,
+        ...testnetContracts
       };
     default:
       return {
