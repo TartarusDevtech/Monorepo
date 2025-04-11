@@ -32,8 +32,7 @@ const getS3Client = async (): Promise<S3> => {
 };
 
 const uploadToIPFS = async (
-  data: FileList | File[],
-  onProgress?: (percentage: number) => void
+  data: FileList | File[]
 ): Promise<{ mimeType: string; uri: string }[]> => {
   try {
     const files = Array.from(data) as File[];
@@ -69,12 +68,6 @@ const uploadToIPFS = async (
             Key: `${currentDate}/${generateUUID()}`
           };
           const task = new Upload({ client, params });
-          task.on("httpUploadProgress", (e) => {
-            const loaded = e.loaded || 0;
-            const total = e.total || 0;
-            const progress = (loaded / total) * 100;
-            onProgress?.(Math.round(progress));
-          });
           await task.done();
           const result = await client.headObject(params);
           const metadata = result.Metadata;
@@ -94,11 +87,10 @@ const uploadToIPFS = async (
 };
 
 export const uploadFileToIPFS = async (
-  file: File,
-  onProgress?: (percentage: number) => void
+  file: File
 ): Promise<{ mimeType: string; uri: string }> => {
   try {
-    const ipfsResponse = await uploadToIPFS([file], onProgress);
+    const ipfsResponse = await uploadToIPFS([file]);
     const metadata = ipfsResponse[0];
 
     return { mimeType: file.type || FALLBACK_TYPE, uri: metadata.uri };
