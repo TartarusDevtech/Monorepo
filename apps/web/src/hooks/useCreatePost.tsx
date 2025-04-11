@@ -28,7 +28,7 @@ const useCreatePost = ({
   const { cache } = useApolloClient();
   const isComment = Boolean(commentOn);
 
-  const updateCache = async (txHash: string, toastId: string) => {
+  const updateCache = async (txHash: string, toastId: string | number) => {
     const { data } = await getPost({ variables: { request: { txHash } } });
     if (!data?.post) {
       return;
