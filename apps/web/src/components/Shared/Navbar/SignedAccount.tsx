@@ -67,14 +67,6 @@ const SignedAccount = () => {
               <StaffTools />
             </MenuItem>
           ) : null}
-          <MenuItem
-            as="div"
-            className={({ focus }) =>
-              cn({ "dropdown-active": focus }, "m-2 rounded-lg")
-            }
-          >
-            <Logout />
-          </MenuItem>
           <div className="divider" />
           <MenuItem
             as="div"
@@ -91,6 +83,15 @@ const SignedAccount = () => {
             }
           >
             <ThemeSwitch />
+          </MenuItem>
+          <div className="divider" />
+          <MenuItem
+            as="div"
+            className={({ focus }) =>
+              cn({ "dropdown-active": focus }, "m-2 rounded-lg")
+            }
+          >
+            <Logout />
           </MenuItem>
         </MenuItems>
       </MenuTransition>
