@@ -24,7 +24,7 @@ const Embed = ({ og }: EmbedProps) => {
         target={og.url.includes(location.host) ? "_self" : "_blank"}
       >
         <Card className="truncate p-5" forceRounded>
-          <div className="space-y-1">
+          <div className="flex flex-col gap-y-1">
             {og.title ? (
               <div className="flex items-center space-x-1.5">
                 {favicon ? (
