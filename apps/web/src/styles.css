@@ -130,11 +130,6 @@
     }
   }
 
-  .oembed-player,
-  iframe {
-    @apply rounded-xl;
-  }
-
   /** CSS overrides for plyr audio **/
   .plyr__progress__buffer {
     @apply !bg-white;

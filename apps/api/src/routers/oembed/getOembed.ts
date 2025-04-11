@@ -11,12 +11,8 @@ const ParamsSchema = z.object({
 
 const ResponseSchema = z
   .object({
-    description: z.string().nullable(),
-    favicon: z.string(),
-    html: z.string().nullable(),
-    image: z.string().nullable(),
-    site: z.string().nullable(),
     title: z.string().nullable(),
+    description: z.string().nullable(),
     url: z.string().url()
   })
   .nullable();

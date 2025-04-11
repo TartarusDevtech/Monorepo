@@ -1,5 +1,6 @@
 import { Card } from "@/components/Shared/UI";
 import type { OembedRouterOutput } from "@hey/api/src/routers/oembed";
+import getFavicon from "@hey/helpers/getFavicon";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import { Link } from "react-router";
 
@@ -11,6 +12,8 @@ const Embed = ({ og }: EmbedProps) => {
   if (!og) {
     return null;
   }
+
+  const favicon = getFavicon(og.url);
 
   return (
     <div className="mt-4 w-full text-sm md:w-4/6">
@@ -24,13 +27,13 @@ const Embed = ({ og }: EmbedProps) => {
           <div className="space-y-1">
             {og.title ? (
               <div className="flex items-center space-x-1.5">
-                {og.favicon ? (
+                {favicon ? (
                   <img
                     alt="Favicon"
                     className="size-4 rounded-full"
                     height={16}
-                    src={og.favicon}
-                    title={og.site || og.url}
+                    src={favicon}
+                    title={og.url}
                     width={16}
                   />
                 ) : null}
