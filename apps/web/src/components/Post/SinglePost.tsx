@@ -17,7 +17,6 @@ interface SinglePostProps {
   post: AnyPostFragment;
   showActions?: boolean;
   showMore?: boolean;
-  showThread?: boolean;
   showType?: boolean;
 }
 
@@ -28,7 +27,6 @@ const SinglePost = ({
   post,
   showActions = true,
   showMore = true,
-  showThread = true,
   showType = true
 }: SinglePostProps) => {
   const rootPost = timelineItem ? timelineItem?.primary : post;
@@ -45,7 +43,7 @@ const SinglePost = ({
       {timelineItem ? (
         <ActionType timelineItem={timelineItem} />
       ) : (
-        <PostType post={post} showThread={showThread} showType={showType} />
+        <PostType post={post} showType={showType} />
       )}
       <div className="flex items-start gap-x-3">
         <PostAvatar timelineItem={timelineItem} post={rootPost} />

@@ -6,11 +6,10 @@ import Reposted from "./Reposted";
 
 interface PostTypeProps {
   post: AnyPostFragment;
-  showThread?: boolean;
   showType: boolean;
 }
 
-const PostType = ({ post, showThread = false, showType }: PostTypeProps) => {
+const PostType = ({ post, showType }: PostTypeProps) => {
   const { pathname } = useLocation();
   const { slug } = useParams<{ slug: string }>();
   const type = post.__typename;
@@ -22,9 +21,7 @@ const PostType = ({ post, showThread = false, showType }: PostTypeProps) => {
   return (
     <span onClick={stopEventPropagation}>
       {type === "Repost" ? <Reposted account={post.author} /> : null}
-      {type === "Post" &&
-      post.commentOn &&
-      (showThread || pathname === `/posts/${slug}`) ? (
+      {type === "Post" && post.commentOn && pathname === `/posts/${slug}` ? (
         <Commented commentOn={post.commentOn} />
       ) : null}
     </span>
