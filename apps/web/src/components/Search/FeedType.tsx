@@ -1,6 +1,5 @@
 import { TabButton } from "@/components/Shared/UI";
 import { MotionTabIndicator } from "@/components/Shared/UI/TabButton";
-import type {} from "react";
 
 export enum SearchTabFocus {
   Accounts = "ACCOUNTS",
