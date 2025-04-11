@@ -57,7 +57,7 @@ export default defineConfig({
             "@uidotdev/usehooks",
             "motion"
           ],
-          aws: ["@aws-sdk/client-s3", "@aws-sdk/lib-storage"],
+          aws: ["@aws-sdk/client-s3"],
           media: ["plyr-react", "@livepeer/react", "browser-image-compression"],
           misc: [
             "@lens-chain/storage-client",

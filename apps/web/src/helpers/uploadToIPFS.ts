@@ -1,6 +1,5 @@
 import { CHAIN } from "@/constants";
-import { S3 } from "@aws-sdk/client-s3";
-import { Upload } from "@aws-sdk/lib-storage";
+import { HeadObjectCommand, PutObjectCommand, S3 } from "@aws-sdk/client-s3";
 import { EVER_API, EVER_BUCKET, EVER_REGION } from "@hey/data/constants";
 import generateUUID from "@hey/helpers/generateUUID";
 import { immutable } from "@lens-chain/storage-client";
@@ -8,79 +7,68 @@ import { storageClient } from "./storageClient";
 import { queryClient, trpc } from "./trpc";
 
 const FALLBACK_TYPE = "image/jpeg";
-const FILE_SIZE_LIMIT_MB = 8 * 1024 * 1024; // 8MB in bytes
+const FILE_SIZE_LIMIT = 8 * 1024 * 1024; // 8MB
 
 const getS3Client = async (): Promise<S3> => {
   const data = await queryClient.fetchQuery(trpc.misc.sts.queryOptions());
-
   if (!data) {
     throw new Error("Failed to get S3 client");
   }
 
-  const client = new S3({
+  return new S3({
     credentials: {
       accessKeyId: data.accessKeyId ?? "",
       secretAccessKey: data.secretAccessKey ?? "",
       sessionToken: data.sessionToken ?? ""
     },
     endpoint: EVER_API,
-    maxAttempts: 10,
     region: EVER_REGION
   });
-
-  return client;
 };
 
 const uploadToIPFS = async (
   data: FileList | File[]
 ): Promise<{ mimeType: string; uri: string }[]> => {
   try {
-    const files = Array.from(data) as File[];
-    const s3Files = files.filter(
-      (file: File) => file.size > FILE_SIZE_LIMIT_MB
-    );
-    const client = s3Files.length > 0 ? await getS3Client() : null;
+    const files = Array.from(data);
+    const hasLargeFile = files.some((f) => f.size > FILE_SIZE_LIMIT);
+    const client = hasLargeFile ? await getS3Client() : null;
 
-    const attachments = await Promise.all(
-      files.map(async (file: File) => {
-        // If the file is less than FILE_SIZE_LIMIT_MB, upload it to the Grove
-        if (file.size <= FILE_SIZE_LIMIT_MB) {
-          const storageNodeResponse = await storageClient.uploadFile(file, {
+    return await Promise.all(
+      files.map(async (file) => {
+        const mimeType = file.type || FALLBACK_TYPE;
+
+        // Small file — Grove
+        if (file.size <= FILE_SIZE_LIMIT) {
+          const res = await storageClient.uploadFile(file, {
             acl: immutable(CHAIN.id)
           });
-
-          return {
-            mimeType: file.type || FALLBACK_TYPE,
-            uri: storageNodeResponse.uri
-          };
+          return { mimeType, uri: res.uri };
         }
 
-        // For files larger than FILE_SIZE_LIMIT_MB, use the S3 client
+        // Large file — S3 + IPFS
         if (client) {
-          const currentDate = new Date()
-            .toLocaleDateString("en-GB")
-            .replace(/\//g, "-");
+          const key = `${new Date().toISOString().split("T")[0]}/${generateUUID()}`;
+          await client.send(
+            new PutObjectCommand({
+              Bucket: EVER_BUCKET,
+              Key: key,
+              Body: new Uint8Array(await file.arrayBuffer()),
+              ContentType: mimeType
+            })
+          );
 
-          const params = {
-            Body: file,
-            Bucket: EVER_BUCKET,
-            ContentType: file.type,
-            Key: `${currentDate}/${generateUUID()}`
-          };
-          const task = new Upload({ client, params });
-          await task.done();
-          const result = await client.headObject(params);
-          const metadata = result.Metadata;
-          const cid = metadata?.["ipfs-hash"];
+          const meta = await client.send(
+            new HeadObjectCommand({ Bucket: EVER_BUCKET, Key: key })
+          );
+          const cid = meta.Metadata?.["ipfs-hash"];
 
-          return { mimeType: file.type || FALLBACK_TYPE, uri: `ipfs://${cid}` };
+          return { mimeType, uri: cid ? `ipfs://${cid}` : "" };
         }
 
-        return { mimeType: file.type || FALLBACK_TYPE, uri: "" };
+        return { mimeType, uri: "" };
       })
     );
-
-    return attachments;
   } catch {
     return [];
   }
@@ -89,14 +77,8 @@ const uploadToIPFS = async (
 export const uploadFileToIPFS = async (
   file: File
 ): Promise<{ mimeType: string; uri: string }> => {
-  try {
-    const ipfsResponse = await uploadToIPFS([file]);
-    const metadata = ipfsResponse[0];
-
-    return { mimeType: file.type || FALLBACK_TYPE, uri: metadata.uri };
-  } catch {
-    return { mimeType: file.type || FALLBACK_TYPE, uri: "" };
-  }
+  const [res] = await uploadToIPFS([file]);
+  return res || { mimeType: file.type || FALLBACK_TYPE, uri: "" };
 };
 
 export default uploadToIPFS;
