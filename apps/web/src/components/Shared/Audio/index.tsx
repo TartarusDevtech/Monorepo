@@ -61,7 +61,7 @@ const Audio = ({
 
   return (
     <div
-      className="overflow-hidden rounded-xl border bg-gray-500 p-0 dark:border-gray-700"
+      className="overflow-hidden rounded-xl border border-gray-200 bg-gray-500 p-0 dark:border-gray-700"
       onClick={stopEventPropagation}
       style={{ backgroundImage: `url(${isNew ? newPreviewUri : poster})` }}
     >
@@ -76,14 +76,14 @@ const Audio = ({
             setAudioPost({ ...audioPost, cover, mimeType });
           }}
         />
-        <div className="flex w-full flex-col justify-between truncate py-1 md:px-3">
+        <div className="flex w-full flex-col justify-between truncate py-1 md:px-2">
           <div className="mt-3 flex justify-between md:mt-7">
             <div className="flex w-full items-center space-x-2.5 truncate">
               <button onClick={handlePlayPause} type="button">
                 {playing && !playerRef.current?.plyr.paused ? (
-                  <PauseIcon className="size-[50px] text-gray-100 hover:text-white" />
+                  <PauseIcon className="size-12 text-gray-100 hover:text-white" />
                 ) : (
-                  <PlayIcon className="size-[50px] text-gray-100 hover:text-white" />
+                  <PlayIcon className="size-12 text-gray-100 hover:text-white" />
                 )}
               </button>
               <div className="w-full truncate pr-3">
