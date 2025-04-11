@@ -1,22 +1,6 @@
 fragment Account on Account {
-  owner
-  address
-  rules {
-    anyOf {
-      ...AccountFollowRule
-    }
-    required {
-      ...AccountFollowRule
-    }
-  }
+  ...ReferencedAccount
   operations {
     ...LoggedInAccountOperations
   }
-  metadata {
-    ...AccountMetadata
-  }
-  username(request: { autoResolve: true }) {
-    ...Username
-  }
-  createdAt
 }

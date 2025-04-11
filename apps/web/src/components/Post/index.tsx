@@ -15,8 +15,8 @@ import {
   PageSize,
   PostReferenceType,
   PostVisibilityFilter,
-  usePostQuery,
-  usePostReferencesQuery
+  useHiddenCommentsQuery,
+  usePostQuery
 } from "@hey/indexer";
 import { useLocation, useParams } from "react-router";
 import { createTrackedSelector } from "react-tracked";
@@ -52,7 +52,7 @@ const ViewPost = () => {
     variables: { request: { post: slug } }
   });
 
-  const { data: comments } = usePostReferencesQuery({
+  const { data: comments } = useHiddenCommentsQuery({
     skip: !slug,
     variables: {
       request: {

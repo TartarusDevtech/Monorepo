@@ -3,12 +3,12 @@ query Me {
     loggedInAs {
       ... on AccountManaged {
         account {
-          ...Account
+          ...ReferencedAccount
         }
       }
       ... on AccountOwned {
         account {
-          ...Account
+          ...ReferencedAccount
         }
       }
     }
