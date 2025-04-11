@@ -5,6 +5,7 @@ import {
   useCreatePostMutation,
   usePostLazyQuery
 } from "@hey/indexer";
+import { useNavigate } from "react-router";
 import { toast } from "sonner";
 import usePollTransactionStatus from "./usePollTransactionStatus";
 import useTransactionLifecycle from "./useTransactionLifecycle";
@@ -20,19 +21,26 @@ const useCreatePost = ({
   onCompleted,
   onError
 }: CreatePostProps) => {
+  const navigate = useNavigate();
   const handleTransactionLifecycle = useTransactionLifecycle();
   const pollTransactionStatus = usePollTransactionStatus();
   const [getPost] = usePostLazyQuery();
   const { cache } = useApolloClient();
   const isComment = Boolean(commentOn);
 
-  const updateCache = async (txHash: string) => {
+  const updateCache = async (txHash: string, toastId: string) => {
     const { data } = await getPost({ variables: { request: { txHash } } });
     if (!data?.post) {
       return;
     }
 
-    toast.success(`${isComment ? "Comment" : "Post"} created successfully!`);
+    toast.dismiss(toastId);
+    toast.success(`${isComment ? "Comment" : "Post"} created successfully!`, {
+      action: {
+        label: "View",
+        onClick: () => navigate(`/posts/${data.post?.slug}`)
+      }
+    });
     cache.modify({
       fields: {
         [isComment ? "postReferences" : "posts"]: () => {
@@ -43,7 +51,10 @@ const useCreatePost = ({
   };
 
   const onCompletedWithTransaction = (hash: string) => {
-    pollTransactionStatus(hash, () => updateCache(hash));
+    const toastId = toast.loading(
+      `${isComment ? "Comment" : "Post"} processing...`
+    );
+    pollTransactionStatus(hash, () => updateCache(hash, toastId));
     return onCompleted();
   };
 
