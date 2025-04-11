@@ -58,7 +58,7 @@ const Layout = () => {
   }
 
   return (
-    <main>
+    <>
       <Toaster
         containerStyle={{ wordBreak: "break-word" }}
         position="bottom-right"
@@ -71,7 +71,7 @@ const Layout = () => {
         <Outlet />
         <BottomNavigation />
       </div>
-    </main>
+    </>
   );
 };
 
