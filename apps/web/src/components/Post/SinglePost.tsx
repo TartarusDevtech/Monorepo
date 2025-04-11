@@ -15,7 +15,6 @@ interface SinglePostProps {
   isFirst?: boolean;
   isLast?: boolean;
   post: AnyPostFragment;
-  showActions?: boolean;
   showMore?: boolean;
   showType?: boolean;
 }
@@ -25,7 +24,6 @@ const SinglePost = ({
   isFirst = false,
   isLast = false,
   post,
-  showActions = true,
   showMore = true,
   showType = true
 }: SinglePostProps) => {
@@ -54,7 +52,7 @@ const SinglePost = ({
           ) : (
             <>
               <PostBody post={rootPost} showMore={showMore} />
-              {showActions ? <PostActions post={rootPost} /> : null}
+              <PostActions post={rootPost} />
             </>
           )}
         </div>
