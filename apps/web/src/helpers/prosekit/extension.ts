@@ -10,7 +10,6 @@ import {
 } from "prosekit/core";
 import { defineBold } from "prosekit/extensions/bold";
 import { defineDoc } from "prosekit/extensions/doc";
-import { defineHeading } from "prosekit/extensions/heading";
 import { defineItalic } from "prosekit/extensions/italic";
 import { defineLinkMarkRule, defineLinkSpec } from "prosekit/extensions/link";
 import { defineMarkRule } from "prosekit/extensions/mark-rule";
@@ -92,15 +91,14 @@ export const defineEditorExtension = () => {
     defineDoc(),
     defineText(),
     defineParagraph(),
-    defineHeading(),
     defineHistory(),
     defineBaseKeymap(),
     defineBaseCommands(),
     defineItalic(),
     defineBold(),
-    defineHashtag(),
     defineAutoLink(),
     defineVirtualSelection(),
+    defineHashtag(),
     defineMention(),
     defineModClickPrevention(),
     definePlaceholder({ placeholder: "What's new?!", strategy: "doc" })
