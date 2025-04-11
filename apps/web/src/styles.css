@@ -110,6 +110,10 @@
       @apply rounded-lg bg-gray-300 px-[5px] py-[2px] text-sm dark:bg-gray-700;
     }
 
+    p {
+      word-break: break-word;
+    }
+
     & a,
     span[data-hashtag],
     span[data-mention="account"] {
