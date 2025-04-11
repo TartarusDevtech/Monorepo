@@ -21,6 +21,7 @@ import {
 import { useLocation, useParams } from "react-router";
 import { createTrackedSelector } from "react-tracked";
 import { create } from "zustand";
+import NoneRelevantFeed from "../Comment/NoneRelevantFeed";
 import FullPost from "./FullPost";
 import Quotes from "./Quotes";
 import RelevantPeople from "./RelevantPeople";
@@ -133,7 +134,12 @@ const ViewPost = () => {
                 feed={targetPost.feed.address}
               />
             ) : null}
-            {post.isDeleted ? null : <CommentFeed postId={targetPost.id} />}
+            {post.isDeleted ? null : (
+              <>
+                <CommentFeed postId={targetPost.id} />
+                <NoneRelevantFeed postId={targetPost.id} />
+              </>
+            )}
           </>
         )}
       </div>
