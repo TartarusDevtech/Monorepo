@@ -70,7 +70,6 @@ export const Alert = ({
                     disabled={isPerformingAction}
                     onClick={() => onConfirm()}
                     size="lg"
-                    outline={isDestructive}
                   >
                     {confirmText}
                   </Button>
