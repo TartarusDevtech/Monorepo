@@ -15,13 +15,13 @@ const buttonVariants = cva("rounded-full font-bold", {
       variant: "primary",
       outline: false,
       class: cn(
-        "text-white hover:text-white active:text-gray-400",
-        "bg-gray-950 hover:bg-gray-700 active:bg-gray-700",
+        "text-white hover:text-white active:text-gray-100",
+        "bg-gray-950 hover:bg-gray-800 active:bg-gray-700",
         "border border-gray-950 hover:border-gray-800 active:border-gray-700",
+        "disabled:text-gray-500 disabled:bg-gray-200 disabled:border-gray-200",
         "dark:text-gray-950 dark:hover:text-gray-900 dark:active:text-gray-600",
         "dark:bg-white dark:hover:bg-gray-200 dark:active:bg-gray-200",
         "dark:border-white dark:hover:border-gray-100 dark:active:border-gray-200",
-        "disabled:text-gray-500 disabled:bg-gray-200 disabled:border-gray-200",
         "dark:disabled:text-gray-600 dark:disabled:bg-gray-800 dark:disabled:border-gray-800"
       )
     },
