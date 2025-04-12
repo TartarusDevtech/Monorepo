@@ -106,10 +106,6 @@
   }
 
   .ProseMirror {
-    & code {
-      @apply rounded-lg bg-gray-300 px-[5px] py-[2px] text-sm dark:bg-gray-700;
-    }
-
     p {
       word-break: break-word;
     }
@@ -156,6 +152,11 @@
   ul {
     @apply leading-6 list-disc list-inside;
     @apply [&:not(:last-child)]:mb-3;
+  }
+
+  .markup > hr {
+    @apply border-gray-200 dark:border-gray-700;
+    @apply mb-3;
   }
 
   .full-page-post-markup > p,
