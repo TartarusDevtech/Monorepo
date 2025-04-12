@@ -61,6 +61,8 @@ export default defineConfig({
           misc: [
             "@lens-chain/storage-client",
             "@lens-protocol/metadata",
+            "@trpc/client",
+            "@trpc/tanstack-react-query",
             "@apollo/client",
             "axios",
             "zustand",
