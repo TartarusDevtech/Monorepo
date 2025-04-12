@@ -93,7 +93,6 @@ const MuteOrUnmuteAccount = () => {
       description={`Are you sure you want to ${
         hasMuted ? "un-mute" : "mute"
       } ${getAccount(mutingOrUnmutingAccount).usernameWithPrefix}?`}
-      isDestructive
       isPerformingAction={isSubmitting}
       onClose={() => setShowMuteOrUnmuteAlert(false)}
       onConfirm={muteOrUnmute}

@@ -15,7 +15,6 @@ interface AlertProps {
   children?: ReactNode;
   confirmText?: string;
   description: ReactNode;
-  isDestructive?: boolean;
   isPerformingAction?: boolean;
   onClose: () => void;
   onConfirm?: () => void;
@@ -28,7 +27,6 @@ export const Alert = ({
   children,
   confirmText,
   description,
-  isDestructive = false,
   isPerformingAction = false,
   onClose,
   onConfirm,
