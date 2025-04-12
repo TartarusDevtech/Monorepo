@@ -41,9 +41,9 @@ const PostBody = ({
   let content = filteredContent;
 
   if (canShowMore) {
-    const truncatedContent = content?.split("\n")?.[0];
-    if (truncatedContent) {
-      content = truncatedContent;
+    const lines = content?.split("\n");
+    if (lines && lines.length > 0) {
+      content = lines.slice(0, 5).join("\n");
     }
   }
 
