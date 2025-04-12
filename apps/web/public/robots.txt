@@ -9,3 +9,5 @@ Disallow: /search?q=
 
 User-agent: nsa
 Disallow: /
+
+Sitemap: https://hey.xyz/sitemap.xml

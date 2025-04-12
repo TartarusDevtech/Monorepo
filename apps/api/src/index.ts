@@ -7,6 +7,7 @@ import { createContext } from "./context";
 import { lensAuthorization } from "./http/lens/lensAuthorization";
 import { lensVerification } from "./http/lens/lensVerification";
 import { ping } from "./http/ping";
+import { sitemap } from "./http/sitemap";
 import { accountRouter } from "./routers/account";
 import { healthRouter } from "./routers/health";
 import { internalRouter } from "./routers/internal";
@@ -43,6 +44,10 @@ app.use(
 
 app.get("/ping", (_, res) => {
   ping(res);
+});
+
+app.get("/sitemap.xml", (_, res) => {
+  sitemap(res);
 });
 
 app.post("/lens/authorization", (req, res) => {
