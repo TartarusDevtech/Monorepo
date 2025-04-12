@@ -35,10 +35,10 @@ export default defineConfig({
             "react-router",
             "react-tracked"
           ],
+          prosekit: ["prosekit", "prosekit/core"],
           editor: [
             "react-markdown",
             "unified",
-            "prosekit",
             "rehype-parse",
             "rehype-remark",
             "remark-breaks",
