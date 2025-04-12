@@ -1,5 +1,4 @@
 import { Button, H3 } from "@/components/Shared/UI";
-import { HomeIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router";
 import { PageLayout } from "./PageLayout";
 
@@ -10,12 +9,7 @@ const Custom404 = () => {
         <H3 className="mb-4">Oops, Lost‽</H3>
         <div className="mb-4">This page could not be found.</div>
         <Link to="/">
-          <Button
-            className="mx-auto flex items-center"
-            icon={<HomeIcon className="size-4" />}
-          >
-            Go to home
-          </Button>
+          <Button className="mx-auto flex items-center">Go to home</Button>
         </Link>
       </div>
     </PageLayout>

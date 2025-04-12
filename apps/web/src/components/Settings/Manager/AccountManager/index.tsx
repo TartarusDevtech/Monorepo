@@ -1,5 +1,4 @@
 import { Button, Modal, Tabs } from "@/components/Shared/UI";
-import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import AddAccountManager from "./AddAccountManager";
 import Managed from "./Management/Managed";
@@ -34,11 +33,7 @@ const AccountManager = () => {
         />
         {type === Type.MANAGERS && (
           <>
-            <Button
-              icon={<PlusCircleIcon className="size-4" />}
-              onClick={() => setShowAddManagerModal(true)}
-              size="sm"
-            >
+            <Button onClick={() => setShowAddManagerModal(true)} size="sm">
               Add manager
             </Button>
             <Modal

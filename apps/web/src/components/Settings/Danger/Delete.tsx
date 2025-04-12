@@ -1,14 +1,7 @@
-import {
-  Button,
-  H5,
-  Modal,
-  Spinner,
-  WarningMessage
-} from "@/components/Shared/UI";
+import { Button, H5, Modal, WarningMessage } from "@/components/Shared/UI";
 import { CHAIN } from "@/constants";
 import useHandleWrongNetwork from "@/hooks/useHandleWrongNetwork";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
-import { TrashIcon } from "@heroicons/react/24/outline";
 import { NULL_ADDRESS } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import { useState } from "react";
@@ -69,17 +62,10 @@ const DeleteSettings = () => {
         </div>
         <Button
           disabled={isSubmitting}
-          icon={
-            isSubmitting ? (
-              <Spinner size="xs" variant="danger" />
-            ) : (
-              <TrashIcon className="size-5" />
-            )
-          }
           onClick={() => setShowWarningModal(true)}
           outline
         >
-          {isSubmitting ? "Deleting..." : "Delete your account"}
+          Delete your account
         </Button>
       </div>
       <Modal
@@ -98,7 +84,7 @@ const DeleteSettings = () => {
             title="Are you sure?"
           />
           <Button
-            icon={<TrashIcon className="size-5" />}
+            disabled={isSubmitting}
             onClick={async () => {
               setShowWarningModal(false);
               await handleDelete();

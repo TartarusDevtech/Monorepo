@@ -1,5 +1,4 @@
 import { Button, H3 } from "@/components/Shared/UI";
-import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { PageLayout } from "./PageLayout";
 
 const Custom500 = () => {
@@ -18,7 +17,6 @@ const Custom500 = () => {
         </div>
         <Button
           className="mx-auto flex items-center"
-          icon={<ArrowPathIcon className="size-4" />}
           onClick={() => clearLocalData()}
         >
           Clear cache and refresh
