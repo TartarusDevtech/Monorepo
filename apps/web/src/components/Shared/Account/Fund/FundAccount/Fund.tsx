@@ -40,10 +40,10 @@ const Fund = ({ token }: FundProps) => {
     setAmount(2);
     setOther(false);
     setIsSubmitting(false);
-    toast.success("Deposit initiated");
+    const toastId = toast.loading("Transferring...");
     pollTransactionStatus(hash, () => {
       setShowFundModal(false);
-      toast.success("Funded account successfully");
+      toast.success("Transferred successfully", { id: toastId });
     });
   };
 

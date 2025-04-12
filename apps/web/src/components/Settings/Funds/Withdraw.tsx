@@ -23,10 +23,10 @@ const Withdraw = ({ currency, value, refetch }: WithdrawProps) => {
   const onCompleted = (hash: string) => {
     setIsSubmitting(false);
     setShowModal(false);
-    toast.success("Withdrawal Initiated");
+    const toastId = toast.loading("Withdrawing...");
     pollTransactionStatus(hash, () => {
       refetch();
-      toast.success("Withdrawal Successful");
+      toast.success("Withdrawal Successful", { id: toastId });
     });
   };
 

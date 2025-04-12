@@ -22,10 +22,10 @@ const Unwrap = ({ value, refetch }: UnwrapProps) => {
   const onCompleted = (hash: string) => {
     setIsSubmitting(false);
     setShowModal(false);
-    toast.success("Unwrap Initiated");
+    const toastId = toast.loading("Unwrapping...");
     pollTransactionStatus(hash, () => {
       refetch();
-      toast.success("Unwrap Successful");
+      toast.success("Unwrap Successful", { id: toastId });
     });
   };
 

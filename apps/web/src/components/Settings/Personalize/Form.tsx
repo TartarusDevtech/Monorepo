@@ -68,11 +68,12 @@ const PersonalizeSettingsForm = () => {
   });
 
   const onCompleted = (hash: string) => {
+    const toastId = toast.loading("Updating account...");
     pollTransactionStatus(hash, async () => {
       const accountData = await getCurrentAccountDetails();
       setCurrentAccount(accountData?.data?.me.loggedInAs.account);
       setIsSubmitting(false);
-      toast.success("Account updated");
+      toast.success("Account updated", { id: toastId });
     });
   };
 

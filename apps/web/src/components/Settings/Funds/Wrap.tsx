@@ -22,10 +22,10 @@ const Wrap = ({ value, refetch }: WrapProps) => {
   const onCompleted = (hash: string) => {
     setIsSubmitting(false);
     setShowModal(false);
-    toast.success("Wrap Initiated");
+    const toastId = toast.loading("Wrapping...");
     pollTransactionStatus(hash, () => {
       refetch();
-      toast.success("Wrap Successful");
+      toast.success("Wrap Successful", { id: toastId });
     });
   };
 

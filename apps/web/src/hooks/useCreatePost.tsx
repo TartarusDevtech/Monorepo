@@ -34,8 +34,8 @@ const useCreatePost = ({
       return;
     }
 
-    toast.dismiss(toastId);
     toast.success(`${isComment ? "Comment" : "Post"} created successfully!`, {
+      id: toastId,
       action: {
         label: "View",
         onClick: () => navigate(`/posts/${data.post?.slug}`)
