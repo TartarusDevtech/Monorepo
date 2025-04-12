@@ -6,11 +6,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  push-pierre:
+  push:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout full repo
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Setup SSH
         run: |
@@ -21,5 +23,5 @@ jobs:
 
       - name: Push to Pierre
         run: |
-          git remote add mirror git@git.pierre.co:yo/hey.git
-          git push mirror main
+          git remote add pierre git@git.pierre.co:yo/hey.git
+          git push pierre main
