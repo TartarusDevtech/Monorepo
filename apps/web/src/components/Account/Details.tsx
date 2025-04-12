@@ -4,11 +4,7 @@ import Slug from "@/components/Shared/Slug";
 import { Button, H3, Image, LightBox, Tooltip } from "@/components/Shared/UI";
 import { useTheme } from "@/hooks/useTheme";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
-import {
-  CalendarIcon,
-  Cog6ToothIcon,
-  MapPinIcon
-} from "@heroicons/react/24/outline";
+import { CalendarIcon, MapPinIcon } from "@heroicons/react/24/outline";
 import { EyeSlashIcon } from "@heroicons/react/24/solid";
 import { EXPANDED_AVATAR, STATIC_IMAGES_URL } from "@hey/data/constants";
 import formatDate from "@hey/helpers/datetime/formatDate";
@@ -82,11 +78,7 @@ const Details = ({ isSuspended = false, account }: DetailsProps) => {
         </div>
         <div className="flex items-center gap-x-2">
           {currentAccount?.address === account.address ? (
-            <Button
-              icon={<Cog6ToothIcon className="size-5" />}
-              onClick={() => navigate("/settings")}
-              outline
-            >
+            <Button onClick={() => navigate("/settings")} outline>
               Edit Account
             </Button>
           ) : (
