@@ -13,7 +13,7 @@ import {
   HomeIcon as HomeIconSolid
 } from "@heroicons/react/24/solid";
 import getAvatar from "@hey/helpers/getAvatar";
-import type { ReactNode } from "react";
+import type { MouseEvent, ReactNode } from "react";
 import { Link, useLocation } from "react-router";
 import MobileDrawerMenu from "./MobileDrawerMenu";
 
@@ -23,7 +23,7 @@ interface NavigationItemProps {
   outline: ReactNode;
   solid: ReactNode;
   isActive: boolean;
-  onClick?: (e: React.MouseEvent) => void;
+  onClick?: (e: MouseEvent) => void;
 }
 
 const NavigationItem = ({
@@ -46,7 +46,7 @@ const BottomNavigation = () => {
 
   const handleProfileClick = () => setShowMobileDrawer(true);
 
-  const handleHomClick = (path: string, e: React.MouseEvent) => {
+  const handleHomClick = (path: string, e: MouseEvent) => {
     if (path === "/" && pathname === "/") {
       e.preventDefault();
       window.scrollTo(0, 0);

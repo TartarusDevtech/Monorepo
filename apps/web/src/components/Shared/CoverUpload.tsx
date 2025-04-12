@@ -8,7 +8,7 @@ import { COVER, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import imageKit from "@hey/helpers/imageKit";
 import sanitizeDStorageUrl from "@hey/helpers/sanitizeDStorageUrl";
-import type { ChangeEvent } from "react";
+import type { ChangeEvent, SyntheticEvent } from "react";
 import { useState } from "react";
 import Cropper, { type Area } from "react-easy-crop";
 import { toast } from "sonner";
@@ -84,7 +84,7 @@ const CoverUpload = ({ src, setSrc }: CoverUploadProps) => {
             <Image
               alt="Cover picture crop preview"
               className="h-[175px] w-[675px] rounded-lg object-cover"
-              onError={(event: React.SyntheticEvent<HTMLImageElement>) => {
+              onError={(event: SyntheticEvent<HTMLImageElement>) => {
                 const target = event.currentTarget;
                 target.src = sanitizeDStorageUrl(src);
               }}

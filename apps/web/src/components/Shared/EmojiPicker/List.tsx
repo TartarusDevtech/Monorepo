@@ -5,7 +5,7 @@ import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Errors } from "@hey/data/errors";
 import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { Emoji } from "@hey/types/misc";
-import type { ChangeEvent } from "react";
+import type { ChangeEvent, MouseEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 import Loader from "../Loader";
 
@@ -26,7 +26,7 @@ const List = ({ setEmoji }: ListProps) => {
     setSearchText(event.target.value);
   };
 
-  const handleClearSearch = (e: React.MouseEvent) => {
+  const handleClearSearch = (e: MouseEvent) => {
     e.preventDefault();
     stopEventPropagation(e);
     setSearchText("");

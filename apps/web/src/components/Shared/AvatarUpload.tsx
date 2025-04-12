@@ -8,7 +8,7 @@ import { AVATAR, DEFAULT_AVATAR } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import imageKit from "@hey/helpers/imageKit";
 import sanitizeDStorageUrl from "@hey/helpers/sanitizeDStorageUrl";
-import type { ChangeEvent } from "react";
+import type { ChangeEvent, SyntheticEvent } from "react";
 import { useState } from "react";
 import Cropper, { type Area } from "react-easy-crop";
 import { toast } from "sonner";
@@ -83,8 +83,8 @@ const AvatarUpload = ({ src, setSrc, isSmall = false }: AvatarUploadProps) => {
         <div className="space-y-3">
           <Image
             alt="Account picture crop preview"
-            className={cn("rounded-lg", isSmall ? "max-w-[200px]" : "max-w-sm")}
-            onError={(event: React.SyntheticEvent<HTMLImageElement>) => {
+            className={cn("rounded-lg", isSmall ? "max-w-44" : "size-56")}
+            onError={(event: SyntheticEvent<HTMLImageElement>) => {
               const target = event.currentTarget;
               target.src = sanitizeDStorageUrl(src);
             }}
