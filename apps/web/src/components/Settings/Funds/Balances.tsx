@@ -1,4 +1,4 @@
-import FundButton from "@/components/Shared/Account/Fund/FundButton";
+import TransferFundButton from "@/components/Shared/Account/Fund/FundButton";
 import Loader from "@/components/Shared/Loader";
 import { ErrorMessage, Image } from "@/components/Shared/UI";
 import {
@@ -44,13 +44,13 @@ const Balances = () => {
           {!currency && (
             <>
               <Wrap value={value} refetch={refetch} />
-              <FundButton size="sm" outline />
+              <TransferFundButton size="sm" outline />
             </>
           )}
           {currency === DEFAULT_COLLECT_TOKEN && (
             <>
               <Unwrap value={value} refetch={refetch} />
-              <FundButton size="sm" outline token={DEFAULT_TOKEN} />
+              <TransferFundButton size="sm" outline token={DEFAULT_TOKEN} />
             </>
           )}
         </div>

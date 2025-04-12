@@ -4,32 +4,32 @@ import {
   useFundModalStore
 } from "@/store/non-persisted/modal/useFundModalStore";
 
-interface FundButtonProps {
+interface TransferFundButtonProps {
   size?: "sm" | "md";
   outline?: boolean;
   className?: string;
   token?: FundingToken;
 }
 
-const FundButton = ({
+const TransferFundButton = ({
   size = "md",
   outline = false,
   className = "",
   token
-}: FundButtonProps) => {
+}: TransferFundButtonProps) => {
   const { setShowFundModal } = useFundModalStore();
 
   return (
     <Button
-      aria-label="Fund account"
+      aria-label="Transfer fund"
       className={className}
       onClick={() => setShowFundModal(true, token)}
       size={size}
       outline={outline}
     >
-      Fund account
+      Transfer fund
     </Button>
   );
 };
 
-export default FundButton;
+export default TransferFundButton;

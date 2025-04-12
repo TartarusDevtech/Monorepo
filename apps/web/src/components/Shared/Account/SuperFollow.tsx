@@ -11,7 +11,7 @@ import {
   type AccountFragment,
   useAccountBalancesQuery
 } from "@hey/indexer";
-import FundButton from "../Account/Fund/FundButton";
+import TransferFundButton from "../Account/Fund/FundButton";
 import Loader from "../Loader";
 import LoginButton from "../LoginButton";
 import Slug from "../Slug";
@@ -91,7 +91,7 @@ const SuperFollow = () => {
               }
             />
           ) : (
-            <FundButton
+            <TransferFundButton
               className="w-full"
               token={{ contractAddress: assetContract, symbol: assetSymbol }}
             />

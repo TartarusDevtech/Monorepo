@@ -1,4 +1,4 @@
-import FundButton from "@/components/Shared/Account/Fund/FundButton";
+import TransferFundButton from "@/components/Shared/Account/Fund/FundButton";
 import LoginButton from "@/components/Shared/LoginButton";
 import { Button, Input, Spinner } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
@@ -221,7 +221,7 @@ const Action = ({ closePopover, post }: ActionProps) => {
           <b>Tip ${amount}</b>
         </Button>
       ) : (
-        <FundButton className="w-full" token={DEFAULT_TOKEN} />
+        <TransferFundButton className="w-full" token={DEFAULT_TOKEN} />
       )}
     </div>
   );

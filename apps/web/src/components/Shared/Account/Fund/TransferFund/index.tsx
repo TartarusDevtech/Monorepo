@@ -10,9 +10,9 @@ import {
   WRAPPED_NATIVE_TOKEN_SYMBOL
 } from "@hey/data/constants";
 import { useAccountBalancesQuery } from "@hey/indexer";
-import Fund from "./Fund";
+import Transfer from "./Transfer";
 
-const FundAccount = () => {
+const TransferFund = () => {
   const { currentAccount } = useAccountStore();
   const { token } = useFundModalStore();
   const { data: balance, loading } = useAccountBalancesQuery({
@@ -48,9 +48,9 @@ const FundAccount = () => {
           Wrapped {NATIVE_TOKEN_SYMBOL} enables various Hey-specific actions.
         </div>
       </div>
-      <Fund token={token} />
+      <Transfer token={token} />
     </div>
   );
 };
 
-export default FundAccount;
+export default TransferFund;

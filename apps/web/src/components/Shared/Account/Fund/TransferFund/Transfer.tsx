@@ -14,11 +14,11 @@ import { toast } from "sonner";
 import { formatUnits } from "viem";
 import { useAccount, useBalance } from "wagmi";
 
-interface FundProps {
+interface TransferProps {
   token?: FundingToken;
 }
 
-const Fund = ({ token }: FundProps) => {
+const Transfer = ({ token }: TransferProps) => {
   const { setShowFundModal } = useFundModalStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [amount, setAmount] = useState(2);
@@ -186,4 +186,4 @@ const Fund = ({ token }: FundProps) => {
   );
 };
 
-export default Fund;
+export default Transfer;
