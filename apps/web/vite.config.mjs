@@ -35,7 +35,7 @@ export default defineConfig({
             "react-router",
             "react-tracked"
           ],
-          prosekit: ["prosekit", "prosekit/core"],
+          prosekit: ["prosekit", "prosekit/core", "prosekit/react"],
           editor: [
             "react-markdown",
             "unified",
@@ -47,7 +47,6 @@ export default defineConfig({
             "remark-stringify"
           ],
           ui: [
-            "@heroicons/react",
             "@headlessui/react",
             "@radix-ui/react-hover-card",
             "@radix-ui/react-slider",
@@ -62,6 +61,7 @@ export default defineConfig({
             "@lens-chain/storage-client",
             "@lens-protocol/metadata",
             "@apollo/client",
+            "axios",
             "zustand",
             "tailwind-merge",
             "zod"
