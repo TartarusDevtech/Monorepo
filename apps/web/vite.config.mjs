@@ -24,7 +24,7 @@ export default defineConfig({
           return "assets/[name]-[hash][extname]";
         },
         manualChunks: {
-          wevm: ["viem", "wagmi", "family"],
+          wevm: ["wagmi", "family", "viem", "viem/zksync"],
           indexer: ["@hey/indexer"],
           react: [
             "react",
@@ -53,7 +53,8 @@ export default defineConfig({
             "@radix-ui/react-tooltip",
             "@uidotdev/usehooks",
             "sonner",
-            "motion"
+            "motion",
+            "motion-plus-react"
           ],
           aws: ["@aws-sdk/client-s3", "@aws-sdk/lib-storage"],
           media: ["plyr-react", "@livepeer/react", "browser-image-compression"],
