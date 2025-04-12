@@ -3,6 +3,7 @@ import { usePostLicenseStore } from "@/store/non-persisted/post/usePostLicenseSt
 import { usePostLiveStore } from "@/store/non-persisted/post/usePostLiveStore";
 import { usePostVideoStore } from "@/store/non-persisted/post/usePostVideoStore";
 import {
+  article,
   audio,
   image,
   liveStream,
@@ -51,6 +52,12 @@ const usePostMetadata = () => {
       }
 
       if (!hasAttachments) {
+        const isArticle = baseMetadata.content?.length > 2000;
+
+        if (isArticle) {
+          return article(baseMetadata);
+        }
+
         return textOnly(baseMetadata);
       }
 

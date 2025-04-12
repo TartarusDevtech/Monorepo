@@ -202,10 +202,10 @@ const NewPublication = ({ className, post, feed }: NewPublicationProps) => {
         content: processedPostContent,
         title,
         marketplace: {
-          animation_url: getAnimationUrl(),
+          name: title,
           description: processedPostContent,
-          external_url: `https://hey.xyz${getAccount(currentAccount).link}`,
-          name: title
+          animation_url: getAnimationUrl(),
+          external_url: `https://hey.xyz${getAccount(currentAccount).link}`
         }
       };
 
