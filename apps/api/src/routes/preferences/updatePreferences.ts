@@ -1,6 +1,7 @@
 import { Errors } from "@hey/data/errors";
 import type { Context } from "hono";
 import prisma from "src/prisma/client";
+import { delRedis } from "src/utils/redis";
 
 const updatePreferences = async (ctx: Context) => {
   try {
@@ -12,6 +13,8 @@ const updatePreferences = async (ctx: Context) => {
       update: { appIcon, includeLowScore },
       where: { accountAddress: account as string }
     });
+
+    await delRedis(`preferences:${account}`);
 
     return ctx.json({
       success: true,
