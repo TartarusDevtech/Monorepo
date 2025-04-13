@@ -44,7 +44,8 @@ export default defineConfig({
             "remark-breaks",
             "remark-html",
             "remark-linkify-regex",
-            "remark-stringify"
+            "remark-stringify",
+            "strip-markdown"
           ],
           ui: [
             "@headlessui/react",

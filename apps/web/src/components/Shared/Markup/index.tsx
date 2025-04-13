@@ -6,10 +6,17 @@ import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
 // @ts-expect-error
 import linkifyRegex from "remark-linkify-regex";
+import stripMarkdown from "strip-markdown";
 import Code from "./Code";
 import MarkupLink from "./MarkupLink";
 
 const plugins = [
+  [
+    stripMarkdown,
+    {
+      keep: ["strong", "emphasis", "inlineCode", "delete", "list", "listItem"]
+    }
+  ],
   remarkBreaks,
   linkifyRegex(Regex.url),
   linkifyRegex(Regex.mention),
