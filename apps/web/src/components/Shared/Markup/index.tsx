@@ -14,7 +14,7 @@ const plugins = [
   [
     stripMarkdown,
     {
-      keep: ["strong", "emphasis", "inlineCode", "delete", "list", "listItem"]
+      keep: ["strong", "emphasis", "list", "listItem"]
     }
   ],
   remarkBreaks,
