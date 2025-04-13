@@ -54,6 +54,7 @@ const TipAction = ({ post, showCount }: TipActionProps) => {
       </Menu>
       {(tips || 0) > 0 && !showCount && (
         <AnimateNumber
+          key={`tip-count-${post.id}`}
           format={{ notation: "compact" }}
           transition={{ type: "tween" }}
           className={cn(

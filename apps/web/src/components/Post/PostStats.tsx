@@ -8,10 +8,19 @@ import plur from "plur";
 import { memo, useState } from "react";
 import { Link } from "react-router";
 
-const AnimatedNumber = ({ name, value }: { name: string; value: number }) => {
+const AnimatedNumber = ({
+  key,
+  name,
+  value
+}: {
+  key: string;
+  name: string;
+  value: number;
+}) => {
   return (
     <span className="flex items-center gap-x-1">
       <AnimateNumber
+        key={key}
         format={{ notation: "compact" }}
         transition={{ type: "tween" }}
         className="font-bold text-black dark:text-white"
@@ -53,7 +62,11 @@ const PostStats = ({ post }: PostStatsProps) => {
       <div className="divider" />
       <div className="flex flex-wrap items-center gap-x-6 gap-y-3 py-3 text-gray-500 text-sm dark:text-gray-200">
         {comments > 0 ? (
-          <AnimatedNumber name="Comment" value={comments} />
+          <AnimatedNumber
+            key={`comment-count-${post.id}`}
+            name="Comment"
+            value={comments}
+          />
         ) : null}
         {reposts > 0 ? (
           <button
@@ -61,12 +74,20 @@ const PostStats = ({ post }: PostStatsProps) => {
             onClick={() => setShowRepostsModal(true)}
             type="button"
           >
-            <AnimatedNumber name="Repost" value={reposts} />
+            <AnimatedNumber
+              key={`repost-count-${post.id}`}
+              name="Repost"
+              value={reposts}
+            />
           </button>
         ) : null}
         {quotes > 0 ? (
           <Link className="outline-offset-2" to={`/posts/${post.slug}/quotes`}>
-            <AnimatedNumber name="Quote" value={quotes} />
+            <AnimatedNumber
+              key={`quote-count-${post.id}`}
+              name="Quote"
+              value={quotes}
+            />
           </Link>
         ) : null}
         {reactions > 0 ? (
@@ -75,21 +96,39 @@ const PostStats = ({ post }: PostStatsProps) => {
             onClick={() => setShowLikesModal(true)}
             type="button"
           >
-            <AnimatedNumber name="Like" value={reactions} />
+            <AnimatedNumber
+              key={`like-count-${post.id}`}
+              name="Like"
+              value={reactions}
+            />
           </button>
         ) : null}
-        {tips > 0 ? <AnimatedNumber name="Tip" value={tips} /> : null}
+        {tips > 0 ? (
+          <AnimatedNumber
+            key={`tip-count-${post.id}`}
+            name="Tip"
+            value={tips}
+          />
+        ) : null}
         {collects > 0 ? (
           <button
             className="outline-offset-2"
             onClick={() => setShowCollectorsModal(true)}
             type="button"
           >
-            <AnimatedNumber name="Collect" value={collects} />
+            <AnimatedNumber
+              key={`collect-count-${post.id}`}
+              name="Collect"
+              value={collects}
+            />
           </button>
         ) : null}
         {bookmarks > 0 ? (
-          <AnimatedNumber name="Bookmark" value={bookmarks} />
+          <AnimatedNumber
+            key={`bookmark-count-${post.id}`}
+            name="Bookmark"
+            value={bookmarks}
+          />
         ) : null}
       </div>
       <Modal

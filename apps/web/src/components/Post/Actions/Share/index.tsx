@@ -102,6 +102,7 @@ const ShareMenu = ({ post, showCount }: ShareMenuProps) => {
       </Menu>
       {shares > 0 && !showCount ? (
         <AnimateNumber
+          key={`share-count-${post.id}`}
           format={{ notation: "compact" }}
           transition={{ type: "tween" }}
           className={cn(
