@@ -38,7 +38,6 @@ export const sitemap = async (res: Response) => {
       .up();
   }
 
-  const generatedSitemap = sitemap.end({ prettyPrint: true });
   res.header("Content-Type", "application/xml");
-  res.send(generatedSitemap);
+  res.send(sitemap.end({ prettyPrint: true }));
 };
