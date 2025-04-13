@@ -6,7 +6,7 @@ import sitemapIndex from "./sitemapIndex";
 
 const app = new Hono();
 
-app.get("/sitemap.xml", sitemapIndex);
+app.get("/all.xml", sitemapIndex);
 app.get("/pages.xml", pagesSitemap);
 app.get("/profiles.xml", profilesSitemapIndex);
 app.get("/profiles/:offset.xml", profileSitemap);
