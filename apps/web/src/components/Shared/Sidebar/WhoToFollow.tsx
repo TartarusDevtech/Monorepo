@@ -1,3 +1,4 @@
+import Suggested from "@/components/Home/Suggested";
 import DismissRecommendedAccount from "@/components/Shared/Account/DismissRecommendedAccount";
 import SingleAccount from "@/components/Shared/Account/SingleAccount";
 import SingleAccountShimmer from "@/components/Shared/Shimmer/SingleAccountShimmer";
@@ -9,7 +10,6 @@ import {
   useAccountRecommendationsQuery
 } from "@hey/indexer";
 import { useState } from "react";
-import Suggested from "../../Home/Suggested";
 
 const Title = () => <H5>Who to Follow</H5>;
 

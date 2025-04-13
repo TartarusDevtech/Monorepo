@@ -1,6 +1,5 @@
-import { createHash } from "node:crypto";
-
 import { rateLimiter as rateLimit } from "hono-rate-limiter";
+import sha256 from "src/utils/sha256";
 
 const getIp = (req: Request): string => {
   const ips = (
@@ -11,10 +10,6 @@ const getIp = (req: Request): string => {
   ).split(",");
 
   return ips[0].trim();
-};
-
-const sha256 = (text: string): string => {
-  return createHash("sha256").update(text).digest("hex");
 };
 
 const hashedIp = (req: Request): string => sha256(getIp(req)).slice(0, 25);

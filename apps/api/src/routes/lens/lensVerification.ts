@@ -1,8 +1,8 @@
 import { HEY_APP } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import type { Context } from "hono";
+import { heyWalletClient } from "src/utils/heyWalletClient";
 import { type Address, checksumAddress } from "viem";
-import { heyWalletClient } from "../../helpers/heyWalletClient";
 
 const TYPES = {
   SourceStamp: [
