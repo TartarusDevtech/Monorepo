@@ -11,6 +11,8 @@ const getOembed = async (ctx: Context) => {
     const cacheKey = `oembed:${sha256(url)}`;
     const cachedValue = await getRedis(cacheKey);
 
+    ctx.header("Cache-Control", CACHE_AGE_1_DAY);
+
     if (cachedValue) {
       return ctx.json({
         success: true,
@@ -22,7 +24,6 @@ const getOembed = async (ctx: Context) => {
     const oembed = await getMetadata(url);
     await setRedis(cacheKey, JSON.stringify(oembed));
 
-    ctx.header("Cache-Control", CACHE_AGE_1_DAY);
     return ctx.json({ success: true, data: oembed });
   } catch {
     return ctx.json({ success: false, error: Errors.SomethingWentWrong }, 500);
