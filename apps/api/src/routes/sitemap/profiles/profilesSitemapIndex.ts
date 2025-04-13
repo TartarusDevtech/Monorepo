@@ -4,7 +4,7 @@ import { create } from "xmlbuilder2";
 
 const sitemaps = [{ path: "/sitemap/profiles/1.xml", priority: "1" }];
 
-const profilesSitemap = async (ctx: Context) => {
+const profilesSitemapIndex = async (ctx: Context) => {
   try {
     const currentTime = new Date().toISOString();
 
@@ -33,4 +33,4 @@ const profilesSitemap = async (ctx: Context) => {
   }
 };
 
-export default profilesSitemap;
+export default profilesSitemapIndex;

@@ -1,14 +1,14 @@
 import { Hono } from "hono";
-import allSitemap from "./allSitemap";
 import pagesSitemap from "./pagesSitemap";
 import profileSitemap from "./profiles/profileSitemap";
-import profilesSitemap from "./profiles/profilesSitemap";
+import profilesSitemapIndex from "./profiles/profilesSitemapIndex";
+import sitemapIndex from "./sitemapIndex";
 
 const app = new Hono();
 
-app.get("/all.xml", allSitemap);
+app.get("/sitemap.xml", sitemapIndex);
 app.get("/pages.xml", pagesSitemap);
-app.get("/profiles.xml", profilesSitemap);
+app.get("/profiles.xml", profilesSitemapIndex);
 app.get("/profiles/:offset.xml", profileSitemap);
 
 export default app;
