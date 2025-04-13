@@ -11,7 +11,7 @@ import metadataRouter from "./routes/metadata";
 import oembedRouter from "./routes/oembed";
 import ping from "./routes/ping";
 import preferencesRouter from "./routes/preferences";
-import sitemap from "./routes/sitemap";
+import sitemapRouter from "./routes/sitemap";
 
 const app = new Hono();
 
@@ -28,7 +28,7 @@ app.route("/live", liveRouter);
 app.route("/metadata", metadataRouter);
 app.route("/oembed", oembedRouter);
 app.route("/preferences", preferencesRouter);
-app.get("/sitemap.xml", sitemap);
+app.route("/sitemap", sitemapRouter);
 
 serve({ fetch: app.fetch, port: 4784 }, (info) => {
   console.info(`Server running on port ${info.port}`);
