@@ -13,11 +13,11 @@
     "@hey/types": "workspace:*",
     "axios": "^1.8.4",
     "dayjs": "^1.11.13",
-    "viem": "^2.26.3",
-    "winston": "^3.16.0"
+    "viem": "^2.26.3"
   },
   "devDependencies": {
     "@hey/config": "workspace:*",
+    "@types/node": "^22.14.1",
     "typescript": "^5.8.3"
   }
 }
