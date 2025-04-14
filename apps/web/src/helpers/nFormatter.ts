@@ -1,4 +1,4 @@
-import humanize from "../../apps/web/src/helpers/humanize";
+import humanize from "@/helpers/humanize";
 
 const nFormatter = (num: number, digits = 1): string => {
   const lookup = [

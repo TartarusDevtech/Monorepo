@@ -1,9 +1,9 @@
 import JoinLeaveButton from "@/components/Shared/Group/JoinLeaveButton";
 import Markup from "@/components/Shared/Markup";
 import { Button, H3, Image, LightBox } from "@/components/Shared/UI";
+import getMentions from "@/helpers/getMentions";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import getAvatar from "@hey/helpers/getAvatar";
-import getMentions from "@hey/helpers/getMentions";
 import type { GroupFragment } from "@hey/indexer";
 import { useState } from "react";
 import { useNavigate } from "react-router";

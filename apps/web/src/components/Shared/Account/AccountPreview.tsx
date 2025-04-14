@@ -1,9 +1,9 @@
 import { Card, Image } from "@/components/Shared/UI";
+import getMentions from "@/helpers/getMentions";
+import nFormatter from "@/helpers/nFormatter";
 import truncateByWords from "@/helpers/truncateByWords";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
-import getMentions from "@hey/helpers/getMentions";
-import nFormatter from "@hey/helpers/nFormatter";
 import { type AccountStats, useFullAccountLazyQuery } from "@hey/indexer";
 import * as HoverCard from "@radix-ui/react-hover-card";
 import plur from "plur";
