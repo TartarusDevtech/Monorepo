@@ -1,10 +1,10 @@
 import { InMemoryCache } from '@apollo/client';
 import result from '../../possible-types';
+import createAccountRequestFieldPolicy from './createAccountRequestFieldPolicy';
 import createAccountsFieldPolicy from './createAccountsFieldPolicy';
 import createBasicFieldPolicy from './createBasicFieldPolicy';
 import createPostReactionsFieldPolicy from './createPostReactionsFieldPolicy';
 import createPostReferencesFieldPolicy from './createPostReferencesFieldPolicy';
-import createTimelineFieldPolicy from './createTimelineFieldPolicy';
 import createWhoReferencedPostFieldPolicy from './createWhoReferencedPostFieldPolicy';
 
 const cache = new InMemoryCache({
@@ -13,8 +13,10 @@ const cache = new InMemoryCache({
     AccountManager: { keyFields: ["manager"] },
     Query: {
       fields: {
-        timeline: createTimelineFieldPolicy(),
-        timelineHighlights: createTimelineFieldPolicy(),
+        timeline: createAccountRequestFieldPolicy(),
+        timelineHighlights: createAccountRequestFieldPolicy(),
+        following: createAccountRequestFieldPolicy(),
+        followers: createAccountRequestFieldPolicy(),
         posts: createBasicFieldPolicy(),
         postReferences: createPostReferencesFieldPolicy(),
         postReactions: createPostReactionsFieldPolicy(),

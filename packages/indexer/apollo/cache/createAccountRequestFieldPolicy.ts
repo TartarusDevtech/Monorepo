@@ -1,8 +1,8 @@
 import type { FieldPolicy } from '@apollo/client';
 import cursorBasedPagination from '../helpers/cursorBasedPagination';
 
-const createTimelineFieldPolicy = (): FieldPolicy => {
+const createAccountRequestFieldPolicy = (): FieldPolicy => {
   return cursorBasedPagination(["request", ["account"]]);
 };
 
-export default createTimelineFieldPolicy;
+export default createAccountRequestFieldPolicy;
