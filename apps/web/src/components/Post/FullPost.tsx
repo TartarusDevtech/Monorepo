@@ -63,8 +63,11 @@ const FullPost = ({ hasHiddenComments, post }: FullPostProps) => {
                 contentClassName="full-page-post-markup"
                 post={targetPost}
               />
-              <div className="my-3 text-gray-500 text-sm dark:text-gray-200">
-                <span>{formatDate(timestamp, "hh:mm A · MMM D, YYYY")}</span>
+              <div className="my-3 flex items-center text-gray-500 text-sm dark:text-gray-200">
+                {formatDate(timestamp, "hh:mm A · MMM D, YYYY")}
+                {targetPost.app?.metadata?.name
+                  ? ` · ${targetPost.app?.metadata?.name}`
+                  : null}
               </div>
               <PostStats post={targetPost} />
               <div className="divider" />
