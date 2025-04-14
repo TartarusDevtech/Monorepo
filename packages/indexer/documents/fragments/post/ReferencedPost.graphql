@@ -5,6 +5,11 @@ fragment ReferencedPost on Post {
   feed {
     ...PostFeedInfo
   }
+  app {
+    metadata {
+      name
+    }
+  }
   author {
     ...Account
   }
