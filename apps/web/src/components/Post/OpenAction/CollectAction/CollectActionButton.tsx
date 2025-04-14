@@ -2,13 +2,13 @@ import TransferFundButton from "@/components/Shared/Account/Fund/FundButton";
 import LoginButton from "@/components/Shared/LoginButton";
 import { Button, Spinner } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
+import getCollectActionData from "@/helpers/getCollectActionData";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useApolloClient } from "@apollo/client";
 import { HEY_TREASURY } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
-import getCollectActionData from "@hey/helpers/getCollectActionData";
 import {
   type PostActionFragment,
   type PostFragment,

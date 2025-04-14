@@ -2,6 +2,8 @@ import FollowUnfollowButton from "@/components/Shared/Account/FollowUnfollowButt
 import Markup from "@/components/Shared/Markup";
 import Slug from "@/components/Shared/Slug";
 import { Button, H3, Image, LightBox, Tooltip } from "@/components/Shared/UI";
+import getAccountAttribute from "@/helpers/getAccountAttribute";
+import getFavicon from "@/helpers/getFavicon";
 import { useTheme } from "@/hooks/useTheme";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { CalendarIcon, MapPinIcon } from "@heroicons/react/24/outline";
@@ -9,9 +11,7 @@ import { EyeSlashIcon } from "@heroicons/react/24/solid";
 import { EXPANDED_AVATAR, STATIC_IMAGES_URL } from "@hey/data/constants";
 import formatDate from "@hey/helpers/datetime/formatDate";
 import getAccount from "@hey/helpers/getAccount";
-import getAccountAttribute from "@hey/helpers/getAccountAttribute";
 import getAvatar from "@hey/helpers/getAvatar";
-import getFavicon from "@hey/helpers/getFavicon";
 import getMentions from "@hey/helpers/getMentions";
 import type { AccountFragment } from "@hey/indexer";
 import type { ReactNode } from "react";

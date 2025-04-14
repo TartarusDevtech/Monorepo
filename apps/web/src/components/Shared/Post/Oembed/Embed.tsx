@@ -1,6 +1,6 @@
 import { Card } from "@/components/Shared/UI";
+import getFavicon from "@/helpers/getFavicon";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
-import getFavicon from "@hey/helpers/getFavicon";
 import type { Oembed } from "@hey/types/api";
 import { Link } from "react-router";
 

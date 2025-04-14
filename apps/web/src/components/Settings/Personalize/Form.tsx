@@ -11,6 +11,7 @@ import {
   useZodForm
 } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
+import getAccountAttribute from "@/helpers/getAccountAttribute";
 import uploadMetadata from "@/helpers/uploadMetadata";
 import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
@@ -18,7 +19,6 @@ import { useAccountStatus } from "@/store/non-persisted/useAccountStatus";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { Errors } from "@hey/data/errors";
 import { Regex } from "@hey/data/regex";
-import getAccountAttribute from "@hey/helpers/getAccountAttribute";
 import trimify from "@hey/helpers/trimify";
 import { useMeLazyQuery, useSetAccountMetadataMutation } from "@hey/indexer";
 import type {
