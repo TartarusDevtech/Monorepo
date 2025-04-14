@@ -45,7 +45,7 @@ const DeletePost = () => {
     }
   });
 
-  const deletePost = async () => {
+  const handleDelete = async () => {
     if (isSuspended) {
       return toast.error(Errors.Suspended);
     }
@@ -61,7 +61,7 @@ const DeletePost = () => {
       description="This can't be undone and it will be removed from your account, the timeline of any accounts that follow you, and from search results."
       isPerformingAction={loading}
       onClose={() => setShowPostDeleteAlert(false)}
-      onConfirm={deletePost}
+      onConfirm={handleDelete}
       show={showPostDeleteAlert}
       title="Delete Post?"
     />
