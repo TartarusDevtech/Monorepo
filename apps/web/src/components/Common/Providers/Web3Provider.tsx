@@ -1,6 +1,9 @@
-import { IS_MAINNET, WALLETCONNECT_PROJECT_ID } from "@hey/data/constants";
+import {
+  CHAIN,
+  IS_MAINNET,
+  WALLETCONNECT_PROJECT_ID
+} from "@hey/data/constants";
 import getRpc from "@hey/helpers/getRpc";
-import { chains } from "@lens-chain/sdk/viem";
 import { familyAccountsConnector } from "family";
 import type { ReactNode } from "react";
 import { WagmiProvider, createConfig } from "wagmi";
@@ -13,11 +16,9 @@ const connectors = [
 ];
 
 const config = createConfig({
-  chains: [IS_MAINNET ? chains.mainnet : chains.testnet],
+  chains: [CHAIN],
   transports: {
-    [IS_MAINNET ? chains.mainnet.id : chains.testnet.id]: getRpc({
-      mainnet: IS_MAINNET
-    })
+    [CHAIN.id]: getRpc({ mainnet: IS_MAINNET })
   },
   connectors
 });

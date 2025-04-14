@@ -20,7 +20,6 @@
     "@hey/helpers": "workspace:*",
     "@hey/indexer": "workspace:*",
     "@hookform/resolvers": "^5.0.1",
-    "@lens-chain/sdk": "^1.0.3",
     "@lens-chain/storage-client": "^1.0.4",
     "@lens-protocol/metadata": "^2.0.0",
     "@livepeer/react": "^4.3.2",
