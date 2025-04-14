@@ -1,7 +1,7 @@
 import type { Context } from "hono";
 import { CACHE_AGE_1_DAY, VERIFICATION_ENDPOINT } from "src/utils/constants";
 
-const lensAuthorization = async (ctx: Context) => {
+const authorization = async (ctx: Context) => {
   ctx.header("Cache-Control", CACHE_AGE_1_DAY);
   return ctx.json({
     allowed: true,
@@ -10,4 +10,4 @@ const lensAuthorization = async (ctx: Context) => {
   });
 };
 
-export default lensAuthorization;
+export default authorization;

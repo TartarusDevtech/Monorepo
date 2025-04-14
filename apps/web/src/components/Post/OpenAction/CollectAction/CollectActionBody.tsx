@@ -10,7 +10,6 @@ import {
   Tooltip,
   WarningMessage
 } from "@/components/Shared/UI";
-import { CHAIN } from "@/constants";
 import getTokenImage from "@/helpers/getTokenImage";
 import humanize from "@/helpers/humanize";
 import nFormatter from "@/helpers/nFormatter";
@@ -22,6 +21,7 @@ import {
   PuzzlePieceIcon,
   UsersIcon
 } from "@heroicons/react/24/outline";
+import { CHAIN } from "@hey/data/constants";
 import { tokens } from "@hey/data/tokens";
 import formatDate from "@hey/helpers/datetime/formatDate";
 import formatAddress from "@hey/helpers/formatAddress";

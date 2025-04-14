@@ -2,8 +2,8 @@ import { Regex } from "@hey/data/regex";
 import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { z } from "zod";
-import lensAuthorization from "./lensAuthorization";
-import lensVerification from "./lensVerification";
+import authorization from "./authorization";
+import verification from "./verification";
 
 const app = new Hono();
 
@@ -16,7 +16,7 @@ app.post(
       signedBy: z.string().regex(Regex.evmAddress)
     })
   ),
-  lensAuthorization
+  authorization
 );
 
 app.post(
@@ -31,7 +31,7 @@ app.post(
       account: z.string().regex(Regex.evmAddress)
     })
   ),
-  lensVerification
+  verification
 );
 
 export default app;

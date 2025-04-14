@@ -1,4 +1,4 @@
-import { HEY_APP } from "@hey/data/constants";
+import { CHAIN, HEY_APP } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import type { Context } from "hono";
 import { heyWalletClient } from "src/utils/heyWalletClient";
@@ -17,11 +17,11 @@ const TYPES = {
 const DOMAIN = {
   name: "Lens Source",
   version: "1",
-  chainId: 37111,
+  chainId: CHAIN.id,
   verifyingContract: checksumAddress(HEY_APP)
 };
 
-const lensVerification = async (ctx: Context) => {
+const verification = async (ctx: Context) => {
   const { account, validator, nonce, deadline } = await ctx.req.json();
 
   try {
@@ -44,4 +44,4 @@ const lensVerification = async (ctx: Context) => {
   }
 };
 
-export default lensVerification;
+export default verification;

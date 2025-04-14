@@ -1,7 +1,7 @@
 import AccountLink from "@/components/Shared/Account/AccountLink";
 import Slug from "@/components/Shared/Slug";
 import { Image } from "@/components/Shared/UI";
-import { CHAIN } from "@/constants";
+import { CHAIN } from "@hey/data/constants";
 import formatAddress from "@hey/helpers/formatAddress";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";

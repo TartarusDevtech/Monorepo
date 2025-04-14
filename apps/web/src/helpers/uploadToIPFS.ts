@@ -1,7 +1,6 @@
-import { CHAIN } from "@/constants";
 import { S3 } from "@aws-sdk/client-s3";
 import { Upload } from "@aws-sdk/lib-storage";
-import { EVER_API, EVER_BUCKET, EVER_REGION } from "@hey/data/constants";
+import { CHAIN, EVER_API, EVER_BUCKET, EVER_REGION } from "@hey/data/constants";
 import generateUUID from "@hey/helpers/generateUUID";
 import { immutable } from "@lens-chain/storage-client";
 import { hono } from "./fetcher";

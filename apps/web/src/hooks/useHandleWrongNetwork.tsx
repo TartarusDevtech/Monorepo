@@ -1,4 +1,4 @@
-import { CHAIN } from "@/constants";
+import { CHAIN } from "@hey/data/constants";
 import { useConnections, useSwitchChain } from "wagmi";
 
 const useHandleWrongNetwork = () => {

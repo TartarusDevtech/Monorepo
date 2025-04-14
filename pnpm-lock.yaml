@@ -345,6 +345,10 @@ importers:
   packages/config: {}
 
   packages/data:
+    dependencies:
+      '@lens-chain/sdk':
+        specifier: ^1.0.3
+        version: 1.0.3(viem@2.26.5(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.2))
     devDependencies:
       '@hey/config':
         specifier: workspace:*

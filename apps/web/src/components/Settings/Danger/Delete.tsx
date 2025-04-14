@@ -1,8 +1,7 @@
 import { Button, H5, Modal, WarningMessage } from "@/components/Shared/UI";
-import { CHAIN } from "@/constants";
 import useHandleWrongNetwork from "@/hooks/useHandleWrongNetwork";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
-import { NULL_ADDRESS } from "@hey/data/constants";
+import { CHAIN, NULL_ADDRESS } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import { useState } from "react";
 import { Link } from "react-router";
