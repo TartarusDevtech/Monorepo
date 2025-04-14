@@ -1,7 +1,7 @@
 export enum MainnetContracts {
   DefaultToken = "0x6bDc36E20D267Ff0dd6097799f82e78907105e2F",
   App = "0x1eFA8F82d9E919F6b6A5f1701131c9Cb1a943BAA",
-  Sponsor = "0x0000000000000000000000000000000000000000"
+  Sponsor = "0x0000000000000000000000000000000000000000" // Lens is sponsoring the actions for now
 }
 
 export enum TestnetContracts {
