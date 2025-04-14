@@ -80,6 +80,7 @@ const ViewAccount = () => {
   const renderAccountDetails = () => {
     if (isDeleted) return <DeletedDetails account={account} />;
     if (isSuspended) return <SuspendedDetails account={account} />;
+
     return (
       <Details
         isSuspended={accountDetails?.isSuspended || false}
