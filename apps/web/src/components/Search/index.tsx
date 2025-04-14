@@ -1,6 +1,6 @@
 import { PageLayout } from "@/components/Shared/PageLayout";
+import { default as SearchInput } from "@/components/Shared/Search";
 import Sidebar from "@/components/Shared/Sidebar";
-import { default as SearchInput } from "@/components/Shared/Sidebar/Search";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useSearchParams } from "react-router";
 import { EmptyState } from "../Shared/UI";

@@ -4,8 +4,8 @@ import { useAccountStore } from "@/store/persisted/useAccountStore";
 import type { ReactNode } from "react";
 import LoginButton from "./LoginButton";
 import SignupButton from "./Navbar/SignupButton";
+import Search from "./Search";
 import Sidebar from "./Sidebar";
-import Search from "./Sidebar/Search";
 
 interface AuthButtonsProps {
   className?: string;
