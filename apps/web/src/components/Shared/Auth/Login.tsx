@@ -10,6 +10,7 @@ import {
   useAuthenticateMutation,
   useChallengeMutation
 } from "@hey/indexer";
+import { AnimatePresence, motion } from "motion/react";
 import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -28,6 +29,7 @@ const Login = ({ setHasAccounts }: LoginProps) => {
   const [loggingInAccountId, setLoggingInAccountId] = useState<null | string>(
     null
   );
+  const [isExpanded, setIsExpanded] = useState(true);
 
   const onError = (error?: any) => {
     setIsSubmitting(false);
@@ -46,8 +48,10 @@ const Login = ({ setHasAccounts }: LoginProps) => {
   });
 
   const { data, loading } = useAccountsAvailableQuery({
-    onCompleted: (data) =>
-      setHasAccounts(data?.accountsAvailable.items.length > 0),
+    onCompleted: (data) => {
+      setHasAccounts(data?.accountsAvailable.items.length > 0);
+      setIsExpanded(true);
+    },
     skip: !address,
     variables: {
       accountsAvailableRequest: { managedBy: address },
@@ -134,37 +138,67 @@ const Login = ({ setHasAccounts }: LoginProps) => {
             />
           </Card>
         ) : accounts.length > 0 ? (
-          <Card
-            className="max-h-[50vh] w-full overflow-y-auto dark:divide-gray-700"
-            forceRounded
-          >
-            {accounts.map((account) => (
-              <div
-                className="flex items-center justify-between p-3"
-                key={account.address}
+          <AnimatePresence mode="popLayout">
+            {isExpanded && (
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: { opacity: 0, height: 0, overflow: "hidden" },
+                  visible: {
+                    opacity: 1,
+                    height: "auto",
+                    transition: { duration: 0.2, ease: [0.075, 0.82, 0.165, 1] }
+                  }
+                }}
               >
-                <SingleAccount
-                  hideFollowButton
-                  hideUnfollowButton
-                  linkToAccount={false}
-                  account={account}
-                  showUserPreview={false}
-                />
-                <Button
-                  disabled={
-                    isSubmitting && loggingInAccountId === account.address
-                  }
-                  loading={
-                    isSubmitting && loggingInAccountId === account.address
-                  }
-                  onClick={() => handleSign(account.address)}
-                  outline
+                <Card
+                  className="max-h-[50vh] w-full overflow-y-auto dark:divide-gray-700"
+                  forceRounded
                 >
-                  Login
-                </Button>
-              </div>
-            ))}
-          </Card>
+                  {accounts.map((account, index) => (
+                    <motion.div
+                      key={account.address}
+                      variants={{
+                        hidden: { opacity: 0, y: 20 },
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          transition: { duration: 0.1 }
+                        }
+                      }}
+                      custom={index}
+                      className="flex items-center justify-between p-3"
+                      whileHover={{
+                        backgroundColor: "rgba(0, 0, 0, 0.05)",
+                        transition: { duration: 0.2 }
+                      }}
+                    >
+                      <SingleAccount
+                        hideFollowButton
+                        hideUnfollowButton
+                        linkToAccount={false}
+                        account={account}
+                        showUserPreview={false}
+                      />
+                      <Button
+                        disabled={
+                          isSubmitting && loggingInAccountId === account.address
+                        }
+                        loading={
+                          isSubmitting && loggingInAccountId === account.address
+                        }
+                        onClick={() => handleSign(account.address)}
+                        outline
+                      >
+                        Login
+                      </Button>
+                    </motion.div>
+                  ))}
+                </Card>
+              </motion.div>
+            )}
+          </AnimatePresence>
         ) : (
           <SignupCard />
         )}
