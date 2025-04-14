@@ -1,4 +1,4 @@
-import stopEventPropagation from "@hey/helpers/stopEventPropagation";
+import stopEventPropagation from "@/helpers/stopEventPropagation";
 import truncateUrl from "@hey/helpers/truncateUrl";
 import type { MarkupLinkProps } from "@hey/types/misc";
 import { Link } from "react-router";

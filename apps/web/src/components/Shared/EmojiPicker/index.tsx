@@ -1,6 +1,6 @@
 import { Tooltip } from "@/components/Shared/UI";
+import stopEventPropagation from "@/helpers/stopEventPropagation";
 import { FaceSmileIcon } from "@heroicons/react/24/outline";
-import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import { useClickAway } from "@uidotdev/usehooks";
 import type { Dispatch, MutableRefObject, SetStateAction } from "react";
 import List from "./List";

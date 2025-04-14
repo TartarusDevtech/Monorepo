@@ -1,6 +1,6 @@
+import stopEventPropagation from "@/helpers/stopEventPropagation";
 import { usePostAudioStore } from "@/store/non-persisted/post/usePostAudioStore";
 import { PauseIcon, PlayIcon } from "@heroicons/react/24/solid";
-import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { APITypes } from "plyr-react";
 import type { ChangeEvent } from "react";
 import { useRef, useState } from "react";

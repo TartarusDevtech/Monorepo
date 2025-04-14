@@ -1,9 +1,9 @@
 import MenuTransition from "@/components/Shared/MenuTransition";
 import cn from "@/helpers/cn";
+import stopEventPropagation from "@/helpers/stopEventPropagation";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { Menu, MenuButton, MenuItems } from "@headlessui/react";
 import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
-import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { PostFragment } from "@hey/indexer";
 import { Fragment } from "react";
 import Bookmark from "./Bookmark";

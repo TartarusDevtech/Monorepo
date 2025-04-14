@@ -1,6 +1,6 @@
 import AccountPreview from "@/components/Shared/Account/AccountPreview";
 import Slug from "@/components/Shared/Slug";
-import stopEventPropagation from "@hey/helpers/stopEventPropagation";
+import stopEventPropagation from "@/helpers/stopEventPropagation";
 import type { MarkupLinkProps } from "@hey/types/misc";
 import { Link } from "react-router";
 

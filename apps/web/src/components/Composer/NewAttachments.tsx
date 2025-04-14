@@ -2,10 +2,10 @@ import ChooseThumbnail from "@/components/Composer/ChooseThumbnail";
 import Audio from "@/components/Shared/Audio";
 import { Image } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
+import stopEventPropagation from "@/helpers/stopEventPropagation";
 import { usePostAttachmentStore } from "@/store/non-persisted/post/usePostAttachmentStore";
 import { usePostVideoStore } from "@/store/non-persisted/post/usePostVideoStore";
 import { XMarkIcon } from "@heroicons/react/24/solid";
-import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { NewAttachment } from "@hey/types/misc";
 import { useEffect, useRef } from "react";
 

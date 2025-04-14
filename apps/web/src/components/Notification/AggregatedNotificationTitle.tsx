@@ -1,4 +1,4 @@
-import stopEventPropagation from "@hey/helpers/stopEventPropagation";
+import stopEventPropagation from "@/helpers/stopEventPropagation";
 import type { AccountFragment } from "@hey/indexer";
 import { Link } from "react-router";
 import { NotificationAccountName } from "./Account";

@@ -1,7 +1,7 @@
+import stopEventPropagation from "@/helpers/stopEventPropagation";
 import { usePostStore } from "@/store/non-persisted/post/usePostStore";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { isRepost } from "@hey/helpers/postHelpers";
-import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type {
   AnyPostFragment,
   PostGroupInfoFragment,

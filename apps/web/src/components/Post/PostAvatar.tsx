@@ -1,10 +1,10 @@
 import AccountLink from "@/components/Shared/Account/AccountLink";
 import { Image } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
+import stopEventPropagation from "@/helpers/stopEventPropagation";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import { isRepost } from "@hey/helpers/postHelpers";
-import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { AnyPostFragment, TimelineItemFragment } from "@hey/indexer";
 import { memo } from "react";
 import { useNavigate } from "react-router";

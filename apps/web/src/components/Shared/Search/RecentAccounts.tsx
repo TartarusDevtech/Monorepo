@@ -1,10 +1,10 @@
 import SingleAccount from "@/components/Shared/Account/SingleAccount";
 import Loader from "@/components/Shared/Loader";
 import { H6 } from "@/components/Shared/UI";
+import stopEventPropagation from "@/helpers/stopEventPropagation";
 import { useSearchStore } from "@/store/persisted/useSearchStore";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import getAccount from "@hey/helpers/getAccount";
-import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import { useAccountsBulkQuery } from "@hey/indexer";
 import { useNavigate } from "react-router";
 

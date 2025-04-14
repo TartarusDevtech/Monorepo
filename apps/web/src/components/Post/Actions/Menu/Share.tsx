@@ -1,7 +1,7 @@
 import cn from "@/helpers/cn";
+import stopEventPropagation from "@/helpers/stopEventPropagation";
 import { MenuItem } from "@headlessui/react";
 import { ClipboardDocumentIcon } from "@heroicons/react/24/outline";
-import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { PostFragment } from "@hey/indexer";
 import { toast } from "sonner";
 

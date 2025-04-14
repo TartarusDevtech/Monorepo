@@ -1,9 +1,9 @@
 import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
+import stopEventPropagation from "@/helpers/stopEventPropagation";
 import type { ApolloCache } from "@apollo/client";
 import { MenuItem } from "@headlessui/react";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
-import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import {
   type PostFragment,
   type PostNotInterestedRequest,

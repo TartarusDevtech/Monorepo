@@ -1,5 +1,5 @@
+import stopEventPropagation from "@/helpers/stopEventPropagation";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
-import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { GroupFragment } from "@hey/indexer";
 import { useEffect, useState } from "react";
 import JoinWithRulesCheck from "./JoinWithRulesCheck";

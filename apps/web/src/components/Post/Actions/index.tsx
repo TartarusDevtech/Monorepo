@@ -1,5 +1,5 @@
+import stopEventPropagation from "@/helpers/stopEventPropagation";
 import { isRepost } from "@hey/helpers/postHelpers";
-import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { AnyPostFragment } from "@hey/indexer";
 import { memo } from "react";
 import CollectAction from "../OpenAction/CollectAction";

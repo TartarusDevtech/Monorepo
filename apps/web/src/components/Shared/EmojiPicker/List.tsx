@@ -1,9 +1,9 @@
 import { ErrorMessage, Input } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
+import stopEventPropagation from "@/helpers/stopEventPropagation";
 import useEmojis from "@/hooks/prosekit/useEmojis";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Errors } from "@hey/data/errors";
-import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { Emoji } from "@hey/types/misc";
 import type { ChangeEvent, MouseEvent } from "react";
 import { useEffect, useRef, useState } from "react";

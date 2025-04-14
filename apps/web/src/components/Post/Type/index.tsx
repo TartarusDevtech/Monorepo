@@ -1,4 +1,4 @@
-import stopEventPropagation from "@hey/helpers/stopEventPropagation";
+import stopEventPropagation from "@/helpers/stopEventPropagation";
 import type { AnyPostFragment } from "@hey/indexer";
 import Commented from "./Commented";
 import Reposted from "./Reposted";
