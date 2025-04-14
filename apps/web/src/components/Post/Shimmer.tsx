@@ -7,13 +7,11 @@ import PostsShimmer from "@/components/Shared/Shimmer/PostsShimmer";
 import SingleAccountShimmer from "@/components/Shared/Shimmer/SingleAccountShimmer";
 import { Card, CardHeader } from "@/components/Shared/UI";
 
-interface PublicationPageShimmerProps {
-  publicationList?: boolean;
+interface PostPageShimmerProps {
+  postList?: boolean;
 }
 
-const PublicationPageShimmer = ({
-  publicationList = false
-}: PublicationPageShimmerProps) => {
+const PostPageShimmer = ({ postList = false }: PostPageShimmerProps) => {
   return (
     <PageLayout
       sidebar={
@@ -33,7 +31,7 @@ const PublicationPageShimmer = ({
       }
       zeroTopMargin
     >
-      {publicationList ? (
+      {postList ? (
         <PostListShimmer title="Post" />
       ) : (
         <>
@@ -48,4 +46,4 @@ const PublicationPageShimmer = ({
   );
 };
 
-export default PublicationPageShimmer;
+export default PostPageShimmer;

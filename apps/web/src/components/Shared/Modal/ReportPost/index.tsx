@@ -64,7 +64,7 @@ const ReportPost = ({ postId }: ReportPostProps) => {
         <EmptyState
           hideCard
           icon={<CheckCircleIcon className="size-14" />}
-          message="Publication reported"
+          message="Post reported"
         />
       ) : postId ? (
         <div className="p-5">

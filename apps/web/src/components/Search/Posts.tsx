@@ -55,7 +55,7 @@ const Posts = ({ query }: PostsProps) => {
         icon={<ChatBubbleBottomCenterIcon className="size-8" />}
         message={
           <span>
-            No publications for <b>&ldquo;{query}&rdquo;</b>
+            No posts for <b>&ldquo;{query}&rdquo;</b>
           </span>
         }
       />
@@ -63,7 +63,7 @@ const Posts = ({ query }: PostsProps) => {
   }
 
   if (error) {
-    return <ErrorMessage error={error} title="Failed to load publications" />;
+    return <ErrorMessage error={error} title="Failed to load posts" />;
   }
 
   return (

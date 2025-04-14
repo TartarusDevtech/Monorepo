@@ -26,7 +26,7 @@ import NoneRelevantFeed from "../Comment/NoneRelevantFeed";
 import FullPost from "./FullPost";
 import Quotes from "./Quotes";
 import RelevantPeople from "./RelevantPeople";
-import PublicationPageShimmer from "./Shimmer";
+import PostPageShimmer from "./Shimmer";
 
 interface HiddenCommentFeedState {
   setShowHiddenComments: (show: boolean) => void;
@@ -75,7 +75,7 @@ const ViewPost = () => {
   const hasHiddenComments = (comments?.postReferences.items.length || 0) > 0;
 
   if (!slug || (loading && !cachedPost)) {
-    return <PublicationPageShimmer publicationList={showQuotes} />;
+    return <PostPageShimmer postList={showQuotes} />;
   }
 
   if (!post) {

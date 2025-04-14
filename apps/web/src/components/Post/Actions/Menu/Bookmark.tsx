@@ -55,7 +55,7 @@ const Bookmark = ({ post }: BookmarkProps) => {
 
   const [bookmarkPost] = useBookmarkPostMutation({
     onCompleted: () => {
-      toast.success("Publication bookmarked!");
+      toast.success("Post bookmarked!");
     },
     onError,
     update: (cache) => updateCache(cache, true),
@@ -64,7 +64,7 @@ const Bookmark = ({ post }: BookmarkProps) => {
 
   const [undoBookmarkPost] = useUndoBookmarkPostMutation({
     onCompleted: () => {
-      toast.success("Removed publication bookmark!");
+      toast.success("Removed post bookmark!");
     },
     onError,
     update: (cache) => updateCache(cache, false),
