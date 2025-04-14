@@ -1,8 +1,16 @@
 import { LENS_NAMESPACE } from "@hey/data/constants";
+import { Regex } from "@hey/data/regex";
 import type { AccountFragment } from "@hey/indexer";
-import formatAddress from "../../apps/web/src/helpers/formatAddress";
+import formatAddress from "./formatAddress";
 import isAccountDeleted from "./isAccountDeleted";
-import sanitizeDisplayName from "./sanitizeDisplayName";
+
+const sanitizeDisplayName = (name?: null | string): null | string => {
+  if (!name) {
+    return null;
+  }
+
+  return name.replace(Regex.accountNameFilter, " ").trim().replace(/\s+/g, " ");
+};
 
 const getAccount = (
   account?: AccountFragment

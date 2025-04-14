@@ -1,11 +1,11 @@
 import ThumbnailsShimmer from "@/components/Shared/Shimmer/ThumbnailsShimmer";
 import { Spinner } from "@/components/Shared/UI";
 import { generateVideoThumbnails } from "@/helpers/generateVideoThumbnails";
+import getFileFromDataURL from "@/helpers/getFileFromDataURL";
 import { uploadFileToIPFS } from "@/helpers/uploadToIPFS";
 import { usePostAttachmentStore } from "@/store/non-persisted/post/usePostAttachmentStore";
 import { usePostVideoStore } from "@/store/non-persisted/post/usePostVideoStore";
 import { CheckCircleIcon, PhotoIcon } from "@heroicons/react/24/outline";
-import getFileFromDataURL from "@hey/helpers/getFileFromDataURL";
 import type { ChangeEvent } from "react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
