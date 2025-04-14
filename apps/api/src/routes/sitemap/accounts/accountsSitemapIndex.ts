@@ -1,5 +1,6 @@
 import { Errors } from "@hey/data/errors";
 import type { Context } from "hono";
+import { SITEMAP_BATCH_SIZE } from "src/utils/constants";
 import lensPg from "src/utils/lensPg";
 import { getRedis, setRedis } from "src/utils/redis";
 import { create } from "xmlbuilder2";
@@ -8,21 +9,24 @@ const accountsSitemapIndex = async (ctx: Context) => {
   try {
     const cacheKey = "sitemap:accounts:total";
     const cachedData = await getRedis(cacheKey);
-    let totalHandles: number;
+    let totalUsernames: number;
 
     if (cachedData) {
-      totalHandles = Number(cachedData);
+      totalUsernames = Number(cachedData);
     } else {
-      const handles = await lensPg.query(`
-        SELECT CEIL(COUNT(*) / 50000) AS count
-        FROM account.username_assigned;
-      `);
+      const usernames = await lensPg.query(
+        `
+          SELECT CEIL(COUNT(*) / $1) AS count
+          FROM account.username_assigned;
+        `,
+        [SITEMAP_BATCH_SIZE]
+      );
 
-      totalHandles = Number(handles[0]?.count) || 0;
-      await setRedis(cacheKey, totalHandles);
+      totalUsernames = Number(usernames[0]?.count) || 0;
+      await setRedis(cacheKey, totalUsernames);
     }
 
-    const sitemaps = Array.from({ length: totalHandles }, (_, index) => ({
+    const sitemaps = Array.from({ length: totalUsernames }, (_, index) => ({
       path: `/sitemap/accounts/${index + 1}.xml`,
       priority: "1"
     }));

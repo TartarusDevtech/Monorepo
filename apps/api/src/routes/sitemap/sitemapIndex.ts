@@ -9,8 +9,6 @@ const sitemaps = [
 
 const sitemapIndex = async (ctx: Context) => {
   try {
-    const currentTime = new Date().toISOString();
-
     const sitemapIndex = create({ version: "1.0", encoding: "UTF-8" }).ele(
       "sitemapindex",
       { xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9" }
@@ -23,7 +21,7 @@ const sitemapIndex = async (ctx: Context) => {
         .txt(`https://hey.xyz${sitemap.path}`)
         .up()
         .ele("lastmod")
-        .txt(currentTime)
+        .txt(new Date().toISOString())
         .up();
     }
 

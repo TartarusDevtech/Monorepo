@@ -12,8 +12,6 @@ const urls = [
 
 const pagesSitemap = async (ctx: Context) => {
   try {
-    const currentTime = new Date().toISOString();
-
     const sitemap = create({ version: "1.0", encoding: "UTF-8" }).ele(
       "urlset",
       {
@@ -33,7 +31,7 @@ const pagesSitemap = async (ctx: Context) => {
         .txt(`https://hey.xyz${page.path}`)
         .up()
         .ele("lastmod")
-        .txt(currentTime)
+        .txt(new Date().toISOString())
         .up()
         .ele("changefreq")
         .txt("weekly")

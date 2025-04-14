@@ -1,12 +1,32 @@
 import { Errors } from "@hey/data/errors";
 import type { Context } from "hono";
+import { SITEMAP_BATCH_SIZE } from "src/utils/constants";
+import lensPg from "src/utils/lensPg";
 import { create } from "xmlbuilder2";
 
 const accountSitemap = async (ctx: Context) => {
-  try {
-    const currentTime = new Date().toISOString();
+  const params = ctx.req.param();
+  const batch = params["batch.xml"].replace(".xml", "");
 
-    const usernames = ["yoginth", "hey", "stani", "paris", "wagmi", "lens"];
+  if (Number.isNaN(Number(batch))) {
+    return ctx.body(Errors.SomethingWentWrong);
+  }
+
+  if (Number(batch) === 0) {
+    return ctx.body(Errors.SomethingWentWrong);
+  }
+
+  try {
+    const usernames = await lensPg.query(
+      `
+        SELECT local_name
+        FROM account.username_assigned
+        ORDER BY timestamp
+        LIMIT $1
+        OFFSET $2;
+      `,
+      [SITEMAP_BATCH_SIZE, (Number(batch) - 1) * SITEMAP_BATCH_SIZE]
+    );
 
     const sitemap = create({ version: "1.0", encoding: "UTF-8" }).ele(
       "urlset",
@@ -24,10 +44,10 @@ const accountSitemap = async (ctx: Context) => {
       sitemap
         .ele("url")
         .ele("loc")
-        .txt(`https://hey.xyz/u/${username}`)
+        .txt(`https://hey.xyz/u/${username.local_name}`)
         .up()
         .ele("lastmod")
-        .txt(currentTime)
+        .txt(new Date().toISOString())
         .up()
         .ele("changefreq")
         .txt("weekly")

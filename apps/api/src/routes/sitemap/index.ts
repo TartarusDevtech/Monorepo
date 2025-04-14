@@ -9,6 +9,6 @@ const app = new Hono();
 app.get("/all.xml", sitemapIndex);
 app.get("/pages.xml", pagesSitemap);
 app.get("/accounts.xml", accountsSitemapIndex);
-app.get("/accounts/:offset.xml", accountSitemap);
+app.get("/accounts/:batch.xml", accountSitemap);
 
 export default app;
