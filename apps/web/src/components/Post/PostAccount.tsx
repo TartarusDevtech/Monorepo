@@ -1,6 +1,7 @@
 import AccountPreview from "@/components/Shared/Account/AccountPreview";
 import Slug from "@/components/Shared/Slug";
 import { Image } from "@/components/Shared/UI";
+import { AVATAR_TINY } from "@hey/data/constants";
 import formatRelativeOrAbsolute from "@hey/helpers/datetime/formatRelativeOrAbsolute";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
@@ -65,7 +66,7 @@ const PostAccount = ({ account, group, post, timestamp }: PostAccountProps) => {
           to={`/g/${group.address}`}
         >
           <Image
-            src={getAvatar(group)}
+            src={getAvatar(group, AVATAR_TINY)}
             alt={group.metadata.name}
             className="size-4 rounded"
           />

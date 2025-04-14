@@ -4,7 +4,7 @@ import uploadCroppedImage, { readFile } from "@/helpers/accountPictureUtils";
 import cn from "@/helpers/cn";
 import getCroppedImg from "@/helpers/cropUtils";
 import errorToast from "@/helpers/errorToast";
-import { AVATAR, DEFAULT_AVATAR } from "@hey/data/constants";
+import { AVATAR_BIG, DEFAULT_AVATAR } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import imageKit from "@hey/helpers/imageKit";
 import sanitizeDStorageUrl from "@hey/helpers/sanitizeDStorageUrl";
@@ -73,7 +73,7 @@ const AvatarUpload = ({ src, setSrc, isSmall = false }: AvatarUploadProps) => {
 
   const pictureUrl = pictureSrc || DEFAULT_AVATAR;
   const renderPictureUrl = pictureUrl
-    ? imageKit(sanitizeDStorageUrl(pictureUrl), AVATAR)
+    ? imageKit(sanitizeDStorageUrl(pictureUrl), AVATAR_BIG)
     : "";
 
   return (

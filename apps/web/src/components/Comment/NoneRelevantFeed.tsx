@@ -2,6 +2,7 @@ import { useHiddenCommentFeedStore } from "@/components/Post";
 import SinglePost from "@/components/Post/SinglePost";
 import { Card, StackedAvatars } from "@/components/Shared/UI";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+import { AVATAR_TINY } from "@hey/data/constants";
 import getAvatar from "@hey/helpers/getAvatar";
 import {
   PageSize,
@@ -61,7 +62,9 @@ const NoneRelevantFeed = ({ postId }: NoneRelevantFeedProps) => {
         onClick={() => setShowMore(!showMore)}
       >
         <StackedAvatars
-          avatars={comments.map((comment) => getAvatar(comment.author))}
+          avatars={comments.map((comment) =>
+            getAvatar(comment.author, AVATAR_TINY)
+          )}
           limit={5}
         />
         <div>{showMore ? "Hide more comments" : "Show more comments"}</div>

@@ -1,6 +1,7 @@
 import { Image } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
 import getMentions from "@/helpers/getMentions";
+import { AVATAR_BIG } from "@hey/data/constants";
 import getAvatar from "@hey/helpers/getAvatar";
 import type { GroupFragment } from "@hey/indexer";
 import { memo } from "react";
@@ -34,7 +35,7 @@ const SingleGroup = ({
       )}
       height={isBig ? 56 : 44}
       loading="lazy"
-      src={getAvatar(group)}
+      src={getAvatar(group, AVATAR_BIG)}
       width={isBig ? 56 : 44}
     />
   );

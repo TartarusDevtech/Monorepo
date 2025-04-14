@@ -48,7 +48,9 @@ export const GIPHY_KEY = "yNwCXMKkiBrxyyFduF56xCbSuJJM8cMd";
 export const LIVEPEER_KEY = "70508bf8-2e16-4594-852d-5aed798f6403";
 
 // Named transforms for ImageKit
-export const AVATAR = "tr:w-350,h-350";
+export const AVATAR_BIG = "tr:w-350,h-350";
+export const AVATAR_SMALL = "tr:w-100,h-100";
+export const AVATAR_TINY = "tr:w-50,h-50";
 export const EXPANDED_AVATAR = "tr:w-1000,h-1000";
 export const COVER = "tr:w-1350,h-350";
 export const ATTACHMENT = "tr:w-1000";

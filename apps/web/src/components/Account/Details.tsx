@@ -9,7 +9,11 @@ import { useTheme } from "@/hooks/useTheme";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { CalendarIcon, MapPinIcon } from "@heroicons/react/24/outline";
 import { EyeSlashIcon } from "@heroicons/react/24/solid";
-import { EXPANDED_AVATAR, STATIC_IMAGES_URL } from "@hey/data/constants";
+import {
+  AVATAR_BIG,
+  EXPANDED_AVATAR,
+  STATIC_IMAGES_URL
+} from "@hey/data/constants";
 import formatDate from "@hey/helpers/datetime/formatDate";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
@@ -68,7 +72,7 @@ const Details = ({ isSuspended = false, account }: DetailsProps) => {
             onClick={() =>
               setExpandedImage(getAvatar(account, EXPANDED_AVATAR))
             }
-            src={getAvatar(account)}
+            src={getAvatar(account, AVATAR_BIG)}
             width={128}
           />
           <LightBox

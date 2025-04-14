@@ -1,4 +1,5 @@
 import defaultMetadata from "@/defaultMetadata";
+import { AVATAR_BIG } from "@hey/data/constants";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import { AccountDocument } from "@hey/indexer";
@@ -36,7 +37,7 @@ export const generateMetadata = async ({
     metadataBase: new URL(`https://hey.xyz${link}`),
     openGraph: {
       description: description,
-      images: [getAvatar(account)],
+      images: [getAvatar(account, AVATAR_BIG)],
       siteName: "Hey",
       type: "profile",
       url: `https://hey.xyz${link}`
