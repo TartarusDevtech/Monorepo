@@ -1,5 +1,5 @@
+import trimify from "@/helpers/trimify";
 import { Regex } from "@hey/data/regex";
-import trimify from "@hey/helpers/trimify";
 import type { PostMentionFragment } from "@hey/indexer";
 import { memo } from "react";
 import ReactMarkdown from "react-markdown";
