@@ -24,4 +24,4 @@ jobs:
       - name: Push to Pierre
         run: |
           git remote add pierre git@git.pierre.co:yo/hey.git
-          git push pierre main
+          git push pierre main --force
