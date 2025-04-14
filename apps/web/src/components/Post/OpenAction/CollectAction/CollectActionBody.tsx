@@ -11,6 +11,7 @@ import {
   WarningMessage
 } from "@/components/Shared/UI";
 import { CHAIN } from "@/constants";
+import formatAddress from "@/helpers/formatAddress";
 import getTokenImage from "@/helpers/getTokenImage";
 import {
   CheckCircleIcon,
@@ -22,7 +23,6 @@ import {
 } from "@heroicons/react/24/outline";
 import { tokens } from "@hey/data/tokens";
 import formatDate from "@hey/helpers/datetime/formatDate";
-import formatAddress from "@hey/helpers/formatAddress";
 import getAccount from "@hey/helpers/getAccount";
 import humanize from "@hey/helpers/humanize";
 import nFormatter from "@hey/helpers/nFormatter";

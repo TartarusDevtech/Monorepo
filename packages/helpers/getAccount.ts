@@ -1,6 +1,6 @@
 import { LENS_NAMESPACE } from "@hey/data/constants";
 import type { AccountFragment } from "@hey/indexer";
-import formatAddress from "./formatAddress";
+import formatAddress from "../../apps/web/src/helpers/formatAddress";
 import isAccountDeleted from "./isAccountDeleted";
 import sanitizeDisplayName from "./sanitizeDisplayName";
 

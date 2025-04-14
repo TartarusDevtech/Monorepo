@@ -1,8 +1,8 @@
 import { Image } from "@/components/Shared/UI";
 import { CHAIN } from "@/constants";
+import formatAddress from "@/helpers/formatAddress";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { DEFAULT_AVATAR } from "@hey/data/constants";
-import formatAddress from "@hey/helpers/formatAddress";
 import { Link } from "react-router";
 import type { Address } from "viem";
 import { useEnsName } from "wagmi";

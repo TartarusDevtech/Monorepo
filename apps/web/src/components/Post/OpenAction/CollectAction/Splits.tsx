@@ -2,7 +2,7 @@ import AccountLink from "@/components/Shared/Account/AccountLink";
 import Slug from "@/components/Shared/Slug";
 import { Image } from "@/components/Shared/UI";
 import { CHAIN } from "@/constants";
-import formatAddress from "@hey/helpers/formatAddress";
+import formatAddress from "@/helpers/formatAddress";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import { type RecipientPercent, useAccountsBulkQuery } from "@hey/indexer";
