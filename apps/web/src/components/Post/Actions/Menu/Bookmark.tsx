@@ -71,7 +71,7 @@ const Bookmark = ({ post }: BookmarkProps) => {
     variables: { request: { post: post.id } }
   });
 
-  const handleTogglePublicationProfileBookmark = async () => {
+  const handleToggleBookmark = async () => {
     if (hasBookmarked) {
       return await undoBookmarkPost();
     }
@@ -90,7 +90,7 @@ const Bookmark = ({ post }: BookmarkProps) => {
       }
       onClick={(event) => {
         stopEventPropagation(event);
-        handleTogglePublicationProfileBookmark();
+        handleToggleBookmark();
       }}
     >
       <div className="flex items-center space-x-2">

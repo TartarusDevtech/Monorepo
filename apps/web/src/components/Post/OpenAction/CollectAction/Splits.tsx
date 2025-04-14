@@ -13,7 +13,7 @@ interface SplitsProps {
 }
 
 const Splits = ({ recipients }: SplitsProps) => {
-  const { data: recipientProfilesData, loading } = useAccountsBulkQuery({
+  const { data: recipientAccountsData, loading } = useAccountsBulkQuery({
     skip: !recipients?.length,
     variables: {
       request: { addresses: recipients?.map((r) => r.address) }
@@ -25,7 +25,7 @@ const Splits = ({ recipients }: SplitsProps) => {
   }
 
   const getAccountByAddress = (address: string) => {
-    const accounts = recipientProfilesData?.accountsBulk;
+    const accounts = recipientAccountsData?.accountsBulk;
     if (accounts) {
       return accounts.find((a) => a.address === address);
     }

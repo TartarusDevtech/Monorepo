@@ -44,7 +44,7 @@ const BottomNavigation = () => {
   const { currentAccount } = useAccountStore();
   const { showMobileDrawer, setShowMobileDrawer } = useMobileDrawerModalStore();
 
-  const handleProfileClick = () => setShowMobileDrawer(true);
+  const handleAccountClick = () => setShowMobileDrawer(true);
 
   const handleHomClick = (path: string, e: MouseEvent) => {
     if (path === "/" && pathname === "/") {
@@ -99,7 +99,7 @@ const BottomNavigation = () => {
           <button
             aria-label="Your account"
             className="m-auto h-fit"
-            onClick={handleProfileClick}
+            onClick={handleAccountClick}
             type="button"
           >
             <Image

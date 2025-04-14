@@ -7,14 +7,14 @@ import WhoToFollow from "./WhoToFollow";
 
 const Sidebar = () => {
   const { currentAccount } = useAccountStore();
-  const loggedInWithProfile = Boolean(currentAccount);
-  const loggedOut = !loggedInWithProfile;
+  const loggedInWithAccount = Boolean(currentAccount);
+  const loggedOut = !loggedInWithAccount;
 
   return (
     <>
       {/* <Gitcoin /> */}
       {loggedOut && <SignupCard />} {/* Onboarding steps */}
-      {loggedInWithProfile && (
+      {loggedInWithAccount && (
         <>
           <SetAccount />
           <WhoToFollow />

@@ -14,11 +14,11 @@ const Home = () => {
   const { currentAccount } = useAccountStore();
   const { feedType } = useHomeTabStore();
 
-  const loggedInWithProfile = Boolean(currentAccount);
+  const loggedInWithAccount = Boolean(currentAccount);
 
   return (
     <PageLayout>
-      {loggedInWithProfile ? (
+      {loggedInWithAccount ? (
         <>
           <FeedType />
           <NewPost />

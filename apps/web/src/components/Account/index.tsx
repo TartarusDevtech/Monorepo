@@ -25,7 +25,7 @@ import FeedType from "./FeedType";
 import AccountPageShimmer from "./Shimmer";
 import SuspendedDetails from "./SuspendedDetails";
 
-const ViewProfile = () => {
+const ViewAccount = () => {
   const { address, username } = useParams<{
     address: string;
     username: string;
@@ -132,4 +132,4 @@ const ViewProfile = () => {
   );
 };
 
-export default ViewProfile;
+export default ViewAccount;

@@ -52,9 +52,9 @@ const Layout = () => {
     }
   }, []);
 
-  const profileLoading = !currentAccount && loading;
+  const accountLoading = !currentAccount && loading;
 
-  if (profileLoading || !isMounted) {
+  if (accountLoading || !isMounted) {
     return <FullPageLoader />;
   }
 

@@ -2,7 +2,7 @@ import { Errors } from "@hey/data/errors";
 import type { Context } from "hono";
 import { create } from "xmlbuilder2";
 
-const profileSitemap = async (ctx: Context) => {
+const accountSitemap = async (ctx: Context) => {
   try {
     const currentTime = new Date().toISOString();
 
@@ -44,4 +44,4 @@ const profileSitemap = async (ctx: Context) => {
   }
 };
 
-export default profileSitemap;
+export default accountSitemap;

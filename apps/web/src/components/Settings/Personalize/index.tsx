@@ -11,7 +11,7 @@ const PersonalizeSettings = () => {
   }
 
   return (
-    <PageLayout title="Profile settings">
+    <PageLayout title="Personalize settings">
       <PersonalizeSettingsForm />
     </PageLayout>
   );

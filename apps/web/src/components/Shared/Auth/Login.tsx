@@ -59,21 +59,21 @@ const Login = ({ setHasAccounts }: LoginProps) => {
     }
   });
 
-  const allProfiles = data?.accountsAvailable.items || [];
+  const allAccounts = data?.accountsAvailable.items || [];
   const lastLogin = data?.lastLoggedInAccount;
 
-  const remainingProfiles = lastLogin
-    ? allProfiles
+  const remainingAccounts = lastLogin
+    ? allAccounts
         .filter(({ account }) => account.address !== lastLogin.address)
         .map(({ account }) => account)
-    : allProfiles.map(({ account }) => account);
+    : allAccounts.map(({ account }) => account);
 
   const accounts = lastLogin
-    ? [lastLogin, ...remainingProfiles]
-    : remainingProfiles;
+    ? [lastLogin, ...remainingAccounts]
+    : remainingAccounts;
 
   const handleSign = async (account: string) => {
-    const isManager = allProfiles.some(
+    const isManager = allAccounts.some(
       ({ account: a, __typename }) =>
         __typename === "AccountManaged" && a.address === account
     );

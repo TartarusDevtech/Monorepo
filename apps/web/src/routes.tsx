@@ -1,4 +1,4 @@
-import ViewProfile from "@/components/Account";
+import ViewAccount from "@/components/Account";
 import Bookmarks from "@/components/Bookmarks";
 import Layout from "@/components/Common/Layout";
 import Explore from "@/components/Explore";
@@ -39,13 +39,13 @@ export const Routes = () => {
       <RouterRoutes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="account/:address" element={<ViewProfile />} />
+          <Route path="account/:address" element={<ViewAccount />} />
           <Route path="explore" element={<Explore />} />
           <Route path="search" element={<Search />} />
           <Route path="groups" element={<Groups />} />
           <Route path="bookmarks" element={<Bookmarks />} />
           <Route path="notifications" element={<Notification />} />
-          <Route path="u/:username" element={<ViewProfile />} />
+          <Route path="u/:username" element={<ViewAccount />} />
           <Route path="g/:address">
             <Route index element={<ViewGroup />} />
             <Route path="settings">

@@ -46,7 +46,7 @@ const ReportAccount = ({ account }: ReportAccountProps) => {
     onError: (error) => errorToast(error)
   });
 
-  const reportProfile = async ({
+  const reportAccount = async ({
     additionalComment
   }: z.infer<typeof ValidationSchema>) => {
     if (isSuspended) {
@@ -83,7 +83,7 @@ const ReportAccount = ({ account }: ReportAccountProps) => {
             />
           </Card>
           <div className="divider my-5" />
-          <Form className="space-y-4" form={form} onSubmit={reportProfile}>
+          <Form className="space-y-4" form={form} onSubmit={reportAccount}>
             {error ? (
               <ErrorMessage error={error} title="Failed to report" />
             ) : null}

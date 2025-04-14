@@ -6,13 +6,13 @@ import stopEventPropagation from "@hey/helpers/stopEventPropagation";
 import type { AccountFragment } from "@hey/indexer";
 import AccountLink from "../Shared/Account/AccountLink";
 
-interface NotificationProfileProps {
+interface NotificationAccountProps {
   account: AccountFragment;
 }
 
 export const NotificationAccountAvatar = ({
   account
-}: NotificationProfileProps) => {
+}: NotificationAccountProps) => {
   return (
     <AccountPreview
       username={account.username?.localName}
@@ -37,7 +37,7 @@ export const NotificationAccountAvatar = ({
 
 export const NotificationAccountName = ({
   account
-}: NotificationProfileProps) => {
+}: NotificationAccountProps) => {
   return (
     <AccountPreview
       username={account.username?.localName}

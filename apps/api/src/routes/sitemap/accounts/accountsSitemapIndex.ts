@@ -2,9 +2,9 @@ import { Errors } from "@hey/data/errors";
 import type { Context } from "hono";
 import { create } from "xmlbuilder2";
 
-const sitemaps = [{ path: "/sitemap/profiles/1.xml", priority: "1" }];
+const sitemaps = [{ path: "/sitemap/accounts/1.xml", priority: "1" }];
 
-const profilesSitemapIndex = async (ctx: Context) => {
+const accountsSitemapIndex = async (ctx: Context) => {
   try {
     const currentTime = new Date().toISOString();
 
@@ -33,4 +33,4 @@ const profilesSitemapIndex = async (ctx: Context) => {
   }
 };
 
-export default profilesSitemapIndex;
+export default accountsSitemapIndex;
