@@ -35,7 +35,7 @@ const Suggested = ({ accounts }: SuggestedProps) => {
         itemContent={(index, account) => (
           <motion.div
             className={cn(
-              "divider flex items-center space-x-3 p-5",
+              "divider flex items-start space-x-3 p-5",
               index === accounts.slice(5).length - 1 && "border-b-0"
             )}
             variants={accountsList}
@@ -51,7 +51,9 @@ const Suggested = ({ accounts }: SuggestedProps) => {
                 showUserPreview={false}
               />
             </div>
-            <DismissRecommendedAccount account={account} />
+            <div className="mt-3.5">
+              <DismissRecommendedAccount account={account} />
+            </div>
           </motion.div>
         )}
       />
