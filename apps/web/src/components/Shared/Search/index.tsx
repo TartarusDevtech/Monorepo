@@ -97,7 +97,7 @@ const Search = ({ placeholder = "Search…" }: SearchProps) => {
         />
       </form>
       {pathname !== "/search" && showDropdown ? (
-        <div className="absolute z-10 mt-2 w-full" ref={dropdownRef}>
+        <div className="fixed z-10 mt-2 w-[360px]" ref={dropdownRef}>
           <Card className="max-h-[80vh] overflow-y-auto py-2">
             {!debouncedSearchText && (
               <RecentAccounts onAccountClick={handleReset} />
