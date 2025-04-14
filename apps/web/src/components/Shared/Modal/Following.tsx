@@ -7,8 +7,7 @@ import { accountsList } from "@/variants";
 import { UsersIcon } from "@heroicons/react/24/outline";
 import type { FollowingRequest } from "@hey/indexer";
 import { PageSize, useFollowingQuery } from "@hey/indexer";
-import { LazyMotion, domAnimation } from "motion/react";
-import * as m from "motion/react-m";
+import { motion } from "motion/react";
 import { Virtuoso } from "react-virtuoso";
 
 interface FollowingProps {
@@ -75,29 +74,27 @@ const Following = ({ username, address }: FollowingProps) => {
       data={followings}
       endReached={onEndReached}
       itemContent={(index, following) => (
-        <LazyMotion features={domAnimation}>
-          <m.div
-            className={cn(
-              "divider p-5",
-              index === followings.slice(5).length - 1 && "border-b-0"
-            )}
-            variants={accountsList}
-            initial="hidden"
-            animate="visible"
-          >
-            <SingleAccount
-              hideFollowButton={
-                currentAccount?.address === following.following.address
-              }
-              hideUnfollowButton={
-                currentAccount?.address === following.following.address
-              }
-              account={following.following}
-              showBio
-              showUserPreview={false}
-            />
-          </m.div>
-        </LazyMotion>
+        <motion.div
+          className={cn(
+            "divider p-5",
+            index === followings.slice(5).length - 1 && "border-b-0"
+          )}
+          variants={accountsList}
+          initial="hidden"
+          animate="visible"
+        >
+          <SingleAccount
+            hideFollowButton={
+              currentAccount?.address === following.following.address
+            }
+            hideUnfollowButton={
+              currentAccount?.address === following.following.address
+            }
+            account={following.following}
+            showBio
+            showUserPreview={false}
+          />
+        </motion.div>
       )}
     />
   );

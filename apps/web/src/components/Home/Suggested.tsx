@@ -6,8 +6,7 @@ import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { accountsList } from "@/variants";
 import { UsersIcon } from "@heroicons/react/24/outline";
 import type { AccountFragment } from "@hey/indexer";
-import { LazyMotion, domAnimation } from "motion/react";
-import * as m from "motion/react-m";
+import { motion } from "motion/react";
 import { Virtuoso } from "react-virtuoso";
 
 interface SuggestedProps {
@@ -34,30 +33,26 @@ const Suggested = ({ accounts }: SuggestedProps) => {
         // remove the first 5 accounts from the list because they are already shown in the sidebar
         data={accounts.slice(5)}
         itemContent={(index, account) => (
-          <LazyMotion features={domAnimation}>
-            <m.div
-              className={cn(
-                "divider flex items-center space-x-3 p-5",
-                index === accounts.slice(5).length - 1 && "border-b-0"
-              )}
-              variants={accountsList}
-              initial="hidden"
-              animate="visible"
-            >
-              <div className="w-full">
-                <SingleAccount
-                  hideFollowButton={currentAccount?.address === account.address}
-                  hideUnfollowButton={
-                    currentAccount?.address === account.address
-                  }
-                  account={account}
-                  showBio
-                  showUserPreview={false}
-                />
-              </div>
-              <DismissRecommendedAccount account={account} />
-            </m.div>
-          </LazyMotion>
+          <motion.div
+            className={cn(
+              "divider flex items-center space-x-3 p-5",
+              index === accounts.slice(5).length - 1 && "border-b-0"
+            )}
+            variants={accountsList}
+            initial="hidden"
+            animate="visible"
+          >
+            <div className="w-full">
+              <SingleAccount
+                hideFollowButton={currentAccount?.address === account.address}
+                hideUnfollowButton={currentAccount?.address === account.address}
+                account={account}
+                showBio
+                showUserPreview={false}
+              />
+            </div>
+            <DismissRecommendedAccount account={account} />
+          </motion.div>
         )}
       />
     </div>

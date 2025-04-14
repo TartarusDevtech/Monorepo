@@ -7,8 +7,7 @@ import { accountsList } from "@/variants";
 import { UsersIcon } from "@heroicons/react/24/outline";
 import type { FollowersRequest } from "@hey/indexer";
 import { PageSize, useFollowersQuery } from "@hey/indexer";
-import { LazyMotion, domAnimation } from "motion/react";
-import * as m from "motion/react-m";
+import { motion } from "motion/react";
 import { Virtuoso } from "react-virtuoso";
 
 interface FollowersProps {
@@ -76,29 +75,27 @@ const Followers = ({ username, address }: FollowersProps) => {
       data={followers}
       endReached={onEndReached}
       itemContent={(index, follower) => (
-        <LazyMotion features={domAnimation}>
-          <m.div
-            className={cn(
-              "divider p-5",
-              index === followers.slice(5).length - 1 && "border-b-0"
-            )}
-            variants={accountsList}
-            initial="hidden"
-            animate="visible"
-          >
-            <SingleAccount
-              hideFollowButton={
-                currentAccount?.address === follower.follower.address
-              }
-              hideUnfollowButton={
-                currentAccount?.address === follower.follower.address
-              }
-              account={follower.follower}
-              showBio
-              showUserPreview={false}
-            />
-          </m.div>
-        </LazyMotion>
+        <motion.div
+          className={cn(
+            "divider p-5",
+            index === followers.slice(5).length - 1 && "border-b-0"
+          )}
+          variants={accountsList}
+          initial="hidden"
+          animate="visible"
+        >
+          <SingleAccount
+            hideFollowButton={
+              currentAccount?.address === follower.follower.address
+            }
+            hideUnfollowButton={
+              currentAccount?.address === follower.follower.address
+            }
+            account={follower.follower}
+            showBio
+            showUserPreview={false}
+          />
+        </motion.div>
       )}
     />
   );

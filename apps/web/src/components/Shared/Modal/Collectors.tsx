@@ -9,8 +9,7 @@ import {
   type WhoExecutedActionOnPostRequest,
   useWhoExecutedActionOnPostQuery
 } from "@hey/indexer";
-import { LazyMotion, domAnimation } from "motion/react";
-import * as m from "motion/react-m";
+import { motion } from "motion/react";
 import { Virtuoso } from "react-virtuoso";
 
 interface CollectorsProps {
@@ -74,29 +73,27 @@ const Collectors = ({ postId }: CollectorsProps) => {
       data={accounts}
       endReached={onEndReached}
       itemContent={(index, action) => (
-        <LazyMotion features={domAnimation}>
-          <m.div
-            className={cn(
-              "divider p-5",
-              index === accounts.slice(5).length - 1 && "border-b-0"
-            )}
-            variants={accountsList}
-            initial="hidden"
-            animate="visible"
-          >
-            <SingleAccount
-              hideFollowButton={
-                currentAccount?.address === action.account.address
-              }
-              hideUnfollowButton={
-                currentAccount?.address === action.account.address
-              }
-              account={action.account}
-              showBio
-              showUserPreview={false}
-            />
-          </m.div>
-        </LazyMotion>
+        <motion.div
+          className={cn(
+            "divider p-5",
+            index === accounts.slice(5).length - 1 && "border-b-0"
+          )}
+          variants={accountsList}
+          initial="hidden"
+          animate="visible"
+        >
+          <SingleAccount
+            hideFollowButton={
+              currentAccount?.address === action.account.address
+            }
+            hideUnfollowButton={
+              currentAccount?.address === action.account.address
+            }
+            account={action.account}
+            showBio
+            showUserPreview={false}
+          />
+        </motion.div>
       )}
     />
   );
