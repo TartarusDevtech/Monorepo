@@ -4,7 +4,7 @@ import lensVerification from "./lensVerification";
 
 const app = new Hono();
 
-app.get("/authorization", lensAuthorization);
-app.get("/verification", lensVerification);
+app.post("/authorization", lensAuthorization);
+app.post("/verification", lensVerification);
 
 export default app;
