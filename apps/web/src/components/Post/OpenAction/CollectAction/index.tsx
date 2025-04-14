@@ -1,6 +1,6 @@
 import { Modal, Tooltip } from "@/components/Shared/UI";
+import humanize from "@/helpers/humanize";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
-import humanize from "@hey/helpers/humanize";
 import type { PostFragment } from "@hey/indexer";
 import { AnimateNumber } from "motion-plus-react";
 import plur from "plur";

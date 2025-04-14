@@ -1,4 +1,4 @@
-import humanize from "@hey/helpers/humanize";
+import humanize from "@/helpers/humanize";
 import type { ReactNode } from "react";
 import { Card } from "./Card";
 import { H4 } from "./Typography";

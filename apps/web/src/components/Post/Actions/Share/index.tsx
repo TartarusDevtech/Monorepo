@@ -1,10 +1,10 @@
 import MenuTransition from "@/components/Shared/MenuTransition";
 import { Spinner, Tooltip } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
+import humanize from "@/helpers/humanize";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
 import { Menu, MenuButton, MenuItems } from "@headlessui/react";
 import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
-import humanize from "@hey/helpers/humanize";
 import { isRepost } from "@hey/helpers/postHelpers";
 import type { AnyPostFragment } from "@hey/indexer";
 import { AnimateNumber } from "motion-plus-react";
