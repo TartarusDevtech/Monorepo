@@ -1,13 +1,13 @@
 import TransferFundButton from "@/components/Shared/Account/Fund/FundButton";
 import Loader from "@/components/Shared/Loader";
 import { ErrorMessage, Image } from "@/components/Shared/UI";
+import getTokenImage from "@/helpers/getTokenImage";
 import {
   DEFAULT_COLLECT_TOKEN,
   DEFAULT_TOKEN,
   NATIVE_TOKEN_SYMBOL
 } from "@hey/data/constants";
 import { tokens } from "@hey/data/tokens";
-import getTokenImage from "@hey/helpers/getTokenImage";
 import { useAccountBalancesQuery } from "@hey/indexer";
 import type { Address } from "viem";
 import Unwrap from "./Unwrap";

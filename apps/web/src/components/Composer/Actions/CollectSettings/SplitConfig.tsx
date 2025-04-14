@@ -1,6 +1,7 @@
 import SearchAccounts from "@/components/Shared/Account/SearchAccounts";
 import ToggleWithHelper from "@/components/Shared/ToggleWithHelper";
 import { Button, H6, Input } from "@/components/Shared/UI";
+import splitNumber from "@/helpers/splitNumber";
 import { useCollectActionStore } from "@/store/non-persisted/post/useCollectActionStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
@@ -10,7 +11,6 @@ import {
   XCircleIcon
 } from "@heroicons/react/24/outline";
 import { ADDRESS_PLACEHOLDER } from "@hey/data/constants";
-import splitNumber from "@hey/helpers/splitNumber";
 import type { CollectActionType } from "@hey/types/hey";
 import { useState } from "react";
 import { isAddress } from "viem";

@@ -11,6 +11,7 @@ import {
   WarningMessage
 } from "@/components/Shared/UI";
 import { CHAIN } from "@/constants";
+import getTokenImage from "@/helpers/getTokenImage";
 import {
   CheckCircleIcon,
   ClockIcon,
@@ -23,7 +24,6 @@ import { tokens } from "@hey/data/tokens";
 import formatDate from "@hey/helpers/datetime/formatDate";
 import formatAddress from "@hey/helpers/formatAddress";
 import getAccount from "@hey/helpers/getAccount";
-import getTokenImage from "@hey/helpers/getTokenImage";
 import humanize from "@hey/helpers/humanize";
 import nFormatter from "@hey/helpers/nFormatter";
 import { isRepost } from "@hey/helpers/postHelpers";

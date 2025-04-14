@@ -1,4 +1,5 @@
 import { H3, H5 } from "@/components/Shared/UI";
+import getTokenImage from "@/helpers/getTokenImage";
 import {
   getMembershipApprovalDetails,
   getSimplePaymentDetails
@@ -7,7 +8,6 @@ import { useSuperJoinModalStore } from "@/store/non-persisted/modal/useSuperJoin
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { CurrencyDollarIcon } from "@heroicons/react/24/outline";
 import { tokens } from "@hey/data/tokens";
-import getTokenImage from "@hey/helpers/getTokenImage";
 import {
   type Group,
   type GroupRules,

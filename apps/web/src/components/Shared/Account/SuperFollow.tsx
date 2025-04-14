@@ -1,11 +1,11 @@
 import { H3, H5 } from "@/components/Shared/UI";
+import getTokenImage from "@/helpers/getTokenImage";
 import { getSimplePaymentDetails } from "@/helpers/rules";
 import { useSuperFollowModalStore } from "@/store/non-persisted/modal/useSuperFollowModalStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { CurrencyDollarIcon } from "@heroicons/react/24/outline";
 import { tokens } from "@hey/data/tokens";
 import getAccount from "@hey/helpers/getAccount";
-import getTokenImage from "@hey/helpers/getTokenImage";
 import {
   type AccountFollowRules,
   type AccountFragment,
