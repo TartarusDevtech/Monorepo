@@ -13,9 +13,7 @@ const sitemapIndex = async (ctx: Context) => {
 
     const sitemapIndex = create({ version: "1.0", encoding: "UTF-8" }).ele(
       "sitemapindex",
-      {
-        xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9"
-      }
+      { xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9" }
     );
 
     for (const sitemap of sitemaps) {
