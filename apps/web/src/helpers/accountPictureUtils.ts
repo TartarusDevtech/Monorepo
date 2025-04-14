@@ -22,7 +22,7 @@ const uploadCroppedImage = async (
   });
   const cleanedFile = await imageCompression(file, {
     exifOrientation: 1,
-    maxSizeMB: 5,
+    maxSizeMB: 6,
     maxWidthOrHeight: 3000,
     useWebWorker: true
   });
