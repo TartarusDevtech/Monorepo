@@ -4,6 +4,7 @@ import { Card, EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import { ChatBubbleBottomCenterIcon } from "@heroicons/react/24/outline";
 import { AccountFeedType } from "@hey/data/enums";
 import {
+  MainContentFocus,
   PageSize,
   PostType,
   type PostsRequest,
@@ -43,7 +44,7 @@ const AccountFeed = ({
       case AccountFeedType.Replies:
         return [PostType.Comment];
       case AccountFeedType.Media:
-        return [PostType.Root, PostType.Comment, PostType.Quote];
+        return [PostType.Root, PostType.Quote];
       default:
         return [
           PostType.Root,
@@ -71,6 +72,16 @@ const AccountFeed = ({
     pageSize: PageSize.Fifty,
     filter: {
       postTypes,
+      ...(type === AccountFeedType.Media && {
+        metadata: {
+          mainContentFocus: [
+            MainContentFocus.Image,
+            MainContentFocus.Audio,
+            MainContentFocus.Video,
+            MainContentFocus.ShortVideo
+          ]
+        }
+      }),
       ...(type === AccountFeedType.Collects
         ? { collectedBy: { account: address } }
         : { authors: [address] })
