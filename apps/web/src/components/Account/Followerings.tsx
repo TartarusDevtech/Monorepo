@@ -28,7 +28,11 @@ const Followerings = ({ account }: FolloweringsProps) => {
   });
 
   if (loading) {
-    return <GraphStatsShimmer count={2} />;
+    return (
+      <div className="pt-1">
+        <GraphStatsShimmer count={2} />
+      </div>
+    );
   }
 
   if (!data) {
