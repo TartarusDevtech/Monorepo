@@ -2,6 +2,7 @@ import { Errors } from "@hey/data/errors";
 import type { Context } from "hono";
 import { SITEMAP_BATCH_SIZE } from "src/utils/constants";
 import lensPg from "src/utils/lensPg";
+import { getRedis, setRedis } from "src/utils/redis";
 import { create } from "xmlbuilder2";
 
 const accountSitemap = async (ctx: Context) => {
@@ -17,16 +18,27 @@ const accountSitemap = async (ctx: Context) => {
   }
 
   try {
-    const usernames = await lensPg.query(
-      `
+    const cacheKey = `sitemap:accounts:${batch}`;
+    const cachedData = await getRedis(cacheKey);
+    let usernames: string[];
+
+    if (cachedData) {
+      usernames = JSON.parse(cachedData);
+    } else {
+      const newUsernames = await lensPg.query(
+        `
         SELECT local_name
         FROM account.username_assigned
         ORDER BY timestamp
         LIMIT $1
         OFFSET $2;
       `,
-      [SITEMAP_BATCH_SIZE, (Number(batch) - 1) * SITEMAP_BATCH_SIZE]
-    );
+        [SITEMAP_BATCH_SIZE, (Number(batch) - 1) * SITEMAP_BATCH_SIZE]
+      );
+
+      usernames = newUsernames.map((username) => username.local_name);
+      await setRedis(cacheKey, JSON.stringify(usernames));
+    }
 
     const sitemap = create({ version: "1.0", encoding: "UTF-8" }).ele(
       "urlset",
@@ -44,7 +56,7 @@ const accountSitemap = async (ctx: Context) => {
       sitemap
         .ele("url")
         .ele("loc")
-        .txt(`https://hey.xyz/u/${username.local_name}`)
+        .txt(`https://hey.xyz/u/${username}`)
         .up()
         .ele("lastmod")
         .txt(new Date().toISOString())
