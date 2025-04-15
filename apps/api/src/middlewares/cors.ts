@@ -1,8 +1,10 @@
 import { cors as corsMiddleware } from "hono/cors";
 
 const allowedOrigins = [
-  "http://localhost:4783",
   "https://hey.xyz",
+  "https://testnet.hey.xyz",
+  "https://staging.hey.xyz",
+  "http://localhost:4783",
   "https://developer.lens.xyz"
 ];
 
