@@ -4,6 +4,7 @@ import SingleAccount from "@/components/Shared/Account/SingleAccount";
 import SingleAccountShimmer from "@/components/Shared/Shimmer/SingleAccountShimmer";
 import { Card, ErrorMessage, H5, Modal } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
   type AccountFragment,
   PageSize,
@@ -31,11 +32,14 @@ const WhoToFollow = () => {
     return (
       <Card className="space-y-4 p-5">
         <Title />
-        <SingleAccountShimmer showFollowUnfollowButton />
-        <SingleAccountShimmer showFollowUnfollowButton />
-        <SingleAccountShimmer showFollowUnfollowButton />
-        <SingleAccountShimmer showFollowUnfollowButton />
-        <SingleAccountShimmer showFollowUnfollowButton />
+        {Array.from({ length: 5 }).map((_, index) => (
+          <div className="flex items-center gap-x-3" key={index}>
+            <div className="w-full">
+              <SingleAccountShimmer showFollowUnfollowButton />
+            </div>
+            <XMarkIcon className="size-4 text-gray-500" />
+          </div>
+        ))}
         <div className="pt-2 pb-1">
           <div className="shimmer h-3 w-5/12 rounded-full" />
         </div>
@@ -63,7 +67,7 @@ const WhoToFollow = () => {
         <ErrorMessage error={error} title="Failed to load recommendations" />
         {recommendedAccounts?.slice(0, 5).map((account) => (
           <div
-            className="flex items-center space-x-3 truncate"
+            className="flex items-center gap-x-3 truncate"
             key={account?.address}
           >
             <div className="w-full">
