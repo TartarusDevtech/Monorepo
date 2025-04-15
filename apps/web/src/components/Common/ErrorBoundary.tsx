@@ -1,6 +1,6 @@
-import Custom500 from "@/components/Shared/500";
 import type { ErrorInfo, ReactNode } from "react";
 import { Component } from "react";
+import SiteError from "../Shared/SiteError";
 
 interface ErrorBoundaryProps {
   children?: ReactNode;
@@ -8,15 +8,17 @@ interface ErrorBoundaryProps {
 
 interface ErrorBoundaryState {
   hasError: boolean;
+  message: string;
 }
 
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   public state: ErrorBoundaryState = {
-    hasError: false
+    hasError: false,
+    message: ""
   };
 
-  public static getDerivedStateFromError(): ErrorBoundaryState {
-    return { hasError: true };
+  public static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+    return { hasError: true, message: error.message };
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
@@ -25,7 +27,11 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
   public render() {
     if (this.state.hasError) {
-      return <Custom500 />;
+      return (
+        <div className="flex h-screen items-center justify-center">
+          <SiteError message={this.state.message} />
+        </div>
+      );
     }
 
     return this.props.children;
