@@ -42,10 +42,6 @@ export const generateMetadata = async ({
       type: "profile",
       url: `https://hey.xyz${link}`
     },
-    other: {
-      "lens:username": username,
-      "lens:id": account.address
-    },
     publisher: name,
     title: title,
     twitter: { card: "summary", site: "@heydotxyz" }
@@ -60,8 +56,25 @@ const Page = async ({ params }: Props) => {
     return <h1>{username}</h1>;
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `https://hey.xyz/u/${username}`,
+    name: metadata.creator,
+    alternateName: username,
+    description: metadata.description,
+    image: Array.isArray(metadata.openGraph?.images)
+      ? metadata.openGraph.images[0]
+      : metadata.openGraph?.images,
+    url: `https://hey.xyz/u/${username}`
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <h1>{metadata.title?.toString()}</h1>
       <h2>{metadata.description?.toString()}</h2>
     </>
