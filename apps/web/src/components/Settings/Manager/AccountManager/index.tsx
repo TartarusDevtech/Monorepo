@@ -23,12 +23,11 @@ const AccountManager = () => {
 
   return (
     <div className="linkify space-y-2">
-      <div className="mx-5 mt-5 flex items-center justify-between">
+      <div className="mx-5 mt-5 flex flex-wrap items-center justify-between gap-5">
         <Tabs
           tabs={tabs}
           active={type}
           setActive={(type) => setType(type as Type)}
-          className="mx-5 md:mx-0"
           layoutId="account-manager-tabs"
         />
         {type === Type.MANAGERS && (
