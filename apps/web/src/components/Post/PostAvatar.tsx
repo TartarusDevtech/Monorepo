@@ -2,12 +2,10 @@ import AccountLink from "@/components/Shared/Account/AccountLink";
 import { Image } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
-import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import { isRepost } from "@hey/helpers/postHelpers";
 import type { AnyPostFragment, TimelineItemFragment } from "@hey/indexer";
 import { memo } from "react";
-import { useNavigate } from "react-router";
 
 interface PostAvatarProps {
   timelineItem?: TimelineItemFragment;
@@ -20,7 +18,6 @@ const PostAvatar = ({
   post,
   quoted = false
 }: PostAvatarProps) => {
-  const navigate = useNavigate();
   const targetPost = isRepost(post) ? post?.repostOf : post;
   const rootPost = timelineItem ? timelineItem?.primary : targetPost;
   const account = timelineItem ? rootPost.author : targetPost.author;
@@ -39,7 +36,6 @@ const PostAvatar = ({
         )}
         height={quoted ? 25 : 44}
         loading="lazy"
-        onClick={() => navigate(getAccount(account).link)}
         src={getAvatar(account)}
         width={quoted ? 25 : 44}
       />

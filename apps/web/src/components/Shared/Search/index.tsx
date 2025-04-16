@@ -2,6 +2,7 @@ import SingleAccount from "@/components/Shared/Account/SingleAccount";
 import Loader from "@/components/Shared/Loader";
 import { Card, Input } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
+import { useAccountLinkStore } from "@/store/non-persisted/navigation/useAccountLinkStore";
 import { useSearchStore } from "@/store/persisted/useSearchStore";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import getAccount from "@hey/helpers/getAccount";
@@ -26,7 +27,7 @@ const Search = ({ placeholder = "Search…" }: SearchProps) => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const type = searchParams.get("type");
-
+  const { setCachedAccount } = useAccountLinkStore();
   const { addAccount } = useSearchStore();
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchText, setSearchText] = useState("");
@@ -111,6 +112,7 @@ const Search = ({ placeholder = "Search…" }: SearchProps) => {
                     className="cursor-pointer px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800"
                     key={account.address}
                     onClick={() => {
+                      setCachedAccount(account);
                       addAccount(account.address);
                       navigate(getAccount(account).link);
                       handleReset();
