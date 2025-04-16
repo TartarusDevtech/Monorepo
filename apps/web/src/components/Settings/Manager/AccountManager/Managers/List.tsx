@@ -121,7 +121,11 @@ const List = () => {
 
   if (error) {
     return (
-      <ErrorMessage error={error} title="Failed to load account managers" />
+      <ErrorMessage
+        className="m-5"
+        error={error}
+        title="Failed to load account managers"
+      />
     );
   }
 
