@@ -55,7 +55,7 @@ export const generateMetadata = async ({
       "count:likes": post.stats.reactions,
       "count:reposts": post.stats.reposts,
       "count:quotes": post.stats.quotes,
-      "lens:slug": post.slug
+      "hey:slug": post.slug
     },
     publisher: name,
     title: title,
@@ -74,7 +74,7 @@ const Page = async ({ params }: Props) => {
     return <h1>{slug}</h1>;
   }
 
-  const postUrl = `https://hey.xyz/posts/${metadata.other?.["lens:slug"]}`;
+  const postUrl = `https://hey.xyz/posts/${metadata.other?.["hey:slug"]}`;
 
   return (
     <>
