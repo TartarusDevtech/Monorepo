@@ -55,8 +55,9 @@ const generateExtraLongExpiry = (): number => {
   return randomNumber(hoursToSeconds(9), hoursToSeconds(24));
 };
 
+// Generates a random expiry time between 8 and 10 days
 export const generateForeverExpiry = (): number => {
-  return hoursToSeconds(5000000);
+  return randomNumber(hoursToSeconds(8 * 24), hoursToSeconds(10 * 24));
 };
 
 export const setRedis = async (
