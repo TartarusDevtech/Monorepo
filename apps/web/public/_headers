@@ -5,6 +5,3 @@
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
-
-/blog https://world.hey.com/yoginth
-/discord https://discord.gg/8TUjVmKkmM
