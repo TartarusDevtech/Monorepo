@@ -56,7 +56,7 @@ const Attachments = ({ asset, attachments }: AttachmentsProps) => {
   const ImageComponent = ({ uri }: { uri: string }) => (
     <Image
       alt={imageKit(uri, ATTACHMENT)}
-      className="cursor-pointer rounded-lg border border-gray-200 bg-gray-100 object-cover dark:border-gray-700 dark:bg-gray-800"
+      className="max-h-[300px] cursor-pointer rounded-lg border border-gray-200 bg-gray-100 object-cover md:max-h-[500px] dark:border-gray-700 dark:bg-gray-800"
       height={1000}
       loading="lazy"
       onClick={() => setExpandedImage(uri)}
