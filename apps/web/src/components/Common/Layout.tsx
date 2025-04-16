@@ -15,7 +15,6 @@ import { useIsClient } from "@uidotdev/usehooks";
 import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router";
 import { Toaster, type ToasterProps } from "sonner";
-import { useAccount } from "wagmi";
 import { Spinner } from "../Shared/UI";
 
 const Layout = () => {
@@ -25,7 +24,6 @@ const Layout = () => {
   const { resetPreferences } = usePreferencesStore();
   const { resetStatus } = useAccountStatus();
   const isMounted = useIsClient();
-  const { address: walletAddress } = useAccount();
   const { address: sessionAccountAddress } = getCurrentSession();
 
   // Disable scroll restoration on route change
@@ -49,11 +47,10 @@ const Layout = () => {
   });
 
   useEffect(() => {
-    console.log("sessionAccountAddress", sessionAccountAddress, walletAddress);
     if (!sessionAccountAddress) {
       logout();
     }
-  }, []);
+  }, [sessionAccountAddress]);
 
   const accountLoading = !currentAccount && loading;
 
