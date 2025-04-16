@@ -27,14 +27,16 @@ const accountSitemap = async (ctx: Context) => {
     } else {
       const newUsernames = await lensPg.query(
         `
-        SELECT local_name
-        FROM account.username_assigned
-        ORDER BY timestamp
-        LIMIT $1
-        OFFSET $2;
-      `,
-        [SITEMAP_BATCH_SIZE, (Number(batch) - 1) * SITEMAP_BATCH_SIZE]
+          SELECT local_name
+          FROM account.username_assigned
+          WHERE id > $1
+          ORDER BY id
+          LIMIT $2;
+        `,
+        [(Number(batch) - 1) * SITEMAP_BATCH_SIZE, SITEMAP_BATCH_SIZE]
       );
+
+      console.log(newUsernames);
 
       usernames = newUsernames.map((username) => username.local_name);
       await setRedis(
