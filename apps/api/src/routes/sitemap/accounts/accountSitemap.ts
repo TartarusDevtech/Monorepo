@@ -36,8 +36,6 @@ const accountSitemap = async (ctx: Context) => {
         [(Number(batch) - 1) * SITEMAP_BATCH_SIZE, SITEMAP_BATCH_SIZE]
       );
 
-      console.log(newUsernames);
-
       usernames = newUsernames.map((username) => username.local_name);
       await setRedis(
         cacheKey,
