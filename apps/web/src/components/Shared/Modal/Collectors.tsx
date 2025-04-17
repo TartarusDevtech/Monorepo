@@ -90,9 +90,9 @@ const Collectors = ({ postId }: CollectorsProps) => {
               "divider p-5",
               index === accounts.length - 1 && "border-b-0"
             )}
-            variants={accountsList}
             initial="hidden"
             animate="visible"
+            variants={accountsList}
           >
             <SingleAccount
               hideFollowButton={

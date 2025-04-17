@@ -90,9 +90,9 @@ const Members = ({ group }: MembersProps) => {
               "divider p-5",
               index === groupMembers.length - 1 && "border-b-0"
             )}
-            variants={accountsList}
             initial="hidden"
             animate="visible"
+            variants={accountsList}
           >
             <SingleAccount
               hideFollowButton={

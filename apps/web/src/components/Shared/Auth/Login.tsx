@@ -1,6 +1,7 @@
 import { Button, Card, ErrorMessage } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
 import { signIn } from "@/store/persisted/useAuthStore";
+import { EXPANSION_EASE } from "@/variants";
 import { KeyIcon } from "@heroicons/react/24/outline";
 import { HEY_APP, IS_MAINNET } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
@@ -148,7 +149,7 @@ const Login = ({ setHasAccounts }: LoginProps) => {
                   visible: {
                     opacity: 1,
                     height: "auto",
-                    transition: { duration: 0.2, ease: [0.075, 0.82, 0.165, 1] }
+                    transition: { duration: 0.2, ease: EXPANSION_EASE }
                   }
                 }}
               >

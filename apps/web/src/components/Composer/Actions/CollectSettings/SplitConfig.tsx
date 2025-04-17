@@ -4,6 +4,7 @@ import { Button, H6, Input } from "@/components/Shared/UI";
 import splitNumber from "@/helpers/splitNumber";
 import { useCollectActionStore } from "@/store/non-persisted/post/useCollectActionStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
+import { EXPANSION_EASE } from "@/variants";
 import {
   ArrowsRightLeftIcon,
   PlusIcon,
@@ -12,6 +13,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { ADDRESS_PLACEHOLDER } from "@hey/data/constants";
 import type { CollectActionType } from "@hey/types/hey";
+import { motion } from "motion/react";
 import { useState } from "react";
 import { isAddress } from "viem";
 
@@ -125,7 +127,16 @@ const SplitConfig = ({
         setOn={toggleSplit}
       />
       {isToggleOn ? (
-        <div className="mt-4 ml-8 space-y-3">
+        <motion.div
+          className="mt-4 ml-8 space-y-3"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0, height: 0, y: -20 },
+            visible: { opacity: 1, height: "auto", y: 0 }
+          }}
+          transition={{ duration: 0.2, ease: EXPANSION_EASE }}
+        >
           <div className="space-y-2">
             {recipients.map((recipient, index) => (
               <H6
@@ -216,7 +227,7 @@ const SplitConfig = ({
           {isRecipientsDuplicated ? (
             <H6 className="text-red-500">Duplicate recipient address found</H6>
           ) : null}
-        </div>
+        </motion.div>
       ) : null}
     </div>
   );

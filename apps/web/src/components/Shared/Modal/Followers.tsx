@@ -91,9 +91,9 @@ const Followers = ({ username, address }: FollowersProps) => {
               "divider p-5",
               index === followers.length - 1 && "border-b-0"
             )}
-            variants={accountsList}
             initial="hidden"
             animate="visible"
+            variants={accountsList}
             key={follower.follower.address}
           >
             <SingleAccount

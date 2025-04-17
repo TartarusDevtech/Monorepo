@@ -1,8 +1,10 @@
 import ToggleWithHelper from "@/components/Shared/ToggleWithHelper";
 import { Input } from "@/components/Shared/UI";
 import { useCollectActionStore } from "@/store/non-persisted/post/useCollectActionStore";
+import { EXPANSION_EASE } from "@/variants";
 import { StarIcon } from "@heroicons/react/24/outline";
 import type { CollectActionType } from "@hey/types/hey";
+import { motion } from "motion/react";
 
 interface CollectLimitConfigProps {
   setCollectType: (data: CollectActionType) => void;
@@ -25,7 +27,16 @@ const CollectLimitConfig = ({ setCollectType }: CollectLimitConfigProps) => {
         }
       />
       {collectAction.collectLimit ? (
-        <div className="mt-4 ml-8 text-sm">
+        <motion.div
+          className="mt-4 ml-8 text-sm"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0, height: 0, y: -20 },
+            visible: { opacity: 1, height: "auto", y: 0 }
+          }}
+          transition={{ duration: 0.2, ease: EXPANSION_EASE }}
+        >
           <Input
             label="Collect limit"
             max="100000"
@@ -39,7 +50,7 @@ const CollectLimitConfig = ({ setCollectType }: CollectLimitConfigProps) => {
             type="number"
             value={collectAction.collectLimit}
           />
-        </div>
+        </motion.div>
       ) : null}
     </div>
   );

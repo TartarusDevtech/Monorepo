@@ -3,7 +3,9 @@ import ToggleWithHelper from "@/components/Shared/ToggleWithHelper";
 import { Button } from "@/components/Shared/UI";
 import { useCollectActionStore } from "@/store/non-persisted/post/useCollectActionStore";
 import { usePostLicenseStore } from "@/store/non-persisted/post/usePostLicenseStore";
+import { EXPANSION_EASE } from "@/variants";
 import type { CollectActionType } from "@hey/types/hey";
+import { motion } from "motion/react";
 import type { Dispatch, SetStateAction } from "react";
 import { isAddress } from "viem";
 import AmountConfig from "./AmountConfig";
@@ -67,7 +69,16 @@ const CollectForm = ({ setShowModal }: CollectFormProps) => {
       <div className="divider" />
       {collectAction.enabled && (
         <>
-          <div className="m-5">
+          <motion.div
+            className="m-5 overflow-hidden"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0, height: 0, y: -20 },
+              visible: { opacity: 1, height: "auto", y: 0 }
+            }}
+            transition={{ duration: 0.2, ease: EXPANSION_EASE }}
+          >
             <AmountConfig setCollectType={setCollectType} />
             {collectAction.payToCollect?.amount.value && (
               <SplitConfig
@@ -78,7 +89,7 @@ const CollectForm = ({ setShowModal }: CollectFormProps) => {
             <CollectLimitConfig setCollectType={setCollectType} />
             <TimeLimitConfig setCollectType={setCollectType} />
             <FollowersConfig setCollectType={setCollectType} />
-          </div>
+          </motion.div>
           <div className="divider" />
           <div className="m-5">
             <LicensePicker />

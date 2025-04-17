@@ -36,9 +36,9 @@ const Suggested = ({ accounts }: SuggestedProps) => {
               "divider flex items-start space-x-3 p-5",
               index === accounts.slice(5).length - 1 && "border-b-0"
             )}
-            variants={accountsList}
             initial="hidden"
             animate="visible"
+            variants={accountsList}
           >
             <div className="w-full">
               <SingleAccount

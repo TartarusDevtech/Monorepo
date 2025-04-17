@@ -92,9 +92,9 @@ const Following = ({ username, address }: FollowingProps) => {
               "divider p-5",
               index === followings.length - 1 && "border-b-0"
             )}
-            variants={accountsList}
             initial="hidden"
             animate="visible"
+            variants={accountsList}
           >
             <SingleAccount
               hideFollowButton={
