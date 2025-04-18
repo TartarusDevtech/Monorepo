@@ -1,11 +1,5 @@
 User-agent: *
-Allow: /*
-Disallow: /settings/*
-Disallow: /staff/*
-Disallow: /bookmarks
-Disallow: /groups
-Disallow: /notifications
-Disallow: /search?q=
+Allow: /
 
 User-agent: nsa
 Disallow: /
