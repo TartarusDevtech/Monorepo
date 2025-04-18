@@ -63,7 +63,7 @@ export default defineConfig({
         short_name: "Hey",
         description:
           "Hey.xyz is a decentralized, and permissionless social media app built with Lens",
-        theme_color: "#ffffff",
+        theme_color: "#f9fafb",
         icons: [
           { src: "apple-touch-icon.png", sizes: "180x180", type: "image/png" }
         ]
