@@ -56,7 +56,7 @@ export default defineConfig({
     tsconfigPaths(),
     react(),
     tailwindcss(),
-    VitePWA({ registerType: "autoUpdate" }),
+    VitePWA({ registerType: "autoUpdate", manifest: false }),
     EnvironmentPlugin(["VITE_IS_PRODUCTION", "NEXT_PUBLIC_LENS_NETWORK"])
   ],
   build: {
