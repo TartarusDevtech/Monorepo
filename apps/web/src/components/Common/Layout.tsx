@@ -44,6 +44,7 @@ const Layout = () => {
   });
 
   useEffect(() => {
+    console.log("sessionAccountAddress", sessionAccountAddress);
     if (!sessionAccountAddress) {
       logout();
     }
