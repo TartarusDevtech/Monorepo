@@ -2,6 +2,7 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import EnvironmentPlugin from "vite-plugin-environment";
+import { VitePWA } from "vite-plugin-pwa";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 const dependenciesToChunk = {
@@ -55,6 +56,7 @@ export default defineConfig({
     tsconfigPaths(),
     react(),
     tailwindcss(),
+    VitePWA({ registerType: "autoUpdate" }),
     EnvironmentPlugin(["VITE_IS_PRODUCTION", "NEXT_PUBLIC_LENS_NETWORK"])
   ],
   build: {
