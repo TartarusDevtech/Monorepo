@@ -5,7 +5,7 @@ const links = [
   { href: "/terms", label: "Terms" },
   { href: "/privacy", label: "Privacy" },
   { href: "/guidelines", label: "Guidelines" },
-  { href: "https://discord.gg/PaewZGkkBr", label: "Discord" },
+  { href: "https://hey.xyz/discord", label: "Discord" },
   { href: "/u/hey", label: "Hey" },
   { href: "https://status.hey.xyz", label: "Status" },
   { href: "https://github.com/heyverse/hey", label: "GitHub" },
