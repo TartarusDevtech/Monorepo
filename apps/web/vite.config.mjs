@@ -56,7 +56,19 @@ export default defineConfig({
     tsconfigPaths(),
     react(),
     tailwindcss(),
-    VitePWA({ registerType: "autoUpdate", manifest: false }),
+    VitePWA({
+      registerType: "autoUpdate",
+      manifest: {
+        name: "Hey",
+        short_name: "Hey",
+        description:
+          "Hey.xyz is a decentralized, and permissionless social media app built with Lens",
+        theme_color: "#ffffff",
+        icons: [
+          { src: "apple-touch-icon.png", sizes: "180x180", type: "image/png" }
+        ]
+      }
+    }),
     EnvironmentPlugin(["VITE_IS_PRODUCTION", "NEXT_PUBLIC_LENS_NETWORK"])
   ],
   build: {
