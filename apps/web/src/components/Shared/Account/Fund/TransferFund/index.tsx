@@ -28,7 +28,7 @@ const TransferFund = () => {
 
   const erc20Balance =
     balance?.accountBalances[0].__typename === "Erc20Amount"
-      ? balance.accountBalances[0].value
+      ? Number(balance.accountBalances[0].value).toFixed(2)
       : 0;
 
   return (
