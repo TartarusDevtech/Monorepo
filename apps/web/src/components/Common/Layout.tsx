@@ -29,25 +29,17 @@ const Layout = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const logout = (shouldReload = false) => {
+  const onError = () => {
     resetPreferences();
     signOut();
-    if (shouldReload) {
-      location.reload();
-    }
+    location.reload();
   };
 
   const { loading } = useMeQuery({
     onCompleted: ({ me }) => setCurrentAccount(me.loggedInAs.account),
-    onError: () => logout(true),
+    onError,
     skip: !sessionAccountAddress
   });
-
-  useEffect(() => {
-    if (!loading && !sessionAccountAddress) {
-      logout();
-    }
-  }, [sessionAccountAddress]);
 
   const accountLoading = !currentAccount && loading;
 
