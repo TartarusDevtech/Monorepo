@@ -2,7 +2,7 @@ import { STATIC_IMAGES_URL } from "@hey/data/constants";
 
 const getTokenImage = (symbol?: string): string => {
   if (!symbol) {
-    return "";
+    return `${STATIC_IMAGES_URL}/tokens/gho.svg`;
   }
 
   const symbolLowerCase = symbol?.toLowerCase() || "";
