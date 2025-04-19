@@ -1,4 +1,4 @@
-import { Card, Tooltip } from "@/components/Shared/UI";
+import { Tooltip } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
 import { hono } from "@/helpers/fetcher";
 import hasAccess from "@/helpers/hasAccess";
@@ -9,6 +9,7 @@ import { isRepost } from "@hey/helpers/postHelpers";
 import type { AnyPostFragment } from "@hey/indexer";
 import { useQuery } from "@tanstack/react-query";
 import { useHiddenCommentFeedStore } from ".";
+import PostWarning from "../Shared/Post/PostWarning";
 import PostActions from "./Actions";
 import HiddenPost from "./HiddenPost";
 import PostAvatar from "./PostAvatar";
@@ -37,15 +38,14 @@ const FullPost = ({ hasHiddenComments, post }: FullPostProps) => {
   });
 
   const isSuspended = isStaff ? false : accountDetails?.isSuspended;
+  const isBlockedByMe = post.author.operations?.isBlockedByMe;
+
+  if (isBlockedByMe) {
+    return <PostWarning message="You blocked this account!" />;
+  }
 
   if (isSuspended) {
-    return (
-      <Card className="!bg-gray-100 dark:!bg-gray-800 m-5" forceRounded>
-        <div className="px-4 py-3 text-sm">
-          Author Account has been suspended!
-        </div>
-      </Card>
-    );
+    return <PostWarning message="Author Account has been suspended!" />;
   }
 
   return (
