@@ -44,7 +44,7 @@ const Layout = () => {
   });
 
   useEffect(() => {
-    if (!sessionAccountAddress) {
+    if (!loading && !sessionAccountAddress) {
       logout();
     }
   }, [sessionAccountAddress]);
