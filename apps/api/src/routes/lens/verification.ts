@@ -1,7 +1,7 @@
 import { CHAIN, HEY_APP } from "@hey/data/constants";
 import { Errors } from "@hey/data/errors";
 import type { Context } from "hono";
-import { heyWalletClient } from "src/utils/heyWalletClient";
+import { privateWalletClient } from "src/utils/privateWalletClient";
 import { type Address, checksumAddress } from "viem";
 
 const TYPES = {
@@ -25,7 +25,7 @@ const verification = async (ctx: Context) => {
   const { account, validator, nonce, deadline } = await ctx.req.json();
 
   try {
-    const signature = await heyWalletClient.signTypedData({
+    const signature = await privateWalletClient.signTypedData({
       primaryType: "SourceStamp",
       types: TYPES,
       domain: DOMAIN,
