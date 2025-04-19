@@ -65,15 +65,17 @@ export const getRedis = async (key: string) => {
     noRedisError();
     return null;
   }
+
   return await redisClient.get(key);
 };
 
 export const delRedis = async (key: string) => {
   if (!redisClient) {
     noRedisError();
-    return;
+    return null;
   }
-  await redisClient.del(key);
+
+  return await redisClient.del(key);
 };
 
 export default redisClient;
