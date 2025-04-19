@@ -4,7 +4,6 @@ import { ErrorMessage, Image } from "@/components/Shared/UI";
 import getTokenImage from "@/helpers/getTokenImage";
 import {
   DEFAULT_COLLECT_TOKEN,
-  DEFAULT_TOKEN,
   NATIVE_TOKEN_SYMBOL
 } from "@hey/data/constants";
 import { tokens } from "@hey/data/tokens";
@@ -45,18 +44,19 @@ const Balances = () => {
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <Withdraw currency={currency} value={value} refetch={refetch} />
-          {!currency && (
-            <>
-              <Wrap value={value} refetch={refetch} />
-              <TransferFundButton size="sm" outline />
-            </>
-          )}
+          {!currency && <Wrap value={value} refetch={refetch} />}
           {currency === DEFAULT_COLLECT_TOKEN && (
-            <>
-              <Unwrap value={value} refetch={refetch} />
-              <TransferFundButton size="sm" outline token={DEFAULT_TOKEN} />
-            </>
+            <Unwrap value={value} refetch={refetch} />
           )}
+          <TransferFundButton
+            size="sm"
+            outline
+            token={
+              currency
+                ? { contractAddress: currency, symbol: symbol }
+                : undefined
+            }
+          />
         </div>
       </div>
     );
