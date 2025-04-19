@@ -64,7 +64,7 @@ const SuperFollow = () => {
         {isTokenEnabled ? (
           <img
             alt={assetSymbol}
-            className="size-7"
+            className="size-7 rounded-full"
             height={28}
             src={getTokenImage(assetSymbol)}
             title={assetSymbol}

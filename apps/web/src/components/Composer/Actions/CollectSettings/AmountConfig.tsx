@@ -77,7 +77,7 @@ const AmountConfig = ({ setCollectType }: AmountConfigProps) => {
             <div className="w-5/6">
               <div className="label">Select currency</div>
               <Select
-                iconClassName="size-4"
+                iconClassName="size-4 rounded-full"
                 onChange={(value) => {
                   if (!collectAction.payToCollect) return;
                   setCollectType({

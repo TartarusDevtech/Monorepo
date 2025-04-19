@@ -128,7 +128,7 @@ const SuperFollow = () => {
               placement="top"
             >
               <Image
-                className="size-5"
+                className="size-5 rounded-full"
                 src={`${STATIC_IMAGES_URL}/tokens/${
                   IS_MAINNET ? "gho.svg" : "grass.svg"
                 }`}

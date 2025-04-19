@@ -35,7 +35,11 @@ const Balances = () => {
     return (
       <div className="flex flex-wrap items-center justify-between gap-5">
         <div className="flex items-center gap-2">
-          <Image src={getTokenImage(symbol)} alt={symbol} className="size-5" />
+          <Image
+            src={getTokenImage(symbol)}
+            alt={symbol}
+            className="size-5 rounded-full"
+          />
           <b>{Number.parseFloat(value).toFixed(2)} </b>
           {symbol}
         </div>
