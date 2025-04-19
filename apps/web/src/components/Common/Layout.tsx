@@ -38,7 +38,7 @@ const Layout = () => {
   const { loading } = useMeQuery({
     onCompleted: ({ me }) => setCurrentAccount(me.loggedInAs.account),
     onError,
-    skip: !sessionAccountAddress
+    skip: !sessionAccountAddress.length
   });
 
   const accountLoading = !currentAccount && loading;
