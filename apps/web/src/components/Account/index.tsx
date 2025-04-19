@@ -76,6 +76,7 @@ const ViewAccount = () => {
 
   const isSuspended = isStaff ? false : accountDetails?.isSuspended;
   const isDeleted = isAccountDeleted(account);
+  const isBlockedByMe = account?.operations?.isBlockedByMe;
 
   const renderAccountDetails = () => {
     if (isDeleted) return <DeletedDetails account={account} />;
@@ -89,12 +90,20 @@ const ViewAccount = () => {
     );
   };
 
-  const renderEmptyState = () => (
-    <EmptyState
-      icon={<NoSymbolIcon className="size-8" />}
-      message={isDeleted ? "Account Deleted" : "Account Suspended"}
-    />
-  );
+  const renderEmptyState = () => {
+    const message = isDeleted
+      ? "Account Deleted"
+      : isSuspended
+        ? "Account Suspended"
+        : "You blocked this account";
+
+    return (
+      <EmptyState
+        icon={<NoSymbolIcon className="size-8" />}
+        message={message}
+      />
+    );
+  };
 
   return (
     <PageLayout
@@ -110,7 +119,7 @@ const ViewAccount = () => {
         }
       />
       {renderAccountDetails()}
-      {isDeleted || isSuspended ? (
+      {isDeleted || isSuspended || isBlockedByMe ? (
         renderEmptyState()
       ) : (
         <>

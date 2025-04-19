@@ -13,10 +13,10 @@ const SuspendedDetails = ({ account }: SuspendedDetailsProps) => {
 
   return (
     <div className="space-y-5 px-5 md:px-0">
-      <div className="-mt-24 sm:-mt-32 relative size-32 sm:size-52">
+      <div className="-mt-14 sm:-mt-24 relative ml-5 size-20 sm:size-36">
         <Image
           alt={account.address}
-          className="size-32 rounded-xl bg-gray-200 ring-8 ring-gray-50 sm:size-52 dark:bg-gray-700 dark:ring-black"
+          className="size-20 rounded-xl bg-gray-200 ring-3 ring-gray-50 sm:size-36 dark:bg-gray-700 dark:ring-black"
           height={128}
           src={`${STATIC_IMAGES_URL}/suspended.png`}
           width={128}
