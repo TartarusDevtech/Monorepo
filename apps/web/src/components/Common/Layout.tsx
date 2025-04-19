@@ -3,10 +3,9 @@ import GlobalAlerts from "@/components/Shared/GlobalAlerts";
 import GlobalModals from "@/components/Shared/GlobalModals";
 import Navbar from "@/components/Shared/Navbar";
 import BottomNavigation from "@/components/Shared/Navbar/BottomNavigation";
-import getCurrentSession from "@/helpers/getCurrentSession";
 import { useTheme } from "@/hooks/useTheme";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
-import { signOut } from "@/store/persisted/useAuthStore";
+import { hydrateAuthTokens, signOut } from "@/store/persisted/useAuthStore";
 import { usePreferencesStore } from "@/store/persisted/usePreferencesStore";
 import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/24/solid";
 import { useMeQuery } from "@hey/indexer";
@@ -22,7 +21,7 @@ const Layout = () => {
   const { currentAccount, setCurrentAccount } = useAccountStore();
   const { resetPreferences } = usePreferencesStore();
   const isMounted = useIsClient();
-  const { address: sessionAccountAddress } = getCurrentSession();
+  const { accessToken } = hydrateAuthTokens();
 
   // Disable scroll restoration on route change
   useEffect(() => {
@@ -38,7 +37,7 @@ const Layout = () => {
   const { loading } = useMeQuery({
     onCompleted: ({ me }) => setCurrentAccount(me.loggedInAs.account),
     onError,
-    skip: !sessionAccountAddress.length
+    skip: !accessToken
   });
 
   const accountLoading = !currentAccount && loading;

@@ -1,17 +1,17 @@
 import { hono } from "@/helpers/fetcher";
-import getCurrentSession from "@/helpers/getCurrentSession";
+import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { usePreferencesStore } from "@/store/persisted/usePreferencesStore";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 
 const PreferencesProvider = () => {
-  const { address: sessionAccountAddress } = getCurrentSession();
+  const { currentAccount } = useAccountStore();
   const { setAppIcon, setIncludeLowScore } = usePreferencesStore();
 
   const { data: preferences } = useQuery({
     queryFn: () => hono.preferences.get(),
-    queryKey: ["preferences", sessionAccountAddress],
-    enabled: Boolean(sessionAccountAddress)
+    queryKey: ["preferences", currentAccount?.address],
+    enabled: Boolean(currentAccount?.address)
   });
 
   useEffect(() => {

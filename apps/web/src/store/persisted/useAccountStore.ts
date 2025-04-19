@@ -7,17 +7,20 @@ import { persist } from "zustand/middleware";
 interface State {
   currentAccount?: AccountFragment;
   setCurrentAccount: (currentAccount?: AccountFragment) => void;
+  hydrateAccount: () => AccountFragment | undefined;
 }
 
 const store = create(
   persist<State>(
-    (set) => ({
+    (set, get) => ({
       currentAccount: undefined,
       setCurrentAccount: (currentAccount?: AccountFragment) =>
-        set(() => ({ currentAccount }))
+        set(() => ({ currentAccount })),
+      hydrateAccount: () => get().currentAccount
     }),
     { name: Localstorage.AccountStore }
   )
 );
 
 export const useAccountStore = createTrackedSelector(store);
+export const hydrateAccount = () => store.getState().hydrateAccount();
