@@ -35,9 +35,9 @@ const PostPageShimmer = ({ isQuotes = false }: PostPageShimmerProps) => {
           icon={<BackButton />}
           title={isQuotes ? "Quotes" : "Post"}
         />
-        <PostShimmer />
+        {isQuotes ? <PostsShimmer hideCard /> : <PostShimmer />}
       </Card>
-      <PostsShimmer />
+      {!isQuotes && <PostsShimmer />}
     </PageLayout>
   );
 };

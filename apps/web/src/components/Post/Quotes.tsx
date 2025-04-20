@@ -16,7 +16,7 @@ import {
 import { useIntersectionObserver } from "@uidotdev/usehooks";
 import { useEffect } from "react";
 import { WindowVirtualizer } from "virtua";
-import PostShimmer from "../Shared/Shimmer/PostShimmer";
+import PostsShimmer from "../Shared/Shimmer/PostsShimmer";
 import SinglePost from "./SinglePost";
 
 interface QuotesProps {
@@ -67,11 +67,7 @@ const Quotes = ({ post }: QuotesProps) => {
     <Card>
       <CardHeader icon={<BackButton />} title="Quotes" />
       {loading ? (
-        <div className="divide-y divide-gray-200 dark:divide-gray-700">
-          {Array.from({ length: 3 }).map((_, index) => (
-            <PostShimmer key={index} />
-          ))}
-        </div>
+        <PostsShimmer hideCard />
       ) : error ? (
         <ErrorMessage error={error} title="Failed to load comment feed" />
       ) : quotes.length ? (
