@@ -7,11 +7,9 @@
     "typecheck": "tsc --pretty"
   },
   "dependencies": {
-    "@apollo/client": "^3.13.8",
     "@hey/data": "workspace:*",
     "@hey/indexer": "workspace:*",
     "@hey/types": "workspace:*",
-    "dayjs": "^1.11.13",
     "viem": "^2.27.2"
   },
   "devDependencies": {

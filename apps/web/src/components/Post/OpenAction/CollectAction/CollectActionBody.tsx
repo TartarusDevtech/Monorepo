@@ -10,6 +10,7 @@ import {
   Tooltip,
   WarningMessage
 } from "@/components/Shared/UI";
+import formatDate from "@/helpers/datetime/formatDate";
 import getTokenImage from "@/helpers/getTokenImage";
 import humanize from "@/helpers/humanize";
 import nFormatter from "@/helpers/nFormatter";
@@ -23,7 +24,6 @@ import {
 } from "@heroicons/react/24/outline";
 import { CHAIN } from "@hey/data/constants";
 import { tokens } from "@hey/data/tokens";
-import formatDate from "@hey/helpers/datetime/formatDate";
 import formatAddress from "@hey/helpers/formatAddress";
 import getAccount from "@hey/helpers/getAccount";
 import { isRepost } from "@hey/helpers/postHelpers";

@@ -1,8 +1,8 @@
 import AccountPreview from "@/components/Shared/Account/AccountPreview";
 import Slug from "@/components/Shared/Slug";
 import { Image } from "@/components/Shared/UI";
+import formatRelativeOrAbsolute from "@/helpers/datetime/formatRelativeOrAbsolute";
 import { AVATAR_TINY } from "@hey/data/constants";
-import formatRelativeOrAbsolute from "@hey/helpers/datetime/formatRelativeOrAbsolute";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import type {

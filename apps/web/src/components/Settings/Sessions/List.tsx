@@ -1,9 +1,9 @@
 import Loader from "@/components/Shared/Loader";
 import { Button, EmptyState, ErrorMessage } from "@/components/Shared/UI";
+import formatDate from "@/helpers/datetime/formatDate";
 import errorToast from "@/helpers/errorToast";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { ComputerDesktopIcon, GlobeAltIcon } from "@heroicons/react/24/outline";
-import formatDate from "@hey/helpers/datetime/formatDate";
 import {
   type AuthenticatedSessionsRequest,
   PageSize,
