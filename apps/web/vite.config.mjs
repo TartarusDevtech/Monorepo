@@ -58,6 +58,9 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: "autoUpdate",
+      workbox: {
+        navigateFallbackDenylist: [/^\/sitemap/]
+      },
       manifest: {
         name: "Hey",
         short_name: "Hey",
