@@ -29,10 +29,15 @@ import MetaDetails from "./MetaDetails";
 
 interface DetailsProps {
   isSuspended: boolean;
+  isBlockedByMe: boolean;
   account: AccountFragment;
 }
 
-const Details = ({ isSuspended = false, account }: DetailsProps) => {
+const Details = ({
+  isSuspended = false,
+  isBlockedByMe = false,
+  account
+}: DetailsProps) => {
   const navigate = useNavigate();
   const { currentAccount } = useAccountStore();
   const [expandedImage, setExpandedImage] = useState<null | string>(null);
@@ -42,6 +47,8 @@ const Details = ({ isSuspended = false, account }: DetailsProps) => {
     attribute: "location" | "website" | "x",
     icon: ReactNode
   ) => {
+    if (isBlockedByMe) return null;
+
     const value = getAccountAttribute(attribute, account?.metadata?.attributes);
     if (!value) return null;
 
@@ -86,10 +93,10 @@ const Details = ({ isSuspended = false, account }: DetailsProps) => {
             <Button onClick={() => navigate("/settings")} outline>
               Edit Account
             </Button>
-          ) : (
+          ) : isBlockedByMe ? null : (
             <FollowUnfollowButton account={account} />
           )}
-          <TipButton account={account} />
+          {!isBlockedByMe && <TipButton account={account} />}
           <AccountMenu account={account} />
         </div>
       </div>
@@ -114,7 +121,7 @@ const Details = ({ isSuspended = false, account }: DetailsProps) => {
           ) : null}
         </div>
       </div>
-      {account?.metadata?.bio ? (
+      {!isBlockedByMe && account?.metadata?.bio ? (
         <div className="markup linkify">
           <Markup mentions={getMentions(account?.metadata.bio)}>
             {account?.metadata.bio}
@@ -123,18 +130,19 @@ const Details = ({ isSuspended = false, account }: DetailsProps) => {
       ) : null}
       <div className="space-y-5">
         <Followerings account={account} />
-        {currentAccount?.address !== account.address ? (
+        {!isBlockedByMe && currentAccount?.address !== account.address ? (
           <FollowersYouKnowOverview
             username={getAccount(account).username}
             address={account.address}
           />
         ) : null}
         <div className="flex flex-wrap gap-x-5 gap-y-2">
-          {getAccountAttribute("location", account?.metadata?.attributes) && (
-            <MetaDetails icon={<MapPinIcon className="size-4" />}>
-              {getAccountAttribute("location", account?.metadata?.attributes)}
-            </MetaDetails>
-          )}
+          {!isBlockedByMe &&
+            getAccountAttribute("location", account?.metadata?.attributes) && (
+              <MetaDetails icon={<MapPinIcon className="size-4" />}>
+                {getAccountAttribute("location", account?.metadata?.attributes)}
+              </MetaDetails>
+            )}
           {renderAccountAttribute(
             "website",
             <img
