@@ -2,6 +2,7 @@ import { Tooltip } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
 import formatDate from "@/helpers/datetime/formatDate";
 import { hono } from "@/helpers/fetcher";
+import { getBlockedByMeMessage } from "@/helpers/getBlockedMessage";
 import hasAccess from "@/helpers/hasAccess";
 import { QueueListIcon } from "@heroicons/react/24/outline";
 import { Features } from "@hey/data/features";
@@ -41,7 +42,7 @@ const FullPost = ({ hasHiddenComments, post }: FullPostProps) => {
   const isBlockedByMe = post.author.operations?.isBlockedByMe;
 
   if (isBlockedByMe) {
-    return <PostWarning message="You blocked this account!" />;
+    return <PostWarning message={getBlockedByMeMessage(post.author)} />;
   }
 
   if (isSuspended) {
