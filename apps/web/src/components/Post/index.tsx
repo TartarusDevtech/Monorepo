@@ -73,7 +73,7 @@ const ViewPost = () => {
   const hasHiddenComments = (comments?.postReferences.items.length || 0) > 0;
 
   if (!slug || (loading && !cachedPost)) {
-    return <PostPageShimmer postList={showQuotes} />;
+    return <PostPageShimmer isQuotes={showQuotes} />;
   }
 
   if (!post) {

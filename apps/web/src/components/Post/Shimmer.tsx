@@ -1,17 +1,16 @@
 import BackButton from "@/components/Shared/BackButton";
 import Footer from "@/components/Shared/Footer";
 import { PageLayout } from "@/components/Shared/PageLayout";
-import PostListShimmer from "@/components/Shared/Shimmer/PostListShimmer";
 import PostShimmer from "@/components/Shared/Shimmer/PostShimmer";
 import PostsShimmer from "@/components/Shared/Shimmer/PostsShimmer";
 import SingleAccountShimmer from "@/components/Shared/Shimmer/SingleAccountShimmer";
 import { Card, CardHeader } from "@/components/Shared/UI";
 
 interface PostPageShimmerProps {
-  postList?: boolean;
+  isQuotes?: boolean;
 }
 
-const PostPageShimmer = ({ postList = false }: PostPageShimmerProps) => {
+const PostPageShimmer = ({ isQuotes = false }: PostPageShimmerProps) => {
   return (
     <PageLayout
       sidebar={
@@ -31,17 +30,14 @@ const PostPageShimmer = ({ postList = false }: PostPageShimmerProps) => {
       }
       zeroTopMargin
     >
-      {postList ? (
-        <PostListShimmer title="Post" />
-      ) : (
-        <>
-          <Card>
-            <CardHeader icon={<BackButton />} title="Post" />
-            <PostShimmer />
-          </Card>
-          <PostsShimmer />
-        </>
-      )}
+      <Card>
+        <CardHeader
+          icon={<BackButton />}
+          title={isQuotes ? "Quotes" : "Post"}
+        />
+        <PostShimmer />
+      </Card>
+      <PostsShimmer />
     </PageLayout>
   );
 };

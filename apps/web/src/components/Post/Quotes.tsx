@@ -1,5 +1,4 @@
 import BackButton from "@/components/Shared/BackButton";
-import PostListShimmer from "@/components/Shared/Shimmer/PostListShimmer";
 import {
   Card,
   CardHeader,
@@ -17,6 +16,7 @@ import {
 import { useIntersectionObserver } from "@uidotdev/usehooks";
 import { useEffect } from "react";
 import { WindowVirtualizer } from "virtua";
+import PostShimmer from "../Shared/Shimmer/PostShimmer";
 import SinglePost from "./SinglePost";
 
 interface QuotesProps {
@@ -59,40 +59,43 @@ const Quotes = ({ post }: QuotesProps) => {
     }
   }, [entry?.isIntersecting]);
 
-  if (loading) {
-    return <PostListShimmer title="Quote" />;
-  }
-
   if (error) {
     return <ErrorMessage error={error} title="Failed to load comment feed" />;
-  }
-
-  if (!quotes.length) {
-    return (
-      <EmptyState
-        icon={<ChatBubbleBottomCenterTextIcon className="size-8" />}
-        message="Be the first one to quote!"
-      />
-    );
   }
 
   return (
     <Card>
       <CardHeader icon={<BackButton />} title="Quotes" />
-      <div className="virtual-divider-list-window">
-        <WindowVirtualizer>
-          {quotes.map((quote, index) => (
-            <SinglePost
-              key={quote.id}
-              isFirst={false}
-              isLast={index === quotes.length - 1}
-              post={quote}
-              showType={false}
-            />
+      {loading ? (
+        <div className="divide-y divide-gray-200 dark:divide-gray-700">
+          {Array.from({ length: 3 }).map((_, index) => (
+            <PostShimmer key={index} />
           ))}
-          {hasMore && <span ref={ref} />}
-        </WindowVirtualizer>
-      </div>
+        </div>
+      ) : error ? (
+        <ErrorMessage error={error} title="Failed to load comment feed" />
+      ) : quotes.length ? (
+        <div className="virtual-divider-list-window">
+          <WindowVirtualizer>
+            {quotes.map((quote, index) => (
+              <SinglePost
+                key={quote.id}
+                isFirst={false}
+                isLast={index === quotes.length - 1}
+                post={quote}
+                showType={false}
+              />
+            ))}
+            {hasMore && <span ref={ref} />}
+          </WindowVirtualizer>
+        </div>
+      ) : (
+        <EmptyState
+          icon={<ChatBubbleBottomCenterTextIcon className="size-8" />}
+          message="Be the first one to quote!"
+          hideCard
+        />
+      )}
     </Card>
   );
 };
