@@ -1,5 +1,8 @@
 import PostWrapper from "@/components/Shared/Post/PostWrapper";
-import { getBlockedByMeMessage } from "@/helpers/getBlockedMessage";
+import {
+  getBlockedByMeMessage,
+  getBlockedMeMessage
+} from "@/helpers/getBlockedMessage";
 import type { PostFragment } from "@hey/indexer";
 import PostWarning from "../Shared/Post/PostWarning";
 import HiddenPost from "./HiddenPost";
@@ -14,6 +17,11 @@ interface QuotedPostProps {
 
 const QuotedPost = ({ isNew = false, post }: QuotedPostProps) => {
   const isBlockededByMe = post.author.operations?.isBlockedByMe;
+  const hasBlockedMe = post.author.operations?.hasBlockedMe;
+
+  if (hasBlockedMe) {
+    return <PostWarning message={getBlockedMeMessage(post.author)} />;
+  }
 
   if (isBlockededByMe) {
     return <PostWarning message={getBlockedByMeMessage(post.author)} />;

@@ -30,12 +30,14 @@ import MetaDetails from "./MetaDetails";
 interface DetailsProps {
   isSuspended: boolean;
   isBlockedByMe: boolean;
+  hasBlockedMe: boolean;
   account: AccountFragment;
 }
 
 const Details = ({
   isSuspended = false,
   isBlockedByMe = false,
+  hasBlockedMe = false,
   account
 }: DetailsProps) => {
   const navigate = useNavigate();
@@ -47,7 +49,7 @@ const Details = ({
     attribute: "location" | "website" | "x",
     icon: ReactNode
   ) => {
-    if (isBlockedByMe) return null;
+    if (isBlockedByMe || hasBlockedMe) return null;
 
     const value = getAccountAttribute(attribute, account?.metadata?.attributes);
     if (!value) return null;
@@ -93,10 +95,10 @@ const Details = ({
             <Button onClick={() => navigate("/settings")} outline>
               Edit Account
             </Button>
-          ) : isBlockedByMe ? null : (
+          ) : isBlockedByMe || hasBlockedMe ? null : (
             <FollowUnfollowButton account={account} />
           )}
-          {!isBlockedByMe && <TipButton account={account} />}
+          {!isBlockedByMe && !hasBlockedMe && <TipButton account={account} />}
           <AccountMenu account={account} />
         </div>
       </div>
@@ -121,7 +123,7 @@ const Details = ({
           ) : null}
         </div>
       </div>
-      {!isBlockedByMe && account?.metadata?.bio ? (
+      {!isBlockedByMe && !hasBlockedMe && account?.metadata?.bio ? (
         <div className="markup linkify">
           <Markup mentions={getMentions(account?.metadata.bio)}>
             {account?.metadata.bio}
@@ -130,7 +132,9 @@ const Details = ({
       ) : null}
       <div className="space-y-5">
         <Followerings account={account} />
-        {!isBlockedByMe && currentAccount?.address !== account.address ? (
+        {!isBlockedByMe &&
+        !hasBlockedMe &&
+        currentAccount?.address !== account.address ? (
           <FollowersYouKnowOverview
             username={getAccount(account).username}
             address={account.address}
@@ -138,6 +142,7 @@ const Details = ({
         ) : null}
         <div className="flex flex-wrap gap-x-5 gap-y-2">
           {!isBlockedByMe &&
+            !hasBlockedMe &&
             getAccountAttribute("location", account?.metadata?.attributes) && (
               <MetaDetails icon={<MapPinIcon className="size-4" />}>
                 {getAccountAttribute("location", account?.metadata?.attributes)}

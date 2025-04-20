@@ -53,7 +53,9 @@ const WhoToFollow = () => {
 
   const recommendedAccounts = data?.mlAccountRecommendations.items.filter(
     (account) =>
-      !account.operations?.isBlockedByMe && !account.operations?.isFollowedByMe
+      !account.operations?.isBlockedByMe &&
+      !account.operations?.isFollowedByMe &&
+      !account.operations?.hasBlockedMe
   ) as AccountFragment[];
 
   if (!recommendedAccounts?.length) {

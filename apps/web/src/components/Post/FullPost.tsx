@@ -2,7 +2,10 @@ import { Tooltip } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
 import formatDate from "@/helpers/datetime/formatDate";
 import { hono } from "@/helpers/fetcher";
-import { getBlockedByMeMessage } from "@/helpers/getBlockedMessage";
+import {
+  getBlockedByMeMessage,
+  getBlockedMeMessage
+} from "@/helpers/getBlockedMessage";
 import hasAccess from "@/helpers/hasAccess";
 import { QueueListIcon } from "@heroicons/react/24/outline";
 import { Features } from "@hey/data/features";
@@ -40,6 +43,11 @@ const FullPost = ({ hasHiddenComments, post }: FullPostProps) => {
 
   const isSuspended = isStaff ? false : accountDetails?.isSuspended;
   const isBlockedByMe = post.author.operations?.isBlockedByMe;
+  const hasBlockedMe = post.author.operations?.hasBlockedMe;
+
+  if (hasBlockedMe) {
+    return <PostWarning message={getBlockedMeMessage(post.author)} />;
+  }
 
   if (isBlockedByMe) {
     return <PostWarning message={getBlockedByMeMessage(post.author)} />;

@@ -6,3 +6,9 @@ export const getBlockedByMeMessage = (account: AccountFragment): string => {
 
   return `You have blocked ${usernameWithPrefix}`;
 };
+
+export const getBlockedMeMessage = (account: AccountFragment): string => {
+  const { usernameWithPrefix } = getAccount(account);
+
+  return `${usernameWithPrefix} has blocked you`;
+};

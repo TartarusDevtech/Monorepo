@@ -5,7 +5,10 @@ import Cover from "@/components/Shared/Cover";
 import { PageLayout } from "@/components/Shared/PageLayout";
 import { EmptyState } from "@/components/Shared/UI";
 import { hono } from "@/helpers/fetcher";
-import { getBlockedByMeMessage } from "@/helpers/getBlockedMessage";
+import {
+  getBlockedByMeMessage,
+  getBlockedMeMessage
+} from "@/helpers/getBlockedMessage";
 import hasAccess from "@/helpers/hasAccess";
 import { useAccountLinkStore } from "@/store/non-persisted/navigation/useAccountLinkStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
@@ -78,6 +81,7 @@ const ViewAccount = () => {
   const isSuspended = isStaff ? false : accountDetails?.isSuspended;
   const isDeleted = isAccountDeleted(account);
   const isBlockedByMe = account?.operations?.isBlockedByMe;
+  const hasBlockedMe = account?.operations?.hasBlockedMe;
 
   const renderAccountDetails = () => {
     if (isDeleted) return <DeletedDetails account={account} />;
@@ -87,6 +91,7 @@ const ViewAccount = () => {
       <Details
         isSuspended={accountDetails?.isSuspended || false}
         isBlockedByMe={account?.operations?.isBlockedByMe || false}
+        hasBlockedMe={account?.operations?.hasBlockedMe || false}
         account={account}
       />
     );
@@ -97,7 +102,9 @@ const ViewAccount = () => {
       ? "Account Deleted"
       : isSuspended
         ? "Account Suspended"
-        : getBlockedByMeMessage(account);
+        : isBlockedByMe
+          ? getBlockedByMeMessage(account)
+          : getBlockedMeMessage(account);
 
     return (
       <EmptyState
@@ -121,7 +128,7 @@ const ViewAccount = () => {
         }
       />
       {renderAccountDetails()}
-      {isDeleted || isSuspended || isBlockedByMe ? (
+      {isDeleted || isSuspended || isBlockedByMe || hasBlockedMe ? (
         renderEmptyState()
       ) : (
         <>
