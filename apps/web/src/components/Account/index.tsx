@@ -86,7 +86,7 @@ const ViewAccount = () => {
     return (
       <Details
         isSuspended={accountDetails?.isSuspended || false}
-        isBlockedByMe={account?.operations?.isBlockedByMe}
+        isBlockedByMe={account?.operations?.isBlockedByMe || false}
         account={account}
       />
     );
