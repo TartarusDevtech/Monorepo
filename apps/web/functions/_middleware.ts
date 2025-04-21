@@ -1,4 +1,9 @@
-export const onRequest: any = async (context: any) => {
+interface Context {
+  request: Request;
+  next: () => Promise<Response>;
+}
+
+export const onRequest = async (context: Context) => {
   const { request } = context;
   const userAgent = request.headers.get("user-agent")?.toLowerCase() || "";
   const url = new URL(request.url);
@@ -17,15 +22,11 @@ export const onRequest: any = async (context: any) => {
       targetUrl = `https://api.hey.xyz/sitemap${actualPath}`;
     }
 
-    const response = await fetch(targetUrl, {
+    return fetch(targetUrl, {
       method: request.method,
       headers: request.headers,
       body: ["GET", "HEAD"].includes(request.method) ? undefined : request.body
     });
-
-    const newResponse = new Response(response.body, response);
-    newResponse.headers.set("Cache-Control", "public, max-age=2592000");
-    return newResponse;
   }
 
   if (
@@ -34,8 +35,7 @@ export const onRequest: any = async (context: any) => {
       path.startsWith("/posts/") ||
       path.startsWith("/g/"))
   ) {
-    const target = `https://og.hey.xyz${path}`;
-    return fetch(target, {
+    return fetch(`https://og.hey.xyz${path}`, {
       headers: request.headers,
       method: request.method,
       body: request.body,
