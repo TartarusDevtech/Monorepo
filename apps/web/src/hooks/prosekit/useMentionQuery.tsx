@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 const SUGGESTION_LIST_LENGTH_LIMIT = 5;
 
 export type MentionAccount = {
+  address: string;
   displayUsername: string;
   username: string;
-  address: string;
   name: string;
   picture: string;
 };
@@ -31,15 +31,21 @@ const useMentionQuery = (query: string): MentionAccount[] => {
       const search = data?.accounts;
       const accountsSearchResult = search;
       const accounts = accountsSearchResult?.items;
-      const accountsResults = (accounts ?? []).map(
-        (account): MentionAccount => ({
-          displayUsername: getAccount(account).usernameWithPrefix,
-          username: getAccount(account).username,
-          address: account.address,
-          name: getAccount(account).name,
-          picture: getAvatar(account)
-        })
-      );
+      const accountsResults = (accounts ?? [])
+        .filter(
+          (account) =>
+            !account.operations?.isBlockedByMe &&
+            !account.operations?.hasBlockedMe
+        )
+        .map(
+          (account): MentionAccount => ({
+            address: account.address,
+            displayUsername: getAccount(account).usernameWithPrefix,
+            username: getAccount(account).username,
+            name: getAccount(account).name,
+            picture: getAvatar(account)
+          })
+        );
 
       setResults(accountsResults.slice(0, SUGGESTION_LIST_LENGTH_LIMIT));
     });
