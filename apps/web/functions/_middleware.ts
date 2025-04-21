@@ -10,7 +10,9 @@ export const onRequest = async (context: Context) => {
   const path = url.pathname;
 
   const isBot =
-    /bot|telegram|baidu|bing|yandex|iframely|whatsapp|facebook/.test(userAgent);
+    /bot|telegram|baidu|bing|yandex|iframely|whatsapp|babbar|bytedance|facebook/.test(
+      userAgent
+    );
 
   if (path === "/sitemap.xml" || path === "" || path.startsWith("/sitemap/")) {
     let targetUrl: string;
