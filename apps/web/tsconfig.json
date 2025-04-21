@@ -3,9 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "lib": ["DOM", "DOM.Iterable", "ESNext", "webworker"],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "paths": { "@/*": ["./src/*"] }
   },
   "include": ["**/*.ts", "**/*.tsx", "vite.config.mjs"]
 }
