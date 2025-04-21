@@ -75,6 +75,7 @@ const Join = ({
       aria-label="Join"
       className={className}
       disabled={isSubmitting}
+      loading={isSubmitting}
       onClick={handleJoin}
       outline
       size={small ? "sm" : "md"}
