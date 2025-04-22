@@ -97,6 +97,10 @@ const Guidelines = () => {
                   decisions on suspension an account will be made by the Hey
                   team and its not automated.
                 </p>
+                <p className="leading-7">
+                  We reserve the right to take down any account that violates
+                  these guidelines, with or without prior notice.
+                </p>
                 <p className="font-bold leading-7">
                   This is a Hey-specific decision / feature and not a
                   protocol-level decision / feature.
