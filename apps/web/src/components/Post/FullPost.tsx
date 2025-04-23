@@ -45,16 +45,18 @@ const FullPost = ({ hasHiddenComments, post }: FullPostProps) => {
   const isBlockedByMe = post.author.operations?.isBlockedByMe;
   const hasBlockedMe = post.author.operations?.hasBlockedMe;
 
-  if (hasBlockedMe) {
-    return <PostWarning message={getBlockedMeMessage(post.author)} />;
-  }
-
-  if (isBlockedByMe) {
-    return <PostWarning message={getBlockedByMeMessage(post.author)} />;
-  }
-
-  if (isSuspended) {
-    return <PostWarning message="Author Account has been suspended!" />;
+  if (hasBlockedMe || isBlockedByMe || isSuspended) {
+    return (
+      <PostWarning
+        message={
+          hasBlockedMe
+            ? getBlockedMeMessage(post.author)
+            : isBlockedByMe
+              ? getBlockedByMeMessage(post.author)
+              : "Author Account has been suspended!"
+        }
+      />
+    );
   }
 
   return (
