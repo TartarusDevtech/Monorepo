@@ -104,7 +104,9 @@ const ViewAccount = () => {
         ? "Account Suspended"
         : isBlockedByMe
           ? getBlockedByMeMessage(account)
-          : getBlockedMeMessage(account);
+          : hasBlockedMe
+            ? getBlockedMeMessage(account)
+            : null;
 
     return (
       <EmptyState
