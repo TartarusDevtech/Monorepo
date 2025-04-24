@@ -530,6 +530,7 @@ export type AddAdminsResult = SelfFundedTransactionRequest | SponsoredTransactio
 
 export type AddAppAuthorizationEndpointRequest = {
   app: Scalars['EvmAddress']['input'];
+  bearerToken?: InputMaybe<Scalars['String']['input']>;
   endpoint: Scalars['URL']['input'];
 };
 
