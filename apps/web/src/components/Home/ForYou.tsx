@@ -68,14 +68,20 @@ const ForYou = () => {
   return (
     <Card className="virtual-divider-list-window">
       <WindowVirtualizer>
-        {posts.map((item, index) => (
-          <SinglePost
-            key={item.post.id}
-            isFirst={index === 0}
-            isLast={index === (posts?.length || 0) - 1}
-            post={item.post}
-          />
-        ))}
+        {posts
+          .filter(
+            (item) =>
+              !item.post.author.operations?.hasBlockedMe ||
+              !item.post.author.operations?.isBlockedByMe
+          )
+          .map((item, index) => (
+            <SinglePost
+              key={item.post.id}
+              isFirst={index === 0}
+              isLast={index === (posts?.length || 0) - 1}
+              post={item.post}
+            />
+          ))}
         {hasMore && <span ref={ref} />}
       </WindowVirtualizer>
     </Card>

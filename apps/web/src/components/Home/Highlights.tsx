@@ -67,14 +67,20 @@ const Highlights = () => {
   return (
     <Card className="virtual-divider-list-window">
       <WindowVirtualizer>
-        {posts.map((post, index) => (
-          <SinglePost
-            key={post.id}
-            isFirst={index === 0}
-            isLast={index === (posts?.length || 0) - 1}
-            post={post}
-          />
-        ))}
+        {posts
+          .filter(
+            (post) =>
+              !post.author.operations?.hasBlockedMe ||
+              !post.author.operations?.isBlockedByMe
+          )
+          .map((post, index) => (
+            <SinglePost
+              key={post.id}
+              isFirst={index === 0}
+              isLast={index === (posts?.length || 0) - 1}
+              post={post}
+            />
+          ))}
         {hasMore && <span ref={ref} />}
       </WindowVirtualizer>
     </Card>

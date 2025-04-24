@@ -73,15 +73,21 @@ const Timeline = () => {
   return (
     <Card className="virtual-divider-list-window">
       <WindowVirtualizer>
-        {feed.map((timelineItem, index) => (
-          <SinglePost
-            key={timelineItem.id}
-            timelineItem={timelineItem}
-            isFirst={index === 0}
-            isLast={index === (feed?.length || 0) - 1}
-            post={timelineItem.primary}
-          />
-        ))}
+        {feed
+          .filter(
+            (timelineItem) =>
+              !timelineItem.primary.author.operations?.hasBlockedMe ||
+              !timelineItem.primary.author.operations?.isBlockedByMe
+          )
+          .map((timelineItem, index) => (
+            <SinglePost
+              key={timelineItem.id}
+              timelineItem={timelineItem}
+              isFirst={index === 0}
+              isLast={index === (feed?.length || 0) - 1}
+              post={timelineItem.primary}
+            />
+          ))}
         {hasMore && <span ref={ref} />}
       </WindowVirtualizer>
     </Card>
