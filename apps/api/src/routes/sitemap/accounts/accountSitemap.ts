@@ -53,12 +53,6 @@ const accountSitemap = async (ctx: Context) => {
         .up()
         .ele("lastmod")
         .txt(new Date().toISOString())
-        .up()
-        .ele("changefreq")
-        .txt("weekly")
-        .up()
-        .ele("priority")
-        .txt("1")
         .up();
     }
 
