@@ -1,13 +1,9 @@
 import ActionType from "@/components/Home/Timeline/EventType";
 import PostWrapper from "@/components/Shared/Post/PostWrapper";
 import cn from "@/helpers/cn";
-import {
-  getBlockedByMeMessage,
-  getBlockedMeMessage
-} from "@/helpers/getBlockedMessage";
+import {} from "@/helpers/getBlockedMessage";
 import type { AnyPostFragment, TimelineItemFragment } from "@hey/indexer";
 import { memo } from "react";
-import PostWarning from "../Shared/Post/PostWarning";
 import PostActions from "./Actions";
 import HiddenPost from "./HiddenPost";
 import PostAvatar from "./PostAvatar";
@@ -33,16 +29,6 @@ const SinglePost = ({
   showType = true
 }: SinglePostProps) => {
   const rootPost = timelineItem ? timelineItem?.primary : post;
-  const isBlockedByMe = timelineItem?.primary.author.operations?.isBlockedByMe;
-  const hasBlockedMe = timelineItem?.primary.author.operations?.hasBlockedMe;
-
-  if (hasBlockedMe) {
-    return <PostWarning message={getBlockedMeMessage(rootPost.author)} />;
-  }
-
-  if (isBlockedByMe) {
-    return <PostWarning message={getBlockedByMeMessage(rootPost.author)} />;
-  }
 
   return (
     <PostWrapper
