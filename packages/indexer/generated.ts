@@ -4266,6 +4266,7 @@ export type PostsFilter = {
   feeds?: InputMaybe<Array<FeedOneOf>>;
   metadata?: InputMaybe<PostMetadataFilter>;
   postTypes?: InputMaybe<Array<PostType>>;
+  posts?: InputMaybe<Array<Scalars['PostId']['input']>>;
   searchQuery?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -8140,16 +8141,6 @@ export type NotificationsQuery = { __typename?: 'Query', notifications: { __type
       & PaginatedResultInfoFragment
     ) } };
 
-export type OgAccountQueryVariables = Exact<{
-  request: AccountRequest;
-}>;
-
-
-export type OgAccountQuery = { __typename?: 'Query', account?: { __typename?: 'Account', address: any, owner: any, username?: (
-      { __typename?: 'Username' }
-      & UsernameFragment
-    ) | null, metadata?: { __typename?: 'AccountMetadata', name?: string | null, bio?: string | null, picture?: any | null } | null } | null };
-
 export type UsernamesQueryVariables = Exact<{
   request: UsernamesRequest;
 }>;
@@ -9007,22 +8998,6 @@ export function useNotificationsSuspenseQuery(baseOptions?: Apollo.SkipToken | A
 export type NotificationsQueryHookResult = ReturnType<typeof useNotificationsQuery>;
 export type NotificationsLazyQueryHookResult = ReturnType<typeof useNotificationsLazyQuery>;
 export type NotificationsSuspenseQueryHookResult = ReturnType<typeof useNotificationsSuspenseQuery>;
-export const OgAccountDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"OgAccount"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"request"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"AccountRequest"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"account"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"request"},"value":{"kind":"Variable","name":{"kind":"Name","value":"request"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"owner"}},{"kind":"Field","name":{"kind":"Name","value":"username"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"request"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"autoResolve"},"value":{"kind":"BooleanValue","value":true}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Username"}}]}},{"kind":"Field","name":{"kind":"Name","value":"metadata"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"picture"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Username"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Username"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"namespace"}},{"kind":"Field","name":{"kind":"Name","value":"localName"}},{"kind":"Field","name":{"kind":"Name","value":"linkedTo"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]} as unknown as DocumentNode;
-export function useOgAccountQuery(baseOptions: Apollo.QueryHookOptions<OgAccountQuery, OgAccountQueryVariables> & ({ variables: OgAccountQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<OgAccountQuery, OgAccountQueryVariables>(OgAccountDocument, options);
-      }
-export function useOgAccountLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<OgAccountQuery, OgAccountQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<OgAccountQuery, OgAccountQueryVariables>(OgAccountDocument, options);
-        }
-export function useOgAccountSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<OgAccountQuery, OgAccountQueryVariables>) {
-          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<OgAccountQuery, OgAccountQueryVariables>(OgAccountDocument, options);
-        }
-export type OgAccountQueryHookResult = ReturnType<typeof useOgAccountQuery>;
-export type OgAccountLazyQueryHookResult = ReturnType<typeof useOgAccountLazyQuery>;
-export type OgAccountSuspenseQueryHookResult = ReturnType<typeof useOgAccountSuspenseQuery>;
 export const UsernamesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Usernames"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"request"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UsernamesRequest"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"usernames"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"request"},"value":{"kind":"Variable","name":{"kind":"Name","value":"request"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"items"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Username"}}]}},{"kind":"Field","name":{"kind":"Name","value":"pageInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"PaginatedResultInfo"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"PaginatedResultInfo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"PaginatedResultInfo"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"prev"}},{"kind":"Field","name":{"kind":"Name","value":"next"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Username"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Username"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"namespace"}},{"kind":"Field","name":{"kind":"Name","value":"localName"}},{"kind":"Field","name":{"kind":"Name","value":"linkedTo"}},{"kind":"Field","name":{"kind":"Name","value":"value"}}]}}]} as unknown as DocumentNode;
 export function useUsernamesQuery(baseOptions: Apollo.QueryHookOptions<UsernamesQuery, UsernamesQueryVariables> & ({ variables: UsernamesQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}

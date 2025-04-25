@@ -5,7 +5,7 @@ import {
 } from "@hey/data/constants";
 import { default as getAccountData } from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
-import { OgAccountDocument } from "@hey/indexer";
+import { AccountDocument } from "@hey/indexer";
 import { print } from "graphql";
 import type { Context } from "hono";
 import { html } from "hono/html";
@@ -27,7 +27,7 @@ const getAccount = async (ctx: Context) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        query: print(OgAccountDocument),
+        query: print(AccountDocument),
         variables: { request: { username: { localName: username } } }
       })
     });
