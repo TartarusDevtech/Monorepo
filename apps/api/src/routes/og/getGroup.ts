@@ -1,7 +1,11 @@
-import { AVATAR_BIG, STATIC_IMAGES_URL } from "@hey/data/constants";
+import {
+  AVATAR_BIG,
+  LENS_API_URL,
+  STATIC_IMAGES_URL
+} from "@hey/data/constants";
 import getAvatar from "@hey/helpers/getAvatar";
 import { GroupDocument, type GroupFragment } from "@hey/indexer";
-import apolloClient from "@hey/indexer/apollo/client";
+import { print } from "graphql";
 import type { Context } from "hono";
 import { html } from "hono/html";
 import defaultMetadata from "src/utils/defaultMetadata";
@@ -18,10 +22,18 @@ const getGroup = async (ctx: Context) => {
       return ctx.html(cachedGroup, 200);
     }
 
-    const { data } = await apolloClient().query({
-      query: GroupDocument,
-      variables: { request: { group: address } }
+    const res = await fetch(LENS_API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        query: print(GroupDocument),
+        variables: { request: { group: address } }
+      })
     });
+
+    const { data } = await res.json();
 
     if (!data.group) {
       return ctx.html(defaultMetadata, 404);
