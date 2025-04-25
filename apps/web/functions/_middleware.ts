@@ -37,7 +37,7 @@ export const onRequest = async (context: Context) => {
       path.startsWith("/posts/") ||
       path.startsWith("/g/"))
   ) {
-    return fetch(`https://og.hey.xyz${path}`, {
+    return fetch(`https://api.hey.xyz/og${path}`, {
       headers: request.headers,
       method: request.method,
       body: request.body,

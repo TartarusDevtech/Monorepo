@@ -10,6 +10,7 @@ import lensRouter from "./routes/lens";
 import liveRouter from "./routes/live";
 import metadataRouter from "./routes/metadata";
 import oembedRouter from "./routes/oembed";
+import ogRouter from "./routes/og";
 import ping from "./routes/ping";
 import preferencesRouter from "./routes/preferences";
 import sitemapRouter from "./routes/sitemap";
@@ -31,6 +32,7 @@ app.route("/metadata", metadataRouter);
 app.route("/oembed", oembedRouter);
 app.route("/preferences", preferencesRouter);
 app.route("/sitemap", sitemapRouter);
+app.route("/og", ogRouter);
 
 serve({ fetch: app.fetch, port: 4784 }, (info) => {
   console.info(`Server running on port ${info.port}`);
