@@ -1,4 +1,4 @@
-query OGAccount($request: AccountRequest!) {
+query OgAccount($request: AccountRequest!) {
   account(request: $request) {
     address
     owner
