@@ -4,7 +4,7 @@ import { create } from "xmlbuilder2";
 
 const sitemaps = [
   { path: "/sitemap/pages.xml" },
-  { path: "/sitemap/accounts-1.xml" }
+  { path: "/sitemap/accounts.xml" }
 ];
 
 const sitemapIndex = async (ctx: Context) => {
