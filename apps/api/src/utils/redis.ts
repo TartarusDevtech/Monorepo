@@ -40,6 +40,11 @@ const hoursToSeconds = (hours: number): number => {
   return hours * 60 * 60;
 };
 
+// Generates a random expiry time between 2 to 4 days
+export const generateLongExpiry = (): number => {
+  return randomNumber(hoursToSeconds(2 * 24), hoursToSeconds(4 * 24));
+};
+
 // Generates a random expiry time between 8 and 10 days
 export const generateForeverExpiry = (): number => {
   return randomNumber(hoursToSeconds(8 * 24), hoursToSeconds(10 * 24));
