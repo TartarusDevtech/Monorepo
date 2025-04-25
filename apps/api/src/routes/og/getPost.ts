@@ -22,7 +22,8 @@ const getPost = async (ctx: Context) => {
 
     const { data } = await apolloClient().query({
       query: PostDocument,
-      variables: { request: { post: slug } }
+      variables: { request: { post: slug } },
+      fetchPolicy: "no-cache"
     });
 
     if (!data.post) {

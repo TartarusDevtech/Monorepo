@@ -20,7 +20,8 @@ const getGroup = async (ctx: Context) => {
 
     const { data } = await apolloClient().query({
       query: GroupDocument,
-      variables: { request: { group: address } }
+      variables: { request: { group: address } },
+      fetchPolicy: "no-cache"
     });
 
     if (!data.group) {
