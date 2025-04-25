@@ -14,57 +14,61 @@ interface Props {
 export const generateMetadata = async ({
   params
 }: Props): Promise<Metadata> => {
-  const { slug } = await params;
+  try {
+    const { slug } = await params;
 
-  const { data } = await apolloClient().query({
-    query: PostDocument,
-    variables: { request: { post: slug } }
-  });
+    const { data } = await apolloClient().query({
+      query: PostDocument,
+      variables: { request: { post: slug } }
+    });
 
-  if (!data.post) {
+    if (!data.post) {
+      return defaultMetadata;
+    }
+
+    const post = data.post as PostFragment;
+    const { author, metadata } = post;
+    const filteredContent = getPostData(metadata)?.content || "";
+    const filteredAsset = getPostData(metadata)?.asset;
+    const assetIsAudio = filteredAsset?.type === "Audio";
+
+    const { name, link, usernameWithPrefix } = getAccount(author);
+    const title = `${post.__typename} by ${usernameWithPrefix} • Hey`;
+    const description = (filteredContent || title).slice(0, 155);
+
+    return {
+      alternates: { canonical: `https://hey.xyz/posts/${post.slug}` },
+      applicationName: "Hey",
+      authors: { name, url: `https://hey.xyz${link}` },
+      creator: name,
+      description: description,
+      metadataBase: new URL(`https://hey.xyz/posts/${post.slug}`),
+      openGraph: {
+        description: description,
+        images: getPostOGImages(metadata) as any,
+        siteName: "Hey",
+        type: "article",
+        url: `https://hey.xyz/posts/${post.slug}`
+      },
+      other: {
+        "count:collects": post.stats.collects,
+        "count:tips": post.stats.tips,
+        "count:comments": post.stats.comments,
+        "count:likes": post.stats.reactions,
+        "count:reposts": post.stats.reposts,
+        "count:quotes": post.stats.quotes,
+        "hey:slug": post.slug
+      },
+      publisher: name,
+      title: title,
+      twitter: {
+        card: assetIsAudio ? "summary" : "summary_large_image",
+        site: "@heydotxyz"
+      }
+    };
+  } catch {
     return defaultMetadata;
   }
-
-  const post = data.post as PostFragment;
-  const { author, metadata } = post;
-  const filteredContent = getPostData(metadata)?.content || "";
-  const filteredAsset = getPostData(metadata)?.asset;
-  const assetIsAudio = filteredAsset?.type === "Audio";
-
-  const { name, link, usernameWithPrefix } = getAccount(author);
-  const title = `${post.__typename} by ${usernameWithPrefix} • Hey`;
-  const description = (filteredContent || title).slice(0, 155);
-
-  return {
-    alternates: { canonical: `https://hey.xyz/posts/${post.slug}` },
-    applicationName: "Hey",
-    authors: { name, url: `https://hey.xyz${link}` },
-    creator: name,
-    description: description,
-    metadataBase: new URL(`https://hey.xyz/posts/${post.slug}`),
-    openGraph: {
-      description: description,
-      images: getPostOGImages(metadata) as any,
-      siteName: "Hey",
-      type: "article",
-      url: `https://hey.xyz/posts/${post.slug}`
-    },
-    other: {
-      "count:collects": post.stats.collects,
-      "count:tips": post.stats.tips,
-      "count:comments": post.stats.comments,
-      "count:likes": post.stats.reactions,
-      "count:reposts": post.stats.reposts,
-      "count:quotes": post.stats.quotes,
-      "hey:slug": post.slug
-    },
-    publisher: name,
-    title: title,
-    twitter: {
-      card: assetIsAudio ? "summary" : "summary_large_image",
-      site: "@heydotxyz"
-    }
-  };
 };
 
 const Page = async ({ params }: Props) => {

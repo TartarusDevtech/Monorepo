@@ -14,39 +14,43 @@ interface Props {
 export const generateMetadata = async ({
   params
 }: Props): Promise<Metadata> => {
-  const { username } = await params;
+  try {
+    const { username } = await params;
 
-  const { data } = await apolloClient().query({
-    query: AccountDocument,
-    variables: { request: { username: { localName: username } } }
-  });
+    const { data } = await apolloClient().query({
+      query: AccountDocument,
+      variables: { request: { username: { localName: username } } }
+    });
 
-  if (!data.account) {
+    if (!data.account) {
+      return defaultMetadata;
+    }
+
+    const account = data.account;
+    const { name, link, usernameWithPrefix } = getAccount(account);
+    const title = `${name} (${usernameWithPrefix}) • Hey`;
+    const description = (account?.metadata?.bio || title).slice(0, 155);
+
+    return {
+      alternates: { canonical: `https://hey.xyz${link}` },
+      applicationName: "Hey",
+      creator: name,
+      description: description,
+      metadataBase: new URL(`https://hey.xyz${link}`),
+      openGraph: {
+        description: description,
+        images: [getAvatar(account, AVATAR_BIG)],
+        siteName: "Hey",
+        type: "profile",
+        url: `https://hey.xyz${link}`
+      },
+      publisher: name,
+      title: title,
+      twitter: { card: "summary", site: "@heydotxyz" }
+    };
+  } catch {
     return defaultMetadata;
   }
-
-  const account = data.account;
-  const { name, link, usernameWithPrefix } = getAccount(account);
-  const title = `${name} (${usernameWithPrefix}) • Hey`;
-  const description = (account?.metadata?.bio || title).slice(0, 155);
-
-  return {
-    alternates: { canonical: `https://hey.xyz${link}` },
-    applicationName: "Hey",
-    creator: name,
-    description: description,
-    metadataBase: new URL(`https://hey.xyz${link}`),
-    openGraph: {
-      description: description,
-      images: [getAvatar(account, AVATAR_BIG)],
-      siteName: "Hey",
-      type: "profile",
-      url: `https://hey.xyz${link}`
-    },
-    publisher: name,
-    title: title,
-    twitter: { card: "summary", site: "@heydotxyz" }
-  };
 };
 
 const Page = async ({ params }: Props) => {

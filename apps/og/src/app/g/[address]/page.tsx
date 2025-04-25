@@ -14,40 +14,44 @@ interface Props {
 export const generateMetadata = async ({
   params
 }: Props): Promise<Metadata> => {
-  const { address } = await params;
+  try {
+    const { address } = await params;
 
-  const { data } = await apolloClient().query({
-    query: GroupDocument,
-    variables: { request: { group: address } }
-  });
+    const { data } = await apolloClient().query({
+      query: GroupDocument,
+      variables: { request: { group: address } }
+    });
 
-  if (!data.group) {
+    if (!data.group) {
+      return defaultMetadata;
+    }
+
+    const group = data.group as GroupFragment;
+    const title = `${group.metadata?.name || "Group"} • Hey`;
+    const description = (group?.metadata?.description || title).slice(0, 155);
+    const owner = getAccount(group.owner);
+
+    return {
+      alternates: { canonical: `https://hey.xyz/g/${address}` },
+      applicationName: "Hey",
+      creator: owner.usernameWithPrefix,
+      description: description,
+      metadataBase: new URL(`https://hey.xyz/g/${address}`),
+      openGraph: {
+        description: description,
+        images: [getAvatar(group, AVATAR_BIG)],
+        siteName: "Hey",
+        type: "profile",
+        url: `https://hey.xyz/g/${address}`
+      },
+      publisher: owner.usernameWithPrefix,
+      title: title,
+      other: { "hey:group:name": group.metadata?.name || "Group" },
+      twitter: { card: "summary", site: "@heydotxyz" }
+    };
+  } catch {
     return defaultMetadata;
   }
-
-  const group = data.group as GroupFragment;
-  const title = `${group.metadata?.name || "Group"} • Hey`;
-  const description = (group?.metadata?.description || title).slice(0, 155);
-  const owner = getAccount(group.owner);
-
-  return {
-    alternates: { canonical: `https://hey.xyz/g/${address}` },
-    applicationName: "Hey",
-    creator: owner.usernameWithPrefix,
-    description: description,
-    metadataBase: new URL(`https://hey.xyz/g/${address}`),
-    openGraph: {
-      description: description,
-      images: [getAvatar(group, AVATAR_BIG)],
-      siteName: "Hey",
-      type: "profile",
-      url: `https://hey.xyz/g/${address}`
-    },
-    publisher: owner.usernameWithPrefix,
-    title: title,
-    other: { "hey:group:name": group.metadata?.name || "Group" },
-    twitter: { card: "summary", site: "@heydotxyz" }
-  };
 };
 
 const Page = async ({ params }: Props) => {
