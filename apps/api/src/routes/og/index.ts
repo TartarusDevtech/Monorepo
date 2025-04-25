@@ -10,7 +10,7 @@ const app = new Hono();
 
 app.get(
   "/u/:username",
-  zValidator("param", z.object({ username: z.string().regex(Regex.username) })),
+  zValidator("param", z.object({ username: z.string() })),
   getAccount
 );
 
