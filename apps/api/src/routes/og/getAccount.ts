@@ -1,12 +1,8 @@
-import {
-  AVATAR_BIG,
-  LENS_API_URL,
-  STATIC_IMAGES_URL
-} from "@hey/data/constants";
+import { AVATAR_BIG, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { default as getAccountData } from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import { AccountDocument } from "@hey/indexer";
-import { print } from "graphql";
+import apolloClient from "@hey/indexer/apollo/client";
 import type { Context } from "hono";
 import { html } from "hono/html";
 import defaultMetadata from "src/utils/defaultMetadata";
@@ -23,16 +19,10 @@ const getAccount = async (ctx: Context) => {
       return ctx.html(cachedAccount, 200);
     }
 
-    const res = await fetch(LENS_API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        query: print(AccountDocument),
-        variables: { request: { username: { localName: username } } }
-      })
+    const { data } = await apolloClient().query({
+      query: AccountDocument,
+      variables: { request: { username: { localName: username } } }
     });
-
-    const { data } = await res.json();
 
     if (!data.account) {
       return ctx.html(defaultMetadata, 404);

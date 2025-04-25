@@ -1,13 +1,9 @@
-import {
-  AVATAR_BIG,
-  LENS_API_URL,
-  STATIC_IMAGES_URL
-} from "@hey/data/constants";
+import { AVATAR_BIG, STATIC_IMAGES_URL } from "@hey/data/constants";
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import getPostData from "@hey/helpers/getPostData";
 import { PostDocument, type PostFragment } from "@hey/indexer";
-import { print } from "graphql";
+import apolloClient from "@hey/indexer/apollo/client";
 import type { Context } from "hono";
 import { html } from "hono/html";
 import defaultMetadata from "src/utils/defaultMetadata";
@@ -24,16 +20,10 @@ const getPost = async (ctx: Context) => {
       return ctx.html(cachedPost, 200);
     }
 
-    const res = await fetch(LENS_API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        query: print(PostDocument),
-        variables: { request: { post: slug } }
-      })
+    const { data } = await apolloClient().query({
+      query: PostDocument,
+      variables: { request: { post: slug } }
     });
-
-    const { data } = await res.json();
 
     if (!data.post) {
       return ctx.html(defaultMetadata, 404);
@@ -43,7 +33,7 @@ const getPost = async (ctx: Context) => {
     const { author, metadata } = post;
     const { usernameWithPrefix } = getAccount(author);
     const filteredContent = getPostData(metadata)?.content || "";
-    const title = `Post by ${usernameWithPrefix} on Hey`;
+    const title = `${post.__typename} by ${usernameWithPrefix} on Hey`;
     const description = (filteredContent || title).slice(0, 155);
     const postUrl = `https://hey.xyz/posts/${post.slug}`;
 
