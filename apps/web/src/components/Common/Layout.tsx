@@ -8,7 +8,6 @@ import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { hydrateAuthTokens, signOut } from "@/store/persisted/useAuthStore";
 import { usePreferencesStore } from "@/store/persisted/usePreferencesStore";
 import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/24/solid";
-import getAccount from "@hey/helpers/getAccount";
 import { useMeQuery } from "@hey/indexer";
 import { useIsClient } from "@uidotdev/usehooks";
 import { useEffect } from "react";
@@ -50,13 +49,6 @@ const Layout = () => {
     onError,
     skip: !accessToken
   });
-
-  useEffect(() => {
-    if (!window.gtag || !currentAccount) return;
-    window.gtag("config", "G-CW47CNBGMW", {
-      user_id: getAccount(currentAccount).username
-    });
-  }, []);
 
   const accountLoading = !currentAccount && loading;
 
