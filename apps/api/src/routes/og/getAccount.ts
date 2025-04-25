@@ -1,4 +1,4 @@
-import { AVATAR_BIG } from "@hey/data/constants";
+import { AVATAR_BIG, STATIC_IMAGES_URL } from "@hey/data/constants";
 import { default as getAccountData } from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
 import { OgAccountDocument } from "@hey/indexer";
@@ -49,9 +49,6 @@ const getAccount = async (ctx: Context) => {
       <html>
         <head>
           <link rel="canonical" href="https://hey.xyz${link}" />
-          <meta name="application-name" content="Hey" />
-          <meta name="creator" content="${name}" />
-          <meta name="publisher" content="${name}" />
           <meta name="description" content="${description}" />
           <meta property="og:title" content="${title}" />
           <meta property="og:description" content="${description}" />
@@ -59,6 +56,7 @@ const getAccount = async (ctx: Context) => {
           <meta property="og:site_name" content="Hey" />
           <meta property="og:url" content="https://hey.xyz${link}" />
           <meta property="og:image" content="${getAvatar(account, AVATAR_BIG)}" />
+          <meta property="og:logo" content="${STATIC_IMAGES_URL}/app-icon/0.png" />
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:site" content="@heydotxyz" />
           <title>${title}</title>

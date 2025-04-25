@@ -1,3 +1,4 @@
+import { STATIC_IMAGES_URL } from "@hey/data/constants";
 import getAccount from "@hey/helpers/getAccount";
 import getPostData from "@hey/helpers/getPostData";
 import { PostDocument, type PostFragment } from "@hey/indexer";
@@ -35,7 +36,7 @@ const getPost = async (ctx: Context) => {
     const filteredAsset = getPostData(metadata)?.asset;
     const assetIsAudio = filteredAsset?.type === "Audio";
 
-    const { name, link, usernameWithPrefix } = getAccount(author);
+    const { usernameWithPrefix } = getAccount(author);
     const title = `${post.__typename} by ${usernameWithPrefix} • Hey`;
     const description = (filteredContent || title).slice(0, 155);
     const postUrl = `https://hey.xyz/posts/${post.slug}`;
@@ -44,16 +45,13 @@ const getPost = async (ctx: Context) => {
       <html>
         <head>
           <link rel="canonical" href="https://hey.xyz/posts/${post.slug}" />
-          <link rel="author" href="https://hey.xyz${link}" />
-          <meta name="application-name" content="Hey" />
-          <meta name="creator" content="${name}" />
-          <meta name="publisher" content="${name}" />
           <meta name="description" content="${description}" />
           <meta property="og:title" content="${title}" />
           <meta property="og:description" content="${description}" />
           <meta property="og:type" content="article" />
           <meta property="og:site_name" content="Hey" />
           <meta property="og:url" content="https://hey.xyz/posts/${post.slug}" />
+          <meta property="og:logo" content="${STATIC_IMAGES_URL}/app-icon/0.png" />
           ${getPostOGImages(metadata).map((image) => html`<meta property="og:image" content="${image}" />`)}
           <meta name="twitter:card" content="${assetIsAudio ? "summary" : "summary_large_image"}" />
           <meta name="twitter:site" content="@heydotxyz" />

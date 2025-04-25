@@ -1,5 +1,4 @@
-import { AVATAR_BIG } from "@hey/data/constants";
-import getAccount from "@hey/helpers/getAccount";
+import { AVATAR_BIG, STATIC_IMAGES_URL } from "@hey/data/constants";
 import getAvatar from "@hey/helpers/getAvatar";
 import { GroupDocument, type GroupFragment } from "@hey/indexer";
 import apolloClient from "@hey/indexer/apollo/client";
@@ -32,7 +31,6 @@ const getGroup = async (ctx: Context) => {
     const group = data.group as GroupFragment;
     const title = `${group.metadata?.name || "Group"} • Hey`;
     const description = (group?.metadata?.description || title).slice(0, 155);
-    const { usernameWithPrefix } = getAccount(group.owner);
 
     const jsonLd = {
       "@context": "https://schema.org",
@@ -49,9 +47,6 @@ const getGroup = async (ctx: Context) => {
       <html>
         <head>
           <link rel="canonical" href="https://hey.xyz/g/${group.address}" />
-          <meta name="application-name" content="Hey" />
-          <meta name="creator" content="${usernameWithPrefix}" />
-          <meta name="publisher" content="${usernameWithPrefix}" />
           <meta name="description" content="${description}" />
           <meta property="og:title" content="${title}" />
           <meta property="og:description" content="${description}" />
@@ -59,6 +54,7 @@ const getGroup = async (ctx: Context) => {
           <meta property="og:site_name" content="Hey" />
           <meta property="og:url" content="https://hey.xyz/g/${group.address}" />
           <meta property="og:image" content="${getAvatar(group, AVATAR_BIG)}" />
+          <meta property="og:logo" content="${STATIC_IMAGES_URL}/app-icon/0.png" />
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:site" content="@heydotxyz" />
           <title>${title}</title>
