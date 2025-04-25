@@ -1,7 +1,7 @@
 import { Errors } from "@hey/data/errors";
 import type { Context } from "hono";
 import { CACHE_AGE_1_DAY } from "src/utils/constants";
-import { getRedis, setRedis } from "src/utils/redis";
+import { generateExtraLongExpiry, getRedis, setRedis } from "src/utils/redis";
 import sha256 from "src/utils/sha256";
 import getMetadata from "./helpers/getMetadata";
 
@@ -22,7 +22,7 @@ const getOembed = async (ctx: Context) => {
     }
 
     const oembed = await getMetadata(url);
-    await setRedis(cacheKey, JSON.stringify(oembed));
+    await setRedis(cacheKey, JSON.stringify(oembed), generateExtraLongExpiry());
 
     return ctx.json({ success: true, data: oembed });
   } catch {

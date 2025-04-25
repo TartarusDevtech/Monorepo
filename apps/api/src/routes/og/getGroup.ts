@@ -9,7 +9,7 @@ import { print } from "graphql";
 import type { Context } from "hono";
 import { html } from "hono/html";
 import defaultMetadata from "src/utils/defaultMetadata";
-import { generateLongExpiry, getRedis, setRedis } from "src/utils/redis";
+import { getRedis, setRedis } from "src/utils/redis";
 
 const getGroup = async (ctx: Context) => {
   try {
@@ -77,7 +77,7 @@ const getGroup = async (ctx: Context) => {
     `;
 
     const cleanHtml = ogHtml.toString().replace(/\n\s+/g, "").trim();
-    await setRedis(cacheKey, cleanHtml, generateLongExpiry());
+    await setRedis(cacheKey, cleanHtml);
 
     return ctx.html(cleanHtml, 200);
   } catch {

@@ -36,7 +36,7 @@ const randomNumber = (min: number, max: number): number => {
   return Math.floor(Math.random() * (max - min) + min);
 };
 
-const hoursToSeconds = (hours: number): number => {
+export const hoursToSeconds = (hours: number): number => {
   return hours * 60 * 60;
 };
 
@@ -46,14 +46,14 @@ export const generateLongExpiry = (): number => {
 };
 
 // Generates a random expiry time between 8 and 10 days
-export const generateForeverExpiry = (): number => {
+export const generateExtraLongExpiry = (): number => {
   return randomNumber(hoursToSeconds(8 * 24), hoursToSeconds(10 * 24));
 };
 
 export const setRedis = async (
   key: string,
   value: boolean | number | Record<string, any> | string,
-  expiry = generateForeverExpiry()
+  expiry = generateLongExpiry()
 ) => {
   if (!redisClient) {
     noRedisError();
