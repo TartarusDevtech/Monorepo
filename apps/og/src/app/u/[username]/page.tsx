@@ -5,6 +5,7 @@ import getAvatar from "@hey/helpers/getAvatar";
 import { AccountDocument } from "@hey/indexer";
 import apolloClient from "@hey/indexer/apollo/client";
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 
 interface Props {
   params: Promise<{ username: string }>;
@@ -55,6 +56,9 @@ const Page = async ({ params }: Props) => {
   if (!metadata) {
     return <h1>{username}</h1>;
   }
+
+  const userAgent = (await headers()).get("user-agent") || "unknown";
+  console.info(`Request on /u/${username} from ${userAgent}`);
 
   const jsonLd = {
     "@context": "https://schema.org",

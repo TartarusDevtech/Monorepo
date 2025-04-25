@@ -5,6 +5,7 @@ import getPostData from "@hey/helpers/getPostData";
 import { PostDocument, type PostFragment } from "@hey/indexer";
 import apolloClient from "@hey/indexer/apollo/client";
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -73,6 +74,9 @@ const Page = async ({ params }: Props) => {
   if (!metadata) {
     return <h1>{slug}</h1>;
   }
+
+  const userAgent = (await headers()).get("user-agent") || "unknown";
+  console.info(`Request on /posts/${slug} from ${userAgent}`);
 
   const postUrl = `https://hey.xyz/posts/${metadata.other?.["hey:slug"]}`;
 

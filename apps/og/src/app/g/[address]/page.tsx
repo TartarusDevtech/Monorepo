@@ -5,6 +5,7 @@ import getAvatar from "@hey/helpers/getAvatar";
 import { GroupDocument, type GroupFragment } from "@hey/indexer";
 import apolloClient from "@hey/indexer/apollo/client";
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 
 interface Props {
   params: Promise<{ address: string }>;
@@ -56,6 +57,9 @@ const Page = async ({ params }: Props) => {
   if (!metadata) {
     return <h1>{address}</h1>;
   }
+
+  const userAgent = (await headers()).get("user-agent") || "unknown";
+  console.info(`Request on /g/${address} from ${userAgent}`);
 
   const jsonLd = {
     "@context": "https://schema.org",
