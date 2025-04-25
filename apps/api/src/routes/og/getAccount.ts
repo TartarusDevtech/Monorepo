@@ -5,7 +5,6 @@ import { OgAccountDocument } from "@hey/indexer";
 import apolloClient from "@hey/indexer/apollo/client";
 import type { Context } from "hono";
 import { html } from "hono/html";
-import { CACHE_AGE_1_DAY } from "src/utils/constants";
 import defaultMetadata from "src/utils/defaultMetadata";
 import { generateLongExpiry, getRedis, setRedis } from "src/utils/redis";
 
@@ -72,7 +71,6 @@ const getAccount = async (ctx: Context) => {
     const cleanHtml = ogHtml.toString().replace(/\n\s+/g, "").trim();
     await setRedis(cacheKey, cleanHtml, generateLongExpiry());
 
-    ctx.header("Cache-Control", CACHE_AGE_1_DAY);
     return ctx.html(cleanHtml, 200);
   } catch {
     return ctx.html(defaultMetadata, 500);
