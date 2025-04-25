@@ -1,0 +1,14 @@
+query OGAccount($request: AccountRequest!) {
+  account(request: $request) {
+    address
+    owner
+    username(request: { autoResolve: true }) {
+      ...Username
+    }
+    metadata {
+      name
+      bio
+      picture
+    }
+  }
+}
