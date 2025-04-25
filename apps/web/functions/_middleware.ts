@@ -14,6 +14,24 @@ export const onRequest = async (context: Context) => {
       userAgent
     );
 
+  const createNoCacheResponse = async (targetUrl: string) => {
+    const upstreamResponse = await fetch(targetUrl, {
+      method: request.method,
+      headers: request.headers,
+      body: ["GET", "HEAD"].includes(request.method) ? undefined : request.body,
+      redirect: "follow"
+    });
+
+    const newHeaders = new Headers(upstreamResponse.headers);
+    newHeaders.set("Cache-Control", "no-store, no-cache, must-revalidate");
+
+    return new Response(upstreamResponse.body, {
+      status: upstreamResponse.status,
+      statusText: upstreamResponse.statusText,
+      headers: newHeaders
+    });
+  };
+
   if (path === "/sitemap.xml" || path === "" || path.startsWith("/sitemap/")) {
     let targetUrl: string;
 
@@ -24,11 +42,7 @@ export const onRequest = async (context: Context) => {
       targetUrl = `https://api.hey.xyz/sitemap${actualPath}`;
     }
 
-    return fetch(targetUrl, {
-      method: request.method,
-      headers: request.headers,
-      body: ["GET", "HEAD"].includes(request.method) ? undefined : request.body
-    });
+    return createNoCacheResponse(targetUrl);
   }
 
   if (
@@ -37,12 +51,8 @@ export const onRequest = async (context: Context) => {
       path.startsWith("/posts/") ||
       path.startsWith("/g/"))
   ) {
-    return fetch(`https://api.hey.xyz/og${path}`, {
-      headers: request.headers,
-      method: request.method,
-      body: request.body,
-      redirect: "follow"
-    });
+    const targetUrl = `https://api.hey.xyz/og${path}`;
+    return createNoCacheResponse(targetUrl);
   }
 
   return context.next();
