@@ -42,14 +42,16 @@ const getPost = async (ctx: Context) => {
     const assetIsAudio = filteredAsset?.type === "Audio";
 
     const { usernameWithPrefix } = getAccount(author);
-    const title = `${post.__typename} by ${usernameWithPrefix} • Hey`;
+    const title = `${post.__typename} by ${usernameWithPrefix} on Hey`;
     const description = (filteredContent || title).slice(0, 155);
     const postUrl = `https://hey.xyz/posts/${post.slug}`;
 
     const ogHtml = html`
       <html>
         <head>
-          <link rel="canonical" href="https://hey.xyz/posts/${post.slug}" />
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width" />
+          <title>${title}</title>
           <meta name="description" content="${description}" />
           <meta property="og:title" content="${title}" />
           <meta property="og:description" content="${description}" />
@@ -59,8 +61,11 @@ const getPost = async (ctx: Context) => {
           <meta property="og:logo" content="${STATIC_IMAGES_URL}/app-icon/0.png" />
           ${getPostOGImages(metadata).map((image) => html`<meta property="og:image" content="${image}" />`)}
           <meta name="twitter:card" content="${assetIsAudio ? "summary" : "summary_large_image"}" />
+          <meta name="twitter:title" content="${title}" />
+          <meta name="twitter:description" content="${description}" />
+          <meta property="twitter:image" content="${getPostOGImages(metadata)[0]}" />
           <meta name="twitter:site" content="@heydotxyz" />
-          <title>${title}</title>
+          <link rel="canonical" href="https://hey.xyz/posts/${post.slug}" />
         </head>
         <body>
           <h1>${title}</h1>

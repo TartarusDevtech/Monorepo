@@ -38,7 +38,7 @@ const getGroup = async (ctx: Context) => {
     }
 
     const group = data.group as GroupFragment;
-    const title = `${group.metadata?.name || "Group"} • Hey`;
+    const title = `${group.metadata?.name || "Group"} on Hey`;
     const description = (group?.metadata?.description || title).slice(0, 155);
 
     const jsonLd = {
@@ -55,7 +55,9 @@ const getGroup = async (ctx: Context) => {
     const ogHtml = html`
       <html>
         <head>
-          <link rel="canonical" href="https://hey.xyz/g/${group.address}" />
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width" />
+          <title>${title}</title>
           <meta name="description" content="${description}" />
           <meta property="og:title" content="${title}" />
           <meta property="og:description" content="${description}" />
@@ -65,8 +67,11 @@ const getGroup = async (ctx: Context) => {
           <meta property="og:image" content="${getAvatar(group, AVATAR_BIG)}" />
           <meta property="og:logo" content="${STATIC_IMAGES_URL}/app-icon/0.png" />
           <meta name="twitter:card" content="summary" />
+          <meta name="twitter:title" content="${title}" />
+          <meta name="twitter:description" content="${description}" />
+          <meta property="twitter:image" content="${getAvatar(group, AVATAR_BIG)}" />
           <meta name="twitter:site" content="@heydotxyz" />
-          <title>${title}</title>
+          <link rel="canonical" href="https://hey.xyz/g/${group.address}" />
         </head>
         <body>
           <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>

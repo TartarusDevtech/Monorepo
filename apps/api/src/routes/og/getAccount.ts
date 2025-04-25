@@ -40,7 +40,7 @@ const getAccount = async (ctx: Context) => {
 
     const account = data.account;
     const { name, link, usernameWithPrefix } = getAccountData(account);
-    const title = `${name} (${usernameWithPrefix}) • Hey`;
+    const title = `${name} (${usernameWithPrefix}) on Hey`;
     const description = (account?.metadata?.bio || title).slice(0, 155);
 
     const jsonLd = {
@@ -57,7 +57,9 @@ const getAccount = async (ctx: Context) => {
     const ogHtml = html`
       <html>
         <head>
-          <link rel="canonical" href="https://hey.xyz${link}" />
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width" />
+          <title>${title}</title>
           <meta name="description" content="${description}" />
           <meta property="og:title" content="${title}" />
           <meta property="og:description" content="${description}" />
@@ -67,8 +69,11 @@ const getAccount = async (ctx: Context) => {
           <meta property="og:image" content="${getAvatar(account, AVATAR_BIG)}" />
           <meta property="og:logo" content="${STATIC_IMAGES_URL}/app-icon/0.png" />
           <meta name="twitter:card" content="summary" />
+          <meta name="twitter:title" content="${title}" />
+          <meta name="twitter:description" content="${description}" />
+          <meta property="twitter:image" content="${getAvatar(account, AVATAR_BIG)}" />
           <meta name="twitter:site" content="@heydotxyz" />
-          <title>${title}</title>
+          <link rel="canonical" href="https://hey.xyz${link}" />
         </head>
         <body>
           <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
