@@ -22,9 +22,7 @@ const getPost = async (ctx: Context) => {
 
     const res = await fetch(LENS_API_URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         query: print(PostDocument),
         variables: { request: { post: slug } }

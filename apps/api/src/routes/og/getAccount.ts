@@ -25,9 +25,7 @@ const getAccount = async (ctx: Context) => {
 
     const res = await fetch(LENS_API_URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         query: print(OgAccountDocument),
         variables: { request: { username: { localName: username } } }
