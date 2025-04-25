@@ -1,12 +1,3 @@
-const allowlistedAgents = [
-  "bot",
-  "iframely",
-  "whatsapp",
-  "bytedance",
-  "facebook",
-  "meta"
-];
-
 interface Context {
   request: Request;
   next: () => Promise<Response>;
@@ -18,9 +9,10 @@ export const onRequest = async (context: Context) => {
   const url = new URL(request.url);
   const path = url.pathname;
 
-  const isAllowlistedBot = allowlistedAgents.some((bot) =>
-    userAgent.includes(bot)
-  );
+  const isBot =
+    /bot|baidu|iframely|whatsapp|babbar|bytedance|facebook|meta/.test(
+      userAgent
+    );
 
   if (path === "/sitemap.xml" || path === "" || path.startsWith("/sitemap/")) {
     let targetUrl: string;
@@ -40,7 +32,7 @@ export const onRequest = async (context: Context) => {
   }
 
   if (
-    isAllowlistedBot &&
+    isBot &&
     (path.startsWith("/u/") ||
       path.startsWith("/posts/") ||
       path.startsWith("/g/"))
