@@ -33,7 +33,12 @@ const accountsSitemapIndex = async (ctx: Context) => {
 
     const sitemapIndex = create({ version: "1.0", encoding: "UTF-8" }).ele(
       "sitemapindex",
-      { xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9" }
+      {
+        "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9",
+        "xsi:schemaLocation":
+          "http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd"
+      }
     );
 
     for (const sitemap of sitemaps) {
