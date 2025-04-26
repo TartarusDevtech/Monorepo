@@ -29,17 +29,19 @@ const getGroup = async (ctx: Context) => {
     }
 
     const group = data.group as GroupFragment;
-    const title = `${group.metadata?.name || "Group"} on Hey`;
+    const name = group.metadata?.name || "Group";
+    const title = `${name} on Hey`;
     const description = (group?.metadata?.description || title).slice(0, 155);
+    const avatar = getAvatar(group, AVATAR_BIG);
 
     const jsonLd = {
       "@context": "https://schema.org",
       "@type": "Organization",
       "@id": `https://hey.xyz/g/${address}`,
-      name: group.metadata?.name || "Group",
+      name,
       alternateName: address,
       description,
-      image: getAvatar(group, AVATAR_BIG),
+      image: avatar,
       url: `https://hey.xyz/g/${address}`,
       memberOf: { "@type": "Organization", name: "Hey.xyz" }
     };
@@ -61,18 +63,19 @@ const getGroup = async (ctx: Context) => {
           <meta property="og:type" content="profile" />
           <meta property="og:site_name" content="Hey" />
           <meta property="og:url" content="https://hey.xyz/g/${group.address}" />
-          <meta property="og:image" content="${getAvatar(group, AVATAR_BIG)}" />
+          <meta property="og:image" content="${avatar}" />
           <meta property="og:logo" content="${STATIC_IMAGES_URL}/app-icon/0.png" />
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:title" content="${title}" />
           <meta name="twitter:description" content="${description}" />
-          <meta property="twitter:image" content="${getAvatar(group, AVATAR_BIG)}" />
+          <meta property="twitter:image" content="${avatar}" />
           <meta name="twitter:site" content="@heydotxyz" />
           <link rel="canonical" href="https://hey.xyz/g/${group.address}" />
         </head>
         <body>
           <script type="application/ld+json">${raw(escapedJsonLd)}</script>
-          <h1>${title}</h1>
+          <img src="${avatar}" alt="${title}" height="100" width="100" />
+          <h1>${name}</h1>
           <h2>${description}</h2>
         </body>
       </html>

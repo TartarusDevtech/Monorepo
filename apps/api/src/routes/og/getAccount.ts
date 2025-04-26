@@ -33,6 +33,7 @@ const getAccount = async (ctx: Context) => {
     const { name, link, usernameWithPrefix } = getAccountData(account);
     const title = `${name} (${usernameWithPrefix}) on Hey`;
     const description = (account?.metadata?.bio || title).slice(0, 155);
+    const avatar = getAvatar(account, AVATAR_BIG);
 
     const jsonLd = {
       "@context": "https://schema.org",
@@ -41,7 +42,7 @@ const getAccount = async (ctx: Context) => {
       name,
       alternateName: username,
       description,
-      image: getAvatar(account, AVATAR_BIG),
+      image: avatar,
       url: `https://hey.xyz/u/${username}`,
       memberOf: { "@type": "Organization", name: "Hey.xyz" }
     };
@@ -63,19 +64,21 @@ const getAccount = async (ctx: Context) => {
           <meta property="og:type" content="profile" />
           <meta property="og:site_name" content="Hey" />
           <meta property="og:url" content="https://hey.xyz${link}" />
-          <meta property="og:image" content="${getAvatar(account, AVATAR_BIG)}" />
+          <meta property="og:image" content="${avatar}" />
           <meta property="og:logo" content="${STATIC_IMAGES_URL}/app-icon/0.png" />
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:title" content="${title}" />
           <meta name="twitter:description" content="${description}" />
-          <meta property="twitter:image" content="${getAvatar(account, AVATAR_BIG)}" />
+          <meta property="twitter:image" content="${avatar}" />
           <meta name="twitter:site" content="@heydotxyz" />
           <link rel="canonical" href="https://hey.xyz${link}" />
         </head>
         <body>
           <script type="application/ld+json">${raw(escapedJsonLd)}</script>
-          <h1>${title}</h1>
-          <h2>${description}</h2>
+          <img src="${avatar}" alt="${name}" height="100" width="100" />
+          <h1>${name || username}</h1>
+          <h2>${usernameWithPrefix}</h2>
+          <h3>${description}</h3>
         </body>
       </html>
     `;
