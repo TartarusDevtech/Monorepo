@@ -3,7 +3,7 @@ import "dotenv/config";
 import { Hono } from "hono";
 import tokenContext from "./context/tokenContext";
 import cors from "./middlewares/cors";
-import originLogger from "./middlewares/originLogger";
+import infoLogger from "./middlewares/infoLogger";
 import accountRouter from "./routes/account";
 import internalRouter from "./routes/internal";
 import lensRouter from "./routes/lens";
@@ -20,7 +20,7 @@ const app = new Hono();
 // Context
 app.use(cors);
 app.use(tokenContext);
-app.use(originLogger);
+app.use(infoLogger);
 
 // Routes
 app.get("/ping", ping);

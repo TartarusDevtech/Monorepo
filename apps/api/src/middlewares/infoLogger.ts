@@ -3,7 +3,7 @@ import type { Context, HonoRequest, Next } from "hono";
 const getIp = (req: HonoRequest) =>
   req.header("x-forwarded-for") || req.header("remote-addr") || "unknown";
 
-const originLogger = async (c: Context, next: Next) => {
+const infoLogger = async (c: Context, next: Next) => {
   const start = performance.now();
   const startMem = process.memoryUsage().heapUsed;
 
@@ -24,4 +24,4 @@ const originLogger = async (c: Context, next: Next) => {
   );
 };
 
-export default originLogger;
+export default infoLogger;
