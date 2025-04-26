@@ -1,7 +1,7 @@
 import parseJwt from "@hey/helpers/parseJwt";
 import type { Context, Next } from "hono";
 
-const tokenContext = async (ctx: Context, next: Next) => {
+const authContext = async (ctx: Context, next: Next) => {
   const token = ctx.req.raw.headers.get("x-id-token");
   const payload = parseJwt(token as string);
 
@@ -16,4 +16,4 @@ const tokenContext = async (ctx: Context, next: Next) => {
   return next();
 };
 
-export default tokenContext;
+export default authContext;
