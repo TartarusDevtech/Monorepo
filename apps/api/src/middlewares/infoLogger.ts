@@ -1,7 +1,4 @@
-import type { Context, HonoRequest, Next } from "hono";
-
-const getIp = (req: HonoRequest) =>
-  req.header("x-forwarded-for") || req.header("remote-addr") || "unknown";
+import type { Context, Next } from "hono";
 
 const infoLogger = async (c: Context, next: Next) => {
   const start = performance.now();
@@ -9,7 +6,6 @@ const infoLogger = async (c: Context, next: Next) => {
 
   const source =
     c.req.header("Origin") || c.req.header("User-Agent") || "unknown";
-  const ip = getIp(c.req);
 
   await next();
 
@@ -20,7 +16,7 @@ const infoLogger = async (c: Context, next: Next) => {
   const memoryUsedMb = ((endMem - startMem) / 1024 / 1024).toFixed(2);
 
   console.info(
-    `[${c.req.method}] ➜ [${source}] with ip [${ip}] ➜ [${c.req.path}] ➜ ${timeTakenMs}ms, ${memoryUsedMb}mb`
+    `[${c.req.method} ${c.req.path}] ➜ [${source}] ➜ ${timeTakenMs}ms, ${memoryUsedMb}mb`
   );
 };
 
