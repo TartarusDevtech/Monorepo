@@ -1,6 +1,6 @@
 import * as RadixTooltip from "@radix-ui/react-tooltip";
 import { motion } from "motion/react";
-import type { ReactNode } from "react";
+import { type ReactNode, memo } from "react";
 
 interface TooltipProps {
   children: ReactNode;
@@ -10,7 +10,7 @@ interface TooltipProps {
   withDelay?: boolean;
 }
 
-export const Tooltip = ({
+const Tooltip = ({
   children,
   className = "",
   content,
@@ -45,3 +45,5 @@ export const Tooltip = ({
     </RadixTooltip.Provider>
   );
 };
+
+export default memo(Tooltip);

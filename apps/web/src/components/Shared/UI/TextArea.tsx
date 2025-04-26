@@ -1,13 +1,13 @@
 import cn from "@/helpers/cn";
 import type { ComponentProps } from "react";
-import { forwardRef, useId } from "react";
+import { forwardRef, memo, useId } from "react";
 import { FieldError } from "./Form";
 
 interface TextAreaProps extends ComponentProps<"textarea"> {
   label?: string;
 }
 
-export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
+const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   function TextArea({ label, ...props }, ref) {
     const id = useId();
 
@@ -30,3 +30,5 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     );
   }
 );
+
+export default memo(TextArea);

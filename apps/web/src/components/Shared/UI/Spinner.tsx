@@ -6,7 +6,7 @@ interface SpinnerProps {
   size?: "xs" | "sm" | "md";
 }
 
-export const Spinner = memo(({ className, size = "md" }: SpinnerProps) => {
+const Spinner = ({ className, size = "md" }: SpinnerProps) => {
   const sizeClasses = { xs: "size-4", sm: "size-5", md: "size-7" };
 
   return (
@@ -32,4 +32,6 @@ export const Spinner = memo(({ className, size = "md" }: SpinnerProps) => {
       </path>
     </svg>
   );
-});
+};
+
+export default memo(Spinner);

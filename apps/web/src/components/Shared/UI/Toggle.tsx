@@ -1,5 +1,6 @@
 import cn from "@/helpers/cn";
 import { Switch } from "@headlessui/react";
+import { memo } from "react";
 
 interface ToggleProps {
   disabled?: boolean;
@@ -7,7 +8,7 @@ interface ToggleProps {
   setOn: (on: boolean) => void;
 }
 
-export const Toggle = ({ disabled = false, on, setOn }: ToggleProps) => {
+const Toggle = ({ disabled = false, on, setOn }: ToggleProps) => {
   return (
     <Switch
       checked={on}
@@ -30,3 +31,5 @@ export const Toggle = ({ disabled = false, on, setOn }: ToggleProps) => {
     </Switch>
   );
 };
+
+export default memo(Toggle);

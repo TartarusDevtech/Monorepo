@@ -8,7 +8,7 @@ import {
 } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import type { ReactNode, SyntheticEvent } from "react";
-import { Fragment } from "react";
+import { Fragment, memo } from "react";
 
 interface ModalProps {
   children: ReactNode | ReactNode[];
@@ -18,13 +18,7 @@ interface ModalProps {
   title?: ReactNode;
 }
 
-export const Modal = ({
-  children,
-  onClose,
-  show,
-  size = "sm",
-  title
-}: ModalProps) => {
+const Modal = ({ children, onClose, show, size = "sm", title }: ModalProps) => {
   const handleClose = (event: SyntheticEvent) => {
     event.stopPropagation(); // This stops the event from propagating further
     onClose?.();
@@ -85,3 +79,5 @@ export const Modal = ({
     </Transition>
   );
 };
+
+export default memo(Modal);

@@ -1,6 +1,6 @@
 import { Card } from "@/components/Shared/UI";
 import humanize from "@/helpers/humanize";
-import type { ReactNode } from "react";
+import { type ReactNode, memo } from "react";
 import { H4 } from "./Typography";
 
 interface NumberedStatsProps {
@@ -20,4 +20,4 @@ const NumberedStat = ({ count, name, suffix }: NumberedStatsProps) => {
   );
 };
 
-export default NumberedStat;
+export default memo(NumberedStat);

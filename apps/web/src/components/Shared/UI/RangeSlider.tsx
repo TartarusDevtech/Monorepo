@@ -1,6 +1,6 @@
 import cn from "@/helpers/cn";
 import * as SliderPrimitive from "@radix-ui/react-slider";
-import { forwardRef } from "react";
+import { forwardRef, memo } from "react";
 
 interface RangeSliderProps extends SliderPrimitive.SliderProps {
   className?: string;
@@ -8,7 +8,7 @@ interface RangeSliderProps extends SliderPrimitive.SliderProps {
   showValueInThumb?: boolean;
 }
 
-export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
+const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
   function RangeSlider(
     { className = "", displayValue, showValueInThumb = false, ...rest },
     ref
@@ -42,3 +42,5 @@ export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
     );
   }
 );
+
+export default memo(RangeSlider);

@@ -1,5 +1,5 @@
 import cn from "@/helpers/cn";
-import type { ReactNode } from "react";
+import { type ReactNode, memo } from "react";
 import { H6 } from "./Typography";
 
 interface WarningMessageProps {
@@ -8,7 +8,7 @@ interface WarningMessageProps {
   title?: string;
 }
 
-export const WarningMessage = ({
+const WarningMessage = ({
   className = "",
   message,
   title
@@ -29,3 +29,5 @@ export const WarningMessage = ({
     </div>
   );
 };
+
+export default memo(WarningMessage);
