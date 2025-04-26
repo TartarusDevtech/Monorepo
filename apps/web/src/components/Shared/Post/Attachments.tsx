@@ -30,7 +30,8 @@ interface AttachmentsProps {
 }
 
 const Attachments = ({ asset, attachments }: AttachmentsProps) => {
-  const [expandedImage, setExpandedImage] = useState<null | string>(null);
+  const [expandedImageIndex, setExpandedImageIndex] = useState<number>(0);
+  const [showLightBox, setShowLightBox] = useState<boolean>(false);
   const processedAttachments = attachments.slice(0, 10);
 
   const assetType = asset?.type;
@@ -53,16 +54,17 @@ const Attachments = ({ asset, attachments }: AttachmentsProps) => {
 
   const displayDecision = determineDisplay();
 
-  const ImageComponent = ({ uri }: { uri: string }) => (
+  const ImageComponent = ({ uri, index }: { uri: string; index: number }) => (
     <Image
       alt={imageKit(uri, ATTACHMENT)}
       className="max-h-[300px] cursor-pointer rounded-lg border border-gray-200 bg-gray-100 object-cover md:max-h-[500px] dark:border-gray-700 dark:bg-gray-800"
       height={1000}
       loading="lazy"
-      onClick={() => setExpandedImage(uri)}
-      onError={({ currentTarget }) => {
-        currentTarget.src = uri;
+      onClick={() => {
+        setExpandedImageIndex(index);
+        setShowLightBox(true);
       }}
+      onError={({ currentTarget }) => (currentTarget.src = uri)}
       src={imageKit(uri, ATTACHMENT)}
       width={1000}
     />
@@ -84,9 +86,18 @@ const Attachments = ({ asset, attachments }: AttachmentsProps) => {
               key={attachment}
               onClick={stopEventPropagation}
             >
-              <ImageComponent uri={attachment} />
+              <ImageComponent uri={attachment} index={index} />
             </div>
           ))}
+          <LightBox
+            show={showLightBox}
+            onClose={() => {
+              setShowLightBox(false);
+              setExpandedImageIndex(0);
+            }}
+            initialIndex={expandedImageIndex}
+            images={displayDecision?.map((attachment) => attachment)}
+          />
         </div>
       )}
       {displayDecision === "displayVideoAsset" && (
@@ -100,13 +111,11 @@ const Attachments = ({ asset, attachments }: AttachmentsProps) => {
       {displayDecision === "displayAudioAsset" && (
         <Audio
           artist={asset?.artist}
-          expandCover={setExpandedImage}
           poster={asset?.cover as string}
           src={asset?.uri as string}
           title={asset?.title}
         />
       )}
-      <LightBox onClose={() => setExpandedImage(null)} url={expandedImage} />
     </div>
   );
 };

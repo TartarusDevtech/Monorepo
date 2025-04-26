@@ -4,7 +4,7 @@ import getAvatar from "@hey/helpers/getAvatar";
 import { AccountDocument } from "@hey/indexer";
 import apolloClient from "@hey/indexer/apollo/client";
 import type { Context } from "hono";
-import { html } from "hono/html";
+import { html, raw } from "hono/html";
 import defaultMetadata from "src/utils/defaultMetadata";
 import { getRedis, setRedis } from "src/utils/redis";
 
@@ -42,8 +42,14 @@ const getAccount = async (ctx: Context) => {
       alternateName: username,
       description,
       image: getAvatar(account, AVATAR_BIG),
-      url: `https://hey.xyz/u/${username}`
+      url: `https://hey.xyz/u/${username}`,
+      memberOf: { "@type": "Organization", name: "Hey.xyz" }
     };
+
+    const escapedJsonLd = JSON.stringify(jsonLd)
+      .replace(/</g, "\\u003c")
+      .replace(/>/g, "\\u003e")
+      .replace(/&/g, "\\u0026");
 
     const ogHtml = html`
       <html>
@@ -67,7 +73,7 @@ const getAccount = async (ctx: Context) => {
           <link rel="canonical" href="https://hey.xyz${link}" />
         </head>
         <body>
-          <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
+          <script type="application/ld+json">${raw(escapedJsonLd)}</script>
           <h1>${title}</h1>
           <h2>${description}</h2>
         </body>
@@ -77,7 +83,7 @@ const getAccount = async (ctx: Context) => {
     const cleanHtml = ogHtml.toString().replace(/\n\s+/g, "").trim();
     await setRedis(cacheKey, cleanHtml);
 
-    return ctx.html(cleanHtml, 200);
+    return ctx.html(ogHtml, 200);
   } catch {
     return ctx.html(defaultMetadata, 500);
   }
