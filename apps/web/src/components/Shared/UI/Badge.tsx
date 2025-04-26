@@ -27,19 +27,19 @@ interface BadgeProps
   children?: ReactNode;
 }
 
-export const Badge = memo(
-  forwardRef<HTMLDivElement, BadgeProps>(function Badge(
-    { children, className, variant, size, ...rest },
-    ref
-  ) {
-    return (
-      <span
-        className={cn(badgeVariants({ variant, size }), className)}
-        ref={ref}
-        {...rest}
-      >
-        {children}
-      </span>
-    );
-  })
-);
+const Badge = forwardRef<HTMLDivElement, BadgeProps>(function Badge(
+  { children, className, variant, size, ...rest },
+  ref
+) {
+  return (
+    <span
+      className={cn(badgeVariants({ variant, size }), className)}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </span>
+  );
+});
+
+export default memo(Badge);

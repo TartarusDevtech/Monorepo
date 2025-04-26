@@ -1,7 +1,7 @@
 import cn from "@/helpers/cn";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
-import { useEffect, useMemo, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import { Spinner } from "./Spinner";
 
 interface LightBoxProps {
@@ -11,7 +11,7 @@ interface LightBoxProps {
   initialIndex?: number;
 }
 
-export const LightBox = ({
+const LightBox = ({
   show,
   onClose,
   images,
@@ -124,3 +124,5 @@ export const LightBox = ({
     </Dialog>
   );
 };
+
+export default memo(LightBox);

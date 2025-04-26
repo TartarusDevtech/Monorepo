@@ -1,6 +1,6 @@
 import cn from "@/helpers/cn";
 import type { ComponentProps, ReactNode } from "react";
-import { forwardRef, useId } from "react";
+import { forwardRef, memo, useId } from "react";
 import { FieldError } from "./Form";
 import HelpTooltip from "./HelpTooltip";
 
@@ -15,7 +15,7 @@ interface InputProps extends Omit<ComponentProps<"input">, "prefix"> {
   prefix?: ReactNode | string;
 }
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
+const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   {
     className = "",
     error,
@@ -91,3 +91,5 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     </label>
   );
 });
+
+export default memo(Input);

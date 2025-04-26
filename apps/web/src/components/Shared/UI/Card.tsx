@@ -1,5 +1,5 @@
 import cn from "@/helpers/cn";
-import type { ElementType, MouseEvent, ReactNode } from "react";
+import { type ElementType, type MouseEvent, type ReactNode, memo } from "react";
 
 interface CardProps {
   as?: ElementType;
@@ -9,7 +9,7 @@ interface CardProps {
   onClick?: (event: MouseEvent<HTMLDivElement>) => void;
 }
 
-export const Card = ({
+const Card = ({
   as: Tag = "div",
   children,
   className = "",
@@ -32,3 +32,5 @@ export const Card = ({
     </Tag>
   );
 };
+
+export default memo(Card);

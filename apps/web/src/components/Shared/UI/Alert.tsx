@@ -1,3 +1,4 @@
+import { Button } from "@/components/Shared/UI";
 import {
   Dialog,
   DialogPanel,
@@ -6,8 +7,7 @@ import {
   TransitionChild
 } from "@headlessui/react";
 import type { ReactNode } from "react";
-import { Fragment } from "react";
-import { Button } from "./Button";
+import { Fragment, memo } from "react";
 import { H4 } from "./Typography";
 
 interface AlertProps {
@@ -22,7 +22,7 @@ interface AlertProps {
   title: ReactNode;
 }
 
-export const Alert = ({
+const Alert = ({
   cancelText = "Cancel",
   children,
   confirmText,
@@ -90,3 +90,5 @@ export const Alert = ({
     </Transition>
   );
 };
+
+export default memo(Alert);

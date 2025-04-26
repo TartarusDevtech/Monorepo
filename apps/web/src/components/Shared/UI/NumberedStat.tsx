@@ -1,6 +1,6 @@
+import { Card } from "@/components/Shared/UI";
 import humanize from "@/helpers/humanize";
 import type { ReactNode } from "react";
-import { Card } from "./Card";
 import { H4 } from "./Typography";
 
 interface NumberedStatsProps {

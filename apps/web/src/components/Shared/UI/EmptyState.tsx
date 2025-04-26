@@ -1,6 +1,6 @@
+import { Card } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
-import type { ReactNode } from "react";
-import { Card } from "./Card";
+import { type ReactNode, memo } from "react";
 
 interface EmptyStateProps {
   hideCard?: boolean;
@@ -9,7 +9,7 @@ interface EmptyStateProps {
   className?: string;
 }
 
-export const EmptyState = ({
+const EmptyState = ({
   hideCard = false,
   icon,
   message,
@@ -29,3 +29,5 @@ export const EmptyState = ({
     </Card>
   );
 };
+
+export default memo(EmptyState);

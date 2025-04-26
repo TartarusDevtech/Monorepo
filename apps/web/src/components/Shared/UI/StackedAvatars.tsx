@@ -1,4 +1,4 @@
-import { Image } from "./Image";
+import { Image } from "@/components/Shared/UI";
 
 interface StackedAvatarsProps {
   avatars: string[];

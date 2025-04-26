@@ -5,9 +5,9 @@ import type {
   Ref,
   SyntheticEvent
 } from "react";
-import { forwardRef, useCallback, useEffect, useState } from "react";
+import { forwardRef, memo, useCallback, useEffect, useState } from "react";
 
-export const Image = forwardRef(function Image(
+const Image = forwardRef(function Image(
   {
     onError,
     ...props
@@ -43,3 +43,5 @@ export const Image = forwardRef(function Image(
     />
   );
 });
+
+export default memo(Image);

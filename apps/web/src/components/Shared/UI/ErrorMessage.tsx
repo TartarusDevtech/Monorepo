@@ -1,4 +1,5 @@
 import cn from "@/helpers/cn";
+import { memo } from "react";
 import { H6 } from "./Typography";
 
 interface ErrorMessageProps {
@@ -7,11 +8,7 @@ interface ErrorMessageProps {
   title?: string;
 }
 
-export const ErrorMessage = ({
-  className = "",
-  error,
-  title
-}: ErrorMessageProps) => {
+const ErrorMessage = ({ className = "", error, title }: ErrorMessageProps) => {
   if (!error) {
     return null;
   }
@@ -30,3 +27,5 @@ export const ErrorMessage = ({
     </div>
   );
 };
+
+export default memo(ErrorMessage);
