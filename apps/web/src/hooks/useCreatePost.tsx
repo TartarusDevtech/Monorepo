@@ -56,7 +56,7 @@ const useCreatePost = ({
       `${isComment ? "Comment" : "Post"} processing...`
     );
     pollTransactionStatus(hash, () => {
-      trackEvent("create_post");
+      trackEvent(isComment ? "create_comment" : "create_post");
       updateCache(hash, toastId);
     });
     return onCompleted();
