@@ -1,5 +1,6 @@
 import { Button, Input, Modal } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
+import { trackEvent } from "@/helpers/trackEvent";
 import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { WRAPPED_NATIVE_TOKEN_SYMBOL } from "@hey/data/constants";
@@ -24,6 +25,7 @@ const Wrap = ({ value, refetch }: WrapProps) => {
     pollTransactionStatus(hash, () => {
       setIsSubmitting(false);
       refetch();
+      trackEvent("wrap_token");
       toast.success("Wrap Successful");
     });
   };

@@ -1,5 +1,6 @@
 import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
+import { trackEvent } from "@/helpers/trackEvent";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useApolloClient } from "@apollo/client";
@@ -56,6 +57,7 @@ const Repost = ({ isSubmitting, post, setIsSubmitting }: RepostProps) => {
     setIsSubmitting(false);
     increment();
     updateCache();
+    trackEvent("repost");
     toast.success("Post has been reposted!");
   };
 

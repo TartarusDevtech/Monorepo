@@ -3,6 +3,7 @@ import Loader from "@/components/Shared/Loader";
 import Slug from "@/components/Shared/Slug";
 import { Button, EmptyState, H6 } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
+import { trackEvent } from "@/helpers/trackEvent";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { AtSymbolIcon } from "@heroicons/react/24/outline";
@@ -20,6 +21,7 @@ const LinkUsername = () => {
 
   const onCompleted = () => {
     setLinkingUsername(null);
+    trackEvent("link_username");
     toast.success("Linked");
   };
 

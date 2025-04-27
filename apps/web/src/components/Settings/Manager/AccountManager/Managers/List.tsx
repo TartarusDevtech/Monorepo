@@ -2,6 +2,7 @@ import WalletAccount from "@/components/Shared/Account/WalletAccount";
 import Loader from "@/components/Shared/Loader";
 import { Button, EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
+import { trackEvent } from "@/helpers/trackEvent";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useApolloClient } from "@apollo/client";
@@ -43,6 +44,7 @@ const List = () => {
   const onCompleted = () => {
     setRemovingManager(null);
     updateCache();
+    trackEvent("remove_manager");
     toast.success("Manager removed successfully");
   };
 

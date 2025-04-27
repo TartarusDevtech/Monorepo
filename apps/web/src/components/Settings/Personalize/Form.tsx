@@ -12,6 +12,7 @@ import {
 } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
 import getAccountAttribute from "@/helpers/getAccountAttribute";
+import { trackEvent } from "@/helpers/trackEvent";
 import trimify from "@/helpers/trimify";
 import uploadMetadata from "@/helpers/uploadMetadata";
 import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";
@@ -70,6 +71,7 @@ const PersonalizeSettingsForm = () => {
       const accountData = await getCurrentAccountDetails();
       setCurrentAccount(accountData?.data?.me.loggedInAs.account);
       setIsSubmitting(false);
+      trackEvent("update_account");
       toast.success("Account updated");
     });
   };

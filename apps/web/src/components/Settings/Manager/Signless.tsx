@@ -1,5 +1,6 @@
 import { Button, H6 } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
+import { trackEvent } from "@/helpers/trackEvent";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useEnableSignlessMutation } from "@hey/indexer";
 import { useState } from "react";
@@ -11,6 +12,7 @@ const Signless = () => {
 
   const onCompleted = () => {
     setIsSubmitting(false);
+    trackEvent("enable_signless");
     toast.success("Signless enabled");
   };
 

@@ -9,6 +9,7 @@ import {
 } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
 import { getSimplePaymentDetails } from "@/helpers/rules";
+import { trackEvent } from "@/helpers/trackEvent";
 import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";
 import usePreventScrollOnNumberInput from "@/hooks/usePreventScrollOnNumberInput";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
@@ -51,7 +52,10 @@ const SuperJoin = ({ group }: SuperJoinProps) => {
   }, [simplePaymentAmount]);
 
   const onCompleted = (hash: string) => {
-    pollTransactionStatus(hash, () => location.reload());
+    pollTransactionStatus(hash, () => {
+      trackEvent("super_join");
+      location.reload();
+    });
   };
 
   const onError = (error: Error) => {

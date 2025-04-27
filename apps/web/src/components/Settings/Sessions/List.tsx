@@ -2,6 +2,7 @@ import Loader from "@/components/Shared/Loader";
 import { Button, EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import formatDate from "@/helpers/datetime/formatDate";
 import errorToast from "@/helpers/errorToast";
+import { trackEvent } from "@/helpers/trackEvent";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { ComputerDesktopIcon, GlobeAltIcon } from "@heroicons/react/24/outline";
 import {
@@ -36,6 +37,7 @@ const List = () => {
   const onCompleted = () => {
     setRevoking(false);
     setRevokeingSessionId(null);
+    trackEvent("revoke_session");
     toast.success("Session revoked");
   };
 

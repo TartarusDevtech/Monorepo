@@ -1,5 +1,6 @@
 import { Button } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
+import { trackEvent } from "@/helpers/trackEvent";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useApolloClient } from "@apollo/client";
 import { type GroupFragment, useLeaveGroupMutation } from "@hey/indexer";
@@ -32,6 +33,7 @@ const Leave = ({ group, setJoined, small }: LeaveProps) => {
     updateCache();
     setIsSubmitting(false);
     setJoined(false);
+    trackEvent("leave_group");
     toast.success("Left group");
   };
 

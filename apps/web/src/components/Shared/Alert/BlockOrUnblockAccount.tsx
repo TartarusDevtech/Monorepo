@@ -1,5 +1,6 @@
 import { Alert } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
+import { trackEvent } from "@/helpers/trackEvent";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useBlockAlertStore } from "@/store/non-persisted/alert/useBlockAlertStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
@@ -42,6 +43,7 @@ const BlockOrUnblockAccount = () => {
     setIsSubmitting(false);
     setHasBlocked(!hasBlocked);
     setShowBlockOrUnblockAlert(false);
+    trackEvent(hasBlocked ? "unblock_account" : "block_account");
     toast.success(
       hasBlocked ? "Unblocked successfully" : "Blocked successfully"
     );

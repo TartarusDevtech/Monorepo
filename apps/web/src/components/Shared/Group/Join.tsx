@@ -1,5 +1,6 @@
 import { Button } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
+import { trackEvent } from "@/helpers/trackEvent";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useApolloClient } from "@apollo/client";
 import { type GroupFragment, useJoinGroupMutation } from "@hey/indexer";
@@ -35,6 +36,7 @@ const Join = ({
     updateCache();
     setIsSubmitting(false);
     setJoined(true);
+    trackEvent("join_group");
     toast.success("Joined group");
   };
 
