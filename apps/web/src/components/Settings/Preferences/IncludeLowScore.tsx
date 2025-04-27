@@ -1,6 +1,7 @@
 import ToggleWithHelper from "@/components/Shared/ToggleWithHelper";
 import errorToast from "@/helpers/errorToast";
 import { hono } from "@/helpers/fetcher";
+import { trackEvent } from "@/helpers/trackEvent";
 import { usePreferencesStore } from "@/store/persisted/usePreferencesStore";
 import { SwatchIcon } from "@heroicons/react/24/outline";
 import { useMutation } from "@tanstack/react-query";
@@ -14,6 +15,7 @@ const IncludeLowScore = () => {
       hono.preferences.update({ includeLowScore }),
     onSuccess: (data) => {
       setIncludeLowScore(data.includeLowScore);
+      trackEvent("update_notification_preference");
       toast.success("Notification preference updated");
     },
     onError: errorToast

@@ -11,6 +11,7 @@ import {
   useZodForm
 } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
+import { trackEvent } from "@/helpers/trackEvent";
 import uploadMetadata from "@/helpers/uploadMetadata";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
@@ -51,6 +52,7 @@ const PersonalizeSettingsForm = ({ group }: PersonalizeSettingsFormProps) => {
 
   const onCompleted = () => {
     setIsSubmitting(false);
+    trackEvent("update_group");
     toast.success("Group updated");
   };
 
