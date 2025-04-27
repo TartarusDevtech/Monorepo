@@ -2,6 +2,7 @@ import { useHiddenCommentFeedStore } from "@/components/Post";
 import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
+import { trackEvent } from "@/helpers/trackEvent";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import type { ApolloCache } from "@apollo/client";
 import { MenuItem } from "@headlessui/react";
@@ -31,6 +32,7 @@ const HideComment = ({ post }: HideCommentProps) => {
 
   const [hideComment] = useHideReplyMutation({
     onCompleted: () => {
+      trackEvent("hide_comment");
       toast.success("Comment hidden");
     },
     onError,

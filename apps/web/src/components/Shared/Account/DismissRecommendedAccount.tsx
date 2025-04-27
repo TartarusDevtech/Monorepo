@@ -1,3 +1,4 @@
+import { trackEvent } from "@/helpers/trackEvent";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
   type AccountFragment,
@@ -14,6 +15,7 @@ const DismissRecommendedAccount = ({
 }: DismissRecommendedAccountProps) => {
   const [dismissRecommendedAccount, { loading }] =
     useMlDismissRecommendedAccountsMutation({
+      onCompleted: () => trackEvent("dismiss_recommended_account"),
       update: (cache) => cache.evict({ id: cache.identify(account) }),
       variables: { request: { accounts: [account.address] } }
     });
