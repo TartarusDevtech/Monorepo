@@ -1,6 +1,7 @@
 import BackButton from "@/components/Shared/BackButton";
 import { Button, Card, CardHeader, H6 } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
+import { trackEvent } from "@/helpers/trackEvent";
 import useHandleWrongNetwork from "@/hooks/useHandleWrongNetwork";
 import { hydrateAuthTokens } from "@/store/persisted/useAuthStore";
 import { Errors } from "@hey/data/errors";
@@ -50,6 +51,7 @@ const Tokens = () => {
       });
 
       if (auth.data?.authenticate.__typename === "AuthenticationTokens") {
+        trackEvent("generate_builder_token");
         setBuilderToken(auth.data?.authenticate.accessToken);
       }
     } catch (error) {
