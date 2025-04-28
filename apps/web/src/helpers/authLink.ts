@@ -44,8 +44,8 @@ const executeTokenRefresh = async (
       return await executeTokenRefresh(refreshToken, attempt + 1);
     }
 
-    const data = await response.json();
-    const refreshResult = data?.data?.refresh as RefreshResult;
+    const { data } = await response.json();
+    const refreshResult = data?.refresh as RefreshResult;
 
     if (!refreshResult) {
       throw new Error("No response from refresh");
@@ -83,9 +83,6 @@ const executeTokenRefresh = async (
     }
 
     throw new Error("Unknown error during token refresh");
-  } catch (error) {
-    signOut();
-    throw error;
   } finally {
     refreshPromise = null;
   }
@@ -108,8 +105,10 @@ const authLink = new ApolloLink((operation, forward) => {
   }
 
   const tokenData = parseJwt(accessToken);
+  const bufferInMinutes = 5;
   const isExpiringSoon =
-    tokenData?.exp && Date.now() >= tokenData.exp * 1000 - 2 * 60 * 1000;
+    tokenData?.exp &&
+    Date.now() >= tokenData.exp * 1000 - bufferInMinutes * 60 * 1000;
 
   if (!isExpiringSoon) {
     operation.setContext({
