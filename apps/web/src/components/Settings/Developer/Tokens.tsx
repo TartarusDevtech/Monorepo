@@ -73,6 +73,7 @@ const Tokens = () => {
           <button
             className="cursor-pointer break-all rounded-md bg-gray-300 p-2 px-3 text-left dark:bg-gray-600"
             onClick={() => {
+              trackEvent("copy_access_token");
               toast.success("Copied to clipboard");
               navigator.clipboard.writeText(accessToken as string);
             }}
@@ -86,6 +87,7 @@ const Tokens = () => {
           <button
             className="cursor-pointer break-all rounded-md bg-gray-300 p-2 px-3 text-left dark:bg-gray-600"
             onClick={() => {
+              trackEvent("copy_refresh_token");
               toast.success("Copied to clipboard");
               navigator.clipboard.writeText(refreshToken as string);
             }}
@@ -100,6 +102,7 @@ const Tokens = () => {
             className="cursor-pointer break-all rounded-md bg-gray-300 p-2 px-3 text-left dark:bg-gray-600"
             type="button"
             onClick={() => {
+              trackEvent("copy_id_token");
               toast.success("Copied to clipboard");
               navigator.clipboard.writeText(idToken as string);
             }}
@@ -121,6 +124,7 @@ const Tokens = () => {
               className="mt-5 cursor-pointer break-all rounded-md bg-gray-300 p-2 px-3 text-left dark:bg-gray-600"
               type="button"
               onClick={() => {
+                trackEvent("copy_builder_token");
                 toast.success("Copied to clipboard");
                 navigator.clipboard.writeText(builderToken as string);
               }}

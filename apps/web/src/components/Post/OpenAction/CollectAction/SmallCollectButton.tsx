@@ -1,4 +1,5 @@
 import { Button, Modal } from "@/components/Shared/UI";
+import { trackEvent } from "@/helpers/trackEvent";
 import type { PostFragment } from "@hey/indexer";
 import { useState } from "react";
 import CollectActionBody from "./CollectActionBody";
@@ -14,7 +15,10 @@ const SmallCollectButton = ({ post }: SmallCollectButtonProps) => {
   return (
     <>
       <Button
-        onClick={() => setShowCollectModal(true)}
+        onClick={() => {
+          trackEvent("open_collect_modal");
+          setShowCollectModal(true);
+        }}
         outline={!hasSimpleCollected}
         size="sm"
       >

@@ -70,7 +70,10 @@ const Withdraw = ({ currency, value, refetch }: WithdrawProps) => {
       <Button
         size="sm"
         outline
-        onClick={() => setShowModal(true)}
+        onClick={() => {
+          trackEvent("open_withdraw_token_modal");
+          setShowModal(true);
+        }}
         disabled={isSubmitting || valueToWithdraw === "0"}
         loading={isSubmitting}
       >

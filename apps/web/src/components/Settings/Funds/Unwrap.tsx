@@ -63,7 +63,10 @@ const Unwrap = ({ value, refetch }: UnwrapProps) => {
       <Button
         size="sm"
         outline
-        onClick={() => setShowModal(true)}
+        onClick={() => {
+          trackEvent("open_unwrap_token_modal");
+          setShowModal(true);
+        }}
         disabled={isSubmitting || valueToUnwrap === "0"}
         loading={isSubmitting}
       >

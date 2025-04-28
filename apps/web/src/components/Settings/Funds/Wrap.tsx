@@ -63,7 +63,10 @@ const Wrap = ({ value, refetch }: WrapProps) => {
       <Button
         size="sm"
         outline
-        onClick={() => setShowModal(true)}
+        onClick={() => {
+          trackEvent("open_wrap_token_modal");
+          setShowModal(true);
+        }}
         disabled={isSubmitting || valueToWrap === "0"}
         loading={isSubmitting}
       >

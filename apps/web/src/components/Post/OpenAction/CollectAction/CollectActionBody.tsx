@@ -14,6 +14,7 @@ import formatDate from "@/helpers/datetime/formatDate";
 import getTokenImage from "@/helpers/getTokenImage";
 import humanize from "@/helpers/humanize";
 import nFormatter from "@/helpers/nFormatter";
+import { trackEvent } from "@/helpers/trackEvent";
 import {
   CheckCircleIcon,
   ClockIcon,
@@ -168,7 +169,10 @@ const CollectActionBody = ({
               <UsersIcon className="size-4 text-gray-500 dark:text-gray-200" />
               <button
                 className="font-bold"
-                onClick={() => setShowCollectorsModal(true)}
+                onClick={() => {
+                  trackEvent("open_collectors_modal");
+                  setShowCollectorsModal(true);
+                }}
                 type="button"
               >
                 {humanize(collects)} {plur("collector", collects)}

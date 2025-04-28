@@ -1,5 +1,6 @@
 import { Modal, Tooltip } from "@/components/Shared/UI";
 import humanize from "@/helpers/humanize";
+import { trackEvent } from "@/helpers/trackEvent";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import type { PostFragment } from "@hey/indexer";
 import { AnimateNumber } from "motion-plus-react";
@@ -20,7 +21,10 @@ const CollectAction = ({ post }: CollectActionProps) => {
       <button
         aria-label="Collect"
         className="rounded-full p-1.5 outline-offset-2 hover:bg-gray-300/20"
-        onClick={() => setShowCollectModal(true)}
+        onClick={() => {
+          trackEvent("open_collect_modal");
+          setShowCollectModal(true);
+        }}
         type="button"
       >
         <Tooltip

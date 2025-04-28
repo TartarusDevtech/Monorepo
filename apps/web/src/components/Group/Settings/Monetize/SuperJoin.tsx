@@ -53,7 +53,7 @@ const SuperJoin = ({ group }: SuperJoinProps) => {
 
   const onCompleted = (hash: string) => {
     pollTransactionStatus(hash, () => {
-      trackEvent("super_join");
+      trackEvent("update_super_join");
       location.reload();
     });
   };

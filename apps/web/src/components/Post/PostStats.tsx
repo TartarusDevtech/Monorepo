@@ -2,6 +2,7 @@ import Likes from "@/components/Shared/Modal/Likes";
 import PostExecutors from "@/components/Shared/Modal/PostExecutors";
 import Reposts from "@/components/Shared/Modal/Reposts";
 import { Modal } from "@/components/Shared/UI";
+import { trackEvent } from "@/helpers/trackEvent";
 import type { PostFragment } from "@hey/indexer";
 import { AnimateNumber } from "motion-plus-react";
 import plur from "plur";
@@ -74,7 +75,10 @@ const PostStats = ({ post }: PostStatsProps) => {
         {reposts > 0 ? (
           <button
             className="outline-offset-2"
-            onClick={() => setShowRepostsModal(true)}
+            onClick={() => {
+              trackEvent("open_reposts_modal");
+              setShowRepostsModal(true);
+            }}
             type="button"
           >
             <AnimatedNumber
@@ -96,7 +100,10 @@ const PostStats = ({ post }: PostStatsProps) => {
         {reactions > 0 ? (
           <button
             className="outline-offset-2"
-            onClick={() => setShowLikesModal(true)}
+            onClick={() => {
+              trackEvent("open_likes_modal");
+              setShowLikesModal(true);
+            }}
             type="button"
           >
             <AnimatedNumber
@@ -109,7 +116,10 @@ const PostStats = ({ post }: PostStatsProps) => {
         {tips > 0 ? (
           <button
             className="outline-offset-2"
-            onClick={() => setShowPostExecutorsModal("Tippers")}
+            onClick={() => {
+              trackEvent("open_tippers_modal");
+              setShowPostExecutorsModal("Tippers");
+            }}
             type="button"
           >
             <AnimatedNumber
@@ -122,7 +132,10 @@ const PostStats = ({ post }: PostStatsProps) => {
         {collects > 0 ? (
           <button
             className="outline-offset-2"
-            onClick={() => setShowPostExecutorsModal("Collectors")}
+            onClick={() => {
+              trackEvent("open_collectors_modal");
+              setShowPostExecutorsModal("Collectors");
+            }}
             type="button"
           >
             <AnimatedNumber

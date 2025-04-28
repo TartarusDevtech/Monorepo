@@ -1,6 +1,7 @@
 import SingleAccount from "@/components/Shared/Account/SingleAccount";
 import SingleAccountShimmer from "@/components/Shared/Shimmer/SingleAccountShimmer";
 import { Card, ErrorMessage, Modal } from "@/components/Shared/UI";
+import { trackEvent } from "@/helpers/trackEvent";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import {
   type AccountFragment,
@@ -71,7 +72,10 @@ const RelevantPeople = ({ mentions }: RelevantPeopleProps) => {
         {(data?.accountsBulk?.length || 0) > 5 && (
           <button
             className="font-bold text-gray-500 dark:text-gray-200"
-            onClick={() => setShowMore(true)}
+            onClick={() => {
+              trackEvent("show_more_relevant_people_modal");
+              setShowMore(true);
+            }}
             type="button"
           >
             Show more
