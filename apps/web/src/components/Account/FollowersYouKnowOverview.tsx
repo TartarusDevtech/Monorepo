@@ -1,6 +1,6 @@
 import FollowersYouKnow from "@/components/Shared/Modal/FollowersYouKnow";
 import { Modal, StackedAvatars } from "@/components/Shared/UI";
-import { trackEvent } from "@/helpers/trackEvent";
+import trackEvent from "@/helpers/trackEvent";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { AVATAR_TINY } from "@hey/data/constants";
 import getAccount from "@hey/helpers/getAccount";

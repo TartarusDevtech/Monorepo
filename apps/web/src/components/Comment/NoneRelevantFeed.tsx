@@ -1,7 +1,7 @@
 import { useHiddenCommentFeedStore } from "@/components/Post";
 import SinglePost from "@/components/Post/SinglePost";
 import { Card, StackedAvatars } from "@/components/Shared/UI";
-import { trackEvent } from "@/helpers/trackEvent";
+import trackEvent from "@/helpers/trackEvent";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { AVATAR_TINY } from "@hey/data/constants";
 import getAvatar from "@hey/helpers/getAvatar";

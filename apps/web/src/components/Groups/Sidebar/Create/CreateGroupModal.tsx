@@ -7,7 +7,7 @@ import {
   useZodForm
 } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
-import { trackEvent } from "@/helpers/trackEvent";
+import trackEvent from "@/helpers/trackEvent";
 import uploadMetadata from "@/helpers/uploadMetadata";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { Regex } from "@hey/data/regex";

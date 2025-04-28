@@ -8,7 +8,9 @@ declare global {
   }
 }
 
-export const trackEvent = (name: string) => {
+const trackEvent = (name: string) => {
   if (!window?.gtag) return;
   window.gtag("event", name);
 };
+
+export default trackEvent;

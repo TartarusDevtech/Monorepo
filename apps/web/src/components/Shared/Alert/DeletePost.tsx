@@ -1,6 +1,6 @@
 import { Alert } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
-import { trackEvent } from "@/helpers/trackEvent";
+import trackEvent from "@/helpers/trackEvent";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useDeletePostAlertStore } from "@/store/non-persisted/alert/useDeletePostAlertStore";
 import { useApolloClient } from "@apollo/client";

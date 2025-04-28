@@ -1,4 +1,4 @@
-import { trackEvent } from "@/helpers/trackEvent";
+import trackEvent from "@/helpers/trackEvent";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
   type AccountFragment,

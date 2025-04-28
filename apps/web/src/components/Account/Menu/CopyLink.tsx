@@ -1,6 +1,6 @@
 import cn from "@/helpers/cn";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
-import { trackEvent } from "@/helpers/trackEvent";
+import trackEvent from "@/helpers/trackEvent";
 import { MenuItem } from "@headlessui/react";
 import { LinkIcon } from "@heroicons/react/24/outline";
 import getAccount from "@hey/helpers/getAccount";

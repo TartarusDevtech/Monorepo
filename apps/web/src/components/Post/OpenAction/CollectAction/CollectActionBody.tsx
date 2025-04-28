@@ -14,7 +14,7 @@ import formatDate from "@/helpers/datetime/formatDate";
 import getTokenImage from "@/helpers/getTokenImage";
 import humanize from "@/helpers/humanize";
 import nFormatter from "@/helpers/nFormatter";
-import { trackEvent } from "@/helpers/trackEvent";
+import trackEvent from "@/helpers/trackEvent";
 import {
   CheckCircleIcon,
   ClockIcon,

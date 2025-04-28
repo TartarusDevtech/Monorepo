@@ -15,16 +15,6 @@ import { Outlet, useLocation } from "react-router";
 import { Toaster, type ToasterProps } from "sonner";
 import { Spinner } from "../Shared/UI";
 
-declare global {
-  interface Window {
-    gtag: (
-      command: string,
-      target: string,
-      config?: Record<string, any>
-    ) => void;
-  }
-}
-
 const Layout = () => {
   const { pathname } = useLocation();
   const { theme } = useTheme();

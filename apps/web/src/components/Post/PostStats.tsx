@@ -2,7 +2,7 @@ import Likes from "@/components/Shared/Modal/Likes";
 import PostExecutors from "@/components/Shared/Modal/PostExecutors";
 import Reposts from "@/components/Shared/Modal/Reposts";
 import { Modal } from "@/components/Shared/UI";
-import { trackEvent } from "@/helpers/trackEvent";
+import trackEvent from "@/helpers/trackEvent";
 import type { PostFragment } from "@hey/indexer";
 import { AnimateNumber } from "motion-plus-react";
 import plur from "plur";

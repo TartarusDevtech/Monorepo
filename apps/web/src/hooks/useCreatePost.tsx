@@ -1,4 +1,4 @@
-import { trackEvent } from "@/helpers/trackEvent";
+import trackEvent from "@/helpers/trackEvent";
 import { useApolloClient } from "@apollo/client";
 import {
   PostDocument,

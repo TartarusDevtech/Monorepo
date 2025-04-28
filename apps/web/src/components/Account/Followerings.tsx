@@ -3,7 +3,7 @@ import Following from "@/components/Shared/Modal/Following";
 import GraphStatsShimmer from "@/components/Shared/Shimmer/GraphStatsShimmer";
 import { Modal } from "@/components/Shared/UI";
 import humanize from "@/helpers/humanize";
-import { trackEvent } from "@/helpers/trackEvent";
+import trackEvent from "@/helpers/trackEvent";
 import getAccount from "@hey/helpers/getAccount";
 import { type AccountFragment, useAccountStatsQuery } from "@hey/indexer";
 import plur from "plur";

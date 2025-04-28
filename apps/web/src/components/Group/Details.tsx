@@ -2,7 +2,7 @@ import JoinLeaveButton from "@/components/Shared/Group/JoinLeaveButton";
 import Markup from "@/components/Shared/Markup";
 import { Button, H3, Image, LightBox } from "@/components/Shared/UI";
 import getMentions from "@/helpers/getMentions";
-import { trackEvent } from "@/helpers/trackEvent";
+import trackEvent from "@/helpers/trackEvent";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { AVATAR_BIG, EXPANDED_AVATAR } from "@hey/data/constants";
 import getAvatar from "@hey/helpers/getAvatar";

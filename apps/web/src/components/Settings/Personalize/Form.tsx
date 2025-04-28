@@ -12,7 +12,7 @@ import {
 } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
 import getAccountAttribute from "@/helpers/getAccountAttribute";
-import { trackEvent } from "@/helpers/trackEvent";
+import trackEvent from "@/helpers/trackEvent";
 import trimify from "@/helpers/trimify";
 import uploadMetadata from "@/helpers/uploadMetadata";
 import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";

@@ -1,6 +1,6 @@
 import { Modal, Tooltip } from "@/components/Shared/UI";
 import humanize from "@/helpers/humanize";
-import { trackEvent } from "@/helpers/trackEvent";
+import trackEvent from "@/helpers/trackEvent";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import type { PostFragment } from "@hey/indexer";
 import { AnimateNumber } from "motion-plus-react";
