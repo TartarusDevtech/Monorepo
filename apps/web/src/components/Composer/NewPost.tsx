@@ -21,7 +21,7 @@ const NewPost = ({ feed }: NewPostProps) => {
   const { setPostContent } = usePostStore();
   const [showComposer, setShowComposer] = useState(false);
 
-  const handleOpenModal = () => {
+  const handleOpenComposer = () => {
     setShowComposer(true);
   };
 
@@ -40,7 +40,7 @@ const NewPost = ({ feed }: NewPostProps) => {
         processedHashtags ? ` ${processedHashtags} ` : ""
       }${url ? `\n\n${url}` : ""}${via ? `\n\nvia @${via}` : ""}`;
 
-      handleOpenModal();
+      handleOpenComposer();
       setPostContent(content);
     }
   }, [text, hashtags, url, via]);
@@ -52,7 +52,7 @@ const NewPost = ({ feed }: NewPostProps) => {
   return (
     <Card
       className="cursor-pointer space-y-3 px-5 py-4"
-      onClick={handleOpenModal}
+      onClick={handleOpenComposer}
     >
       <div className="flex items-center space-x-3">
         <Image

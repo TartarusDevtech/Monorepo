@@ -1,5 +1,6 @@
 import cn from "@/helpers/cn";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
+import { trackEvent } from "@/helpers/trackEvent";
 import { MenuItem } from "@headlessui/react";
 import { LinkIcon } from "@heroicons/react/24/outline";
 import getAccount from "@hey/helpers/getAccount";
@@ -25,6 +26,7 @@ const CopyLink = ({ account }: CopyLinkProps) => {
         await navigator.clipboard.writeText(
           `${location.origin}${getAccount(account).link}`
         );
+        trackEvent("copy_account_link");
         toast.success("Link copied to clipboard!");
       }}
     >

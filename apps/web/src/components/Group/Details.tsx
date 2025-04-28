@@ -2,6 +2,7 @@ import JoinLeaveButton from "@/components/Shared/Group/JoinLeaveButton";
 import Markup from "@/components/Shared/Markup";
 import { Button, H3, Image, LightBox } from "@/components/Shared/UI";
 import getMentions from "@/helpers/getMentions";
+import { trackEvent } from "@/helpers/trackEvent";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { AVATAR_BIG, EXPANDED_AVATAR } from "@hey/data/constants";
 import getAvatar from "@hey/helpers/getAvatar";
@@ -27,7 +28,10 @@ const Details = ({ group }: DetailsProps) => {
             alt={group.address}
             className="size-32 cursor-pointer rounded-xl bg-gray-200 ring-3 ring-gray-50 sm:size-36 dark:bg-gray-700 dark:ring-black"
             height={128}
-            onClick={() => setShowLightBox(true)}
+            onClick={() => {
+              trackEvent("expand_group_avatar");
+              setShowLightBox(true);
+            }}
             src={getAvatar(group, AVATAR_BIG)}
             width={128}
           />

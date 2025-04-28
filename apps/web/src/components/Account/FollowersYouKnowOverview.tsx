@@ -1,5 +1,6 @@
 import FollowersYouKnow from "@/components/Shared/Modal/FollowersYouKnow";
 import { Modal, StackedAvatars } from "@/components/Shared/UI";
+import { trackEvent } from "@/helpers/trackEvent";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { AVATAR_TINY } from "@hey/data/constants";
 import getAccount from "@hey/helpers/getAccount";
@@ -53,7 +54,10 @@ const FollowersYouKnowOverview = ({
   const Wrapper = ({ children }: { children: ReactNode }) => (
     <button
       className="flex cursor-pointer items-center gap-x-2 text-gray-500 text-sm dark:text-gray-200"
-      onClick={() => setShowMutualFollowersModal(true)}
+      onClick={() => {
+        trackEvent("open_followers_you_know_modal");
+        setShowMutualFollowersModal(true);
+      }}
       type="button"
     >
       <StackedAvatars
