@@ -1,7 +1,7 @@
 import { HEY_TREASURY } from "@hey/data/constants";
 
-const DOMAIN_PARAM_MAP: Record<string, string> = {
-  "zora.co": "referrer"
+const DOMAIN_PARAM_MAP: Record<string, { name: string; value: string }> = {
+  "zora.co": { name: "referrer", value: HEY_TREASURY }
 };
 
 const injectReferrerToUrl = (url: string) => {
@@ -12,7 +12,7 @@ const injectReferrerToUrl = (url: string) => {
     return url;
   }
 
-  parsedUrl.searchParams.set(param, HEY_TREASURY);
+  parsedUrl.searchParams.set(param.name, param.value);
   return parsedUrl.toString();
 };
 
