@@ -1,5 +1,6 @@
 import { Card } from "@/components/Shared/UI";
 import getFavicon from "@/helpers/getFavicon";
+import injectReferrerToUrl from "@/helpers/injectReferrerToUrl";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
 import type { Oembed } from "@hey/types/api";
 import { Link } from "react-router";
@@ -13,15 +14,16 @@ const Embed = ({ og }: EmbedProps) => {
     return null;
   }
 
-  const favicon = getFavicon(og.url);
+  const url = injectReferrerToUrl(og.url);
+  const favicon = getFavicon(url);
 
   return (
     <div className="mt-4 w-full text-sm md:w-4/6">
       <Link
-        to={og.url}
+        to={url}
         onClick={stopEventPropagation}
         rel="noreferrer noopener"
-        target={og.url.includes(location.host) ? "_self" : "_blank"}
+        target={url.includes(location.host) ? "_self" : "_blank"}
       >
         <Card className="truncate p-5" forceRounded>
           <div className="flex flex-col gap-y-1">
@@ -33,7 +35,7 @@ const Embed = ({ og }: EmbedProps) => {
                     className="size-4 rounded-full"
                     height={16}
                     src={favicon}
-                    title={og.url}
+                    title={url}
                     width={16}
                   />
                 ) : null}
