@@ -1,3 +1,4 @@
+import injectReferrerToUrl from "@/helpers/injectReferrerToUrl";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
 import truncateUrl from "@/helpers/truncateUrl";
 import type { MarkupLinkProps } from "@hey/types/misc";
@@ -14,12 +15,14 @@ const ExternalLink = ({ title }: MarkupLinkProps) => {
     href = `https://${href}`;
   }
 
+  const url = injectReferrerToUrl(href);
+
   return (
     <Link
-      to={href}
+      to={url}
       onClick={stopEventPropagation}
       rel="noopener"
-      target={href.includes(location.host) ? "_self" : "_blank"}
+      target={url.includes(location.host) ? "_self" : "_blank"}
     >
       {title ? truncateUrl(title, 30) : title}
     </Link>
