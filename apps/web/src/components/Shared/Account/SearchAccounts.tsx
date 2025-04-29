@@ -1,6 +1,7 @@
 import { Card, Input } from "@/components/Shared/UI";
 import {
   type AccountFragment,
+  AccountsOrderBy,
   type AccountsRequest,
   PageSize,
   useAccountsLazyQuery
@@ -34,6 +35,7 @@ const SearchAccounts = ({
     const keyword = event.target.value;
     const request: AccountsRequest = {
       pageSize: PageSize.Fifty,
+      orderBy: AccountsOrderBy.BestMatch,
       filter: { searchBy: { localNameQuery: keyword } }
     };
 

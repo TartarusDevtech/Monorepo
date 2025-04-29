@@ -8,6 +8,7 @@ import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import getAccount from "@hey/helpers/getAccount";
 import {
   type AccountFragment,
+  AccountsOrderBy,
   type AccountsRequest,
   PageSize,
   useAccountsLazyQuery
@@ -64,6 +65,7 @@ const Search = ({ placeholder = "Search…" }: SearchProps) => {
     if (pathname !== "/search" && showDropdown && debouncedSearchText) {
       const request: AccountsRequest = {
         pageSize: PageSize.Fifty,
+        orderBy: AccountsOrderBy.BestMatch,
         filter: { searchBy: { localNameQuery: debouncedSearchText } }
       };
 

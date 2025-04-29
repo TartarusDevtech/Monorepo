@@ -2,7 +2,12 @@ import SingleAccount from "@/components/Shared/Account/SingleAccount";
 import SingleAccountsShimmer from "@/components/Shared/Shimmer/SingleAccountsShimmer";
 import { Card, EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import { UsersIcon } from "@heroicons/react/24/outline";
-import { type AccountsRequest, PageSize, useAccountsQuery } from "@hey/indexer";
+import {
+  AccountsOrderBy,
+  type AccountsRequest,
+  PageSize,
+  useAccountsQuery
+} from "@hey/indexer";
 import { useIntersectionObserver } from "@uidotdev/usehooks";
 import { useEffect } from "react";
 import { WindowVirtualizer } from "virtua";
@@ -20,6 +25,7 @@ const Accounts = ({ query }: AccountsProps) => {
 
   const request: AccountsRequest = {
     pageSize: PageSize.Fifty,
+    orderBy: AccountsOrderBy.BestMatch,
     filter: { searchBy: { localNameQuery: query } }
   };
 

@@ -1,6 +1,6 @@
 import getAccount from "@hey/helpers/getAccount";
 import getAvatar from "@hey/helpers/getAvatar";
-import { useAccountsLazyQuery } from "@hey/indexer";
+import { AccountsOrderBy, useAccountsLazyQuery } from "@hey/indexer";
 import { useEffect, useState } from "react";
 
 const SUGGESTION_LIST_LENGTH_LIMIT = 5;
@@ -25,7 +25,10 @@ const useMentionQuery = (query: string): MentionAccount[] => {
 
     searchAccounts({
       variables: {
-        request: { filter: { searchBy: { localNameQuery: query } } }
+        request: {
+          orderBy: AccountsOrderBy.BestMatch,
+          filter: { searchBy: { localNameQuery: query } }
+        }
       }
     }).then(({ data }) => {
       const search = data?.accounts;
