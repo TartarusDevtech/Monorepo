@@ -26,6 +26,16 @@ import type { ChangeEvent, RefObject } from "react";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
 
+const getCutFromReferralPool = (amount: number): number => {
+  const lensFeePercent = 1.5;
+  const referralPoolPercent = 20;
+  const lensFee = (lensFeePercent / 100) * amount;
+  const postLens = amount - lensFee;
+  const referralPool = (referralPoolPercent / 100) * postLens;
+  const yourCutPercentInReferralPool = (lensFee / referralPool) * 100;
+  return Number.parseFloat(yourCutPercentInReferralPool.toFixed(6));
+};
+
 const submitButtonClassName = "w-full py-1.5 text-sm font-semibold";
 
 interface TipMenuProps {
@@ -139,7 +149,9 @@ const TipMenu = ({ closePopover, post, account }: TipMenuProps) => {
     setIsSubmitting(true);
 
     const tipping: TippingAmountInput = {
-      referrals: [{ address: HEY_TREASURY, percent: 8 }],
+      referrals: [
+        { address: HEY_TREASURY, percent: getCutFromReferralPool(amount) }
+      ],
       currency: DEFAULT_COLLECT_TOKEN,
       value: cryptoRate.toString()
     };
