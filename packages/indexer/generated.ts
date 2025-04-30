@@ -86,7 +86,7 @@ export type AccountActionConfigInput = {
 };
 
 export type AccountActionExecuteInput = {
-  tipping?: InputMaybe<AmountInput>;
+  tipping?: InputMaybe<TippingAmountInput>;
   unknown?: InputMaybe<UnknownActionExecuteInput>;
 };
 
@@ -1114,7 +1114,7 @@ export type CreatePostRequest = {
   actions?: InputMaybe<Array<PostActionConfigInput>>;
   commentOn?: InputMaybe<ReferencingPostInput>;
   contentUri: Scalars['URI']['input'];
-  feed?: Scalars['EvmAddress']['input'];
+  feed?: InputMaybe<Scalars['EvmAddress']['input']>;
   feedRulesProcessingParams?: InputMaybe<Array<FeedRulesProcessingParams>>;
   quoteOf?: InputMaybe<ReferencingPostInput>;
   rules?: InputMaybe<PostRulesConfigInput>;
@@ -3850,7 +3850,7 @@ export type PostActionContractsRequest = {
 
 export type PostActionExecuteInput = {
   simpleCollect?: InputMaybe<SimpleCollectExecuteInput>;
-  tipping?: InputMaybe<AmountInput>;
+  tipping?: InputMaybe<TippingAmountInput>;
   unknown?: InputMaybe<UnknownActionExecuteInput>;
 };
 
@@ -5967,6 +5967,12 @@ export type TippingAccountActionExecuted = {
   amount: Erc20Amount;
   executedAt: Scalars['DateTime']['output'];
   executedBy: Account;
+};
+
+export type TippingAmountInput = {
+  currency: Scalars['EvmAddress']['input'];
+  referrals?: InputMaybe<Array<ReferralCut>>;
+  value: Scalars['BigDecimal']['input'];
 };
 
 export type TippingPostActionContract = {

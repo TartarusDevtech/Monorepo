@@ -104,7 +104,7 @@ const CollectActionButton = ({
     hasAmount = true;
   }
 
-  const [executePostAction] = useExecutePostActionMutation({
+  const [executeCollectAction] = useExecutePostActionMutation({
     onCompleted: async ({ executePostAction }) => {
       if (executePostAction.__typename === "ExecutePostActionResponse") {
         return onCompleted();
@@ -122,7 +122,7 @@ const CollectActionButton = ({
   const handleCreateCollect = async () => {
     setIsSubmitting(true);
 
-    return await executePostAction({
+    return await executeCollectAction({
       variables: {
         request: {
           post: post.id,

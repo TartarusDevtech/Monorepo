@@ -11,11 +11,13 @@ import { useApolloClient } from "@apollo/client";
 import {
   DEFAULT_COLLECT_TOKEN,
   DEFAULT_TOKEN,
+  HEY_TREASURY,
   WRAPPED_NATIVE_TOKEN_SYMBOL
 } from "@hey/data/constants";
 import {
   type AccountFragment,
   type PostFragment,
+  type TippingAmountInput,
   useAccountBalancesQuery,
   useExecuteAccountActionMutation,
   useExecutePostActionMutation
@@ -93,7 +95,7 @@ const TipMenu = ({ closePopover, post, account }: TipMenuProps) => {
 
   const canTip = Number(erc20Balance) >= cryptoRate;
 
-  const [executePostAction] = useExecutePostActionMutation({
+  const [executeTipAction] = useExecutePostActionMutation({
     onCompleted: async ({ executePostAction }) => {
       if (executePostAction.__typename === "ExecutePostActionResponse") {
         return onCompleted();
@@ -136,13 +138,14 @@ const TipMenu = ({ closePopover, post, account }: TipMenuProps) => {
   const handleTip = async () => {
     setIsSubmitting(true);
 
-    const tipping = {
+    const tipping: TippingAmountInput = {
+      referrals: [{ address: HEY_TREASURY, percent: 8 }],
       currency: DEFAULT_COLLECT_TOKEN,
       value: cryptoRate.toString()
     };
 
     if (post) {
-      return executePostAction({
+      return executeTipAction({
         variables: { request: { post: post.id, action: { tipping } } }
       });
     }
