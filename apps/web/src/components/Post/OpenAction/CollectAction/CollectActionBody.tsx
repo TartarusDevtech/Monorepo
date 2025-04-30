@@ -58,7 +58,7 @@ const CollectActionBody = ({
   });
 
   if (loading) {
-    return <Loader className="py-10" />;
+    return <Loader className="my-10" />;
   }
 
   const targetAction =
