@@ -22,7 +22,7 @@ interface TransferProps {
 const Transfer = ({ token }: TransferProps) => {
   const { setShowFundModal } = useFundModalStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [amount, setAmount] = useState(2);
+  const [amount, setAmount] = useState(1);
   const [other, setOther] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   usePreventScrollOnNumberInput(inputRef as RefObject<HTMLInputElement>);
@@ -119,6 +119,13 @@ const Transfer = ({ token }: TransferProps) => {
         <div className="flex space-x-4 text-sm">
           <Button
             className="w-full"
+            onClick={() => handleSetAmount(1)}
+            outline={amount !== 1}
+          >
+            1
+          </Button>
+          <Button
+            className="w-full"
             onClick={() => handleSetAmount(2)}
             outline={amount !== 2}
           >
@@ -133,15 +140,8 @@ const Transfer = ({ token }: TransferProps) => {
           </Button>
           <Button
             className="w-full"
-            onClick={() => handleSetAmount(10)}
-            outline={amount !== 10}
-          >
-            10
-          </Button>
-          <Button
-            className="w-full"
             onClick={() => {
-              handleSetAmount(other ? 2 : 20);
+              handleSetAmount(other ? 1 : 10);
               setOther(!other);
             }}
             outline={!other}

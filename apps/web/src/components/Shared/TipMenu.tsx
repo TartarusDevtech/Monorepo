@@ -47,7 +47,7 @@ interface TipMenuProps {
 const TipMenu = ({ closePopover, post, account }: TipMenuProps) => {
   const { currentAccount } = useAccountStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [amount, setAmount] = useState(2);
+  const [amount, setAmount] = useState(1);
   const [other, setOther] = useState(false);
   const handleTransactionLifecycle = useTransactionLifecycle();
   const { cache } = useApolloClient();
@@ -194,6 +194,14 @@ const TipMenu = ({ closePopover, post, account }: TipMenuProps) => {
       <div className="space-x-4">
         <Button
           disabled={amountDisabled}
+          onClick={() => handleSetAmount(1)}
+          outline={amount !== 1}
+          size="sm"
+        >
+          $1
+        </Button>
+        <Button
+          disabled={amountDisabled}
           onClick={() => handleSetAmount(2)}
           outline={amount !== 2}
           size="sm"
@@ -210,16 +218,8 @@ const TipMenu = ({ closePopover, post, account }: TipMenuProps) => {
         </Button>
         <Button
           disabled={amountDisabled}
-          onClick={() => handleSetAmount(10)}
-          outline={amount !== 10}
-          size="sm"
-        >
-          $10
-        </Button>
-        <Button
-          disabled={amountDisabled}
           onClick={() => {
-            handleSetAmount(other ? 2 : 20);
+            handleSetAmount(other ? 1 : 10);
             setOther(!other);
           }}
           outline={!other}
