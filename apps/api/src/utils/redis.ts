@@ -40,9 +40,9 @@ export const hoursToSeconds = (hours: number): number => {
   return hours * 60 * 60;
 };
 
-// Generates a random expiry time between 2 to 4 days
-export const generateLongExpiry = (): number => {
-  return randomNumber(hoursToSeconds(2 * 24), hoursToSeconds(4 * 24));
+// Generates a random expiry time between 1 to 2 days
+export const generateSmallExpiry = (): number => {
+  return randomNumber(hoursToSeconds(1 * 24), hoursToSeconds(2 * 24));
 };
 
 // Generates a random expiry time between 8 and 10 days
@@ -53,7 +53,7 @@ export const generateExtraLongExpiry = (): number => {
 export const setRedis = async (
   key: string,
   value: boolean | number | Record<string, any> | string,
-  expiry = generateLongExpiry()
+  expiry = generateSmallExpiry()
 ) => {
   if (!redisClient) {
     noRedisError();
