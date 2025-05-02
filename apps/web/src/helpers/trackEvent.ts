@@ -8,9 +8,9 @@ declare global {
   }
 }
 
-const trackEvent = (name: string, params?: Record<string, any>) => {
+const trackEvent = (name: string) => {
   if (!window?.gtag) return;
-  window.gtag("event", name, params);
+  window.gtag("event", name);
 };
 
 export default trackEvent;

@@ -70,18 +70,13 @@ const CollectActionButton = ({
     });
   };
 
-  const onCompleted = (hash: string) => {
+  const onCompleted = () => {
     // Should not disable the button if it's a paid collect module
     setHasSimpleCollected(amount <= 0);
     setIsSubmitting(false);
     onCollectSuccess?.();
     updateCache();
-    trackEvent(
-      "collect",
-      assetSymbol === "GHO" || assetSymbol === "WGHO"
-        ? { transaction_id: hash, value: amount, currency: "USD" }
-        : undefined
-    );
+    trackEvent("collect");
     toast.success("Collected successfully");
   };
 
@@ -112,7 +107,7 @@ const CollectActionButton = ({
   const [executeCollectAction] = useExecutePostActionMutation({
     onCompleted: async ({ executePostAction }) => {
       if (executePostAction.__typename === "ExecutePostActionResponse") {
-        return onCompleted(executePostAction.hash);
+        return onCompleted();
       }
 
       return await handleTransactionLifecycle({
