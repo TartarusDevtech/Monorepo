@@ -1,5 +1,5 @@
 import MenuTransition from "@/components/Shared/MenuTransition";
-import hasAccess from "@/helpers/hasAccess";
+import isFeatureEnabled from "@/helpers/isFeatureEnabled";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { Menu, MenuButton, MenuItems } from "@headlessui/react";
@@ -19,7 +19,7 @@ interface AccountMenuProps {
 
 const AccountMenu = ({ account }: AccountMenuProps) => {
   const { currentAccount } = useAccountStore();
-  const isStaff = hasAccess(Features.Staff);
+  const isStaff = isFeatureEnabled(Features.Staff);
 
   return (
     <Menu as="div" className="relative">

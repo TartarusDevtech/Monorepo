@@ -6,7 +6,7 @@ import {
   getBlockedByMeMessage,
   getBlockedMeMessage
 } from "@/helpers/getBlockedMessage";
-import hasAccess from "@/helpers/hasAccess";
+import isFeatureEnabled from "@/helpers/isFeatureEnabled";
 import { QueueListIcon } from "@heroicons/react/24/outline";
 import { Features } from "@hey/data/features";
 import { isRepost } from "@hey/helpers/postHelpers";
@@ -30,7 +30,7 @@ interface FullPostProps {
 const FullPost = ({ hasHiddenComments, post }: FullPostProps) => {
   const { setShowHiddenComments, showHiddenComments } =
     useHiddenCommentFeedStore();
-  const isStaff = hasAccess(Features.Staff);
+  const isStaff = isFeatureEnabled(Features.Staff);
 
   const targetPost = isRepost(post) ? post?.repostOf : post;
   const { author, timestamp } = targetPost;

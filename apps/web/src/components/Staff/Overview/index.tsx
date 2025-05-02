@@ -1,13 +1,13 @@
 import Custom404 from "@/components/Shared/404";
 import { PageLayout } from "@/components/Shared/PageLayout";
-import hasAccess from "@/helpers/hasAccess";
+import isFeatureEnabled from "@/helpers/isFeatureEnabled";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { Features } from "@hey/data/features";
 import Sponsorship from "./Sponsorship";
 
 const StaffOverview = () => {
   const { currentAccount } = useAccountStore();
-  const isStaff = hasAccess(Features.Staff);
+  const isStaff = isFeatureEnabled(Features.Staff);
 
   if (!currentAccount || !isStaff) {
     return <Custom404 />;

@@ -1,6 +1,6 @@
 import { Image } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
-import hasAccess from "@/helpers/hasAccess";
+import isFeatureEnabled from "@/helpers/isFeatureEnabled";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { Features } from "@hey/data/features";
@@ -18,7 +18,7 @@ import YourAccount from "./NavItems/YourAccount";
 
 const SignedAccount = () => {
   const { currentAccount } = useAccountStore();
-  const isStaff = hasAccess(Features.Staff);
+  const isStaff = isFeatureEnabled(Features.Staff);
 
   const Avatar = () => (
     <Image

@@ -1,5 +1,5 @@
 import cn from "@/helpers/cn";
-import hasAccess from "@/helpers/hasAccess";
+import isFeatureEnabled from "@/helpers/isFeatureEnabled";
 import { useMobileDrawerModalStore } from "@/store/non-persisted/modal/useMobileDrawerModalStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { XMarkIcon } from "@heroicons/react/24/outline";
@@ -21,7 +21,7 @@ import YourAccount from "./NavItems/YourAccount";
 const MobileDrawerMenu = () => {
   const { currentAccount } = useAccountStore();
   const { setShowMobileDrawer } = useMobileDrawerModalStore();
-  const isStaff = hasAccess(Features.Staff);
+  const isStaff = isFeatureEnabled(Features.Staff);
 
   const handleCloseDrawer = () => {
     setShowMobileDrawer(false);

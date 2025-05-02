@@ -9,7 +9,7 @@ import {
   getBlockedByMeMessage,
   getBlockedMeMessage
 } from "@/helpers/getBlockedMessage";
-import hasAccess from "@/helpers/hasAccess";
+import isFeatureEnabled from "@/helpers/isFeatureEnabled";
 import { useAccountLinkStore } from "@/store/non-persisted/navigation/useAccountLinkStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { NoSymbolIcon } from "@heroicons/react/24/outline";
@@ -40,7 +40,7 @@ const ViewAccount = () => {
 
   const { currentAccount } = useAccountStore();
   const { cachedAccount, setCachedAccount } = useAccountLinkStore();
-  const isStaff = hasAccess(Features.Staff);
+  const isStaff = isFeatureEnabled(Features.Staff);
 
   const { data, error, loading } = useAccountQuery({
     skip: address ? !address : !username,

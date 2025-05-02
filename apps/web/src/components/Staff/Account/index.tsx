@@ -3,7 +3,7 @@ import BackButton from "@/components/Shared/BackButton";
 import Loader from "@/components/Shared/Loader";
 import { PageLayout } from "@/components/Shared/PageLayout";
 import { Card, EmptyState, ErrorMessage, H5 } from "@/components/Shared/UI";
-import hasAccess from "@/helpers/hasAccess";
+import isFeatureEnabled from "@/helpers/isFeatureEnabled";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { UserIcon } from "@heroicons/react/24/outline";
 import { Features } from "@hey/data/features";
@@ -14,7 +14,7 @@ import AccountStaffTool from "./Tool";
 const StaffAccountOverview = () => {
   const { address } = useParams<{ address: string }>();
   const { currentAccount } = useAccountStore();
-  const isStaff = hasAccess(Features.Staff);
+  const isStaff = isFeatureEnabled(Features.Staff);
 
   const { data, error, loading } = useAccountQuery({
     skip: !address,
