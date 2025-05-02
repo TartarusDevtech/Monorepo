@@ -34,7 +34,7 @@ const getPreferences = async (ctx: Context) => {
       permissions: permissions.map(({ permission }) => permission.key)
     };
 
-    await setRedis(cacheKey, JSON.stringify(data));
+    await setRedis(cacheKey, data);
 
     return ctx.json({ success: true, data });
   } catch {

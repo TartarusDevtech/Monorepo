@@ -30,7 +30,7 @@ const getAccount = async (ctx: Context) => {
       isSuspended: accountPermission?.permissionId === PermissionId.Suspended
     };
 
-    await setRedis(cacheKey, JSON.stringify(data));
+    await setRedis(cacheKey, data);
 
     return ctx.json({ success: true, data });
   } catch {

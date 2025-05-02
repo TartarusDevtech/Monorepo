@@ -22,7 +22,7 @@ const getOembed = async (ctx: Context) => {
     }
 
     const oembed = await getMetadata(url);
-    await setRedis(cacheKey, JSON.stringify(oembed), generateExtraLongExpiry());
+    await setRedis(cacheKey, oembed, generateExtraLongExpiry());
 
     return ctx.json({ success: true, data: oembed });
   } catch {

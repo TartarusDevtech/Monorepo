@@ -37,11 +37,7 @@ const accountSitemap = async (ctx: Context) => {
       );
 
       usernames = newUsernames.map((username) => username.local_name);
-      await setRedis(
-        cacheKey,
-        JSON.stringify(usernames),
-        hoursToSeconds(50 * 24)
-      );
+      await setRedis(cacheKey, usernames, hoursToSeconds(50 * 24));
     }
 
     const sitemap = create({ version: "1.0", encoding: "UTF-8" }).ele(
