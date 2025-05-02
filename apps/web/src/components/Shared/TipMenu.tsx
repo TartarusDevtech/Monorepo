@@ -83,11 +83,12 @@ const TipMenu = ({ closePopover, post, account }: TipMenuProps) => {
     }
   };
 
-  const onCompleted = () => {
+  const onCompleted = (hash: string) => {
     setIsSubmitting(false);
     closePopover();
     updateCache();
     trackEvent(post ? "tip_post" : "tip_account", {
+      transaction_id: hash,
       value: amount,
       currency: "USD"
     });
@@ -111,7 +112,7 @@ const TipMenu = ({ closePopover, post, account }: TipMenuProps) => {
   const [executeTipAction] = useExecutePostActionMutation({
     onCompleted: async ({ executePostAction }) => {
       if (executePostAction.__typename === "ExecutePostActionResponse") {
-        return onCompleted();
+        return onCompleted(executePostAction.hash);
       }
 
       return await handleTransactionLifecycle({
@@ -126,7 +127,7 @@ const TipMenu = ({ closePopover, post, account }: TipMenuProps) => {
   const [executeAccountAction] = useExecuteAccountActionMutation({
     onCompleted: async ({ executeAccountAction }) => {
       if (executeAccountAction.__typename === "ExecuteAccountActionResponse") {
-        return onCompleted();
+        return onCompleted(executeAccountAction.hash);
       }
 
       return await handleTransactionLifecycle({
