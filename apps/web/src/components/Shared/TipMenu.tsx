@@ -116,7 +116,7 @@ const TipMenu = ({ closePopover, post, account }: TipMenuProps) => {
   const [executeTipAction] = useExecutePostActionMutation({
     onCompleted: async ({ executePostAction }) => {
       if (executePostAction.__typename === "ExecutePostActionResponse") {
-        return onCompleted();
+        return onCompleted(executePostAction.hash);
       }
 
       return await handleTransactionLifecycle({
