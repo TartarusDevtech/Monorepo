@@ -12,7 +12,6 @@ import {
   DEFAULT_COLLECT_TOKEN,
   DEFAULT_TOKEN,
   HEY_TREASURY,
-  HEY_TREASURY_FEES_PERCENT,
   WRAPPED_NATIVE_TOKEN_SYMBOL
 } from "@hey/data/constants";
 import {
@@ -148,9 +147,8 @@ const TipMenu = ({ closePopover, post, account }: TipMenuProps) => {
     setIsSubmitting(true);
 
     const tipping: TippingAmountInput = {
-      referrals: [
-        { address: HEY_TREASURY, percent: HEY_TREASURY_FEES_PERCENT }
-      ],
+      // 7.62 is a calculated value based on the referral pool of 20% and the lens fee of 1.5%
+      referrals: [{ address: HEY_TREASURY, percent: 7.62 }],
       currency: DEFAULT_COLLECT_TOKEN,
       value: cryptoRate.toString()
     };
