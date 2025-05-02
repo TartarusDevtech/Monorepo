@@ -87,7 +87,10 @@ const TipMenu = ({ closePopover, post, account }: TipMenuProps) => {
     setIsSubmitting(false);
     closePopover();
     updateCache();
-    trackEvent(post ? "tip_post" : "tip_account");
+    trackEvent(post ? "tip_post" : "tip_account", {
+      value: amount,
+      currency: "USD"
+    });
     toast.success(`Tipped ${amount} ${WRAPPED_NATIVE_TOKEN_SYMBOL}`);
   };
 

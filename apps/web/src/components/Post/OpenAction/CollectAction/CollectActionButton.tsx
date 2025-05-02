@@ -76,7 +76,12 @@ const CollectActionButton = ({
     setIsSubmitting(false);
     onCollectSuccess?.();
     updateCache();
-    trackEvent("collect");
+    trackEvent(
+      "collect",
+      assetSymbol === "GHO" || assetSymbol === "WGHO"
+        ? { value: amount, currency: "USD" }
+        : undefined
+    );
     toast.success("Collected successfully");
   };
 
