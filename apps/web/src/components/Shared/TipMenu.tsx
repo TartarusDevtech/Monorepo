@@ -12,6 +12,7 @@ import {
   DEFAULT_COLLECT_TOKEN,
   DEFAULT_TOKEN,
   HEY_TREASURY,
+  HEY_TREASURY_FEES_PERCENT,
   WRAPPED_NATIVE_TOKEN_SYMBOL
 } from "@hey/data/constants";
 import {
@@ -25,16 +26,6 @@ import {
 import type { ChangeEvent, RefObject } from "react";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
-
-const getCutFromReferralPool = (amount: number): number => {
-  const lensFeePercent = 1.5;
-  const referralPoolPercent = 20;
-  const lensFee = (lensFeePercent / 100) * amount;
-  const postLens = amount - lensFee;
-  const referralPool = (referralPoolPercent / 100) * postLens;
-  const yourCutPercentInReferralPool = (lensFee / referralPool) * 100;
-  return Number.parseFloat(yourCutPercentInReferralPool.toFixed(6));
-};
 
 const submitButtonClassName = "w-full py-1.5 text-sm font-semibold";
 
@@ -158,7 +149,7 @@ const TipMenu = ({ closePopover, post, account }: TipMenuProps) => {
 
     const tipping: TippingAmountInput = {
       referrals: [
-        { address: HEY_TREASURY, percent: getCutFromReferralPool(amount) }
+        { address: HEY_TREASURY, percent: HEY_TREASURY_FEES_PERCENT }
       ],
       currency: DEFAULT_COLLECT_TOKEN,
       value: cryptoRate.toString()
