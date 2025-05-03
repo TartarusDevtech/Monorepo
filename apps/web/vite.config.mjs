@@ -93,7 +93,7 @@ export default defineConfig({
     sentryVitePlugin({
       org: "heyverse",
       project: "web",
-      authToken: process.env.SENTRY_AUTH_TOKEN,
+      telemetry: false,
       sourcemaps: { filesToDeleteAfterUpload: ["./dist/assets/*.js.map"] }
     })
   ],
