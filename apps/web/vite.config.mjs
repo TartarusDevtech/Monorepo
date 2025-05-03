@@ -90,7 +90,12 @@ export default defineConfig({
       }
     }),
     EnvironmentPlugin(["VITE_IS_PRODUCTION", "NEXT_PUBLIC_LENS_NETWORK"]),
-    sentryVitePlugin({ org: "heyverse", project: "web" })
+    sentryVitePlugin({
+      org: "heyverse",
+      project: "web",
+      authToken: process.env.SENTRY_AUTH_TOKEN,
+      sourcemaps: { filesToDeleteAfterUpload: ["./dist/assets/*.js.map"] }
+    })
   ],
   build: {
     target: "esnext",
@@ -106,8 +111,6 @@ export default defineConfig({
         },
         manualChunks: dependenciesToChunk
       }
-    },
-
-    sourcemap: true
+    }
   }
 });
