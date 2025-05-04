@@ -11,12 +11,7 @@ import Code from "./Code";
 import MarkupLink from "./MarkupLink";
 
 const plugins = [
-  [
-    stripMarkdown,
-    {
-      keep: ["strong", "emphasis", "list", "listItem"]
-    }
-  ],
+  [stripMarkdown, { keep: ["strong", "emphasis", "list", "listItem"] }],
   remarkBreaks,
   linkifyRegex(Regex.url),
   linkifyRegex(Regex.mention),
