@@ -7,9 +7,12 @@ const links = [
   { href: "/guidelines", label: "Guidelines" },
   { href: "https://hey.xyz/discord", label: "Discord" },
   { href: "/u/hey", label: "Hey" },
-  { href: "https://hey.openstatus.dev", label: "Status" },
   { href: "https://github.com/heyverse/hey", label: "GitHub" },
-  { href: "/support", label: "Support" }
+  { href: "/support", label: "Support" },
+  {
+    href: "https://explorer.gitcoin.co/#/projects/0x7c2db89015825d83f56cd55aff50b2ac0a8b50338d88c2988323ce6fa7739d1a",
+    label: "Donate"
+  }
 ];
 
 const Footer = () => {
