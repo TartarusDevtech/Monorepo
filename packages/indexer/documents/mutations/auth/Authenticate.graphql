@@ -3,7 +3,6 @@ mutation Authenticate($request: SignedAuthChallenge!) {
     ... on AuthenticationTokens {
       accessToken
       refreshToken
-      idToken
     }
     ... on ForbiddenError {
       reason

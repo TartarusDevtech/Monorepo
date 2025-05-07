@@ -25,7 +25,7 @@ const fetchApi = async <T>(
     ...options,
     credentials: "include",
     headers: {
-      ...{ "x-id-token": hydrateAuthTokens().accessToken || "" },
+      ...{ "X-Access-Token": hydrateAuthTokens().accessToken || "" },
       ...config.headers
     }
   });

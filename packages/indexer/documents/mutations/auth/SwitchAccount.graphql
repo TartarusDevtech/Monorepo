@@ -3,7 +3,6 @@ mutation SwitchAccount($request: SwitchAccountRequest!) {
     ... on AuthenticationTokens {
       accessToken
       refreshToken
-      idToken
     }
   }
 }

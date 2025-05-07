@@ -3,7 +3,6 @@ mutation Refresh($request: RefreshRequest!) {
     ... on AuthenticationTokens {
       accessToken
       refreshToken
-      idToken
     }
     ... on ForbiddenError {
       reason

@@ -11,7 +11,7 @@ import { toast } from "sonner";
 import { useAccount, useSignMessage } from "wagmi";
 
 const Tokens = () => {
-  const { accessToken, idToken, refreshToken } = hydrateAuthTokens();
+  const { accessToken, refreshToken } = hydrateAuthTokens();
   const [builderToken, setBuilderToken] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -94,20 +94,6 @@ const Tokens = () => {
             type="button"
           >
             <H6>{refreshToken}</H6>
-          </button>
-        </div>
-        <div className="flex flex-col gap-y-3">
-          <b>Your temporary ID token</b>
-          <button
-            className="cursor-pointer break-all rounded-md bg-gray-300 p-2 px-3 text-left dark:bg-gray-600"
-            type="button"
-            onClick={() => {
-              trackEvent("copy_id_token");
-              toast.success("Copied to clipboard");
-              navigator.clipboard.writeText(idToken as string);
-            }}
-          >
-            <H6>{idToken}</H6>
           </button>
         </div>
         <div className="flex flex-col gap-y-3">

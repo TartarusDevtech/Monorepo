@@ -52,9 +52,8 @@ const SwitchAccounts = () => {
       if (auth.data?.switchAccount.__typename === "AuthenticationTokens") {
         const accessToken = auth.data?.switchAccount.accessToken;
         const refreshToken = auth.data?.switchAccount.refreshToken;
-        const idToken = auth.data?.switchAccount.idToken;
         signOut();
-        signIn({ accessToken, idToken, refreshToken });
+        signIn({ accessToken, refreshToken });
         trackEvent("switch_account");
         return location.reload();
       }

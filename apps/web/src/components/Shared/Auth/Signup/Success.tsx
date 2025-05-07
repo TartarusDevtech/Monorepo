@@ -26,8 +26,7 @@ const Success = () => {
       if (auth.data?.switchAccount.__typename === "AuthenticationTokens") {
         const accessToken = auth.data?.switchAccount.accessToken;
         const refreshToken = auth.data?.switchAccount.refreshToken;
-        const idToken = auth.data?.switchAccount.idToken;
-        signIn({ accessToken, idToken, refreshToken });
+        signIn({ accessToken, refreshToken });
         return location.reload();
       }
 

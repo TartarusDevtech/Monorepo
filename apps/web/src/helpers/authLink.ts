@@ -14,7 +14,6 @@ const REFRESH_AUTHENTICATION_MUTATION = `
       ... on AuthenticationTokens {
         accessToken
         refreshToken
-        idToken
       }
       __typename
     }
@@ -54,11 +53,8 @@ const executeTokenRefresh = async (
     const { __typename } = refreshResult;
 
     if (__typename === "AuthenticationTokens") {
-      const {
-        accessToken: newAccessToken,
-        refreshToken: newRefreshToken,
-        idToken: newIdToken
-      } = refreshResult;
+      const { accessToken: newAccessToken, refreshToken: newRefreshToken } =
+        refreshResult;
 
       if (!newAccessToken || !newRefreshToken) {
         throw new Error("Missing tokens in refresh response");
@@ -66,7 +62,6 @@ const executeTokenRefresh = async (
 
       signIn({
         accessToken: newAccessToken,
-        idToken: newIdToken,
         refreshToken: newRefreshToken
       });
 

@@ -110,8 +110,7 @@ const Login = ({ setHasAccounts }: LoginProps) => {
       if (auth.data?.authenticate.__typename === "AuthenticationTokens") {
         const accessToken = auth.data?.authenticate.accessToken;
         const refreshToken = auth.data?.authenticate.refreshToken;
-        const idToken = auth.data?.authenticate.idToken;
-        signIn({ accessToken, idToken, refreshToken });
+        signIn({ accessToken, refreshToken });
         trackEvent("login");
         return location.reload();
       }
