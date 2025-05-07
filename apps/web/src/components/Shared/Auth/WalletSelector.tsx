@@ -1,5 +1,6 @@
 import cn from "@/helpers/cn";
 import getWalletDetails from "@/helpers/getWalletDetails";
+import trackEvent from "@/helpers/trackEvent";
 import { KeyIcon } from "@heroicons/react/24/outline";
 import type { FC } from "react";
 import { Link } from "react-router";
@@ -27,6 +28,9 @@ const WalletSelector: FC = () => {
   const handleConnect = async (connector: Connector) => {
     try {
       await connectAsync({ connector });
+      trackEvent("connect_wallet", {
+        connector: getWalletDetails(connector.id).name
+      });
     } catch {}
   };
 
