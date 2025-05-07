@@ -1,3 +1,4 @@
+import trackEvent from "@/helpers/trackEvent";
 import { Link } from "react-router";
 const currentYear = new Date().getFullYear();
 
@@ -18,15 +19,16 @@ const Footer = () => {
       <span className="font-bold text-gray-500 dark:text-gray-200">
         &copy; {currentYear} Hey.xyz
       </span>
-      {links.map((link) => (
+      {links.map(({ href, label }) => (
         <Link
           className="outline-offset-4"
-          to={link.href}
-          key={link.href}
+          to={href}
+          key={href}
           rel="noreferrer noopener"
-          target={link.href.startsWith("http") ? "_blank" : undefined}
+          target={href.startsWith("http") ? "_blank" : undefined}
+          onClick={() => trackEvent("footer_link_click", { label })}
         >
-          {link.label}
+          {label}
         </Link>
       ))}
     </footer>
