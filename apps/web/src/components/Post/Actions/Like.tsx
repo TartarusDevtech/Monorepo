@@ -56,7 +56,7 @@ const Like = ({ post, showCount }: LikeProps) => {
   };
 
   const [addReaction] = useAddReactionMutation({
-    onCompleted: () => trackEvent("add_reaction"),
+    onCompleted: () => trackEvent("add_reaction", { post: post.slug }),
     onError: (error) => {
       toggleReact();
       decrement();
@@ -66,7 +66,7 @@ const Like = ({ post, showCount }: LikeProps) => {
   });
 
   const [undoReaction] = useUndoReactionMutation({
-    onCompleted: () => trackEvent("undo_reaction"),
+    onCompleted: () => trackEvent("undo_reaction", { post: post.slug }),
     onError: (error) => {
       toggleReact();
       increment();

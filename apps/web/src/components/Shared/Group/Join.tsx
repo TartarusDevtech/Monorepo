@@ -36,7 +36,9 @@ const Join = ({
     updateCache();
     setIsSubmitting(false);
     setJoined(true);
-    trackEvent("join_group");
+    trackEvent("join_group", {
+      group: group.address
+    });
     toast.success("Joined group");
   };
 

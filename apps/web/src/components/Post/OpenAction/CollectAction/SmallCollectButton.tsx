@@ -16,7 +16,9 @@ const SmallCollectButton = ({ post }: SmallCollectButtonProps) => {
     <>
       <Button
         onClick={() => {
-          trackEvent("open_collect_modal");
+          trackEvent("open_collect_modal", {
+            post: post.slug
+          });
           setShowCollectModal(true);
         }}
         outline={!hasSimpleCollected}

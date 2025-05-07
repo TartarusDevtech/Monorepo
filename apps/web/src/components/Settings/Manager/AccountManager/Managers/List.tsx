@@ -44,7 +44,9 @@ const List = () => {
   const onCompleted = () => {
     setRemovingManager(null);
     updateCache();
-    trackEvent("remove_manager");
+    trackEvent("remove_manager", {
+      account: currentAccount?.address
+    });
     toast.success("Manager removed successfully");
   };
 

@@ -71,7 +71,9 @@ const PersonalizeSettingsForm = () => {
       const accountData = await getCurrentAccountDetails();
       setCurrentAccount(accountData?.data?.me.loggedInAs.account);
       setIsSubmitting(false);
-      trackEvent("update_account");
+      trackEvent("update_account", {
+        account: currentAccount?.address
+      });
       toast.success("Account updated");
     });
   };

@@ -55,7 +55,9 @@ const FollowersYouKnowOverview = ({
     <button
       className="flex cursor-pointer items-center gap-x-2 text-gray-500 text-sm dark:text-gray-200"
       onClick={() => {
-        trackEvent("open_followers_you_know_modal");
+        trackEvent("open_followers_you_know_modal", {
+          account: address
+        });
         setShowMutualFollowersModal(true);
       }}
       type="button"

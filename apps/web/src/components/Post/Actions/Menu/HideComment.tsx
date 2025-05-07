@@ -32,7 +32,7 @@ const HideComment = ({ post }: HideCommentProps) => {
 
   const [hideComment] = useHideReplyMutation({
     onCompleted: () => {
-      trackEvent("hide_comment");
+      trackEvent("hide_comment", { post: post.slug });
       toast.success("Comment hidden");
     },
     onError,

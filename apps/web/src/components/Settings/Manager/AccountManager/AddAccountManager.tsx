@@ -31,7 +31,9 @@ const AddAccountManager = ({
     setShowAddManagerModal(false);
     const toastId = toast.loading("Adding manager...");
     pollTransactionStatus(hash, () => {
-      trackEvent("add_manager");
+      trackEvent("add_manager", {
+        account: currentAccount?.address
+      });
       toast.success("Manager added successfully", { id: toastId });
       location.reload();
     });

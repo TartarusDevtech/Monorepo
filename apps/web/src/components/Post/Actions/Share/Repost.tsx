@@ -57,7 +57,7 @@ const Repost = ({ isSubmitting, post, setIsSubmitting }: RepostProps) => {
     setIsSubmitting(false);
     increment();
     updateCache();
-    trackEvent("repost");
+    trackEvent("repost", { post: post.slug });
     toast.success("Post has been reposted!");
   };
 

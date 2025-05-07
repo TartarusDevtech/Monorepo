@@ -26,7 +26,9 @@ const CopyLink = ({ account }: CopyLinkProps) => {
         await navigator.clipboard.writeText(
           `${location.origin}${getAccount(account).link}`
         );
-        trackEvent("copy_account_link");
+        trackEvent("copy_account_link", {
+          account: account.address
+        });
         toast.success("Link copied to clipboard!");
       }}
     >

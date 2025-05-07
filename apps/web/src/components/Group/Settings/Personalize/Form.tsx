@@ -52,7 +52,9 @@ const PersonalizeSettingsForm = ({ group }: PersonalizeSettingsFormProps) => {
 
   const onCompleted = () => {
     setIsSubmitting(false);
-    trackEvent("update_group");
+    trackEvent("update_group", {
+      group: group.address
+    });
     toast.success("Group updated");
   };
 

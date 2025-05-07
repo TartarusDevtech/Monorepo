@@ -76,7 +76,7 @@ const PostStats = ({ post }: PostStatsProps) => {
           <button
             className="outline-offset-2"
             onClick={() => {
-              trackEvent("open_reposts_modal");
+              trackEvent("open_reposts_modal", { post: post.slug });
               setShowRepostsModal(true);
             }}
             type="button"
@@ -101,7 +101,7 @@ const PostStats = ({ post }: PostStatsProps) => {
           <button
             className="outline-offset-2"
             onClick={() => {
-              trackEvent("open_likes_modal");
+              trackEvent("open_likes_modal", { post: post.slug });
               setShowLikesModal(true);
             }}
             type="button"
@@ -117,7 +117,7 @@ const PostStats = ({ post }: PostStatsProps) => {
           <button
             className="outline-offset-2"
             onClick={() => {
-              trackEvent("open_tippers_modal");
+              trackEvent("open_tippers_modal", { post: post.slug });
               setShowPostExecutorsModal("Tippers");
             }}
             type="button"
@@ -133,7 +133,7 @@ const PostStats = ({ post }: PostStatsProps) => {
           <button
             className="outline-offset-2"
             onClick={() => {
-              trackEvent("open_collectors_modal");
+              trackEvent("open_collectors_modal", { post: post.slug });
               setShowPostExecutorsModal("Collectors");
             }}
             type="button"

@@ -33,7 +33,9 @@ const Leave = ({ group, setJoined, small }: LeaveProps) => {
     updateCache();
     setIsSubmitting(false);
     setJoined(false);
-    trackEvent("leave_group");
+    trackEvent("leave_group", {
+      group: group.address
+    });
     toast.success("Left group");
   };
 

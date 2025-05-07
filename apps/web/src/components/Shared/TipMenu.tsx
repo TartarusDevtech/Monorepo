@@ -78,7 +78,10 @@ const TipMenu = ({ closePopover, post, account }: TipMenuProps) => {
     closePopover();
     updateCache();
     const eventName = post ? "tip_post" : "tip_account";
-    trackEvent(eventName);
+    const eventParams = post
+      ? { post: post.slug }
+      : { account: account?.address };
+    trackEvent(eventName, eventParams);
     // Track e-commerce event for GA
     trackEvent("purchase", {
       transaction_id: hash,

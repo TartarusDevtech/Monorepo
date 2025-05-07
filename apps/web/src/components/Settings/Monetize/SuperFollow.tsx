@@ -58,7 +58,9 @@ const SuperFollow = () => {
     pollTransactionStatus(hash, async () => {
       const accountData = await getCurrentAccountDetails();
       setCurrentAccount(accountData?.data?.me.loggedInAs.account);
-      trackEvent("update_super_follow");
+      trackEvent("update_super_follow", {
+        account: account.address
+      });
       location.reload();
     });
   };

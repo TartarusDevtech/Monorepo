@@ -22,7 +22,9 @@ const DeletePost = () => {
   const onCompleted = () => {
     setShowPostDeleteAlert(false);
     updateCache();
-    trackEvent("delete_post");
+    trackEvent("delete_post", {
+      post: deletingPost?.slug
+    });
     toast.success("Post deleted");
   };
 

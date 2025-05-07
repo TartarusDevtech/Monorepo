@@ -29,7 +29,9 @@ const Details = ({ group }: DetailsProps) => {
             className="size-32 cursor-pointer rounded-xl bg-gray-200 ring-3 ring-gray-50 sm:size-36 dark:bg-gray-700 dark:ring-black"
             height={128}
             onClick={() => {
-              trackEvent("expand_group_avatar");
+              trackEvent("expand_group_avatar", {
+                group: group.address
+              });
               setShowLightBox(true);
             }}
             src={getAvatar(group, AVATAR_BIG)}

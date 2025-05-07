@@ -76,7 +76,7 @@ const CollectActionButton = ({
     setIsSubmitting(false);
     onCollectSuccess?.();
     updateCache();
-    trackEvent("collect");
+    trackEvent("collect", { post: post.slug });
     // Track e-commerce event for GA
     if (assetSymbol === "GHO" || assetSymbol === "WGHO") {
       trackEvent("purchase", {

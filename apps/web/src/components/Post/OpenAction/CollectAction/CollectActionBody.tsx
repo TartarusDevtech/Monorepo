@@ -170,7 +170,9 @@ const CollectActionBody = ({
               <button
                 className="font-bold"
                 onClick={() => {
-                  trackEvent("open_collectors_modal");
+                  trackEvent("open_collectors_modal", {
+                    post: post.slug
+                  });
                   setShowCollectorsModal(true);
                 }}
                 type="button"

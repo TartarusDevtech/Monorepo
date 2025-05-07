@@ -40,7 +40,10 @@ const ReportAccount = ({ account }: ReportAccountProps) => {
   });
 
   const [createReport, { data, error, loading }] = useReportAccountMutation({
-    onCompleted: () => trackEvent("report_account"),
+    onCompleted: () =>
+      trackEvent("report_account", {
+        account: account?.address
+      }),
     onError: (error) => errorToast(error)
   });
 

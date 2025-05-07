@@ -22,7 +22,9 @@ const CollectAction = ({ post }: CollectActionProps) => {
         aria-label="Collect"
         className="rounded-full p-1.5 outline-offset-2 hover:bg-gray-300/20"
         onClick={() => {
-          trackEvent("open_collect_modal");
+          trackEvent("open_collect_modal", {
+            post: post.slug
+          });
           setShowCollectModal(true);
         }}
         type="button"

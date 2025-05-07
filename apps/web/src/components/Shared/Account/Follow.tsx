@@ -44,7 +44,9 @@ const Follow = ({
     updateCache();
     setIsSubmitting(false);
     onFollow?.();
-    trackEvent("follow");
+    trackEvent("follow", {
+      account: account.address
+    });
   };
 
   const onError = (error: any) => {

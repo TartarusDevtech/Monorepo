@@ -15,7 +15,10 @@ const DismissRecommendedAccount = ({
 }: DismissRecommendedAccountProps) => {
   const [dismissRecommendedAccount, { loading }] =
     useMlDismissRecommendedAccountsMutation({
-      onCompleted: () => trackEvent("dismiss_recommended_account"),
+      onCompleted: () =>
+        trackEvent("dismiss_recommended_account", {
+          account: account.address
+        }),
       update: (cache) => cache.evict({ id: cache.identify(account) }),
       variables: { request: { accounts: [account.address] } }
     });

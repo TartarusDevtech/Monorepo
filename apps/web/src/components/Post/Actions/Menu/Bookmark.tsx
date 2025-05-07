@@ -56,7 +56,7 @@ const Bookmark = ({ post }: BookmarkProps) => {
 
   const [bookmarkPost] = useBookmarkPostMutation({
     onCompleted: () => {
-      trackEvent("bookmark_post");
+      trackEvent("bookmark_post", { post: post.slug });
       toast.success("Post bookmarked!");
     },
     onError,
@@ -66,7 +66,7 @@ const Bookmark = ({ post }: BookmarkProps) => {
 
   const [undoBookmarkPost] = useUndoBookmarkPostMutation({
     onCompleted: () => {
-      trackEvent("undo_bookmark_post");
+      trackEvent("undo_bookmark_post", { post: post.slug });
       toast.success("Removed post bookmark!");
     },
     onError,

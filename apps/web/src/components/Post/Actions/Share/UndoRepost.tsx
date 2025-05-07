@@ -40,7 +40,7 @@ const UndoRepost = ({
   const onCompleted = () => {
     setIsSubmitting(false);
     updateCache();
-    trackEvent("undo_repost");
+    trackEvent("undo_repost", { post: post.slug });
     toast.success("Undone repost");
   };
 

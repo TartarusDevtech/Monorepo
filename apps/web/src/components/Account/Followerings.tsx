@@ -66,7 +66,9 @@ const Followerings = ({ account }: FolloweringsProps) => {
       <button
         className="flex gap-x-1"
         onClick={() => {
-          trackEvent("open_following_modal");
+          trackEvent("open_following_modal", {
+            account: account.address
+          });
           setShowFollowingModal(true);
         }}
         type="button"
@@ -77,7 +79,9 @@ const Followerings = ({ account }: FolloweringsProps) => {
       <button
         className="flex gap-x-1"
         onClick={() => {
-          trackEvent("open_followers_modal");
+          trackEvent("open_followers_modal", {
+            account: account.address
+          });
           setShowFollowersModal(true);
         }}
         type="button"

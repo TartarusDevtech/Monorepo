@@ -115,13 +115,13 @@ const List = ({ managed = false }: ListProps) => {
       if (managed) {
         await hideManagedAccount({ variables: { request: { account } } });
         toast.success("Account is now un-managed");
-        trackEvent("unmanage_account");
+        trackEvent("unmanage_account", { account });
         return refetch();
       }
 
       await unhideManagedAccount({ variables: { request: { account } } });
       toast.success("Account is now managed");
-      trackEvent("manage_account");
+      trackEvent("manage_account", { account });
       return refetch();
     } catch (error) {
       errorToast(error);

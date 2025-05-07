@@ -25,7 +25,7 @@ const Share = ({ post }: ShareProps) => {
         await navigator.clipboard.writeText(
           `${location.origin}/posts/${post.slug}`
         );
-        trackEvent("copy_post_link");
+        trackEvent("copy_post_link", { post: post.slug });
         toast.success("Copied to clipboard!");
       }}
     >

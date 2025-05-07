@@ -41,7 +41,9 @@ const Unfollow = ({
   const onCompleted = () => {
     updateCache();
     setIsSubmitting(false);
-    trackEvent("unfollow");
+    trackEvent("unfollow", {
+      account: account.address
+    });
   };
 
   const onError = (error: any) => {

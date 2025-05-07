@@ -41,7 +41,7 @@ const NotInterested = ({ post }: NotInterestedProps) => {
 
   const [addPostNotInterested] = useAddPostNotInterestedMutation({
     onCompleted: () => {
-      trackEvent("add_post_not_interested");
+      trackEvent("add_post_not_interested", { post: post.slug });
       toast.success("Marked as not Interested");
     },
     onError,
@@ -51,7 +51,7 @@ const NotInterested = ({ post }: NotInterestedProps) => {
 
   const [undoPostNotInterested] = useUndoPostNotInterestedMutation({
     onCompleted: () => {
-      trackEvent("undo_post_not_interested");
+      trackEvent("undo_post_not_interested", { post: post.slug });
       toast.success("Undo Not interested");
     },
     onError,

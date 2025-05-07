@@ -43,7 +43,9 @@ const BlockOrUnblockAccount = () => {
     setIsSubmitting(false);
     setHasBlocked(!hasBlocked);
     setShowBlockOrUnblockAlert(false);
-    trackEvent(hasBlocked ? "unblock_account" : "block_account");
+    trackEvent(hasBlocked ? "unblock_account" : "block_account", {
+      account: blockingorUnblockingAccount?.address
+    });
     toast.success(
       hasBlocked ? "Unblocked successfully" : "Blocked successfully"
     );
