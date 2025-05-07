@@ -60,6 +60,25 @@ const navigateFallbackDenylist = [
   /^\/donate/
 ];
 
+const bigIcon = { src: "pwa-512x512.png", sizes: "512x512", type: "image/png" };
+
+const manifest = {
+  name: "Hey",
+  short_name: "Hey",
+  description:
+    "Hey.xyz is a decentralized, and permissionless social media app built with Lens",
+  categories: ["social", "decentralized", "lens"],
+  lang: "en",
+  theme_color: "#f9fafb",
+  display: "standalone",
+  icons: [
+    { src: "pwa-192x192.png", sizes: "192x192", type: "image/png" },
+    bigIcon,
+    { ...bigIcon, purpose: "any" },
+    { ...bigIcon, purpose: "maskable" }
+  ]
+};
+
 export default defineConfig({
   plugins: [
     tsconfigPaths(),
@@ -68,32 +87,7 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       workbox: { navigateFallbackDenylist },
-      manifest: {
-        name: "Hey",
-        short_name: "Hey",
-        description:
-          "Hey.xyz is a decentralized, and permissionless social media app built with Lens",
-        categories: ["social", "decentralized", "lens"],
-        lang: "en",
-        theme_color: "#f9fafb",
-        display: "standalone",
-        icons: [
-          { src: "pwa-192x192.png", sizes: "192x192", type: "image/png" },
-          { src: "pwa-512x512.png", sizes: "512x512", type: "image/png" },
-          {
-            src: "pwa-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
-            purpose: "any"
-          },
-          {
-            src: "pwa-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
-            purpose: "maskable"
-          }
-        ]
-      }
+      manifest
     }),
     EnvironmentPlugin(["VITE_IS_PRODUCTION", "NEXT_PUBLIC_LENS_NETWORK"]),
     sentryVitePlugin({
