@@ -3,5 +3,6 @@ export const Localstorage = {
   PreferencesStore: "preferences.store",
   AccountStore: "account.store",
   SearchStore: "search.store",
-  HomeTabStore: "home-tab.store"
+  HomeTabStore: "home-tab.store",
+  Theme: "theme"
 };
