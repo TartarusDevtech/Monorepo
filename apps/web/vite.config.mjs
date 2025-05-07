@@ -53,6 +53,13 @@ const dependenciesToChunk = {
   ]
 };
 
+const navigateFallbackDenylist = [
+  /^\/sitemap/,
+  /^\/blog/,
+  /^\/discord/,
+  /^\/donate/
+];
+
 export default defineConfig({
   plugins: [
     tsconfigPaths(),
@@ -60,14 +67,7 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: "autoUpdate",
-      workbox: {
-        navigateFallbackDenylist: [
-          /^\/sitemap/,
-          /^\/blog/,
-          /^\/discord/,
-          /^\/donate/
-        ]
-      },
+      workbox: { navigateFallbackDenylist },
       manifest: {
         name: "Hey",
         short_name: "Hey",
