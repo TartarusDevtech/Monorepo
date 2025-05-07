@@ -61,7 +61,12 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       workbox: {
-        navigateFallbackDenylist: [/^\/sitemap/, /^\/blog/, /^\/discord/]
+        navigateFallbackDenylist: [
+          /^\/sitemap/,
+          /^\/blog/,
+          /^\/discord/,
+          /^\/donate/
+        ]
       },
       manifest: {
         name: "Hey",
