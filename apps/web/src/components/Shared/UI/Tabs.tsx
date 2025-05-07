@@ -1,4 +1,5 @@
 import cn from "@/helpers/cn";
+import trackEvent from "@/helpers/trackEvent";
 import { MotionConfig, motion } from "motion/react";
 import { type ReactNode, memo } from "react";
 
@@ -8,9 +9,17 @@ interface TabsProps {
   setActive: (type: string) => void;
   layoutId: string;
   className?: string;
+  event?: string;
 }
 
-const Tabs = ({ tabs, active, setActive, layoutId, className }: TabsProps) => {
+const Tabs = ({
+  tabs,
+  active,
+  setActive,
+  layoutId,
+  className,
+  event
+}: TabsProps) => {
   return (
     <MotionConfig transition={{ type: "spring", bounce: 0, duration: 0.4 }}>
       <motion.ul
@@ -23,7 +32,12 @@ const Tabs = ({ tabs, active, setActive, layoutId, className }: TabsProps) => {
             className="relative cursor-pointer px-3 py-1.5 text-sm outline-none transition-colors"
             tabIndex={0}
             key={tab.type}
-            onClick={() => setActive(tab.type)}
+            onClick={() => {
+              setActive(tab.type);
+              if (event) {
+                trackEvent(event, { tab: tab.name });
+              }
+            }}
           >
             {active === tab.type ? (
               <motion.div

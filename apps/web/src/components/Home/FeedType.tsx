@@ -18,6 +18,7 @@ const FeedType = () => {
       active={feedType}
       setActive={(type) => setFeedType(type as HomeFeedType)}
       className="mx-5 mb-5 md:mx-0"
+      event="home_tab_click"
       layoutId="home-tabs"
     />
   );

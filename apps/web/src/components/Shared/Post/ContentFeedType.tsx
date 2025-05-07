@@ -6,12 +6,14 @@ interface ContentFeedTypeProps {
   focus?: MainContentFocus;
   setFocus: Dispatch<SetStateAction<MainContentFocus | undefined>>;
   layoutId: string;
+  event: string;
 }
 
 const ContentFeedType = ({
   focus,
   setFocus,
-  layoutId
+  layoutId,
+  event
 }: ContentFeedTypeProps) => {
   const tabs = [
     { name: "All posts", type: "" },
@@ -27,6 +29,7 @@ const ContentFeedType = ({
       active={focus || ""}
       setActive={(type) => setFocus(type as MainContentFocus)}
       className="mx-5 mb-5 md:mx-0"
+      event={event}
       layoutId={layoutId}
     />
   );

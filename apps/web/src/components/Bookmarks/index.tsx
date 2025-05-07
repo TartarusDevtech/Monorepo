@@ -19,6 +19,7 @@ const Bookmarks = () => {
       <ContentFeedType
         focus={focus}
         setFocus={setFocus}
+        event="bookmarks_tab_click"
         layoutId="bookmarks-feed-tabs"
       />
       <BookmarksFeed focus={focus} />

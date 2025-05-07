@@ -13,7 +13,6 @@ import Timeline from "./Timeline";
 const Home = () => {
   const { currentAccount } = useAccountStore();
   const { feedType } = useHomeTabStore();
-
   const loggedInWithAccount = Boolean(currentAccount);
 
   return (

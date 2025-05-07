@@ -22,6 +22,7 @@ const FeedType = ({ feedType, setFeedType }: FeedTypeProps) => {
       active={feedType}
       setActive={(type) => setFeedType(type as NotificationFeedType)}
       className="mx-5 mb-5 md:mx-0"
+      event="notification_tab_click"
       layoutId="notification-tabs"
     />
   );

@@ -26,6 +26,7 @@ const Explore = () => {
       <ContentFeedType
         focus={focus}
         setFocus={setFocus}
+        event="explore_tab_click"
         layoutId="explore-feed-tabs"
       />
       {focus === MainContentFocus.Image ? (

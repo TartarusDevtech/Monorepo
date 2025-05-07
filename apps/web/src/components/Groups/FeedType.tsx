@@ -19,6 +19,7 @@ const FeedType = ({ feedType, setFeedType }: FocusTypeProps) => {
       active={feedType}
       setActive={(type) => setFeedType(type as GroupsFeedType)}
       className="mx-5 mb-5 md:mx-0"
+      event="groups_tab_click"
       layoutId="groups-tabs"
     />
   );
