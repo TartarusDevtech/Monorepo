@@ -33,8 +33,7 @@ const FeedType = ({ feedType }: FeedTypeProps) => {
       active={feedType}
       setActive={updateQuery}
       className="mx-5 mb-5 md:mx-0"
-      event="search_tab_click"
-      layoutId="search-tabs"
+      layoutId="search_tab"
     />
   );
 };

@@ -28,7 +28,7 @@ const AccountManager = () => {
           tabs={tabs}
           active={type}
           setActive={(type) => setType(type as Type)}
-          layoutId="account-manager-tabs"
+          layoutId="account_manager_tab"
         />
         {type === Type.MANAGERS && (
           <>

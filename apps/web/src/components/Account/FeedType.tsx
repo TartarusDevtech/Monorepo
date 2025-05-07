@@ -23,8 +23,7 @@ const FeedType = ({ feedType, setFeedType }: FeedTypeProps) => {
       active={feedType}
       setActive={(type) => setFeedType(type as AccountFeedType)}
       className="mx-5 mb-5 md:mx-0"
-      event="account_tab_click"
-      layoutId="account-tabs"
+      layoutId="account_tab"
     />
   );
 };

@@ -9,17 +9,9 @@ interface TabsProps {
   setActive: (type: string) => void;
   layoutId: string;
   className?: string;
-  event?: string;
 }
 
-const Tabs = ({
-  tabs,
-  active,
-  setActive,
-  layoutId,
-  className,
-  event
-}: TabsProps) => {
+const Tabs = ({ tabs, active, setActive, layoutId, className }: TabsProps) => {
   return (
     <MotionConfig transition={{ type: "spring", bounce: 0, duration: 0.4 }}>
       <motion.ul
@@ -34,9 +26,7 @@ const Tabs = ({
             key={tab.type}
             onClick={() => {
               setActive(tab.type);
-              if (event) {
-                trackEvent(event, { tab: tab.name });
-              }
+              trackEvent(`${layoutId}_click`, { tab: tab.name });
             }}
           >
             {active === tab.type ? (
