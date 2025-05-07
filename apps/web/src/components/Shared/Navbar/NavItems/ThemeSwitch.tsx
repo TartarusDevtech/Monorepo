@@ -1,4 +1,5 @@
 import cn from "@/helpers/cn";
+import trackEvent from "@/helpers/trackEvent";
 import { useTheme } from "@/hooks/useTheme";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 
@@ -18,6 +19,9 @@ const ThemeSwitch = ({ className = "", onClick }: ThemeSwitchProps) => {
       )}
       onClick={() => {
         toggleTheme();
+        trackEvent("toggle_theme", {
+          theme: theme
+        });
         onClick?.();
       }}
       type="button"
