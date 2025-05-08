@@ -6,6 +6,7 @@ import { IS_MAINNET, IS_PRODUCTION } from "@hey/data/constants";
 import * as Sentry from "@sentry/react-router";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { ignoreErrors } from "./helpers/sentry";
 import { Routes } from "./routes";
 
 Sentry.init({
@@ -13,6 +14,7 @@ Sentry.init({
   sendDefaultPii: true,
   integrations: [Sentry.browserTracingIntegration()],
   tracesSampleRate: 0.1,
+  ignoreErrors,
   enabled: IS_PRODUCTION && IS_MAINNET
 });
 
