@@ -115,7 +115,8 @@
     }
 
     & .prosekit-placeholder::before {
-      @apply opacity-50;
+      @apply absolute top-[0.5px] pointer-events-none opacity-50;
+      content: attr(data-placeholder);
     }
   }
 

@@ -242,7 +242,7 @@ const NewPublication = ({ className, post, feed }: NewPublicationProps) => {
 
   return (
     <Card className={className} onClick={() => setShowEmojiPicker(false)}>
-      <Editor />
+      <Editor isComment={isComment} />
       {postContentError ? (
         <H6 className="mt-1 px-5 pb-3 text-red-500">{postContentError}</H6>
       ) : null}

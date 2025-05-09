@@ -14,7 +14,11 @@ import { useMemo, useRef } from "react";
 import { useEditorHandle } from "./EditorHandle";
 import EditorMenus from "./EditorMenus";
 
-const Editor = () => {
+interface EditorProps {
+  isComment: boolean;
+}
+
+const Editor = ({ isComment }: EditorProps) => {
   const { currentAccount } = useAccountStore();
   const { postContent } = usePostStore();
   const defaultMarkdownRef = useRef(postContent);
@@ -29,7 +33,7 @@ const Editor = () => {
     return createEditor({ defaultContent, extension });
   }, [defaultContent]);
 
-  useFocus(editor);
+  useFocus(editor, isComment);
   useContentChange(editor);
   usePaste(editor);
   useEditorHandle(editor);
