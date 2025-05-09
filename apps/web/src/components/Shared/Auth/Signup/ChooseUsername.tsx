@@ -176,7 +176,7 @@ const ChooseUsername = () => {
                 <b>Username not available!</b>
               </div>
             ) : isAvailable === true ? (
-              <div className="mt-2 flex items-center space-x-1 text-emerald-500 text-sm">
+              <div className="mt-2 flex items-center space-x-1 text-green-500 text-sm">
                 <CheckIcon className="size-4" />
                 <b>You're in luck - it's available!</b>
               </div>

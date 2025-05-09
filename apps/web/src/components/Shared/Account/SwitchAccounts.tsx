@@ -103,7 +103,7 @@ const SwitchAccounts = () => {
           accountAvailable.account.address === loggingInAccountId ? (
             <Spinner size="xs" />
           ) : currentAccount?.address === accountAvailable.account.address ? (
-            <CheckCircleIcon className="size-5 text-emerald-500" />
+            <CheckCircleIcon className="size-5 text-green-500" />
           ) : null}
         </button>
       ))}
