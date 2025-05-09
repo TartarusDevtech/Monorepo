@@ -85,6 +85,7 @@ const ShareMenu = ({ post, showCount }: ShareMenuProps) => {
                 setIsSubmitting={setIsSubmitting}
               />
             )}
+            {canQuote && <Quote post={targetPost} />}
             {hasReposted && targetPost.id !== post.id && (
               <UndoRepost
                 post={post}
@@ -92,7 +93,6 @@ const ShareMenu = ({ post, showCount }: ShareMenuProps) => {
                 setIsSubmitting={setIsSubmitting}
               />
             )}
-            {canQuote && <Quote post={targetPost} />}
           </MenuItems>
         </MenuTransition>
       </Menu>

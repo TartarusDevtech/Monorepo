@@ -88,7 +88,7 @@ const FullPost = ({ hasHiddenComments, post }: FullPostProps) => {
                       aria-label="Like"
                       className={cn(
                         showHiddenComments
-                          ? "text-emerald-500 hover:bg-emerald-300/20"
+                          ? "text-black hover:bg-gray-500/20"
                           : "text-gray-500 hover:bg-gray-300/20 dark:text-gray-200",
                         "rounded-full p-1.5 outline-offset-2"
                       )}
