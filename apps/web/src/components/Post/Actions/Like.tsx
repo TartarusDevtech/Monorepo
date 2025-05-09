@@ -1,7 +1,6 @@
 import { Tooltip } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
-import trackEvent from "@/helpers/trackEvent";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import type { ApolloCache } from "@apollo/client";
 import { HeartIcon } from "@heroicons/react/24/outline";
@@ -56,7 +55,6 @@ const Like = ({ post, showCount }: LikeProps) => {
   };
 
   const [addReaction] = useAddReactionMutation({
-    onCompleted: () => trackEvent("add_reaction", { post: post.slug }),
     onError: (error) => {
       toggleReact();
       decrement();
@@ -66,7 +64,6 @@ const Like = ({ post, showCount }: LikeProps) => {
   });
 
   const [undoReaction] = useUndoReactionMutation({
-    onCompleted: () => trackEvent("undo_reaction", { post: post.slug }),
     onError: (error) => {
       toggleReact();
       increment();

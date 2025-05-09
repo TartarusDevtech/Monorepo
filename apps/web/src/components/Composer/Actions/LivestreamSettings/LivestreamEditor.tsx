@@ -2,7 +2,6 @@ import Video from "@/components/Shared/Post/Video";
 import { Card, Spinner, Tooltip } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
 import { hono } from "@/helpers/fetcher";
-import trackEvent from "@/helpers/trackEvent";
 import { usePostLiveStore } from "@/store/non-persisted/post/usePostLiveStore";
 import {
   ClipboardDocumentIcon,
@@ -44,10 +43,7 @@ const LivestreamEditor = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: ({ record }: { record: boolean }) =>
       hono.live.create({ record }),
-    onSuccess: (data) => {
-      trackEvent("create_livestream");
-      setLiveVideoConfig(data);
-    },
+    onSuccess: (data) => setLiveVideoConfig(data),
     onError: errorToast
   });
 

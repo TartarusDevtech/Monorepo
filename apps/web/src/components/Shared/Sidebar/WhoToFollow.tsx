@@ -3,7 +3,6 @@ import DismissRecommendedAccount from "@/components/Shared/Account/DismissRecomm
 import SingleAccount from "@/components/Shared/Account/SingleAccount";
 import SingleAccountShimmer from "@/components/Shared/Shimmer/SingleAccountShimmer";
 import { Card, ErrorMessage, H5, Modal } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/trackEvent";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
@@ -85,10 +84,7 @@ const WhoToFollow = () => {
         ))}
         <button
           className="font-bold text-gray-500 dark:text-gray-200"
-          onClick={() => {
-            trackEvent("show_more_who_to_follow_modal");
-            setShowMore(true);
-          }}
+          onClick={() => setShowMore(true)}
           type="button"
         >
           Show more

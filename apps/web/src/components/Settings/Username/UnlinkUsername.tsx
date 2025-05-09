@@ -1,6 +1,5 @@
 import { Button, H6 } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
-import trackEvent from "@/helpers/trackEvent";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import getAccount from "@hey/helpers/getAccount";
@@ -15,7 +14,6 @@ const UnlinkUsername = () => {
 
   const onCompleted = () => {
     setUnlinking(false);
-    trackEvent("unlink_username");
     toast.success("Unlinked");
   };
 

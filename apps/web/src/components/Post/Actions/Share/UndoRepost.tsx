@@ -1,6 +1,5 @@
 import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
-import trackEvent from "@/helpers/trackEvent";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useApolloClient } from "@apollo/client";
@@ -40,7 +39,6 @@ const UndoRepost = ({
   const onCompleted = () => {
     setIsSubmitting(false);
     updateCache();
-    trackEvent("undo_repost", { post: post.slug });
     toast.success("Undone repost");
   };
 

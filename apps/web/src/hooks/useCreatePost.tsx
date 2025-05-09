@@ -1,4 +1,3 @@
-import trackEvent from "@/helpers/trackEvent";
 import { useApolloClient } from "@apollo/client";
 import {
   PostDocument,
@@ -55,10 +54,7 @@ const useCreatePost = ({
     const toastId = toast.loading(
       `${isComment ? "Comment" : "Post"} processing...`
     );
-    pollTransactionStatus(hash, () => {
-      trackEvent(isComment ? "create_comment" : "create_post");
-      updateCache(hash, toastId);
-    });
+    pollTransactionStatus(hash, () => updateCache(hash, toastId));
     return onCompleted();
   };
 

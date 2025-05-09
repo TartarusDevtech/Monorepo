@@ -1,4 +1,3 @@
-import trackEvent from "@/helpers/trackEvent";
 import { Link } from "react-router";
 const currentYear = new Date().getFullYear();
 
@@ -26,7 +25,6 @@ const Footer = () => {
           key={href}
           rel="noreferrer noopener"
           target={href.startsWith("http") ? "_blank" : undefined}
-          onClick={() => trackEvent("footer_link_click", { label })}
         >
           {label}
         </Link>

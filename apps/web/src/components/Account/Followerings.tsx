@@ -3,7 +3,6 @@ import Following from "@/components/Shared/Modal/Following";
 import GraphStatsShimmer from "@/components/Shared/Shimmer/GraphStatsShimmer";
 import { Modal } from "@/components/Shared/UI";
 import humanize from "@/helpers/humanize";
-import trackEvent from "@/helpers/trackEvent";
 import getAccount from "@hey/helpers/getAccount";
 import { type AccountFragment, useAccountStatsQuery } from "@hey/indexer";
 import plur from "plur";
@@ -65,12 +64,7 @@ const Followerings = ({ account }: FolloweringsProps) => {
     <div className="flex gap-8">
       <button
         className="flex gap-x-1"
-        onClick={() => {
-          trackEvent("open_following_modal", {
-            account: account.address
-          });
-          setShowFollowingModal(true);
-        }}
+        onClick={() => setShowFollowingModal(true)}
         type="button"
       >
         <b>{humanize(stats?.following)}</b>
@@ -78,12 +72,7 @@ const Followerings = ({ account }: FolloweringsProps) => {
       </button>
       <button
         className="flex gap-x-1"
-        onClick={() => {
-          trackEvent("open_followers_modal", {
-            account: account.address
-          });
-          setShowFollowersModal(true);
-        }}
+        onClick={() => setShowFollowersModal(true)}
         type="button"
       >
         <b>{humanize(stats?.followers)}</b>

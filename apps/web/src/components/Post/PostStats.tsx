@@ -2,7 +2,6 @@ import Likes from "@/components/Shared/Modal/Likes";
 import PostExecutors from "@/components/Shared/Modal/PostExecutors";
 import Reposts from "@/components/Shared/Modal/Reposts";
 import { Modal } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/trackEvent";
 import type { PostFragment } from "@hey/indexer";
 import { AnimateNumber } from "motion-plus-react";
 import plur from "plur";
@@ -75,10 +74,7 @@ const PostStats = ({ post }: PostStatsProps) => {
         {reposts > 0 ? (
           <button
             className="outline-offset-2"
-            onClick={() => {
-              trackEvent("open_reposts_modal", { post: post.slug });
-              setShowRepostsModal(true);
-            }}
+            onClick={() => setShowRepostsModal(true)}
             type="button"
           >
             <AnimatedNumber
@@ -100,10 +96,7 @@ const PostStats = ({ post }: PostStatsProps) => {
         {reactions > 0 ? (
           <button
             className="outline-offset-2"
-            onClick={() => {
-              trackEvent("open_likes_modal", { post: post.slug });
-              setShowLikesModal(true);
-            }}
+            onClick={() => setShowLikesModal(true)}
             type="button"
           >
             <AnimatedNumber
@@ -116,10 +109,7 @@ const PostStats = ({ post }: PostStatsProps) => {
         {tips > 0 ? (
           <button
             className="outline-offset-2"
-            onClick={() => {
-              trackEvent("open_tippers_modal", { post: post.slug });
-              setShowPostExecutorsModal("Tippers");
-            }}
+            onClick={() => setShowPostExecutorsModal("Tippers")}
             type="button"
           >
             <AnimatedNumber
@@ -132,10 +122,7 @@ const PostStats = ({ post }: PostStatsProps) => {
         {collects > 0 ? (
           <button
             className="outline-offset-2"
-            onClick={() => {
-              trackEvent("open_collectors_modal", { post: post.slug });
-              setShowPostExecutorsModal("Collectors");
-            }}
+            onClick={() => setShowPostExecutorsModal("Collectors")}
             type="button"
           >
             <AnimatedNumber

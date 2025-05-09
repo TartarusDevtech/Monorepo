@@ -1,8 +1,6 @@
 import { Image, Tooltip } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
 import { hono } from "@/helpers/fetcher";
-import trackEvent from "@/helpers/trackEvent";
-import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { usePreferencesStore } from "@/store/persisted/usePreferencesStore";
 import { CheckCircleIcon as CheckCircleIconOutline } from "@heroicons/react/24/outline";
 import { CheckCircleIcon as CheckCircleIconSolid } from "@heroicons/react/24/solid";
@@ -19,17 +17,12 @@ const icons = [
 ];
 
 const AppIcon = () => {
-  const { currentAccount } = useAccountStore();
   const { appIcon, setAppIcon } = usePreferencesStore();
   const { mutate, isPending } = useMutation({
     mutationFn: ({ appIcon }: { appIcon: number }) =>
       hono.preferences.update({ appIcon }),
     onSuccess: (data) => {
       setAppIcon(data.appIcon ?? 0);
-      trackEvent("update_app_icon", {
-        account: currentAccount?.address,
-        icon: data.appIcon
-      });
       toast.success("App icon updated");
     },
     onError: errorToast

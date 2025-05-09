@@ -2,7 +2,6 @@ import SingleAccount from "@/components/Shared/Account/SingleAccount";
 import Loader from "@/components/Shared/Loader";
 import { Button, EmptyState, ErrorMessage } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
-import trackEvent from "@/helpers/trackEvent";
 import { UsersIcon } from "@heroicons/react/24/outline";
 import {
   type AccountsAvailableRequest,
@@ -115,13 +114,11 @@ const List = ({ managed = false }: ListProps) => {
       if (managed) {
         await hideManagedAccount({ variables: { request: { account } } });
         toast.success("Account is now un-managed");
-        trackEvent("unmanage_account", { account });
         return refetch();
       }
 
       await unhideManagedAccount({ variables: { request: { account } } });
       toast.success("Account is now managed");
-      trackEvent("manage_account", { account });
       return refetch();
     } catch (error) {
       errorToast(error);

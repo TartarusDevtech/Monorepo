@@ -1,5 +1,4 @@
 import cn from "@/helpers/cn";
-import trackEvent from "@/helpers/trackEvent";
 import { MotionConfig, motion } from "motion/react";
 import { type ReactNode, memo } from "react";
 
@@ -24,10 +23,7 @@ const Tabs = ({ tabs, active, setActive, layoutId, className }: TabsProps) => {
             className="relative cursor-pointer px-3 py-1.5 text-sm outline-none transition-colors"
             tabIndex={0}
             key={tab.type}
-            onClick={() => {
-              setActive(tab.type);
-              trackEvent(`${layoutId}_click`, { tab: tab.name });
-            }}
+            onClick={() => setActive(tab.type)}
           >
             {active === tab.type ? (
               <motion.div

@@ -1,7 +1,6 @@
 import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
-import trackEvent from "@/helpers/trackEvent";
 import type { ApolloCache } from "@apollo/client";
 import { MenuItem } from "@headlessui/react";
 import { BookmarkIcon as BookmarkIconOutline } from "@heroicons/react/24/outline";
@@ -55,20 +54,14 @@ const Bookmark = ({ post }: BookmarkProps) => {
   };
 
   const [bookmarkPost] = useBookmarkPostMutation({
-    onCompleted: () => {
-      trackEvent("bookmark_post", { post: post.slug });
-      toast.success("Post bookmarked!");
-    },
+    onCompleted: () => toast.success("Post bookmarked!"),
     onError,
     update: (cache) => updateCache(cache, true),
     variables: { request: { post: post.id } }
   });
 
   const [undoBookmarkPost] = useUndoBookmarkPostMutation({
-    onCompleted: () => {
-      trackEvent("undo_bookmark_post", { post: post.slug });
-      toast.success("Removed post bookmark!");
-    },
+    onCompleted: () => toast.success("Removed post bookmark!"),
     onError,
     update: (cache) => updateCache(cache, false),
     variables: { request: { post: post.id } }

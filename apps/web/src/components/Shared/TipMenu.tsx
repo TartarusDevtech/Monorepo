@@ -3,7 +3,6 @@ import LoginButton from "@/components/Shared/LoginButton";
 import { Button, Input, Spinner } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
-import trackEvent from "@/helpers/trackEvent";
 import usePreventScrollOnNumberInput from "@/hooks/usePreventScrollOnNumberInput";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
@@ -73,22 +72,10 @@ const TipMenu = ({ closePopover, post, account }: TipMenuProps) => {
     }
   };
 
-  const onCompleted = (hash: string) => {
+  const onCompleted = () => {
     setIsSubmitting(false);
     closePopover();
     updateCache();
-    const eventName = post ? "tip_post" : "tip_account";
-    const eventParams = post
-      ? { post: post.slug }
-      : { account: account?.address };
-    trackEvent(eventName, eventParams);
-    // Track e-commerce event for GA
-    trackEvent("purchase", {
-      transaction_id: hash,
-      product_type: eventName,
-      value: amount,
-      currency: "USD"
-    });
     toast.success(`Tipped ${amount} ${WRAPPED_NATIVE_TOKEN_SYMBOL}`);
   };
 
@@ -109,7 +96,7 @@ const TipMenu = ({ closePopover, post, account }: TipMenuProps) => {
   const [executeTipAction] = useExecutePostActionMutation({
     onCompleted: async ({ executePostAction }) => {
       if (executePostAction.__typename === "ExecutePostActionResponse") {
-        return onCompleted(executePostAction.hash);
+        return onCompleted();
       }
 
       return await handleTransactionLifecycle({
@@ -124,7 +111,7 @@ const TipMenu = ({ closePopover, post, account }: TipMenuProps) => {
   const [executeAccountAction] = useExecuteAccountActionMutation({
     onCompleted: async ({ executeAccountAction }) => {
       if (executeAccountAction.__typename === "ExecuteAccountActionResponse") {
-        return onCompleted(executeAccountAction.hash);
+        return onCompleted();
       }
 
       return await handleTransactionLifecycle({

@@ -12,7 +12,6 @@ import {
 import convertToTitleCase from "@/helpers/convertToTitleCase";
 import errorToast from "@/helpers/errorToast";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
-import trackEvent from "@/helpers/trackEvent";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import {
   type AccountFragment,
@@ -40,10 +39,6 @@ const ReportAccount = ({ account }: ReportAccountProps) => {
   });
 
   const [createReport, { data, error, loading }] = useReportAccountMutation({
-    onCompleted: () =>
-      trackEvent("report_account", {
-        account: account?.address
-      }),
     onError: (error) => errorToast(error)
   });
 

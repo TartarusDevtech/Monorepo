@@ -1,6 +1,5 @@
 import { Button, Input, Modal } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
-import trackEvent from "@/helpers/trackEvent";
 import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useWithdrawMutation } from "@hey/indexer";
@@ -26,7 +25,6 @@ const Withdraw = ({ currency, value, refetch }: WithdrawProps) => {
     pollTransactionStatus(hash, () => {
       setIsSubmitting(false);
       refetch();
-      trackEvent("withdraw_token");
       toast.success("Withdrawal Successful");
     });
   };
@@ -70,10 +68,7 @@ const Withdraw = ({ currency, value, refetch }: WithdrawProps) => {
       <Button
         size="sm"
         outline
-        onClick={() => {
-          trackEvent("open_withdraw_token_modal");
-          setShowModal(true);
-        }}
+        onClick={() => setShowModal(true)}
         disabled={isSubmitting || valueToWithdraw === "0"}
         loading={isSubmitting}
       >

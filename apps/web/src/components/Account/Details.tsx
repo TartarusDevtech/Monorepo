@@ -6,7 +6,6 @@ import formatDate from "@/helpers/datetime/formatDate";
 import getAccountAttribute from "@/helpers/getAccountAttribute";
 import getFavicon from "@/helpers/getFavicon";
 import getMentions from "@/helpers/getMentions";
-import trackEvent from "@/helpers/trackEvent";
 import { useTheme } from "@/hooks/useTheme";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { CalendarIcon, MapPinIcon } from "@heroicons/react/24/outline";
@@ -80,10 +79,7 @@ const Details = ({
             alt={account.address}
             className="size-20 cursor-pointer rounded-full bg-gray-200 ring-3 ring-gray-50 sm:size-36 dark:bg-gray-700 dark:ring-black"
             height={128}
-            onClick={() => {
-              trackEvent("expand_account_avatar");
-              setShowLightBox(true);
-            }}
+            onClick={() => setShowLightBox(true)}
             src={getAvatar(account, AVATAR_BIG)}
             width={128}
           />

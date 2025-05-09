@@ -1,7 +1,6 @@
 import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
 import stopEventPropagation from "@/helpers/stopEventPropagation";
-import trackEvent from "@/helpers/trackEvent";
 import type { ApolloCache } from "@apollo/client";
 import { MenuItem } from "@headlessui/react";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
@@ -40,20 +39,14 @@ const NotInterested = ({ post }: NotInterestedProps) => {
   };
 
   const [addPostNotInterested] = useAddPostNotInterestedMutation({
-    onCompleted: () => {
-      trackEvent("add_post_not_interested", { post: post.slug });
-      toast.success("Marked as not Interested");
-    },
+    onCompleted: () => toast.success("Marked as not Interested"),
     onError,
     update: (cache) => updateCache(cache, true),
     variables: { request }
   });
 
   const [undoPostNotInterested] = useUndoPostNotInterestedMutation({
-    onCompleted: () => {
-      trackEvent("undo_post_not_interested", { post: post.slug });
-      toast.success("Undo Not interested");
-    },
+    onCompleted: () => toast.success("Undo Not interested"),
     onError,
     update: (cache) => updateCache(cache, false),
     variables: { request }

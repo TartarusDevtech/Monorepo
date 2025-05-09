@@ -1,6 +1,5 @@
 import { Button, Input, Modal } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
-import trackEvent from "@/helpers/trackEvent";
 import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { NATIVE_TOKEN_SYMBOL } from "@hey/data/constants";
@@ -25,7 +24,6 @@ const Unwrap = ({ value, refetch }: UnwrapProps) => {
     pollTransactionStatus(hash, () => {
       setIsSubmitting(false);
       refetch();
-      trackEvent("unwrap_token");
       toast.success("Unwrap Successful");
     });
   };
@@ -63,10 +61,7 @@ const Unwrap = ({ value, refetch }: UnwrapProps) => {
       <Button
         size="sm"
         outline
-        onClick={() => {
-          trackEvent("open_unwrap_token_modal");
-          setShowModal(true);
-        }}
+        onClick={() => setShowModal(true)}
         disabled={isSubmitting || valueToUnwrap === "0"}
         loading={isSubmitting}
       >

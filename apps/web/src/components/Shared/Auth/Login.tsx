@@ -1,6 +1,5 @@
 import { Button, Card, ErrorMessage } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
-import trackEvent from "@/helpers/trackEvent";
 import { signIn } from "@/store/persisted/useAuthStore";
 import { EXPANSION_EASE } from "@/variants";
 import { KeyIcon } from "@heroicons/react/24/outline";
@@ -111,7 +110,6 @@ const Login = ({ setHasAccounts }: LoginProps) => {
         const accessToken = auth.data?.authenticate.accessToken;
         const refreshToken = auth.data?.authenticate.refreshToken;
         signIn({ accessToken, refreshToken });
-        trackEvent("login");
         return location.reload();
       }
 

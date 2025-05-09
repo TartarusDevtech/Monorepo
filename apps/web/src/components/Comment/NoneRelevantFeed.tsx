@@ -1,7 +1,6 @@
 import { useHiddenCommentFeedStore } from "@/components/Post";
 import SinglePost from "@/components/Post/SinglePost";
 import { Card, StackedAvatars } from "@/components/Shared/UI";
-import trackEvent from "@/helpers/trackEvent";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { AVATAR_TINY } from "@hey/data/constants";
 import getAvatar from "@hey/helpers/getAvatar";
@@ -72,10 +71,7 @@ const NoneRelevantFeed = ({ postId }: NoneRelevantFeedProps) => {
     <>
       <Card
         className="flex cursor-pointer items-center justify-center space-x-2.5 p-5"
-        onClick={() => {
-          trackEvent("show_more_comments");
-          setShowMore(!showMore);
-        }}
+        onClick={() => setShowMore(!showMore)}
       >
         <StackedAvatars
           avatars={comments.map((comment) =>

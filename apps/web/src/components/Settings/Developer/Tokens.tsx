@@ -1,7 +1,6 @@
 import BackButton from "@/components/Shared/BackButton";
 import { Button, Card, CardHeader, H6 } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
-import trackEvent from "@/helpers/trackEvent";
 import useHandleWrongNetwork from "@/hooks/useHandleWrongNetwork";
 import { hydrateAuthTokens } from "@/store/persisted/useAuthStore";
 import { Errors } from "@hey/data/errors";
@@ -51,7 +50,6 @@ const Tokens = () => {
       });
 
       if (auth.data?.authenticate.__typename === "AuthenticationTokens") {
-        trackEvent("generate_builder_token");
         setBuilderToken(auth.data?.authenticate.accessToken);
       }
     } catch (error) {
@@ -73,7 +71,6 @@ const Tokens = () => {
           <button
             className="cursor-pointer break-all rounded-md bg-gray-300 p-2 px-3 text-left dark:bg-gray-600"
             onClick={() => {
-              trackEvent("copy_access_token");
               toast.success("Copied to clipboard");
               navigator.clipboard.writeText(accessToken as string);
             }}
@@ -87,7 +84,6 @@ const Tokens = () => {
           <button
             className="cursor-pointer break-all rounded-md bg-gray-300 p-2 px-3 text-left dark:bg-gray-600"
             onClick={() => {
-              trackEvent("copy_refresh_token");
               toast.success("Copied to clipboard");
               navigator.clipboard.writeText(refreshToken as string);
             }}
@@ -110,7 +106,6 @@ const Tokens = () => {
               className="mt-5 cursor-pointer break-all rounded-md bg-gray-300 p-2 px-3 text-left dark:bg-gray-600"
               type="button"
               onClick={() => {
-                trackEvent("copy_builder_token");
                 toast.success("Copied to clipboard");
                 navigator.clipboard.writeText(builderToken as string);
               }}

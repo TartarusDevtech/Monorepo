@@ -1,6 +1,5 @@
 import { Button } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
-import trackEvent from "@/helpers/trackEvent";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAuthModalStore } from "@/store/non-persisted/modal/useAuthModalStore";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
@@ -41,9 +40,6 @@ const Unfollow = ({
   const onCompleted = () => {
     updateCache();
     setIsSubmitting(false);
-    trackEvent("unfollow", {
-      account: account.address
-    });
   };
 
   const onError = (error: any) => {

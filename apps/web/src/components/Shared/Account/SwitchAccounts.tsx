@@ -1,7 +1,6 @@
 import { ErrorMessage, Image, Spinner } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
 import errorToast from "@/helpers/errorToast";
-import trackEvent from "@/helpers/trackEvent";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { signIn, signOut } from "@/store/persisted/useAuthStore";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
@@ -54,7 +53,6 @@ const SwitchAccounts = () => {
         const refreshToken = auth.data?.switchAccount.refreshToken;
         signOut();
         signIn({ accessToken, refreshToken });
-        trackEvent("switch_account");
         return location.reload();
       }
 

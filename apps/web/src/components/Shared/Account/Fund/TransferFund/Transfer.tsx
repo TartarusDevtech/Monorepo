@@ -1,6 +1,5 @@
 import { Button, Card, Input, Spinner } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
-import trackEvent from "@/helpers/trackEvent";
 import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";
 import usePreventScrollOnNumberInput from "@/hooks/usePreventScrollOnNumberInput";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
@@ -43,7 +42,6 @@ const Transfer = ({ token }: TransferProps) => {
     pollTransactionStatus(hash, () => {
       setIsSubmitting(false);
       setShowFundModal(false);
-      trackEvent("transfer_fund");
       toast.success("Transferred successfully");
     });
   };

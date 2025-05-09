@@ -3,7 +3,6 @@ import LoginButton from "@/components/Shared/LoginButton";
 import { Button, Spinner } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
 import getCollectActionData from "@/helpers/getCollectActionData";
-import trackEvent from "@/helpers/trackEvent";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useApolloClient } from "@apollo/client";
@@ -70,22 +69,12 @@ const CollectActionButton = ({
     });
   };
 
-  const onCompleted = (hash: string) => {
+  const onCompleted = () => {
     // Should not disable the button if it's a paid collect module
     setHasSimpleCollected(amount <= 0);
     setIsSubmitting(false);
     onCollectSuccess?.();
     updateCache();
-    trackEvent("collect", { post: post.slug });
-    // Track e-commerce event for GA
-    if (assetSymbol === "GHO" || assetSymbol === "WGHO") {
-      trackEvent("purchase", {
-        transaction_id: hash,
-        product_type: "collect",
-        value: amount,
-        currency: "USD"
-      });
-    }
     toast.success("Collected successfully");
   };
 
@@ -116,7 +105,7 @@ const CollectActionButton = ({
   const [executeCollectAction] = useExecutePostActionMutation({
     onCompleted: async ({ executePostAction }) => {
       if (executePostAction.__typename === "ExecutePostActionResponse") {
-        return onCompleted(executePostAction.hash);
+        return onCompleted();
       }
 
       return await handleTransactionLifecycle({

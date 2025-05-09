@@ -1,22 +1,16 @@
 import { Button, H6 } from "@/components/Shared/UI";
 import errorToast from "@/helpers/errorToast";
-import trackEvent from "@/helpers/trackEvent";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
-import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useEnableSignlessMutation } from "@hey/indexer";
 import { useState } from "react";
 import { toast } from "sonner";
 
 const Signless = () => {
-  const { currentAccount } = useAccountStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const handleTransactionLifecycle = useTransactionLifecycle();
 
   const onCompleted = () => {
     setIsSubmitting(false);
-    trackEvent("enable_signless", {
-      account: currentAccount?.address
-    });
     toast.success("Signless enabled");
   };
 
