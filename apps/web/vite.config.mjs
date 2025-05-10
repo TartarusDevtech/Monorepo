@@ -53,12 +53,7 @@ const dependenciesToChunk = {
   ]
 };
 
-const navigateFallbackDenylist = [
-  /^\/sitemap/,
-  /^\/blog/,
-  /^\/discord/,
-  /^\/donate/
-];
+const navigateFallbackDenylist = [/^\/sitemap/, /^\/blog/, /^\/discord/];
 
 const bigIcon = { src: "pwa-512x512.png", sizes: "512x512", type: "image/png" };
 
