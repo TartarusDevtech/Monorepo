@@ -160,6 +160,11 @@ const ProModal = () => {
           outline
         />
       )}
+      {!isPro && (
+        <div className="text-gray-500 text-xs">
+          This is not recurring. You need to manually resubscribe every month.
+        </div>
+      )}
     </div>
   );
 };
