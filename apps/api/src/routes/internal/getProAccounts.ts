@@ -18,12 +18,11 @@ const getProAccounts = async (ctx: Context) => {
       `
     );
 
-    // Convert Buffer to hex string
-    const accounts = proAccounts.map(
-      (account) => `0x${account.owned_by.toString("hex")}`
+    return ctx.text(
+      proAccounts
+        .map((account) => `0x${account.owned_by.toString("hex")}`)
+        .join("\n")
     );
-
-    return ctx.text(accounts.join("\n"));
   } catch (e) {
     console.error(e);
     return ctx.json({ success: false, error: Errors.SomethingWentWrong }, 500);
