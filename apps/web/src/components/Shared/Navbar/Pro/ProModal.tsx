@@ -161,7 +161,7 @@ const ProModal = () => {
         />
       )}
       {!isPro && (
-        <div className="text-gray-500 text-xs">
+        <div className="-mt-1 text-gray-500 text-xs">
           This is not recurring. You need to manually resubscribe every month.
         </div>
       )}
