@@ -107,10 +107,15 @@ const Navbar = () => {
       </Link>
       <NavItems isLoggedIn={!!currentAccount} />
       {currentAccount ? (
-        <SignedAccount />
+        <>
+          {/* <Pro /> */}
+          <SignedAccount />
+        </>
       ) : (
         <button onClick={() => setShowAuthModal(true)} type="button">
-          <UserCircleIcon className="size-6" />
+          <Tooltip content="Login">
+            <UserCircleIcon className="size-6" />
+          </Tooltip>
         </button>
       )}
     </aside>
