@@ -150,13 +150,13 @@ const ProModal = () => {
           disabled={isSubmitting}
           loading={isSubmitting}
         >
-          Subscribe for ${PRO_SUBSCRIPTION_AMOUNT}/month
+          Subscribe for {PRO_SUBSCRIPTION_AMOUNT} WGHO/month
         </Button>
       ) : (
         <TransferFundButton
           className="w-full"
           token={DEFAULT_TOKEN}
-          label="Transfer funds to your account"
+          label="Transfer 3 WGHO to your account"
           outline
         />
       )}
