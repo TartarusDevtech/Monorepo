@@ -1,4 +1,4 @@
-import { Button, H4, Image, Tooltip } from "@/components/Shared/UI";
+import { Button, Image, Tooltip } from "@/components/Shared/UI";
 import formatDate from "@/helpers/datetime/formatDate";
 import errorToast from "@/helpers/errorToast";
 import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";
@@ -85,62 +85,64 @@ const ProModal = () => {
 
   return (
     <div className="m-5 flex flex-col items-center gap-y-5">
-      <Image src="https://i.ibb.co/gFXzgjhx/pro-1.png" alt="Pro" width={100} />
+      <Image
+        src="https://i.ibb.co/gFXzgjhx/pro-1.png"
+        alt="Pro"
+        width={112}
+        className="w-28"
+      />
       {expiresAt ? (
         <div>
           Your pro expires on <b>{formatDate(expiresAt)}</b>
         </div>
       ) : (
-        <div className="flex flex-col items-center">
-          <H4 className="mb-3">What you'll get</H4>
-          <div className="flex flex-col items-center gap-y-1.5 text-gray-500 text-sm">
-            <Tooltip
-              content={
-                <div className="flex max-w-xs items-center gap-x-1 py-1.5 leading-5">
-                  You will have nice <SparklesIcon className="size-4" /> icon on
-                  your profile
-                </div>
-              }
-              placement="top"
-            >
-              <div>Pro Badge on your profile</div>
-            </Tooltip>
-            <Tooltip
-              content={
-                <div className="max-w-xs py-1.5 leading-5">
-                  Unlock premium collect features: customize limits, set
-                  timeframes, split revenue between accounts, choose licenses,
-                  and access exclusive tools
-                </div>
-              }
-              placement="top"
-            >
-              <div>Advanced Collect</div>
-            </Tooltip>
-            <Tooltip
-              content={
-                <div className="max-w-xs py-1.5 leading-5">
-                  Enable monetization by allowing others to super follow your
-                  profile and super join your groups
-                </div>
-              }
-              placement="top"
-            >
-              <div>Super Follow & Join</div>
-            </Tooltip>
-            <Tooltip
-              content={
-                <div className="max-w-xs py-1.5 leading-5">
-                  Host live streams and engage with your audience in real-time
-                </div>
-              }
-              placement="top"
-            >
-              <div>Create Live Streams</div>
-            </Tooltip>
-            <div>Choose your app icon</div>
-            <div>More coming soon</div>
-          </div>
+        <div className="flex flex-col items-center gap-y-1.5 text-gray-500 text-sm">
+          <Tooltip
+            content={
+              <div className="flex max-w-xs items-center gap-x-1 py-1.5 leading-5">
+                You will have nice <SparklesIcon className="size-4" /> icon on
+                your profile
+              </div>
+            }
+            placement="top"
+          >
+            <div>Pro Badge on your profile</div>
+          </Tooltip>
+          <Tooltip
+            content={
+              <div className="max-w-xs py-1.5 leading-5">
+                Unlock premium collect features: customize limits, set
+                timeframes, split revenue between accounts, choose licenses, and
+                access exclusive tools
+              </div>
+            }
+            placement="top"
+          >
+            <div>Advanced Collect</div>
+          </Tooltip>
+          <Tooltip
+            content={
+              <div className="max-w-xs py-1.5 leading-5">
+                Enable monetization by allowing others to super follow your
+                profile and super join your groups
+              </div>
+            }
+            placement="top"
+          >
+            <div>Super Follow & Join</div>
+          </Tooltip>
+          <Tooltip
+            content={
+              <div className="max-w-xs py-1.5 leading-5">
+                Host live streams and engage with your audience in real-time
+              </div>
+            }
+            placement="top"
+          >
+            <div>Create Live Streams</div>
+          </Tooltip>
+          <div>Choose your app icon</div>
+          <div>More coming soon</div>
         </div>
       )}
       {isPro ? null : canSubscribe ? (
