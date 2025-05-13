@@ -1,5 +1,6 @@
 import SingleAccount from "@/components/Shared/Account/SingleAccount";
 import BackButton from "@/components/Shared/BackButton";
+import NotLoggedIn from "@/components/Shared/NotLoggedIn";
 import { PageLayout } from "@/components/Shared/PageLayout";
 import { Card, CardHeader } from "@/components/Shared/UI";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
@@ -20,6 +21,10 @@ import { Link } from "react-router";
 
 const AccountSettings = () => {
   const { currentAccount } = useAccountStore();
+
+  if(!currentAccount) {
+    return <NotLoggedIn />;
+  }
 
   const settingsPages = [
     {
