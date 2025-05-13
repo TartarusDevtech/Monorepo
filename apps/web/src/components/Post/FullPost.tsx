@@ -1,17 +1,13 @@
 import { Tooltip } from "@/components/Shared/UI";
 import cn from "@/helpers/cn";
 import formatDate from "@/helpers/datetime/formatDate";
-import { hono } from "@/helpers/fetcher";
 import {
   getBlockedByMeMessage,
   getBlockedMeMessage
 } from "@/helpers/getBlockedMessage";
-import isFeatureEnabled from "@/helpers/isFeatureEnabled";
 import { QueueListIcon } from "@heroicons/react/24/outline";
-import { Features } from "@hey/data/features";
 import { isRepost } from "@hey/helpers/postHelpers";
 import type { AnyPostFragment } from "@hey/indexer";
-import { useQuery } from "@tanstack/react-query";
 import { useHiddenCommentFeedStore } from ".";
 import PostWarning from "../Shared/Post/PostWarning";
 import PostActions from "./Actions";
@@ -30,18 +26,10 @@ interface FullPostProps {
 const FullPost = ({ hasHiddenComments, post }: FullPostProps) => {
   const { setShowHiddenComments, showHiddenComments } =
     useHiddenCommentFeedStore();
-  const isStaff = isFeatureEnabled(Features.Staff);
 
   const targetPost = isRepost(post) ? post?.repostOf : post;
-  const { author, timestamp } = targetPost;
+  const { timestamp } = targetPost;
 
-  const { data: accountDetails } = useQuery({
-    queryKey: ["account", author.address],
-    queryFn: () => hono.account.get(author.address),
-    enabled: Boolean(author.address)
-  });
-
-  const isSuspended = isStaff ? false : accountDetails?.isSuspended;
   const isBlockedByMe = post.author.operations?.isBlockedByMe;
   const hasBlockedMe = post.author.operations?.hasBlockedMe;
 
@@ -51,10 +39,6 @@ const FullPost = ({ hasHiddenComments, post }: FullPostProps) => {
 
   if (isBlockedByMe) {
     return <PostWarning message={getBlockedByMeMessage(post.author)} />;
-  }
-
-  if (isSuspended) {
-    return <PostWarning message="Author Account has been suspended!" />;
   }
 
   return (

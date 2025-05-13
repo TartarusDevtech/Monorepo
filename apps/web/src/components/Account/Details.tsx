@@ -10,7 +10,7 @@ import { useTheme } from "@/hooks/useTheme";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
 import { useProStore } from "@/store/persisted/useProStore";
 import { CalendarIcon, MapPinIcon } from "@heroicons/react/24/outline";
-import { EyeSlashIcon, SparklesIcon } from "@heroicons/react/24/solid";
+import { SparklesIcon } from "@heroicons/react/24/solid";
 import {
   AVATAR_BIG,
   EXPANDED_AVATAR,
@@ -29,14 +29,12 @@ import AccountMenu from "./Menu";
 import MetaDetails from "./MetaDetails";
 
 interface DetailsProps {
-  isSuspended: boolean;
   isBlockedByMe: boolean;
   hasBlockedMe: boolean;
   account: AccountFragment;
 }
 
 const Details = ({
-  isSuspended = false,
   isBlockedByMe = false,
   hasBlockedMe = false,
   account
@@ -109,11 +107,6 @@ const Details = ({
           {currentAccount?.address === account.address && isPro ? (
             <Tooltip content="Pro">
               <SparklesIcon className="size-6" />
-            </Tooltip>
-          ) : null}
-          {isSuspended ? (
-            <Tooltip content="Suspended">
-              <EyeSlashIcon className="size-6 text-brand-500" />
             </Tooltip>
           ) : null}
         </div>
