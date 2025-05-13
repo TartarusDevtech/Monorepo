@@ -22,7 +22,7 @@ import { Link } from "react-router";
 const AccountSettings = () => {
   const { currentAccount } = useAccountStore();
 
-  if(!currentAccount) {
+  if (!currentAccount) {
     return <NotLoggedIn />;
   }
 
@@ -97,9 +97,7 @@ const AccountSettings = () => {
                 {page.icon}
                 <div>{page.title}</div>
               </div>
-              <div>
-                <ArrowRightIcon className="size-4" />
-              </div>
+              <ArrowRightIcon className="size-4" />
             </Link>
           ))}
         </div>
