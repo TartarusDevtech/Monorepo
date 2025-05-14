@@ -71,8 +71,9 @@ const ForYou = () => {
         {posts
           .filter(
             (item) =>
-              !item.post.author.operations?.hasBlockedMe ||
-              !item.post.author.operations?.isBlockedByMe
+              !item.post.author.operations?.hasBlockedMe &&
+              !item.post.author.operations?.isBlockedByMe &&
+              !item.post.operations?.hasReported
           )
           .map((item, index) => (
             <SinglePost
