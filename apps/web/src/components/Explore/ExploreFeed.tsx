@@ -75,8 +75,9 @@ const ExploreFeed = ({ focus }: ExploreFeedProps) => {
         {posts
           .filter(
             (post) =>
-              !post.author.operations?.hasBlockedMe ||
-              !post.author.operations?.isBlockedByMe
+              !post.author.operations?.hasBlockedMe &&
+              !post.author.operations?.isBlockedByMe &&
+              !post.operations?.hasReported
           )
           .map((post, index) => (
             <SinglePost
