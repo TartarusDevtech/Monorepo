@@ -9,6 +9,7 @@ import {
   type PostReferencesRequest,
   PostVisibilityFilter,
   ReferenceRelevancyFilter,
+  type ReferencedPostFragment,
   usePostReferencesQuery
 } from "@hey/indexer";
 import { useIntersectionObserver } from "@uidotdev/usehooks";
@@ -42,7 +43,8 @@ const CommentFeed = ({ postId }: CommentFeedProps) => {
     variables: { request }
   });
 
-  const comments = data?.postReferences?.items ?? [];
+  const comments =
+    (data?.postReferences?.items as ReferencedPostFragment[]) ?? [];
   const pageInfo = data?.postReferences?.pageInfo;
   const hasMore = pageInfo?.next;
 
@@ -83,9 +85,10 @@ const CommentFeed = ({ postId }: CommentFeedProps) => {
         {comments
           .filter(
             (comment) =>
-              !comment.author.operations?.hasBlockedMe ||
-              !comment.author.operations?.isBlockedByMe ||
-              comment.isDeleted
+              !comment.author.operations?.hasBlockedMe &&
+              !comment.author.operations?.isBlockedByMe &&
+              !comment.operations?.hasReported &&
+              !comment.isDeleted
           )
           .map((comment, index) => {
             const isFirst = index === 0;
