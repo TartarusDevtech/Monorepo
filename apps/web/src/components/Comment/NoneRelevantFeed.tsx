@@ -69,6 +69,14 @@ const NoneRelevantFeed = ({ postId }: NoneRelevantFeedProps) => {
     return null;
   }
 
+  const filteredComments = comments.filter(
+    (comment) =>
+      !comment.author.operations?.hasBlockedMe &&
+      !comment.author.operations?.isBlockedByMe &&
+      !comment.operations?.hasReported &&
+      !comment.isDeleted
+  );
+
   return (
     <>
       <Card
@@ -76,7 +84,7 @@ const NoneRelevantFeed = ({ postId }: NoneRelevantFeedProps) => {
         onClick={() => setShowMore(!showMore)}
       >
         <StackedAvatars
-          avatars={comments.map((comment) =>
+          avatars={filteredComments.map((comment) =>
             getAvatar(comment.author, AVATAR_TINY)
           )}
           limit={5}
@@ -91,28 +99,20 @@ const NoneRelevantFeed = ({ postId }: NoneRelevantFeedProps) => {
       {showMore ? (
         <Card className="virtual-divider-list-window">
           <WindowVirtualizer>
-            {comments
-              .filter(
-                (comment) =>
-                  !comment.author.operations?.hasBlockedMe &&
-                  !comment.author.operations?.isBlockedByMe &&
-                  !comment.operations?.hasReported &&
-                  !comment.isDeleted
-              )
-              .map((comment, index) => {
-                const isFirst = index === 0;
-                const isLast = index === comments.length - 1;
+            {filteredComments.map((comment, index) => {
+              const isFirst = index === 0;
+              const isLast = index === filteredComments.length - 1;
 
-                return (
-                  <SinglePost
-                    key={comment.id}
-                    isFirst={isFirst}
-                    isLast={isLast}
-                    post={comment}
-                    showType={false}
-                  />
-                );
-              })}
+              return (
+                <SinglePost
+                  key={comment.id}
+                  isFirst={isFirst}
+                  isLast={isLast}
+                  post={comment}
+                  showType={false}
+                />
+              );
+            })}
             {hasMore && <span ref={ref} />}
           </WindowVirtualizer>
         </Card>
