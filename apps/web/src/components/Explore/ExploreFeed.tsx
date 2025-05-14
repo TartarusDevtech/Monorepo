@@ -79,13 +79,8 @@ const ExploreFeed = ({ focus }: ExploreFeedProps) => {
   return (
     <Card className="virtual-divider-list-window">
       <WindowVirtualizer>
-        {filteredPosts.map((post, index) => (
-          <SinglePost
-            key={post.id}
-            isFirst={index === 0}
-            isLast={index === (filteredPosts?.length || 0) - 1}
-            post={post}
-          />
+        {filteredPosts.map((post) => (
+          <SinglePost key={post.id} post={post} />
         ))}
         {hasMore && <span ref={ref} />}
       </WindowVirtualizer>

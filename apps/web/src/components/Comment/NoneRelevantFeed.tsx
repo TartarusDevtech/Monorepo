@@ -99,20 +99,9 @@ const NoneRelevantFeed = ({ postId }: NoneRelevantFeedProps) => {
       {showMore ? (
         <Card className="virtual-divider-list-window">
           <WindowVirtualizer>
-            {filteredComments.map((comment, index) => {
-              const isFirst = index === 0;
-              const isLast = index === filteredComments.length - 1;
-
-              return (
-                <SinglePost
-                  key={comment.id}
-                  isFirst={isFirst}
-                  isLast={isLast}
-                  post={comment}
-                  showType={false}
-                />
-              );
-            })}
+            {filteredComments.map((comment) => (
+              <SinglePost key={comment.id} post={comment} showType={false} />
+            ))}
             {hasMore && <span ref={ref} />}
           </WindowVirtualizer>
         </Card>

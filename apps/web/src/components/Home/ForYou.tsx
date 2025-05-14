@@ -75,13 +75,8 @@ const ForYou = () => {
   return (
     <Card className="virtual-divider-list-window">
       <WindowVirtualizer>
-        {filteredPosts.map((item, index) => (
-          <SinglePost
-            key={item.post.id}
-            isFirst={index === 0}
-            isLast={index === (filteredPosts?.length || 0) - 1}
-            post={item.post}
-          />
+        {filteredPosts.map((item) => (
+          <SinglePost key={item.post.id} post={item.post} />
         ))}
         {hasMore && <span ref={ref} />}
       </WindowVirtualizer>

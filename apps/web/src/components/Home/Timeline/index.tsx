@@ -80,12 +80,10 @@ const Timeline = () => {
   return (
     <Card className="virtual-divider-list-window">
       <WindowVirtualizer>
-        {filteredPosts.map((timelineItem, index) => (
+        {filteredPosts.map((timelineItem) => (
           <SinglePost
             key={timelineItem.id}
             timelineItem={timelineItem}
-            isFirst={index === 0}
-            isLast={index === (filteredPosts?.length || 0) - 1}
             post={timelineItem.primary}
           />
         ))}
