@@ -6,15 +6,17 @@ const DOMAIN_PARAM_MAP: Record<string, { name: string; value: string }> = {
 };
 
 const injectReferrerToUrl = (url: string) => {
-  const parsedUrl = new URL(url);
-  const param = DOMAIN_PARAM_MAP[parsedUrl.hostname];
-
-  if (!param) {
+  try {
+    const parsed = new URL(url);
+    const config = DOMAIN_PARAM_MAP[parsed.hostname];
+    if (config) {
+      parsed.searchParams.set(config.name, config.value);
+      return parsed.toString();
+    }
+    return url;
+  } catch {
     return url;
   }
-
-  parsedUrl.searchParams.set(param.name, param.value);
-  return parsedUrl.toString();
 };
 
 export default injectReferrerToUrl;
