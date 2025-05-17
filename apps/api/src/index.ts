@@ -13,6 +13,7 @@ import ogRouter from "./routes/og";
 import ping from "./routes/ping";
 import preferencesRouter from "./routes/preferences";
 import sitemapRouter from "./routes/sitemap";
+import tempRouter from "./routes/temp";
 
 const app = new Hono();
 
@@ -31,6 +32,7 @@ app.route("/oembed", oembedRouter);
 app.route("/preferences", preferencesRouter);
 app.route("/sitemap", sitemapRouter);
 app.route("/og", ogRouter);
+app.route("/temp", tempRouter);
 
 serve({ fetch: app.fetch, port: 4784 }, (info) => {
   console.info(`Server running on port ${info.port}`);
