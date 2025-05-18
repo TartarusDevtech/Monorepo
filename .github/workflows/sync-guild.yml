@@ -1,10 +1,13 @@
-name: Sync Pro Accounts to Guild
+name: Sync to Guild
 
 on:
+  schedule:
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 jobs:
   sync:
+    name: Sync Pro Accounts to Guild
     runs-on: ubuntu-latest
     steps:
       - name: Sync Pro Accounts to Guild
