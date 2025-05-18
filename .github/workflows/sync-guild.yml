@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  sync:
+  sync-pro-guild:
     name: Sync Pro Accounts to Guild
     runs-on: ubuntu-latest
     steps:
