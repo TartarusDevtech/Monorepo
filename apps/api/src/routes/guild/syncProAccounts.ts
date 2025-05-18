@@ -30,8 +30,7 @@ const syncProAccounts = async (ctx: Context) => {
     });
 
     return ctx.json(data);
-  } catch (e) {
-    console.error(e);
+  } catch {
     return ctx.json({ success: false, error: Errors.SomethingWentWrong }, 500);
   }
 };
