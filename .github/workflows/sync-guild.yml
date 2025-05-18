@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: Sync Pro Accounts to Guild
         run: |
-          curl -X GET "https://api.hey.xyz/internal/pro?secret=${{ secrets.SHARED_SECRET }}"
+          curl -X GET "https://api.hey.xyz/guild/syncProAccounts?secret=${{ secrets.SHARED_SECRET }}"

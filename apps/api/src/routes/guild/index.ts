@@ -4,6 +4,6 @@ import syncProAccounts from "./syncProAccounts";
 
 const app = new Hono();
 
-app.get("/pro", secretMiddleware, syncProAccounts);
+app.get("/syncProAccounts", secretMiddleware, syncProAccounts);
 
 export default app;

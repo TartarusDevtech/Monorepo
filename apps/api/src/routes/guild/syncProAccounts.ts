@@ -1,19 +1,7 @@
-import { createGuildClient, createSigner } from "@guildxyz/sdk";
 import { Errors } from "@hey/data/errors";
 import type { Context } from "hono";
 import lensPg from "src/utils/lensPg";
-import signer from "src/utils/signer";
-
-const guildClient = createGuildClient("heyxyz");
-const signerFunction = createSigner.custom(
-  (message) => signer.signMessage({ message }),
-  signer.account.address
-);
-const {
-  guild: {
-    role: { requirement: requirementClient }
-  }
-} = guildClient;
+import syncAddressesToGuild from "src/utils/syncAddressesToGuild";
 
 const syncProAccounts = async (ctx: Context) => {
   try {
@@ -35,19 +23,13 @@ const syncProAccounts = async (ctx: Context) => {
       `0x${account.owned_by.toString("hex")}`.toLowerCase()
     );
 
-    const updatedRequirement = await requirementClient.update(
-      7465,
-      173026,
-      470539,
-      { data: { addresses, hideAllowlist: true }, visibility: "PUBLIC" },
-      signerFunction
-    );
-
-    return ctx.json({
-      success: true,
-      total: updatedRequirement.data.addresses.length,
-      updatedAt: updatedRequirement.updatedAt
+    const data = await syncAddressesToGuild({
+      addresses,
+      roleId: 173026,
+      requirementId: 470539
     });
+
+    return ctx.json(data);
   } catch (e) {
     console.error(e);
     return ctx.json({ success: false, error: Errors.SomethingWentWrong }, 500);
