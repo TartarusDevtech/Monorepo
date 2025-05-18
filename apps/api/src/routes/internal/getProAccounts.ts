@@ -39,7 +39,7 @@ const getProAccounts = async (ctx: Context) => {
       7465,
       173026,
       470539,
-      { data: { addresses } },
+      { data: { addresses, hideAllowlist: true }, visibility: "PUBLIC" },
       signerFunction
     );
 
