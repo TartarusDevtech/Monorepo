@@ -15,7 +15,7 @@ const {
   }
 } = guildClient;
 
-const getProAccounts = async (ctx: Context) => {
+const syncProAccounts = async (ctx: Context) => {
   try {
     const proAccounts = await lensPg.query(
       `
@@ -54,4 +54,4 @@ const getProAccounts = async (ctx: Context) => {
   }
 };
 
-export default getProAccounts;
+export default syncProAccounts;

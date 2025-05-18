@@ -1,9 +1,9 @@
 import { Hono } from "hono";
 import secretMiddleware from "src/middlewares/secretMiddleware";
-import getProAccounts from "./getProAccounts";
+import syncProAccounts from "./syncProAccounts";
 
 const app = new Hono();
 
-app.get("/pro", secretMiddleware, getProAccounts);
+app.get("/pro", secretMiddleware, syncProAccounts);
 
 export default app;
