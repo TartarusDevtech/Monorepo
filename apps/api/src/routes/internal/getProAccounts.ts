@@ -19,15 +19,15 @@ const getProAccounts = async (ctx: Context) => {
   try {
     const proAccounts = await lensPg.query(
       `
-        SELECT DISTINCT aksw.owned_by
-        FROM post.action_executed pae
-        JOIN account.known_smart_wallet aksw
-          ON pae.account = aksw.address
-        WHERE pae.post_id = '\\x001c62d4107cdb7d7508146ca1aa6b289d6bb5d41adb6455df747153334669ba'
-          AND pae.timestamp >= NOW() - INTERVAL '30 days'
-          AND pae.type = 'TippingPostAction'
-          AND pae.decoded_params->>'value' = '0x29a2241af62c0000'
-          AND pae.decoded_params->>'currency' = '0x6bdc36e20d267ff0dd6097799f82e78907105e2f';
+        SELECT DISTINCT a.owned_by
+        FROM post.action_executed e
+        JOIN account.known_smart_wallet a
+          ON e.account = a.address
+        WHERE e.post_id = '\\x001c62d4107cdb7d7508146ca1aa6b289d6bb5d41adb6455df747153334669ba'
+          AND e.timestamp >= NOW() - INTERVAL '30 days'
+          AND e.type = 'TippingPostAction'
+          AND e.decoded_params->>'value' = '0x29a2241af62c0000'
+          AND e.decoded_params->>'currency' = '0x6bdc36e20d267ff0dd6097799f82e78907105e2f';
       `
     );
 
