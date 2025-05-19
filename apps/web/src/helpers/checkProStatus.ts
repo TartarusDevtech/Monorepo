@@ -3,10 +3,10 @@ import {
   PRO_SUBSCRIPTION_DURATION_DAYS,
   WRAPPED_NATIVE_TOKEN_SYMBOL
 } from "@hey/data/constants";
-import type { ProFragment } from "@hey/indexer";
+import type { PlatformFeesFragment } from "@hey/indexer";
 
 const checkProStatus = (
-  post: ProFragment
+  post: PlatformFeesFragment
 ): { isPro: boolean; expiresAt?: Date } => {
   if (post.__typename !== "Post") {
     return { isPro: false };
