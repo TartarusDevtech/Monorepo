@@ -1,10 +1,8 @@
 import { Button, Image } from "@/components/Shared/UI";
-import formatDate from "@/helpers/datetime/formatDate";
 import errorToast from "@/helpers/errorToast";
 import usePollTransactionStatus from "@/hooks/usePollTransactionStatus";
 import useTransactionLifecycle from "@/hooks/useTransactionLifecycle";
 import { useAccountStore } from "@/store/persisted/useAccountStore";
-import { useSubscriptionStore } from "@/store/persisted/useSubscriptionStore";
 import {
   DEFAULT_COLLECT_TOKEN,
   DEFAULT_TOKEN,
@@ -23,7 +21,6 @@ import Loader from "../Loader";
 
 const Subscribe = () => {
   const { currentAccount } = useAccountStore();
-  const { hasSubscribed, expiresAt } = useSubscriptionStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const handleTransactionLifecycle = useTransactionLifecycle();
   const pollTransactionStatus = usePollTransactionStatus();
@@ -93,18 +90,12 @@ const Subscribe = () => {
         width={112}
         className="w-28"
       />
-      {expiresAt ? (
-        <div>
-          Your pro expires on <b>{formatDate(expiresAt)}</b>
-        </div>
-      ) : (
-        <div className="max-w-md text-center text-gray-500 text-sm">
-          Subscribe to Hey to access the platform. A subscription is required to
-          use any features and helps us keep building and improving the
-          experience for everyone.
-        </div>
-      )}
-      {hasSubscribed ? null : canSubscribe ? (
+      <div className="max-w-md text-center text-gray-500 text-sm">
+        Subscribe to Hey to access the platform. A subscription is required to
+        use any features and helps us keep building and improving the experience
+        for everyone.
+      </div>
+      {canSubscribe ? (
         <Button
           className="w-sm"
           onClick={handleSubscribe}
@@ -121,11 +112,9 @@ const Subscribe = () => {
           outline
         />
       )}
-      {!hasSubscribed && (
-        <div className="-mt-1 text-gray-500 text-xs">
-          This is not recurring. You need to manually resubscribe every year.
-        </div>
-      )}
+      <div className="-mt-1 text-gray-500 text-xs">
+        This is not recurring. You need to manually resubscribe every year.
+      </div>
     </div>
   );
 };
