@@ -9,7 +9,7 @@ const syncHQScoreAccounts = async (ctx: Context) => {
       `
         SELECT DISTINCT account 
         FROM ml.account_score
-        WHERE score > 95;
+        WHERE score > 90;
       `
     );
 
