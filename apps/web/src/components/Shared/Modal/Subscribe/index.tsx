@@ -86,7 +86,7 @@ const Subscribe = () => {
   }
 
   return (
-    <div className="mx-5 my-10 flex flex-col items-center gap-y-5">
+    <div className="mx-5 my-10 flex flex-col items-center gap-y-8">
       <Image
         src={`${STATIC_IMAGES_URL}/pro.png`}
         alt="Pro"
@@ -98,8 +98,10 @@ const Subscribe = () => {
           Your pro expires on <b>{formatDate(expiresAt)}</b>
         </div>
       ) : (
-        <div className="flex flex-col items-center gap-y-1.5 text-gray-500 text-sm">
-          WIP
+        <div className="max-w-md text-center text-gray-500 text-sm">
+          Subscribe to Hey to access the platform. A subscription is required to
+          use any features and helps us keep building and improving the
+          experience for everyone.
         </div>
       )}
       {hasSubscribed ? null : canSubscribe ? (
