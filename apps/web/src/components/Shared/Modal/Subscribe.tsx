@@ -18,8 +18,8 @@ import {
   useExecutePostActionMutation
 } from "@hey/indexer";
 import { useState } from "react";
-import TransferFundButton from "../../Account/Fund/FundButton";
-import Loader from "../../Loader";
+import TransferFundButton from "../Account/Fund/FundButton";
+import Loader from "../Loader";
 
 const Subscribe = () => {
   const { currentAccount } = useAccountStore();
