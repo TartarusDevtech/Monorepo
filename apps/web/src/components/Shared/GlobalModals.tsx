@@ -52,7 +52,7 @@ const GlobalModals = () => {
 
   return (
     <>
-      <Modal show={true} size="md">
+      <Modal show={false} size="md">
         <Subscribe />
       </Modal>
       <Modal
