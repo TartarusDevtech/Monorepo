@@ -6,7 +6,7 @@ import syncAddressesToGuild from "src/utils/syncAddressesToGuild";
 // Sync followers standing of accounts with 1000+ followers
 const syncFollowersStanding = async (ctx: Context) => {
   try {
-    const hqScoreAccounts = await lensPg.query(
+    const accounts = await lensPg.query(
       `
         SELECT account
         FROM account.follower_summary
@@ -14,14 +14,14 @@ const syncFollowersStanding = async (ctx: Context) => {
       `
     );
 
-    const addresses = hqScoreAccounts.map((account) =>
+    const addresses = accounts.map((account) =>
       `0x${account.account.toString("hex")}`.toLowerCase()
     );
 
     const data = await syncAddressesToGuild({
       addresses,
-      roleId: 173446,
-      requirementId: 471245
+      roleId: 173474,
+      requirementId: 471279
     });
 
     return ctx.json(data);
