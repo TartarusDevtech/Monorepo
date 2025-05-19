@@ -111,7 +111,7 @@ const Subscribe = () => {
           disabled={isSubmitting}
           loading={isSubmitting}
         >
-          Subscribe for {SUBSCRIPTION_AMOUNT} WGHO/month
+          Subscribe for {SUBSCRIPTION_AMOUNT} WGHO/year
         </Button>
       ) : (
         <TransferFundButton
@@ -123,7 +123,7 @@ const Subscribe = () => {
       )}
       {!hasSubscribed && (
         <div className="-mt-1 text-gray-500 text-xs">
-          This is not recurring. You need to manually resubscribe every month.
+          This is not recurring. You need to manually resubscribe every year.
         </div>
       )}
     </div>

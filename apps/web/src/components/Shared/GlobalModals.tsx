@@ -9,7 +9,6 @@ import { useReportPostModalStore } from "@/store/non-persisted/modal/useReportPo
 import { useSuperFollowModalStore } from "@/store/non-persisted/modal/useSuperFollowModalStore";
 import { useSuperJoinModalStore } from "@/store/non-persisted/modal/useSuperJoinModalStore";
 import { useSwitchAccountModalStore } from "@/store/non-persisted/modal/useSwitchAccountModalStore";
-import { useSubscriptionStore } from "@/store/persisted/useSubscriptionStore";
 import TransferFund from "./Account/Fund/TransferFund";
 import SuperFollow from "./Account/SuperFollow";
 import SwitchAccounts from "./Account/SwitchAccounts";
@@ -40,7 +39,7 @@ const GlobalModals = () => {
     setShowSuperFollowModal,
     superFollowingAccount
   } = useSuperFollowModalStore();
-  const { hasSubscribed } = useSubscriptionStore();
+  // const { hasSubscribed } = useSubscriptionStore();
 
   const { screen: signupScreen } = useSignupStore();
 
@@ -53,7 +52,7 @@ const GlobalModals = () => {
 
   return (
     <>
-      <Modal show={!hasSubscribed} size="md">
+      <Modal show={true} size="md">
         <Subscribe />
       </Modal>
       <Modal

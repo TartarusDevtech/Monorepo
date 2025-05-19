@@ -153,7 +153,7 @@ const ProModal = () => {
           disabled={isSubmitting}
           loading={isSubmitting}
         >
-          Subscribe for {PRO_SUBSCRIPTION_AMOUNT} WGHO/year
+          Subscribe for {PRO_SUBSCRIPTION_AMOUNT} WGHO/month
         </Button>
       ) : (
         <TransferFundButton
@@ -165,7 +165,7 @@ const ProModal = () => {
       )}
       {!isPro && (
         <div className="-mt-1 text-gray-500 text-xs">
-          This is not recurring. You need to manually resubscribe every year.
+          This is not recurring. You need to manually resubscribe every month.
         </div>
       )}
     </div>
