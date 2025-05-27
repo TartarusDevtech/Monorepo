@@ -1,8 +1,12 @@
-# Hey Monorepo
+# Monorepo
+
+## About
+
+A decentralized, permissionless social media monorepo for the platform, built on top of Lens Protocol.
 
 ## Requirements
 
-To get started with the Hey monorepo, ensure the following dependencies are installed on your system:
+To get started with the monorepo, ensure the following dependencies are installed on your system:
 
 - [Node.js](https://nodejs.org/en/download/) (v18 or higher) - The backbone of our project.
 - [pnpm](https://pnpm.io/installation) - Our trusty package manager.
@@ -15,7 +19,7 @@ This repository uses [pnpm workspaces](https://pnpm.io/workspaces) to manage mul
 ### Clone the Repository
 
 ```bash
-git clone git@github.com:heyverse/hey.git
+git clone git@github.com:TartarusDevtech/Monorepo.git
 ```
 
 ### Install NVM and pnpm
@@ -74,8 +78,3 @@ pnpm build
 
 This project is licensed under the **AGPL-3.0** license. Please refer to the [LICENSE](./LICENSE) file for full terms and conditions.
 
-## P.S
-
-We 💖 you to the moon and back! Your support is like a never-ending supply of coffee for our code. Thank you for making Hey the most awesome place in the universe!
-
-🌸
